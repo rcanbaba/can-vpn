@@ -9,16 +9,17 @@
 /* Begin PBXBuildFile section */
 		B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D412950E31E0008BDA6 /* AppDelegate.swift */; };
 		B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D432950E31E0008BDA6 /* SceneDelegate.swift */; };
-		B4023D462950E31E0008BDA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D452950E31E0008BDA6 /* ViewController.swift */; };
+		B4023D462950E31E0008BDA6 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D452950E31E0008BDA6 /* InitialViewController.swift */; };
 		B4023D4B2950E31F0008BDA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4023D4A2950E31F0008BDA6 /* Assets.xcassets */; };
 		B4023D4E2950E31F0008BDA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4023D4C2950E31F0008BDA6 /* LaunchScreen.storyboard */; };
+		B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4023D562950E66D0008BDA6 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B4023D3E2950E31E0008BDA6 /* canvpn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = canvpn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4023D412950E31E0008BDA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4023D432950E31E0008BDA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B4023D452950E31E0008BDA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B4023D452950E31E0008BDA6 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		B4023D4A2950E31F0008BDA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4023D4D2950E31F0008BDA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4023D4F2950E31F0008BDA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +58,7 @@
 			children = (
 				B4023D412950E31E0008BDA6 /* AppDelegate.swift */,
 				B4023D432950E31E0008BDA6 /* SceneDelegate.swift */,
-				B4023D452950E31E0008BDA6 /* ViewController.swift */,
+				B4023D452950E31E0008BDA6 /* InitialViewController.swift */,
 				B4023D4A2950E31F0008BDA6 /* Assets.xcassets */,
 				B4023D4C2950E31F0008BDA6 /* LaunchScreen.storyboard */,
 				B4023D4F2950E31F0008BDA6 /* Info.plist */,
@@ -80,6 +82,9 @@
 			dependencies = (
 			);
 			name = canvpn;
+			packageProductDependencies = (
+				B4023D562950E66D0008BDA6 /* SnapKit */,
+			);
 			productName = canvpn;
 			productReference = B4023D3E2950E31E0008BDA6 /* canvpn.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +113,9 @@
 				Base,
 			);
 			mainGroup = B4023D352950E31E0008BDA6;
+			packageReferences = (
+				B4023D552950E66D0008BDA6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = B4023D3F2950E31E0008BDA6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,7 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4023D462950E31E0008BDA6 /* ViewController.swift in Sources */,
+				B4023D462950E31E0008BDA6 /* InitialViewController.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
 			);
@@ -204,7 +212,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -258,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -280,15 +288,15 @@
 				INFOPLIST_FILE = canvpn/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn.canvpn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -308,15 +316,15 @@
 				INFOPLIST_FILE = canvpn/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn.canvpn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -346,6 +354,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B4023D552950E66D0008BDA6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B4023D562950E66D0008BDA6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4023D552950E66D0008BDA6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B4023D362950E31E0008BDA6 /* Project object */;
 }
