@@ -13,6 +13,19 @@
 		B4023D4B2950E31F0008BDA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4023D4A2950E31F0008BDA6 /* Assets.xcassets */; };
 		B4023D4E2950E31F0008BDA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4023D4C2950E31F0008BDA6 /* LaunchScreen.storyboard */; };
 		B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4023D562950E66D0008BDA6 /* SnapKit */; };
+		B4023D5A2950F4A40008BDA6 /* ConnectionStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */; };
+		B4023D6029510E310008BDA6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B4023D5F29510E310008BDA6 /* Lottie */; };
+		B4023D662951121E0008BDA6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D652951121E0008BDA6 /* Helper.swift */; };
+		B4023D72295113530008BDA6 /* purchaseAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D68295113530008BDA6 /* purchaseAnimation.json */; };
+		B4023D73295113530008BDA6 /* globeLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D69295113530008BDA6 /* globeLoading.json */; };
+		B4023D74295113530008BDA6 /* connectedVPN.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D6A295113530008BDA6 /* connectedVPN.json */; };
+		B4023D75295113530008BDA6 /* guard_button.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D6B295113530008BDA6 /* guard_button.json */; };
+		B4023D76295113530008BDA6 /* launch_qualibrate.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D6C295113530008BDA6 /* launch_qualibrate.json */; };
+		B4023D77295113530008BDA6 /* vpn_connected.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D6D295113530008BDA6 /* vpn_connected.json */; };
+		B4023D78295113530008BDA6 /* vpn_lock.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D6E295113530008BDA6 /* vpn_lock.json */; };
+		B4023D79295113530008BDA6 /* world_location.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D6F295113530008BDA6 /* world_location.json */; };
+		B4023D7A295113530008BDA6 /* data_secure.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D70295113530008BDA6 /* data_secure.json */; };
+		B4023D7B295113530008BDA6 /* coming_soon.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D71295113530008BDA6 /* coming_soon.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +36,18 @@
 		B4023D4A2950E31F0008BDA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4023D4D2950E31F0008BDA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4023D4F2950E31F0008BDA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateView.swift; sourceTree = "<group>"; };
+		B4023D652951121E0008BDA6 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		B4023D68295113530008BDA6 /* purchaseAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = purchaseAnimation.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/purchaseAnimation.json"; sourceTree = "<group>"; };
+		B4023D69295113530008BDA6 /* globeLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = globeLoading.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/globeLoading.json"; sourceTree = "<group>"; };
+		B4023D6A295113530008BDA6 /* connectedVPN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = connectedVPN.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/connectedVPN.json"; sourceTree = "<group>"; };
+		B4023D6B295113530008BDA6 /* guard_button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = guard_button.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/guard_button.json"; sourceTree = "<group>"; };
+		B4023D6C295113530008BDA6 /* launch_qualibrate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = launch_qualibrate.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/launch_qualibrate.json"; sourceTree = "<group>"; };
+		B4023D6D295113530008BDA6 /* vpn_connected.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = vpn_connected.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/vpn_connected.json"; sourceTree = "<group>"; };
+		B4023D6E295113530008BDA6 /* vpn_lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = vpn_lock.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/vpn_lock.json"; sourceTree = "<group>"; };
+		B4023D6F295113530008BDA6 /* world_location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = world_location.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/world_location.json"; sourceTree = "<group>"; };
+		B4023D70295113530008BDA6 /* data_secure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data_secure.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/data_secure.json"; sourceTree = "<group>"; };
+		B4023D71295113530008BDA6 /* coming_soon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = coming_soon.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/coming_soon.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */,
+				B4023D6029510E310008BDA6 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,14 +82,66 @@
 		B4023D402950E31E0008BDA6 /* canvpn */ = {
 			isa = PBXGroup;
 			children = (
-				B4023D412950E31E0008BDA6 /* AppDelegate.swift */,
-				B4023D432950E31E0008BDA6 /* SceneDelegate.swift */,
+				B4023D642951120F0008BDA6 /* Helpers */,
+				B4023D6229510E4F0008BDA6 /* Core */,
+				B4023D582950F4910008BDA6 /* Views */,
 				B4023D452950E31E0008BDA6 /* InitialViewController.swift */,
+				B4023D6129510E400008BDA6 /* Resources */,
 				B4023D4A2950E31F0008BDA6 /* Assets.xcassets */,
-				B4023D4C2950E31F0008BDA6 /* LaunchScreen.storyboard */,
 				B4023D4F2950E31F0008BDA6 /* Info.plist */,
 			);
 			path = canvpn;
+			sourceTree = "<group>";
+		};
+		B4023D582950F4910008BDA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4023D6129510E400008BDA6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B4023D67295113480008BDA6 /* LottieAnims */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B4023D6229510E4F0008BDA6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B4023D412950E31E0008BDA6 /* AppDelegate.swift */,
+				B4023D432950E31E0008BDA6 /* SceneDelegate.swift */,
+				B4023D4C2950E31F0008BDA6 /* LaunchScreen.storyboard */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B4023D642951120F0008BDA6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B4023D652951121E0008BDA6 /* Helper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B4023D67295113480008BDA6 /* LottieAnims */ = {
+			isa = PBXGroup;
+			children = (
+				B4023D71295113530008BDA6 /* coming_soon.json */,
+				B4023D6A295113530008BDA6 /* connectedVPN.json */,
+				B4023D70295113530008BDA6 /* data_secure.json */,
+				B4023D69295113530008BDA6 /* globeLoading.json */,
+				B4023D6B295113530008BDA6 /* guard_button.json */,
+				B4023D6C295113530008BDA6 /* launch_qualibrate.json */,
+				B4023D68295113530008BDA6 /* purchaseAnimation.json */,
+				B4023D6D295113530008BDA6 /* vpn_connected.json */,
+				B4023D6E295113530008BDA6 /* vpn_lock.json */,
+				B4023D6F295113530008BDA6 /* world_location.json */,
+			);
+			path = LottieAnims;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +162,7 @@
 			name = canvpn;
 			packageProductDependencies = (
 				B4023D562950E66D0008BDA6 /* SnapKit */,
+				B4023D5F29510E310008BDA6 /* Lottie */,
 			);
 			productName = canvpn;
 			productReference = B4023D3E2950E31E0008BDA6 /* canvpn.app */;
@@ -115,6 +194,7 @@
 			mainGroup = B4023D352950E31E0008BDA6;
 			packageReferences = (
 				B4023D552950E66D0008BDA6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B4023D5E29510E310008BDA6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = B4023D3F2950E31E0008BDA6 /* Products */;
 			projectDirPath = "";
@@ -130,8 +210,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4023D77295113530008BDA6 /* vpn_connected.json in Resources */,
+				B4023D79295113530008BDA6 /* world_location.json in Resources */,
+				B4023D7A295113530008BDA6 /* data_secure.json in Resources */,
+				B4023D73295113530008BDA6 /* globeLoading.json in Resources */,
+				B4023D74295113530008BDA6 /* connectedVPN.json in Resources */,
 				B4023D4E2950E31F0008BDA6 /* LaunchScreen.storyboard in Resources */,
+				B4023D75295113530008BDA6 /* guard_button.json in Resources */,
+				B4023D78295113530008BDA6 /* vpn_lock.json in Resources */,
+				B4023D76295113530008BDA6 /* launch_qualibrate.json in Resources */,
+				B4023D72295113530008BDA6 /* purchaseAnimation.json in Resources */,
 				B4023D4B2950E31F0008BDA6 /* Assets.xcassets in Resources */,
+				B4023D7B295113530008BDA6 /* coming_soon.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4023D5A2950F4A40008BDA6 /* ConnectionStateView.swift in Sources */,
 				B4023D462950E31E0008BDA6 /* InitialViewController.swift in Sources */,
+				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
 			);
@@ -364,6 +456,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		B4023D5E29510E310008BDA6 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -371,6 +471,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B4023D552950E66D0008BDA6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B4023D5F29510E310008BDA6 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4023D5E29510E310008BDA6 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
