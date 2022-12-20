@@ -13,18 +13,17 @@ class ConnectionStateView: UIView {
     
     private lazy var stateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "connecting"
-        label.textColor = UIColor.blue
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor.white
         label.textAlignment = .center
-        label.isHidden = true
+        label.layer.backgroundColor = UIColor.gray.cgColor
         return label
     }()
     
     private lazy var animationView: LottieAnimationView = {
-        let animation = LottieAnimationView(name: "livestream_audio")
+        let animation = LottieAnimationView(name: "globeLoading")
         animation.loopMode = .loop
-        animation.isHidden = true
+        //animation.isHidden = true
         return animation
     }()
     
@@ -38,15 +37,15 @@ class ConnectionStateView: UIView {
     }
     
     private func configureUI() {
-        
+        animationView.play()
         self.addSubview(animationView)
         animationView.snp.makeConstraints { (make) in
-            make.leading.trailing.top.equalToSuperview()
+            make.center.equalToSuperview()
         }
         
         self.addSubview(stateLabel)
         stateLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(animationView.snp.top).offset(9)
+            make.top.equalToSuperview().offset(250)
             make.centerX.equalToSuperview()
         }
     }
@@ -63,7 +62,11 @@ extension ConnectionStateView {
     }
     
     public func setStateLabel(text: String) {
-        stateLabel.text = text
+        stateLabel.text = " " + text + " "
+    }
+    
+    public func setAnimation(isHidden: Bool) {
+        animationView.isHidden = isHidden
     }
     
     

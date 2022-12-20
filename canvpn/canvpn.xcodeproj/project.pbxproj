@@ -26,6 +26,7 @@
 		B4023D79295113530008BDA6 /* world_location.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D6F295113530008BDA6 /* world_location.json */; };
 		B4023D7A295113530008BDA6 /* data_secure.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D70295113530008BDA6 /* data_secure.json */; };
 		B4023D7B295113530008BDA6 /* coming_soon.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D71295113530008BDA6 /* coming_soon.json */; };
+		B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B4023D6F295113530008BDA6 /* world_location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = world_location.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/world_location.json"; sourceTree = "<group>"; };
 		B4023D70295113530008BDA6 /* data_secure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data_secure.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/data_secure.json"; sourceTree = "<group>"; };
 		B4023D71295113530008BDA6 /* coming_soon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = coming_soon.json; path = "../../../../../../Desktop/vpn-design/lottie-anims/coming_soon.json"; sourceTree = "<group>"; };
+		B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */,
+				B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4023D5A2950F4A40008BDA6 /* ConnectionStateView.swift in Sources */,
+				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4023D462950E31E0008BDA6 /* InitialViewController.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
