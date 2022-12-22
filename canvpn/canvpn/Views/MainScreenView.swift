@@ -10,7 +10,7 @@ import Lottie
 import SnapKit
 
 protocol MainScreenViewDelegate: AnyObject {
-    func stateViewTapped()
+    func changeStateTapped()
 }
 
 class MainScreenView: UIView {
@@ -24,14 +24,14 @@ class MainScreenView: UIView {
         return imageView
     }()
     
-    private lazy var stateView: ConnectionStateView = {
+    public lazy var stateView: ConnectionStateView = {
         let view = ConnectionStateView()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(stateViewTapped(_:))))
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        stateView.delegate = self
         configureUI()
     }
     
@@ -47,29 +47,29 @@ class MainScreenView: UIView {
         
         self.addSubview(stateView)
         stateView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(120)
-            make.width.equalTo(160)
-            make.height.equalTo(200)
+            make.edges.equalToSuperview()
         }
     }
     
-    //MARK: - ACTIONS
-    @objc private func stateViewTapped (_ sender: UITapGestureRecognizer) {
-        delegate?.stateViewTapped()
-    }
 }
 
 extension MainScreenView {
-    public func setUserInteraction(isEnabled: Bool) {
-        stateView.setUserInteraction(isEnabled: isEnabled)
-    }
-    
-    public func setAnimation(name: String) {
-        stateView.setAnimation(name: name)
-    }
-    
-    public func setStateLabel(text: String) {
-        stateView.setStateLabel(text: text)
+//    public func setUserInteraction(isEnabled: Bool) {
+//        stateView.setUserInteraction(isEnabled: isEnabled)
+//    }
+//
+//    public func setAnimation(name: String) {
+//        stateView.setAnimation(name: name)
+//    }
+//
+//    public func setStateLabel(text: String) {
+//        stateView.setStateLabel(text: text)
+//    }
+}
+
+
+extension MainScreenView: ConnectionStateViewDelegate {
+    func buttonTapped() {
+        delegate?.changeStateTapped()
     }
 }

@@ -10,9 +10,9 @@ import NetworkExtension
 
 class InitialViewController: UIViewController {
     
-    private var connectionState = ConnectionState.initial {
+    private var connectionUIState =  ConnectionState.initial {
         didSet {
-            setUIState()
+            setVPNStateUI()
         }
     }
     
@@ -24,7 +24,7 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.delegate = self
-        setUIState()
+        setVPNStateUI()
         
         vpnManager = NEVPNManager.shared()
         vpnStatus = vpnManager!.connection.status
@@ -53,50 +53,113 @@ class InitialViewController: UIViewController {
         view = mainView
     }
     
-    
-    private func setUIState() {
-        mainView.setStateLabel(text: connectionState.getStateText())
-        mainView.setUserInteraction(isEnabled: true)
-    }
-    
-    private func setVPN() {
-        switch connectionState {
+    private func setVPNStateUI() {
+        switch connectionUIState {
         case .initial:
-            connectionState = .connecting
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.connectionState = .connected
-            }
+            mainView.stateView.setStateLabel(text: "initial")
+            mainView.stateView.setUserInteraction(isEnabled: true)
+            
+            mainView.stateView.setAnimation(name: "")
+            mainView.stateView.setAnimation(isHidden: false)
+            mainView.stateView.playAnimation(loopMode: .playOnce)
+            mainView.stateView.setButtonText(text: "Tap To Start")
+            print("initial")
         case .connect:
-            connectionState = .connecting
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.connectionState = .connected
-            }
+            mainView.stateView.setStateLabel(text: "connect")
+            mainView.stateView.setUserInteraction(isEnabled: true)
+            
+            mainView.stateView.setAnimation(name: "")
+            mainView.stateView.setAnimation(isHidden: false)
+            mainView.stateView.playAnimation(loopMode: .playOnce)
+            mainView.stateView.setButtonText(text: "Connect")
+            print("connect")
+            
         case .connecting:
-            break
+            mainView.stateView.setStateLabel(text: "connecting")
+            mainView.stateView.setUserInteraction(isEnabled: false)
+            
+            mainView.stateView.setAnimation(name: "globeLoading")
+            mainView.stateView.setAnimation(isHidden: false)
+            mainView.stateView.playAnimation(loopMode: .playOnce)
+            mainView.stateView.setButtonText(text: "interaction closed")
+            print("connecting")
+            
         case .connected:
-            connectionState = .disconnecting
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.connectionState = .disconnected
-            }
+            mainView.stateView.setStateLabel(text: "connected")
+            mainView.stateView.setUserInteraction(isEnabled: true)
+            
+            mainView.stateView.setAnimation(name: "connectedVPN")
+            mainView.stateView.setAnimation(isHidden: false)
+            mainView.stateView.playAnimation(loopMode: .playOnce)
+            mainView.stateView.setButtonText(text: "Disconnect")
+            print("connected")
+            
         case .disconnecting:
-            break
+            mainView.stateView.setStateLabel(text: "disconnecting")
+            mainView.stateView.setUserInteraction(isEnabled: false)
+            
+            mainView.stateView.setAnimation(name: "globeLoading")
+            mainView.stateView.setAnimation(isHidden: false)
+            mainView.stateView.playAnimation(loopMode: .loop)
+            mainView.stateView.setButtonText(text: "interaction closed")
+            print("disconnecting")
+            
         case .disconnected:
-            connectionState = .connecting
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.connectionState = .connected
-            }
+            mainView.stateView.setStateLabel(text: "disconnected")
+            mainView.stateView.setUserInteraction(isEnabled: true)
+            
+            mainView.stateView.setAnimation(name: "")
+            mainView.stateView.setAnimation(isHidden: false)
+            mainView.stateView.playAnimation(loopMode: .playOnce)
+            mainView.stateView.setButtonText(text: "Reconnect")
+            print("disconnected")
+            
         }
     }
     
-    private func startConnection() {
-        
-        
-        
+    
+    func saveAndConnect(_ account: String) {
+        save(config: account) { [weak self] in
+            _ = self?.connectVPN()
+        }
+    }
+    
+    func save(config: String, completion: @escaping () -> Void) {
+        //  config.saveToDefaults()
+        //   config.saveToDefaults()
+        loadPreferences { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.saveVPNProtocol(account: config, completion: completion)
+        }
+    }
+    
+
+    func connectVPN() -> Bool {
+        guard let manager = vpnManager else { return false }
+        debugPrint("!!!!! Establishing Connection !!!!!")
+        do {
+            try manager.connection.startVPNTunnel()
+            connectionUIState = .connecting
+            return true
+        } catch NEVPNError.configurationInvalid {
+            connectionUIState = .initial
+            debugPrint("Failed to start tunnel (configuration invalid)")
+        } catch NEVPNError.configurationDisabled {
+            connectionUIState = .initial
+            debugPrint("Failed to start tunnel (configuration disabled)")
+        } catch let error as NSError {
+            debugPrint(error.localizedDescription)
+            connectionUIState = .initial
+            return false
+        }
+        connectionUIState = .initial
+        return false
     }
     
     private func disconnect() {
         guard let manager = vpnManager else { return }
         manager.connection.stopVPNTunnel()
+        connectionUIState = .disconnected
     }
     
     private func loadPreferences(completion: @escaping () -> Void) {
@@ -109,7 +172,7 @@ class InitialViewController: UIViewController {
     
     private func saveVPNProtocol(account: String, completion: @escaping () -> Void) {
         guard let manager = vpnManager else { return }
-        var neVPNProtocol: NEVPNProtocol
+      //  var neVPNProtocol: NEVPNProtocol
         
         
         let p = NEVPNProtocolIPSec()
@@ -125,7 +188,7 @@ class InitialViewController: UIViewController {
         p.useExtendedAuthentication = true
         p.disconnectOnSleep = false
         manager.protocolConfiguration = p
-        manager.localizedDescription = "Contensi"
+        manager.localizedDescription = "canVPN"
         manager.isEnabled = true
         
         
@@ -138,8 +201,7 @@ class InitialViewController: UIViewController {
         }
     }
     
-    @objc
-    private func statusDidChange(_ notification: Notification) {
+    @objc private func statusDidChange(_ notification: Notification) {
         guard let connection = notification.object as? NEVPNConnection else { return }
         let status = connection.status
         print("NOTIF: status", status.rawValue)
@@ -150,16 +212,22 @@ class InitialViewController: UIViewController {
     private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
         switch vpnStatus {
         case .invalid:
+            connectionUIState = .initial
             print("NOTIF: invalid")
         case .disconnected:
+            connectionUIState = .disconnected
             print("NOTIF: disconnected")
         case .connecting:
+            connectionUIState = .connecting
             print("NOTIF: connecting")
         case .connected:
+            connectionUIState = .connected
             print("NOTIF: connected")
         case .reasserting:
+            connectionUIState = .connecting
             print("NOTIF: reasserting")
         case .disconnecting:
+            connectionUIState = .disconnecting
             print("NOTIF: disconnecting")
         @unknown default:
             break
@@ -181,7 +249,23 @@ class InitialViewController: UIViewController {
 }
 
 extension InitialViewController: MainScreenViewDelegate {
-    func stateViewTapped() {
-        startConnection()
+    func changeStateTapped() {
+        
+        switch connectionUIState {
+        case .initial:
+            saveAndConnect("vpn-server")
+        case .connecting:
+            print("STATE NOT CHANGED")
+        case .connect:
+            saveAndConnect("vpn-server")
+        case .connected:
+            disconnect()
+        case .disconnecting:
+            print("STATE NOT CHANGED")
+        case .disconnected:
+            saveAndConnect("vpn-server")
+        }
+        
+        
     }
 }
