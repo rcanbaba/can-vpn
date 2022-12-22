@@ -21,7 +21,7 @@ class ConnectionStateView: UIView {
     }()
     
     private lazy var animationView: LottieAnimationView = {
-        let animation = LottieAnimationView(name: "globeLoading")
+        let animation = LottieAnimationView(name: "connectedVPN")
         animation.loopMode = .loop
         //animation.isHidden = true
         return animation

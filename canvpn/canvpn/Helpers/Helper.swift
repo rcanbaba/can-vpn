@@ -10,7 +10,6 @@ enum ConnectionState {
     case connect
     case connecting
     case connected
-    case disconnect
     case disconnecting
     case disconnected
 
@@ -28,8 +27,6 @@ extension ConnectionState {
             return "connecting"
         case .connected:
             return "connected"
-        case .disconnect:
-            return "disconnect"
         case .disconnecting:
             return "disconnecting"
         case .disconnected:
@@ -39,7 +36,7 @@ extension ConnectionState {
     
     func getUserInteraction() -> Bool {
         switch self {
-        case .initial, .connect, .connected, .disconnect, .disconnected:
+        case .initial, .connect, .connected, .disconnected:
             return true
         case .connecting, .disconnecting:
             return false
