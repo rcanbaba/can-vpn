@@ -19,10 +19,9 @@ class ConnectionStateView: UIView {
     
     private lazy var stateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.layer.backgroundColor = UIColor.gray.cgColor
         return label
     }()
     
@@ -35,7 +34,7 @@ class ConnectionStateView: UIView {
         let button = UIButton()
         button.setTitleColor(UIColor.white, for: .normal)
         button.setTitle("", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.titleLabel?.font = .systemFont(ofSize: 18)
         button.backgroundColor = UIColor.gray
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.layer.cornerRadius = 20
@@ -54,7 +53,7 @@ class ConnectionStateView: UIView {
     private func configureUI() {
         self.addSubview(animationView)
         animationView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(100)
+            make.top.equalToSuperview().inset(150)
             make.centerX.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(200)
@@ -70,7 +69,7 @@ class ConnectionStateView: UIView {
         button.snp.makeConstraints { (make) in
             make.top.equalTo(stateLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(80)
+            make.leading.trailing.equalToSuperview().inset(100)
             make.height.equalTo(40)
         }
     }

@@ -28,6 +28,7 @@
 		B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023DBF2954751C0008BDA6 /* Keychain.swift */; };
 		B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023DC12954752C0008BDA6 /* KeychainItemAccessibility.swift */; };
 		B4023DC52954A0050008BDA6 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = B4023DC42954A0050008BDA6 /* KeychainAccess */; };
+		B4184A172955C9AA0051EB79 /* ServerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A162955C9AA0051EB79 /* ServerListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,7 @@
 		B4023DBF2954751C0008BDA6 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		B4023DC12954752C0008BDA6 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		B4023DC62954A9DB0008BDA6 /* canvpn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = canvpn.entitlements; sourceTree = "<group>"; };
+		B4184A162955C9AA0051EB79 /* ServerListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */,
 				B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */,
+				B4184A162955C9AA0051EB79 /* ServerListTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
+				B4184A172955C9AA0051EB79 /* ServerListTableViewCell.swift in Sources */,
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 			);

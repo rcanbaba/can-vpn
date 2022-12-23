@@ -24,6 +24,8 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.delegate = self
+        mainView.serverListTableView.delegate = self
+        mainView.serverListTableView.dataSource = self
         setVPNStateUI()
         
         vpnManager = NEVPNManager.shared()
@@ -215,13 +217,17 @@ class InitialViewController: UIViewController {
             connectionUIState = .initial
             print("NOTIF: invalid")
         case .disconnected:
-            connectionUIState = .disconnected
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.connectionUIState = .disconnected
+            }
             print("NOTIF: disconnected")
         case .connecting:
             connectionUIState = .connecting
             print("NOTIF: connecting")
         case .connected:
-            connectionUIState = .connected
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.connectionUIState = .connected
+            }
             print("NOTIF: connected")
         case .reasserting:
             connectionUIState = .connecting
@@ -268,4 +274,45 @@ extension InitialViewController: MainScreenViewDelegate {
         
         
     }
+}
+
+
+extension InitialViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ServerListTableViewCell", for: indexPath) as! ServerListTableViewCell
+        
+        if indexPath.row == 0 {
+            cell.countryNameLabel.text = "Atlanta" + " \(indexPath.row)"
+        } else if indexPath.row == 1 {
+            cell.countryNameLabel.text = "Germany" + " \(indexPath.row)"
+        }
+        else if indexPath.row == 2 {
+            cell.countryNameLabel.text = "Virgina" + " \(indexPath.row)"
+        }
+        else if indexPath.row == 3 {
+            cell.countryNameLabel.text = "Singapore" + " \(indexPath.row)"
+        }
+        else if indexPath.row == 4 {
+            cell.countryNameLabel.text = "Germany17" + " \(indexPath.row)"
+        }
+        else if indexPath.row == 5 {
+            cell.countryNameLabel.text = "Adana" + " \(indexPath.row)"
+        }
+        else if indexPath.row == 6 {
+            cell.countryNameLabel.text = "Istanbul" + " \(indexPath.row)"
+        }
+        else if indexPath.row == 7 {
+            cell.countryNameLabel.text = "Argentina" + " \(indexPath.row)"
+        }
+        
+        
+        return cell
+    }
+    
+    
+    
 }
