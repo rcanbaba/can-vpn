@@ -20,6 +20,8 @@ class InitialViewController: UIViewController {
     
     private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
+    
+    private var networkService: DefaultNetworkService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,8 @@ class InitialViewController: UIViewController {
         vpnManager = NEVPNManager.shared()
         vpnStatus = vpnManager!.connection.status
         NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
+        
+        networkService = DefaultNetworkService()
         
         loadPreferences {}
         // loadIP
@@ -48,6 +52,22 @@ class InitialViewController: UIViewController {
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
 //            self?.updateOnFirstLaunch()
 //        }
+        
+        deneme()
+        
+    }
+    
+    func deneme() {
+        guard let service = networkService else { return }
+        var searchRequest = SearchCompanyRequest()
+        service.request(searchRequest) { [weak self] result in
+            switch result {
+            case .success(let companies):
+                print("SUCCESS")
+            case .failure(let error):
+                print("FAIL")
+            }
+        }
         
     }
     
