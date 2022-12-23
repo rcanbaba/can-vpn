@@ -34,6 +34,7 @@
 		B4184A1E295614950051EB79 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A1D295614950051EB79 /* DataRequest.swift */; };
 		B4184A20295614EA0051EB79 /* GetServerListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A1F295614EA0051EB79 /* GetServerListRequest.swift */; };
 		B4184A22295615B30051EB79 /* ServerListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A21295615B30051EB79 /* ServerListResponse.swift */; };
+		B44120DD2956390B0072B566 /* AESCryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44120DC2956390B0072B566 /* AESCryption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +79,7 @@
 		B4184A1D295614950051EB79 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		B4184A1F295614EA0051EB79 /* GetServerListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerListRequest.swift; sourceTree = "<group>"; };
 		B4184A21295615B30051EB79 /* ServerListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListResponse.swift; sourceTree = "<group>"; };
+		B44120DC2956390B0072B566 /* AESCryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESCryption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 		B4023D642951120F0008BDA6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B44120DC2956390B0072B566 /* AESCryption.swift */,
 				B4023D652951121E0008BDA6 /* Helper.swift */,
 			);
 			path = Helpers;
@@ -307,6 +310,7 @@
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
+				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
 				B4184A172955C9AA0051EB79 /* ServerListTableViewCell.swift in Sources */,
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
