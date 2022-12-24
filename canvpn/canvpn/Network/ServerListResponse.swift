@@ -8,11 +8,11 @@
 import Foundation
 
 struct SearchCompanyItem: Codable {
-    let companyID, name: String?
+    let data, error: String?
 
     enum CodingKeys: String, CodingKey {
-        case companyID = "company_id"
-        case name
+        case data = "data"
+        case error = "error"
     }
 }
 

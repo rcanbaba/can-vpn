@@ -54,9 +54,9 @@ final class DefaultNetworkService: NetworkService {
                 return completion(.failure(error))
             }
             
-//            guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
-//                return completion(.failure(NSError()))
-//            }
+            guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
+                return completion(.failure(NSError()))
+            }
             
             guard let data = data else {
                 return completion(.failure(NSError()))
