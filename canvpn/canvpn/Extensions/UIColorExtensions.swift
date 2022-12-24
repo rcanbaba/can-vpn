@@ -29,9 +29,13 @@ extension UIColor {
 }
 
 extension UIColor {
+    struct Text {
+        static let white = UIColor("FFFFFF")
+        static let dark = UIColor("050A30")
+    }
     struct Custom {
-        struct InitialPage {
-            static let background = UIColor("0095FF")
-        }
+        static let orange = UIColor("FD6043")
+        static let green = UIColor("38D980")
+        static let dark = UIColor("050A30")
     }
 }

@@ -8,8 +8,9 @@
 import UIKit
 import NetworkExtension
 import CommonCrypto
+import Lottie
 
-class InitialViewController: UIViewController {
+class MainScreenViewController: UIViewController {
     
     private var connectionUIState =  ConnectionState.initial {
         didSet {
@@ -23,6 +24,21 @@ class InitialViewController: UIViewController {
     private var vpnStatus: NEVPNStatus = .invalid
     
     private var networkService: DefaultNetworkService?
+    
+    private lazy var mainBackView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    private lazy var initialAnimationView: LottieAnimationView = {
+        let view = LottieAnimationView()
+        view.animation = LottieAnimation.named("logo-full-animation")
+        view.loopMode = .playOnce
+        view.clipsToBounds = false
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,62 +105,62 @@ class InitialViewController: UIViewController {
     private func setVPNStateUI() {
         switch connectionUIState {
         case .initial:
-            mainView.stateView.setStateLabel(text: "initial")
-            mainView.stateView.setUserInteraction(isEnabled: true)
+            mainView.setStateLabel(text: "initial")
+            mainView.setUserInteraction(isEnabled: true)
             
-            mainView.stateView.setAnimation(name: "")
-            mainView.stateView.setAnimation(isHidden: false)
-            mainView.stateView.playAnimation(loopMode: .playOnce)
-            mainView.stateView.setButtonText(text: "Tap To Start")
+            mainView.setAnimation(name: "")
+            mainView.setAnimation(isHidden: false)
+            mainView.playAnimation(loopMode: .playOnce)
+            mainView.setButtonText(text: "Tap To Start")
             print("initial")
         case .connect:
-            mainView.stateView.setStateLabel(text: "connect")
-            mainView.stateView.setUserInteraction(isEnabled: true)
+            mainView.setStateLabel(text: "connect")
+            mainView.setUserInteraction(isEnabled: true)
             
-            mainView.stateView.setAnimation(name: "")
-            mainView.stateView.setAnimation(isHidden: false)
-            mainView.stateView.playAnimation(loopMode: .playOnce)
-            mainView.stateView.setButtonText(text: "Connect")
+            mainView.setAnimation(name: "")
+            mainView.setAnimation(isHidden: false)
+            mainView.playAnimation(loopMode: .playOnce)
+            mainView.setButtonText(text: "Connect")
             print("connect")
             
         case .connecting:
-            mainView.stateView.setStateLabel(text: "connecting")
-            mainView.stateView.setUserInteraction(isEnabled: false)
+            mainView.setStateLabel(text: "connecting")
+            mainView.setUserInteraction(isEnabled: false)
             
-            mainView.stateView.setAnimation(name: "globeLoading")
-            mainView.stateView.setAnimation(isHidden: false)
-            mainView.stateView.playAnimation(loopMode: .playOnce)
-            mainView.stateView.setButtonText(text: "interaction closed")
+            mainView.setAnimation(name: "globeLoading")
+            mainView.setAnimation(isHidden: false)
+            mainView.playAnimation(loopMode: .playOnce)
+            mainView.setButtonText(text: "interaction closed")
             print("connecting")
             
         case .connected:
-            mainView.stateView.setStateLabel(text: "connected")
-            mainView.stateView.setUserInteraction(isEnabled: true)
+            mainView.setStateLabel(text: "connected")
+            mainView.setUserInteraction(isEnabled: true)
             
-            mainView.stateView.setAnimation(name: "connectedVPN")
-            mainView.stateView.setAnimation(isHidden: false)
-            mainView.stateView.playAnimation(loopMode: .playOnce)
-            mainView.stateView.setButtonText(text: "Disconnect")
+            mainView.setAnimation(name: "connectedVPN")
+            mainView.setAnimation(isHidden: false)
+            mainView.playAnimation(loopMode: .playOnce)
+            mainView.setButtonText(text: "Disconnect")
             print("connected")
             
         case .disconnecting:
-            mainView.stateView.setStateLabel(text: "disconnecting")
-            mainView.stateView.setUserInteraction(isEnabled: false)
+            mainView.setStateLabel(text: "disconnecting")
+            mainView.setUserInteraction(isEnabled: false)
             
-            mainView.stateView.setAnimation(name: "globeLoading")
-            mainView.stateView.setAnimation(isHidden: false)
-            mainView.stateView.playAnimation(loopMode: .loop)
-            mainView.stateView.setButtonText(text: "interaction closed")
+            mainView.setAnimation(name: "globeLoading")
+            mainView.setAnimation(isHidden: false)
+            mainView.playAnimation(loopMode: .loop)
+            mainView.setButtonText(text: "interaction closed")
             print("disconnecting")
             
         case .disconnected:
-            mainView.stateView.setStateLabel(text: "disconnected")
-            mainView.stateView.setUserInteraction(isEnabled: true)
+            mainView.setStateLabel(text: "disconnected")
+            mainView.setUserInteraction(isEnabled: true)
             
-            mainView.stateView.setAnimation(name: "")
-            mainView.stateView.setAnimation(isHidden: false)
-            mainView.stateView.playAnimation(loopMode: .playOnce)
-            mainView.stateView.setButtonText(text: "Reconnect")
+            mainView.setAnimation(name: "")
+            mainView.setAnimation(isHidden: false)
+            mainView.playAnimation(loopMode: .playOnce)
+            mainView.setButtonText(text: "Reconnect")
             print("disconnected")
             
         }
@@ -285,7 +301,7 @@ class InitialViewController: UIViewController {
     }
 }
 
-extension InitialViewController: MainScreenViewDelegate {
+extension MainScreenViewController: MainScreenViewDelegate {
     func changeStateTapped() {
         
         switch connectionUIState {
@@ -308,13 +324,14 @@ extension InitialViewController: MainScreenViewDelegate {
 }
 
 
-extension InitialViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ServerListTableViewCell", for: indexPath) as! ServerListTableViewCell
+        cell.backgroundColor = UIColor.clear
         
         if indexPath.row == 0 {
             cell.countryNameLabel.text = "Atlanta" + " \(indexPath.row)"

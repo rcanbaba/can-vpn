@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D412950E31E0008BDA6 /* AppDelegate.swift */; };
 		B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D432950E31E0008BDA6 /* SceneDelegate.swift */; };
-		B4023D462950E31E0008BDA6 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D452950E31E0008BDA6 /* InitialViewController.swift */; };
+		B4023D462950E31E0008BDA6 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */; };
 		B4023D4B2950E31F0008BDA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4023D4A2950E31F0008BDA6 /* Assets.xcassets */; };
 		B4023D4E2950E31F0008BDA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4023D4C2950E31F0008BDA6 /* LaunchScreen.storyboard */; };
 		B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4023D562950E66D0008BDA6 /* SnapKit */; };
-		B4023D5A2950F4A40008BDA6 /* ConnectionStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */; };
 		B4023D6029510E310008BDA6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B4023D5F29510E310008BDA6 /* Lottie */; };
 		B4023D662951121E0008BDA6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D652951121E0008BDA6 /* Helper.swift */; };
 		B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */; };
@@ -58,11 +57,10 @@
 		B4023D3E2950E31E0008BDA6 /* canvpn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = canvpn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4023D412950E31E0008BDA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4023D432950E31E0008BDA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B4023D452950E31E0008BDA6 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		B4023D4A2950E31F0008BDA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4023D4D2950E31F0008BDA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4023D4F2950E31F0008BDA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateView.swift; sourceTree = "<group>"; };
 		B4023D652951121E0008BDA6 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		B4023D8629530F2F0008BDA6 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -124,13 +122,13 @@
 		B4023D402950E31E0008BDA6 /* canvpn */ = {
 			isa = PBXGroup;
 			children = (
+				B44120EA295727D00072B566 /* Controllers */,
 				B44120E3295716110072B566 /* Extensions */,
 				B4184A18295614590051EB79 /* Network */,
 				B4023DBE295475070008BDA6 /* KeychainStorage */,
 				B4023D642951120F0008BDA6 /* Helpers */,
 				B4023D6229510E4F0008BDA6 /* Core */,
 				B4023D582950F4910008BDA6 /* Views */,
-				B4023D452950E31E0008BDA6 /* InitialViewController.swift */,
 				B4023D6129510E400008BDA6 /* Resources */,
 				B4023D4A2950E31F0008BDA6 /* Assets.xcassets */,
 				B4023D4F2950E31F0008BDA6 /* Info.plist */,
@@ -142,7 +140,6 @@
 		B4023D582950F4910008BDA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B4023D592950F4A40008BDA6 /* ConnectionStateView.swift */,
 				B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */,
 				B4184A162955C9AA0051EB79 /* ServerListTableViewCell.swift */,
 			);
@@ -229,6 +226,14 @@
 				B44120E8295717300072B566 /* CALayerExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B44120EA295727D00072B566 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,11 +328,10 @@
 				B4184A20295614EA0051EB79 /* GetServerListRequest.swift in Sources */,
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
-				B4023D5A2950F4A40008BDA6 /* ConnectionStateView.swift in Sources */,
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
 				B4184A22295615B30051EB79 /* ServerListResponse.swift in Sources */,
-				B4023D462950E31E0008BDA6 /* InitialViewController.swift in Sources */,
+				B4023D462950E31E0008BDA6 /* MainScreenViewController.swift in Sources */,
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
@@ -481,6 +485,7 @@
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "iLove VPN";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -510,6 +515,7 @@
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "iLove VPN";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
