@@ -19,6 +19,7 @@ class MainScreenViewController: UIViewController {
     }
     
     private lazy var mainView = MainScreenView()
+    private lazy var splashView = SplashScreenView()
     
     private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
@@ -42,6 +43,18 @@ class MainScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(mainView)
+        mainView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        self.view.addSubview(splashView)
+        splashView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        splashView.delegate = self
         mainView.delegate = self
         mainView.serverListTableView.delegate = self
         mainView.serverListTableView.dataSource = self
@@ -56,6 +69,8 @@ class MainScreenViewController: UIViewController {
         loadPreferences {}
         
         deneme()
+        
+
     }
     
     
@@ -98,9 +113,7 @@ class MainScreenViewController: UIViewController {
         
     }
     
-    override func loadView() {
-        view = mainView
-    }
+
     
     private func setVPNStateUI() {
         switch connectionUIState {
@@ -323,6 +336,14 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
 }
 
+extension MainScreenViewController: SplashScreenViewDelegate {
+    func splashAnimationCompleted() {
+        splashView.hideWithAnimation { [weak self] in
+            self?.splashView.removeFromSuperview()
+        }
+    }
+    
+}
 
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
