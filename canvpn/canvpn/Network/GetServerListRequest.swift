@@ -24,10 +24,12 @@ struct SearchCompanyRequest: DataRequest {
     }
     
     var method: HTTPMethod {
-        .post
+        .get
     }
     
-    func decode(_ data: Data) throws -> SearchCompanyResponse {
+    func decode(_ data: Data) throws -> SearchCompanyItem {
+        
+        let hep = String(data: data, encoding: String.Encoding.utf8) as String?
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -37,8 +39,10 @@ struct SearchCompanyRequest: DataRequest {
         dateFormatter.dateFormat = "yyyy-mm-dd"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         */
+                
+        let deneme = try? JSONDecoder().decode(SearchCompanyItem.self, from: data)
         
-        let response = try decoder.decode(SearchCompanyResponse.self, from: data)
+        let response = try decoder.decode(SearchCompanyItem.self, from: data)
         
         return response
     }

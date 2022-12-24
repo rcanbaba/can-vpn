@@ -7,6 +7,7 @@
 
 import UIKit
 import NetworkExtension
+import CommonCrypto
 
 class InitialViewController: UIViewController {
     
@@ -37,29 +38,39 @@ class InitialViewController: UIViewController {
         networkService = DefaultNetworkService()
         
         loadPreferences {}
-        // loadIP
-        // loadServers
-        // prepare Ads
-        
-        
-//        onInterstitialUpdate?(AdsConfiguration().interstitialKey)
-//        observeStatus()
-//        networkVPNUseCase.loadVPNConfig {}
-//        loadIP()
-//        loadServers()
-//        loadRequestAd.value = true
-//        prepareAds()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-//            self?.updateOnFirstLaunch()
-//        }
         
         deneme()
-        
     }
+    
+    
+    public func createRequest(qMes: String, location: String, method: String , completionBlock: @escaping (String) -> Void) -> Void
+      {
+
+          let requestURL = URL(string: location)
+          var request = URLRequest(url: requestURL!)
+
+          request.httpMethod = method
+          request.httpBody = qMes.data(using: .utf8)
+
+          let requestTask = URLSession.shared.dataTask(with: request) {
+              (data: Data?, response: URLResponse?, error: Error?) in
+
+              if(error != nil) {
+                  print("Error: \(error)")
+              }else
+              {
+
+                  let outputStr  = String(data: data!, encoding: String.Encoding.utf8) as String?
+                  //send this block to required place
+                  completionBlock(outputStr!);
+              }
+          }
+          requestTask.resume()
+      }
     
     func deneme() {
         guard let service = networkService else { return }
-        var searchRequest = SearchCompanyRequest()
+        let searchRequest = SearchCompanyRequest()
         service.request(searchRequest) { [weak self] result in
             switch result {
             case .success(let companies):
