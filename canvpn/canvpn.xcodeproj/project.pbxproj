@@ -297,6 +297,7 @@
 		B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F0295758080072B566 /* AttributedTextHelper.swift */; };
 		B44122F329575A060072B566 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F229575A060072B566 /* SplashScreenView.swift */; };
 		B44122F729575DC40072B566 /* splash-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B44122F629575DC40072B566 /* splash-animation.json */; };
+		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -604,6 +605,7 @@
 		B44122F0295758080072B566 /* AttributedTextHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextHelper.swift; sourceTree = "<group>"; };
 		B44122F229575A060072B566 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		B44122F629575DC40072B566 /* splash-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-animation.json"; sourceTree = "<group>"; };
+		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -691,6 +693,7 @@
 				B4023D652951121E0008BDA6 /* Helper.swift */,
 				B44120E1295712D10072B566 /* Constants.swift */,
 				B44122F0295758080072B566 /* AttributedTextHelper.swift */,
+				B44122F829577AFC0072B566 /* IpAddressManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1373,6 +1376,7 @@
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
 				B4184A22295615B30051EB79 /* ServerListResponse.swift in Sources */,
+				B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */,
 				B4023D462950E31E0008BDA6 /* MainScreenViewController.swift in Sources */,
 				B44122F329575A060072B566 /* SplashScreenView.swift in Sources */,
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,

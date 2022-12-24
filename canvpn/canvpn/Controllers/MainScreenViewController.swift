@@ -69,8 +69,16 @@ class MainScreenViewController: UIViewController {
         loadPreferences {}
         
         deneme()
-        
-
+        setIPAddress(isVpnConnected: false)
+    }
+    
+    private func setIPAddress(isVpnConnected: Bool) {
+        if !isVpnConnected {
+            let IPAddress = IpAddressManager().getIPAddress()
+            mainView.setIpAdress(text: IPAddress ?? "")
+        } else {
+            mainView.setIpAdress(text: "12.39.239.4")
+        }
     }
     
     
@@ -275,10 +283,12 @@ class MainScreenViewController: UIViewController {
         switch vpnStatus {
         case .invalid:
             connectionUIState = .initial
+            self.setIPAddress(isVpnConnected: false)
             print("NOTIF: invalid")
         case .disconnected:
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.connectionUIState = .disconnected
+                self.setIPAddress(isVpnConnected: false)
             }
             print("NOTIF: disconnected")
         case .connecting:
@@ -287,6 +297,7 @@ class MainScreenViewController: UIViewController {
         case .connected:
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.connectionUIState = .connected
+                self.setIPAddress(isVpnConnected: true)
             }
             print("NOTIF: connected")
         case .reasserting:

@@ -38,13 +38,12 @@ class MainScreenView: UIView {
         label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = UIColor.Text.white
         label.textAlignment = .center
-        label.attributedText = NSAttributedString(string: "176.33.101.137", attributes:
-            [.underlineStyle: NSUnderlineStyle.single.rawValue])
         return label
     }()
     
     private lazy var animationView: LottieAnimationView = {
         let animation = LottieAnimationView(name: "")
+        animation.isHidden = true
         return animation
     }()
     
@@ -247,6 +246,7 @@ extension MainScreenView {
         animationView.animation = LottieAnimation.named(name)
     }
     public func playAnimation(loopMode: LottieLoopMode) {
+        animationView.isHidden = false
         animationView.loopMode = loopMode
         animationView.play()
     }
@@ -260,5 +260,9 @@ extension MainScreenView {
     
     public func setButton(isHidden: Bool) {
         connectButton.isHidden = isHidden
+    }
+    public func setIpAdress(text: String){
+        currentIPLabel.attributedText = NSAttributedString(string: text, attributes:
+            [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
 }
