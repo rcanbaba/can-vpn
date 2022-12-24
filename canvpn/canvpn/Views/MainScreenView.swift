@@ -74,9 +74,10 @@ class MainScreenView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         tableView.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 17)
         tableView.layer.borderWidth = 3.0
-        tableView.layer.borderColor = UIColor(red: 255/255, green: 111/255, blue: 97/255, alpha: 1.0).cgColor
+        tableView.layer.borderColor = UIColor.Custom.orange.cgColor
         tableView.layer.cornerRadius = 10.0
         return tableView
     }()
@@ -96,6 +97,18 @@ class MainScreenView: UIView {
         label.attributedText = NSAttributedString(string: "Uygulamayı kullanarak Kullanım Şartları ve Gizlilik Politikası kabul etmiş olursunuz.", attributes:
             [.underlineStyle: NSUnderlineStyle.single.rawValue])
         return label
+    }()
+    
+    private lazy var privacyTextView: UITextView = {
+        var textView = UITextView()
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.isScrollEnabled = false
+        textView.backgroundColor = UIColor.clear
+        textView.textAlignment = .center
+        textView.linkTextAttributes = [.foregroundColor: UIColor.Text.white, .underlineStyle: true]
+        textView.accessibilityIdentifier = "LoginView_privacyTextView"
+        return textView
     }()
     
     override init(frame: CGRect) {
@@ -147,17 +160,22 @@ class MainScreenView: UIView {
             make.height.equalTo(40)
         }
         
-        self.addSubview(instructionLabel)
-        instructionLabel.snp.makeConstraints { (make) in
+        self.addSubview(privacyTextView)
+        privacyTextView.snp.makeConstraints { (make) in
             make.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             make.leading.trailing.equalToSuperview().inset(25)
+            
+//            make.top.equalTo(buttonStackView.snp.bottom).offset(13)
+//            make.centerX.equalToSuperview()
+//            make.width.lessThanOrEqualToSuperview().inset(38)
+//            make.bottom.equalTo(self.safeAreaLayoutGuide).inset(5)
         }
         
         self.addSubview(serverListTableView)
         serverListTableView.snp.makeConstraints { (make) in
             make.top.equalTo(connectButton.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(55)
-            make.bottom.equalTo(instructionLabel.snp.top).inset(-50)
+            make.bottom.equalTo(privacyTextView.snp.top).inset(-50)
         }
         
 //        self.addSubview(tableViewBackView)
@@ -166,6 +184,47 @@ class MainScreenView: UIView {
 //            make.leading.equalTo(tal)
 //        }
         
+        setPrivacyText ()
+    }
+    
+    private func setPrivacyText () {
+        let baseString = "Uygulamayı kullanarak Kullanım Şartları ve Gizlilik Politikasını kabul etmiş olursunuz."
+        let ppDefaultUrl = Constants.appWebPageURL
+        let tosDefaultUrl = Constants.appWebPageURL
+        var attributedString = NSMutableAttributedString(string: baseString)
+        
+        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.center
+        
+        attributedString = AttributedTextHelper.replaceAttributedString(
+            attributedString: attributedString,
+            replaceText: baseString,
+            replaceTextAttributes: [
+                .foregroundColor: UIColor.Text.white,
+                .paragraphStyle : paragraphStyle,
+                .font: UIFont.boldSystemFont(ofSize: 10)
+            ]
+        )
+        
+        attributedString = AttributedTextHelper.replaceAttributedString(
+            attributedString: attributedString,
+            replaceText: "Kullanım Şartları",
+            replaceTextAttributes: [
+                .link: tosDefaultUrl as Any,
+                .font: UIFont.boldSystemFont(ofSize: 10)
+            ]
+        )
+        
+        attributedString = AttributedTextHelper.replaceAttributedString(
+            attributedString: attributedString,
+            replaceText: "Gizlilik Politikasını",
+            replaceTextAttributes: [
+                .link: ppDefaultUrl as Any,
+                .font: UIFont.boldSystemFont(ofSize: 10)
+            ]
+        )
+        
+        privacyTextView.attributedText = attributedString
     }
     
     // MARK: Actions

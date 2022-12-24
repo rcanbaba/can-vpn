@@ -37,5 +37,8 @@ extension UIColor {
         static let orange = UIColor("FD6043")
         static let green = UIColor("38D980")
         static let dark = UIColor("050A30")
+        static let cellBg = UIColor("00111E").withAlphaComponent(0.5)
+        static let selectedCellBg = UIColor("050A30").withAlphaComponent(0.5)
     }
+    
 }

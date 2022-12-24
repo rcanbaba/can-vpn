@@ -331,30 +331,45 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ServerListTableViewCell", for: indexPath) as! ServerListTableViewCell
-        cell.backgroundColor = UIColor.clear
+        
+        cell.backgroundColor = UIColor.Custom.cellBg
+        cell.isChecked = false
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.Custom.selectedCellBg
+        cell.selectedBackgroundView = bgColorView
         
         if indexPath.row == 0 {
             cell.countryNameLabel.text = "Atlanta" + " \(indexPath.row)"
+            cell.isChecked = true
+            cell.flagImageView.image = UIImage(named: "us")
         } else if indexPath.row == 1 {
             cell.countryNameLabel.text = "Germany" + " \(indexPath.row)"
+            cell.flagImageView.image = UIImage(named: "tr")
         }
         else if indexPath.row == 2 {
             cell.countryNameLabel.text = "Virgina" + " \(indexPath.row)"
+            cell.flagImageView.image = UIImage(named: "de")
         }
         else if indexPath.row == 3 {
             cell.countryNameLabel.text = "Singapore" + " \(indexPath.row)"
+            cell.flagImageView.image = UIImage(named: "dm")
         }
         else if indexPath.row == 4 {
             cell.countryNameLabel.text = "Germany17" + " \(indexPath.row)"
+            cell.flagImageView.image = UIImage(named: "gr")
         }
         else if indexPath.row == 5 {
             cell.countryNameLabel.text = "Adana" + " \(indexPath.row)"
+            cell.flagImageView.image = UIImage(named: "gy")
         }
         else if indexPath.row == 6 {
             cell.countryNameLabel.text = "Istanbul" + " \(indexPath.row)"
+            cell.flagImageView.image = UIImage(named: "gb")
         }
         else if indexPath.row == 7 {
             cell.countryNameLabel.text = "Argentina" + " \(indexPath.row)"
+            cell.flagImageView.image = UIImage(named: "ad")
         }
         
         
