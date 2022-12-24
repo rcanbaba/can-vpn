@@ -9,6 +9,24 @@ import UIKit
 
 class ServerListTableViewCell: UITableViewCell {
     
+    // TODO: add fade-in out animation
+    public var isChecked = false {
+        didSet {
+            if isChecked {
+                checkImageView.image = UIImage(named: "checked-icon")
+            } else {
+                checkImageView.image = UIImage(named: "unchecked-icon")
+            }
+            self.layoutIfNeeded()
+        }
+    }
+    
+    private lazy var checkImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     public lazy var countryNameLabel: UILabel = {
         var label = UILabel()
         label.textAlignment = .left
@@ -29,19 +47,27 @@ class ServerListTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.layer.backgroundColor = UIColor(red: 0, green: 17/255, blue: 30/255, alpha: 0.5).cgColor
 
         self.contentView.addSubview(flagImageView)
         flagImageView.snp.makeConstraints { (make) in
-            make.trailing.equalToSuperview().inset(17)
-            make.top.bottom.equalToSuperview()
+            make.leading.equalToSuperview().inset(17)
+            make.top.equalToSuperview().inset(4)
+            make.bottom.equalToSuperview()
             make.width.equalTo(30)
         }
         
         self.contentView.addSubview(countryNameLabel)
         countryNameLabel.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().inset(17)
-            make.top.bottom.equalToSuperview()
+            make.leading.equalTo(flagImageView.snp.trailing).offset(17)
+            make.top.equalToSuperview().inset(4)
+            make.bottom.equalToSuperview()
+        }
+        
+        self.contentView.addSubview(checkImageView)
+        checkImageView.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview().inset(17)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(25)
         }
     }
 }
