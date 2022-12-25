@@ -40,6 +40,21 @@ class MainScreenViewController: UIViewController {
         view.clipsToBounds = false
         return view
     }()
+    
+    var vpnServerList : [VpnServerItem] = []
+    
+    private func createMockData() {
+        var item1 = VpnServerItem(ip: "3.86.250.76", username: "vpnserver", password: "vpnserver", secret: "vpnserver", isFree: true, region: "", country: "Atlanta", countryCode: "us", isSelected: true)
+        var item2 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Germany", countryCode: "de")
+        var item3 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Virginia", countryCode: "tr")
+        var item4 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Singapore", countryCode: "dm")
+        var item5 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Greece", countryCode: "gr")
+        var item6 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Adana", countryCode: "gy")
+        var item7 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Çorum", countryCode: "gb")
+        var item8 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "İstanbul", countryCode: "ad")
+        vpnServerList.append(contentsOf: [item1, item2, item3, item4, item5, item6, item7, item8])
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +85,8 @@ class MainScreenViewController: UIViewController {
         
         deneme()
         setIPAddress(isVpnConnected: false)
+        createMockData()
+        mainView.serverListTableView.reloadData()
     }
     
     private func setIPAddress(isVpnConnected: Bool) {
@@ -258,7 +275,7 @@ class MainScreenViewController: UIViewController {
         p.useExtendedAuthentication = true
         p.disconnectOnSleep = false
         manager.protocolConfiguration = p
-        manager.localizedDescription = "canVPN"
+        manager.localizedDescription = "iLoveVPN"
         manager.isEnabled = true
         
         
@@ -358,54 +375,38 @@ extension MainScreenViewController: SplashScreenViewDelegate {
 
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return vpnServerList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ServerListTableViewCell", for: indexPath) as! ServerListTableViewCell
         
         cell.backgroundColor = UIColor.Custom.cellBg
-        cell.isChecked = false
-        
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.Custom.selectedCellBg
         cell.selectedBackgroundView = bgColorView
         
-        if indexPath.row == 0 {
-            cell.countryNameLabel.text = "Atlanta" + " \(indexPath.row)"
-            cell.isChecked = true
-            cell.flagImageView.image = UIImage(named: "us")
-        } else if indexPath.row == 1 {
-            cell.countryNameLabel.text = "Germany" + " \(indexPath.row)"
-            cell.flagImageView.image = UIImage(named: "tr")
-        }
-        else if indexPath.row == 2 {
-            cell.countryNameLabel.text = "Virgina" + " \(indexPath.row)"
-            cell.flagImageView.image = UIImage(named: "de")
-        }
-        else if indexPath.row == 3 {
-            cell.countryNameLabel.text = "Singapore" + " \(indexPath.row)"
-            cell.flagImageView.image = UIImage(named: "dm")
-        }
-        else if indexPath.row == 4 {
-            cell.countryNameLabel.text = "Germany17" + " \(indexPath.row)"
-            cell.flagImageView.image = UIImage(named: "gr")
-        }
-        else if indexPath.row == 5 {
-            cell.countryNameLabel.text = "Adana" + " \(indexPath.row)"
-            cell.flagImageView.image = UIImage(named: "gy")
-        }
-        else if indexPath.row == 6 {
-            cell.countryNameLabel.text = "Istanbul" + " \(indexPath.row)"
-            cell.flagImageView.image = UIImage(named: "gb")
-        }
-        else if indexPath.row == 7 {
-            cell.countryNameLabel.text = "Argentina" + " \(indexPath.row)"
-            cell.flagImageView.image = UIImage(named: "ad")
-        }
+        let cellData = vpnServerList[indexPath.row]
         
+        cell.countryNameLabel.text = cellData.country
+        cell.isChecked = cellData.isSelected
+        cell.flagImageView.image = UIImage(named: cellData.countryCode)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let isSelected = vpnServerList[indexPath.row].isSelected
+        var tempArray = [VpnServerItem]()
+        for item in vpnServerList {
+            var newItem = item
+            newItem.isSelected = false
+            tempArray.append(newItem)
+        }
+        vpnServerList = tempArray
+        vpnServerList[indexPath.row].isSelected = !isSelected
+        mainView.serverListTableView.reloadData()
+        
     }
     
     

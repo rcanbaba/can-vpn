@@ -298,6 +298,7 @@
 		B44122F329575A060072B566 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F229575A060072B566 /* SplashScreenView.swift */; };
 		B44122F729575DC40072B566 /* splash-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B44122F629575DC40072B566 /* splash-animation.json */; };
 		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
+		B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122FB29577E540072B566 /* VpnServerItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -606,6 +607,7 @@
 		B44122F229575A060072B566 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		B44122F629575DC40072B566 /* splash-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-animation.json"; sourceTree = "<group>"; };
 		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
+		B44122FB29577E540072B566 /* VpnServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnServerItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -642,6 +644,7 @@
 		B4023D402950E31E0008BDA6 /* canvpn */ = {
 			isa = PBXGroup;
 			children = (
+				B44122FA29577E450072B566 /* Model */,
 				B4023D6229510E4F0008BDA6 /* Core */,
 				B4184A18295614590051EB79 /* Network */,
 				B44120EA295727D00072B566 /* Controllers */,
@@ -1024,6 +1027,14 @@
 			path = Flags;
 			sourceTree = "<group>";
 		};
+		B44122FA29577E450072B566 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B44122FB29577E540072B566 /* VpnServerItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1391,6 +1402,7 @@
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
+				B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
