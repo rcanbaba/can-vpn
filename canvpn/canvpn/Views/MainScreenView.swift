@@ -106,7 +106,6 @@ class MainScreenView: UIView {
         textView.backgroundColor = UIColor.clear
         textView.textAlignment = .center
         textView.linkTextAttributes = [.foregroundColor: UIColor.Text.white, .underlineStyle: true]
-        textView.accessibilityIdentifier = "LoginView_privacyTextView"
         return textView
     }()
     
