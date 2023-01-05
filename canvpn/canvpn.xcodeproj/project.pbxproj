@@ -300,6 +300,7 @@
 		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
 		B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122FB29577E540072B566 /* VpnServerItem.swift */; };
 		B48F8A6F295895B900CB69CA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F8A6E295895B900CB69CA /* Localization.swift */; };
+		B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F31F082959DDE8002FAD0D /* VPNManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -610,6 +611,7 @@
 		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
 		B44122FB29577E540072B566 /* VpnServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnServerItem.swift; sourceTree = "<group>"; };
 		B48F8A6E295895B900CB69CA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		B4F31F082959DDE8002FAD0D /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -646,6 +648,7 @@
 		B4023D402950E31E0008BDA6 /* canvpn */ = {
 			isa = PBXGroup;
 			children = (
+				B4F31F082959DDE8002FAD0D /* VPNManager.swift */,
 				B44122FA29577E450072B566 /* Model */,
 				B4023D6229510E4F0008BDA6 /* Core */,
 				B4184A18295614590051EB79 /* Network */,
@@ -695,10 +698,10 @@
 			isa = PBXGroup;
 			children = (
 				B44120DC2956390B0072B566 /* AESCryption.swift */,
+				B44122F829577AFC0072B566 /* IpAddressManager.swift */,
 				B4023D652951121E0008BDA6 /* Helper.swift */,
 				B44120E1295712D10072B566 /* Constants.swift */,
 				B44122F0295758080072B566 /* AttributedTextHelper.swift */,
-				B44122F829577AFC0072B566 /* IpAddressManager.swift */,
 				B48F8A6E295895B900CB69CA /* Localization.swift */,
 			);
 			path = Helpers;
@@ -1394,6 +1397,7 @@
 				B4023D462950E31E0008BDA6 /* MainScreenViewController.swift in Sources */,
 				B44122F329575A060072B566 /* SplashScreenView.swift in Sources */,
 				B48F8A6F295895B900CB69CA /* Localization.swift in Sources */,
+				B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */,
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,

@@ -29,7 +29,7 @@ class MainScreenView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = UIColor.Text.white
         label.textAlignment = .center
-        label.text = "Current IP"
+        label.text = "current_ip_key".localize()
         return label
     }()
     
@@ -85,17 +85,6 @@ class MainScreenView: UIView {
         let view = UIView()
         view.backgroundColor = UIColor.red.withAlphaComponent(0.6)
         return view
-    }()
-    
-    private lazy var instructionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 10)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        label.attributedText = NSAttributedString(string: "Uygulamayı kullanarak Kullanım Şartları ve Gizlilik Politikası kabul etmiş olursunuz.", attributes:
-            [.underlineStyle: NSUnderlineStyle.single.rawValue])
-        return label
     }()
     
     private lazy var privacyTextView: UITextView = {
@@ -162,11 +151,6 @@ class MainScreenView: UIView {
         privacyTextView.snp.makeConstraints { (make) in
             make.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             make.leading.trailing.equalToSuperview().inset(25)
-            
-//            make.top.equalTo(buttonStackView.snp.bottom).offset(13)
-//            make.centerX.equalToSuperview()
-//            make.width.lessThanOrEqualToSuperview().inset(38)
-//            make.bottom.equalTo(self.safeAreaLayoutGuide).inset(5)
         }
         
         self.addSubview(serverListTableView)
@@ -186,7 +170,7 @@ class MainScreenView: UIView {
     }
     
     private func setPrivacyText () {
-        let baseString = "Uygulamayı kullanarak Kullanım Şartları ve Gizlilik Politikasını kabul etmiş olursunuz."
+        let baseString = "pp_tos_key".localize()
         let ppDefaultUrl = Constants.appWebPageURL
         let tosDefaultUrl = Constants.appWebPageURL
         var attributedString = NSMutableAttributedString(string: baseString)
@@ -206,7 +190,7 @@ class MainScreenView: UIView {
         
         attributedString = AttributedTextHelper.replaceAttributedString(
             attributedString: attributedString,
-            replaceText: "Kullanım Şartları",
+            replaceText: "terms_of_service_key".localize(),
             replaceTextAttributes: [
                 .link: tosDefaultUrl as Any,
                 .font: UIFont.boldSystemFont(ofSize: 10)
@@ -215,7 +199,7 @@ class MainScreenView: UIView {
         
         attributedString = AttributedTextHelper.replaceAttributedString(
             attributedString: attributedString,
-            replaceText: "Gizlilik Politikasını",
+            replaceText: "privacy_policy_key".localize(),
             replaceTextAttributes: [
                 .link: ppDefaultUrl as Any,
                 .font: UIFont.boldSystemFont(ofSize: 10)
@@ -238,7 +222,7 @@ extension MainScreenView {
     }
     
     public func setStateLabel(text: String) {
-        connectionStateLabel.text = " " + text + " "
+        connectionStateLabel.text = text
     }
     
     public func setAnimation(name: String) {

@@ -143,26 +143,26 @@ class MainScreenViewController: UIViewController {
     private func setVPNStateUI() {
         switch connectionUIState {
         case .initial:
-            mainView.setStateLabel(text: "initial")
+            mainView.setStateLabel(text: "initial_key")
             mainView.setUserInteraction(isEnabled: true)
             
             mainView.setAnimation(name: "")
             mainView.setAnimation(isHidden: false)
             mainView.playAnimation(loopMode: .playOnce)
-            mainView.setButtonText(text: "Tap To Start")
+            mainView.setButtonText(text: "initial_key".localize())
             print("initial")
         case .connect:
-            mainView.setStateLabel(text: "connect")
+            mainView.setStateLabel(text: "connect_key".localize())
             mainView.setUserInteraction(isEnabled: true)
             
             mainView.setAnimation(name: "")
             mainView.setAnimation(isHidden: false)
             mainView.playAnimation(loopMode: .playOnce)
-            mainView.setButtonText(text: "Connect")
+            mainView.setButtonText(text: "connect_key".localize())
             print("connect")
             
         case .connecting:
-            mainView.setStateLabel(text: "connecting")
+            mainView.setStateLabel(text: "connecting_key".localize())
             mainView.setUserInteraction(isEnabled: false)
             
             mainView.setAnimation(name: "globeLoading")
@@ -172,17 +172,17 @@ class MainScreenViewController: UIViewController {
             print("connecting")
             
         case .connected:
-            mainView.setStateLabel(text: "connected")
+            mainView.setStateLabel(text: "connected_key".localize())
             mainView.setUserInteraction(isEnabled: true)
             
             mainView.setAnimation(name: "connectedVPN")
             mainView.setAnimation(isHidden: false)
             mainView.playAnimation(loopMode: .playOnce)
-            mainView.setButtonText(text: "Disconnect")
+            mainView.setButtonText(text: "discconnect_key".localize())
             print("connected")
             
         case .disconnecting:
-            mainView.setStateLabel(text: "disconnecting")
+            mainView.setStateLabel(text: "disconnecting_key".localize())
             mainView.setUserInteraction(isEnabled: false)
             
             mainView.setAnimation(name: "globeLoading")
@@ -192,13 +192,13 @@ class MainScreenViewController: UIViewController {
             print("disconnecting")
             
         case .disconnected:
-            mainView.setStateLabel(text: "disconnected")
+            mainView.setStateLabel(text: "disconnected_key".localize())
             mainView.setUserInteraction(isEnabled: true)
             
             mainView.setAnimation(name: "")
             mainView.setAnimation(isHidden: false)
             mainView.playAnimation(loopMode: .playOnce)
-            mainView.setButtonText(text: "Reconnect")
+            mainView.setButtonText(text: "connect_key".localize())
             print("disconnected")
             
         }
