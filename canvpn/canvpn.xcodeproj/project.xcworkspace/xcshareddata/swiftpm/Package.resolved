@@ -26,6 +26,15 @@
         "revision" : "f222cbdf325885926566172f6f5f06af95473158",
         "version" : "5.6.0"
       }
+    },
+    {
+      "identity" : "wireguard-apple",
+      "kind" : "remoteSourceControl",
+      "location" : "https://git.zx2c4.com/wireguard-apple",
+      "state" : {
+        "branch" : "master",
+        "revision" : "9c07693951d570c608d92eccf5d5e6a4d30633d6"
+      }
     }
   ],
   "version" : 2

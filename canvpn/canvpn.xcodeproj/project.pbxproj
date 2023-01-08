@@ -300,6 +300,7 @@
 		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
 		B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122FB29577E540072B566 /* VpnServerItem.swift */; };
 		B48F8A6F295895B900CB69CA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F8A6E295895B900CB69CA /* Localization.swift */; };
+		B4A1AEBB29683D7200988E37 /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4A1AEBA29683D7200988E37 /* WireGuardKit */; };
 		B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F31F082959DDE8002FAD0D /* VPNManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -611,6 +612,9 @@
 		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
 		B44122FB29577E540072B566 /* VpnServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnServerItem.swift; sourceTree = "<group>"; };
 		B48F8A6E295895B900CB69CA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		B4A1AEAF29683D1900988E37 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		B4A1AEB129683D1900988E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4A1AEB229683D1900988E37 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
 		B4F31F082959DDE8002FAD0D /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -621,6 +625,7 @@
 			files = (
 				B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */,
 				B4023D6029510E310008BDA6 /* Lottie in Frameworks */,
+				B4A1AEBB29683D7200988E37 /* WireGuardKit in Frameworks */,
 				B4023DC52954A0050008BDA6 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,6 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				B4023D402950E31E0008BDA6 /* canvpn */,
+				B4A1AEAE29683D1900988E37 /* PacketTunnel */,
 				B4023D8529530F2F0008BDA6 /* Frameworks */,
 				B4023D3F2950E31E0008BDA6 /* Products */,
 			);
@@ -1041,6 +1047,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B4A1AEAE29683D1900988E37 /* PacketTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				B4A1AEAF29683D1900988E37 /* PacketTunnelProvider.swift */,
+				B4A1AEB129683D1900988E37 /* Info.plist */,
+				B4A1AEB229683D1900988E37 /* PacketTunnel.entitlements */,
+			);
+			path = PacketTunnel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1062,6 +1078,7 @@
 				B4023D562950E66D0008BDA6 /* SnapKit */,
 				B4023D5F29510E310008BDA6 /* Lottie */,
 				B4023DC42954A0050008BDA6 /* KeychainAccess */,
+				B4A1AEBA29683D7200988E37 /* WireGuardKit */,
 			);
 			productName = canvpn;
 			productReference = B4023D3E2950E31E0008BDA6 /* canvpn.app */;
@@ -1095,6 +1112,7 @@
 				B4023D552950E66D0008BDA6 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B4023D5E29510E310008BDA6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				B4023DC32954A0050008BDA6 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				B4A1AEB929683D7200988E37 /* XCRemoteSwiftPackageReference "wireguard-apple" */,
 			);
 			productRefGroup = B4023D3F2950E31E0008BDA6 /* Products */;
 			projectDirPath = "";
@@ -1545,6 +1563,7 @@
 		B4023D532950E31F0008BDA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = canvpn/canvpn.entitlements;
@@ -1575,6 +1594,7 @@
 		B4023D542950E31F0008BDA6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = canvpn/canvpn.entitlements;
@@ -1650,6 +1670,14 @@
 				kind = branch;
 			};
 		};
+		B4A1AEB929683D7200988E37 /* XCRemoteSwiftPackageReference "wireguard-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://git.zx2c4.com/wireguard-apple";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1667,6 +1695,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B4023DC32954A0050008BDA6 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		B4A1AEBA29683D7200988E37 /* WireGuardKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4A1AEB929683D7200988E37 /* XCRemoteSwiftPackageReference "wireguard-apple" */;
+			productName = WireGuardKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
