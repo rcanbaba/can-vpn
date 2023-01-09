@@ -19,8 +19,8 @@ class MainScreenView: UIView {
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "layered-waves-haikei")
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "world-map-bg")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -101,6 +101,7 @@ class MainScreenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        backgroundColor = UIColor.white
     }
     
     required init?(coder: NSCoder) {

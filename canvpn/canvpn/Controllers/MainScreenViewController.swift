@@ -26,13 +26,6 @@ class MainScreenViewController: UIViewController {
     
     private var networkService: DefaultNetworkService?
     
-    private lazy var mainBackView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
-        view.clipsToBounds = true
-        return view
-    }()
-    
     private lazy var initialAnimationView: LottieAnimationView = {
         let view = LottieAnimationView()
         view.animation = LottieAnimation.named("logo-full-animation")
