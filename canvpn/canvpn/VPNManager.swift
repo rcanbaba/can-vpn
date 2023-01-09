@@ -12,7 +12,6 @@ protocol VPNManagerDelegate: AnyObject {
 }
 
 
-
 class VPNManager {
     
     private var manager: NEVPNManager?
