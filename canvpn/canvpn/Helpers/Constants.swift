@@ -9,5 +9,7 @@ class Constants {
     static let appName = "ilovevpn"
     static let vpnListingName = "iLoveVPN"
     static let animationDuration = 0.3
-    static let appWebPageURL = "https://ilovevpn.app/"
+    static let appWebPageURLString = "https://ilovevpn.app/"
+    static let appPrivacyPolicyPageURLString = "https://ilovevpn.app/privacy-policy/"
+    static let appTermsOfServicePageURLString = "https://ilovevpn.app/terms-of-service/"
 }
