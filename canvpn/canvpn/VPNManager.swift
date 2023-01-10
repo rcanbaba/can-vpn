@@ -33,7 +33,7 @@ class VPNManager {
     @objc private func statusDidChange(_ notification: Notification) {
         guard let connection = notification.object as? NEVPNConnection else { return }
         let status = connection.status
-        print("NOTIF: status", status.rawValue)
+        print("NOTIF: NEVPN: status", status.rawValue)
         handleVPNStatus(status)
         
     }
@@ -147,7 +147,6 @@ class VPNManager {
         guard let manager = manager else { return }
         manager.connection.stopVPNTunnel()
         delegate?.statusChanged(state: .disconnected)
-        
     }
     
 // MARK: Public Methods

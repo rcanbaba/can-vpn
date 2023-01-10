@@ -23,6 +23,7 @@ class MainScreenViewController: UIViewController {
     
     private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
+    private var tunnelManager: NETunnelManager?
     
     private var networkService: DefaultNetworkService?
     
@@ -71,6 +72,9 @@ class MainScreenViewController: UIViewController {
         vpnManager = NEVPNManager.shared()
         vpnStatus = vpnManager!.connection.status
         NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
+        
+        
+        tunnelManager = NETunnelManager()
         
         networkService = DefaultNetworkService()
         
@@ -337,21 +341,23 @@ class MainScreenViewController: UIViewController {
 
 extension MainScreenViewController: MainScreenViewDelegate {
     func changeStateTapped() {
+        guard let manager = tunnelManager else { return }
+        manager.changeVPNState()
         
-        switch connectionUIState {
-        case .initial:
-            saveAndConnect("vpn-server")
-        case .connecting:
-            print("STATE NOT CHANGED")
-        case .connect:
-            saveAndConnect("vpn-server")
-        case .connected:
-            disconnect()
-        case .disconnecting:
-            print("STATE NOT CHANGED")
-        case .disconnected:
-            saveAndConnect("vpn-server")
-        }
+//        switch connectionUIState {
+//        case .initial:
+//            saveAndConnect("vpn-server")
+//        case .connecting:
+//            print("STATE NOT CHANGED")
+//        case .connect:
+//            saveAndConnect("vpn-server")
+//        case .connected:
+//            disconnect()
+//        case .disconnecting:
+//            print("STATE NOT CHANGED")
+//        case .disconnected:
+//            saveAndConnect("vpn-server")
+//        }
         
         
     }
