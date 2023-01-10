@@ -19,15 +19,15 @@ class MainScreenView: UIView {
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "layered-waves-haikei")
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "world-map-bg")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private lazy var currentIPTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = UIColor.Text.white
+        label.textColor = UIColor.Text.dark
         label.textAlignment = .center
         label.text = "current_ip_key".localize()
         return label
@@ -36,7 +36,7 @@ class MainScreenView: UIView {
     private lazy var currentIPLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17)
-        label.textColor = UIColor.Text.white
+        label.textColor = UIColor.Text.dark
         label.textAlignment = .center
         return label
     }()
@@ -50,14 +50,14 @@ class MainScreenView: UIView {
     private lazy var connectionStateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.Text.dark
         label.textAlignment = .center
         return label
     }()
     
     private lazy var connectButton: UIButton = {
         let button = UIButton()
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.Text.dark, for: .normal)
         button.setTitle("", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18)
         button.backgroundColor = UIColor.Custom.orange
@@ -94,13 +94,14 @@ class MainScreenView: UIView {
         textView.isScrollEnabled = false
         textView.backgroundColor = UIColor.clear
         textView.textAlignment = .center
-        textView.linkTextAttributes = [.foregroundColor: UIColor.Text.white, .underlineStyle: true]
+        textView.linkTextAttributes = [.foregroundColor: UIColor.Text.dark, .underlineStyle: true]
         return textView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        backgroundColor = UIColor.white
     }
     
     required init?(coder: NSCoder) {
@@ -171,8 +172,8 @@ class MainScreenView: UIView {
     
     private func setPrivacyText () {
         let baseString = "pp_tos_key".localize()
-        let ppDefaultUrl = Constants.appWebPageURL
-        let tosDefaultUrl = Constants.appWebPageURL
+        let ppDefaultUrl = Constants.appPrivacyPolicyPageURLString
+        let tosDefaultUrl = Constants.appTermsOfServicePageURLString
         var attributedString = NSMutableAttributedString(string: baseString)
         
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
@@ -182,7 +183,7 @@ class MainScreenView: UIView {
             attributedString: attributedString,
             replaceText: baseString,
             replaceTextAttributes: [
-                .foregroundColor: UIColor.Text.white,
+                .foregroundColor: UIColor.Text.dark,
                 .paragraphStyle : paragraphStyle,
                 .font: UIFont.boldSystemFont(ofSize: 10)
             ]
