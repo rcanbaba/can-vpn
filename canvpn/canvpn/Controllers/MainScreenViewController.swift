@@ -19,7 +19,6 @@ class MainScreenViewController: UIViewController {
     }
     
     private lazy var mainView = MainScreenView()
-    private lazy var splashView = SplashScreenView()
     
     private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
@@ -57,13 +56,8 @@ class MainScreenViewController: UIViewController {
         mainView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        setMainColor(state: .connected)
         
-        self.view.addSubview(splashView)
-        splashView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        splashView.delegate = self
         mainView.delegate = self
         mainView.serverListTableView.delegate = self
         mainView.serverListTableView.dataSource = self
@@ -83,7 +77,20 @@ class MainScreenViewController: UIViewController {
         deneme()
         setIPAddress(isVpnConnected: false)
         createMockData()
-        mainView.serverListTableView.reloadData()
+        mainView.reloadTableView()
+    }
+    
+    private func setMainColor(state: ConnectionState) {
+        var color: UIColor = UIColor.Custom.orange
+        if state == .disconnected || state == .initial {
+            color = UIColor.Custom.orange
+        } else {
+            color = UIColor.Custom.green
+        }
+        navigationController?.navigationBar.tintColor = color
+        navigationController?.navigationBar.backgroundColor = color
+        navigationController?.navigationBar.barTintColor = color
+        mainView.setColor(color)
     }
     
     private func setIPAddress(isVpnConnected: Bool) {
@@ -363,15 +370,6 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
 }
 
-extension MainScreenViewController: SplashScreenViewDelegate {
-    func splashAnimationCompleted() {
-        splashView.hideWithAnimation { [weak self] in
-            self?.splashView.removeFromSuperview()
-        }
-    }
-    
-}
-
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vpnServerList.count
@@ -382,7 +380,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.backgroundColor = UIColor.Custom.cellBg
         let bgColorView = UIView()
-        bgColorView.backgroundColor = UIColor.Custom.selectedCellBg
+        bgColorView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = bgColorView
         
         let cellData = vpnServerList[indexPath.row]
@@ -404,8 +402,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
         }
         vpnServerList = tempArray
         vpnServerList[indexPath.row].isSelected = !isSelected
-        mainView.serverListTableView.reloadData()
-        
+        mainView.reloadTableView()
     }
     
     

@@ -110,9 +110,6 @@ class MainScreenView: UIView {
     
     private func configureUI() {
         self.addSubview(backgroundImageView)
-        backgroundImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
         
         self.addSubview(currentIPTitleLabel)
         currentIPTitleLabel.snp.makeConstraints { (make) in
@@ -124,6 +121,11 @@ class MainScreenView: UIView {
         currentIPLabel.snp.makeConstraints { (make) in
             make.top.equalTo(currentIPTitleLabel.snp.bottom).offset(6)
             make.leading.trailing.equalToSuperview().inset(40)
+        }
+        
+        backgroundImageView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(currentIPLabel.snp.bottom).offset(20)
         }
         
         self.addSubview(animationView)
@@ -249,4 +251,14 @@ extension MainScreenView {
         currentIPLabel.attributedText = NSAttributedString(string: text, attributes:
             [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
+    public func setColor(_ color: UIColor) {
+        connectButton.backgroundColor = color
+        serverListTableView.backgroundColor = color.withAlphaComponent(0.3)
+        serverListTableView.layer.borderColor = color.cgColor
+        tableViewBackView.backgroundColor = color.withAlphaComponent(0.6)
+    }
+    public func reloadTableView() {
+        serverListTableView.reloadData()
+    }
+    
 }
