@@ -23,16 +23,8 @@ class MainScreenViewController: UIViewController {
     private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
     private var tunnelManager: NETunnelManager?
-    
+    private var ipSecManager: VPNManager?
     private var networkService: DefaultNetworkService?
-    
-    private lazy var initialAnimationView: LottieAnimationView = {
-        let view = LottieAnimationView()
-        view.animation = LottieAnimation.named("logo-full-animation")
-        view.loopMode = .playOnce
-        view.clipsToBounds = false
-        return view
-    }()
     
     var vpnServerList : [VpnServerItem] = []
     
@@ -56,25 +48,23 @@ class MainScreenViewController: UIViewController {
         mainView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
         setMainColor(state: .connected)
         
         mainView.delegate = self
         mainView.serverListTableView.delegate = self
         mainView.serverListTableView.dataSource = self
+        
         setVPNStateUI()
         
-        vpnManager = NEVPNManager.shared()
-        vpnStatus = vpnManager!.connection.status
-        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
-        
-        
         tunnelManager = NETunnelManager()
+        ipSecManager = VPNManager()
+                
+        vpnStatus = .invalid
         
         networkService = DefaultNetworkService()
         
-        loadPreferences {}
-        
-        deneme()
+        networkRequest()
         setIPAddress(isVpnConnected: false)
         createMockData()
         mainView.reloadTableView()
@@ -105,7 +95,6 @@ class MainScreenViewController: UIViewController {
     
     public func createRequest(qMes: String, location: String, method: String , completionBlock: @escaping (String) -> Void) -> Void
       {
-
           let requestURL = URL(string: location)
           var request = URLRequest(url: requestURL!)
 
@@ -128,7 +117,7 @@ class MainScreenViewController: UIViewController {
           requestTask.resume()
       }
     
-    func deneme() {
+    func networkRequest() {
         guard let service = networkService else { return }
         let searchRequest = SearchCompanyRequest()
         service.request(searchRequest) { [weak self] result in
@@ -139,10 +128,7 @@ class MainScreenViewController: UIViewController {
                 print("FAIL")
             }
         }
-        
     }
-    
-
     
     private func setVPNStateUI() {
         switch connectionUIState {
@@ -208,132 +194,6 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    
-    func saveAndConnect(_ account: String) {
-        save(config: account) { [weak self] in
-            _ = self?.connectVPN()
-        }
-    }
-    
-    func save(config: String, completion: @escaping () -> Void) {
-        //  config.saveToDefaults()
-        //   config.saveToDefaults()
-        loadPreferences { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.saveVPNProtocol(account: config, completion: completion)
-        }
-    }
-    
-
-    func connectVPN() -> Bool {
-        guard let manager = vpnManager else { return false }
-        debugPrint("!!!!! Establishing Connection !!!!!")
-        do {
-            try manager.connection.startVPNTunnel()
-            connectionUIState = .connecting
-            return true
-        } catch NEVPNError.configurationInvalid {
-            connectionUIState = .initial
-            debugPrint("Failed to start tunnel (configuration invalid)")
-        } catch NEVPNError.configurationDisabled {
-            connectionUIState = .initial
-            debugPrint("Failed to start tunnel (configuration disabled)")
-        } catch let error as NSError {
-            debugPrint(error.localizedDescription)
-            connectionUIState = .initial
-            return false
-        }
-        connectionUIState = .initial
-        return false
-    }
-    
-    private func disconnect() {
-        guard let manager = vpnManager else { return }
-        manager.connection.stopVPNTunnel()
-        connectionUIState = .disconnected
-    }
-    
-    private func loadPreferences(completion: @escaping () -> Void) {
-        guard let manager = vpnManager else { return }
-        manager.loadFromPreferences { error in
-            assert(error == nil, "Failed to load preferences \(error?.localizedDescription ?? "Unknown Error")")
-            completion()
-        }
-    }
-    
-    private func saveVPNProtocol(account: String, completion: @escaping () -> Void) {
-        guard let manager = vpnManager else { return }
-      //  var neVPNProtocol: NEVPNProtocol
-        
-        
-        let p = NEVPNProtocolIPSec()
-        p.username = "vpnserver"
-        p.serverAddress = "3.86.250.76"
-        p.authenticationMethod = NEVPNIKEAuthenticationMethod.sharedSecret
-        
-        KeychainWrapper.standard.set("vpnserver", forKey: "SHARED")
-        KeychainWrapper.standard.set("vpnserver", forKey: "VPN_PASSWORD")
-        
-        p.sharedSecretReference = KeychainWrapper.standard.dataRef(forKey: "SHARED")
-        p.passwordReference = KeychainWrapper.standard.dataRef(forKey: "VPN_PASSWORD")
-        p.useExtendedAuthentication = true
-        p.disconnectOnSleep = false
-        manager.protocolConfiguration = p
-        manager.localizedDescription = "iLoveVPN"
-        manager.isEnabled = true
-        
-        
-        manager.saveToPreferences { error in
-            if let err = error {
-                print("Failed to save Preferences: \(err.localizedDescription)")
-            } else {
-                completion()
-            }
-        }
-    }
-    
-    @objc private func statusDidChange(_ notification: Notification) {
-        guard let connection = notification.object as? NEVPNConnection else { return }
-        let status = connection.status
-        print("NOTIF: status", status.rawValue)
-        handleVPNStatus(status)
-        
-    }
-    
-    private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
-        switch vpnStatus {
-        case .invalid:
-            connectionUIState = .initial
-            self.setIPAddress(isVpnConnected: false)
-            print("NOTIF: invalid")
-        case .disconnected:
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.connectionUIState = .disconnected
-                self.setIPAddress(isVpnConnected: false)
-            }
-            print("NOTIF: disconnected")
-        case .connecting:
-            connectionUIState = .connecting
-            print("NOTIF: connecting")
-        case .connected:
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.connectionUIState = .connected
-                self.setIPAddress(isVpnConnected: true)
-            }
-            print("NOTIF: connected")
-        case .reasserting:
-            connectionUIState = .connecting
-            print("NOTIF: reasserting")
-        case .disconnecting:
-            connectionUIState = .disconnecting
-            print("NOTIF: disconnecting")
-        @unknown default:
-            break
-        }
-        // TODO:
-       // loadIP()
-    }
-    
     private func loadIP() {
         /* IPAPI entegration
         IPAPI.Service.default.fetch { [weak self] (result, _) in
@@ -346,10 +206,12 @@ class MainScreenViewController: UIViewController {
     }
 }
 
+// MARK: VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
     func changeStateTapped() {
-        guard let manager = tunnelManager else { return }
-        manager.changeVPNState()
+        guard let manager = ipSecManager else { return }
+        manager.changeVPNState(currentState: .disconnected, selectedVPN: vpnServerList[0])
+      //  manager.changeVPNState()
         
 //        switch connectionUIState {
 //        case .initial:
@@ -370,6 +232,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
 }
 
+// MARK: TableView, UITableViewDelegate & UITableViewDataSource
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vpnServerList.count
@@ -404,7 +267,4 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
         vpnServerList[indexPath.row].isSelected = !isSelected
         mainView.reloadTableView()
     }
-    
-    
-    
 }

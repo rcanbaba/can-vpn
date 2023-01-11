@@ -22,6 +22,7 @@ class VPNManager {
     
     init() {
         manager = NEVPNManager.shared()
+        loadPreferences {}
         status = manager!.connection.status
         NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
     }
@@ -34,6 +35,7 @@ class VPNManager {
         guard let connection = notification.object as? NEVPNConnection else { return }
         let status = connection.status
         print("NOTIF: NEVPN: status", status.rawValue)
+        
         handleVPNStatus(status)
         
     }
@@ -58,6 +60,23 @@ class VPNManager {
             delegate?.statusChanged(state: .connecting)
         case .disconnecting:
             delegate?.statusChanged(state: .disconnecting)
+        @unknown default:
+            break
+        }
+        
+        switch vpnStatus {
+        case .invalid:
+            print("NOTIF: invalid")
+        case .disconnected:
+            print("NOTIF: disconnected")
+        case .connecting:
+            print("NOTIF: connecting")
+        case .connected:
+            print("NOTIF: connected")
+        case .reasserting:
+            print("NOTIF: reasserting")
+        case .disconnecting:
+            print("NOTIF: disconnecting")
         @unknown default:
             break
         }
