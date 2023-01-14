@@ -49,7 +49,7 @@ class MainScreenViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        setMainColor(state: .connected)
+        setMainColor(state: .disconnected)
         
         mainView.delegate = self
         mainView.serverListTableView.delegate = self
