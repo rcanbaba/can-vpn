@@ -7,6 +7,7 @@
 
 class Constants {
     static let appName = "ilovevpn"
+    static let appNavBarName = "I Love VPN"
     static let vpnListingName = "iLoveVPN"
     static let animationDuration = 0.3
     static let appWebPageURLString = "https://ilovevpn.app/"

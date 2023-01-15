@@ -19,6 +19,20 @@ class MainScreenViewController: UIViewController {
     }
     
     private lazy var mainView = MainScreenView()
+    private lazy var appNameView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.Custom.orange
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor.Text.white
+        label.textAlignment = .center
+        label.text = Constants.appNavBarName
+        view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+          make.center.equalToSuperview()
+        }
+        return view
+    }()
     
  //   private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
@@ -116,6 +130,7 @@ class MainScreenViewController: UIViewController {
             self.navigationController?.navigationBar.backgroundColor = color
             self.navigationController?.navigationBar.barTintColor = color
             self.mainView.setColor(color)
+            self.navigationItem.titleView = self.appNameView
         }
 
     }
