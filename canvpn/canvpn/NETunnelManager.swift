@@ -11,7 +11,6 @@ protocol NETunnelManagerDelegate: AnyObject {
     func statusChanged(state: ConnectionState)
 }
 
-
 class NETunnelManager {
     
     private var manager: NETunnelProviderManager?
@@ -22,46 +21,10 @@ class NETunnelManager {
     
     init() {
         createManager()
-       // status = manager!.connection.status
-        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc private func statusDidChange(_ notification: Notification) {
-        guard let connection = notification.object as? NEVPNConnection else { return }
-        let status = connection.status
-        print("NOTIF: NETunnel: status", status.rawValue)
-        handleVPNStatus(status)
-    }
-    
-    private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
-        switch vpnStatus {
-        case .invalid:
-            delegate?.statusChanged(state: .initial)
-        case .disconnected:
-            //TODO: bu delayları view tarafına taşıyabliriz !!!
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.delegate?.statusChanged(state: .disconnected)
-            }
-        case .connecting:
-            delegate?.statusChanged(state: .connecting)
-        case .connected:
-            //TODO: bu delayları view tarafına taşıyabliriz !!!
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.delegate?.statusChanged(state: .connected)
-            }
-        case .reasserting:
-            delegate?.statusChanged(state: .connecting)
-        case .disconnecting:
-            delegate?.statusChanged(state: .disconnecting)
-        @unknown default:
-            break
-        }
-        // TODO:
-       // loadIP()
     }
     
     private func createManager() {

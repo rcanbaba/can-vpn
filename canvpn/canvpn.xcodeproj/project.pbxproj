@@ -22,7 +22,6 @@
 		B4023DA2295386E20008BDA6 /* vpn_connected.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D98295386E10008BDA6 /* vpn_connected.json */; };
 		B4023DA3295386E20008BDA6 /* vpn_lock.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D99295386E10008BDA6 /* vpn_lock.json */; };
 		B4023DA4295386E20008BDA6 /* guard_button.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D9A295386E10008BDA6 /* guard_button.json */; };
-		B4023DA5295386E20008BDA6 /* world_location.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D9B295386E10008BDA6 /* world_location.json */; };
 		B4023DA6295386E20008BDA6 /* data_secure.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D9C295386E20008BDA6 /* data_secure.json */; };
 		B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023DBF2954751C0008BDA6 /* Keychain.swift */; };
 		B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023DC12954752C0008BDA6 /* KeychainItemAccessibility.swift */; };
@@ -360,7 +359,6 @@
 		B4023D98295386E10008BDA6 /* vpn_connected.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vpn_connected.json; sourceTree = "<group>"; };
 		B4023D99295386E10008BDA6 /* vpn_lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vpn_lock.json; sourceTree = "<group>"; };
 		B4023D9A295386E10008BDA6 /* guard_button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guard_button.json; sourceTree = "<group>"; };
-		B4023D9B295386E10008BDA6 /* world_location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = world_location.json; sourceTree = "<group>"; };
 		B4023D9C295386E20008BDA6 /* data_secure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data_secure.json; sourceTree = "<group>"; };
 		B4023DBF2954751C0008BDA6 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		B4023DC12954752C0008BDA6 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
@@ -766,7 +764,6 @@
 				B4023D94295386E10008BDA6 /* purchaseAnimation.json */,
 				B4023D98295386E10008BDA6 /* vpn_connected.json */,
 				B4023D99295386E10008BDA6 /* vpn_lock.json */,
-				B4023D9B295386E10008BDA6 /* world_location.json */,
 			);
 			path = LottieAnims;
 			sourceTree = "<group>";
@@ -1340,7 +1337,6 @@
 				B441227D2957550E0072B566 /* mg.png in Resources */,
 				B44122D22957550E0072B566 /* mo.png in Resources */,
 				B44122522957550E0072B566 /* mu.png in Resources */,
-				B4023DA5295386E20008BDA6 /* world_location.json in Resources */,
 				B44122122957550E0072B566 /* jm.png in Resources */,
 				B44122E72957550E0072B566 /* ly.png in Resources */,
 				B44122092957550E0072B566 /* mr.png in Resources */,

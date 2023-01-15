@@ -47,9 +47,5 @@ class SplashScreenView: UIView {
         animationView.play { [weak self] _ in
             self?.delegate?.splashAnimationCompleted()
         }
-
-
     }
-    
-    
 }

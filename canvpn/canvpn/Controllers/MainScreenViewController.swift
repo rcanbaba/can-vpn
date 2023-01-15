@@ -20,8 +20,9 @@ class MainScreenViewController: UIViewController {
     
     private lazy var mainView = MainScreenView()
     
-    private var vpnManager: NEVPNManager?
+ //   private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
+    
     private var tunnelManager: NETunnelManager?
     private var ipSecManager: VPNManager?
     private var networkService: DefaultNetworkService?
@@ -49,7 +50,11 @@ class MainScreenViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        setMainColor(state: .disconnected)
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0.0
+        mainView.navigationBarBackgroundView.snp.makeConstraints { make in
+            make.height.equalTo(statusBarHeight + navigationBarHeight)
+        }
         
         mainView.delegate = self
         mainView.serverListTableView.delegate = self
@@ -58,16 +63,45 @@ class MainScreenViewController: UIViewController {
         setVPNStateUI()
         
         tunnelManager = NETunnelManager()
-        ipSecManager = VPNManager()
-                
-        vpnStatus = .invalid
+       // ipSecManager = VPNManager()
         
         networkService = DefaultNetworkService()
-        
         networkRequest()
         setIPAddress(isVpnConnected: false)
         createMockData()
         mainView.reloadTableView()
+        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
+    }
+    
+    @objc private func statusDidChange(_ notification: Notification) {
+        guard let connection = notification.object as? NEVPNConnection else { return }
+        let status = connection.status
+        print("NOTIF: NETunnel: status", status.rawValue)
+        handleVPNStatus(status)
+    }
+    
+    private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
+        switch vpnStatus {
+        case .invalid:
+            connectionUIState = .initial
+            print("NOTIF: NETunnel: initial")
+        case .disconnected:
+            connectionUIState = .disconnected
+            print("NOTIF: NETunnel: disconnected")
+        case .connecting, .reasserting:
+            connectionUIState = .connecting
+            print("NOTIF: NETunnel: connecting")
+        case .connected:
+         //   DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            connectionUIState = .connected
+            print("NOTIF: NETunnel: connected")
+       //     }
+        case .disconnecting:
+            connectionUIState = .disconnecting
+            print("NOTIF: NETunnel: disconnecting")
+        @unknown default:
+            break
+        }
     }
     
     private func setMainColor(state: ConnectionState) {
@@ -77,10 +111,13 @@ class MainScreenViewController: UIViewController {
         } else {
             color = UIColor.Custom.green
         }
-        navigationController?.navigationBar.tintColor = color
-        navigationController?.navigationBar.backgroundColor = color
-        navigationController?.navigationBar.barTintColor = color
-        mainView.setColor(color)
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.tintColor = color
+            self.navigationController?.navigationBar.backgroundColor = color
+            self.navigationController?.navigationBar.barTintColor = color
+            self.mainView.setColor(color)
+        }
+
     }
     
     private func setIPAddress(isVpnConnected: Bool) {
@@ -131,25 +168,17 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setVPNStateUI() {
+        setMainColor(state: connectionUIState)
         switch connectionUIState {
         case .initial:
             mainView.setStateLabel(text: "initial_key")
             mainView.setUserInteraction(isEnabled: true)
             
-            mainView.setAnimation(name: "")
-            mainView.setAnimation(isHidden: false)
-            mainView.playAnimation(loopMode: .playOnce)
+//            mainView.setAnimation(name: "")
+//            mainView.setAnimation(isHidden: false)
+//            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "initial_key".localize())
             print("initial")
-        case .connect:
-            mainView.setStateLabel(text: "connect_key".localize())
-            mainView.setUserInteraction(isEnabled: true)
-            
-            mainView.setAnimation(name: "")
-            mainView.setAnimation(isHidden: false)
-            mainView.playAnimation(loopMode: .playOnce)
-            mainView.setButtonText(text: "connect_key".localize())
-            print("connect")
             
         case .connecting:
             mainView.setStateLabel(text: "connecting_key".localize())
@@ -165,10 +194,10 @@ class MainScreenViewController: UIViewController {
             mainView.setStateLabel(text: "connected_key".localize())
             mainView.setUserInteraction(isEnabled: true)
             
-            mainView.setAnimation(name: "connectedVPN")
+            mainView.setAnimation(name: "vpn_connected")
             mainView.setAnimation(isHidden: false)
             mainView.playAnimation(loopMode: .playOnce)
-            mainView.setButtonText(text: "discconnect_key".localize())
+            mainView.setButtonText(text: "disconnect_key".localize())
             print("connected")
             
         case .disconnecting:
@@ -177,7 +206,7 @@ class MainScreenViewController: UIViewController {
             
             mainView.setAnimation(name: "globeLoading")
             mainView.setAnimation(isHidden: false)
-            mainView.playAnimation(loopMode: .loop)
+            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "interaction closed")
             print("disconnecting")
             
@@ -185,9 +214,9 @@ class MainScreenViewController: UIViewController {
             mainView.setStateLabel(text: "disconnected_key".localize())
             mainView.setUserInteraction(isEnabled: true)
             
-            mainView.setAnimation(name: "")
-            mainView.setAnimation(isHidden: false)
-            mainView.playAnimation(loopMode: .playOnce)
+//            mainView.setAnimation(name: "")
+//            mainView.setAnimation(isHidden: false)
+//            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "connect_key".localize())
             print("disconnected")
             
@@ -209,26 +238,8 @@ class MainScreenViewController: UIViewController {
 // MARK: VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
     func changeStateTapped() {
-        guard let manager = ipSecManager else { return }
-        manager.changeVPNState(currentState: .disconnected, selectedVPN: vpnServerList[0])
-      //  manager.changeVPNState()
-        
-//        switch connectionUIState {
-//        case .initial:
-//            saveAndConnect("vpn-server")
-//        case .connecting:
-//            print("STATE NOT CHANGED")
-//        case .connect:
-//            saveAndConnect("vpn-server")
-//        case .connected:
-//            disconnect()
-//        case .disconnecting:
-//            print("STATE NOT CHANGED")
-//        case .disconnected:
-//            saveAndConnect("vpn-server")
-//        }
-        
-        
+        guard let manager = tunnelManager else { return }
+        manager.changeVPNState()
     }
 }
 

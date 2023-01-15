@@ -17,6 +17,12 @@ class MainScreenView: UIView {
     
     public weak var delegate: MainScreenViewDelegate?
     
+    public lazy var navigationBarBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.Custom.orange
+        return view
+    }()
+    
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "world-map-bg")
@@ -109,6 +115,11 @@ class MainScreenView: UIView {
     }
     
     private func configureUI() {
+        self.addSubview(navigationBarBackgroundView)
+        navigationBarBackgroundView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+        }
+        
         self.addSubview(backgroundImageView)
         
         self.addSubview(currentIPTitleLabel)
@@ -252,10 +263,14 @@ extension MainScreenView {
             [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
     public func setColor(_ color: UIColor) {
-        connectButton.backgroundColor = color
-        serverListTableView.backgroundColor = color.withAlphaComponent(0.3)
-        serverListTableView.layer.borderColor = color.cgColor
-        tableViewBackView.backgroundColor = color.withAlphaComponent(0.6)
+        navigationBarBackgroundView.backgroundColor = color
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            self?.connectButton.backgroundColor = color
+            self?.serverListTableView.backgroundColor = color.withAlphaComponent(0.3)
+            self?.serverListTableView.layer.borderColor = color.cgColor
+            self?.tableViewBackView.backgroundColor = color.withAlphaComponent(0.6)
+        }
+
     }
     public func reloadTableView() {
         serverListTableView.reloadData()

@@ -173,8 +173,6 @@ class VPNManager {
         switch currentState {
         case .initial:
             saveAndConnect(to: selectedVPN)
-        case .connect:
-            saveAndConnect(to: selectedVPN)
         case .connecting, .disconnecting:
             print("STATE NOT CHANGED")
         case .connected:

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "world-gda04ac47b_1280 2.png",
+      "filename" : "world-map-bg2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "world-gda04ac47b_1280 1.png",
+      "filename" : "world-map-bg2 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "world-gda04ac47b_1280 3.png",
+      "filename" : "world-map-bg2 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
