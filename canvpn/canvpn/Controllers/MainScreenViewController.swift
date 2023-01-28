@@ -9,6 +9,7 @@ import UIKit
 import NetworkExtension
 import CommonCrypto
 import Lottie
+import FirebaseAnalytics
 
 class MainScreenViewController: UIViewController {
     
@@ -59,6 +60,7 @@ class MainScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Analytics.logEvent("custom_event_can", parameters: ["deneme" : "134133"])
         
         self.view.addSubview(mainView)
         mainView.snp.makeConstraints { (make) in
