@@ -24,7 +24,7 @@ class VPNManager {
         manager = NEVPNManager.shared()
         loadPreferences {}
         status = manager!.connection.status
-        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
+    //    NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
     }
     
     deinit {

@@ -40,6 +40,7 @@ class MainScreenViewController: UIViewController {
     private var tunnelManager: NETunnelManager?
     private var ipSecManager: VPNManager?
     private var networkService: DefaultNetworkService?
+    private var oldVpnStatus: NEVPNStatus = .invalid
     
     var vpnServerList : [VpnServerItem] = []
     
@@ -90,32 +91,38 @@ class MainScreenViewController: UIViewController {
     @objc private func statusDidChange(_ notification: Notification) {
         guard let connection = notification.object as? NEVPNConnection else { return }
         let status = connection.status
-        print("NOTIF: NETunnel: status", status.rawValue)
         handleVPNStatus(status)
     }
     
     private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
+        print("NOTIF: OLD:", oldVpnStatus.rawValue)
         switch vpnStatus {
         case .invalid:
-            connectionUIState = .initial
             print("NOTIF: NETunnel: initial")
+            connectionUIState = .initial
         case .disconnected:
-            connectionUIState = .disconnected
+            // invalid -> disconnected ok
+            //
+           // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             print("NOTIF: NETunnel: disconnected")
+                self.connectionUIState = .disconnected
+          //  }
         case .connecting, .reasserting:
-            connectionUIState = .connecting
             print("NOTIF: NETunnel: connecting")
+            connectionUIState = .connecting
         case .connected:
-         //   DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            connectionUIState = .connected
             print("NOTIF: NETunnel: connected")
-       //     }
+        //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                self.connectionUIState = .connected
+         //   }
         case .disconnecting:
-            connectionUIState = .disconnecting
             print("NOTIF: NETunnel: disconnecting")
+            connectionUIState = .disconnecting
         @unknown default:
             break
         }
+        
+        oldVpnStatus = vpnStatus
     }
     
     private func setMainColor(state: ConnectionState) {
@@ -188,52 +195,32 @@ class MainScreenViewController: UIViewController {
         case .initial:
             mainView.setStateLabel(text: "initial_key")
             mainView.setUserInteraction(isEnabled: true)
-            
-//            mainView.setAnimation(name: "")
-//            mainView.setAnimation(isHidden: false)
-//            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "initial_key".localize())
-            print("initial")
+         //   print("UI initial")
             
         case .connecting:
             mainView.setStateLabel(text: "connecting_key".localize())
             mainView.setUserInteraction(isEnabled: false)
-            
-            mainView.setAnimation(name: "globeLoading")
-            mainView.setAnimation(isHidden: false)
-            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "interaction closed")
-            print("connecting")
+        //    print("UI connecting")
             
         case .connected:
             mainView.setStateLabel(text: "connected_key".localize())
             mainView.setUserInteraction(isEnabled: true)
-            
-            mainView.setAnimation(name: "vpn_connected")
-            mainView.setAnimation(isHidden: false)
-            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "disconnect_key".localize())
-            print("connected")
+       //     print("UI connected")
             
         case .disconnecting:
             mainView.setStateLabel(text: "disconnecting_key".localize())
             mainView.setUserInteraction(isEnabled: false)
-            
-            mainView.setAnimation(name: "globeLoading")
-            mainView.setAnimation(isHidden: false)
-            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "interaction closed")
-            print("disconnecting")
+         //   print("UI disconnecting")
             
         case .disconnected:
             mainView.setStateLabel(text: "disconnected_key".localize())
             mainView.setUserInteraction(isEnabled: true)
-            
-//            mainView.setAnimation(name: "")
-//            mainView.setAnimation(isHidden: false)
-//            mainView.playAnimation(loopMode: .playOnce)
             mainView.setButtonText(text: "connect_key".localize())
-            print("disconnected")
+       //     print("UI disconnected")
             
         }
     }
