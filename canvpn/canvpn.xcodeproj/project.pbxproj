@@ -308,6 +308,8 @@
 		B490D3AD296C98EE00651BFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
 		B490D3AE296C992C00651BFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
 		B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBFC16296DF30000613E9F /* InitialViewController.swift */; };
+		B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C91E9C298562950042500B /* GoogleService-Info.plist */; };
+		B4C91EA0298564C40042500B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B4C91E9F298564C40042500B /* FirebaseAnalytics */; };
 		B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F31F082959DDE8002FAD0D /* VPNManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -643,6 +645,7 @@
 		B490D3A1296C978600651BFC /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
 		B490D3AC296C98EE00651BFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B4BBFC16296DF30000613E9F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		B4C91E9C298562950042500B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4F31F082959DDE8002FAD0D /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -654,6 +657,7 @@
 				B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */,
 				B4023D6029510E310008BDA6 /* Lottie in Frameworks */,
 				B490D392296C958A00651BFC /* WireGuardKit in Frameworks */,
+				B4C91EA0298564C40042500B /* FirebaseAnalytics in Frameworks */,
 				B4023DC52954A0050008BDA6 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +709,7 @@
 				B4023D6129510E400008BDA6 /* Resources */,
 				B4023D4A2950E31F0008BDA6 /* Assets.xcassets */,
 				B4023D4F2950E31F0008BDA6 /* Info.plist */,
+				B4C91E9C298562950042500B /* GoogleService-Info.plist */,
 				B4023DC62954A9DB0008BDA6 /* canvpn.entitlements */,
 				B490D3AC296C98EE00651BFC /* Config.swift */,
 			);
@@ -1137,6 +1142,7 @@
 				B4023D5F29510E310008BDA6 /* Lottie */,
 				B4023DC42954A0050008BDA6 /* KeychainAccess */,
 				B490D391296C958A00651BFC /* WireGuardKit */,
+				B4C91E9F298564C40042500B /* FirebaseAnalytics */,
 			);
 			productName = canvpn;
 			productReference = B4023D3E2950E31E0008BDA6 /* canvpn.app */;
@@ -1198,6 +1204,7 @@
 				B4023D5E29510E310008BDA6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				B4023DC32954A0050008BDA6 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				B490D390296C958A00651BFC /* XCRemoteSwiftPackageReference "wireguard-apple" */,
+				B4C91E9E298564C40042500B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = B4023D3F2950E31E0008BDA6 /* Products */;
 			projectDirPath = "";
@@ -1346,6 +1353,7 @@
 				B44122862957550E0072B566 /* bh.png in Resources */,
 				B441228C2957550E0072B566 /* nf.png in Resources */,
 				B44122BB2957550E0072B566 /* bn.png in Resources */,
+				B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */,
 				B44122C52957550E0072B566 /* ni.png in Resources */,
 				B44122B42957550E0072B566 /* fm.png in Resources */,
 				B44122E02957550E0072B566 /* be.png in Resources */,
@@ -1701,7 +1709,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1732,7 +1740,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1787,7 +1795,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn.PacketTunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1814,7 +1822,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.canvpn.PacketTunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1897,6 +1905,14 @@
 				kind = branch;
 			};
 		};
+		B4C91E9E298564C40042500B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1924,6 +1940,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B490D390296C958A00651BFC /* XCRemoteSwiftPackageReference "wireguard-apple" */;
 			productName = WireGuardKit;
+		};
+		B4C91E9F298564C40042500B /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4C91E9E298564C40042500B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

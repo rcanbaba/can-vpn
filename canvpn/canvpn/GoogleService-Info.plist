@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1017758479686-e0mk80icmudkav153r5mejadjhtrt8fm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1017758479686-e0mk80icmudkav153r5mejadjhtrt8fm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDzR8S7lR9cCpVtagXun52B3xbTQ8o9miY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1017758479686</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.arbtech.ilovevpn</string>
+	<key>PROJECT_ID</key>
+	<string>ilovevpn-7e92e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ilovevpn-7e92e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1017758479686:ios:08c9dfc783d88cde60e147</string>
+</dict>
+</plist>
