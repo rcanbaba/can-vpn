@@ -7,8 +7,14 @@
 
 import NetworkExtension
 
+enum TunnelState: Int {
+    case connecting = 0
+    case disconnecting = 1
+    case failed = 2
+}
+
 protocol NETunnelManagerDelegate: AnyObject {
-    func statusChanged(state: ConnectionState)
+    func stateChanged(state: TunnelState)
 }
 
 class NETunnelManager {
@@ -21,10 +27,34 @@ class NETunnelManager {
     
     init() {
         createManager()
+        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func statusDidChange(_ notification: Notification) {
+        guard let connection = notification.object as? NEVPNConnection else { return }
+        let status = connection.status
+        handleVPNStatus(status)
+    }
+    
+    private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
+        switch vpnStatus {
+        case .invalid:
+            print("NOTIF: NETunnel: initial")
+        case .disconnected:
+            print("NOTIF: NETunnel: disconnected")
+        case .connecting, .reasserting:
+            print("NOTIF: NETunnel: connecting")
+        case .connected:
+            print("NOTIF: NETunnel: connected")
+        case .disconnecting:
+            print("NOTIF: NETunnel: disconnecting")
+        @unknown default:
+            break
+        }
     }
     
     private func createManager() {
@@ -57,9 +87,10 @@ class NETunnelManager {
         
         switch manager?.connection.status {
         case .connected:
-            // If the VPN is connected, disconnect.
+            delegate?.stateChanged(state: .disconnecting)
             disconnect()
         case .disconnected, .invalid:
+            delegate?.stateChanged(state: .connecting)
             await saveAndConnect()
             
         default:
@@ -98,16 +129,16 @@ class NETunnelManager {
             
             print("Started tunnel successfully.")
         }  catch NEVPNError.configurationInvalid {
-            delegate?.statusChanged(state: .initial)
+            delegate?.stateChanged(state: .failed)
             debugPrint("Failed to start tunnel (configuration invalid)")
             return
         } catch NEVPNError.configurationDisabled {
-            delegate?.statusChanged(state: .initial)
+            delegate?.stateChanged(state: .failed)
             debugPrint("Failed to start tunnel (configuration disabled)")
             return
         } catch let error as NSError {
             debugPrint(error.localizedDescription)
-            delegate?.statusChanged(state: .initial)
+            delegate?.stateChanged(state: .failed)
             return
         }
 
@@ -116,7 +147,6 @@ class NETunnelManager {
     private func disconnect() {
         guard let manager = manager else { return }
         manager.connection.stopVPNTunnel()
-        delegate?.statusChanged(state: .disconnected)
     }
     
     

@@ -13,12 +13,6 @@ import FirebaseAnalytics
 
 class MainScreenViewController: UIViewController {
     
-    private var connectionUIState =  ConnectionState.initial {
-        didSet {
-            setVPNStateUI()
-        }
-    }
-    
     private lazy var mainView = MainScreenView()
     private lazy var appNameView: UIView = {
         let view = UIView()
@@ -35,13 +29,11 @@ class MainScreenViewController: UIViewController {
         return view
     }()
     
- //   private var vpnManager: NEVPNManager?
     private var vpnStatus: NEVPNStatus = .invalid
     
     private var tunnelManager: NETunnelManager?
     private var ipSecManager: VPNManager?
     private var networkService: DefaultNetworkService?
-    private var oldVpnStatus: NEVPNStatus = .invalid
     
     var vpnServerList : [VpnServerItem] = []
     
@@ -67,7 +59,7 @@ class MainScreenViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0.0
         mainView.navigationBarBackgroundView.snp.makeConstraints { make in
             make.height.equalTo(statusBarHeight + navigationBarHeight)
@@ -77,8 +69,6 @@ class MainScreenViewController: UIViewController {
         mainView.serverListTableView.delegate = self
         mainView.serverListTableView.dataSource = self
         
-        setVPNStateUI()
-        
         tunnelManager = NETunnelManager()
        // ipSecManager = VPNManager()
         
@@ -87,44 +77,6 @@ class MainScreenViewController: UIViewController {
         setIPAddress(isVpnConnected: false)
         createMockData()
         mainView.reloadTableView()
-        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
-    }
-    
-    @objc private func statusDidChange(_ notification: Notification) {
-        guard let connection = notification.object as? NEVPNConnection else { return }
-        let status = connection.status
-        handleVPNStatus(status)
-    }
-    
-    private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
-        print("NOTIF: OLD:", oldVpnStatus.rawValue)
-        switch vpnStatus {
-        case .invalid:
-            print("NOTIF: NETunnel: initial")
-            connectionUIState = .initial
-        case .disconnected:
-            // invalid -> disconnected ok
-            //
-           // DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            print("NOTIF: NETunnel: disconnected")
-                self.connectionUIState = .disconnected
-          //  }
-        case .connecting, .reasserting:
-            print("NOTIF: NETunnel: connecting")
-            connectionUIState = .connecting
-        case .connected:
-            print("NOTIF: NETunnel: connected")
-        //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-                self.connectionUIState = .connected
-         //   }
-        case .disconnecting:
-            print("NOTIF: NETunnel: disconnecting")
-            connectionUIState = .disconnecting
-        @unknown default:
-            break
-        }
-        
-        oldVpnStatus = vpnStatus
     }
     
     private func setMainColor(state: ConnectionState) {
@@ -189,53 +141,6 @@ class MainScreenViewController: UIViewController {
                 print("FAIL")
             }
         }
-    }
-    
-    private func setVPNStateUI() {
-        setMainColor(state: connectionUIState)
-        switch connectionUIState {
-        case .initial:
-            mainView.setStateLabel(text: "initial_key")
-            mainView.setUserInteraction(isEnabled: true)
-            mainView.setButtonText(text: "initial_key".localize())
-         //   print("UI initial")
-            
-        case .connecting:
-            mainView.setStateLabel(text: "connecting_key".localize())
-            mainView.setUserInteraction(isEnabled: false)
-            mainView.setButtonText(text: "interaction closed")
-        //    print("UI connecting")
-            
-        case .connected:
-            mainView.setStateLabel(text: "connected_key".localize())
-            mainView.setUserInteraction(isEnabled: true)
-            mainView.setButtonText(text: "disconnect_key".localize())
-       //     print("UI connected")
-            
-        case .disconnecting:
-            mainView.setStateLabel(text: "disconnecting_key".localize())
-            mainView.setUserInteraction(isEnabled: false)
-            mainView.setButtonText(text: "interaction closed")
-         //   print("UI disconnecting")
-            
-        case .disconnected:
-            mainView.setStateLabel(text: "disconnected_key".localize())
-            mainView.setUserInteraction(isEnabled: true)
-            mainView.setButtonText(text: "connect_key".localize())
-       //     print("UI disconnected")
-            
-        }
-    }
-    
-    private func loadIP() {
-        /* IPAPI entegration
-        IPAPI.Service.default.fetch { [weak self] (result, _) in
-            guard let self = self else { return }
-            
-        // TODO: Current IP burda yazılacak
-        // self.currentIP.value = result?.ip ?? ""
-        }
-         */
     }
 }
 
