@@ -234,11 +234,9 @@ extension MainScreenView {
     public func setUserInteraction(isEnabled: Bool) {
         self.isUserInteractionEnabled = isEnabled
     }
-    
     public func setStateLabel(text: String) {
         connectionStateLabel.text = text
     }
-    
     public func setAnimation(name: String) {
         animationView.animation = LottieAnimation.named(name)
     }
@@ -247,14 +245,16 @@ extension MainScreenView {
         animationView.loopMode = loopMode
         animationView.play()
     }
+    public func stopAnimation() {
+        animationView.isHidden = true
+        animationView.stop()
+    }
     public func setAnimation(isHidden: Bool) {
         animationView.isHidden = isHidden
     }
-    
     public func setButtonText(text: String) {
         connectButton.setTitle(text, for: .normal)
     }
-    
     public func setButton(isHidden: Bool) {
         connectButton.isHidden = isHidden
     }
@@ -270,7 +270,6 @@ extension MainScreenView {
             self?.serverListTableView.layer.borderColor = color.cgColor
             self?.tableViewBackView.backgroundColor = color.withAlphaComponent(0.6)
         }
-
     }
     public func reloadTableView() {
         serverListTableView.reloadData()

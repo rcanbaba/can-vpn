@@ -15,47 +15,21 @@ enum TunnelState: Int {
 
 protocol NETunnelManagerDelegate: AnyObject {
     func stateChanged(state: TunnelState)
+    func initialState(state: NEVPNStatus)
 }
 
 class NETunnelManager {
     
     private var manager: NETunnelProviderManager?
-    private var status: NEVPNStatus = .invalid
     
     public weak var delegate: NETunnelManagerDelegate?
     
     
     init() {
         createManager()
-        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc private func statusDidChange(_ notification: Notification) {
-        guard let connection = notification.object as? NEVPNConnection else { return }
-        let status = connection.status
-        handleVPNStatus(status)
-    }
-    
-    private func handleVPNStatus(_ vpnStatus: NEVPNStatus) {
-        switch vpnStatus {
-        case .invalid:
-            print("NOTIF: NETunnel: initial")
-        case .disconnected:
-            print("NOTIF: NETunnel: disconnected")
-        case .connecting, .reasserting:
-            print("NOTIF: NETunnel: connecting")
-        case .connected:
-            print("NOTIF: NETunnel: connected")
-        case .disconnecting:
-            print("NOTIF: NETunnel: disconnecting")
-        @unknown default:
-            break
-        }
-    }
+    deinit { }
     
     private func createManager() {
         Task {
@@ -72,11 +46,13 @@ class NETunnelManager {
             let managers = try await NETunnelProviderManager.loadAllFromPreferences()
             
             if managers.count > 0 {
+                delegate?.initialState(state: managers[0].connection.status)
                 return managers[0]
             }
-            
+            delegate?.initialState(state: .invalid)
             return NETunnelProviderManager()
         } catch {
+            delegate?.initialState(state: .invalid)
             return NETunnelProviderManager()
         }
     }
@@ -122,11 +98,10 @@ class NETunnelManager {
         
         do {
             // Now, load the manager from preferences.
-            let loadedManagers = try await NETunnelProviderManager.loadAllFromPreferences()
+            try await manager.loadFromPreferences()
             
             // Start the VPN.
-            try loadedManagers[0].connection.startVPNTunnel()
-            
+            try manager.connection.startVPNTunnel()
             print("Started tunnel successfully.")
         }  catch NEVPNError.configurationInvalid {
             delegate?.stateChanged(state: .failed)

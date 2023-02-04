@@ -32,7 +32,7 @@ class Dictionaries {
         "connect_key" : "Connect",
         "connecting_key": "Connecting",
         "connected_key": "Connected",
-        "disconnect_key" : "Bağlantıyı es",
+        "disconnect_key" : "Bağlantıyı kes",
         "disconnected_key": "Disconnected",
         "disconnecting_key": "Disconnecting",
         "initial_key": "Tap to start",
