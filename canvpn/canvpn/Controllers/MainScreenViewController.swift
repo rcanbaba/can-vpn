@@ -35,7 +35,9 @@ class MainScreenViewController: UIViewController {
     private var ipSecManager: VPNManager?
     private var networkService: DefaultNetworkService?
     
-    var vpnServerList : [VpnServerItem] = []
+    var vpnServerList: [VpnServerItem] = []
+    
+    var boolInitialSet: Bool = false
     
     private func createMockData() {
         let item1 = VpnServerItem(ip: "3.86.250.76", username: "vpnserver", password: "vpnserver", secret: "vpnserver", isFree: true, region: "", country: "Atlanta", countryCode: "us", isSelected: true)
@@ -161,9 +163,7 @@ class MainScreenViewController: UIViewController {
         switch tunnelState {
         case .connecting:
             DispatchQueue.main.async {
-                self.mainView.setAnimation(isHidden: false)
-                self.mainView.setAnimation(name: "globe_loading")
-                self.mainView.playAnimation(loopMode: .loop)
+                self.mainView.setAndPlayAnimation(isConnecting: true)
                 self.setMainColor(state: .connecting)
                 self.mainView.setStateLabel(text: "connecting")
                 self.mainView.setButtonText(text: "")
@@ -172,9 +172,7 @@ class MainScreenViewController: UIViewController {
             }
         case .disconnecting:
             DispatchQueue.main.async {
-                self.mainView.setAnimation(isHidden: false)
-                self.mainView.setAnimation(name: "globe_loading")
-                self.mainView.playAnimation(loopMode: .loop)
+                self.mainView.setAndPlayAnimation(isConnecting: true)
                 self.setMainColor(state: .disconnecting)
                 self.mainView.setStateLabel(text: "disconnecting")
                 self.mainView.setButtonText(text: "")
@@ -183,7 +181,9 @@ class MainScreenViewController: UIViewController {
             }
         case .failed:
             DispatchQueue.main.async {
-                self.mainView.setAnimation(isHidden: true)
+                self.mainView.hideAnimationView()
+                self.mainView.stopAnimation(isConnecting: true)
+                self.mainView.stopAnimation(isConnecting: false)
                 self.setMainColor(state: .disconnected)
                 self.mainView.setUserInteraction(isEnabled: true)
                 self.mainView.setStateLabel(text: "disconnected")
@@ -194,17 +194,30 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setManagerStateUI() {
+        if !boolInitialSet { return }
         switch vpnStatus {
         case .disconnected, .invalid:
             print("CAN- Man Disconnected")
-            self.mainView.setAnimation(isHidden: true)
-            self.mainView.stopAnimation()
-            self.mainView.setUserInteraction(isEnabled: true)
-            self.mainView.setStateLabel(text: "disconnected")
-            self.mainView.setButtonText(text: "connect")
-            self.setMainColor(state: .disconnected)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                print("CAN- Man delayed + Disconnected")
+                self.mainView.hideAnimationView()
+                self.mainView.stopAnimation(isConnecting: true)
+                self.mainView.stopAnimation(isConnecting: false)
+                self.mainView.setUserInteraction(isEnabled: true)
+                self.mainView.setStateLabel(text: "disconnected")
+                self.mainView.setButtonText(text: "connect")
+                self.setMainColor(state: .disconnected)
+            }
         case .connected:
             print("CAN- Man Connected")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                print("CAN- Man delayed + Connected")
+                self.mainView.setAndPlayAnimation(isConnecting: false)
+                self.mainView.setUserInteraction(isEnabled: true)
+                self.mainView.setStateLabel(text: "connected")
+                self.mainView.setButtonText(text: "disconnect")
+                self.setMainColor(state: .connected)
+            }
         case .connecting, .disconnecting, .reasserting:
             print("CAN- Man Break")
             break
@@ -214,11 +227,13 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setInitialStateUI(state: NEVPNStatus) {
+        boolInitialSet = true
         switch state {
         case .invalid, .disconnected:
             DispatchQueue.main.async {
-                self.mainView.setAnimation(isHidden: true)
-                self.mainView.stopAnimation()
+                self.mainView.hideAnimationView()
+                self.mainView.stopAnimation(isConnecting: true)
+                self.mainView.stopAnimation(isConnecting: false)
                 self.mainView.setUserInteraction(isEnabled: true)
                 self.mainView.setStateLabel(text: "disconnected")
                 self.mainView.setButtonText(text: "connect")
@@ -227,9 +242,7 @@ class MainScreenViewController: UIViewController {
             }
         case .connected:
             DispatchQueue.main.async {
-                self.mainView.setAnimation(name: "vpn_connected")
-                self.mainView.playAnimation(loopMode: .playOnce)
-                self.mainView.setAnimation(isHidden: false)
+                self.mainView.setAndPlayAnimation(isConnecting: false)
                 self.mainView.setUserInteraction(isEnabled: true)
                 self.mainView.setStateLabel(text: "connected")
                 self.mainView.setButtonText(text: "disconnect")

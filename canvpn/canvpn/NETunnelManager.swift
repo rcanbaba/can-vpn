@@ -85,7 +85,7 @@ class NETunnelManager {
         
         // Set the manager's configuration and mark it as enabled.
         manager.protocolConfiguration = configuration
-        manager.localizedDescription = "canVPNWired"
+        manager.localizedDescription = "iLoveVPN"
         manager.isEnabled = true
         
         do {

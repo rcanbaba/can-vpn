@@ -20,6 +20,7 @@ class MainScreenView: UIView {
     public lazy var navigationBarBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.Custom.orange
+        view.layer.applySketchShadow()
         return view
     }()
     
@@ -49,7 +50,18 @@ class MainScreenView: UIView {
     
     private lazy var animationView: LottieAnimationView = {
         let animation = LottieAnimationView(name: "")
+        animation.animation = LottieAnimation.named("globe_loading")
+        animation.loopMode = .loop
         animation.isHidden = true
+        return animation
+    }()
+    
+    private lazy var secondAnimationView: LottieAnimationView = {
+        let animation = LottieAnimationView(name: "")
+        animation.animation = LottieAnimation.named("vpn_connected")
+        animation.loopMode = .loop
+        animation.isHidden = true
+        animation.contentMode = .scaleAspectFit
         return animation
     }()
     
@@ -69,6 +81,7 @@ class MainScreenView: UIView {
         button.backgroundColor = UIColor.Custom.orange
         button.addTarget(self, action: #selector(connectButtonTapped(_:)), for: .touchUpInside)
         button.layer.cornerRadius = 20
+        button.layer.applySketchShadow()
         return button
     }()
     
@@ -84,6 +97,7 @@ class MainScreenView: UIView {
         tableView.layer.borderWidth = 3.0
         tableView.layer.borderColor = UIColor.Custom.orange.cgColor
         tableView.layer.cornerRadius = 10.0
+        tableView.layer.applySketchShadow()
         return tableView
     }()
     
@@ -145,6 +159,14 @@ class MainScreenView: UIView {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(animationView.snp.width)
+        }
+        
+        self.addSubview(secondAnimationView)
+        secondAnimationView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().inset(-10)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(600)
+            make.height.equalTo(secondAnimationView.snp.width)
         }
         
         self.addSubview(connectionStateLabel)
@@ -237,20 +259,27 @@ extension MainScreenView {
     public func setStateLabel(text: String) {
         connectionStateLabel.text = text
     }
-    public func setAnimation(name: String) {
-        animationView.animation = LottieAnimation.named(name)
+    public func setAndPlayAnimation(isConnecting: Bool) {
+        animationView.isHidden = !isConnecting
+        secondAnimationView.isHidden = isConnecting
+        if isConnecting {
+            animationView.play()
+        } else {
+            secondAnimationView.play()
+        }
     }
-    public func playAnimation(loopMode: LottieLoopMode) {
-        animationView.isHidden = false
-        animationView.loopMode = loopMode
-        animationView.play()
+    public func stopAnimation(isConnecting: Bool) {
+        if isConnecting {
+            animationView.isHidden = true
+            animationView.stop()
+        } else {
+            secondAnimationView.isHidden = true
+            secondAnimationView.stop()
+        }
     }
-    public func stopAnimation() {
+    public func hideAnimationView() {
         animationView.isHidden = true
-        animationView.stop()
-    }
-    public func setAnimation(isHidden: Bool) {
-        animationView.isHidden = isHidden
+        secondAnimationView.isHidden = true
     }
     public func setButtonText(text: String) {
         connectButton.setTitle(text, for: .normal)
