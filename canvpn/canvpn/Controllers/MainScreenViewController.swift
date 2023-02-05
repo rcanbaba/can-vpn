@@ -134,7 +134,7 @@ class MainScreenViewController: UIViewController {
               (data: Data?, response: URLResponse?, error: Error?) in
 
               if(error != nil) {
-                  print("CAN- Error: \(error)")
+                  self.printDebug("CAN- Error: \(error)")
               }else
               {
 
@@ -152,9 +152,9 @@ class MainScreenViewController: UIViewController {
         service.request(searchRequest) { [weak self] result in
             switch result {
             case .success(let companies):
-                print("CAN- SUCCESS")
+                self?.printDebug("CAN- SUCCESS")
             case .failure(let error):
-                print("CAN- FAIL")
+                self?.printDebug("CAN- FAIL")
             }
         }
     }
@@ -168,7 +168,7 @@ class MainScreenViewController: UIViewController {
                 self.mainView.setStateLabel(text: "connecting")
                 self.mainView.setButtonText(text: "")
                 self.mainView.setUserInteraction(isEnabled: false)
-                print("CAN- Tunnel Connecting")
+                self.printDebug("CAN- Tunnel Connecting")
             }
         case .disconnecting:
             DispatchQueue.main.async {
@@ -177,7 +177,7 @@ class MainScreenViewController: UIViewController {
                 self.mainView.setStateLabel(text: "disconnecting")
                 self.mainView.setButtonText(text: "")
                 self.mainView.setUserInteraction(isEnabled: false)
-                print("CAN- Tunnel Disconnecting")
+                self.printDebug("CAN- Tunnel Disconnecting")
             }
         case .failed:
             DispatchQueue.main.async {
@@ -188,7 +188,7 @@ class MainScreenViewController: UIViewController {
                 self.mainView.setUserInteraction(isEnabled: true)
                 self.mainView.setStateLabel(text: "disconnected")
                 self.mainView.setButtonText(text: "connect")
-                print("CAN- Tunnel Failed")
+                self.printDebug("CAN- Tunnel Failed")
             }
         }
     }
@@ -197,9 +197,9 @@ class MainScreenViewController: UIViewController {
         if !boolInitialSet { return }
         switch vpnStatus {
         case .disconnected, .invalid:
-            print("CAN- Man Disconnected")
+            printDebug("CAN- Man Disconnected")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                print("CAN- Man delayed + Disconnected")
+                self.printDebug("CAN- Man delayed + Disconnected")
                 self.mainView.hideAnimationView()
                 self.mainView.stopAnimation(isConnecting: true)
                 self.mainView.stopAnimation(isConnecting: false)
@@ -209,9 +209,9 @@ class MainScreenViewController: UIViewController {
                 self.setMainColor(state: .disconnected)
             }
         case .connected:
-            print("CAN- Man Connected")
+            printDebug("CAN- Man Connected")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                print("CAN- Man delayed + Connected")
+                self.printDebug("CAN- Man delayed + Connected")
                 self.mainView.setAndPlayAnimation(isConnecting: false)
                 self.mainView.setUserInteraction(isEnabled: true)
                 self.mainView.setStateLabel(text: "connected")
@@ -219,7 +219,7 @@ class MainScreenViewController: UIViewController {
                 self.setMainColor(state: .connected)
             }
         case .connecting, .disconnecting, .reasserting:
-            print("CAN- Man Break")
+            printDebug("CAN- Man Break")
             break
         @unknown default:
             break
@@ -238,7 +238,7 @@ class MainScreenViewController: UIViewController {
                 self.mainView.setStateLabel(text: "disconnected")
                 self.mainView.setButtonText(text: "connect")
                 self.setMainColor(state: .disconnected)
-                print("CAN- init disconnected")
+                self.printDebug("CAN- init disconnected")
             }
         case .connected:
             DispatchQueue.main.async {
@@ -247,7 +247,7 @@ class MainScreenViewController: UIViewController {
                 self.mainView.setStateLabel(text: "connected")
                 self.mainView.setButtonText(text: "disconnect")
                 self.setMainColor(state: .connected)
-                print("CAN- init connected")
+                self.printDebug("CAN- init connected")
             }
         case .connecting, .disconnecting, .reasserting:
             break
@@ -312,4 +312,14 @@ extension MainScreenViewController: NETunnelManagerDelegate {
         tunnelState = state
         setTunnelStateUI()
     }
+}
+
+// MARK: Print helper for now:
+extension MainScreenViewController {
+    private func printDebug(_ string: String) {
+        #if DEBUG
+        print(string)
+        #endif
+    }
+    
 }
