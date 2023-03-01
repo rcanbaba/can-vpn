@@ -29,6 +29,21 @@ class MainScreenViewController: UIViewController {
         return view
     }()
     
+    private lazy var goProButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(goProButtonTapped(_:)), for: .touchUpInside)
+        button.layer.borderColor = UIColor.Custom.green.cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 15
+        button.setTitle("Go Pro", for: .normal)
+        button.setTitleColor(UIColor.Custom.green, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
+//        button.titleLabel?.adjustsFontSizeToFitWidth = true
+//        button.titleLabel?.minimumScaleFactor = 0.5
+        return button
+    }()
+    
     private var vpnStatus: NEVPNStatus = .invalid
     private var tunnelState: TunnelState = .failed
     private var tunnelManager: NETunnelManager?
@@ -110,6 +125,11 @@ class MainScreenViewController: UIViewController {
             self.navigationController?.navigationBar.barTintColor = color
             self.mainView.setColor(color)
             self.navigationItem.titleView = self.appNameView
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.goProButton)
+            self.goProButton.snp.makeConstraints { (make) in
+                make.height.equalTo(30)
+                make.width.equalTo(70)
+            }
         }
     }
     
@@ -117,6 +137,8 @@ class MainScreenViewController: UIViewController {
         if !isVpnConnected {
             let IPAddress = IpAddressManager().getIPAddress()
             mainView.setIpAdress(text: IPAddress ?? "")
+            //TODO: set ip adress 
+            mainView.setIpAdress(text: "12.39.239.4")
         } else {
             mainView.setIpAdress(text: "12.39.239.4")
         }
@@ -254,6 +276,12 @@ class MainScreenViewController: UIViewController {
         @unknown default:
             break
         }
+    }
+    
+    @objc private func goProButtonTapped (_ sender: UIButton) {
+        let goPreVC = GoPremiumViewController()
+        goPreVC.modalPresentationStyle = .formSheet
+        present(goPreVC, animated: true)
     }
 }
 

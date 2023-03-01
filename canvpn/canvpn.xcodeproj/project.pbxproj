@@ -310,6 +310,11 @@
 		B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBFC16296DF30000613E9F /* InitialViewController.swift */; };
 		B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C91E9C298562950042500B /* GoogleService-Info.plist */; };
 		B4C91EA0298564C40042500B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B4C91E9F298564C40042500B /* FirebaseAnalytics */; };
+		B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */; };
+		B4DA0E8B29AF9EE500CA1A86 /* GoPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */; };
+		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
+		B4DA0E9029AF9FE900CA1A86 /* GoPreBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8F29AF9FE900CA1A86 /* GoPreBackgroundView.swift */; };
+		B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */; };
 		B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F31F082959DDE8002FAD0D /* VPNManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -646,6 +651,11 @@
 		B490D3AC296C98EE00651BFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B4BBFC16296DF30000613E9F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		B4C91E9C298562950042500B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumViewController.swift; sourceTree = "<group>"; };
+		B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumView.swift; sourceTree = "<group>"; };
+		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		B4DA0E8F29AF9FE900CA1A86 /* GoPreBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPreBackgroundView.swift; sourceTree = "<group>"; };
+		B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		B4F31F082959DDE8002FAD0D /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -722,6 +732,8 @@
 				B44122F229575A060072B566 /* SplashScreenView.swift */,
 				B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */,
 				B4184A162955C9AA0051EB79 /* ServerListTableViewCell.swift */,
+				B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */,
+				B4DA0E8E29AF9FD300CA1A86 /* GoPreViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -808,6 +820,7 @@
 				B44120E42957162D0072B566 /* UIViewExtensions.swift */,
 				B44120E6295716C40072B566 /* UIColorExtensions.swift */,
 				B44120E8295717300072B566 /* CALayerExtensions.swift */,
+				B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -817,6 +830,7 @@
 			children = (
 				B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */,
 				B4BBFC16296DF30000613E9F /* InitialViewController.swift */,
+				B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1100,6 +1114,15 @@
 				B490D3A1296C978600651BFC /* PacketTunnel.entitlements */,
 			);
 			path = PacketTunnel;
+			sourceTree = "<group>";
+		};
+		B4DA0E8E29AF9FD300CA1A86 /* GoPreViews */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */,
+				B4DA0E8F29AF9FE900CA1A86 /* GoPreBackgroundView.swift */,
+			);
+			path = GoPreViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1508,8 +1531,10 @@
 			files = (
 				B4184A20295614EA0051EB79 /* GetServerListRequest.swift in Sources */,
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
+				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */,
+				B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */,
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
 				B4184A22295615B30051EB79 /* ServerListResponse.swift in Sources */,
@@ -1521,6 +1546,7 @@
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
+				B4DA0E9029AF9FE900CA1A86 /* GoPreBackgroundView.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
 				B44120E9295717300072B566 /* CALayerExtensions.swift in Sources */,
@@ -1532,6 +1558,8 @@
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
 				B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */,
+				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,
+				B4DA0E8B29AF9EE500CA1A86 /* GoPremiumView.swift in Sources */,
 				B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
