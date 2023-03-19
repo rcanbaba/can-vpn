@@ -14,35 +14,6 @@ import FirebaseAnalytics
 class MainScreenViewController: UIViewController {
     
     private lazy var mainView = MainScreenView()
-    private lazy var appNameView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.Custom.orange
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor.Text.white
-        label.textAlignment = .center
-        label.text = Constants.appNavBarName
-        view.addSubview(label)
-        label.snp.makeConstraints { (make) in
-          make.center.equalToSuperview()
-        }
-        return view
-    }()
-    
-    private lazy var goProButton: UIButton = {
-        var button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(goProButtonTapped(_:)), for: .touchUpInside)
-        button.layer.borderColor = UIColor.Custom.green.cgColor
-        button.layer.borderWidth = 2
-        button.layer.cornerRadius = 15
-        button.setTitle("Go Pro", for: .normal)
-        button.setTitleColor(UIColor.Custom.green, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
-//        button.titleLabel?.adjustsFontSizeToFitWidth = true
-//        button.titleLabel?.minimumScaleFactor = 0.5
-        return button
-    }()
     
     private var vpnStatus: NEVPNStatus = .invalid
     private var tunnelState: TunnelState = .failed
@@ -73,8 +44,6 @@ class MainScreenViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         
         mainView.delegate = self
-        mainView.serverListTableView.delegate = self
-        mainView.serverListTableView.dataSource = self
         
         tunnelManager = NETunnelManager()
         tunnelManager?.delegate = self
@@ -84,22 +53,20 @@ class MainScreenViewController: UIViewController {
         networkRequest()
         setIPAddress(isVpnConnected: false)
         createMockData()
-        mainView.reloadTableView()
         configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor.clear
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.barTintColor = UIColor.clear
     }
     
     private func configureUI() {
         self.view.addSubview(mainView)
         mainView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-        }
-        
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        // TODO: not working !!!
-        // let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0.0
-        mainView.navigationBarBackgroundView.snp.makeConstraints { make in
-            make.height.equalTo(statusBarHeight + navigationBarHeight)
         }
     }
     
@@ -109,27 +76,9 @@ class MainScreenViewController: UIViewController {
         setManagerStateUI()
     }
     
-    private func setMainColor(state: ConnectionState) {
-        var color: UIColor = UIColor.Custom.orange
-        switch state {
-        case .connecting, .disconnecting:
-            color = UIColor.Custom.gray
-        case .initial, .disconnected:
-            color = UIColor.Custom.orange
-        case .connected:
-            color = UIColor.Custom.green
-        }
+    private func setUI(state: ConnectionState) {
         DispatchQueue.main.async {
-            self.navigationController?.navigationBar.tintColor = color
-            self.navigationController?.navigationBar.backgroundColor = color
-            self.navigationController?.navigationBar.barTintColor = color
-            self.mainView.setColor(color)
-            self.navigationItem.titleView = self.appNameView
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.goProButton)
-            self.goProButton.snp.makeConstraints { (make) in
-                make.height.equalTo(30)
-                make.width.equalTo(70)
-            }
+            self.mainView.setState(state: state)
         }
     }
     
@@ -185,32 +134,15 @@ class MainScreenViewController: UIViewController {
         switch tunnelState {
         case .connecting:
             DispatchQueue.main.async {
-                self.mainView.setAndPlayAnimation(isConnecting: true)
-                self.setMainColor(state: .connecting)
-                self.mainView.setStateLabel(text: "connecting")
-                self.mainView.setButtonText(text: "")
-                self.mainView.setUserInteraction(isEnabled: false)
-                self.printDebug("CAN- Tunnel Connecting")
+                self.setUI(state: .connecting)
             }
         case .disconnecting:
             DispatchQueue.main.async {
-                self.mainView.setAndPlayAnimation(isConnecting: true)
-                self.setMainColor(state: .disconnecting)
-                self.mainView.setStateLabel(text: "disconnecting")
-                self.mainView.setButtonText(text: "")
-                self.mainView.setUserInteraction(isEnabled: false)
-                self.printDebug("CAN- Tunnel Disconnecting")
+                self.setUI(state: .disconnecting)
             }
         case .failed:
             DispatchQueue.main.async {
-                self.mainView.hideAnimationView()
-                self.mainView.stopAnimation(isConnecting: true)
-                self.mainView.stopAnimation(isConnecting: false)
-                self.setMainColor(state: .disconnected)
-                self.mainView.setUserInteraction(isEnabled: true)
-                self.mainView.setStateLabel(text: "disconnected")
-                self.mainView.setButtonText(text: "connect")
-                self.printDebug("CAN- Tunnel Failed")
+                self.setUI(state: .disconnected)
             }
         }
     }
@@ -222,23 +154,13 @@ class MainScreenViewController: UIViewController {
             printDebug("CAN- Man Disconnected")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.printDebug("CAN- Man delayed + Disconnected")
-                self.mainView.hideAnimationView()
-                self.mainView.stopAnimation(isConnecting: true)
-                self.mainView.stopAnimation(isConnecting: false)
-                self.mainView.setUserInteraction(isEnabled: true)
-                self.mainView.setStateLabel(text: "disconnected")
-                self.mainView.setButtonText(text: "connect")
-                self.setMainColor(state: .disconnected)
+                self.mainView.setState(state: .disconnected)
             }
         case .connected:
             printDebug("CAN- Man Connected")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.printDebug("CAN- Man delayed + Connected")
-                self.mainView.setAndPlayAnimation(isConnecting: false)
-                self.mainView.setUserInteraction(isEnabled: true)
-                self.mainView.setStateLabel(text: "connected")
-                self.mainView.setButtonText(text: "disconnect")
-                self.setMainColor(state: .connected)
+                self.mainView.setState(state: .connected)
             }
         case .connecting, .disconnecting, .reasserting:
             printDebug("CAN- Man Break")
@@ -253,22 +175,12 @@ class MainScreenViewController: UIViewController {
         switch state {
         case .invalid, .disconnected:
             DispatchQueue.main.async {
-                self.mainView.hideAnimationView()
-                self.mainView.stopAnimation(isConnecting: true)
-                self.mainView.stopAnimation(isConnecting: false)
-                self.mainView.setUserInteraction(isEnabled: true)
-                self.mainView.setStateLabel(text: "disconnected")
-                self.mainView.setButtonText(text: "connect")
-                self.setMainColor(state: .disconnected)
+                self.mainView.setState(state: .disconnected)
                 self.printDebug("CAN- init disconnected")
             }
         case .connected:
             DispatchQueue.main.async {
-                self.mainView.setAndPlayAnimation(isConnecting: false)
-                self.mainView.setUserInteraction(isEnabled: true)
-                self.mainView.setStateLabel(text: "connected")
-                self.mainView.setButtonText(text: "disconnect")
-                self.setMainColor(state: .connected)
+                self.mainView.setState(state: .connected)
                 self.printDebug("CAN- init connected")
             }
         case .connecting, .disconnecting, .reasserting:
@@ -278,11 +190,6 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    @objc private func goProButtonTapped (_ sender: UIButton) {
-        let goPreVC = GoPremiumViewController()
-        goPreVC.modalPresentationStyle = .formSheet
-        present(goPreVC, animated: true)
-    }
 }
 
 // MARK: VPN manager interactions
@@ -293,42 +200,6 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
 }
 
-// MARK: TableView, UITableViewDelegate & UITableViewDataSource
-extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vpnServerList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ServerListTableViewCell", for: indexPath) as! ServerListTableViewCell
-        
-        cell.backgroundColor = UIColor.Custom.cellBg
-        let bgColorView = UIView()
-        bgColorView.backgroundColor = UIColor.clear
-        cell.selectedBackgroundView = bgColorView
-        
-        let cellData = vpnServerList[indexPath.row]
-        
-        cell.countryNameLabel.text = cellData.country
-        cell.isChecked = cellData.isSelected
-        cell.flagImageView.image = UIImage(named: cellData.countryCode)
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let isSelected = vpnServerList[indexPath.row].isSelected
-        var tempArray = [VpnServerItem]()
-        for item in vpnServerList {
-            var newItem = item
-            newItem.isSelected = false
-            tempArray.append(newItem)
-        }
-        vpnServerList = tempArray
-        vpnServerList[indexPath.row].isSelected = !isSelected
-        mainView.reloadTableView()
-    }
-}
 
 // MARK: NETunnelManagerDelegate
 extension MainScreenViewController: NETunnelManagerDelegate {

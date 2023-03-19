@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "layered-waves-bg.png",
+      "filename" : "world-map-red.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "world-map-red@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "world-map-red@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

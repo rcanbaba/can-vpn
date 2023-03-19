@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "layered-waves-haikei.png",
+      "filename" : "top-logo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "top-logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "top-logo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
