@@ -58,9 +58,8 @@ class MainScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = UIColor.clear
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-        self.navigationController?.navigationBar.barTintColor = UIColor.clear
+        // TODO: disappear da default a çekebilirsin
+        UIApplication.shared.statusBarStyle = .darkContent
     }
     
     private func configureUI() {

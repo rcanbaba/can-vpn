@@ -20,14 +20,14 @@ class MainScreenView: UIView {
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "world-map-orange")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     private lazy var topLogoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "top-logo")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -44,7 +44,7 @@ class MainScreenView: UIView {
         button.addTarget(self, action: #selector(connectButtonTapped(_:)), for: .touchUpInside)
         button.layer.cornerRadius = 85
         button.setImage(UIImage(named: "power-orange-button")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.contentMode = .scaleAspectFill
         return button
     }()
     
@@ -75,10 +75,9 @@ class MainScreenView: UIView {
         
         addSubview(topLogoImageView)
         topLogoImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(20)
+            make.top.equalToSuperview().offset(80)
             make.centerX.equalToSuperview()
-            make.width.equalTo(227)
-            make.height.equalTo(88)
+            make.width.equalToSuperview().dividedBy(1.7)
         }
         
         backgroundImageView.snp.makeConstraints { (make) in
@@ -96,7 +95,7 @@ class MainScreenView: UIView {
         
         self.addSubview(connectionStateLabel)
         connectionStateLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(privacyTextView.snp.top).inset(255)
+            make.bottom.equalTo(privacyTextView.snp.top).inset(-255)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(40)
         }
@@ -104,8 +103,9 @@ class MainScreenView: UIView {
         self.addSubview(centerButton)
         centerButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.size.equalTo(170)
-            make.bottom.equalTo(connectionStateLabel.snp.top).inset(21)
+            make.width.equalToSuperview().dividedBy(1.9)
+            make.height.equalTo(centerButton.snp.width)
+            make.bottom.equalTo(connectionStateLabel.snp.top).inset(-10)
         }
 
     }

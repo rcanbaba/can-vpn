@@ -20,15 +20,15 @@ extension ConnectionState {
     func getText() -> String {
         switch self {
         case .initial:
-            return "connect"
+            return "Connect"
         case .connecting:
-            return "connecting"
+            return "Connecting"
         case .connected:
-            return "connected"
+            return "Connected"
         case .disconnecting:
-            return "disconnecting"
+            return "Disconnecting"
         case .disconnected:
-            return "disconnected"
+            return "Disconnected"
         }
     }
     

@@ -25,6 +25,9 @@ class InitialViewController: UIViewController {
     
     private func presentMainScreen(){
         let navigationController = createNavigationController(with: MainScreenViewController())
+        navigationController.navigationBar.tintColor = UIColor.clear
+        navigationController.navigationBar.backgroundColor = UIColor.clear
+        navigationController.navigationBar.barTintColor = UIColor.clear
         present(navigationController, animated:true, completion: nil)
     }
     
