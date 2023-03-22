@@ -87,3 +87,25 @@ extension ConnectionState {
     }
     
 }
+
+enum SignalLevel {
+    case low
+    case medium
+    case good
+    case perfect
+}
+
+extension SignalLevel {
+    func getSignalImage() -> UIImage? {
+        switch self {
+        case .low:
+            return UIImage(named: "signal-1-orange-icon")
+        case .medium:
+            return UIImage(named: "signal-2-yellow-icon")
+        case .good:
+            return UIImage(named: "signal-3-green-icon")
+        case .perfect:
+            return UIImage(named: "signal-4-green-icon")
+        }
+    }
+}

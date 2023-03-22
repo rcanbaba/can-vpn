@@ -42,6 +42,7 @@ extension UIColor {
         static let selectedCellBg = UIColor("38D980").withAlphaComponent(0.5)
         static let goPreGradient1 = UIColor("F0BE0A")
         static let goPreGradient2 = UIColor("222222")
+        static let actionButtonShadow = UIColor("767676")
     }
     
 }

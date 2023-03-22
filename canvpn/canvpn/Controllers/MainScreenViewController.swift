@@ -51,15 +51,22 @@ class MainScreenViewController: UIViewController {
         
         networkService = DefaultNetworkService()
         networkRequest()
-        setIPAddress(isVpnConnected: false)
         createMockData()
         configureUI()
+        
+        setLocationButtonMockData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // TODO: disappear da default a çekebilirsin
         UIApplication.shared.statusBarStyle = .darkContent
+    }
+    
+    private func setLocationButtonMockData() {
+        mainView.setLocationSignal(level: SignalLevel.good)
+        mainView.setLocationFlag(countryCode: "de")
+        mainView.setLocationText(country: "Germany", ip: "79.110.53.92")
     }
     
     private func configureUI() {
@@ -78,17 +85,6 @@ class MainScreenViewController: UIViewController {
     private func setUI(state: ConnectionState) {
         DispatchQueue.main.async {
             self.mainView.setState(state: state)
-        }
-    }
-    
-    private func setIPAddress(isVpnConnected: Bool) {
-        if !isVpnConnected {
-            let IPAddress = IpAddressManager().getIPAddress()
-            mainView.setIpAdress(text: IPAddress ?? "")
-            //TODO: set ip adress 
-            mainView.setIpAdress(text: "12.39.239.4")
-        } else {
-            mainView.setIpAdress(text: "12.39.239.4")
         }
     }
     
@@ -193,6 +189,10 @@ class MainScreenViewController: UIViewController {
 
 // MARK: VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
+    func locationButtonTapped() {
+        //TODO: present country selection VC
+    }
+    
     func changeStateTapped() {
         guard let manager = tunnelManager else { return }
         manager.changeVPNState()

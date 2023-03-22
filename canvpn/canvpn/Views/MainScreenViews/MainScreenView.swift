@@ -11,6 +11,7 @@ import SnapKit
 
 protocol MainScreenViewDelegate: AnyObject {
     func changeStateTapped()
+    func locationButtonTapped()
 }
 
 class MainScreenView: UIView {
@@ -59,6 +60,12 @@ class MainScreenView: UIView {
         return textView
     }()
     
+    private lazy var locationButton: LocationButton = {
+        let button = LocationButton()
+        button.addTarget(self, action: #selector(locationButtonTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -92,15 +99,21 @@ class MainScreenView: UIView {
         }
         setPrivacyText ()
         
+        addSubview(locationButton)
+        locationButton.snp.makeConstraints { (make) in
+            make.height.equalTo(60)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(privacyTextView.snp.top).inset(-160)
+        }
         
-        self.addSubview(connectionStateLabel)
+        addSubview(connectionStateLabel)
         connectionStateLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(privacyTextView.snp.top).inset(-255)
+            make.bottom.equalTo(locationButton.snp.top).inset(-30)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(40)
         }
         
-        self.addSubview(centerButton)
+        addSubview(centerButton)
         centerButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.9)
@@ -155,6 +168,10 @@ class MainScreenView: UIView {
         delegate?.changeStateTapped()
     }
     
+    @objc private func locationButtonTapped (_ sender: UIControl) {
+        delegate?.locationButtonTapped()
+    }
+    
 }
 
 extension MainScreenView {
@@ -173,9 +190,18 @@ extension MainScreenView {
         isUserInteractionEnabled = state.getUserInteraction()
     }
 
-    public func setIpAdress(text: String){
-//        currentIPLabel.attributedText = NSAttributedString(string: text, attributes:
-//            [.underlineStyle: NSUnderlineStyle.single.rawValue])
+    public func setLocationFlag(countryCode: String?){
+        locationButton.set(flagImageCountryCode: countryCode)
     }
+    
+    public func setLocationText(country: String?, ip: String?){
+        locationButton.set(ip: ip)
+        locationButton.set(country: country)
+    }
+    
+    public func setLocationSignal(level: SignalLevel) {
+        locationButton.set(signalImage: level.getSignalImage())
+    }
+    
 
 }
