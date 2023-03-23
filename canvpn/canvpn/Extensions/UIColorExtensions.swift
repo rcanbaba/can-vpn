@@ -40,9 +40,15 @@ extension UIColor {
         static let dark = UIColor("050A30")
         static let cellBg = UIColor("00111E").withAlphaComponent(0.5)
         static let selectedCellBg = UIColor("38D980").withAlphaComponent(0.5)
+
+        static let actionButtonShadow = UIColor("767676")
+        
+        static let goPreButtonGold = UIColor("FFD521")
+        static let goPreGrayText = UIColor("323438").withAlphaComponent(0.8)
+        
+        // remove
         static let goPreGradient1 = UIColor("F0BE0A")
         static let goPreGradient2 = UIColor("222222")
-        static let actionButtonShadow = UIColor("767676")
     }
     
 }
