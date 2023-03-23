@@ -189,8 +189,20 @@ class MainScreenViewController: UIViewController {
 
 // MARK: VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
+    func goProButtonTapped() {
+        //TODO: present go Pro VC
+        
+        let goProViewController = GoPremiumViewController()
+        goProViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(goProViewController, animated: true)
+    }
+    
     func locationButtonTapped() {
         //TODO: present country selection VC
+        
+        let locationViewController = LocationViewController()
+        locationViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(locationViewController, animated: true)
     }
     
     func changeStateTapped() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocationButton: UIControl {
+class LocationButton: UIView {
     
     private lazy var flagImageView: UIImageView = {
         let imageView = UIImageView()
@@ -67,6 +67,7 @@ class LocationButton: UIControl {
     
     
     private func configureUI() {
+        isUserInteractionEnabled = true
         backgroundColor = UIColor.white
         layer.cornerRadius = 12
         layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)

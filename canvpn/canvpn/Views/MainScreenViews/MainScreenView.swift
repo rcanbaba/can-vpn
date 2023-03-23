@@ -12,6 +12,7 @@ import SnapKit
 protocol MainScreenViewDelegate: AnyObject {
     func changeStateTapped()
     func locationButtonTapped()
+    func goProButtonTapped()
 }
 
 class MainScreenView: UIView {
@@ -62,7 +63,13 @@ class MainScreenView: UIView {
     
     private lazy var locationButton: LocationButton = {
         let button = LocationButton()
-        button.addTarget(self, action: #selector(locationButtonTapped(_:)), for: .touchUpInside)
+        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationButtonTapped(_:))))
+        return button
+    }()
+    
+    private lazy var goProButton: GoProButton = {
+        let button = GoProButton()
+        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goProButtonTapped(_:))))
         return button
     }()
     
@@ -97,15 +104,24 @@ class MainScreenView: UIView {
             make.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             make.leading.trailing.equalToSuperview().inset(24)
         }
-        setPrivacyText ()
+        setPrivacyText()
+        
+        addSubview(goProButton)
+        goProButton.snp.makeConstraints { (make) in
+            make.height.equalTo(90)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(privacyTextView.snp.top).inset(-35)
+        }
+        
+     //   goProButton.addTarget(self, action: #selector(goProButtonTapped(_:)), for: .touchUpInside)
         
         addSubview(locationButton)
         locationButton.snp.makeConstraints { (make) in
             make.height.equalTo(60)
             make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(privacyTextView.snp.top).inset(-160)
+            make.bottom.equalTo(goProButton.snp.top).inset(-35)
         }
-        
+
         addSubview(connectionStateLabel)
         connectionStateLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(locationButton.snp.top).inset(-30)
@@ -170,6 +186,10 @@ class MainScreenView: UIView {
     
     @objc private func locationButtonTapped (_ sender: UIControl) {
         delegate?.locationButtonTapped()
+    }
+    
+    @objc private func goProButtonTapped (_ sender: UIControl) {
+        delegate?.goProButtonTapped()
     }
     
 }
