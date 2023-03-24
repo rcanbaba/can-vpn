@@ -61,6 +61,7 @@ class MainScreenViewController: UIViewController {
         super.viewWillAppear(animated)
         // TODO: disappear da default a çekebilirsin
         UIApplication.shared.statusBarStyle = .darkContent
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
     private func setLocationButtonMockData() {

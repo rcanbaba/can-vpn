@@ -11,8 +11,8 @@ import CommonCrypto
 struct SearchCompanyRequest: DataRequest {
 
     var url: String {
-        let baseURL: String = "http://3.86.250.76:8181"
-        let path: String = "/api/v1/vpnservers"
+        let baseURL: String = "http://100.26.161.159"
+        let path: String = "/api/servers"
         return baseURL + path
     }
     
@@ -24,10 +24,10 @@ struct SearchCompanyRequest: DataRequest {
     }
     
     var method: HTTPMethod {
-        .get
+        .post
     }
     
-    func decode(_ data: Data) throws -> SearchCompanyItem {
+    func decode(_ data: Data) throws -> Welcome {
         
         let hep = String(data: data, encoding: String.Encoding.utf8) as String?
         let decoder = JSONDecoder()
@@ -40,9 +40,9 @@ struct SearchCompanyRequest: DataRequest {
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         */
                 
-        let deneme = try? JSONDecoder().decode(SearchCompanyItem.self, from: data)
+        let deneme = try? JSONDecoder().decode(Welcome.self, from: data)
         
-        let response = try decoder.decode(SearchCompanyItem.self, from: data)
+        let response = try decoder.decode(Welcome.self, from: data)
         
         return response
     }

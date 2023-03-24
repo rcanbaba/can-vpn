@@ -17,3 +17,31 @@ struct SearchCompanyItem: Codable {
 }
 
 typealias SearchCompanyResponse = [SearchCompanyItem]
+
+// MARK: - Welcome
+struct Welcome: Codable {
+    let servers: [Server]
+}
+
+// MARK: - Server
+struct Server: Codable {
+    let id: String
+    let type, engine: Int
+    let connection: Connection
+    let location: Location
+}
+
+// MARK: - Connection
+struct Connection: Codable {
+    let host, port: String
+}
+
+// MARK: - Location
+struct Location: Codable {
+    let countryCode, city: String
+
+    enum CodingKeys: String, CodingKey {
+        case countryCode = "country_code"
+        case city
+    }
+}
