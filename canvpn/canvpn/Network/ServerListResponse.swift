@@ -7,19 +7,8 @@
 
 import Foundation
 
-struct SearchCompanyItem: Codable {
-    let data, error: String?
-
-    enum CodingKeys: String, CodingKey {
-        case data = "data"
-        case error = "error"
-    }
-}
-
-typealias SearchCompanyResponse = [SearchCompanyItem]
-
-// MARK: - Welcome
-struct Welcome: Codable {
+// MARK: - ServerList
+struct ServerList: Codable {
     let servers: [Server]
 }
 

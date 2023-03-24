@@ -27,7 +27,7 @@ struct SearchCompanyRequest: DataRequest {
         .post
     }
     
-    func decode(_ data: Data) throws -> Welcome {
+    func decode(_ data: Data) throws -> ServerList {
         
         let hep = String(data: data, encoding: String.Encoding.utf8) as String?
         let decoder = JSONDecoder()
@@ -40,9 +40,9 @@ struct SearchCompanyRequest: DataRequest {
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         */
                 
-        let deneme = try? JSONDecoder().decode(Welcome.self, from: data)
+        let deneme = try? JSONDecoder().decode(ServerList.self, from: data)
         
-        let response = try decoder.decode(Welcome.self, from: data)
+        let response = try decoder.decode(ServerList.self, from: data)
         
         return response
     }
