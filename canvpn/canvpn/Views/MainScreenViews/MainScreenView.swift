@@ -113,8 +113,6 @@ class MainScreenView: UIView {
             make.bottom.equalTo(privacyTextView.snp.top).inset(-35)
         }
         
-     //   goProButton.addTarget(self, action: #selector(goProButtonTapped(_:)), for: .touchUpInside)
-        
         addSubview(locationButton)
         locationButton.snp.makeConstraints { (make) in
             make.height.equalTo(60)

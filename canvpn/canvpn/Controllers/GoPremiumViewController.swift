@@ -9,34 +9,21 @@ import UIKit
 
 class GoPremiumViewController: UIViewController {
     
-    private lazy var backgroundView = GoPreBackgroundView()
     private lazy var goPreView = GoPremiumView()
-    
-    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  view.backgroundColor = UIColor.Custom.orange
         configureUI()
-        startTimer()
     }
     
-    public func startTimer() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true, block: { [weak self] timer in
-            self?.processTime()
-        })
-    }
-    
-    private func processTime() {
-        goPreView.shakeButton()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
     private func configureUI() {
-        view.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
+        view.backgroundColor = UIColor.white
         view.addSubview(goPreView)
         goPreView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()

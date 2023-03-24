@@ -1,13 +1,13 @@
 //
-//  GoProButton.swift
+//  SubscriptionButton.swift
 //  canvpn
 //
-//  Created by Can Babaoğlu on 20.03.2023.
+//  Created by Can Babaoğlu on 24.03.2023.
 //
 
 import UIKit
 
-class GoProButton: UIView {
+class SubscriptionButton: UIView {
     
     private lazy var premiumImageView: UIImageView = {
         let imageView = UIImageView()

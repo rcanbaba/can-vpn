@@ -9,57 +9,26 @@ import UIKit
 
 class GoPremiumView: UIView {
     
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "world-map-gold")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var premiumImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.image = UIImage(named: "go-pro-image")
+        return imageView
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         label.textAlignment = .center
-        label.text = "I Love VPN Premium"
-        return label
-    }()
-    
-    private lazy var subTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.text = "No commitment, cancel anytime."
-        return label
-    }()
-    
-    private lazy var option1Label: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.text = "- Worldwide location"
-        return label
-    }()
-    
-    private lazy var option2Label: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.text = "- Faster connection"
-        return label
-    }()
-    
-    private lazy var option3Label: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.text = "- No ads"
-        return label
-    }()
-    
-    private lazy var option4Label: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.text = "- Military grade security"
+        label.text = "Premium Features"
         return label
     }()
     
@@ -86,7 +55,6 @@ class GoPremiumView: UIView {
         view.backgroundColor = UIColor.Custom.orange
         view.layer.applySketchShadow()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstProductTapped(_:))))
-       // view.alpha = 1.0
         return view
     }()
     
@@ -96,7 +64,6 @@ class GoPremiumView: UIView {
         view.backgroundColor = UIColor.Custom.orange
         view.layer.applySketchShadow()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondProductTapped(_:))))
-       // view.alpha = 1.0
         return view
     }()
     
@@ -112,10 +79,18 @@ class GoPremiumView: UIView {
         return button
     }()
     
-
+    private lazy var featuresMainStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 10.0
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        configureFeaturesStack()
     }
     
     required init?(coder: NSCoder) {
@@ -124,70 +99,90 @@ class GoPremiumView: UIView {
     
     // MARK: Setup UI
     private func configureUI() {
+        
+        addSubview(backgroundImageView)
+        
+        addSubview(premiumImageView)
+        premiumImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide).offset(30)
+            make.width.equalTo(72)
+            make.height.equalTo(74)
+        }
+        
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(60)
-            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalTo(premiumImageView.snp.bottom).offset(14)
+            make.centerX.equalToSuperview()
         }
         
-        addSubview(subTitleLabel)
-        subTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(15)
+        addSubview(featuresMainStackView)
+        featuresMainStackView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(35)
+            make.leading.trailing.equalToSuperview().inset(30)
         }
         
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 10.0
+        backgroundImageView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
+        }
         
-        stackView.addArrangedSubview(option1Label)
-        stackView.addArrangedSubview(option2Label)
-        stackView.addArrangedSubview(option3Label)
-        stackView.addArrangedSubview(option4Label)
+//
+//        addSubview(subscribeButton)
+//        subscribeButton.snp.makeConstraints { (make) in
+//            make.leading.trailing.equalToSuperview().inset(100)
+//            make.height.equalTo(50)
+//            make.bottom.equalTo(safeAreaLayoutGuide).inset(40)
+//        }
+//
+//        addSubview(freeTrialLabel)
+//        freeTrialLabel.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(20)
+//            make.bottom.equalTo(subscriptionBackView.snp.top).inset(-60)
+//        }
+    }
+    
+    private func configureFeaturesStack() {
+        
+        let firstRowStackView = UIStackView()
+        firstRowStackView.axis = .horizontal
+        firstRowStackView.alignment = .center
+        firstRowStackView.spacing = 10.0
+        
+        let secondRowStackView = UIStackView()
+        firstRowStackView.axis = .horizontal
+        firstRowStackView.alignment = .center
+        firstRowStackView.spacing = 10.0
+        
+        featuresMainStackView.addArrangedSubview(firstRowStackView)
+        featuresMainStackView.addArrangedSubview(secondRowStackView)
+        
+        var featureViewArray: [PremiumFeatureView] = []
+        
+        for _ in 0..<4 {
+            featureViewArray.append(PremiumFeatureView())
+        }
+        
+        featureViewArray[0].set(type: .secure)
+        featureViewArray[1].set(type: .fast)
+        featureViewArray[2].set(type: .noAds)
+        featureViewArray[3].set(type: .anonymous)
                 
-        addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(90)
-            make.centerX.equalToSuperview()
+        
+        firstRowStackView.addArrangedSubview(featureViewArray[0])
+        firstRowStackView.addArrangedSubview(featureViewArray[1])
+        
+        secondRowStackView.addArrangedSubview(featureViewArray[2])
+        secondRowStackView.addArrangedSubview(featureViewArray[3])
+        
+        let featureItemWidth = (UIScreen.main.bounds.width - 70 - 10) / 2
+        
+        for item in featureViewArray {
+            item.snp.makeConstraints { make in
+                make.width.equalTo(featureItemWidth)
+            }
         }
         
-        addSubview(subscribeButton)
-        subscribeButton.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview().inset(100)
-            make.height.equalTo(50)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(40)
-        }
-        
-        addSubview(subscriptionBackView)
-        subscriptionBackView.snp.makeConstraints { make in
-            make.bottom.equalTo(subscribeButton.snp.top).inset(-80)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(160)
-            make.width.equalTo(320)
-        }
-        
-        subscriptionBackView.addSubview(secondProductView)
-        secondProductView.snp.makeConstraints { make in
-            make.height.equalTo(170)
-            make.width.equalTo(150)
-            make.bottom.equalToSuperview().inset(5)
-            make.trailing.equalToSuperview().inset(5)
-        }
-        
-        subscriptionBackView.addSubview(firstProductView)
-        firstProductView.snp.makeConstraints { make in
-            make.height.equalTo(170)
-            make.width.equalTo(150)
-            make.bottom.equalToSuperview().inset(5)
-            make.leading.equalToSuperview().inset(5)
-        }
-        
-        addSubview(freeTrialLabel)
-        freeTrialLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(subscriptionBackView.snp.top).inset(-60)
-        }
     }
     
     @objc private func subscribeButtonTapped(_ sender: UIButton) {

@@ -109,3 +109,52 @@ extension SignalLevel {
         }
     }
 }
+
+enum PremiumFeatureType {
+    case anonymous
+    case fast
+    case noAds
+    case secure
+}
+
+extension PremiumFeatureType {
+    func getImage() -> UIImage? {
+        switch self {
+        case .anonymous:
+            return UIImage(named: "premium-hat-icon")
+        case .fast:
+            return UIImage(named: "premium-rocket-icon")
+        case .noAds:
+            return UIImage(named: "premium-minus-icon")
+        case .secure:
+            return UIImage(named: "premium-secure-icon")
+        }
+    }
+    
+    func getTitle() -> String? {
+        switch self {
+        case .anonymous:
+            return "Anonymous"
+        case .fast:
+            return "Fast"
+        case .noAds:
+            return "Remove Ads"
+        case .secure:
+            return "Secure"
+        }
+    }
+    
+    func getDescription() -> String? {
+        switch self {
+        case .anonymous:
+            return "Hide your ip with anonymous surfing"
+        case .fast:
+            return "Up to 1000 Mb/s bandwidth to explore"
+        case .noAds:
+            return "Enjoy the app without annoying ads"
+        case .secure:
+            return "Transfer traffic via encrypted tunnel"
+        }
+    }
+    
+}
