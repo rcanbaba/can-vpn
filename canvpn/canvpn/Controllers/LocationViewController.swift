@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol LocationViewControllerDelegate: AnyObject {
+    func selectedServer(server: Server)
+}
+
 class LocationViewController: UIViewController {
+    
+    weak var delegate: LocationViewControllerDelegate?
     
     private lazy var locationTableView: UITableView = {
         let tableView = UITableView()
@@ -27,6 +33,17 @@ class LocationViewController: UIViewController {
 
         return tableView
     }()
+    
+    private var serverList: [Server] = []
+    
+    init(serverList:  [Server]) {
+        self.serverList = serverList
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func viewDidLoad() {
@@ -66,62 +83,25 @@ class LocationViewController: UIViewController {
 
 extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return serverList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
         
-        
-        if indexPath.row == 0 {
-            cell.set(country: "Turkey")
-            cell.set(flagImageCountryCode: "tr")
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: true)
-        }
-        if indexPath.row == 1 {
-            cell.set(country: "Germany")
-            cell.set(flagImageCountryCode: "de")
-            cell.set(signalImage: SignalLevel.perfect.getSignalImage())
-            cell.set(isPremium: true)
-        }
-        if indexPath.row == 2 {
-            cell.set(country: "USA")
-            cell.set(flagImageCountryCode: "us")
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: false)
-        }
-        if indexPath.row == 3 {
-            cell.set(country: "Adana")
-            cell.set(flagImageCountryCode: "tr")
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: false)
-        }
-        if indexPath.row == 4 {
-            cell.set(country: "Mersin" + "\(indexPath.row)")
-            cell.set(flagImageCountryCode: "tr")
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: false)
-        }
-        if indexPath.row == 5 {
-            cell.set(country: "Azerbaycan" + "\(indexPath.row)")
-            cell.set(flagImageCountryCode: "az")
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: false)
-        }
-        if indexPath.row == 6 {
-            cell.set(country: "Netherlands" + "\(indexPath.row)")
-            cell.set(flagImageCountryCode: "nh")
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: false)
-        }
+        let cellData = serverList[indexPath.row]
+        cell.set(country: cellData.location.city)
+        cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
+        cell.set(signalImage: SignalLevel.good.getSignalImage())
+        cell.set(isPremium: true)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
+        delegate?.selectedServer(server: serverList[indexPath.row])
+        navigationController?.popViewController(animated: true)
     }
     
 }

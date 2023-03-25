@@ -21,21 +21,9 @@ class MainScreenViewController: UIViewController {
     private var ipSecManager: VPNManager?
     private var networkService: DefaultNetworkService?
     
-    var vpnServerList: [VpnServerItem] = []
+    private var serverList: [Server] = []
     
     var boolInitialSet: Bool = false
-    
-    private func createMockData() {
-        let item1 = VpnServerItem(ip: "3.86.250.76", username: "vpnserver", password: "vpnserver", secret: "vpnserver", isFree: true, region: "", country: "Atlanta", countryCode: "us", isSelected: true)
-        let item2 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Germany", countryCode: "de")
-        let item3 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Virginia", countryCode: "tr")
-        let item4 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Singapore", countryCode: "dm")
-        let item5 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Greece", countryCode: "gr")
-        let item6 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Adana", countryCode: "gy")
-        let item7 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "Çorum", countryCode: "gb")
-        let item8 = VpnServerItem(ip: "", username: "", password: "", secret: "", isFree: true, region: "", country: "İstanbul", countryCode: "ad")
-        vpnServerList.append(contentsOf: [item1, item2, item3, item4, item5, item6, item7, item8])
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +38,7 @@ class MainScreenViewController: UIViewController {
        // ipSecManager = VPNManager()
         
         networkService = DefaultNetworkService()
-        networkRequest()
-        createMockData()
+        fetchServerList()
         configureUI()
         
         setLocationButtonMockData()
@@ -89,39 +76,21 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    public func createRequest(qMes: String, location: String, method: String , completionBlock: @escaping (String) -> Void) -> Void
-      {
-          let requestURL = URL(string: location)
-          var request = URLRequest(url: requestURL!)
-
-          request.httpMethod = method
-          request.httpBody = qMes.data(using: .utf8)
-
-          let requestTask = URLSession.shared.dataTask(with: request) {
-              (data: Data?, response: URLResponse?, error: Error?) in
-
-              if(error != nil) {
-                  self.printDebug("CAN- Error: \(error)")
-              }else
-              {
-
-                  let outputStr  = String(data: data!, encoding: String.Encoding.utf8) as String?
-                  //send this block to required place
-                  completionBlock(outputStr!);
-              }
-          }
-          requestTask.resume()
-      }
-    
-    func networkRequest() {
+    func fetchServerList() {
         guard let service = networkService else { return }
         let searchRequest = SearchCompanyRequest()
+        
         service.request(searchRequest) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
-            case .success(let companies):
-                self?.printDebug("CAN- SUCCESS")
+            case .success(let response):
+                self.printDebug("CAN- SUCCESS")
+                self.serverList = response.servers
+                self.setSelectedServer(server: response.servers.first)
             case .failure(let error):
-                self?.printDebug("CAN- FAIL")
+                self.printDebug("CAN- FAIL")
+                self.printDebug(error.localizedDescription)
             }
         }
     }
@@ -188,11 +157,24 @@ class MainScreenViewController: UIViewController {
     
 }
 
+// MARK: Set selected Country
+
+extension MainScreenViewController {
+    
+    private func setSelectedServer(server: Server?) {
+        DispatchQueue.main.async {
+            self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
+            self.mainView.setLocationText(country: server?.location.city, ip: server?.connection.host)
+            self.mainView.setLocationSignal(level: .good)
+        }
+    }
+    
+}
+
 // MARK: VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
     func goProButtonTapped() {
         //TODO: present go Pro VC
-        
         let goProViewController = GoPremiumViewController()
         goProViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(goProViewController, animated: true)
@@ -200,9 +182,9 @@ extension MainScreenViewController: MainScreenViewDelegate {
     
     func locationButtonTapped() {
         //TODO: present country selection VC
-        
-        let locationViewController = LocationViewController()
+        let locationViewController = LocationViewController(serverList: serverList)
         locationViewController.hidesBottomBarWhenPushed = true
+        locationViewController.delegate = self
         self.navigationController?.pushViewController(locationViewController, animated: true)
     }
     
@@ -231,6 +213,14 @@ extension MainScreenViewController {
         #if DEBUG
         print(string)
         #endif
+    }
+    
+}
+
+// MARK: LocationViewControllerDelegate
+extension MainScreenViewController: LocationViewControllerDelegate {
+    func selectedServer(server: Server) {
+        setSelectedServer(server: server)
     }
     
 }
