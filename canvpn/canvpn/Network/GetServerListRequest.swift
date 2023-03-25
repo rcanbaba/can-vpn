@@ -28,22 +28,23 @@ struct SearchCompanyRequest: DataRequest {
     }
     
     func decode(_ data: Data) throws -> ServerList {
-        
+        /*
         let hep = String(data: data, encoding: String.Encoding.utf8) as String?
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
 
         decoder.dateDecodingStrategy = .iso8601
+        
+        let response = try decoder.decode(ServerList.self, from: data)
+        */
         /*  TODO: need fix dateDecodingStrategy
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-mm-dd"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         */
                 
-        let deneme = try? JSONDecoder().decode(ServerList.self, from: data)
-        
-        let response = try decoder.decode(ServerList.self, from: data)
-        
+        let response = try JSONDecoder().decode(ServerList.self, from: data)
+  
         return response
     }
 }

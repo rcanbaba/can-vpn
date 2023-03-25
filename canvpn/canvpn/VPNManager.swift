@@ -11,7 +11,6 @@ protocol VPNManagerDelegate: AnyObject {
     func statusChanged(state: ConnectionState)
 }
 
-
 class VPNManager {
     
     private var manager: NEVPNManager?
