@@ -32,59 +32,45 @@ class GoPremiumView: UIView {
         return label
     }()
     
-    private lazy var freeTrialLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.text = "Start 3 days free trial then"
-        return label
-    }()
-    
-    private lazy var subscriptionBackView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10.0
-        view.backgroundColor = UIColor.white
-        view.layer.applySketchShadow()
-        return view
-    }()
-    
-    private lazy var firstProductView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10.0
-        view.backgroundColor = UIColor.Custom.orange
-        view.layer.applySketchShadow()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstProductTapped(_:))))
-        return view
-    }()
-    
-    private lazy var secondProductView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10.0
-        view.backgroundColor = UIColor.Custom.orange
-        view.layer.applySketchShadow()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondProductTapped(_:))))
-        return view
-    }()
-    
-    private lazy var subscribeButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(UIColor.Text.white, for: .normal)
-        button.setTitle("Subscribe Now", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20)
-        button.backgroundColor = UIColor.Custom.orange
-        button.addTarget(self, action: #selector(subscribeButtonTapped(_:)), for: .touchUpInside)
-        button.layer.cornerRadius = 25
-        button.layer.applySketchShadow()
-        return button
-    }()
-    
     private lazy var featuresMainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 10.0
         return stackView
+    }()
+    
+    private lazy var firstSubscriptionButton: SubscriptionButton = {
+        let view = SubscriptionButton()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstProductTapped(_:))))
+        view.set(period: "1 MONTH", price: "9.99", perInterval: "$/Month")
+        view.layer.applySketchShadow()
+        return view
+    }()
+    
+    private lazy var secondSubscriptionButton: SubscriptionButton = {
+        let view = SubscriptionButton()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondProductTapped(_:))))
+        view.set(period: "1 YEAR", price: "4.99", perInterval: "$/Month")
+        view.layer.applySketchShadow()
+        return view
+    }()
+    
+    private lazy var freeSubscriptionButton: SubscriptionButton = {
+        let view = SubscriptionButton()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(freeProductTapped(_:))))
+        view.setAsFree(text: "TRY PREMIUM FREE")
+        view.layer.applySketchShadow()
+        return view
+    }()
+    
+    private lazy var freeTrialLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.Custom.goProFeatureTextGray
+        label.textAlignment = .center
+        label.text = "7-day free trial. Then 9.99 $/month"
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -127,19 +113,33 @@ class GoPremiumView: UIView {
             make.top.equalTo(titleLabel.snp.bottom).offset(30)
         }
         
-//
-//        addSubview(subscribeButton)
-//        subscribeButton.snp.makeConstraints { (make) in
-//            make.leading.trailing.equalToSuperview().inset(100)
-//            make.height.equalTo(50)
-//            make.bottom.equalTo(safeAreaLayoutGuide).inset(40)
-//        }
-//
-//        addSubview(freeTrialLabel)
-//        freeTrialLabel.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(20)
-//            make.bottom.equalTo(subscriptionBackView.snp.top).inset(-60)
-//        }
+        addSubview(firstSubscriptionButton)
+        firstSubscriptionButton.snp.makeConstraints { make in
+            make.top.equalTo(featuresMainStackView.snp.bottom).offset(40)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(60)
+        }
+        
+        addSubview(secondSubscriptionButton)
+        secondSubscriptionButton.snp.makeConstraints { make in
+            make.top.equalTo(firstSubscriptionButton.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(60)
+        }
+        
+        addSubview(freeSubscriptionButton)
+        freeSubscriptionButton.snp.makeConstraints { make in
+            make.top.equalTo(secondSubscriptionButton.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(60)
+        }
+        
+        addSubview(freeTrialLabel)
+        freeTrialLabel.snp.makeConstraints { make in
+            make.top.equalTo(freeSubscriptionButton.snp.bottom).offset(6)
+            make.leading.trailing.equalToSuperview().inset(36)
+        }
+
     }
     
     private func configureFeaturesStack() {
@@ -185,31 +185,16 @@ class GoPremiumView: UIView {
         
     }
     
-    @objc private func subscribeButtonTapped(_ sender: UIButton) {
-        subscribeButton.shake()
-    }
-    
     @objc private func firstProductTapped (_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut) {
-            self.firstProductView.alpha = 1.0
-            self.firstProductView.transform = CGAffineTransform(scaleX: 1.1, y: 1.2)
-            self.firstProductView.transform = CGAffineTransform(translationX: 10, y: -20)
-           
-        }
+
     }
     
     @objc private func secondProductTapped (_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut) {
-            self.secondProductView.alpha = 1.0
-            self.secondProductView.transform = CGAffineTransform(scaleX: 1.1, y: 1.2)
-            self.secondProductView.transform = CGAffineTransform(translationX: 10, y: -20)
-            self.firstProductView.transform = CGAffineTransform(scaleX: 0.9, y: 0.8)
-            self.firstProductView.transform = CGAffineTransform(translationX: -10, y: 20)
-        }
+
     }
     
-    public func shakeButton() {
-        subscribeButton.shake()
+    @objc private func freeProductTapped (_ sender: UITapGestureRecognizer) {
+
     }
-    
+
 }

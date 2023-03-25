@@ -9,55 +9,53 @@ import UIKit
 
 class SubscriptionButton: UIView {
     
-    private lazy var premiumImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "go-pro-image")
-        return imageView
+    private lazy var backGradientView: GradientView = {
+        let gradientView = GradientView()
+        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientView.gradientLayer.colors = [
+            UIColor.Custom.goProButtonGradient1.cgColor,
+            UIColor.Custom.goProButtonGradient2.cgColor
+        ]
+        gradientView.isHidden = false
+        return gradientView
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private lazy var periodLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = .black
-        label.textAlignment = .natural
-        label.text = "Upgrade To PRO"
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = UIColor.white
+        label.textAlignment = .left
+        label.isHidden = false
         return label
     }()
     
-    private lazy var detailLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = UIColor.Custom.goPreGrayText
-        label.textAlignment = .natural
-        label.text = "Try premium free, cancel anytime."
-        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 28)
+        label.textColor = UIColor.white
+        label.textAlignment = .right
+        label.isHidden = false
         return label
     }()
     
-    private lazy var rightArrowImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "go-pro-right-arrow")
-        return imageView
+    private lazy var perIntervalLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor.white
+        label.textAlignment = .left
+        label.isHidden = false
+        return label
     }()
     
-    private lazy var rightArrowBackView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.Custom.goPreButtonGold
-        view.layer.cornerRadius = 9.0
-        return view
+    private lazy var freeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = UIColor.black.withAlphaComponent(0.6)
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
     }()
-    
-    private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, detailLabel])
-        stackView.alignment = .leading
-        stackView.axis = .vertical
-        stackView.spacing = -10
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,38 +69,67 @@ class SubscriptionButton: UIView {
     
     private func configureUI() {
         isUserInteractionEnabled = true
-        backgroundColor = UIColor.white
-        layer.cornerRadius = 12
+        layer.cornerRadius = 30
+        backGradientView.layer.cornerRadius = 30
+        backGradientView.clipsToBounds = true
         layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
         
-        addSubview(premiumImageView)
-        premiumImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(10)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(74)
-            make.width.equalTo(72)
+        addSubview(backGradientView)
+        backGradientView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
-        addSubview(rightArrowBackView)
-        rightArrowBackView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(15)
+        addSubview(periodLabel)
+        periodLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.width.equalTo(52)
-            make.height.equalTo(74)
+            make.leading.equalToSuperview().inset(24)
         }
         
-        rightArrowBackView.addSubview(rightArrowImageView)
-        rightArrowImageView.snp.makeConstraints { make in
-            make.size.equalTo(24)
-            make.center.equalToSuperview()
+        addSubview(perIntervalLabel)
+        perIntervalLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(24)
         }
         
-        addSubview(mainStackView)
-        mainStackView.snp.makeConstraints { make in
-            make.leading.equalTo(premiumImageView.snp.trailing).offset(10)
+        addSubview(priceLabel)
+        priceLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.top.bottom.lessThanOrEqualToSuperview().inset(9)
-            make.trailing.equalTo(rightArrowBackView.snp.leading).inset(-10)
+            make.trailing.equalTo(perIntervalLabel.snp.leading).offset(-5)
         }
+        
+        addSubview(freeLabel)
+        freeLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(32)
+        }
+        
     }
+}
+
+extension SubscriptionButton {
+    
+    public func set(period: String?, price: String?, perInterval: String?) {
+        periodLabel.isHidden = false
+        priceLabel.isHidden = false
+        perIntervalLabel.isHidden = false
+        freeLabel.isHidden = true
+        
+        periodLabel.text = period
+        priceLabel.text = price
+        perIntervalLabel.text = perInterval
+    }
+    
+    public func setAsFree(text: String?) {
+        periodLabel.isHidden = true
+        priceLabel.isHidden = true
+        perIntervalLabel.isHidden = true
+        freeLabel.isHidden = false
+        
+        backGradientView.gradientLayer.colors = [ UIColor.white, UIColor.white ]
+        layer.borderColor = UIColor.Custom.gray.cgColor
+        layer.borderWidth = 0.1
+        
+        freeLabel.text = text
+    }
+    
 }
