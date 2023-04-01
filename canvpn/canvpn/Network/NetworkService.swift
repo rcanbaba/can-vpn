@@ -47,7 +47,10 @@ final class DefaultNetworkService: NetworkService {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method.rawValue
+        urlRequest.httpBody = request.bodyData
         urlRequest.allHTTPHeaderFields = request.headers
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {

@@ -7,7 +7,6 @@
 
 import UIKit
 import NetworkExtension
-import CommonCrypto
 import Lottie
 import FirebaseAnalytics
 
@@ -42,6 +41,7 @@ class MainScreenViewController: UIViewController {
         configureUI()
         
         setLocationButtonMockData()
+        getCredential(serverId: "fb9c89f087e940aeae32a2020e7d9547")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,11 +76,28 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    func fetchServerList() {
+    private func getCredential(serverId: String) {
         guard let service = networkService else { return }
-        let searchRequest = SearchCompanyRequest()
+        var getCredentialRequest = GetCredentialRequest()
+        getCredentialRequest.setParams(serverId: serverId)
         
-        service.request(searchRequest) { [weak self] result in
+        service.request(getCredentialRequest) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                self.printDebug("CAN2- SUCCESS")
+
+            case .failure(let error):
+                self.printDebug("CAN2- FAIL")
+            }
+        }
+    }
+    
+    private func fetchServerList() {
+        guard let service = networkService else { return }
+        let getServerListRequest = GetServerListRequest()
+        
+        service.request(getServerListRequest) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

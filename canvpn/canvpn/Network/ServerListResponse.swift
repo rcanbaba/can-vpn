@@ -28,7 +28,7 @@ struct Connection: Codable {
 // MARK: - Location
 struct Location: Codable {
     let countryCode, city: String
-
+    
     enum CodingKeys: String, CodingKey {
         case countryCode = "country_code"
         case city
