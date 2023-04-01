@@ -34,6 +34,13 @@ class LocationViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "world-map-gray")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     private var serverList: [Server] = []
     
     init(serverList:  [Server]) {
@@ -71,6 +78,12 @@ class LocationViewController: UIViewController {
     }
     
     private func configureUI() {
+        view.addSubview(backgroundImageView)
+        backgroundImageView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(200)
+        }
+        
         view.addSubview(locationTableView)
         locationTableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(18)
@@ -89,11 +102,23 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
         
+        cell.backgroundColor = UIColor.clear
+        cell.contentView.backgroundColor = UIColor.clear
+        
         let cellData = serverList[indexPath.row]
         cell.set(country: cellData.location.city)
         cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
-        cell.set(signalImage: SignalLevel.good.getSignalImage())
-        cell.set(isPremium: true)
+        
+        if indexPath.row < 3 {
+            cell.set(signalImage: SignalLevel.perfect.getSignalImage())
+        } else if indexPath.row < 6 {
+            cell.set(signalImage: SignalLevel.good.getSignalImage())
+        } else {
+            cell.set(signalImage: SignalLevel.medium.getSignalImage())
+        }
+        
+        
+        cell.set(isPremium: cellData.type == 1)
         
         return cell
     }

@@ -12,7 +12,9 @@ class LocationButton: UIView {
     private lazy var flagImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
-        imageView.layer.cornerRadius = 16.0
+        imageView.layer.cornerRadius = 2.0
+        imageView.layer.borderWidth = 0.2
+        imageView.layer.borderColor = UIColor.Custom.gray.cgColor
         return imageView
     }()
     

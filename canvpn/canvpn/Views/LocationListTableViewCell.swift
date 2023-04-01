@@ -11,15 +11,19 @@ class LocationListTableViewCell: UITableViewCell {
     
     private lazy var mainView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.clear
         view.layer.cornerRadius = 12.0
+        view.layer.borderWidth = 0.2
+        view.layer.borderColor = UIColor.Custom.gray.cgColor
         return view
     }()
     
     private lazy var flagImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
-        imageView.layer.cornerRadius = 16.0
+        imageView.layer.cornerRadius = 2.0
+        imageView.layer.borderWidth = 0.2
+        imageView.layer.borderColor = UIColor.Custom.gray.cgColor
         return imageView
     }()
     
@@ -53,7 +57,9 @@ class LocationListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         
-        mainView.layer.applySketchShadow()
+        // mainView.layer.applySketchShadow()
+        
+        mainView.layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
         
         contentView.addSubview(mainView)
         mainView.snp.makeConstraints { (make) in

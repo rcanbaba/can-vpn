@@ -91,7 +91,7 @@ class GoPremiumView: UIView {
         addSubview(premiumImageView)
         premiumImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(safeAreaLayoutGuide).offset(30)
+            make.top.equalTo(safeAreaLayoutGuide).offset(10)
             make.width.equalTo(72)
             make.height.equalTo(74)
         }
@@ -110,12 +110,12 @@ class GoPremiumView: UIView {
         
         backgroundImageView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(titleLabel.snp.bottom).offset(30)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
         }
         
         addSubview(firstSubscriptionButton)
         firstSubscriptionButton.snp.makeConstraints { make in
-            make.top.equalTo(featuresMainStackView.snp.bottom).offset(40)
+            make.top.equalTo(featuresMainStackView.snp.bottom).offset(80)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(60)
         }
