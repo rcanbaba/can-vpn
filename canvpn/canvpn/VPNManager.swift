@@ -11,6 +11,7 @@ protocol VPNManagerDelegate: AnyObject {
     func statusChanged(state: ConnectionState)
 }
 
+//MARK: - IPSEC
 class VPNManager {
     
     private var manager: NEVPNManager?
@@ -179,6 +180,7 @@ class VPNManager {
         case .disconnected:
             saveAndConnect(to: selectedVPN)
         }
+        
     }
     
 }

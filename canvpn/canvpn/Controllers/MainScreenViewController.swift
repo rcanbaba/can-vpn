@@ -15,20 +15,26 @@ class MainScreenViewController: UIViewController {
     private lazy var mainView = MainScreenView()
     
     private var vpnStatus: NEVPNStatus = .invalid
-    private var tunnelState: TunnelState = .failed
+
     private var tunnelManager: NETunnelManager?
-    private var ipSecManager: VPNManager?
+  //  private var ipSecManager: VPNManager?
     private var networkService: DefaultNetworkService?
     
     private var serverList: [Server] = []
+    
+    private var selectedServer: Server?
+    private var selectedServerCredential: Credential?
     
     var boolInitialSet: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //TODO: log necessary
         Analytics.logEvent("custom_event_can", parameters: ["deneme" : "134133"])
         
-        NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
+      // to ipsec manager
+      //  NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         
         mainView.delegate = self
         
@@ -37,11 +43,10 @@ class MainScreenViewController: UIViewController {
        // ipSecManager = VPNManager()
         
         networkService = DefaultNetworkService()
-        fetchServerList()
-        configureUI()
         
         setLocationButtonMockData()
-        getCredential(serverId: "fb9c89f087e940aeae32a2020e7d9547")
+        fetchServerList()
+        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,20 +81,32 @@ class MainScreenViewController: UIViewController {
         }
     }
     
+// MARK: - API CALLS
     private func getCredential(serverId: String) {
         guard let service = networkService else { return }
         var getCredentialRequest = GetCredentialRequest()
         getCredentialRequest.setParams(serverId: serverId)
-        
+
         service.request(getCredentialRequest) { [weak self] result in
             guard let self = self else { return }
+            
+            guard let manager = self.tunnelManager else { return }
+            manager.connectToWg()
+            
+            
+            
             switch result {
             case .success(let response):
                 self.printDebug("CAN2- SUCCESS")
+                self.selectedServerCredential = response
 
             case .failure(let error):
                 self.printDebug("CAN2- FAIL")
+            //    self.printDebug(error.localizedDescription)
+                // TODO: show toast hata, tekrar sunucu seçiniz
+                self.setManagerStateUI()
             }
+            
         }
     }
     
@@ -104,6 +121,8 @@ class MainScreenViewController: UIViewController {
             case .success(let response):
                 self.printDebug("CAN- SUCCESS")
                 self.serverList = response.servers
+                
+                /* MOCK LIST
                 
                 let mockConnection1 = Connection(host: "230.24.12.16", port: "443")
                 let mockLocation1 = Location(countryCode: "IT", city: "Italy")
@@ -136,47 +155,28 @@ class MainScreenViewController: UIViewController {
                 self.serverList.append(mock5)
                 self.serverList.append(mock6)
                 
+                */
                 
-                
-                
+                // TODO: set as selected first free server
                 self.setSelectedServer(server: response.servers.first)
             case .failure(let error):
                 self.printDebug("CAN- FAIL")
-            }
-        }
-    }
-    
-    private func setTunnelStateUI() {
-        switch tunnelState {
-        case .connecting:
-            DispatchQueue.main.async {
-                self.setUI(state: .connecting)
-            }
-        case .disconnecting:
-            DispatchQueue.main.async {
-                self.setUI(state: .disconnecting)
-            }
-        case .failed:
-            DispatchQueue.main.async {
-                self.setUI(state: .disconnected)
+                self.printDebug(error.localizedDescription)
             }
         }
     }
     
     private func setManagerStateUI() {
-        if !boolInitialSet { return }
         switch vpnStatus {
         case .disconnected, .invalid:
             printDebug("CAN- Man Disconnected")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.printDebug("CAN- Man delayed + Disconnected")
-                self.mainView.setState(state: .disconnected)
+            DispatchQueue.main.async {
+                self.setUI(state: .disconnected)
             }
         case .connected:
             printDebug("CAN- Man Connected")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.printDebug("CAN- Man delayed + Connected")
-                self.mainView.setState(state: .connected)
+            DispatchQueue.main.async {
+                self.setUI(state: .connected)
             }
         case .connecting, .disconnecting, .reasserting:
             printDebug("CAN- Man Break")
@@ -208,11 +208,14 @@ class MainScreenViewController: UIViewController {
     
 }
 
-// MARK: Set selected Country
+// MARK: - Set selected Country
 
 extension MainScreenViewController {
     
     private func setSelectedServer(server: Server?) {
+        selectedServer = server
+        selectedServerCredential = nil
+        
         DispatchQueue.main.async {
             self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
             self.mainView.setLocationText(country: server?.location.city, ip: server?.connection.host)
@@ -222,17 +225,15 @@ extension MainScreenViewController {
     
 }
 
-// MARK: VPN manager interactions
+// MARK: - VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
     func goProButtonTapped() {
-        //TODO: present go Pro VC
         let goProViewController = GoPremiumViewController()
         goProViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(goProViewController, animated: true)
     }
     
     func locationButtonTapped() {
-        //TODO: present country selection VC
         let locationViewController = LocationViewController(serverList: serverList)
         locationViewController.hidesBottomBarWhenPushed = true
         locationViewController.delegate = self
@@ -240,25 +241,43 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func changeStateTapped() {
-        guard let manager = tunnelManager else { return }
-        manager.changeVPNState()
+        guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
+            // TODO: handle et yeni manager yarat bul hata bas vs ???
+            return }
+        
+        if currentManagerState == .disconnected {
+            // TO CONNECT
+            if let selectedServer = selectedServer {
+                DispatchQueue.main.async {
+                    self.setUI(state: .connecting)
+                }
+                getCredential(serverId: selectedServer.id)
+                
+            } else {
+                // TODO: TODO handle et önce sunucu seç diyerek
+            }
+        } else if currentManagerState == .connected {
+            setManagerStateUI()
+            manager.disconnectFromWg()
+        } else {
+            // TODO: yaşanamamsı gereken hata toast bas
+        }
+        
+        
+
     }
 }
 
 
-// MARK: NETunnelManagerDelegate
+// MARK: - NETunnelManagerDelegate
 extension MainScreenViewController: NETunnelManagerDelegate {
-    func initialState(state: NEVPNStatus) {
-        setInitialStateUI(state: state)
-    }
-    
-    func stateChanged(state: TunnelState) {
-        tunnelState = state
-        setTunnelStateUI()
+    func stateChanged(state: NEVPNStatus) {
+        // TODO: 
+//        setTunnelStateUI()
     }
 }
 
-// MARK: Print helper for now:
+// MARK: - Print helper for now:
 extension MainScreenViewController {
     private func printDebug(_ string: String) {
         #if DEBUG
@@ -268,10 +287,11 @@ extension MainScreenViewController {
     
 }
 
-// MARK: LocationViewControllerDelegate
+// MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
     func selectedServer(server: Server) {
         setSelectedServer(server: server)
+        // TODO: If selected premium, show premium controller - flow
     }
     
 }
