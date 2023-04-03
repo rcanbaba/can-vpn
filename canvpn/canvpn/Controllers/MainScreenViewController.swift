@@ -14,33 +14,31 @@ class MainScreenViewController: UIViewController {
     
     private lazy var mainView = MainScreenView()
     
-    private var vpnStatus: NEVPNStatus = .invalid
-
     private var tunnelManager: NETunnelManager?
-  //  private var ipSecManager: VPNManager?
+    //  private var ipSecManager: VPNManager?
+    
+    private var vpnStatus: NEVPNStatus = .invalid
+    
     private var networkService: DefaultNetworkService?
     
     private var serverList: [Server] = []
-    
     private var selectedServer: Server?
     private var selectedServerCredential: Credential?
     
-    var boolInitialSet: Bool = false
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //TODO: log necessary
         Analytics.logEvent("custom_event_can", parameters: ["deneme" : "134133"])
         
-      // to ipsec manager
-      //  NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
+        // to ipsec manager
+        //  NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         
         mainView.delegate = self
         
         tunnelManager = NETunnelManager()
         tunnelManager?.delegate = self
-       // ipSecManager = VPNManager()
+        // ipSecManager = VPNManager()
         
         networkService = DefaultNetworkService()
         
@@ -69,24 +67,49 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    @objc private func statusDidChange(_ notification: Notification) {
-        guard let connection = notification.object as? NEVPNConnection else { return }
-        vpnStatus = connection.status
-        setManagerStateUI()
-    }
+    // TO ipsec manager
+    //    @objc private func statusDidChange(_ notification: Notification) {
+    //        guard let connection = notification.object as? NEVPNConnection else { return }
+    //        vpnStatus = connection.status
+    //        setManagerStateUI()
+    //    }
     
-    private func setUI(state: ConnectionState) {
+    private func setMainUI(state: ConnectionState) {
         DispatchQueue.main.async {
             self.mainView.setState(state: state)
         }
     }
     
-// MARK: - API CALLS
+    private func setState(state: NEVPNStatus) {
+        vpnStatus = state
+        switch state {
+        case .invalid:
+            setMainUI(state: .disconnected)
+        case .disconnected:
+            setMainUI(state: .disconnected)
+        case .connecting:
+            setMainUI(state: .connecting)
+        case .connected:
+            setMainUI(state: .connected)
+        case .reasserting:
+            setMainUI(state: .connecting)
+        case .disconnecting:
+            setMainUI(state: .disconnecting)
+        @unknown default:
+            break
+        }
+    }
+    
+}
+
+// MARK: - API Calls
+extension MainScreenViewController {
+    
     private func getCredential(serverId: String) {
         guard let service = networkService else { return }
         var getCredentialRequest = GetCredentialRequest()
         getCredentialRequest.setParams(serverId: serverId)
-
+        
         service.request(getCredentialRequest) { [weak self] result in
             guard let self = self else { return }
             
@@ -99,12 +122,12 @@ class MainScreenViewController: UIViewController {
             case .success(let response):
                 self.printDebug("CAN2- SUCCESS")
                 self.selectedServerCredential = response
-
+                
             case .failure(let error):
                 self.printDebug("CAN2- FAIL")
-            //    self.printDebug(error.localizedDescription)
+                //    self.printDebug(error.localizedDescription)
                 // TODO: show toast hata, tekrar sunucu seçiniz
-                self.setManagerStateUI()
+                //   self.setManagerStateUI()
             }
             
         }
@@ -123,39 +146,39 @@ class MainScreenViewController: UIViewController {
                 self.serverList = response.servers
                 
                 /* MOCK LIST
-                
-                let mockConnection1 = Connection(host: "230.24.12.16", port: "443")
-                let mockLocation1 = Location(countryCode: "IT", city: "Italy")
-                let mock1 = Server(id: "1", type: 0, engine: 1, connection: mockConnection1, location: mockLocation1)
-                
-                let mockConnection2 = Connection(host: "110.95.90.16", port: "443")
-                let mockLocation2 = Location(countryCode: "SG", city: "Singapore")
-                let mock2 = Server(id: "1", type: 0, engine: 1, connection: mockConnection2, location: mockLocation2)
-                
-                let mockConnection6 = Connection(host: "110.96.95.16", port: "443")
-                let mockLocation6 = Location(countryCode: "US", city: "Virginia - 2")
-                let mock6 = Server(id: "1", type: 0, engine: 1, connection: mockConnection6, location: mockLocation6)
-                
-                let mockConnection3 = Connection(host: "103.42.29.0", port: "443")
-                let mockLocation3 = Location(countryCode: "DE", city: "Germany")
-                let mock3 = Server(id: "1", type: 0, engine: 1, connection: mockConnection3, location: mockLocation3)
-                
-                let mockConnection4 = Connection(host: "105.16.176.0", port: "443")
-                let mockLocation4 = Location(countryCode: "FR", city: "France")
-                let mock4 = Server(id: "1", type: 0, engine: 1, connection: mockConnection4, location: mockLocation4)
-                
-                let mockConnection5 = Connection(host: "101.167.184.0", port: "443")
-                let mockLocation5 = Location(countryCode: "GB", city: "London")
-                let mock5 = Server(id: "1", type: 0, engine: 1, connection: mockConnection5, location: mockLocation5)
-                
-                self.serverList.append(mock1)
-                self.serverList.append(mock2)
-                self.serverList.append(mock3)
-                self.serverList.append(mock4)
-                self.serverList.append(mock5)
-                self.serverList.append(mock6)
-                
-                */
+                 
+                 let mockConnection1 = Connection(host: "230.24.12.16", port: "443")
+                 let mockLocation1 = Location(countryCode: "IT", city: "Italy")
+                 let mock1 = Server(id: "1", type: 0, engine: 1, connection: mockConnection1, location: mockLocation1)
+                 
+                 let mockConnection2 = Connection(host: "110.95.90.16", port: "443")
+                 let mockLocation2 = Location(countryCode: "SG", city: "Singapore")
+                 let mock2 = Server(id: "1", type: 0, engine: 1, connection: mockConnection2, location: mockLocation2)
+                 
+                 let mockConnection6 = Connection(host: "110.96.95.16", port: "443")
+                 let mockLocation6 = Location(countryCode: "US", city: "Virginia - 2")
+                 let mock6 = Server(id: "1", type: 0, engine: 1, connection: mockConnection6, location: mockLocation6)
+                 
+                 let mockConnection3 = Connection(host: "103.42.29.0", port: "443")
+                 let mockLocation3 = Location(countryCode: "DE", city: "Germany")
+                 let mock3 = Server(id: "1", type: 0, engine: 1, connection: mockConnection3, location: mockLocation3)
+                 
+                 let mockConnection4 = Connection(host: "105.16.176.0", port: "443")
+                 let mockLocation4 = Location(countryCode: "FR", city: "France")
+                 let mock4 = Server(id: "1", type: 0, engine: 1, connection: mockConnection4, location: mockLocation4)
+                 
+                 let mockConnection5 = Connection(host: "101.167.184.0", port: "443")
+                 let mockLocation5 = Location(countryCode: "GB", city: "London")
+                 let mock5 = Server(id: "1", type: 0, engine: 1, connection: mockConnection5, location: mockLocation5)
+                 
+                 self.serverList.append(mock1)
+                 self.serverList.append(mock2)
+                 self.serverList.append(mock3)
+                 self.serverList.append(mock4)
+                 self.serverList.append(mock5)
+                 self.serverList.append(mock6)
+                 
+                 */
                 
                 // TODO: set as selected first free server
                 self.setSelectedServer(server: response.servers.first)
@@ -166,52 +189,13 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    private func setManagerStateUI() {
-        switch vpnStatus {
-        case .disconnected, .invalid:
-            printDebug("CAN- Man Disconnected")
-            DispatchQueue.main.async {
-                self.setUI(state: .disconnected)
-            }
-        case .connected:
-            printDebug("CAN- Man Connected")
-            DispatchQueue.main.async {
-                self.setUI(state: .connected)
-            }
-        case .connecting, .disconnecting, .reasserting:
-            printDebug("CAN- Man Break")
-            break
-        @unknown default:
-            break
-        }
-    }
     
-    private func setInitialStateUI(state: NEVPNStatus) {
-        boolInitialSet = true
-        switch state {
-        case .invalid, .disconnected:
-            DispatchQueue.main.async {
-                self.mainView.setState(state: .disconnected)
-                self.printDebug("CAN- init disconnected")
-            }
-        case .connected:
-            DispatchQueue.main.async {
-                self.mainView.setState(state: .connected)
-                self.printDebug("CAN- init connected")
-            }
-        case .connecting, .disconnecting, .reasserting:
-            break
-        @unknown default:
-            break
-        }
-    }
+    
     
 }
 
-// MARK: - Set selected Country
-
+// MARK: - Set Selected Server
 extension MainScreenViewController {
-    
     private func setSelectedServer(server: Server?) {
         selectedServer = server
         selectedServerCredential = nil
@@ -249,7 +233,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
             // TO CONNECT
             if let selectedServer = selectedServer {
                 DispatchQueue.main.async {
-                    self.setUI(state: .connecting)
+                    // self.setUI(state: .connecting)
                 }
                 getCredential(serverId: selectedServer.id)
                 
@@ -257,14 +241,14 @@ extension MainScreenViewController: MainScreenViewDelegate {
                 // TODO: TODO handle et önce sunucu seç diyerek
             }
         } else if currentManagerState == .connected {
-            setManagerStateUI()
+            //    setManagerStateUI()
             manager.disconnectFromWg()
         } else {
             // TODO: yaşanamamsı gereken hata toast bas
         }
         
         
-
+        
     }
 }
 
@@ -272,17 +256,16 @@ extension MainScreenViewController: MainScreenViewDelegate {
 // MARK: - NETunnelManagerDelegate
 extension MainScreenViewController: NETunnelManagerDelegate {
     func stateChanged(state: NEVPNStatus) {
-        // TODO: 
-//        setTunnelStateUI()
+        setState(state: state)
     }
 }
 
 // MARK: - Print helper for now:
 extension MainScreenViewController {
     private func printDebug(_ string: String) {
-        #if DEBUG
+#if DEBUG
         print(string)
-        #endif
+#endif
     }
     
 }
