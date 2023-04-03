@@ -96,6 +96,7 @@ class MainScreenViewController: UIViewController {
         case .disconnecting:
             setMainUI(state: .disconnecting)
         @unknown default:
+            printDebug("unknown vpnStatus")
             break
         }
     }
@@ -116,18 +117,14 @@ extension MainScreenViewController {
             guard let manager = self.tunnelManager else { return }
             manager.connectToWg()
             
-            
-            
             switch result {
             case .success(let response):
-                self.printDebug("CAN2- SUCCESS")
+                self.printDebug("getCredential success")
                 self.selectedServerCredential = response
                 
             case .failure(let error):
-                self.printDebug("CAN2- FAIL")
-                //    self.printDebug(error.localizedDescription)
-                // TODO: show toast hata, tekrar sunucu seçiniz
-                //   self.setManagerStateUI()
+                self.printDebug("getCredential failure")
+                Toaster.showToast(message: "Error occurred, please select location again!")
             }
             
         }
@@ -142,7 +139,7 @@ extension MainScreenViewController {
             
             switch result {
             case .success(let response):
-                self.printDebug("CAN- SUCCESS")
+                self.printDebug("fetchServerList success")
                 self.serverList = response.servers
                 
                 /* MOCK LIST
@@ -183,8 +180,8 @@ extension MainScreenViewController {
                 // TODO: set as selected first free server
                 self.setSelectedServer(server: response.servers.first)
             case .failure(let error):
-                self.printDebug("CAN- FAIL")
-                self.printDebug(error.localizedDescription)
+                Toaster.showToast(message: "Error occurred, please reload again!")
+                self.printDebug("fetchServerList failure")
             }
         }
     }
@@ -226,7 +223,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     
     func changeStateTapped() {
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
-            // TODO: handle et yeni manager yarat bul hata bas vs ???
+            Toaster.showToast(message: "Error occurred, please reload app.")
             return }
         
         if currentManagerState == .disconnected {
@@ -238,13 +235,13 @@ extension MainScreenViewController: MainScreenViewDelegate {
                 getCredential(serverId: selectedServer.id)
                 
             } else {
-                // TODO: TODO handle et önce sunucu seç diyerek
+                Toaster.showToast(message: "Error occurred, please select a location before.")
             }
         } else if currentManagerState == .connected {
             //    setManagerStateUI()
             manager.disconnectFromWg()
         } else {
-            // TODO: yaşanamamsı gereken hata toast bas
+            Toaster.showToast(message: "Error occurred, please try again.")
         }
         
         
@@ -260,21 +257,21 @@ extension MainScreenViewController: NETunnelManagerDelegate {
     }
 }
 
-// MARK: - Print helper for now:
-extension MainScreenViewController {
-    private func printDebug(_ string: String) {
-#if DEBUG
-        print(string)
-#endif
-    }
-    
-}
-
 // MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
     func selectedServer(server: Server) {
         setSelectedServer(server: server)
         // TODO: If selected premium, show premium controller - flow
+    }
+    
+}
+
+// MARK: - Print helper for now:
+extension MainScreenViewController {
+    private func printDebug(_ string: String) {
+#if DEBUG
+        print("💚: " + string)
+#endif
     }
     
 }
