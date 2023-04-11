@@ -15,37 +15,52 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         // Construct a new WireGuard instance with this `PacketTunnelProvider`.
         wireguard = WireGuardAdapter(with: self, logHandler: { level, log in print(log) })
+        
+        
+        os_log(.info,"BABACAN - options dict: %{public}@", options!)
+        
+        // NS Interface
+        let rawInterfacePrivateKey = options?["interfacePrivateKey"] as! String
+        let rawInterfaceMTU = options?["interfaceMTU"] as! Int
+        let rawInterfaceAddress = options?["interfaceAddress"] as! [String]
+        let rawInterfaceDNS = options?["interfaceDNS"] as! [String]
+        
+        // NS Peer
+        let rawPeerPresharedKey = options?["peerPresharedKey"] as! String
+        let rawPeerPublicKey = options?["peerPublicKey"] as! String
+        let rawPeerAllowedIPs = options?["peerAllowedIPs"] as! [String]
+        let rawPeerEndpoint = options?["peerEndpoint"] as! String
 
+        os_log(.info,"BABACAN - NS completed")
         
-        os_log(.info,"BABACAN123: %{public}@", SERVER_ENDPOINT_STRING_5)
+        let interfacePrivateKey = PrivateKey(base64Key: rawInterfacePrivateKey)!
+        let interfaceAddress = rawInterfaceAddress.compactMap {IPAddressRange(from: $0)}
+        let interfaceDNS = rawInterfaceDNS.compactMap {DNSServer(from: $0)}
+        let interfaceMTU = UInt16(rawInterfaceMTU)
         
-        let a = options?.first?.key ?? "YEMEDİ"
-        let b = options?.first?.value as? NSString
+        let peerPublicKey = PublicKey(base64Key: rawPeerPublicKey)!
+        let peerPresharedKey = PreSharedKey(base64Key: rawPeerPresharedKey)!
+        let peerAllowedIPs = rawPeerAllowedIPs.compactMap {IPAddressRange(from: $0)}
+        let peerEndpoint = Endpoint(from: rawPeerEndpoint)
         
-        let c = String(b ?? "YEMEDİ'")
+        os_log(.info,"BABACAN - All parsed setted")
         
-        os_log(.info,"BABACAN456: %{public}@ -- %{public}@", a, c)
+        var interfaceConfiguration = InterfaceConfiguration(privateKey: interfacePrivateKey)
+        interfaceConfiguration.dns = interfaceDNS
+        interfaceConfiguration.addresses = interfaceAddress
+        interfaceConfiguration.mtu = interfaceMTU
         
-    //    os_log(.info,"BABACAN789: %{public}@ -- %{public}@", options!)
+        var peerConfiguration = PeerConfiguration(publicKey: peerPublicKey)
+        peerConfiguration.preSharedKey = peerPresharedKey
+        peerConfiguration.allowedIPs = peerAllowedIPs
+        peerConfiguration.endpoint = peerEndpoint
         
-        
-        var peerConfig2 = PeerConfiguration(publicKey: SERVER_PUBLIC_KEY_5)
-        
-        peerConfig2.allowedIPs = [ALLOWED_IPS_5_1, ALLOWED_IPS_5_2]
-        peerConfig2.endpoint = SERVER_ENDPOINT_5
-        peerConfig2.preSharedKey = SERVER_PRESHARED_KEY_5
-        
-        var interfaceConfig2 = InterfaceConfiguration(privateKey: SERVER_PRIVATE_KEY_5)
-        
-        interfaceConfig2.dns = [CLIENT_DNS_5_1, CLIENT_DNS_5_2]
-        interfaceConfig2.addresses = [ADDRESS_5_1, ADDRESS_5_2]
-        
-        interfaceConfig2.mtu = 1280
-        
-        let tunnelConfig2 = TunnelConfiguration(name: "config12322", interface: interfaceConfig2, peers: [peerConfig2])
+        let tunnelConfig = TunnelConfiguration(name: "tunnelConfig",
+                                               interface: interfaceConfiguration,
+                                               peers: [peerConfiguration])
         
         // Finally, start WireGuard and call `completionHandler` when ready.
-        wireguard?.start(tunnelConfiguration: tunnelConfig2, completionHandler: { error in
+        wireguard?.start(tunnelConfiguration: tunnelConfig, completionHandler: { error in
             os_log(.info,"BABACAN92929:")
             NSLog(error?.localizedDescription ?? "")
             completionHandler(error)

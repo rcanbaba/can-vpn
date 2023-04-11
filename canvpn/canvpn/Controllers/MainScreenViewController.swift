@@ -122,7 +122,7 @@ extension MainScreenViewController {
                 self.selectedServerCredential = response
                 
                 guard let manager = self.tunnelManager else { return }
-                manager.connectToWg()
+                manager.connectToWg(config: response.configuration)
                 
             case .failure(let error):
                 self.printDebug("getCredential failure")
@@ -232,10 +232,9 @@ extension MainScreenViewController: MainScreenViewDelegate {
             // TO CONNECT
             if let selectedServer = selectedServer {
                 DispatchQueue.main.async {
-                    // self.setUI(state: .connecting)
+                    self.setMainUI(state: .connecting)
+                    self.getCredential(serverId: selectedServer.id)
                 }
-                getCredential(serverId: selectedServer.id)
-                
             } else {
                 Toaster.showToast(message: "Error occurred, please select a location before.")
             }

@@ -57,7 +57,7 @@ class NETunnelManager {
         }
     }
     
-    private func saveAndConnect() async {
+    private func saveAndConnect(config: Configuration) async {
         guard let manager = manager else {
             delegate?.stateChanged(state: .invalid)
             return
@@ -65,7 +65,7 @@ class NETunnelManager {
         
         let configuration = NETunnelProviderProtocol()
         configuration.providerBundleIdentifier = "com.arbtech.ilovevpn.PacketTunnel"
-        configuration.serverAddress = SERVER_ENDPOINT_STRING_5
+        configuration.serverAddress = config.peer.endpoint
         configuration.providerConfiguration = [:]
         
         // Set the manager's configuration and mark it as enabled.
@@ -86,8 +86,9 @@ class NETunnelManager {
             // Now, load the manager from preferences.
             try await manager.loadFromPreferences()
             
+            let configDict = getConnectionConfigDict(config: config)
             // Start the VPN.
-            try manager.connection.startVPNTunnel()
+            try manager.connection.startVPNTunnel(options: configDict)
             print("Started tunnel successfully.")
             delegate?.stateChanged(state: .connected)
         }  catch NEVPNError.configurationInvalid {
@@ -103,7 +104,7 @@ class NETunnelManager {
             debugPrint(error.localizedDescription)
             return
         }
-
+        
     }
     
     private func disconnect() {
@@ -112,15 +113,34 @@ class NETunnelManager {
         delegate?.stateChanged(state: .disconnected)
     }
     
-    private func connectToWireguard() async {
+    private func connectToWireguard(config: Configuration) async {
         manager = await getManagerWithPreferences()
-        await saveAndConnect()
+        await saveAndConnect(config: config)
     }
     
     private func disconnectFromWireguard() async {
         manager = await getManagerWithPreferences()
         disconnect()
     }
+    
+    private func getConnectionConfigDict(config: Configuration) -> [String : NSObject] {
+        var dict: [String : NSObject] = [:]
+        
+        // interface
+        dict["interfacePrivateKey"] = NSString(string: config.interface.privateKey)
+        dict["interfaceMTU"] = NSNumber(value: config.interface.mtu)
+        dict["interfaceAddress"] = NSArray(array: config.interface.address)
+        dict["interfaceDNS"] = NSArray(array: config.interface.dns)
+        
+        // peer
+        dict["peerPresharedKey"] = NSString(string: config.peer.presharedKey)
+        dict["peerPublicKey"] = NSString(string: config.peer.publicKey)
+        dict["peerAllowedIPs"] = NSArray(array: config.peer.allowedIPS)
+        dict["peerEndpoint"] = NSString(string: config.peer.endpoint)
+
+        return dict
+    }
+    
     
 }
 
@@ -139,10 +159,10 @@ extension NETunnelManager {
         }
     }
     
-    public func connectToWg() {
+    public func connectToWg(config: Configuration) {
         delegate?.stateChanged(state: .connecting)
         Task {
-            await connectToWireguard()
+            await connectToWireguard(config: config)
         }
     }
     
