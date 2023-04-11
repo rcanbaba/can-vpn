@@ -6,6 +6,7 @@
 //
 
 import NetworkExtension
+import WireGuardKit
 
 enum TunnelState: Int {
     case connecting = 0
@@ -16,6 +17,8 @@ enum TunnelState: Int {
 protocol NETunnelManagerDelegate: AnyObject {
     func stateChanged(state: NEVPNStatus)
 }
+
+var tunnelConfiguration123456: TunnelConfiguration?
 
 class NETunnelManager {
     
@@ -57,12 +60,12 @@ class NETunnelManager {
         }
     }
     
-    private func saveAndConnect() async {
+    private func saveAndConnect(config: Configuration?) async {
         guard let manager = manager else {
             delegate?.stateChanged(state: .invalid)
             return
         }
-        
+//        
         let configuration = NETunnelProviderProtocol()
         configuration.providerBundleIdentifier = "com.arbtech.ilovevpn.PacketTunnel"
         configuration.serverAddress = SERVER_ENDPOINT_STRING_5
@@ -87,7 +90,7 @@ class NETunnelManager {
             try await manager.loadFromPreferences()
             
             // Start the VPN.
-            try manager.connection.startVPNTunnel()
+            try manager.connection.startVPNTunnel(options: ["can": NSString("15.237.93.242:57630")])
             print("Started tunnel successfully.")
             delegate?.stateChanged(state: .connected)
         }  catch NEVPNError.configurationInvalid {
@@ -112,9 +115,9 @@ class NETunnelManager {
         delegate?.stateChanged(state: .disconnected)
     }
     
-    private func connectToWireguard() async {
+    private func connectToWireguard(config: Configuration?) async {
         manager = await getManagerWithPreferences()
-        await saveAndConnect()
+        await saveAndConnect(config: config)
     }
     
     private func disconnectFromWireguard() async {
@@ -139,10 +142,10 @@ extension NETunnelManager {
         }
     }
     
-    public func connectToWg() {
+    public func connectToWg(config: Configuration?) {
         delegate?.stateChanged(state: .connecting)
         Task {
-            await connectToWireguard()
+            await connectToWireguard(config: config)
         }
     }
     
@@ -153,4 +156,82 @@ extension NETunnelManager {
         }
     }
     
+}
+
+
+extension TunnelConfiguration {
+    
+    func asWgQuickConfig() -> String {
+        var output = "[Interface]\n"
+        output.append("PrivateKey = \(interface.privateKey.base64Key)\n")
+        if let listenPort = interface.listenPort {
+            output.append("ListenPort = \(listenPort)\n")
+        }
+        if !interface.addresses.isEmpty {
+            let addressString = interface.addresses.map { $0.stringRepresentation }.joined(separator: ", ")
+            output.append("Address = \(addressString)\n")
+        }
+        if !interface.dns.isEmpty || !interface.dnsSearch.isEmpty {
+            var dnsLine = interface.dns.map { $0.stringRepresentation }
+            dnsLine.append(contentsOf: interface.dnsSearch)
+            let dnsString = dnsLine.joined(separator: ", ")
+            output.append("DNS = \(dnsString)\n")
+        }
+        if let mtu = interface.mtu {
+            output.append("MTU = \(mtu)\n")
+        }
+
+        for peer in peers {
+            output.append("\n[Peer]\n")
+            output.append("PublicKey = \(peer.publicKey.base64Key)\n")
+            if let preSharedKey = peer.preSharedKey?.base64Key {
+                output.append("PresharedKey = \(preSharedKey)\n")
+            }
+            if !peer.allowedIPs.isEmpty {
+                let allowedIPsString = peer.allowedIPs.map { $0.stringRepresentation }.joined(separator: ", ")
+                output.append("AllowedIPs = \(allowedIPsString)\n")
+            }
+            if let endpoint = peer.endpoint {
+                output.append("Endpoint = \(endpoint.stringRepresentation)\n")
+            }
+            if let persistentKeepAlive = peer.persistentKeepAlive {
+                output.append("PersistentKeepalive = \(persistentKeepAlive)\n")
+            }
+        }
+
+        return output
+    }
+    
+    
+}
+
+
+extension NETunnelProviderProtocol {
+    convenience init?(tunnelConfiguration: TunnelConfiguration, previouslyFrom old: NEVPNProtocol? = nil) {
+        self.init()
+        
+        guard let appId = Bundle.main.bundleIdentifier else { return nil }
+        providerBundleIdentifier = "\(appId).network-extension"
+        
+#if os(macOS)
+        providerConfiguration = ["UID": getuid()]
+#endif
+        
+        let endpoints = tunnelConfiguration.peers.compactMap { $0.endpoint }
+        if endpoints.count == 1 {
+            serverAddress = endpoints[0].stringRepresentation
+        } else if endpoints.isEmpty {
+            serverAddress = "Unspecified"
+        } else {
+            serverAddress = "Multiple endpoints"
+        }
+    }
+    
+    
+    static func asTunnelConfiguration() -> TunnelConfiguration? {
+        
+        guard let conf = tunnelConfiguration123456 else { return nil }
+        
+        return conf
+    }
 }

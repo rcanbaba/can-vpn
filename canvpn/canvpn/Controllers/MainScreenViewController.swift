@@ -9,6 +9,7 @@ import UIKit
 import NetworkExtension
 import Lottie
 import FirebaseAnalytics
+import WireGuardKit
 
 class MainScreenViewController: UIViewController {
     
@@ -114,19 +115,30 @@ extension MainScreenViewController {
         service.request(getCredentialRequest) { [weak self] result in
             guard let self = self else { return }
             
+<<<<<<< Updated upstream
 
             
+=======
+>>>>>>> Stashed changes
             switch result {
             case .success(let response):
                 self.printDebug("getCredential success")
                 self.selectedServerCredential = response
                 
                 guard let manager = self.tunnelManager else { return }
+<<<<<<< Updated upstream
                 manager.connectToWg()
+=======
+                manager.connectToWg(config: response.configuration)
+                
+>>>>>>> Stashed changes
                 
             case .failure(let error):
                 self.printDebug("getCredential failure")
-                Toaster.showToast(message: "Error occurred, please select location again!")
+                DispatchQueue.main.async {
+                    self.setMainUI(state: .disconnected)
+                    Toaster.showToast(message: "Error occurred, please select location again!")
+                }
             }
             
         }
@@ -226,22 +238,32 @@ extension MainScreenViewController: MainScreenViewDelegate {
     func changeStateTapped() {
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "Error occurred, please reload app.")
-            return }
+            return
+        }
         
         if currentManagerState == .disconnected {
-            // TO CONNECT
+            
+            //TODO : CAN UÇURR
+//
+            let deneme: Configuration? = nil
+
+            manager.connectToWg(config: deneme)
+
+            
+            
             if let selectedServer = selectedServer {
                 DispatchQueue.main.async {
-                    // self.setUI(state: .connecting)
+                    self.setMainUI(state: .connecting)
+                //    self.getCredential(serverId: selectedServer.id)
                 }
-                getCredential(serverId: selectedServer.id)
-                
             } else {
                 Toaster.showToast(message: "Error occurred, please select a location before.")
             }
         } else if currentManagerState == .connected {
-            //    setManagerStateUI()
-            manager.disconnectFromWg()
+            DispatchQueue.main.async {
+                self.setMainUI(state: .disconnecting)
+                manager.disconnectFromWg()
+            }
         } else {
             Toaster.showToast(message: "Error occurred, please try again.")
         }

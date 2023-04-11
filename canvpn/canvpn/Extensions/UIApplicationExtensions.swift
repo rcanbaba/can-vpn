@@ -25,9 +25,10 @@ extension UIApplication {
     }
     
     class func getMainWindow () -> UIWindow? {
-        
-        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-        
+        var window: UIWindow?
+        DispatchQueue.main.async {
+            window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        }
         return window
     }
     

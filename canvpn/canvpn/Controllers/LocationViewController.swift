@@ -62,7 +62,7 @@ class LocationViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)        
+        super.viewWillAppear(animated)
     }
     
     private func setNavigationBar() {
