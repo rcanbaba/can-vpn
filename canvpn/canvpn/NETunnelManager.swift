@@ -64,8 +64,8 @@ class NETunnelManager {
         }
         
         let configuration = NETunnelProviderProtocol()
-        configuration.providerBundleIdentifier = "com.arbtech.canvpn.sonDenemeVpn.PacketTunnel"
-        configuration.serverAddress = SERVER_ENDPOINT_STRING
+        configuration.providerBundleIdentifier = "com.arbtech.ilovevpn.PacketTunnel"
+        configuration.serverAddress = SERVER_ENDPOINT_STRING_5
         configuration.providerConfiguration = [:]
         
         // Set the manager's configuration and mark it as enabled.

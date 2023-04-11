@@ -114,13 +114,15 @@ extension MainScreenViewController {
         service.request(getCredentialRequest) { [weak self] result in
             guard let self = self else { return }
             
-            guard let manager = self.tunnelManager else { return }
-            manager.connectToWg()
+
             
             switch result {
             case .success(let response):
                 self.printDebug("getCredential success")
                 self.selectedServerCredential = response
+                
+                guard let manager = self.tunnelManager else { return }
+                manager.connectToWg()
                 
             case .failure(let error):
                 self.printDebug("getCredential failure")

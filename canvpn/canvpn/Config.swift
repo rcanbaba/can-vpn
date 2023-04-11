@@ -8,21 +8,20 @@
 import Foundation
 import WireGuardKit
 
-// The client's WireGuard private key.
-let CLIENT_PRIVATE_KEY = PrivateKey(base64Key: "OBSp74gbmSHtZjpD7q9Kzldwz8HGR5xZwZM4mClcV0Q=")!
+var SERVER_PUBLIC_KEY_5 = PublicKey(base64Key: "18jMWwySbkV2RPhVY66aSgVBtldmoZuTTpfJrmN4FE4=")!
 
-// The client's virtual IP address for WireGuard.
-let CLIENT_IP = IPAddressRange(from: "10.66.66.3")!
+var ALLOWED_IPS_5_1 = IPAddressRange(from: "0.0.0.0/0")!
+var ALLOWED_IPS_5_2 = IPAddressRange(from: "::/0")!
 
+var SERVER_ENDPOINT_STRING_5 = "34.244.1.166:51820"
+var SERVER_ENDPOINT_5 = Endpoint(from: SERVER_ENDPOINT_STRING_5)
 
-// The DNS server to use for the client.
-let CLIENT_DNS = DNSServer(from: "1.1.1.1")!
+var SERVER_PRESHARED_KEY_5 = PreSharedKey(base64Key: "CNwuP+ZUKGGCfLi6v5unFU2DP4Smg+bYGvzNBbt5Bbs=")!
 
-// The server's WireGuard public key.
-let SERVER_PUBLIC_KEY = PublicKey(base64Key: "4mr2idcjAD/1ql6DbH76gnrcZJCyBKGk/zoZ2tv4URY=")!
+var SERVER_PRIVATE_KEY_5 = PrivateKey(base64Key: "0I3a72VsxzF2SC/54xKsnGafsC5nVkOYHw12eNZu/NQ=")!
 
-// The server's IP address and port, such as "1.2.3.4:51820" or similar.
-let SERVER_ENDPOINT_STRING = "15.237.93.242:57630"
+var CLIENT_DNS_5_1 = DNSServer(from: "1.1.1.1")!
+var CLIENT_DNS_5_2 = DNSServer(from: "1.0.0.1")!
 
-// The server's endpoint, generated from `SERVER_ENDPOINT_STRING`.
-let SERVER_ENDPOINT = Endpoint(from: SERVER_ENDPOINT_STRING)
+var ADDRESS_5_1 = IPAddressRange(from: "10.3.2.218/32")!
+var ADDRESS_5_2 = IPAddressRange(from: "fd00::3:2:7f/128")!
