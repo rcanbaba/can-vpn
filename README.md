@@ -16,7 +16,10 @@ update your go version using brew, for go1.19.4 ->  ${PATH}:/opt/homebrew/opt/go
 also in the WireGuardKitGoBrigeiOS update de info directory it is not correct in the docs.
 
 such as, 
+
 /Users/canbaba/Library/Developer/Xcode/DerivedData/sonDenemeVpn-cevdvdcgetzidobpkebbbkldhfhr/SourcePackages/checkouts/wireguard-apple/Sources/WireGuardKitGo
+
+(canvpn-cevdvdcgetzidobpkebbbkldhfhr) -> set your own path
 
 ---
 WireGuardKit configuration notes, (***TunnelConfiguration***)
@@ -29,7 +32,14 @@ PeerConfiguration with public key and,
 - preSharedKey (***obligatory***)
 
 InterfaceConfiguration with private key and,
-- DNDServers as an array
+- DNSServers as an array
 - Addresses (***IPAddressRange***)
+- MTU
 
+--- 
+Additional Notes 
 
+* for debugging NEPacketTunnelProvider use os_log.
+* send options dictionary from NETunnelProviderManager to NEPacketTunnelProvider in startVPNTunnel method.
+* in NETunnelProviderManager set your NETunnelProviderProtocol configuration providerBundleIdentifier as your PacketTunnel bundle id.
+* 
