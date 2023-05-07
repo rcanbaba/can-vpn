@@ -10,8 +10,8 @@ import Foundation
 struct GetCredentialRequest: DataRequest {
     
     var url: String {
-        let baseURL: String = "http://100.26.161.159"
-        let path: String = "/api/connect"
+        let baseURL: String = Constants.baseURL
+        let path: String = Endpoints.getCredential
         return baseURL + path
     }
     

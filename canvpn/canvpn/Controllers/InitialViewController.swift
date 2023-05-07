@@ -12,15 +12,19 @@ class InitialViewController: UIViewController {
     
     private lazy var splashView = SplashScreenView()
     
+    private var networkService: DefaultNetworkService?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkService = DefaultNetworkService()
         view.backgroundColor = UIColor.Custom.orange
         view.addSubview(splashView)
         splashView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
         splashView.delegate = self
+
+        startInitialSetup()
     }
     
     private func presentMainScreen(){
@@ -41,11 +45,71 @@ class InitialViewController: UIViewController {
     }
 }
 
+// MARK: Initial Setup
+extension InitialViewController {
+    
+    private func startInitialSetup() {
+        if KeyValueStorage.deviceId == nil {
+            registerDevice()
+        } else {
+            fetchSettings()
+        }
+    }
+    
+    private func registerDevice() {
+        guard let service = networkService else { return }
+        var registerDeviceRequest = RegisterDeviceRequest()
+        registerDeviceRequest.setRegisterParams()
+        
+        service.request(registerDeviceRequest) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                KeyValueStorage.deviceId = response.deviceID
+                self.fetchSettings()
+                print("CAN denemeReq success")
+                
+            case .failure(let error):
+                print("CAN denemeReq failed")
+                // TODO
+                // bi daha register dene hataya göre çözüm
+                // registerDevice()
+            }
+            
+        }
+    }
+    
+    
+    private func fetchSettings() {
+        guard let service = networkService else { return }
+        var fetchSettingsRequest = FetchSettingsRequest()
+        fetchSettingsRequest.setClientParams()
+        
+        service.request(fetchSettingsRequest) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+
+                print("CAN settings success")
+                
+            case .failure(let error):
+                print("CAN settings failed")
+
+            }
+            
+        }
+        
+    }
+    
+    
+}
+
+// TODO: animation counter da sayalım
 extension InitialViewController: SplashScreenViewDelegate {
     func splashAnimationCompleted() {
         splashView.hideWithAnimation { [weak self] in
             self?.splashView.removeFromSuperview()
-            self?.presentMainScreen()
+        //    self?.presentMainScreen()
         }
     }
     

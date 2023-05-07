@@ -5,8 +5,16 @@
 //  Created by Can Babaoğlu on 24.12.2022.
 //
 
+import Foundation
+
 class Constants {
+    
     static let appName = "ilovevpn"
+    static let OSType = "ios"
+    static let appBuild = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+    
+    static let baseURL = "http://100.26.161.159"
+    
     static let appNavBarName = "I Love VPN"
     static let vpnListingName = "iLoveVPN"
     static let animationDuration = 0.3

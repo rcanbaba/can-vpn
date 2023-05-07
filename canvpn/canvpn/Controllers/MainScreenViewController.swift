@@ -67,13 +67,6 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    // TO ipsec manager
-    //    @objc private func statusDidChange(_ notification: Notification) {
-    //        guard let connection = notification.object as? NEVPNConnection else { return }
-    //        vpnStatus = connection.status
-    //        setManagerStateUI()
-    //    }
-    
     private func setMainUI(state: ConnectionState) {
         DispatchQueue.main.async {
             self.mainView.setState(state: state)
@@ -142,45 +135,10 @@ extension MainScreenViewController {
             switch result {
             case .success(let response):
                 self.printDebug("fetchServerList success")
-                self.serverList = response.servers
-                
-                /* MOCK LIST
-                 
-                 let mockConnection1 = Connection(host: "230.24.12.16", port: "443")
-                 let mockLocation1 = Location(countryCode: "IT", city: "Italy")
-                 let mock1 = Server(id: "1", type: 0, engine: 1, connection: mockConnection1, location: mockLocation1)
-                 
-                 let mockConnection2 = Connection(host: "110.95.90.16", port: "443")
-                 let mockLocation2 = Location(countryCode: "SG", city: "Singapore")
-                 let mock2 = Server(id: "1", type: 0, engine: 1, connection: mockConnection2, location: mockLocation2)
-                 
-                 let mockConnection6 = Connection(host: "110.96.95.16", port: "443")
-                 let mockLocation6 = Location(countryCode: "US", city: "Virginia - 2")
-                 let mock6 = Server(id: "1", type: 0, engine: 1, connection: mockConnection6, location: mockLocation6)
-                 
-                 let mockConnection3 = Connection(host: "103.42.29.0", port: "443")
-                 let mockLocation3 = Location(countryCode: "DE", city: "Germany")
-                 let mock3 = Server(id: "1", type: 0, engine: 1, connection: mockConnection3, location: mockLocation3)
-                 
-                 let mockConnection4 = Connection(host: "105.16.176.0", port: "443")
-                 let mockLocation4 = Location(countryCode: "FR", city: "France")
-                 let mock4 = Server(id: "1", type: 0, engine: 1, connection: mockConnection4, location: mockLocation4)
-                 
-                 let mockConnection5 = Connection(host: "101.167.184.0", port: "443")
-                 let mockLocation5 = Location(countryCode: "GB", city: "London")
-                 let mock5 = Server(id: "1", type: 0, engine: 1, connection: mockConnection5, location: mockLocation5)
-                 
-                 self.serverList.append(mock1)
-                 self.serverList.append(mock2)
-                 self.serverList.append(mock3)
-                 self.serverList.append(mock4)
-                 self.serverList.append(mock5)
-                 self.serverList.append(mock6)
-                 
-                 */
-                
+           //     self.serverList = response.servers.reversed()
+
                 // TODO: set as selected first free server
-                self.setSelectedServer(server: response.servers.first)
+         //       self.setSelectedServer(server: response.servers.first)
             case .failure(let error):
                 Toaster.showToast(message: "Error occurred, please reload again!")
                 self.printDebug("fetchServerList failure")
@@ -201,7 +159,7 @@ extension MainScreenViewController {
         
         DispatchQueue.main.async {
             self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
-            self.mainView.setLocationText(country: server?.location.city, ip: server?.connection.host)
+       //     self.mainView.setLocationText(country: server?.location.city, ip: server?.connection.host)
             self.mainView.setLocationSignal(level: .good)
         }
     }

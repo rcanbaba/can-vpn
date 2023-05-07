@@ -25,9 +25,9 @@ struct GetServerListRequest: DataRequest {
     
     var bodyData: Data?
     
-    func decode(_ data: Data) throws -> ServerList {
+    func decode(_ data: Data) throws -> Int {
 
-        let response = try JSONDecoder().decode(ServerList.self, from: data)
+        let response = try JSONDecoder().decode(Int.self, from: data)
   
         return response
     }

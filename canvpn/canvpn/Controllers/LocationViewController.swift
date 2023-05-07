@@ -113,17 +113,20 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
         cell.set(country: cellData.location.city)
         cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
         
-        if indexPath.row < 3 {
+        if indexPath.row < 4 {
             cell.set(signalImage: SignalLevel.perfect.getSignalImage())
-        } else if indexPath.row < 6 {
+            cell.set(isPremium: true)
+        } else if indexPath.row < 9 {
             cell.set(signalImage: SignalLevel.good.getSignalImage())
+            cell.set(isPremium: true)
+        } else if indexPath.row < 14 {
+            cell.set(signalImage: SignalLevel.good.getSignalImage())
+            cell.set(isPremium: false)
         } else {
             cell.set(signalImage: SignalLevel.medium.getSignalImage())
+            cell.set(isPremium: false)
         }
-        
-        
-        cell.set(isPremium: cellData.type == 1)
-        
+
         return cell
     }
     
