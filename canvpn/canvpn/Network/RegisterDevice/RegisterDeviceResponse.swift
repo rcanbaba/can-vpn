@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - RegisterResponse
 struct RegisterResponse: Codable {
     let deviceID: String
 

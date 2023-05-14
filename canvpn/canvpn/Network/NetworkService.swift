@@ -63,7 +63,9 @@ final class DefaultNetworkService: NetworkService {
                 
                 let b = a?.statusCode
                 
-                return completion(.failure(NSError()))
+                let c = completion(.failure(NSError()))
+                
+                return c
             }
             
             guard let data = data else {

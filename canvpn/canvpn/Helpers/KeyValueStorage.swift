@@ -13,7 +13,7 @@ class KeyValueStorage {
     private enum Keys: String {
         case installationId = "installationId"
         case deviceId = "deviceId"
-        
+        case pushNotificationFCMToken = "kPushNotificationFCMToken"
         
     }
     
@@ -39,6 +39,14 @@ class KeyValueStorage {
         }
         set(newValue) {
             userDefaults.set(newValue, forKey: Keys.deviceId.rawValue)
+        }
+    }
+    
+    static var pushNotificationFCMToken: String? {
+        get {
+            return userDefaults.string(forKey: Keys.pushNotificationFCMToken.rawValue)
+        } set(newValue) {
+            userDefaults.set(newValue, forKey: Keys.pushNotificationFCMToken.rawValue)
         }
     }
     

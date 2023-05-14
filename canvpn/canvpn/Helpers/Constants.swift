@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import UIKit
 
 class Constants {
     
     static let appName = "ilovevpn"
     static let OSType = "ios"
     static let appBuild = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+    
+    static let idfv = UIDevice.current.identifierForVendor?.uuidString
     
     static let baseURL = "http://100.26.161.159"
     

@@ -11,4 +11,5 @@ public struct Endpoints {
     static let registerDevice = "/api/devices"
     static let fetchSettings = "/api/settings"
     static let getCredential = "/api/connect"
+    static let registerFCM = "/api/devices/notification/fcm"
 }

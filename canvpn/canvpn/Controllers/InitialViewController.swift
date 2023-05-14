@@ -67,10 +67,10 @@ extension InitialViewController {
             case .success(let response):
                 KeyValueStorage.deviceId = response.deviceID
                 self.fetchSettings()
-                print("CAN denemeReq success")
+                print("CAN12355 denemeReq success")
                 
             case .failure(let error):
-                print("CAN denemeReq failed")
+                print("CAN12355 denemeReq failed")
                 // TODO
                 // bi daha register dene hataya göre çözüm
                 // registerDevice()
@@ -89,11 +89,14 @@ extension InitialViewController {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-
-                print("CAN settings success")
+                DispatchQueue.main.async {
+                    //TODO: dispatch group a alalım animasyon bitmeden geçmesin
+                    self.presentMainScreen()
+                }
+                print("CAN12355 settings success")
                 
             case .failure(let error):
-                print("CAN settings failed")
+                print("CAN12355 settings failed")
 
             }
             
@@ -108,7 +111,7 @@ extension InitialViewController {
 extension InitialViewController: SplashScreenViewDelegate {
     func splashAnimationCompleted() {
         splashView.hideWithAnimation { [weak self] in
-            self?.splashView.removeFromSuperview()
+        //    self?.splashView.removeFromSuperview()
         //    self?.presentMainScreen()
         }
     }
