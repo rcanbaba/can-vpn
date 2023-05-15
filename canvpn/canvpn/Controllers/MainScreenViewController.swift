@@ -224,13 +224,3 @@ extension MainScreenViewController: LocationViewControllerDelegate {
     }
     
 }
-
-// MARK: - Print helper for now:
-extension MainScreenViewController {
-    private func printDebug(_ string: String) {
-#if DEBUG
-        print("💚: " + string)
-#endif
-    }
-    
-}

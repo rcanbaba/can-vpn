@@ -42,7 +42,6 @@
 		B43E15932A1142D50095FF4A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B43E15922A1142D50095FF4A /* FirebaseCrashlytics */; };
 		B43E15952A1142D50095FF4A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B43E15942A1142D50095FF4A /* FirebaseMessaging */; };
 		B43E15982A1145970095FF4A /* RegisterFCMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E15972A1145970095FF4A /* RegisterFCMRequest.swift */; };
-		B43E159A2A1145BA0095FF4A /* RegisterFCMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E15992A1145BA0095FF4A /* RegisterFCMResponse.swift */; };
 		B44120DD2956390B0072B566 /* AESCryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44120DC2956390B0072B566 /* AESCryption.swift */; };
 		B44120E2295712D10072B566 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44120E1295712D10072B566 /* Constants.swift */; };
 		B44120E52957162D0072B566 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44120E42957162D0072B566 /* UIViewExtensions.swift */; };
@@ -309,6 +308,9 @@
 		B44122F729575DC40072B566 /* splash-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B44122F629575DC40072B566 /* splash-animation.json */; };
 		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
 		B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122FB29577E540072B566 /* VpnServerItem.swift */; };
+		B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */; };
+		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
+		B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E12A125F76008F00FA /* SuccessResponse.swift */; };
 		B48F8A6F295895B900CB69CA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F8A6E295895B900CB69CA /* Localization.swift */; };
 		B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D38E296C952100651BFC /* NETunnelManager.swift */; };
 		B490D392296C958A00651BFC /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = B490D391296C958A00651BFC /* WireGuardKit */; };
@@ -402,7 +404,6 @@
 		B4184A1F295614EA0051EB79 /* GetServerListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerListRequest.swift; sourceTree = "<group>"; };
 		B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		B43E15972A1145970095FF4A /* RegisterFCMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMRequest.swift; sourceTree = "<group>"; };
-		B43E15992A1145BA0095FF4A /* RegisterFCMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMResponse.swift; sourceTree = "<group>"; };
 		B44120DC2956390B0072B566 /* AESCryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESCryption.swift; sourceTree = "<group>"; };
 		B44120E1295712D10072B566 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B44120E42957162D0072B566 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -669,6 +670,9 @@
 		B44122F629575DC40072B566 /* splash-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-animation.json"; sourceTree = "<group>"; };
 		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
 		B44122FB29577E540072B566 /* VpnServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnServerItem.swift; sourceTree = "<group>"; };
+		B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
+		B47170E12A125F76008F00FA /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		B48F8A6E295895B900CB69CA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		B490D38E296C952100651BFC /* NETunnelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NETunnelManager.swift; sourceTree = "<group>"; };
 		B490D3AC296C98EE00651BFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -855,6 +859,7 @@
 				B4184A1B295614830051EB79 /* ErrorHandler.swift */,
 				B4184A1F295614EA0051EB79 /* GetServerListRequest.swift */,
 				B4EE1F652A07C49200E219CA /* Endpoints.swift */,
+				B47170E12A125F76008F00FA /* SuccessResponse.swift */,
 				B43E15962A11455A0095FF4A /* RegisterNotification */,
 				B4EE1F622A07C3D700E219CA /* RegisterDevice */,
 				B4EE1F632A07C3EF00E219CA /* FetchSettings */,
@@ -867,7 +872,7 @@
 			isa = PBXGroup;
 			children = (
 				B43E15972A1145970095FF4A /* RegisterFCMRequest.swift */,
-				B43E15992A1145BA0095FF4A /* RegisterFCMResponse.swift */,
+				B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */,
 			);
 			path = RegisterNotification;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */,
 				B40D732929DB21900066FD80 /* UIApplicationExtensions.swift */,
 				B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */,
+				B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1640,13 +1646,13 @@
 				B4184A20295614EA0051EB79 /* GetServerListRequest.swift in Sources */,
 				B40D732429D86FC20066FD80 /* CredentialResponse.swift in Sources */,
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
-				B43E159A2A1145BA0095FF4A /* RegisterFCMResponse.swift in Sources */,
 				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
 				B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */,
 				B40D732829DB21350066FD80 /* Toaster.swift in Sources */,
 				B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */,
+				B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */,
 				B4EE1F662A07C49200E219CA /* Endpoints.swift in Sources */,
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
@@ -1660,6 +1666,7 @@
 				B43E15982A1145970095FF4A /* RegisterFCMRequest.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
+				B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
 				B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */,
@@ -1675,6 +1682,7 @@
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
 				B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */,
+				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,
 				B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */,
 				B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */,
 				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,

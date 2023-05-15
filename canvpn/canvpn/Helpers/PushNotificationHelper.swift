@@ -81,9 +81,19 @@ class PushNotificationHelper {
     public static func setAPNSToken(token: Data?) {
         guard let tokenString = token?.map({ String(format: "%02.2hhx", $0) }).joined() else { return }
         
-//        API.registerApns(token: tokenString) { (response, error) in
-//            // todo
-//        }
+        var registerAPNSRequest = RegisterAPNSRequest()
+        registerAPNSRequest.setParams(token: tokenString)
+        
+        let networkService = DefaultNetworkService()
+        networkService.request(registerAPNSRequest) { result in
+            switch result {
+            case .success(let response):
+                print("💙: registerAPNSRequest - success - \(response.success)")
+            case .failure(_):
+                print("💙: registerAPNSRequest - failure")
+            }
+        }
+
     }
     
     public static func handleWillPresentCompletionHandler(dict: [AnyHashable: Any], completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -139,17 +149,17 @@ class PushNotificationHelper {
         }
 
         var registerFCMRequest = RegisterFCMRequest()
-        registerFCMRequest.setClientParams()
+        registerFCMRequest.setParams(token: token)
         
         let networkService = DefaultNetworkService()
         networkService.request(registerFCMRequest) { result in
             switch result {
             case .success(let response):
                 if response.success {
-                    print("CAN - registerFCMRequest SSS")
+                    print("💙: registerFCMRequest - success - true")
                     KeyValueStorage.pushNotificationFCMToken = token
                 } else {
-                    print("CAN - registerFCMRequest FFFF")
+                    print("💙: registerFCMRequest - success - false")
                     if !retryFCMToken {
                         return
                     }
@@ -160,7 +170,7 @@ class PushNotificationHelper {
                     }
                 }
             case .failure(_):
-                print("CAN - registerFCMRequest FFFFAAA")
+                print("💙: registerFCMRequest - failure")
                 if !retryFCMToken {
                     return
                 }
@@ -170,9 +180,7 @@ class PushNotificationHelper {
                     setFCMToken(token: token)
                 }
             }
-            
         }
     }
 
 }
-

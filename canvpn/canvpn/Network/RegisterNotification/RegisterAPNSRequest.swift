@@ -1,17 +1,19 @@
 //
-//  RegisterFCMRequest.swift
+//  RegisterAPNSRequest.swift
 //  canvpn
 //
-//  Created by Can Babaoğlu on 14.05.2023.
+//  Created by Can Babaoğlu on 15.05.2023.
 //
 
 import Foundation
 
-struct RegisterFCMRequest: DataRequest {
+import Foundation
+
+struct RegisterAPNSRequest: DataRequest {
     
     var url: String {
         let baseURL: String = Constants.baseURL
-        let path: String = Endpoints.registerFCM
+        let path: String = Endpoints.registerAPNS
         return baseURL + path
     }
     
