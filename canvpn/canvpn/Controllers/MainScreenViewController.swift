@@ -126,24 +126,25 @@ extension MainScreenViewController {
     }
     
     private func fetchServerList() {
-        guard let service = networkService else { return }
-        let getServerListRequest = GetServerListRequest()
-        
-        service.request(getServerListRequest) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                self.printDebug("fetchServerList success")
-           //     self.serverList = response.servers.reversed()
-
-                // TODO: set as selected first free server
-         //       self.setSelectedServer(server: response.servers.first)
-            case .failure(let error):
-                Toaster.showToast(message: "Error occurred, please reload again!")
-                self.printDebug("fetchServerList failure")
-            }
-        }
+        // TODO: 
+//        guard let service = networkService else { return }
+//        let getServerListRequest = GetServerListRequest()
+//
+//        service.request(getServerListRequest) { [weak self] result in
+//            guard let self = self else { return }
+//
+//            switch result {
+//            case .success(let response):
+//                self.printDebug("fetchServerList success")
+//           //     self.serverList = response.servers.reversed()
+//
+//                // TODO: set as selected first free server
+//         //       self.setSelectedServer(server: response.servers.first)
+//            case .failure(let error):
+//                Toaster.showToast(message: "Error occurred, please reload again!")
+//                self.printDebug("fetchServerList failure")
+//            }
+//        }
     }
     
     

@@ -34,7 +34,6 @@
 		B4184A1A295614710051EB79 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A19295614710051EB79 /* NetworkService.swift */; };
 		B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A1B295614830051EB79 /* ErrorHandler.swift */; };
 		B4184A1E295614950051EB79 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A1D295614950051EB79 /* DataRequest.swift */; };
-		B4184A20295614EA0051EB79 /* GetServerListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A1F295614EA0051EB79 /* GetServerListRequest.swift */; };
 		B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */; };
 		B43E158C2A113F4A0095FF4A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158B2A113F4A0095FF4A /* SwiftyJSON */; };
 		B43E158F2A1142D50095FF4A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158E2A1142D50095FF4A /* FirebaseAnalytics */; };
@@ -401,7 +400,6 @@
 		B4184A19295614710051EB79 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B4184A1B295614830051EB79 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		B4184A1D295614950051EB79 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
-		B4184A1F295614EA0051EB79 /* GetServerListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerListRequest.swift; sourceTree = "<group>"; };
 		B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		B43E15972A1145970095FF4A /* RegisterFCMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMRequest.swift; sourceTree = "<group>"; };
 		B44120DC2956390B0072B566 /* AESCryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESCryption.swift; sourceTree = "<group>"; };
@@ -857,7 +855,6 @@
 				B4184A19295614710051EB79 /* NetworkService.swift */,
 				B4184A1D295614950051EB79 /* DataRequest.swift */,
 				B4184A1B295614830051EB79 /* ErrorHandler.swift */,
-				B4184A1F295614EA0051EB79 /* GetServerListRequest.swift */,
 				B4EE1F652A07C49200E219CA /* Endpoints.swift */,
 				B47170E12A125F76008F00FA /* SuccessResponse.swift */,
 				B43E15962A11455A0095FF4A /* RegisterNotification */,
@@ -1643,7 +1640,6 @@
 				B4D09F3629CB635D00E11069 /* LocationViewController.swift in Sources */,
 				B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */,
 				B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */,
-				B4184A20295614EA0051EB79 /* GetServerListRequest.swift in Sources */,
 				B40D732429D86FC20066FD80 /* CredentialResponse.swift in Sources */,
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
 				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,

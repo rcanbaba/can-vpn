@@ -12,19 +12,35 @@ class InitialViewController: UIViewController {
     
     private lazy var splashView = SplashScreenView()
     
+    private let initialSetupDispatchGroup = DispatchGroup()
+    
     private var networkService: DefaultNetworkService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
+        
+        initialSetupDispatchGroup.enter()
+        initialSetupDispatchGroup.enter()
+        
+        splashView.delegate = self
+
+        startInitialSetup()
+        
+        configureUI()
+        
+        initialSetupDispatchGroup.notify(queue: .main) { [weak self] in
+            self?.printDebug("dispatchGroup - notify - presentMainScreen")
+            self?.presentMainScreen()
+        }
+    }
+    
+    private func configureUI() {
         view.backgroundColor = UIColor.Custom.orange
         view.addSubview(splashView)
         splashView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        splashView.delegate = self
-
-        startInitialSetup()
     }
     
     private func presentMainScreen(){
@@ -50,8 +66,10 @@ extension InitialViewController {
     
     private func startInitialSetup() {
         if KeyValueStorage.deviceId == nil {
+            printDebug("try - registerDevice")
             registerDevice()
         } else {
+            printDebug("try - fetchSettings")
             fetchSettings()
         }
     }
@@ -67,10 +85,10 @@ extension InitialViewController {
             case .success(let response):
                 KeyValueStorage.deviceId = response.deviceID
                 self.fetchSettings()
-                print("CAN12355 denemeReq success")
+                self.printDebug("registerDeviceRequest - success")
                 
             case .failure(let error):
-                print("CAN12355 denemeReq failed")
+                self.printDebug("registerDeviceRequest - failure")
                 // TODO
                 // bi daha register dene hataya göre çözüm
                 // registerDevice()
@@ -89,14 +107,11 @@ extension InitialViewController {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                DispatchQueue.main.async {
-                    //TODO: dispatch group a alalım animasyon bitmeden geçmesin
-                    self.presentMainScreen()
-                }
-                print("CAN12355 settings success")
+                self.initialSetupDispatchGroup.leave()
+                self.printDebug("fetchSettingsRequest - success")
                 
             case .failure(let error):
-                print("CAN12355 settings failed")
+                self.printDebug("fetchSettingsRequest - failure")
 
             }
             
@@ -107,12 +122,11 @@ extension InitialViewController {
     
 }
 
-// TODO: animation counter da sayalım
 extension InitialViewController: SplashScreenViewDelegate {
     func splashAnimationCompleted() {
         splashView.hideWithAnimation { [weak self] in
-        //    self?.splashView.removeFromSuperview()
-        //    self?.presentMainScreen()
+            self?.printDebug("splashAnimationCompleted")
+            self?.initialSetupDispatchGroup.leave()
         }
     }
     
