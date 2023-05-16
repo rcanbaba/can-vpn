@@ -107,6 +107,8 @@ extension InitialViewController {
             guard let self = self else { return }
             switch result {
             case .success(let response):
+                
+                SettingsManager.shared.settings = response
                 self.initialSetupDispatchGroup.leave()
                 self.printDebug("fetchSettingsRequest - success")
                 

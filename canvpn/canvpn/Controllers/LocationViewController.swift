@@ -43,18 +43,10 @@ class LocationViewController: UIViewController {
     
     private var serverList: [Server] = []
     
-    init(serverList:  [Server]) {
-        self.serverList = serverList
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        serverList = SettingsManager.shared.settings?.servers ?? []
         view.backgroundColor = UIColor.white
         configureUI()
         locationTableView.reloadData()

@@ -139,8 +139,8 @@ class MainScreenView: UIView {
     
     private func setPrivacyText () {
         let baseString = "pp_tos_key".localize()
-        let ppDefaultUrl = Constants.appPrivacyPolicyPageURLString
-        let tosDefaultUrl = Constants.appTermsOfServicePageURLString
+        let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
+        let tosDefaultUrl = SettingsManager.shared.settings?.links.termsURL ?? Constants.appTermsOfServicePageURLString
         var attributedString = NSMutableAttributedString(string: baseString)
         
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()

@@ -21,7 +21,6 @@ class MainScreenViewController: UIViewController {
     
     private var networkService: DefaultNetworkService?
     
-    private var serverList: [Server] = []
     private var selectedServer: Server?
     private var selectedServerCredential: Credential?
     
@@ -43,7 +42,6 @@ class MainScreenViewController: UIViewController {
         networkService = DefaultNetworkService()
         
         setLocationButtonMockData()
-        fetchServerList()
         configureUI()
     }
     
@@ -124,31 +122,7 @@ extension MainScreenViewController {
             
         }
     }
-    
-    private func fetchServerList() {
-        // TODO: 
-//        guard let service = networkService else { return }
-//        let getServerListRequest = GetServerListRequest()
-//
-//        service.request(getServerListRequest) { [weak self] result in
-//            guard let self = self else { return }
-//
-//            switch result {
-//            case .success(let response):
-//                self.printDebug("fetchServerList success")
-//           //     self.serverList = response.servers.reversed()
-//
-//                // TODO: set as selected first free server
-//         //       self.setSelectedServer(server: response.servers.first)
-//            case .failure(let error):
-//                Toaster.showToast(message: "Error occurred, please reload again!")
-//                self.printDebug("fetchServerList failure")
-//            }
-//        }
-    }
-    
-    
-    
+
     
 }
 
@@ -176,7 +150,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func locationButtonTapped() {
-        let locationViewController = LocationViewController(serverList: serverList)
+        let locationViewController = LocationViewController()
         locationViewController.hidesBottomBarWhenPushed = true
         locationViewController.delegate = self
         self.navigationController?.pushViewController(locationViewController, animated: true)
