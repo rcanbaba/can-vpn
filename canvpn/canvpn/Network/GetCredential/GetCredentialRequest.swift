@@ -19,21 +19,26 @@ struct GetCredentialRequest: DataRequest {
         [ : ]
     }
     
+    var headers: [String : String] {
+        ["X-Device-Id": KeyValueStorage.deviceId ?? "unknown"]
+    }
+    
     var method: HTTPMethod {
         .post
     }
     
     var bodyData: Data?
     
-    func decode(_ data: Data) throws -> Credential {
+    func decode(_ data: Data) throws -> Configuration {
         
-        let response = try JSONDecoder().decode(Credential.self, from: data)
+        let response = try JSONDecoder().decode(Configuration.self, from: data)
         
         return response
     }
     
     mutating func setParams(serverId: String) {
-        let body = ["server_id": serverId]
+        let body = ["client_params": clientParams,
+                    "server_id": serverId] as [String : Any]
         
         let data = try? JSONSerialization.data(
             withJSONObject: body,

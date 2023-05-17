@@ -58,14 +58,10 @@ final class DefaultNetworkService: NetworkService {
             }
             
             guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
-                
-                let a = response as? HTTPURLResponse
-                
-                let b = a?.statusCode
-                
-                let c = completion(.failure(NSError()))
-                
-                return c
+                let httpUrlResponse = response as? HTTPURLResponse
+                let statusCode = httpUrlResponse?.statusCode
+                print("💙💙: statusCode - error - \(statusCode ?? 999)")
+                return completion(.failure(NSError()))
             }
             
             guard let data = data else {

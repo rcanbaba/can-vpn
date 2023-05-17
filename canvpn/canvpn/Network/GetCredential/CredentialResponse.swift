@@ -7,13 +7,6 @@
 
 import Foundation
 
-// MARK: - Credential
-struct Credential: Codable {
-    let id: String
-    let engine: Int
-    let configuration: Configuration
-}
-
 // MARK: - Configuration
 struct Configuration: Codable {
     let interface: Interface
@@ -38,11 +31,13 @@ struct Peer: Codable {
     let presharedKey, publicKey: String
     let allowedIPS: [String]
     let endpoint: String
+    let persistentKeepalive: Int
 
     enum CodingKeys: String, CodingKey {
         case presharedKey = "preshared_key"
         case publicKey = "public_key"
         case allowedIPS = "allowed_ips"
         case endpoint
+        case persistentKeepalive = "persistent_keepalive"
     }
 }

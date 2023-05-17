@@ -22,7 +22,7 @@ class MainScreenViewController: UIViewController {
     private var networkService: DefaultNetworkService?
     
     private var selectedServer: Server?
-    private var selectedServerCredential: Credential?
+    private var selectedServerConfig: Configuration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,10 +110,10 @@ extension MainScreenViewController {
             switch result {
             case .success(let response):
                 self.printDebug("getCredential success")
-                self.selectedServerCredential = response
+                self.selectedServerConfig = response
                 
                 guard let manager = self.tunnelManager else { return }
-                manager.connectToWg(config: response.configuration)
+                manager.connectToWg(config: response)
                 
             case .failure(let error):
                 self.printDebug("getCredential failure")
@@ -130,7 +130,7 @@ extension MainScreenViewController {
 extension MainScreenViewController {
     private func setSelectedServer(server: Server?) {
         selectedServer = server
-        selectedServerCredential = nil
+        selectedServerConfig = nil
         
         DispatchQueue.main.async {
             self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
