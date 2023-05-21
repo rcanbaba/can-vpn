@@ -16,7 +16,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // Construct a new WireGuard instance with this `PacketTunnelProvider`.
         wireguard = WireGuardAdapter(with: self, logHandler: { level, log in print(log) })
         
-        
         os_log(.info,"BABACAN - options dict: %{public}@", options!)
         
         // NS Interface
@@ -30,6 +29,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let rawPeerPublicKey = options?["peerPublicKey"] as! String
         let rawPeerAllowedIPs = options?["peerAllowedIPs"] as! [String]
         let rawPeerEndpoint = options?["peerEndpoint"] as! String
+        let rawPeerPersistentKeepAlive = options?["peerPersistentKeepAlive"] as! Int
 
         os_log(.info,"BABACAN - NS completed")
         
@@ -42,6 +42,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let peerPresharedKey = PreSharedKey(base64Key: rawPeerPresharedKey)!
         let peerAllowedIPs = rawPeerAllowedIPs.compactMap {IPAddressRange(from: $0)}
         let peerEndpoint = Endpoint(from: rawPeerEndpoint)
+        let peerPersistentKeepAlive = UInt16(rawPeerPersistentKeepAlive)
         
         os_log(.info,"BABACAN - All parsed setted")
         
@@ -54,6 +55,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         peerConfiguration.preSharedKey = peerPresharedKey
         peerConfiguration.allowedIPs = peerAllowedIPs
         peerConfiguration.endpoint = peerEndpoint
+        peerConfiguration.persistentKeepAlive = peerPersistentKeepAlive
         
         let tunnelConfig = TunnelConfiguration(name: "tunnelConfig",
                                                interface: interfaceConfiguration,
@@ -61,7 +63,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         // Finally, start WireGuard and call `completionHandler` when ready.
         wireguard?.start(tunnelConfiguration: tunnelConfig, completionHandler: { error in
-            os_log(.info,"BABACAN92929:")
+            os_log(.info,"BABACAN 9595 - start tunnelConfiguration")
             NSLog(error?.localizedDescription ?? "")
             completionHandler(error)
         })

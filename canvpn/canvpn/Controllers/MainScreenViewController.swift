@@ -24,10 +24,10 @@ class MainScreenViewController: UIViewController {
     private var selectedServer: Server?
     private var selectedServerConfig: Configuration?
     
+    //TODO: alttan yukarı gelince ne oluyor
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO: log necessary
         Analytics.logEvent("custom_event_can", parameters: ["deneme" : "134133"])
         
         // to ipsec manager
@@ -43,6 +43,8 @@ class MainScreenViewController: UIViewController {
         
         setLocationButtonMockData()
         configureUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForegroundNotification(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +54,27 @@ class MainScreenViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
+    @objc private func willEnterForegroundNotification(_ sender: Notification) {
+        guard let manager = tunnelManager,let currentManagerState = manager.getManagerState() else {
+            Toaster.showToast(message: "Error occurred, please reload app.")
+            return }
+
+        if currentManagerState == .connected {
+            setState(state: .connected)
+        } else if currentManagerState == .connecting {
+            setState(state: .connecting)
+        } else if currentManagerState == .disconnecting {
+            setState(state: .disconnecting)
+        } else {
+            setState(state: .disconnected)
+        }
+        
+    }
+    
     private func setLocationButtonMockData() {
+        
+        // TODO: config listesinden sinyali en iyi free yi set
+        
         mainView.setLocationSignal(level: SignalLevel.good)
         mainView.setLocationFlag(countryCode: "de")
         mainView.setLocationText(country: "Germany", ip: "79.110.53.92")
@@ -105,8 +127,6 @@ extension MainScreenViewController {
         service.request(getCredentialRequest) { [weak self] result in
             guard let self = self else { return }
             
-
-            
             switch result {
             case .success(let response):
                 self.printDebug("getCredential success")
@@ -134,7 +154,8 @@ extension MainScreenViewController {
         
         DispatchQueue.main.async {
             self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
-       //     self.mainView.setLocationText(country: server?.location.city, ip: server?.connection.host)
+            self.mainView.setLocationText(country: server?.location.city, ip: server?.url)
+            // TODO: set from given data
             self.mainView.setLocationSignal(level: .good)
         }
     }

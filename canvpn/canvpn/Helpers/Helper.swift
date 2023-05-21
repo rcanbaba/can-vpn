@@ -88,11 +88,11 @@ extension ConnectionState {
     
 }
 
-enum SignalLevel {
-    case low
-    case medium
-    case good
-    case perfect
+enum SignalLevel: Int {
+    case low = 1
+    case medium = 2
+    case good = 3
+    case perfect = 4
 }
 
 extension SignalLevel {

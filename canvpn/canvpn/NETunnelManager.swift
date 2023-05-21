@@ -137,6 +137,7 @@ class NETunnelManager {
         dict["peerPublicKey"] = NSString(string: config.peer.publicKey)
         dict["peerAllowedIPs"] = NSArray(array: config.peer.allowedIPS)
         dict["peerEndpoint"] = NSString(string: config.peer.endpoint)
+        dict["peerPersistentKeepAlive"] = NSNumber(value: config.peer.persistentKeepalive)
 
         return dict
     }

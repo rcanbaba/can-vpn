@@ -60,6 +60,9 @@ final class DefaultNetworkService: NetworkService {
             guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
                 let httpUrlResponse = response as? HTTPURLResponse
                 let statusCode = httpUrlResponse?.statusCode
+                
+                // TODO: should retry yapılabilir statusCode == 0 ise ...
+                
                 print("💙💙: statusCode - error - \(statusCode ?? 999)")
                 return completion(.failure(NSError()))
             }
