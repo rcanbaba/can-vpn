@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 import SwiftyJSON
+import FirebaseAnalytics
 
 enum PushNotificationType: String {
     case silent = "silent"
@@ -89,8 +90,9 @@ class PushNotificationHelper {
             switch result {
             case .success(let response):
                 print("💙: registerAPNSRequest - success - \(response.success)")
-            case .failure(_):
+            case .failure(let error):
                 print("💙: registerAPNSRequest - failure")
+                Analytics.logEvent("006-API-registerAPNSRequest", parameters: ["error" : error.localizedDescription])
             }
         }
 
@@ -169,12 +171,12 @@ class PushNotificationHelper {
                         setFCMToken(token: token)
                     }
                 }
-            case .failure(_):
+            case .failure(let error):
                 print("💙: registerFCMRequest - failure")
                 if !retryFCMToken {
                     return
                 }
-                
+                Analytics.logEvent("007-API-registerFCMRequest", parameters: ["error" : error.localizedDescription])
                 DispatchQueue.main.async {
                     retryFCMToken = false
                     setFCMToken(token: token)

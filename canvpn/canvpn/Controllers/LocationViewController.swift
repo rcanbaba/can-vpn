@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 protocol LocationViewControllerDelegate: AnyObject {
     func selectedServer(server: Server)
@@ -45,7 +46,7 @@ class LocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Analytics.logEvent("201-PresentLocationScreen", parameters: ["type" : "didload"])
         serverList = SettingsManager.shared.settings?.servers ?? []
         view.backgroundColor = UIColor.white
         configureUI()

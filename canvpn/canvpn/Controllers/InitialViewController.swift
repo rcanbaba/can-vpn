@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import FirebaseAnalytics
 
 class InitialViewController: UIViewController {
     
@@ -28,11 +29,11 @@ class InitialViewController: UIViewController {
         startInitialSetup()
         
         configureUI()
-        
         initialSetupDispatchGroup.notify(queue: .main) { [weak self] in
             self?.printDebug("dispatchGroup - notify - presentMainScreen")
             self?.presentMainScreen()
         }
+        Analytics.logEvent("101-InitialScreenPresented", parameters: ["type" : "didload"])
     }
     
     private func configureUI() {
@@ -44,6 +45,7 @@ class InitialViewController: UIViewController {
     }
     
     private func presentMainScreen(){
+        Analytics.logEvent("102-PresentMainScreen", parameters: ["type" : "present"])
         let navigationController = createNavigationController(with: MainScreenViewController())
         navigationController.navigationBar.tintColor = UIColor.clear
         navigationController.navigationBar.backgroundColor = UIColor.clear
@@ -92,6 +94,7 @@ extension InitialViewController {
                 // TODO
                 // bi daha register dene hataya göre çözüm
                 // registerDevice()
+                Analytics.logEvent("004-API-registerDeviceRequest", parameters: ["error" : error.localizedDescription])
             }
             
         }
@@ -114,7 +117,7 @@ extension InitialViewController {
                 
             case .failure(let error):
                 self.printDebug("fetchSettingsRequest - failure")
-
+                Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : error.localizedDescription])
             }
             
         }

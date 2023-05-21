@@ -28,7 +28,7 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Analytics.logEvent("custom_event_can", parameters: ["deneme" : "134133"])
+        Analytics.logEvent("001-MainScreenPresented", parameters: ["type" : "didload"])
         
         // to ipsec manager
         //  NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
@@ -52,11 +52,14 @@ class MainScreenViewController: UIViewController {
         // TODO: disappear da default a çekebilirsin
         UIApplication.shared.statusBarStyle = .darkContent
         navigationController?.navigationBar.backgroundColor = UIColor.clear
+        Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
     }
     
     @objc private func willEnterForegroundNotification(_ sender: Notification) {
+        Analytics.logEvent("003-MainScreenPresented", parameters: ["type" : "enterForeground"])
         guard let manager = tunnelManager,let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "Error occurred, please reload app.")
+            Analytics.logEvent("096-ChangeState", parameters: ["error" : "guard"])
             return }
 
         if currentManagerState == .connected {
@@ -138,6 +141,7 @@ extension MainScreenViewController {
             case .failure(let error):
                 self.printDebug("getCredential failure")
                 Toaster.showToast(message: "Error occurred, please select location again!")
+                Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : error.localizedDescription])
             }
             
         }
@@ -171,6 +175,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func locationButtonTapped() {
+        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
         let locationViewController = LocationViewController()
         locationViewController.hidesBottomBarWhenPushed = true
         locationViewController.delegate = self
@@ -180,6 +185,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     func changeStateTapped() {
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "Error occurred, please reload app.")
+            Analytics.logEvent("097-ChangeState", parameters: ["error" : "guard"])
             return }
         
         if currentManagerState == .disconnected {
@@ -191,16 +197,15 @@ extension MainScreenViewController: MainScreenViewDelegate {
                 }
             } else {
                 Toaster.showToast(message: "Error occurred, please select a location before.")
+                Analytics.logEvent("098-ChangeState", parameters: ["error" : "selectedServer nil"])
             }
         } else if currentManagerState == .connected {
-            //    setManagerStateUI()
             manager.disconnectFromWg()
         } else {
             Toaster.showToast(message: "Error occurred, please try again.")
+            Analytics.logEvent("099-ChangeState", parameters: ["error" : "connectedElse"])
         }
-        
-        
-        
+
     }
 }
 
