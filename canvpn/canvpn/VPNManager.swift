@@ -153,7 +153,7 @@ class VPNManager {
             delegate?.statusChanged(state: .initial)
             debugPrint("Failed to start tunnel (configuration disabled)")
         } catch let error as NSError {
-            debugPrint(error.localizedDescription)
+            debugPrint("happened")
             delegate?.statusChanged(state: .initial)
             return false
         }

@@ -20,15 +20,15 @@ extension ConnectionState {
     func getText() -> String {
         switch self {
         case .initial:
-            return "Connect"
+            return "connect_key".localize()
         case .connecting:
-            return "Connecting"
+            return "connecting_key".localize()
         case .connected:
-            return "Connected"
+            return "connected_key".localize()
         case .disconnecting:
-            return "Disconnecting"
+            return "disconnecting_key".localize()
         case .disconnected:
-            return "Disconnected"
+            return "disconnected_key".localize()
         }
     }
     
@@ -89,10 +89,10 @@ extension ConnectionState {
 }
 
 enum SignalLevel: Int {
-    case low = 1
-    case medium = 2
-    case good = 3
-    case perfect = 4
+    case low = 0
+    case medium = 1
+    case good = 2
+    case perfect = 3
 }
 
 extension SignalLevel {
@@ -134,26 +134,37 @@ extension PremiumFeatureType {
     func getTitle() -> String? {
         switch self {
         case .anonymous:
-            return "Anonymous"
+            return "premium_title_1".localize()
         case .fast:
-            return "Fast"
+            return "premium_title_2".localize()
         case .noAds:
-            return "Remove Ads"
+            return "premium_title_3".localize()
         case .secure:
-            return "Secure"
+            return "premium_title_4".localize()
         }
     }
     
     func getDescription() -> String? {
         switch self {
         case .anonymous:
-            return "Hide your ip with anonymous surfing"
+            return "premium_desc_1".localize()
         case .fast:
-            return "Up to 1000 Mb/s bandwidth to explore"
+            return "premium_desc_2".localize()
         case .noAds:
-            return "Enjoy the app without annoying ads"
+            return "premium_desc_3".localize()
         case .secure:
-            return "Transfer traffic via encrypted tunnel"
+            return "premium_desc_4".localize()
+        }
+    }
+    
+}
+
+extension Int {
+    func isPremiums() -> Bool {
+        if self == 1 {
+            return true
+        } else {
+            return false
         }
     }
     

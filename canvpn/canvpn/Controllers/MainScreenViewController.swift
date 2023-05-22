@@ -140,8 +140,8 @@ extension MainScreenViewController {
                 
             case .failure(let error):
                 self.printDebug("getCredential failure")
-                Toaster.showToast(message: "Error occurred, please select location again!")
-                Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : error.localizedDescription])
+                Toaster.showToast(message: "error_location_again".localize())
+                Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : "happened"])
             }
             
         }
@@ -184,7 +184,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     
     func changeStateTapped() {
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
-            Toaster.showToast(message: "Error occurred, please reload app.")
+            Toaster.showToast(message: "error_occur_1".localize())
             Analytics.logEvent("097-ChangeState", parameters: ["error" : "guard"])
             return }
         
@@ -196,13 +196,13 @@ extension MainScreenViewController: MainScreenViewDelegate {
                     self.getCredential(serverId: selectedServer.id)
                 }
             } else {
-                Toaster.showToast(message: "Error occurred, please select a location before.")
+                Toaster.showToast(message: "error_occur_location".localize())
                 Analytics.logEvent("098-ChangeState", parameters: ["error" : "selectedServer nil"])
             }
         } else if currentManagerState == .connected {
             manager.disconnectFromWg()
         } else {
-            Toaster.showToast(message: "Error occurred, please try again.")
+            Toaster.showToast(message: "error_try_again".localize())
             Analytics.logEvent("099-ChangeState", parameters: ["error" : "connectedElse"])
         }
 

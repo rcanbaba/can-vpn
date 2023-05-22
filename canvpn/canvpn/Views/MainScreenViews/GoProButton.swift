@@ -21,7 +21,7 @@ class GoProButton: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
         label.textAlignment = .natural
-        label.text = "Upgrade To PRO"
+        label.text = "upgrade_pro".localize()
         return label
     }()
     
@@ -30,7 +30,7 @@ class GoProButton: UIView {
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.Custom.goPreGrayText
         label.textAlignment = .natural
-        label.text = "Try premium free, cancel anytime."
+        label.text = "upgrade_pro_detail".localize()
         label.numberOfLines = 2
         return label
     }()

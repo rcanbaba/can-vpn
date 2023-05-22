@@ -92,7 +92,7 @@ class PushNotificationHelper {
                 print("💙: registerAPNSRequest - success - \(response.success)")
             case .failure(let error):
                 print("💙: registerAPNSRequest - failure")
-                Analytics.logEvent("006-API-registerAPNSRequest", parameters: ["error" : error.localizedDescription])
+                Analytics.logEvent("006-API-registerAPNSRequest", parameters: ["error" : "happened"])
             }
         }
 
@@ -176,7 +176,7 @@ class PushNotificationHelper {
                 if !retryFCMToken {
                     return
                 }
-                Analytics.logEvent("007-API-registerFCMRequest", parameters: ["error" : error.localizedDescription])
+                Analytics.logEvent("007-API-registerFCMRequest", parameters: ["error" : "happened"])
                 DispatchQueue.main.async {
                     retryFCMToken = false
                     setFCMToken(token: token)

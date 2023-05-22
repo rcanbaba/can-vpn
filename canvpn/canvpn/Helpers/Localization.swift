@@ -25,21 +25,53 @@ class Dictionaries {
         "privacy_policy_key": "Gizlilik Politikasını",
         "terms_of_service_key": "Kullanım Şartları",
         "pp_tos_key": "Uygulamayı kullanarak Kullanım Şartları ve Gizlilik Politikasını kabul etmiş olursunuz.",
-        "current_ip_key": "IP Adresiniz"
+        "current_ip_key": "IP Adresiniz",
+        "error_occur_reload" : "Error occurred, please reload app.",
+        "error_occur_location" : "Error occurred, please select a location before.",
+        "error_try_again" : "Error occurred, please try again.",
+        "error_location_again" : "Error occurred, please select location again!",
+        "choose_location": "Konum Seç",
+        "premium_desc_1": "Hide your ip with anonymous surfing",
+        "premium_desc_2": "Up to 1000 Mb/s bandwidth to explore",
+        "premium_desc_3": "Enjoy the app without annoying ads",
+        "premium_desc_4": "Transfer traffic via encrypted tunnel",
+        "premium_title_1": "Anonymous",
+        "premium_title_2": "Fast",
+        "premium_title_3": "Remove Ads",
+        "premium_title_4": "Secure",
+        "upgrade_pro": "Upgrade To PRO",
+        "upgrade_pro_detail": "Try premium free, cancel anytime.",
+        "premium_feature_title": "Premium Features"
     ]
     
     private var engDictionary = [
         "connect_key" : "Connect",
         "connecting_key": "Connecting",
         "connected_key": "Connected",
-        "disconnect_key" : "Bağlantıyı kes",
+        "disconnect_key" : "Disconnect",
         "disconnected_key": "Disconnected",
         "disconnecting_key": "Disconnecting",
         "initial_key": "Tap to start",
         "privacy_policy_key": "Privacy Policy",
         "terms_of_service_key": "Terms of Use",
         "pp_tos_key": "By using the application you agree to the Terms of Use and Privacy Policy.",
-        "current_ip_key": "Current IP"
+        "current_ip_key": "Current IP",
+        "error_occur_reload" : "Error occurred, please reload app.",
+        "error_occur_location" : "Error occurred, please select a location before.",
+        "error_try_again" : "Error occurred, please try again.",
+        "error_location_again" : "Error occurred, please select location again!",
+        "choose_location": "Choose Location",
+        "premium_desc_1": "Hide your ip with anonymous surfing",
+        "premium_desc_2": "Up to 1000 Mb/s bandwidth to explore",
+        "premium_desc_3": "Enjoy the app without annoying ads",
+        "premium_desc_4": "Transfer traffic via encrypted tunnel",
+        "premium_title_1": "Anonymous",
+        "premium_title_2": "Fast",
+        "premium_title_3": "Remove Ads",
+        "premium_title_4": "Secure",
+        "upgrade_pro": "Upgrade To PRO",
+        "upgrade_pro_detail": "Try premium free, cancel anytime.",
+        "premium_feature_title": "Premium Features"
     ]
     
     private var arDictionary = [
@@ -53,7 +85,23 @@ class Dictionaries {
         "privacy_policy_key": "سياسة الخصوصية",
         "terms_of_service_key": "شروط الاستخدام",
         "pp_tos_key": "باستخدام التطبيق ، فإنك توافق على شروط الاستخدام وسياسة الخصوصية.",
-        "current_ip_key": "IP الحالي"
+        "current_ip_key": "IP الحالي",
+        "error_occur_reload" : "Error occurred, please reload app.",
+        "error_occur_location" : "Error occurred, please select a location before.",
+        "error_try_again" : "Error occurred, please try again.",
+        "error_location_again" : "Error occurred, please select location again!",
+        "choose_location": "Choose Location",
+        "premium_desc_1": "Hide your ip with anonymous surfing",
+        "premium_desc_2": "Up to 1000 Mb/s bandwidth to explore",
+        "premium_desc_3": "Enjoy the app without annoying ads",
+        "premium_desc_4": "Transfer traffic via encrypted tunnel",
+        "premium_title_1": "Anonymous",
+        "premium_title_2": "Fast",
+        "premium_title_3": "Remove Ads",
+        "premium_title_4": "Secure",
+        "upgrade_pro": "Upgrade To PRO",
+        "upgrade_pro_detail": "Try premium free, cancel anytime.",
+        "premium_feature_title": "Premium Features"
     ]
     
     public func getDictionary(language: LanguageEnum) -> [String : String] {
@@ -72,8 +120,16 @@ class Dictionaries {
 class LocalizationManager {
 
     static func getUserLanguage() -> LanguageEnum {
-        // TODO: get device language
-        return .tr
+        let languageCode = Locale.preferredLocale().languageCode?.lowercased()
+        
+        if languageCode == "tr" {
+            return .tr
+        } else if languageCode == "ar" {
+            return .ar
+        } else {
+            return .eng
+        }
+
     }
     
     static func localize(key: String) -> String {
@@ -81,14 +137,12 @@ class LocalizationManager {
         
     }
     
-    
     static func getStringForLanguage(key: String, lang: LanguageEnum) -> String {
         return Dictionaries().getDictionary(language: lang)[key] ?? ""    }
     
 }
 
 extension String {
-    
     func localize() -> String {
         return LocalizationManager.localize(key: self)
     }

@@ -89,7 +89,7 @@ class NETunnelManager {
             let configDict = getConnectionConfigDict(config: config)
             // Start the VPN.
             try manager.connection.startVPNTunnel(options: configDict)
-            print("Started tunnel successfully.")
+            debugPrint("Started tunnel successfully.")
             delegate?.stateChanged(state: .connected)
         }  catch NEVPNError.configurationInvalid {
             delegate?.stateChanged(state: .invalid)
@@ -101,7 +101,7 @@ class NETunnelManager {
             return
         } catch let error as NSError {
             delegate?.stateChanged(state: .invalid)
-            debugPrint(error.localizedDescription)
+            debugPrint("error happened")
             return
         }
         

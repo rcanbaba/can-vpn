@@ -28,7 +28,7 @@ class GoPremiumView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = UIColor.black
         label.textAlignment = .center
-        label.text = "Premium Features"
+        label.text = "premium_feature_title".localize()
         return label
     }()
     

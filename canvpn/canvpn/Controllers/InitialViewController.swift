@@ -94,7 +94,7 @@ extension InitialViewController {
                 // TODO
                 // bi daha register dene hataya göre çözüm
                 // registerDevice()
-                Analytics.logEvent("004-API-registerDeviceRequest", parameters: ["error" : error.localizedDescription])
+                Analytics.logEvent("004-API-registerDeviceRequest", parameters: ["error" : "happened"])
             }
             
         }
@@ -117,7 +117,7 @@ extension InitialViewController {
                 
             case .failure(let error):
                 self.printDebug("fetchSettingsRequest - failure")
-                Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : error.localizedDescription])
+                Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
             }
             
         }

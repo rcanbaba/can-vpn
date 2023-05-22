@@ -62,7 +62,7 @@ class LocationViewController: UIViewController {
         let headerView = UIView()
 
         let titleLabel = UILabel()
-        titleLabel.text = "Choose Location".localize()
+        titleLabel.text = "choose_location".localize()
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.black
         headerView.addSubview(titleLabel)
@@ -105,20 +105,8 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
         let cellData = serverList[indexPath.row]
         cell.set(country: cellData.location.city)
         cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
-        
-        if indexPath.row < 4 {
-            cell.set(signalImage: SignalLevel.perfect.getSignalImage())
-            cell.set(isPremium: true)
-        } else if indexPath.row < 9 {
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: true)
-        } else if indexPath.row < 14 {
-            cell.set(signalImage: SignalLevel.good.getSignalImage())
-            cell.set(isPremium: false)
-        } else {
-            cell.set(signalImage: SignalLevel.medium.getSignalImage())
-            cell.set(isPremium: false)
-        }
+        cell.set(signalImage: SignalLevel(rawValue: cellData.ping)?.getSignalImage())
+        cell.set(isPremium: cellData.type.isPremiums())
 
         return cell
     }

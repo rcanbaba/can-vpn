@@ -46,7 +46,8 @@ struct Duration: Codable {
 // MARK: - Server
 struct Server: Codable {
     let id: String
-    let type, engine: Int
+    let type: Int
+    let engine: Int
     let url: String
     let location: Location
     let ping: Int
