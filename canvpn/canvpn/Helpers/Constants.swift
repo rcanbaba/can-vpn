@@ -16,7 +16,7 @@ class Constants {
     
     static let idfv = KeychainManager.shared.getDeviceIdentifierFromKeychain()
     
-    static let baseURL = "http://100.26.161.159"
+    static let baseURL = "https://api.ilovevpn.co"
     
     static let appNavBarName = "I Love VPN"
     static let vpnListingName = "iLoveVPN"
