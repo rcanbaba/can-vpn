@@ -199,7 +199,6 @@ extension MainScreenView {
     public func setStateLabel(state: ConnectionState) {
         connectionStateLabel.text = state.getText()
     }
-    
     public func setState(state: ConnectionState) {
         backgroundImageView.image = state.getBgWorldUIImage()
         centerButton.setImage(state.getCenterButtonUIImage(), for: .normal)
@@ -208,18 +207,19 @@ extension MainScreenView {
         isUserInteractionEnabled = state.getUserInteraction()
     }
 
-    public func setLocationFlag(countryCode: String?){
+    // MARK: - Selected Location View
+    public func setLocationFlag(countryCode: String?) {
         locationButton.set(flagImageCountryCode: countryCode)
     }
-    
-    public func setLocationText(country: String?, ip: String?){
-        locationButton.set(ip: ip)
-        locationButton.set(country: country)
+    public func setLocationCountry(text: String?) {
+        locationButton.set(country: text)
     }
-    
-    public func setLocationSignal(level: SignalLevel) {
-        locationButton.set(signalImage: level.getSignalImage())
+    public func setLocationIP(text: String?) {
+        locationButton.set(ip: text)
     }
-    
+    public func setLocationSignal(level: Int?) {
+        let signalLevel = level ?? 3
+        locationButton.set(signalImage: SignalLevel(rawValue: signalLevel)?.getSignalImage())
+    }
 
 }

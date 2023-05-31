@@ -7,8 +7,11 @@
 
 import Foundation
 
-// MARK: - Settings
-struct Settings: Codable {
+
+typealias Settings = SettingsResponse
+
+// MARK: - SettingsResponse
+struct SettingsResponse: Codable {
     let sharedID: String
     let servers: [Server]
     let links: Links

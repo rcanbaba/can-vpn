@@ -89,10 +89,10 @@ extension ConnectionState {
 }
 
 enum SignalLevel: Int {
-    case low = 0
-    case medium = 1
-    case good = 2
-    case perfect = 3
+    case low = 1
+    case medium = 2
+    case good = 3
+    case perfect = 4
 }
 
 extension SignalLevel {
@@ -161,7 +161,7 @@ extension PremiumFeatureType {
 
 extension Int {
     func isPremiums() -> Bool {
-        if self == 1 {
+        if self == 2 {
             return true
         } else {
             return false

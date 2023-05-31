@@ -41,7 +41,7 @@ class MainScreenViewController: UIViewController {
         
         networkService = DefaultNetworkService()
         
-        setLocationButtonMockData()
+        setLocationButtonInitialData()
         configureUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForegroundNotification(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -74,13 +74,15 @@ class MainScreenViewController: UIViewController {
         
     }
     
-    private func setLocationButtonMockData() {
-        
+    private func setLocationButtonInitialData() {
         // TODO: config listesinden sinyali en iyi free yi set
         
-        mainView.setLocationSignal(level: SignalLevel.good)
-        mainView.setLocationFlag(countryCode: "de")
-        mainView.setLocationText(country: "Germany", ip: "79.110.53.92")
+        if let initialServer = SettingsManager.shared.settings?.servers.first(where: {$0.type.isPremiums()}) {
+            mainView.setLocationSignal(level: initialServer.ping)
+            mainView.setLocationFlag(countryCode: initialServer.location.countryCode)
+            mainView.setLocationCountry(text: initialServer.location.city)
+        }
+
     }
     
     private func configureUI() {
@@ -137,6 +139,7 @@ extension MainScreenViewController {
                 
                 guard let manager = self.tunnelManager else { return }
                 manager.connectToWg(config: response)
+                self.getIPAddress()
                 
             case .failure(let error):
                 self.printDebug("getCredential failure")
@@ -145,6 +148,28 @@ extension MainScreenViewController {
             }
             
         }
+    }
+    
+    private func getIPAddress() {
+        guard let service = networkService else { return }
+        var getIPAddressRequest = GetIPAddressRequest()
+        getIPAddressRequest.setParams()
+        
+        service.request(getIPAddressRequest) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let response):
+                self.printDebug("getIPAddressRequest success")
+                DispatchQueue.main.async {
+                    self.mainView.setLocationIP(text: response.ipAddress)
+                }
+            case .failure(let error):
+                self.printDebug("getIPAddressRequest failure")
+                Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
+            }
+        }
+        
     }
 
     
@@ -158,9 +183,9 @@ extension MainScreenViewController {
         
         DispatchQueue.main.async {
             self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
-            self.mainView.setLocationText(country: server?.location.city, ip: server?.url)
-            // TODO: set from given data
-            self.mainView.setLocationSignal(level: .good)
+            self.mainView.setLocationCountry(text: server?.location.city)
+            self.mainView.setLocationIP(text: "")
+            self.mainView.setLocationSignal(level: server?.ping)
         }
     }
     

@@ -98,16 +98,13 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
-        
         cell.backgroundColor = UIColor.clear
         cell.contentView.backgroundColor = UIColor.clear
-        
         let cellData = serverList[indexPath.row]
         cell.set(country: cellData.location.city)
         cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
         cell.set(signalImage: SignalLevel(rawValue: cellData.ping)?.getSignalImage())
         cell.set(isPremium: cellData.type.isPremiums())
-
         return cell
     }
     
