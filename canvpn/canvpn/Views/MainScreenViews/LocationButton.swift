@@ -49,7 +49,7 @@ class LocationButton: UIView {
     }()
     
     private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [countryLabel, ipLabel])
+        let stackView = UIStackView(arrangedSubviews: [countryLabel])
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.spacing = 0
@@ -114,7 +114,12 @@ extension LocationButton {
     }
     
     public func set(ip: String?) {
-        ipLabel.text = ip
+        if ip == nil {
+            ipLabel.removeFromSuperview()
+        } else {
+            mainStackView.addArrangedSubview(ipLabel)
+            ipLabel.text = ip
+        }
     }
     
     public func set(flagImageCountryCode: String?) {

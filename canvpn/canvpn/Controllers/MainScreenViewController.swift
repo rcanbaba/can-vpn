@@ -75,14 +75,12 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setLocationButtonInitialData() {
-        // TODO: config listesinden sinyali en iyi free yi set
-        
         if let initialServer = SettingsManager.shared.settings?.servers.first(where: {$0.type.isPremiums()}) {
+            selectedServer = initialServer
             mainView.setLocationSignal(level: initialServer.ping)
-            mainView.setLocationFlag(countryCode: initialServer.location.countryCode)
             mainView.setLocationCountry(text: initialServer.location.city)
+            mainView.setLocationFlag(countryCode: initialServer.location.countryCode.lowercased())
         }
-
     }
     
     private func configureUI() {
@@ -131,7 +129,6 @@ extension MainScreenViewController {
         
         service.request(getCredentialRequest) { [weak self] result in
             guard let self = self else { return }
-            
             switch result {
             case .success(let response):
                 self.printDebug("getCredential success")
@@ -151,44 +148,79 @@ extension MainScreenViewController {
     }
     
     private func getIPAddress() {
-        guard let service = networkService else { return }
-        var getIPAddressRequest = GetIPAddressRequest()
-        getIPAddressRequest.setParams()
-        
-        service.request(getIPAddressRequest) { [weak self] result in
-            guard let self = self else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            guard let service = self.networkService else { return }
+            var getIPAddressRequest = GetIPAddressRequest()
+            getIPAddressRequest.setParams()
             
-            switch result {
-            case .success(let response):
-                self.printDebug("getIPAddressRequest success")
-                DispatchQueue.main.async {
-                    self.mainView.setLocationIP(text: response.ipAddress)
+            service.request(getIPAddressRequest) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let response):
+                    self.printDebug("getIPAddressRequest success \(response.ipAddress)")
+                    DispatchQueue.main.async {
+                        self.mainView.setLocationIP(text: response.ipAddress)
+                    }
+                case .failure(let error):
+                    self.printDebug("getIPAddressRequest failure")
+                    Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
                 }
-            case .failure(let error):
-                self.printDebug("getIPAddressRequest failure")
-                Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
             }
         }
-        
     }
-
-    
 }
 
 // MARK: - Set Selected Server
 extension MainScreenViewController {
     private func setSelectedServer(server: Server?) {
+        if server?.id == selectedServer?.id {
+            selectedServer = server
+            setSelectedServerData(server: server)
+            return
+        }
         selectedServer = server
-        selectedServerConfig = nil
         
-        DispatchQueue.main.async {
-            self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
-            self.mainView.setLocationCountry(text: server?.location.city)
-            self.mainView.setLocationIP(text: "")
-            self.mainView.setLocationSignal(level: server?.ping)
+        if let manager = tunnelManager, let currentManagerState = manager.getManagerState() {
+            if currentManagerState == .disconnected {
+                if let selectedServer = selectedServer {
+                    DispatchQueue.main.async {
+                        self.setMainUI(state: .connecting)
+                        self.getCredential(serverId: selectedServer.id)
+                        self.setSelectedServerData(server: server)
+                    }
+                } else {
+                    Toaster.showToast(message: "error_occur_location".localize())
+                    Analytics.logEvent("082-ChangeState", parameters: ["error" : "selectedServer nil"])
+                }
+            } else if currentManagerState == .connected {
+                manager.disconnectFromWg()
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                    if let selectedServer = self.selectedServer {
+                        DispatchQueue.main.async {
+                            self.setMainUI(state: .connecting)
+                            self.getCredential(serverId: selectedServer.id)
+                            self.setSelectedServerData(server: server)
+                        }
+                    } else {
+                        Toaster.showToast(message: "error_occur_location".localize())
+                        Analytics.logEvent("081-ChangeState", parameters: ["error" : "selectedServer nil"])
+                    }
+                }
+            } else {
+                Toaster.showToast(message: "error_try_again".localize())
+            }
+        } else {
+            setSelectedServerData(server: server)
         }
     }
     
+    private func setSelectedServerData(server: Server?) {
+        DispatchQueue.main.async {
+            self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
+            self.mainView.setLocationCountry(text: server?.location.city)
+            self.mainView.setLocationSignal(level: server?.ping)
+        }
+    }
 }
 
 // MARK: - VPN manager interactions
@@ -246,7 +278,6 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 extension MainScreenViewController: LocationViewControllerDelegate {
     func selectedServer(server: Server) {
         setSelectedServer(server: server)
-        // TODO: If selected premium, show premium controller - flow
     }
     
 }
