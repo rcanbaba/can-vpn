@@ -75,7 +75,7 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setLocationButtonInitialData() {
-        if let initialServer = SettingsManager.shared.settings?.servers.first(where: {$0.type.isPremiums()}) {
+        if let initialServer = SettingsManager.shared.settings?.servers.first(where: {!$0.type.isPremium()}) {
             selectedServer = initialServer
             mainView.setLocationSignal(level: initialServer.ping)
             mainView.setLocationCountry(text: initialServer.location.city)
@@ -179,6 +179,9 @@ extension MainScreenViewController {
             return
         }
         selectedServer = server
+        DispatchQueue.main.async {
+            self.mainView.setLocationIP(text: nil)
+        }
         
         if let manager = tunnelManager, let currentManagerState = manager.getManagerState() {
             if currentManagerState == .disconnected {

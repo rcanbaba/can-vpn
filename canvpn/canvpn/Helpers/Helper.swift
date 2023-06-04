@@ -160,7 +160,7 @@ extension PremiumFeatureType {
 }
 
 extension Int {
-    func isPremiums() -> Bool {
+    func isPremium() -> Bool {
         if self == 2 {
             return true
         } else {

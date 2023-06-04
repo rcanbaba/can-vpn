@@ -104,7 +104,7 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
         cell.set(country: cellData.location.city)
         cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
         cell.set(signalImage: SignalLevel(rawValue: cellData.ping)?.getSignalImage())
-        cell.set(isPremium: cellData.type.isPremiums())
+        cell.set(isPremium: cellData.type.isPremium())
         return cell
     }
     
