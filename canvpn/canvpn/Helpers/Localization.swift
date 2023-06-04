@@ -411,6 +411,8 @@ class LocalizationManager {
             return .ru
         } else if languageCode == "hi" {
             return .hi
+        } else if languageCode == "de" {
+            return .de
         } else {
             return .eng
         }

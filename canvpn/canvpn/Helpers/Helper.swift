@@ -156,7 +156,6 @@ extension PremiumFeatureType {
             return "premium_desc_4".localize()
         }
     }
-    
 }
 
 extension Int {
