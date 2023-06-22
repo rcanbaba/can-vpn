@@ -51,8 +51,9 @@ class Dictionaries {
         "premium_title_4": "Secure",
         "upgrade_pro": "Upgrade To PRO",
         "upgrade_pro_detail": "Try premium free, cancel anytime.",
-        "premium_feature_title": "Premium Features"
+        "premium_feature_title": "Premium Features",
     ]
+    //TODO: MISSING KEY ON OTHER LANGUAGES
     
     private var engDictionary = [
         "connect_key" : "Connect",

@@ -49,6 +49,14 @@ extension UIColor {
         static let goProButtonGradient2 = UIColor("FF852C")
         static let goProFeatureTextGray = UIColor("B5AEBE")
         
+        static let premiumBackGradientEnd = UIColor("FFD964")
+        static let premiumBackGradientStart = UIColor("FFFFFF")
+        
+        static let offerButtonBorderOrange = UIColor("FF852C")
+        static let offerButtonTextOrange = UIColor("FF852C")
+        static let offerButtonBorderGray = UIColor("DADADA")
+        static let offerButtonTextGray = UIColor("000000").withAlphaComponent(0.6)
+        
     }
     
 }

@@ -7,29 +7,33 @@
 
 import UIKit
 
+protocol PremiumViewDelegate: AnyObject {
+    func subscribeSelected(indexOf: Int)
+}
+
 class GoPremiumView: UIView {
+    
+    public weak var delegate: PremiumViewDelegate?
+    
+    private lazy var backGradientView: GradientView = {
+        let gradientView = GradientView()
+        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientView.gradientLayer.locations = [0.0, 0.5, 1.0]
+        gradientView.gradientLayer.colors = [
+            UIColor.Custom.premiumBackGradientStart.cgColor,
+            UIColor.Custom.premiumBackGradientStart.cgColor,
+            UIColor.Custom.premiumBackGradientEnd.cgColor
+        ]
+        gradientView.isHidden = false
+        return gradientView
+    }()
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "world-map-gold")
         imageView.contentMode = .scaleAspectFill
         return imageView
-    }()
-    
-    private lazy var premiumImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(named: "go-pro-image")
-        return imageView
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        label.text = "premium_feature_title".localize()
-        return label
     }()
     
     private lazy var featuresMainStackView: UIStackView = {
@@ -40,26 +44,9 @@ class GoPremiumView: UIView {
         return stackView
     }()
     
-    private lazy var firstSubscriptionButton: SubscriptionButton = {
-        let view = SubscriptionButton()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstProductTapped(_:))))
-        view.set(period: "1 MONTH", price: "9.99", perInterval: "$/Month")
-        view.layer.applySketchShadow()
-        return view
-    }()
-    
-    private lazy var secondSubscriptionButton: SubscriptionButton = {
-        let view = SubscriptionButton()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondProductTapped(_:))))
-        view.set(period: "1 YEAR", price: "4.99", perInterval: "$/Month")
-        view.layer.applySketchShadow()
-        return view
-    }()
-    
-    private lazy var freeSubscriptionButton: SubscriptionButton = {
-        let view = SubscriptionButton()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(freeProductTapped(_:))))
-        view.setAsFree(text: "TRY PREMIUM FREE")
+    private lazy var subscribeButton: SubscriptionButton = {
+        let view = SubscriptionButton(type: .system)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(subscribeTapped(_:))))
         view.layer.applySketchShadow()
         return view
     }()
@@ -73,71 +60,126 @@ class GoPremiumView: UIView {
         return label
     }()
     
+    private lazy var termsLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.Custom.goProFeatureTextGray
+        label.textAlignment = .left
+        label.text = "Subscription Terms"
+        return label
+    }()
+    
+    private lazy var restoreLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.Custom.goProFeatureTextGray
+        label.textAlignment = .right
+        label.text = "Restore Subscription"
+        return label
+    }()
+    
+    private lazy var firstOffer: OfferButton = {
+        let view = OfferButton()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstOfferTapped(_:))))
+        view.layer.applySketchShadow()
+        return view
+    }()
+    
+    private lazy var secondOffer: OfferButton = {
+        let view = OfferButton()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondOfferTapped(_:))))
+        view.layer.applySketchShadow()
+        return view
+    }()
+    
+    private lazy var thirdOffer: OfferButton = {
+        let view = OfferButton()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(thirdOfferTapped(_:))))
+        view.layer.applySketchShadow()
+        return view
+    }()
+    
+    private var isFirstOfferSelected: Bool = false
+    private var isSecondOfferSelected: Bool = false
+    private var isThirdOfferSelected: Bool = false
+    
+    private lazy var topView = PremiumTopView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
         configureFeaturesStack()
+        setProducts()
+        selectFirstOffer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Setup UI
+// MARK: - Setup UI
     private func configureUI() {
+        addSubview(backGradientView)
+        backGradientView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         addSubview(backgroundImageView)
         
-        addSubview(premiumImageView)
-        premiumImageView.snp.makeConstraints { make in
+        addSubview(topView)
+        topView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(safeAreaLayoutGuide).offset(10)
-            make.width.equalTo(72)
-            make.height.equalTo(74)
-        }
-        
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(premiumImageView.snp.bottom).offset(14)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide)
         }
         
         addSubview(featuresMainStackView)
         featuresMainStackView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(35)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(topView.snp.bottom).offset(30)
+            make.leading.equalToSuperview().inset(34)
+            make.trailing.equalToSuperview().inset(30)
         }
         
         backgroundImageView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(topView.snp.bottom).offset(20)
         }
         
-        addSubview(firstSubscriptionButton)
-        firstSubscriptionButton.snp.makeConstraints { make in
-            make.top.equalTo(featuresMainStackView.snp.bottom).offset(80)
+        addSubview(firstOffer)
+        firstOffer.snp.makeConstraints { make in
+            make.top.equalTo(featuresMainStackView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(60)
         }
-        
-        addSubview(secondSubscriptionButton)
-        secondSubscriptionButton.snp.makeConstraints { make in
-            make.top.equalTo(firstSubscriptionButton.snp.bottom).offset(24)
+        addSubview(secondOffer)
+        secondOffer.snp.makeConstraints { make in
+            make.top.equalTo(firstOffer.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(60)
         }
-        
-        addSubview(freeSubscriptionButton)
-        freeSubscriptionButton.snp.makeConstraints { make in
-            make.top.equalTo(secondSubscriptionButton.snp.bottom).offset(24)
+        addSubview(thirdOffer)
+        thirdOffer.snp.makeConstraints { make in
+            make.top.equalTo(secondOffer.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(60)
         }
+
+        addSubview(subscribeButton)
+        subscribeButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(60)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
+        }
         
-        addSubview(freeTrialLabel)
-        freeTrialLabel.snp.makeConstraints { make in
-            make.top.equalTo(freeSubscriptionButton.snp.bottom).offset(6)
-            make.leading.trailing.equalToSuperview().inset(36)
+        addSubview(termsLabel)
+        termsLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(24)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(16)
+        }
+        
+        addSubview(restoreLabel)
+        restoreLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(24)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(16)
         }
 
     }
@@ -168,7 +210,6 @@ class GoPremiumView: UIView {
         featureViewArray[2].set(type: .noAds)
         featureViewArray[3].set(type: .anonymous)
                 
-        
         firstRowStackView.addArrangedSubview(featureViewArray[0])
         firstRowStackView.addArrangedSubview(featureViewArray[1])
         
@@ -182,19 +223,81 @@ class GoPremiumView: UIView {
                 make.width.equalTo(featureItemWidth)
             }
         }
-        
     }
     
-    @objc private func firstProductTapped (_ sender: UITapGestureRecognizer) {
+}
 
+// MARK: - OFFER SELECTION
+extension GoPremiumView {
+    
+    private func selectFirstOffer() {
+        isFirstOfferSelected = true
+        isSecondOfferSelected = false
+        isThirdOfferSelected = false
+        setSelectionToOffer()
     }
     
-    @objc private func secondProductTapped (_ sender: UITapGestureRecognizer) {
-
+    private func selectSecondOffer() {
+        isFirstOfferSelected = false
+        isSecondOfferSelected = true
+        isThirdOfferSelected = false
+        setSelectionToOffer()
     }
     
-    @objc private func freeProductTapped (_ sender: UITapGestureRecognizer) {
-
+    private func selectThirdOffer() {
+        isFirstOfferSelected = false
+        isSecondOfferSelected = false
+        isThirdOfferSelected = true
+        setSelectionToOffer()
     }
+    
+    private func setSelectionToOffer() {
+        firstOffer.isSelected = isFirstOfferSelected
+        secondOffer.isSelected = isSecondOfferSelected
+        thirdOffer.isSelected = isThirdOfferSelected
+    }
+}
 
+
+// MARK: - ACTIONS
+extension GoPremiumView {
+    @objc private func firstOfferTapped (_ sender: UITapGestureRecognizer) {
+        selectFirstOffer()
+    }
+    
+    @objc private func secondOfferTapped (_ sender: UITapGestureRecognizer) {
+        selectSecondOffer()
+    }
+    
+    @objc private func thirdOfferTapped (_ sender: UITapGestureRecognizer) {
+        selectThirdOffer()
+    }
+    
+    @objc private func subscribeTapped (_ sender: UITapGestureRecognizer) {
+        delegate?.subscribeSelected(indexOf: getSelectedOneIndex())
+    }
+}
+
+fileprivate extension GoPremiumView {
+    private func getSelectedOneIndex() -> Int {
+        if isFirstOfferSelected {
+            return 0
+        } else if isSecondOfferSelected {
+            return 1
+        } else if isThirdOfferSelected {
+            return 2
+        } else {
+            return 0
+        }
+    }
+}
+
+
+// MARK: - PUBLIC METHODS
+extension GoPremiumView {
+    private func setProducts() {
+        firstOffer.set(period: "1 Week", price: "4.99", perInterval: "$/Week")
+        secondOffer.set(period: "1 Month", price: "9.99", perInterval: "$/Month")
+        thirdOffer.set(period: "1 Year", price: "4.99", perInterval: "$/Month")
+    }
 }

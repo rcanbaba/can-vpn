@@ -36,6 +36,9 @@
 		B4184A1E295614950051EB79 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A1D295614950051EB79 /* DataRequest.swift */; };
 		B418EDF02A2680020036B747 /* GetIPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418EDEF2A2680020036B747 /* GetIPAddressRequest.swift */; };
 		B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */; };
+		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
+		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
+		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
 		B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */; };
 		B43E158C2A113F4A0095FF4A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158B2A113F4A0095FF4A /* SwiftyJSON */; };
 		B43E158F2A1142D50095FF4A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158E2A1142D50095FF4A /* FirebaseAnalytics */; };
@@ -406,6 +409,9 @@
 		B4184A1D295614950051EB79 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		B418EDEF2A2680020036B747 /* GetIPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPAddressRequest.swift; sourceTree = "<group>"; };
 		B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPAddressResponse.swift; sourceTree = "<group>"; };
+		B424E4622A43637C00EB124F /* PremiumTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTopView.swift; sourceTree = "<group>"; };
+		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
+		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
 		B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		B43E15972A1145970095FF4A /* RegisterFCMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMRequest.swift; sourceTree = "<group>"; };
 		B44120DC2956390B0072B566 /* AESCryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESCryption.swift; sourceTree = "<group>"; };
@@ -784,6 +790,7 @@
 				B44122F229575A060072B566 /* SplashScreenView.swift */,
 				B4184A162955C9AA0051EB79 /* LocationListTableViewCell.swift */,
 				B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */,
+				B424E4662A44327000EB124F /* UnderlinedLabel.swift */,
 				B4D09F3029C7B4E800E11069 /* MainScreenViews */,
 				B4DA0E8E29AF9FD300CA1A86 /* GoPreViews */,
 			);
@@ -1204,8 +1211,10 @@
 			isa = PBXGroup;
 			children = (
 				B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */,
+				B424E4622A43637C00EB124F /* PremiumTopView.swift */,
 				B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */,
 				B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */,
+				B424E4642A441ECC00EB124F /* OfferButton.swift */,
 			);
 			path = GoPreViews;
 			sourceTree = "<group>";
@@ -1663,9 +1672,11 @@
 				B40D732429D86FC20066FD80 /* CredentialResponse.swift in Sources */,
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
 				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,
+				B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
 				B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */,
+				B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */,
 				B40D732829DB21350066FD80 /* Toaster.swift in Sources */,
 				B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */,
 				B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */,
@@ -1684,6 +1695,7 @@
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
 				B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
+				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
 				B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */,
 				B44120E9295717300072B566 /* CALayerExtensions.swift in Sources */,
@@ -1873,7 +1885,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = canvpn/canvpn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;
@@ -1904,7 +1916,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = canvpn/canvpn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;

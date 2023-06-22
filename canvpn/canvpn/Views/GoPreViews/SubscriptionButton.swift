@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SubscriptionButton: UIView {
+class SubscriptionButton: UIButton {
     
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
@@ -21,39 +21,12 @@ class SubscriptionButton: UIView {
         return gradientView
     }()
     
-    private lazy var periodLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = UIColor.white
-        label.textAlignment = .left
-        label.isHidden = false
-        return label
-    }()
-    
-    private lazy var priceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 28)
-        label.textColor = UIColor.white
-        label.textAlignment = .right
-        label.isHidden = false
-        return label
-    }()
-    
-    private lazy var perIntervalLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor.white
-        label.textAlignment = .left
-        label.isHidden = false
-        return label
-    }()
-    
-    private lazy var freeLabel: UILabel = {
+    private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = UIColor.black.withAlphaComponent(0.6)
         label.textAlignment = .center
-        label.isHidden = true
+        label.text = "SUBSCRIBE NOW"
         return label
     }()
     
@@ -79,57 +52,11 @@ class SubscriptionButton: UIView {
             make.edges.equalToSuperview()
         }
         
-        addSubview(periodLabel)
-        periodLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(24)
-        }
-        
-        addSubview(perIntervalLabel)
-        perIntervalLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(24)
-        }
-        
-        addSubview(priceLabel)
-        priceLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalTo(perIntervalLabel.snp.leading).offset(-5)
-        }
-        
-        addSubview(freeLabel)
-        freeLabel.snp.makeConstraints { make in
+        addSubview(textLabel)
+        textLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
     }
-}
-
-extension SubscriptionButton {
-    
-    public func set(period: String?, price: String?, perInterval: String?) {
-        periodLabel.isHidden = false
-        priceLabel.isHidden = false
-        perIntervalLabel.isHidden = false
-        freeLabel.isHidden = true
-        
-        periodLabel.text = period
-        priceLabel.text = price
-        perIntervalLabel.text = perInterval
-    }
-    
-    public func setAsFree(text: String?) {
-        periodLabel.isHidden = true
-        priceLabel.isHidden = true
-        perIntervalLabel.isHidden = true
-        freeLabel.isHidden = false
-        
-        backGradientView.gradientLayer.colors = [ UIColor.white, UIColor.white ]
-        layer.borderColor = UIColor.Custom.gray.cgColor
-        layer.borderWidth = 0.1
-        
-        freeLabel.text = text
-    }
-    
 }

@@ -70,5 +70,13 @@ extension PremiumFeatureView {
         titleLabel.text = type.getTitle()
         descriptionLabel.text = type.getDescription()
         premiumImageView.image = type.getImage()
+        
+        if type == .noAds {
+            premiumImageView.snp.remakeConstraints { make in
+                make.leading.top.equalToSuperview()
+                make.size.equalTo(28)
+            }
+            
+        }
     }
 }
