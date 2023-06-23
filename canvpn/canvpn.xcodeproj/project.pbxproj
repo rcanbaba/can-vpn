@@ -329,7 +329,7 @@
 		B4D09F3629CB635D00E11069 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3529CB635D00E11069 /* LocationViewController.swift */; };
 		B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */; };
 		B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */; };
-		B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */; };
+		B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */; };
 		B4DA0E8B29AF9EE500CA1A86 /* GoPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
 		B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */; };
@@ -697,7 +697,7 @@
 		B4D09F3529CB635D00E11069 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeatureView.swift; sourceTree = "<group>"; };
 		B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionButton.swift; sourceTree = "<group>"; };
-		B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumViewController.swift; sourceTree = "<group>"; };
+		B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
@@ -931,7 +931,7 @@
 			children = (
 				B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */,
 				B4BBFC16296DF30000613E9F /* InitialViewController.swift */,
-				B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */,
+				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
 				B4D09F3529CB635D00E11069 /* LocationViewController.swift */,
 			);
 			path = Controllers;
@@ -1689,7 +1689,7 @@
 				B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */,
 				B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */,
 				B40D732829DB21350066FD80 /* Toaster.swift in Sources */,
-				B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */,
+				B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */,
 				B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */,
 				B4EE1F662A07C49200E219CA /* Endpoints.swift in Sources */,
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
