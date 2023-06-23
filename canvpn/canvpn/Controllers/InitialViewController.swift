@@ -110,8 +110,8 @@ extension InitialViewController {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                
                 SettingsManager.shared.settings = response
+                PurchaseManager.shared.startObserving()
                 self.initialSetupDispatchGroup.leave()
                 self.printDebug("fetchSettingsRequest - success")
                 
@@ -119,11 +119,8 @@ extension InitialViewController {
                 self.printDebug("fetchSettingsRequest - failure")
                 Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
             }
-            
         }
-        
     }
-    
     
 }
 

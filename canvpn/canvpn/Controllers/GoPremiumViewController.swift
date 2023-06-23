@@ -1,5 +1,5 @@
 //
-//  GoPremiumViewController.swift
+//  SubscriptionViewController.swift
 //  canvpn
 //
 //  Created by Can Babaoğlu on 1.03.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GoPremiumViewController: UIViewController {
+class SubscriptionViewController: UIViewController {
     
     private lazy var goPreView = GoPremiumView()
     
