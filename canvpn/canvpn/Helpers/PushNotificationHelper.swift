@@ -1,9 +1,10 @@
 //
 //  PushNotificationHelper.swift
-//  Cleaner Pro
+//  canvpn
 //
-//  Created by Anıl Aydın on 10.04.2023.
+//  Created by Can Babaoğlu on 1.03.2023.
 //
+
 
 import UIKit
 import UserNotifications

@@ -99,6 +99,13 @@ class GoPremiumView: UIView {
         return view
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.color = .black
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
     private var isFirstOfferSelected: Bool = false
     private var isSecondOfferSelected: Bool = false
     private var isThirdOfferSelected: Bool = false
@@ -182,6 +189,10 @@ class GoPremiumView: UIView {
             make.top.equalTo(subscribeButton.snp.bottom).offset(16)
         }
 
+        addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     private func configureFeaturesStack() {
@@ -295,9 +306,14 @@ fileprivate extension GoPremiumView {
 
 // MARK: - PUBLIC METHODS
 extension GoPremiumView {
-    private func setProducts() {
+    public func setProducts() {
         firstOffer.set(period: "1 Week", price: "4.99", perInterval: "$/Week")
         secondOffer.set(period: "1 Month", price: "9.99", perInterval: "$/Month")
         thirdOffer.set(period: "1 Year", price: "4.99", perInterval: "$/Month")
+    }
+    
+    public func isLoading(show: Bool) {
+        self.isUserInteractionEnabled = show
+        show ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
 }

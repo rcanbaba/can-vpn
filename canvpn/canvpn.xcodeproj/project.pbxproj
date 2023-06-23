@@ -39,6 +39,7 @@
 		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
+		B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4692A444C7600EB124F /* PurchaseManager.swift */; };
 		B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */; };
 		B43E158C2A113F4A0095FF4A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158B2A113F4A0095FF4A /* SwiftyJSON */; };
 		B43E158F2A1142D50095FF4A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158E2A1142D50095FF4A /* FirebaseAnalytics */; };
@@ -328,7 +329,7 @@
 		B4D09F3629CB635D00E11069 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3529CB635D00E11069 /* LocationViewController.swift */; };
 		B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */; };
 		B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */; };
-		B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */; };
+		B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */; };
 		B4DA0E8B29AF9EE500CA1A86 /* GoPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
 		B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */; };
@@ -412,6 +413,7 @@
 		B424E4622A43637C00EB124F /* PremiumTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTopView.swift; sourceTree = "<group>"; };
 		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
 		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
+		B424E4692A444C7600EB124F /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		B43E15972A1145970095FF4A /* RegisterFCMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMRequest.swift; sourceTree = "<group>"; };
 		B44120DC2956390B0072B566 /* AESCryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESCryption.swift; sourceTree = "<group>"; };
@@ -695,7 +697,7 @@
 		B4D09F3529CB635D00E11069 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeatureView.swift; sourceTree = "<group>"; };
 		B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionButton.swift; sourceTree = "<group>"; };
-		B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumViewController.swift; sourceTree = "<group>"; };
+		B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
@@ -764,8 +766,7 @@
 		B4023D402950E31E0008BDA6 /* canvpn */ = {
 			isa = PBXGroup;
 			children = (
-				B4F31F082959DDE8002FAD0D /* VPNManager.swift */,
-				B490D38E296C952100651BFC /* NETunnelManager.swift */,
+				B424E4682A444BE800EB124F /* Managers */,
 				B44122FA29577E450072B566 /* Model */,
 				B4023D6229510E4F0008BDA6 /* Core */,
 				B4184A18295614590051EB79 /* Network */,
@@ -819,15 +820,11 @@
 		B4023D642951120F0008BDA6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B453D6D22A14E64400ED35A2 /* KeychainManager.swift */,
-				B47170E32A140EF7008F00FA /* SettingsManager.swift */,
 				B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */,
 				B44120DC2956390B0072B566 /* AESCryption.swift */,
-				B44122F829577AFC0072B566 /* IpAddressManager.swift */,
 				B4023D652951121E0008BDA6 /* Helper.swift */,
 				B44120E1295712D10072B566 /* Constants.swift */,
 				B44122F0295758080072B566 /* AttributedTextHelper.swift */,
-				B48F8A6E295895B900CB69CA /* Localization.swift */,
 				B40D732729DB21350066FD80 /* Toaster.swift */,
 				B4EE1F5C2A07B02C00E219CA /* KeyValueStorage.swift */,
 			);
@@ -892,6 +889,20 @@
 			path = GetIPAddress;
 			sourceTree = "<group>";
 		};
+		B424E4682A444BE800EB124F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B47170E32A140EF7008F00FA /* SettingsManager.swift */,
+				B490D38E296C952100651BFC /* NETunnelManager.swift */,
+				B4F31F082959DDE8002FAD0D /* VPNManager.swift */,
+				B453D6D22A14E64400ED35A2 /* KeychainManager.swift */,
+				B44122F829577AFC0072B566 /* IpAddressManager.swift */,
+				B424E4692A444C7600EB124F /* PurchaseManager.swift */,
+				B48F8A6E295895B900CB69CA /* Localization.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		B43E15962A11455A0095FF4A /* RegisterNotification */ = {
 			isa = PBXGroup;
 			children = (
@@ -920,7 +931,7 @@
 			children = (
 				B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */,
 				B4BBFC16296DF30000613E9F /* InitialViewController.swift */,
-				B4DA0E8629AF96E500CA1A86 /* GoPremiumViewController.swift */,
+				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
 				B4D09F3529CB635D00E11069 /* LocationViewController.swift */,
 			);
 			path = Controllers;
@@ -1678,7 +1689,7 @@
 				B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */,
 				B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */,
 				B40D732829DB21350066FD80 /* Toaster.swift in Sources */,
-				B4DA0E8729AF96E500CA1A86 /* GoPremiumViewController.swift in Sources */,
+				B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */,
 				B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */,
 				B4EE1F662A07C49200E219CA /* Endpoints.swift in Sources */,
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
@@ -1697,6 +1708,7 @@
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
+				B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */,
 				B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */,
 				B44120E9295717300072B566 /* CALayerExtensions.swift in Sources */,
 				B40D732A29DB21900066FD80 /* UIApplicationExtensions.swift in Sources */,

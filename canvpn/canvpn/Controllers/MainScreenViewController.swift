@@ -229,9 +229,9 @@ extension MainScreenViewController {
 // MARK: - VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
     func goProButtonTapped() {
-        let goProViewController = GoPremiumViewController()
-        goProViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(goProViewController, animated: true)
+        let subscriptionViewController = SubscriptionViewController()
+        subscriptionViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(subscriptionViewController, animated: true)
     }
     
     func locationButtonTapped() {
