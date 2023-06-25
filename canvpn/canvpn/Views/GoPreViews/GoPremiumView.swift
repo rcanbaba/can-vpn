@@ -9,6 +9,8 @@ import UIKit
 
 protocol PremiumViewDelegate: AnyObject {
     func subscribeSelected(indexOf: Int)
+    func subscriptionTermsTapped()
+    func subscriptionRestoreTapped()
 }
 
 class GoPremiumView: UIView {
@@ -51,21 +53,12 @@ class GoPremiumView: UIView {
         return view
     }()
     
-    private lazy var freeTrialLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.Custom.goProFeatureTextGray
-        label.textAlignment = .center
-        label.text = "7-day free trial. Then 9.99 $/month"
-        return label
-    }()
-    
     private lazy var termsLabel: UnderlinedLabel = {
         let label = UnderlinedLabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.Custom.goProFeatureTextGray
         label.textAlignment = .left
-        label.text = "Subscription Terms"
+        label.text = "subs_terms_key".localize()
         return label
     }()
     
@@ -74,7 +67,7 @@ class GoPremiumView: UIView {
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.Custom.goProFeatureTextGray
         label.textAlignment = .right
-        label.text = "Restore Subscription"
+        label.text = "subs_restore_key".localize()
         return label
     }()
     
@@ -118,6 +111,7 @@ class GoPremiumView: UIView {
         configureFeaturesStack()
         setProducts()
         selectFirstOffer()
+        setGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -236,6 +230,16 @@ class GoPremiumView: UIView {
         }
     }
     
+    private func setGestureRecognizer() {
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
+        termsLabel.addGestureRecognizer(termsTapGesture)
+        termsLabel.isUserInteractionEnabled = true
+        
+        let restoreTapGesture = UITapGestureRecognizer(target: self, action: #selector(restoreLabelTapped(_:)))
+        restoreLabel.addGestureRecognizer(restoreTapGesture)
+        restoreLabel.isUserInteractionEnabled = true
+    }
+    
 }
 
 // MARK: - OFFER SELECTION
@@ -287,6 +291,14 @@ extension GoPremiumView {
     @objc private func subscribeTapped (_ sender: UITapGestureRecognizer) {
         delegate?.subscribeSelected(indexOf: getSelectedOneIndex())
     }
+    
+    @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.subscriptionTermsTapped()
+    }
+    
+    @objc func restoreLabelTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.subscriptionRestoreTapped()
+    }
 }
 
 fileprivate extension GoPremiumView {
@@ -313,7 +325,7 @@ extension GoPremiumView {
     }
     
     public func isLoading(show: Bool) {
-        self.isUserInteractionEnabled = show
+        self.isUserInteractionEnabled = !show
         show ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
 }

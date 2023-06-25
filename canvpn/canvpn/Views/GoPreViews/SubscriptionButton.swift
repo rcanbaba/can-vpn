@@ -26,7 +26,7 @@ class SubscriptionButton: UIButton {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = UIColor.black.withAlphaComponent(0.6)
         label.textAlignment = .center
-        label.text = "SUBSCRIBE NOW"
+        label.text = "subscribe_button_key".localize()
         return label
     }()
     

@@ -37,6 +37,15 @@ class SubscriptionViewController: UIViewController {
         }
     }
     
+    private func showSubscriptionTerms() {
+        let alertController = UIAlertController(title: "subs_terms_key".localize(),
+                                                message: "subs_terms_detail_key".localize(),
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     private func mockPurchaseStart() {
         
         
@@ -70,10 +79,10 @@ class SubscriptionViewController: UIViewController {
     
     private func showRestoreFailedAlert() {
         // TODO: translation
-        let alertController = UIAlertController(title: "Failed to restore subscription.",
-                                                message: "You don’t have an active subscription.",
+        let alertController = UIAlertController(title: "error_on_restore_title".localize(),
+                                                message: "error_on_restore_desc".localize(),
                                                 preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Ok", style: .cancel)
+        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
@@ -119,9 +128,22 @@ class SubscriptionViewController: UIViewController {
 }
 
 extension SubscriptionViewController: PremiumViewDelegate {
+    func subscriptionTermsTapped() {
+        showSubscriptionTerms()
+    }
+    
+    func subscriptionRestoreTapped() {
+        restoreSubscription()
+    }
+    
     func subscribeSelected(indexOf: Int) {
+        
+        let mockProductID = "com.arbtech.ilovevpn.ios.weekly"
+        subscribeItem(productId: mockProductID)
+        
+        
         if checkProductIsSafe(index: indexOf) {
-
+         //   subscribeItem(productId: "")
         } else {
             //TODO: show error toast maybe
             return

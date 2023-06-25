@@ -24,6 +24,27 @@ enum LanguageEnum {
 
 class Dictionaries {
     
+    /* subs_terms_detail_key
+     
+     We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.
+
+     - Payment will be charged to your iTunes account at confirmation of purchase.
+
+     - Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.
+
+     - Your account will be charged for renewal within 24 hours prior to the end of the current period.
+
+     - You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes
+     store.
+
+     - If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.
+
+     - If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.
+
+     Your personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.
+     
+     */
+    
     private var trDictionary = [
         "connect_key" : "Bağlan",
         "connecting_key": "Bağlanıyor",
@@ -36,24 +57,34 @@ class Dictionaries {
         "terms_of_service_key": "Kullanım Şartları",
         "pp_tos_key": "Uygulamayı kullanarak Kullanım Şartları ve Gizlilik Politikasını kabul etmiş olursunuz.",
         "current_ip_key": "IP Adresiniz",
-        "error_occur_reload" : "Error occurred, please reload app.",
-        "error_occur_location" : "Error occurred, please select a location before.",
-        "error_try_again" : "Error occurred, please try again.",
-        "error_location_again" : "Error occurred, please select location again!",
+        "error_occur_reload" : "Hata oluştu, uygulamayı tekrar çalıştırınız.",
+        "error_occur_location" : "Hata oluştu, lütfen konum seçiniz.",
+        "error_try_again" : "Hata oluştu, lütfen tekrar deneyiniz.",
+        "error_location_again" : "Hata oluştu, lütfen konumu tekrar seçiniz!",
         "choose_location": "Konum Seç",
-        "premium_desc_1": "Hide your ip with anonymous surfing",
-        "premium_desc_2": "Up to 1000 Mb/s bandwidth to explore",
-        "premium_desc_3": "Enjoy the app without annoying ads",
-        "premium_desc_4": "Transfer traffic via encrypted tunnel",
-        "premium_title_1": "Anonymous",
-        "premium_title_2": "Fast",
-        "premium_title_3": "Remove Ads",
-        "premium_title_4": "Secure",
-        "upgrade_pro": "Upgrade To PRO",
-        "upgrade_pro_detail": "Try premium free, cancel anytime.",
-        "premium_feature_title": "Premium Features",
+        "premium_desc_1": "Ip adresinizi gizleyin anonim olarak gezinin.",
+        "premium_desc_2": "1000 Mb/s e varan bant genişliği",
+        "premium_desc_3": "Reklamsız uygulama keyfi",
+        "premium_desc_4": "Şifrelenmiş bağlantı ile gizli kalın.",
+        "premium_title_1": "Anonim",
+        "premium_title_2": "Hızlı",
+        "premium_title_3": "Reklamsız",
+        "premium_title_4": "Güveli",
+        "upgrade_pro": "Premiuma Yükselt",
+        "upgrade_pro_detail": "Ücretsiz Premiumu dene, istediğin zaman iptal et.",
+        "premium_feature_title": "Premium Özellikler",
+        "error_on_restore_title": "Abonelik yenilenemedi.",
+        "error_on_restore_desc": "Aktif aboneliğiniz bulunamadı.",
+        "ok_button_key": "Tamam",
+        "error_on_productId": "Abonelik ürün bilgileri bulunamadı.",
+        "error_on_product": "Abonelik ürünleri bulunamadı.",
+        "error_on_product_request": "Uygun abonelik türlerine şu an erişilemiyor.",
+        "error_on_payment": "Abonelik işlemi iptal edildi.",
+        "subscribe_button_key": "Aboneliği Başlat",
+        "subs_terms_key": "Abonelik Şartları",
+        "subs_restore_key": "Aboneliği Yenile",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
-    //TODO: MISSING KEY ON OTHER LANGUAGES
     
     private var engDictionary = [
         "connect_key" : "Connect",
@@ -82,7 +113,18 @@ class Dictionaries {
         "premium_title_4": "Secure",
         "upgrade_pro": "Upgrade To PRO",
         "upgrade_pro_detail": "Try premium free, cancel anytime.",
-        "premium_feature_title": "Premium Features"
+        "premium_feature_title": "Premium Features",
+        "error_on_restore_title": "Failed to restore subscription.",
+        "error_on_restore_desc": "You don’t have an active subscription.",
+        "ok_button_key": "Ok",
+        "error_on_productId": "Subscription product identifier not found.",
+        "error_on_product": "Subscription product not found.",
+        "error_on_product_request": "Unable to fetch available subscription products at the moment.",
+        "error_on_payment": "Subscription process was cancelled.",
+        "subscribe_button_key": "SUBSCRIBE NOW",
+        "subs_terms_key": "Subscription Terms",
+        "subs_restore_key": "Restore Subscription",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
     private var arDictionary = [
@@ -112,7 +154,18 @@ class Dictionaries {
         "premium_title_4": "يؤمن",
         "upgrade_pro": "التطور للاحترافية",
         "upgrade_pro_detail": "جرب Premium مجانًا ، وقم بالإلغاء في أي وقت.",
-        "premium_feature_title": "العضوية المميزة"
+        "premium_feature_title": "العضوية المميزة",
+        "error_on_restore_title": "فشل في استعادة الاشتراك.",
+        "error_on_restore_desc": "ليس لديك اشتراك نشط.",
+        "ok_button_key": "موافق",
+        "error_on_productId": "لم يتم العثور على معرف منتج الاشتراك.",
+        "error_on_product": "لم يتم العثور على منتج الاشتراك.",
+        "error_on_product_request": "تعذر الحصول على منتجات الاشتراك المتاحة في الوقت الحالي.",
+        "error_on_payment": "تم إلغاء عملية الاشتراك.",
+        "subscribe_button_key": "اشترك الآن",
+        "subs_terms_key": "شروط الاشتراك",
+        "subs_restore_key": "استعادة الاشتراك",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
     private var esDictionary = [
@@ -142,7 +195,18 @@ class Dictionaries {
         "premium_title_4": "Seguro",
         "upgrade_pro": "Actualizar a PRO",
         "upgrade_pro_detail": "Prueba premium gratis, cancela en cualquier momento.",
-        "premium_feature_title": "Funciones premium"
+        "premium_feature_title": "Funciones premium",
+        "error_on_restore_title": "Error al restaurar la suscripción.",
+        "error_on_restore_desc": "No tienes una suscripción activa.",
+        "ok_button_key": "Ok",
+        "error_on_productId": "No se encontró el identificador del producto de suscripción.",
+        "error_on_product": "No se encontró el producto de suscripción.",
+        "error_on_product_request": "No se pueden obtener los productos de suscripción disponibles en este momento.",
+        "error_on_payment": "Se canceló el proceso de suscripción.",
+        "subscribe_button_key": "SUSCRÍBETE AHORA",
+        "subs_terms_key": "Términos de suscripción",
+        "subs_restore_key": "Restaurar suscripción",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
     private var frDictionary = [
@@ -172,7 +236,18 @@ class Dictionaries {
         "premium_title_4": "Sécurisé",
         "upgrade_pro": "Passer à la version PRO",
         "upgrade_pro_detail": "Essayez Premium gratuitement, annulez à tout moment.",
-        "premium_feature_title": "Fonctionnalités Premium"
+        "premium_feature_title": "Fonctionnalités Premium",
+        "error_on_restore_title": "Échec de la restauration de l'abonnement.",
+        "error_on_restore_desc": "Vous n'avez pas d'abonnement actif.",
+        "ok_button_key": "Ok",
+        "error_on_productId": "Identifiant du produit d'abonnement introuvable.",
+        "error_on_product": "Produit d'abonnement introuvable.",
+        "error_on_product_request": "Impossible de récupérer les produits d'abonnement disponibles pour le moment.",
+        "error_on_payment": "Le processus d'abonnement a été annulé.",
+        "subscribe_button_key": "S'ABONNER MAINTENANT",
+        "subs_terms_key": "Conditions d'abonnement",
+        "subs_restore_key": "Restaurer l'abonnement",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
     private var deDictionary = [
@@ -202,7 +277,18 @@ class Dictionaries {
         "premium_title_4": "Sicher",
         "upgrade_pro": "Auf PRO upgraden",
         "upgrade_pro_detail": "Premium kostenlos ausprobieren, jederzeit kündbar.",
-        "premium_feature_title": "Premium-Funktionen"
+        "premium_feature_title": "Premium-Funktionen",
+        "error_on_restore_title": "Wiederherstellung des Abonnements fehlgeschlagen.",
+        "error_on_restore_desc": "Sie haben kein aktives Abonnement.",
+        "ok_button_key": "Ok",
+        "error_on_productId": "Abonnement-Produktkennung nicht gefunden.",
+        "error_on_product": "Abonnement-Produkt nicht gefunden.",
+        "error_on_product_request": "Aktuell können keine verfügbaren Abonnement-Produkte abgerufen werden.",
+        "error_on_payment": "Der Abonnementvorgang wurde abgebrochen.",
+        "subscribe_button_key": "JETZT ABONNIEREN",
+        "subs_terms_key": "Abonnementbedingungen",
+        "subs_restore_key": "Abonnement wiederherstellen",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
     // zh-Hans, zh-Hant, zh-HK
@@ -233,10 +319,21 @@ class Dictionaries {
         "premium_title_4": "安全",
         "upgrade_pro": "升级到 PRO 版",
         "upgrade_pro_detail": "免费尝试高级版，随时取消。",
-        "premium_feature_title": "高级功能"
+        "premium_feature_title": "高级功能",
+        "error_on_restore_title": "恢复订阅失败。",
+        "error_on_restore_desc": "您没有有效的订阅。",
+        "ok_button_key": "确定",
+        "error_on_productId": "未找到订阅产品标识。",
+        "error_on_product": "未找到订阅产品。",
+        "error_on_product_request": "暂时无法获取可用的订阅产品。",
+        "error_on_payment": "订阅过程已取消。",
+        "subscribe_button_key": "立即订阅",
+        "subs_terms_key": "订阅条款",
+        "subs_restore_key": "恢复订阅",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
-    // fa   persian
+    // fa persian
     private var faDictionary = [
         "connect_key": "اتصال",
         "connecting_key": "در حال اتصال",
@@ -264,10 +361,21 @@ class Dictionaries {
         "premium_title_4": "امن",
         "upgrade_pro": "ارتقا به نسخه PRO",
         "upgrade_pro_detail": "آزمایش رایگان نسخه پرمیوم، هر زمان قابل لغو است.",
-        "premium_feature_title": "امکانات پرمیوم"
+        "premium_feature_title": "امکانات پرمیوم",
+        "error_on_restore_title": "عدم توانایی در بازیابی اشتراک.",
+        "error_on_restore_desc": "شما اشتراک فعالی ندارید.",
+        "ok_button_key": "تایید",
+        "error_on_productId": "شناسه محصول اشتراک پیدا نشد.",
+        "error_on_product": "محصول اشتراک پیدا نشد.",
+        "error_on_product_request": "در حال حاضر امکان دریافت محصولات اشتراک در دسترس وجود ندارد.",
+        "error_on_payment": "فرایند اشتراک لغو شد.",
+        "subscribe_button_key": "اکنون عضو شوید",
+        "subs_terms_key": "شرایط اشتراک",
+        "subs_restore_key": "بازیابی اشتراک",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
-    // ur    Urdu
+    // ur Urdu
     private var urDictionary = [
         "connect_key": "منسلک کریں",
         "connecting_key": "منسلک ہو رہا ہے",
@@ -295,7 +403,18 @@ class Dictionaries {
         "premium_title_4": "محفوظ",
         "upgrade_pro": "PRO کو اپ گریڈ کریں",
         "upgrade_pro_detail": "پریمیم کو فوری آزمائیں، کسی بھی وقت منسوخ کریں۔",
-        "premium_feature_title": "پریمیم خصوصیات"
+        "premium_feature_title": "پریمیم خصوصیات",
+        "error_on_restore_title": "اشتراک بحال کرنے میں ناکامی ہوئی۔",
+        "error_on_restore_desc": "آپ کے پاس کوئی فعال اشتراک نہیں ہے۔",
+        "ok_button_key": "ٹھیک ہے",
+        "error_on_productId": "اشتراک پروڈکٹ کا شناخت کار نہیں ملا۔",
+        "error_on_product": "اشتراک پروڈکٹ نہیں ملا۔",
+        "error_on_product_request": "فی الحال دستیاب اشتراک پروڈکٹس کو حاصل کرنے میں ناکامی۔",
+        "error_on_payment": "اشتراک کی پروسیس منسوخ کردی گئی۔",
+        "subscribe_button_key": "ابھی سبسکرائب کریں",
+        "subs_terms_key": "سبسکرپشن کی شرائط",
+        "subs_restore_key": "سبسکرپشن بحال کریں",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
     private var ruDictionary = [
@@ -325,10 +444,21 @@ class Dictionaries {
         "premium_title_4": "Безопасность",
         "upgrade_pro": "Получите PRO",
         "upgrade_pro_detail": "Попробуйте премиум-версию бесплатно, отмена в любое время.",
-        "premium_feature_title": "Премиум-функции"
+        "premium_feature_title": "Премиум-функции",
+        "error_on_restore_title": "Не удалось восстановить подписку.",
+        "error_on_restore_desc": "У вас нет активной подписки.",
+        "ok_button_key": "Ок",
+        "error_on_productId": "Идентификатор подписки не найден.",
+        "error_on_product": "Подписка не найдена.",
+        "error_on_product_request": "Не удалось получить доступные продукты подписки в данный момент.",
+        "error_on_payment": "Процесс подписки был отменен.",
+        "subscribe_button_key": "ПОДПИСАТЬСЯ СЕЙЧАС",
+        "subs_terms_key": "Условия подписки",
+        "subs_restore_key": "Восстановить подписку",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
-    // hindu hi
+    // hindi hi
     private var hiDictionary = [
         "connect_key": "कनेक्ट करें",
         "connecting_key": "कनेक्ट हो रहा है",
@@ -356,7 +486,18 @@ class Dictionaries {
         "premium_title_4": "सुरक्षित",
         "upgrade_pro": "प्रो में अपग्रेड करें",
         "upgrade_pro_detail": "प्रीमियम को मुफ्त में आज़माएं, कभी भी रद्द करें।",
-        "premium_feature_title": "प्रीमियम सुविधाएँ"
+        "premium_feature_title": "प्रीमियम सुविधाएँ",
+        "error_on_restore_title": "सदस्यता को बहाल करने में विफल हुआ।",
+        "error_on_restore_desc": "आपके पास कोई सक्रिय सदस्यता नहीं है।",
+        "ok_button_key": "ठीक है",
+        "error_on_productId": "सदस्यता उत्पाद आईडेंटिफ़ायर नहीं मिला।",
+        "error_on_product": "सदस्यता उत्पाद नहीं मिला।",
+        "error_on_product_request": "वर्तमान में उपलब्ध सदस्यता उत्पादों को प्राप्त करने में असमर्थ।",
+        "error_on_payment": "सदस्यता प्रक्रिया रद्द कर दी गई थी।",
+        "subscribe_button_key": "अभी सदस्यता लें",
+        "subs_terms_key": "सदस्यता नियम",
+        "subs_restore_key": "सदस्यता को पुनर्स्थापित करें",
+        "subs_terms_detail_key" : "TODO TODO TODO"
     ]
     
     
@@ -417,7 +558,7 @@ class LocalizationManager {
         } else {
             return .eng
         }
-
+        
     }
     
     static func localize(key: String) -> String {

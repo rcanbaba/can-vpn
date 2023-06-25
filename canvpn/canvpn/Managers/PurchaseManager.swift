@@ -234,15 +234,12 @@ extension PurchaseManager: SKProductsRequestDelegate {
 
 // MARK: - IAPManagerError Localized Error Descriptions
 extension PurchaseManager.IAPManagerError: LocalizedError {
-    
     var errorDescription: String? {
         switch self {
-        case .noProductIDsFound: return "No In-App Purchase product identifiers were found."
-        case .noProductsFound: return "No In-App Purchases were found."
-        case .productRequestFailed: return "Unable to fetch available In-App Purchase products at the moment."
-        case .paymentWasCancelled: return "In-App Purchase process was cancelled."
+        case .noProductIDsFound: return "error_on_productId".localize()
+        case .noProductsFound: return "error_on_product".localize()
+        case .productRequestFailed: return "error_on_product_request".localize()
+        case .paymentWasCancelled: return "error_on_payment".localize()
         }
     }
-    
 }
-
