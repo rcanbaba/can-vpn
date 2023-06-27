@@ -16,11 +16,17 @@ class SubscriptionViewController: UIViewController {
         return view
     }()
     
+    private var networkService: DefaultNetworkService?
+    
     private var products: [SKProduct]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkService = DefaultNetworkService()
+        products = PurchaseManager.shared.products
+        
         configureUI()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,22 +63,26 @@ class SubscriptionViewController: UIViewController {
         goPreView.isLoading(show: true)
         PurchaseManager.shared.restorePurchases { success, productIds, error in
             if success {
-                if let receipt = PurchaseManager.shared.appStoreReceiptStr() {
-// TODO: api gelince
-//                    API.consumeProduct(receipt: receipt) { response, error in
-//
-//                        self.goPreView.isLoading(show: false)
-//                        if let _ = response {
-//                            SettingsManager.remoteSettings?.isSubscriptionExpired = false
-//                            self.moveToSplash()
-//                        } else {
-//                            self.showRestoreFailedAlert()
-//                        }
-//                    }
+                if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
+                    var consumeReceiptRequest = ConsumeReceiptRequest()
+                    consumeReceiptRequest.setParams(receipt: receipt)
+                    
+                    networkService.request(consumeReceiptRequest) { result in
+                        switch result {
+                        case .success(let response):
+                            if response.success {
+                                print("💙: restore - success")
+                            } else {
+                                self.showRestoreFailedAlert()
+                            }
+                        case .failure(let error):
+                            self.showRestoreFailedAlert()
+                        }
+                    }
+                } else {
+                    self.goPreView.isLoading(show: false)
+                    self.showRestoreFailedAlert()
                 }
-            } else {
-                self.goPreView.isLoading(show: false)
-                self.showRestoreFailedAlert()
             }
         }
     }
@@ -98,18 +108,25 @@ class SubscriptionViewController: UIViewController {
             if product.productIdentifier == productId {
                 PurchaseManager.shared.buy(product: product) { success, productIds, error in
                     if success {
-                        if let receipt = PurchaseManager.shared.appStoreReceiptStr() {
-                        //    KeyValueStorage.isPremium = true
-                // TODO:
-//                            API.consumeProduct(receipt: receipt) { response, error in
-//                                self.purchaseView.toggleLoading(shouldShow: false)
-//                                if response?.success == true {
-//                                    SettingsManager.remoteSettings?.isSubscriptionExpired = false
-//                                    self.moveToSplash()
-//                                } else {
-//                                    self.moveToSplash()
-//                                }
-//                            }
+                        if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
+                            var consumeReceiptRequest = ConsumeReceiptRequest()
+                            consumeReceiptRequest.setParams(receipt: receipt)
+                            
+                            networkService.request(consumeReceiptRequest) { result in
+                                switch result {
+                                case .success(let response):
+                                    if response.success {
+                                        print("💙: subscription - success")
+                                    } else {
+                                        self.showRestoreFailedAlert()
+                                    }
+                                case .failure(let error):
+                                    self.showRestoreFailedAlert()
+                                }
+                            }
+                        } else {
+                            self.goPreView.isLoading(show: false)
+                            self.showRestoreFailedAlert()
                         }
                     } else if error == .paymentWasCancelled {
                         self.goPreView.isLoading(show: true)

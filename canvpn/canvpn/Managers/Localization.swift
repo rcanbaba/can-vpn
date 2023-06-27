@@ -83,7 +83,7 @@ class Dictionaries {
         "subscribe_button_key": "Aboneliği Başlat",
         "subs_terms_key": "Abonelik Şartları",
         "subs_restore_key": "Aboneliği Yenile",
-        "subs_terms_detail_key" : "TODO TODO TODO"
+        "subs_terms_detail_key" : "We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
     ]
     
     private var engDictionary = [

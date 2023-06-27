@@ -82,18 +82,9 @@ class PurchaseManager: NSObject {
     // MARK: - Get IAP Products
     func getProducts(_ completionHandler: @escaping ProductsRequestCompletionHandler) {
         productsRequestCompletionHandler = completionHandler
-        
-        // TODO: CAN: set product sku ids to test
-        // remove mockProductIdArray
         let productIds = SettingsManager.shared.settings?.products.compactMap({$0.sku}) ?? []
-        
-        let firstProductId = "com.arbtech.ilovevpn.ios.weekly"
-        let secondProductId = "com.arbtech.ilovevpn.ios.monthly"
-        
-        let mockProductIdArray: [String] = [firstProductId, secondProductId]
-        
         if !productIds.isEmpty {
-            let productIdentifiers = Set<String>(mockProductIdArray)
+            let productIdentifiers = Set<String>(productIds)
             let request = SKProductsRequest(productIdentifiers: productIdentifiers)
             request.delegate = self
             request.start()

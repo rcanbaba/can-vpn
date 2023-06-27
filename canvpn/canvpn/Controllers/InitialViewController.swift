@@ -112,12 +112,21 @@ extension InitialViewController {
             case .success(let response):
                 SettingsManager.shared.settings = response
                 PurchaseManager.shared.startObserving()
+                self.getProductPrices()
                 self.initialSetupDispatchGroup.leave()
                 self.printDebug("fetchSettingsRequest - success")
                 
             case .failure(let error):
                 self.printDebug("fetchSettingsRequest - failure")
                 Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
+            }
+        }
+    }
+    
+    private func getProductPrices() {
+        PurchaseManager.shared.getProducts { success, products, error, arg  in
+            if success {
+                // todo
             }
         }
     }

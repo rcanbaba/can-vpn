@@ -32,6 +32,7 @@ protocol DataRequest {
 extension DataRequest where Response: Decodable {
     func decode(_ data: Data) throws -> Response {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(Response.self, from: data)
     }
 }
