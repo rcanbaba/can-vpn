@@ -35,8 +35,13 @@ struct Links: Codable {
 // MARK: - Product
 struct Product: Codable {
     let sku: String
-    let duration: Duration
+    let isPromoted: Bool
     let tag: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case isPromoted = "is_promoted"
+        case sku, tag
+    }
 }
 
 // MARK: - Duration

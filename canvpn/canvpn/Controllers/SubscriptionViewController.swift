@@ -66,7 +66,6 @@ class SubscriptionViewController: UIViewController {
                 if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
                     var consumeReceiptRequest = ConsumeReceiptRequest()
                     consumeReceiptRequest.setParams(receipt: receipt)
-                    
                     networkService.request(consumeReceiptRequest) { result in
                         switch result {
                         case .success(let response):
@@ -88,13 +87,25 @@ class SubscriptionViewController: UIViewController {
     }
     
     private func showRestoreFailedAlert() {
-        // TODO: translation
-        let alertController = UIAlertController(title: "error_on_restore_title".localize(),
-                                                message: "error_on_restore_desc".localize(),
-                                                preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "error_on_restore_title".localize(),
+                                                    message: "error_on_restore_desc".localize(),
+                                                    preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    private func showAlert123() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "MOCK",
+                                                    message: "dummy item",
+                                                    preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     // TODO: weak selfleri ekle
@@ -123,19 +134,21 @@ class SubscriptionViewController: UIViewController {
                                 case .failure(let error):
                                     self.showRestoreFailedAlert()
                                 }
+                                DispatchQueue.main.async {
+                                    self.goPreView.isLoading(show: false)
+                                }
                             }
                         } else {
-                            self.goPreView.isLoading(show: false)
                             self.showRestoreFailedAlert()
                         }
                     } else if error == .paymentWasCancelled {
-                        self.goPreView.isLoading(show: true)
-                        // TODO: burdan nereye gidecek !!!
-                        // kapatalım ayrı case değilse bunu da uçur
+                        DispatchQueue.main.async {
+                            self.goPreView.isLoading(show: false)
+                        }
                     } else {
-                        self.goPreView.isLoading(show: true)
-                        // TODO: burdan nereye gidecek !!!
-                        // kapatalım
+                        DispatchQueue.main.async {
+                            self.goPreView.isLoading(show: false)
+                        }
                     }
                 }
             }
@@ -154,15 +167,20 @@ extension SubscriptionViewController: PremiumViewDelegate {
     }
     
     func subscribeSelected(indexOf: Int) {
-        
-        let mockProductID = "com.arbtech.ilovevpn.ios.weekly"
-        subscribeItem(productId: mockProductID)
-        
-        
+//
+//        let mockProductID = "com.arbtech.ilovevpn.ios.weekly"
+//        subscribeItem(productId: mockProductID)
+//
+//
         if checkProductIsSafe(index: indexOf) {
          //   subscribeItem(productId: "")
+            if let skuID = SettingsManager.shared.settings?.products[indexOf].sku {
+                subscribeItem(productId: skuID)
+            } else {
+                showAlert123()
+            }
         } else {
-            //TODO: show error toast maybe
+            showAlert123()
             return
         }
     }
