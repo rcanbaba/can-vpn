@@ -313,6 +313,7 @@
 		B44122F729575DC40072B566 /* splash-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B44122F629575DC40072B566 /* splash-animation.json */; };
 		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
 		B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122FB29577E540072B566 /* VpnServerItem.swift */; };
+		B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */; };
 		B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453D6D22A14E64400ED35A2 /* KeychainManager.swift */; };
 		B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */; };
 		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
@@ -332,7 +333,7 @@
 		B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */; };
 		B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */; };
 		B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */; };
-		B4DA0E8B29AF9EE500CA1A86 /* GoPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */; };
+		B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
 		B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */; };
 		B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */; };
@@ -684,6 +685,7 @@
 		B44122F629575DC40072B566 /* splash-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-animation.json"; sourceTree = "<group>"; };
 		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
 		B44122FB29577E540072B566 /* VpnServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnServerItem.swift; sourceTree = "<group>"; };
+		B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		B453D6D22A14E64400ED35A2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
@@ -702,7 +704,7 @@
 		B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeatureView.swift; sourceTree = "<group>"; };
 		B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionButton.swift; sourceTree = "<group>"; };
 		B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
-		B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPremiumView.swift; sourceTree = "<group>"; };
+		B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceRequest.swift; sourceTree = "<group>"; };
@@ -793,12 +795,11 @@
 		B4023D582950F4910008BDA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B44FB20B2A5061ED002258E9 /* ReusableComponents */,
 				B44122F229575A060072B566 /* SplashScreenView.swift */,
 				B4184A162955C9AA0051EB79 /* LocationListTableViewCell.swift */,
-				B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */,
-				B424E4662A44327000EB124F /* UnderlinedLabel.swift */,
 				B4D09F3029C7B4E800E11069 /* MainScreenViews */,
-				B4DA0E8E29AF9FD300CA1A86 /* GoPreViews */,
+				B4DA0E8E29AF9FD300CA1A86 /* SubscriptionViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1215,6 +1216,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B44FB20B2A5061ED002258E9 /* ReusableComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B424E4662A44327000EB124F /* UnderlinedLabel.swift */,
+				B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */,
+			);
+			path = ReusableComponents;
+			sourceTree = "<group>";
+		};
 		B48E7E932A4990C600DEBD74 /* ConsumeReceipt */ = {
 			isa = PBXGroup;
 			children = (
@@ -1233,16 +1243,17 @@
 			path = MainScreenViews;
 			sourceTree = "<group>";
 		};
-		B4DA0E8E29AF9FD300CA1A86 /* GoPreViews */ = {
+		B4DA0E8E29AF9FD300CA1A86 /* SubscriptionViews */ = {
 			isa = PBXGroup;
 			children = (
-				B4DA0E8A29AF9EE500CA1A86 /* GoPremiumView.swift */,
+				B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */,
 				B424E4622A43637C00EB124F /* PremiumTopView.swift */,
 				B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */,
 				B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */,
 				B424E4642A441ECC00EB124F /* OfferButton.swift */,
+				B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */,
 			);
-			path = GoPreViews;
+			path = SubscriptionViews;
 			sourceTree = "<group>";
 		};
 		B4EE1F622A07C3D700E219CA /* RegisterDevice */ = {
@@ -1727,6 +1738,7 @@
 				B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */,
 				B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */,
 				B44120E9295717300072B566 /* CALayerExtensions.swift in Sources */,
+				B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */,
 				B40D732A29DB21900066FD80 /* UIApplicationExtensions.swift in Sources */,
 				B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */,
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
@@ -1745,7 +1757,7 @@
 				B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */,
 				B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */,
 				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,
-				B4DA0E8B29AF9EE500CA1A86 /* GoPremiumView.swift in Sources */,
+				B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */,
 				B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */,
 				B40D732629D86FF60066FD80 /* GetCredentialRequest.swift in Sources */,
 				B418EDF02A2680020036B747 /* GetIPAddressRequest.swift in Sources */,

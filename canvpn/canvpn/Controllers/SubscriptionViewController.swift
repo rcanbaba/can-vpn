@@ -10,8 +10,8 @@ import StoreKit
 
 class SubscriptionViewController: UIViewController {
     
-    private lazy var goPreView: GoPremiumView = {
-        let view = GoPremiumView()
+    private lazy var subscriptionView: SubscriptionView = {
+        let view = SubscriptionView()
         view.delegate = self
         return view
     }()
@@ -19,14 +19,14 @@ class SubscriptionViewController: UIViewController {
     private var networkService: DefaultNetworkService?
     
     private var products: [SKProduct]?
+    private var presentableProducts: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
-        products = PurchaseManager.shared.products
-        
+        checkAndSetProducts()
         configureUI()
-
+        setOfferTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,32 +35,29 @@ class SubscriptionViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
+    private func checkAndSetProducts() {
+        products = PurchaseManager.shared.products
+        presentableProducts = SettingsManager.shared.settings?.products ?? []
+    }
+    
     private func configureUI() {
         view.backgroundColor = UIColor.white
-        view.addSubview(goPreView)
-        goPreView.snp.makeConstraints { (make) in
+        view.addSubview(subscriptionView)
+        subscriptionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
     
-    private func showSubscriptionTerms() {
-        let alertController = UIAlertController(title: "subs_terms_key".localize(),
-                                                message: "subs_terms_detail_key".localize(),
-                                                preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+    private func setOfferTableView() {
+        subscriptionView.offerTableView.delegate = self
+        subscriptionView.offerTableView.dataSource = self
+        subscriptionView.offerTableView.reloadData()
     }
     
-    private func mockPurchaseStart() {
-        
-        
-        
-        
-    }
-    
+
+
     private func restoreSubscription() {
-        goPreView.isLoading(show: true)
+        subscriptionView.isLoading(show: true)
         PurchaseManager.shared.restorePurchases { success, productIds, error in
             if success {
                 if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
@@ -79,40 +76,17 @@ class SubscriptionViewController: UIViewController {
                         }
                     }
                 } else {
-                    self.goPreView.isLoading(show: false)
+                    self.subscriptionView.isLoading(show: false)
                     self.showRestoreFailedAlert()
                 }
             }
         }
     }
     
-    private func showRestoreFailedAlert() {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "error_on_restore_title".localize(),
-                                                    message: "error_on_restore_desc".localize(),
-                                                    preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
-            alertController.addAction(cancelAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    private func showAlert123() {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "MOCK",
-                                                    message: "dummy item",
-                                                    preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel)
-            alertController.addAction(cancelAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
     // TODO: weak selfleri ekle
-    
     private func subscribeItem(productId: String) {
         guard let products = self.products else { return }
-        goPreView.isLoading(show: true)
+        subscriptionView.isLoading(show: true)
         
         // TODO: daha iyi bi kontrol yapılabilir
         for product in products {
@@ -135,7 +109,7 @@ class SubscriptionViewController: UIViewController {
                                     self.showRestoreFailedAlert()
                                 }
                                 DispatchQueue.main.async {
-                                    self.goPreView.isLoading(show: false)
+                                    self.subscriptionView.isLoading(show: false)
                                 }
                             }
                         } else {
@@ -143,11 +117,11 @@ class SubscriptionViewController: UIViewController {
                         }
                     } else if error == .paymentWasCancelled {
                         DispatchQueue.main.async {
-                            self.goPreView.isLoading(show: false)
+                            self.subscriptionView.isLoading(show: false)
                         }
                     } else {
                         DispatchQueue.main.async {
-                            self.goPreView.isLoading(show: false)
+                            self.subscriptionView.isLoading(show: false)
                         }
                     }
                 }
@@ -166,6 +140,7 @@ extension SubscriptionViewController: PremiumViewDelegate {
         restoreSubscription()
     }
     
+    // TODO: bu akış çalışacak !!! 
     func subscribeSelected(indexOf: Int) {
 //
 //        let mockProductID = "com.arbtech.ilovevpn.ios.weekly"
@@ -193,4 +168,62 @@ fileprivate extension SubscriptionViewController {
         }
         return false
     }
+}
+
+extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presentableProducts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
+        let cellData = presentableProducts[indexPath.row]
+        cell.setName(text: cellData.sku)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+            for selectedIndexPath in selectedIndexPaths {
+                tableView.deselectRow(at: selectedIndexPath, animated: false)
+            }
+        }
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+    }
+}
+
+
+// MARK: - Alerts
+extension SubscriptionViewController {
+    private func showRestoreFailedAlert() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "error_on_restore_title".localize(),
+                                                    message: "error_on_restore_desc".localize(),
+                                                    preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    private func showAlert123() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "MOCK",
+                                                    message: "dummy item",
+                                                    preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    private func showSubscriptionTerms() {
+        let alertController = UIAlertController(title: "subs_terms_key".localize(),
+                                                message: "subs_terms_detail_key".localize(),
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
