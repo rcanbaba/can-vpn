@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PremiumViewDelegate: AnyObject {
-    func subscribeSelected(indexOf: Int)
+    func subscribeTapped()
     func subscriptionTermsTapped()
     func subscriptionRestoreTapped()
 }
@@ -227,7 +227,7 @@ class SubscriptionView: UIView {
 // MARK: - ACTIONS
 extension SubscriptionView {
     @objc private func subscribeTapped (_ sender: UITapGestureRecognizer) {
-        delegate?.subscribeSelected(indexOf: 0)
+        delegate?.subscribeTapped()
     }
     
     @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {

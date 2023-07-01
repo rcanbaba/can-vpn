@@ -21,6 +21,8 @@ class SubscriptionViewController: UIViewController {
     private var products: [SKProduct]?
     private var presentableProducts: [Product] = []
     
+    private var selectedOfferIndex: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
@@ -53,8 +55,6 @@ class SubscriptionViewController: UIViewController {
         subscriptionView.offerTableView.dataSource = self
         subscriptionView.offerTableView.reloadData()
     }
-    
-
 
     private func restoreSubscription() {
         subscriptionView.isLoading(show: true)
@@ -86,11 +86,11 @@ class SubscriptionViewController: UIViewController {
     // TODO: weak selfleri ekle
     private func subscribeItem(productId: String) {
         guard let products = self.products else { return }
-        subscriptionView.isLoading(show: true)
         
         // TODO: daha iyi bi kontrol yapılabilir
         for product in products {
             if product.productIdentifier == productId {
+                subscriptionView.isLoading(show: true)
                 PurchaseManager.shared.buy(product: product) { success, productIds, error in
                     if success {
                         if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
@@ -125,51 +125,37 @@ class SubscriptionViewController: UIViewController {
                         }
                     }
                 }
+            } else {
+                // TODO: hiç product bulunamamsı
             }
         }
     }
     
+    private func selectGivenOffer(indexPath: IndexPath) {
+        subscriptionView.offerTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        selectedOfferIndex = indexPath.row
+    }
+    
 }
 
+// MARK: - PremiumViewDelegate
 extension SubscriptionViewController: PremiumViewDelegate {
+    func subscribeTapped() {
+        if let index = selectedOfferIndex, let skuID = SettingsManager.shared.settings?.products[index].sku {
+            subscribeItem(productId: skuID)
+        } else {
+            showAlert123()
+        }
+    }
     func subscriptionTermsTapped() {
         showSubscriptionTerms()
     }
-    
     func subscriptionRestoreTapped() {
         restoreSubscription()
     }
-    
-    // TODO: bu akış çalışacak !!! 
-    func subscribeSelected(indexOf: Int) {
-//
-//        let mockProductID = "com.arbtech.ilovevpn.ios.weekly"
-//        subscribeItem(productId: mockProductID)
-//
-//
-        if checkProductIsSafe(index: indexOf) {
-         //   subscribeItem(productId: "")
-            if let skuID = SettingsManager.shared.settings?.products[indexOf].sku {
-                subscribeItem(productId: skuID)
-            } else {
-                showAlert123()
-            }
-        } else {
-            showAlert123()
-            return
-        }
-    }
 }
 
-fileprivate extension SubscriptionViewController {
-    private func checkProductIsSafe(index: Int) -> Bool {
-        if index < (SettingsManager.shared.settings?.products ?? []).count {
-            return true
-        }
-        return false
-    }
-}
-
+// MARK: - UITableViewDelegate & UITableViewDataSource
 extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presentableProducts.count
@@ -178,6 +164,8 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
         let cellData = presentableProducts[indexPath.row]
+        cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
+
         cell.setName(text: cellData.sku)
         return cell
     }
@@ -188,6 +176,7 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
                 tableView.deselectRow(at: selectedIndexPath, animated: false)
             }
         }
+        selectedOfferIndex = indexPath.row
         tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
     }
 }
