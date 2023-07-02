@@ -58,76 +58,89 @@ class SubscriptionViewController: UIViewController {
 
     private func restoreSubscription() {
         subscriptionView.isLoading(show: true)
-        PurchaseManager.shared.restorePurchases { success, productIds, error in
-            if success {
-                if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
+        PurchaseManager.shared.restorePurchases { [weak self] success, _, _ in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.subscriptionView.isLoading(show: false)
+                
+                if success, let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
                     var consumeReceiptRequest = ConsumeReceiptRequest()
                     consumeReceiptRequest.setParams(receipt: receipt)
+                    
                     networkService.request(consumeReceiptRequest) { result in
-                        switch result {
-                        case .success(let response):
-                            if response.success {
-                                print("💙: restore - success")
-                            } else {
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let response):
+                                if response.success {
+                                    print("💙: restore - success")
+                                    self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    self.showRestoreFailedAlert()
+                                }
+                            case .failure:
                                 self.showRestoreFailedAlert()
                             }
-                        case .failure(let error):
-                            self.showRestoreFailedAlert()
                         }
                     }
                 } else {
-                    self.subscriptionView.isLoading(show: false)
                     self.showRestoreFailedAlert()
                 }
             }
         }
     }
     
-    // TODO: weak selfleri ekle
     private func subscribeItem(productId: String) {
         guard let products = self.products else { return }
         
-        // TODO: daha iyi bi kontrol yapılabilir
-        for product in products {
-            if product.productIdentifier == productId {
-                subscriptionView.isLoading(show: true)
-                PurchaseManager.shared.buy(product: product) { success, productIds, error in
+        if let product = products.first(where: { $0.productIdentifier == productId }) {
+            subscriptionView.isLoading(show: true)
+            PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.subscriptionView.isLoading(show: false)
+                    
                     if success {
                         if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
                             var consumeReceiptRequest = ConsumeReceiptRequest()
                             consumeReceiptRequest.setParams(receipt: receipt)
                             
                             networkService.request(consumeReceiptRequest) { result in
-                                switch result {
-                                case .success(let response):
-                                    if response.success {
-                                        print("💙: subscription - success")
-                                    } else {
+                                DispatchQueue.main.async {
+                                    switch result {
+                                    case .success(let response):
+                                        if response.success {
+                                            print("💙: subscription - success")
+                                            DispatchQueue.main.async {
+                                                self.navigationController?.popViewController(animated: true)
+                                            }
+                                        } else {
+                                            print("💙: subscription - error4")
+                                            self.showRestoreFailedAlert()
+                                        }
+                                    case .failure:
+                                        print("💙: subscription - error5")
                                         self.showRestoreFailedAlert()
                                     }
-                                case .failure(let error):
-                                    self.showRestoreFailedAlert()
-                                }
-                                DispatchQueue.main.async {
-                                    self.subscriptionView.isLoading(show: false)
                                 }
                             }
                         } else {
+                            print("💙: subscription - error6")
                             self.showRestoreFailedAlert()
                         }
                     } else if error == .paymentWasCancelled {
-                        DispatchQueue.main.async {
-                            self.subscriptionView.isLoading(show: false)
-                        }
+                        print("💙: subscription - error7")
+                        // Handle payment cancellation
                     } else {
-                        DispatchQueue.main.async {
-                            self.subscriptionView.isLoading(show: false)
-                        }
+                        print("💙: subscription - error8")
+                        // Handle other errors
                     }
                 }
-            } else {
-                // TODO: hiç product bulunamamsı
             }
+        } else {
+            print("💙: subscription - error9")
+            // Handle case when product is not found backendden gelmiş apple da yok
         }
     }
     

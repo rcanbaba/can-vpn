@@ -53,6 +53,6 @@ extension DataRequest {
          "os_version": "unknown",
          "app_language": "en",
         // "app_language": Locale.preferredLocale().languageCode ?? "unknown",
-         "installation_id": Constants.idfv]        
+         "installation_id": Constants.idfv]
     }
 }
