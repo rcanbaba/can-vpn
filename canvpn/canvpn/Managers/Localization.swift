@@ -126,7 +126,9 @@ class Dictionaries {
         "subscribe_button_key": "SUBSCRIBE NOW",
         "subs_terms_key": "Subscription Terms",
         "subs_restore_key": "Restore Subscription",
-        "subs_terms_detail_key" : "TODO TODO TODO"
+        "subs_terms_detail_key" : "TODO TODO TODO",
+        "upgraded_to_pro": "Premium User",
+        "upgraded_to_pro_detail": "You can use all locations as premium."
     ]
     
     private var arDictionary = [

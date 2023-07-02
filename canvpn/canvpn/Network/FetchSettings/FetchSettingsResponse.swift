@@ -12,7 +12,7 @@ typealias Settings = SettingsResponse
 
 // MARK: - SettingsResponse
 struct SettingsResponse: Codable {
-    let user: User
+    var user: User
     let servers: [Server]
     let links: Links
     let products: [Product]
@@ -73,7 +73,7 @@ struct Location: Codable {
 // MARK: - User
 struct User: Codable {
     let sharedID: String
-    let isSubscribed: Bool
+    var isSubscribed: Bool
 
     enum CodingKeys: String, CodingKey {
         case sharedID = "shared_id"

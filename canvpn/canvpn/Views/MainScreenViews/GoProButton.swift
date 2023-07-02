@@ -106,17 +106,31 @@ class GoProButton: UIView {
     }
     
     private func setAsPremium() {
-        rightArrowImageView.isHidden = true
+        rightArrowBackView.isHidden = true
         titleLabel.text = "upgraded_to_pro".localize()
         detailLabel.text = "upgraded_to_pro_detail".localize()
         isUserInteractionEnabled = false
+        
+        mainStackView.snp.remakeConstraints { make in
+            make.leading.equalTo(premiumImageView.snp.trailing).offset(10)
+            make.centerY.equalToSuperview()
+            make.top.bottom.lessThanOrEqualToSuperview().inset(9)
+            make.trailing.equalToSuperview().inset(15)
+        }
     }
     
     private func setAsStandard() {
-        rightArrowImageView.isHidden = false
+        rightArrowBackView.isHidden = false
         titleLabel.text = "upgrade_pro".localize()
         detailLabel.text = "upgrade_pro_detail".localize()
         isUserInteractionEnabled = true
+        
+        mainStackView.snp.remakeConstraints { make in
+            make.leading.equalTo(premiumImageView.snp.trailing).offset(10)
+            make.centerY.equalToSuperview()
+            make.top.bottom.lessThanOrEqualToSuperview().inset(9)
+            make.trailing.equalTo(rightArrowBackView.snp.leading).inset(-10)
+        }
     }
     
 }
