@@ -112,4 +112,13 @@ extension OfferTableViewCell {
     public func setName(text: String) {
         periodLabel.text = text
     }
+    
+    public func setPrice(text: String) {
+        priceLabel.text = text
+    }
+    
+    public func setInterval(text: String) {
+        perIntervalLabel.text = "/" + text
+    }
+    
 }

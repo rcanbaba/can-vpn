@@ -91,9 +91,7 @@ class SubscriptionViewController: UIViewController {
     }
     
     private func subscribeItem(productId: String) {
-        guard let products = self.products else { return }
-        
-        if let product = products.first(where: { $0.productIdentifier == productId }) {
+        if let product = getSKProduct(skuID: productId) {
             subscriptionView.isLoading(show: true)
             PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
                 guard let self = self else { return }
@@ -149,6 +147,9 @@ class SubscriptionViewController: UIViewController {
         selectedOfferIndex = indexPath.row
     }
     
+    private func getSKProduct(skuID: String) -> SKProduct? {
+        return products?.first(where: { $0.productIdentifier == skuID})
+    }
 }
 
 // MARK: - PremiumViewDelegate
@@ -179,7 +180,16 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
         let cellData = presentableProducts[indexPath.row]
         cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
 
-        cell.setName(text: cellData.sku)
+        if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
+            cell.setName(text: skProduct.localizedTitle)
+            cell.setPrice(text: skPrice)
+            cell.setInterval(text: "")
+        } else {
+            cell.setName(text: "unknown product")
+            cell.setPrice(text: "-")
+            cell.setInterval(text: "")
+        }
+        
         return cell
     }
     
