@@ -74,20 +74,13 @@ class SubscriptionView: UIView {
     public lazy var offerTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier: "OfferTableViewCell")
-        tableView.rowHeight = 66
+        tableView.rowHeight = 80
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor.yellow
-        tableView.layer.backgroundColor = UIColor.red.cgColor
         tableView.bounces = false
-        
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(onRefreshControl(_:)), for: .valueChanged)
-//        tableView.refreshControl = refreshControl
-
         return tableView
     }()
     
@@ -123,16 +116,14 @@ class SubscriptionView: UIView {
         addSubview(topView)
         topView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(safeAreaLayoutGuide)
-      //      make.height.equalTo(74)
+            make.top.equalTo(safeAreaLayoutGuide).inset(12)
         }
         
         addSubview(featuresMainStackView)
         featuresMainStackView.snp.makeConstraints { make in
-            make.top.equalTo(topView.snp.bottom).offset(30)
+            make.top.equalTo(topView.snp.bottom).offset(40)
             make.leading.equalToSuperview().inset(34)
             make.trailing.equalToSuperview().inset(30)
-     //       make.height.equalTo(200)
         }
         
         backgroundImageView.snp.makeConstraints { (make) in

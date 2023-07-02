@@ -43,8 +43,9 @@ class MainScreenViewController: UIViewController {
         
         setLocationButtonInitialData()
         configureUI()
-        
+        checkSubscriptionState()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForegroundNotification(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +118,25 @@ class MainScreenViewController: UIViewController {
         }
     }
     
+    private func checkSubscriptionState() {
+        let isPremium = SettingsManager.shared.settings?.user.isSubscribed ?? false
+        isPremium ? setPremiumUser() : setStandardUser()
+    }
+    
+    private func setPremiumUser() {
+        mainView.goProButton.setState(isPremium: true)
+    }
+    
+    private func setStandardUser() {
+        mainView.goProButton.setState(isPremium: false)
+        presentSubscriptionPage()
+    }
+    
+    private func presentSubscriptionPage() {
+        let subscriptionViewController = SubscriptionViewController()
+        subscriptionViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+    }
 }
 
 // MARK: - API Calls
@@ -229,9 +249,7 @@ extension MainScreenViewController {
 // MARK: - VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
     func goProButtonTapped() {
-        let subscriptionViewController = SubscriptionViewController()
-        subscriptionViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+        presentSubscriptionPage()
     }
     
     func locationButtonTapped() {

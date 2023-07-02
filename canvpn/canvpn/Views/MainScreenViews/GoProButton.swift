@@ -68,7 +68,6 @@ class GoProButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func configureUI() {
         isUserInteractionEnabled = true
         backgroundColor = UIColor.white
@@ -104,5 +103,27 @@ class GoProButton: UIView {
             make.top.bottom.lessThanOrEqualToSuperview().inset(9)
             make.trailing.equalTo(rightArrowBackView.snp.leading).inset(-10)
         }
+    }
+    
+    private func setAsPremium() {
+        rightArrowImageView.isHidden = true
+        titleLabel.text = "upgraded_to_pro".localize()
+        detailLabel.text = "upgraded_to_pro_detail".localize()
+        isUserInteractionEnabled = false
+    }
+    
+    private func setAsStandard() {
+        rightArrowImageView.isHidden = false
+        titleLabel.text = "upgrade_pro".localize()
+        detailLabel.text = "upgrade_pro_detail".localize()
+        isUserInteractionEnabled = true
+    }
+    
+}
+
+// MARK: - public methods
+extension GoProButton {
+    public func setState(isPremium: Bool) {
+        isPremium ? setAsPremium() : setAsStandard()
     }
 }

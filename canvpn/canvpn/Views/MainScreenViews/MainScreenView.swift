@@ -67,7 +67,7 @@ class MainScreenView: UIView {
         return button
     }()
     
-    private lazy var goProButton: GoProButton = {
+    public lazy var goProButton: GoProButton = {
         let button = GoProButton()
         button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goProButtonTapped(_:))))
         return button
