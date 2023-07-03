@@ -314,6 +314,7 @@
 		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
 		B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122FB29577E540072B566 /* VpnServerItem.swift */; };
 		B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */; };
+		B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20E2A52CE20002258E9 /* NotificationNames.swift */; };
 		B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453D6D22A14E64400ED35A2 /* KeychainManager.swift */; };
 		B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */; };
 		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
@@ -686,6 +687,7 @@
 		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
 		B44122FB29577E540072B566 /* VpnServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnServerItem.swift; sourceTree = "<group>"; };
 		B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
+		B44FB20E2A52CE20002258E9 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		B453D6D22A14E64400ED35A2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
@@ -930,6 +932,7 @@
 				B40D732929DB21900066FD80 /* UIApplicationExtensions.swift */,
 				B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */,
 				B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */,
+				B44FB20E2A52CE20002258E9 /* NotificationNames.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1754,6 +1757,7 @@
 				B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */,
 				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,
 				B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */,
+				B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */,
 				B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */,
 				B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */,
 				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,

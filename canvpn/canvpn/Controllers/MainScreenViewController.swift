@@ -44,8 +44,7 @@ class MainScreenViewController: UIViewController {
         setLocationButtonInitialData()
         configureUI()
         checkSubscriptionState()
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForegroundNotification(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
-        
+        observeNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,25 +53,6 @@ class MainScreenViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .darkContent
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
-    }
-    
-    @objc private func willEnterForegroundNotification(_ sender: Notification) {
-        Analytics.logEvent("003-MainScreenPresented", parameters: ["type" : "enterForeground"])
-        guard let manager = tunnelManager,let currentManagerState = manager.getManagerState() else {
-            Toaster.showToast(message: "Error occurred, please reload app.")
-            Analytics.logEvent("096-ChangeState", parameters: ["error" : "guard"])
-            return }
-
-        if currentManagerState == .connected {
-            setState(state: .connected)
-        } else if currentManagerState == .connecting {
-            setState(state: .connecting)
-        } else if currentManagerState == .disconnecting {
-            setState(state: .disconnecting)
-        } else {
-            setState(state: .disconnected)
-        }
-        
     }
     
     private func setLocationButtonInitialData() {
@@ -136,6 +116,41 @@ class MainScreenViewController: UIViewController {
         let subscriptionViewController = SubscriptionViewController()
         subscriptionViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+    }
+    
+    private func observeNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForegroundNotification(_:)),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(subscriptionStateUpdated(_:)),
+                                               name: .subscriptionStateUpdated,
+                                               object: nil)
+        
+    }
+    
+    @objc private func willEnterForegroundNotification(_ sender: Notification) {
+        Analytics.logEvent("003-MainScreenPresented", parameters: ["type" : "enterForeground"])
+        guard let manager = tunnelManager,let currentManagerState = manager.getManagerState() else {
+            Toaster.showToast(message: "Error occurred, please reload app.")
+            Analytics.logEvent("096-ChangeState", parameters: ["error" : "guard"])
+            return }
+
+        if currentManagerState == .connected {
+            setState(state: .connected)
+        } else if currentManagerState == .connecting {
+            setState(state: .connecting)
+        } else if currentManagerState == .disconnecting {
+            setState(state: .disconnecting)
+        } else {
+            setState(state: .disconnected)
+        }
+    }
+    
+    @objc private func subscriptionStateUpdated (_ notification: Notification) {
+        checkSubscriptionState()
     }
 }
 
