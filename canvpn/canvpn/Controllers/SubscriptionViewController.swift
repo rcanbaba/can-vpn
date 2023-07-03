@@ -183,11 +183,11 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
         if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
             cell.setName(text: skProduct.localizedTitle)
             cell.setPrice(text: skPrice)
-            cell.setInterval(text: "")
+            cell.setDescription(text: skProduct.localizedDescription)
         } else {
             cell.setName(text: "unknown product")
             cell.setPrice(text: "-")
-            cell.setInterval(text: "")
+            cell.setDescription(text: "...")
         }
         
         return cell

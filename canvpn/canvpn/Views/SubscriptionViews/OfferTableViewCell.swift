@@ -15,10 +15,11 @@ class OfferTableViewCell: UITableViewCell {
         view.layer.cornerRadius = 30
         view.layer.borderWidth = 2.5
         view.layer.borderColor = UIColor.Custom.offerButtonBorderGray.cgColor
+        view.layer.backgroundColor = UIColor.white.cgColor
         return view
     }()
     
-    private lazy var periodLabel: UILabel = {
+    private lazy var planLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = UIColor.Custom.offerButtonTextGray
@@ -34,9 +35,9 @@ class OfferTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var perIntervalLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.Custom.offerButtonTextGray
         label.textAlignment = .left
         return label
@@ -66,34 +67,34 @@ class OfferTableViewCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(3)
         }
         
-        mainView.layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
+     //   mainView.layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
         
-        mainView.addSubview(periodLabel)
-        periodLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+        mainView.addSubview(planLabel)
+        planLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview().offset(-6)
             make.leading.equalToSuperview().inset(24)
-        }
-        
-        mainView.addSubview(perIntervalLabel)
-        perIntervalLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(24)
         }
         
         mainView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(perIntervalLabel.snp.leading).offset(-5)
+            make.trailing.equalToSuperview().inset(24)
         }
-
+        
+        mainView.addSubview(descriptionLabel)
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(planLabel.snp.bottom).offset(2)
+            make.leading.equalToSuperview().inset(24)
+            make.trailing.equalTo(priceLabel.snp.leading).inset(12)
+        }
     }
     
     private func configureAsSelected() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.mainView.layer.borderColor = UIColor.Custom.offerButtonBorderOrange.cgColor
         }
-        periodLabel.textColor = UIColor.Custom.offerButtonTextOrange
-        perIntervalLabel.textColor = UIColor.Custom.offerButtonTextOrange
+        planLabel.textColor = UIColor.Custom.offerButtonTextOrange
+        descriptionLabel.textColor = UIColor.Custom.offerButtonTextOrange
         priceLabel.textColor = UIColor.Custom.offerButtonTextOrange
     }
     
@@ -101,8 +102,8 @@ class OfferTableViewCell: UITableViewCell {
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.mainView.layer.borderColor = UIColor.Custom.offerButtonBorderGray.cgColor
         }
-        periodLabel.textColor = UIColor.Custom.offerButtonTextGray
-        perIntervalLabel.textColor = UIColor.Custom.offerButtonTextGray
+        planLabel.textColor = UIColor.Custom.offerButtonTextGray
+        descriptionLabel.textColor = UIColor.Custom.offerButtonTextGray
         priceLabel.textColor = UIColor.Custom.offerButtonTextGray
     }
     
@@ -110,15 +111,15 @@ class OfferTableViewCell: UITableViewCell {
 
 extension OfferTableViewCell {
     public func setName(text: String) {
-        periodLabel.text = text
+        planLabel.text = text
     }
     
     public func setPrice(text: String) {
         priceLabel.text = text
     }
     
-    public func setInterval(text: String) {
-        perIntervalLabel.text = "/" + text
+    public func setDescription(text: String) {
+        descriptionLabel.text = text
     }
     
 }
