@@ -89,6 +89,11 @@ class LocationViewController: UIViewController {
         }
     }
     
+    private func presentSubscriptionPage() {
+        let subscriptionViewController = SubscriptionViewController()
+        subscriptionViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+    }
 }
 
 extension LocationViewController: UITableViewDelegate, UITableViewDataSource {

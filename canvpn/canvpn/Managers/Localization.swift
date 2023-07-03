@@ -85,7 +85,8 @@ class Dictionaries {
         "subs_restore_key": "Aboneliği Yenile",
         "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
         "upgraded_to_pro": "Premium Kullanıcı",
-        "upgraded_to_pro_detail": "Premium olarak tüm konumları kullanabiliyorsunuz."
+        "upgraded_to_pro_detail": "Premium olarak tüm konumları kullanabiliyorsunuz.",
+        "free_user_selected_premium_message": "Premium konum kullanabilmek için abone olmanız gerekli"
     ]
     
     private var engDictionary = [
@@ -126,9 +127,10 @@ class Dictionaries {
         "subscribe_button_key": "SUBSCRIBE NOW",
         "subs_terms_key": "Subscription Terms",
         "subs_restore_key": "Restore Subscription",
-        "subs_terms_detail_key" : "TODO TODO TODO",
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
         "upgraded_to_pro": "Premium User",
-        "upgraded_to_pro_detail": "You can use all locations as premium."
+        "upgraded_to_pro_detail": "You can use all locations as premium.",
+        "free_user_selected_premium_message": "You need to subscribe to use premium location"
     ]
     
     private var arDictionary = [
@@ -169,7 +171,11 @@ class Dictionaries {
         "subscribe_button_key": "اشترك الآن",
         "subs_terms_key": "شروط الاشتراك",
         "subs_restore_key": "استعادة الاشتراك",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "مستخدم مميز",
+        "upgraded_to_pro_detail": "يمكنك استخدام جميع المواقع كمستخدم مميز.",
+        "free_user_selected_premium_message": "يجب أن تشترك لاستخدام موقع مميز"
+
     ]
     
     private var esDictionary = [
@@ -210,7 +216,10 @@ class Dictionaries {
         "subscribe_button_key": "SUSCRÍBETE AHORA",
         "subs_terms_key": "Términos de suscripción",
         "subs_restore_key": "Restaurar suscripción",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "Usuario Premium",
+        "upgraded_to_pro_detail": "Puedes usar todas las ubicaciones como premium.",
+        "free_user_selected_premium_message": "Necesitas suscribirte para usar la ubicación premium."
     ]
     
     private var frDictionary = [
@@ -251,7 +260,10 @@ class Dictionaries {
         "subscribe_button_key": "S'ABONNER MAINTENANT",
         "subs_terms_key": "Conditions d'abonnement",
         "subs_restore_key": "Restaurer l'abonnement",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "Utilisateur Premium",
+        "upgraded_to_pro_detail": "Vous pouvez utiliser toutes les localisations en tant qu'utilisateur premium.",
+        "free_user_selected_premium_message": "Vous devez vous abonner pour utiliser l'emplacement premium."
     ]
     
     private var deDictionary = [
@@ -292,7 +304,10 @@ class Dictionaries {
         "subscribe_button_key": "JETZT ABONNIEREN",
         "subs_terms_key": "Abonnementbedingungen",
         "subs_restore_key": "Abonnement wiederherstellen",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "Premium-Benutzer",
+        "upgraded_to_pro_detail": "Du kannst alle Standorte als Premium nutzen.",
+        "free_user_selected_premium_message": "Du musst ein Abonnement abschließen, um den Premium-Standort zu nutzen."
     ]
     
     // zh-Hans, zh-Hant, zh-HK
@@ -334,7 +349,10 @@ class Dictionaries {
         "subscribe_button_key": "立即订阅",
         "subs_terms_key": "订阅条款",
         "subs_restore_key": "恢复订阅",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "高级用户",
+        "upgraded_to_pro_detail": "您可以将所有位置用作高级功能。",
+        "free_user_selected_premium_message": "您需要订阅才能使用高级位置。"
     ]
     
     // fa persian
@@ -376,7 +394,10 @@ class Dictionaries {
         "subscribe_button_key": "اکنون عضو شوید",
         "subs_terms_key": "شرایط اشتراک",
         "subs_restore_key": "بازیابی اشتراک",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "کاربر پریمیوم",
+        "upgraded_to_pro_detail": "شما می‌توانید تمام مکان‌ها را به عنوان پریمیوم استفاده کنید.",
+        "free_user_selected_premium_message": "برای استفاده از مکان پریمیوم باید مشترک شوید."
     ]
     
     // ur Urdu
@@ -418,7 +439,10 @@ class Dictionaries {
         "subscribe_button_key": "ابھی سبسکرائب کریں",
         "subs_terms_key": "سبسکرپشن کی شرائط",
         "subs_restore_key": "سبسکرپشن بحال کریں",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "پریمیم صارف",
+        "upgraded_to_pro_detail": "آپ پریمیم طور پر تمام مقامات استعمال کرسکتے ہیں۔",
+        "free_user_selected_premium_message": "آپ کو پریمیوم مقام استعمال کرنے کیلئے سبسکرائب کرنا ہوگا۔"
     ]
     
     private var ruDictionary = [
@@ -459,7 +483,10 @@ class Dictionaries {
         "subscribe_button_key": "ПОДПИСАТЬСЯ СЕЙЧАС",
         "subs_terms_key": "Условия подписки",
         "subs_restore_key": "Восстановить подписку",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "Премиум-пользователь",
+        "upgraded_to_pro_detail": "Вы можете использовать все местоположения в качестве премиум.",
+        "free_user_selected_premium_message": "Для использования премиумного местоположения необходимо подписаться."
     ]
     
     // hindi hi
@@ -501,7 +528,10 @@ class Dictionaries {
         "subscribe_button_key": "अभी सदस्यता लें",
         "subs_terms_key": "सदस्यता नियम",
         "subs_restore_key": "सदस्यता को पुनर्स्थापित करें",
-        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use."
+        "subs_terms_detail_key" : "MOCK: We offer monthly, 3-month, 6-month, 1-year and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase Cleanup Pro, you can simply continue using and enjoying Cleaner Pro for free.\nYour personal data is securely stored on Cleaner Pro, be sure to read our Privacy Policy and Terms of Use.",
+        "upgraded_to_pro": "प्रीमियम उपयोगकर्ता",
+        "upgraded_to_pro_detail": "आप प्रीमियम के रूप में सभी स्थानों का उपयोग कर सकते हैं।",
+        "free_user_selected_premium_message": "प्रीमियम स्थान का उपयोग करने के लिए आपको सदस्यता लेनी होगी।"
     ]
     
     

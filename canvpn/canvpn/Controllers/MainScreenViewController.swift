@@ -207,7 +207,7 @@ extension MainScreenViewController {
 
 // MARK: - Set Selected Server
 extension MainScreenViewController {
-    private func setSelectedServer(server: Server?) {
+    private func setSelectedServer(server: Server?) {        
         if server?.id == selectedServer?.id {
             selectedServer = server
             setSelectedServerData(server: server)
