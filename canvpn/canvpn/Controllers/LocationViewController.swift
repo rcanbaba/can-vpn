@@ -115,8 +115,18 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        delegate?.selectedServer(server: serverList[indexPath.row])
-        navigationController?.popViewController(animated: true)
+        
+        let selectedServer = serverList[indexPath.row]
+        
+        if selectedServer.type.isPremium() && SettingsManager.shared.settings?.user.isSubscribed == false {
+            presentSubscriptionPage()
+            Toaster.showToast(message: "free_user_selected_premium_message".localize())
+            return
+        } else {
+            navigationController?.popViewController(animated: true)
+            delegate?.selectedServer(server: selectedServer)
+        }
+
     }
     
 }

@@ -32,5 +32,11 @@ extension UIApplication {
         return window
     }
     
+    class func getMainWindow(completion: @escaping (UIWindow?) -> Void) {
+        DispatchQueue.main.async {
+            let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+            completion(window)
+        }
+    }
     
 }
