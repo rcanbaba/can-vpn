@@ -51,7 +51,8 @@ class MainScreenViewController: UIViewController {
         super.viewWillAppear(animated)
         // TODO: disappear da default a çekebilirsin
         UIApplication.shared.statusBarStyle = .darkContent
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.barTintColor = UIColor.white
         Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
     }
     

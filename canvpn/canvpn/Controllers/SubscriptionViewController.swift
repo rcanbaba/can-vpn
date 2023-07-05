@@ -7,6 +7,7 @@
 
 import UIKit
 import StoreKit
+import FirebaseAnalytics
 
 class SubscriptionViewController: UIViewController {
     
@@ -34,7 +35,8 @@ class SubscriptionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = UIColor.black
-        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        Analytics.logEvent("006-SubsScreenPresented", parameters: ["type" : "willAppear"])
     }
     
     private func checkAndSetProducts() {
