@@ -86,6 +86,21 @@ extension ConnectionState {
         }
     }
     
+    func getTopLogoImage() -> UIImage? {
+        switch self {
+        case .initial:
+            return UIImage(named: "top-logo-orange")
+        case .disconnected:
+            return UIImage(named: "top-logo-orange")
+        case .connecting:
+            return UIImage(named: "top-logo-gray")
+        case .connected:
+            return UIImage(named: "top-logo-green")
+        case .disconnecting:
+            return UIImage(named: "top-logo-gray")
+        }
+    }
+    
 }
 
 enum SignalLevel: Int {

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logo-green-text.png",
+      "filename" : "image 3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "image 3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "image 3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

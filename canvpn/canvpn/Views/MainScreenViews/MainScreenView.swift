@@ -28,7 +28,7 @@ class MainScreenView: UIView {
     
     private lazy var topLogoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "top-logo")
+        imageView.image = UIImage(named: "top-logo-orange")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -205,6 +205,7 @@ extension MainScreenView {
         connectionStateLabel.textColor = state.getUIColor()
         connectionStateLabel.text = state.getText()
         isUserInteractionEnabled = state.getUserInteraction()
+        topLogoImageView.image = state.getTopLogoImage()
     }
 
     // MARK: - Selected Location View

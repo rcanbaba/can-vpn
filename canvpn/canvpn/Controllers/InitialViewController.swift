@@ -37,7 +37,7 @@ class InitialViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor.Custom.orange
+        view.backgroundColor = UIColor.white
         view.addSubview(splashView)
         splashView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()

@@ -34,12 +34,11 @@ class SplashScreenView: UIView {
     }
     
     private func configureUI() {
-        self.backgroundColor = UIColor.Custom.orange
+        self.backgroundColor = UIColor.white
         
         self.addSubview(animationView)
         animationView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.centerX.equalToSuperview().offset(15)
+            make.center.equalToSuperview()
             make.width.equalTo(400)
             make.height.equalTo(400)
         }

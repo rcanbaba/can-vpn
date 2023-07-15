@@ -113,13 +113,16 @@ extension OfferTableViewCell {
     public func setName(text: String) {
         planLabel.text = text
     }
-    
     public func setPrice(text: String) {
         priceLabel.text = text
     }
-    
     public func setDescription(text: String) {
         descriptionLabel.text = text
     }
-    
+    public func showDiscountTag(percentage: Int) {
+        
+    }
+    public func showHotTag(){
+        
+    }
 }
