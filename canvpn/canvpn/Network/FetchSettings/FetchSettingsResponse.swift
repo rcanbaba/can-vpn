@@ -24,23 +24,26 @@ struct SettingsResponse: Codable {
 
 // MARK: - Links
 struct Links: Codable {
-    let privacyURL, termsURL: String
+    let privacyURL, termsURL, subscriptionTermsURL: String
 
     enum CodingKeys: String, CodingKey {
         case privacyURL = "privacy_url"
         case termsURL = "terms_url"
+        case subscriptionTermsURL = "subscription_terms_url"
     }
 }
 
 // MARK: - Product
 struct Product: Codable {
     let sku: String
-    let isPromoted: Bool
-    let tag: Int
-    
+    let isPromoted, isBestOffer: Bool
+    let discount, tag: Int
+
     enum CodingKeys: String, CodingKey {
+        case sku
         case isPromoted = "is_promoted"
-        case sku, tag
+        case isBestOffer = "is_best_offer"
+        case discount, tag
     }
 }
 
