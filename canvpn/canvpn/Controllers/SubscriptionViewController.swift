@@ -188,12 +188,14 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
         let cellData = presentableProducts[indexPath.row]
-        cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
 
         if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
             cell.setName(text: skProduct.localizedTitle)
             cell.setPrice(text: skPrice)
             cell.setDescription(text: skProduct.localizedDescription)
+            cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
+            cellData.isBestOffer ? cell.showBestTag() : ()
+            cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()
         } else {
             cell.setName(text: "unknown product")
             cell.setPrice(text: "-")

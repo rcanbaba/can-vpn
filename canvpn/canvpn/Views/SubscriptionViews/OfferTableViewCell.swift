@@ -105,9 +105,6 @@ class OfferTableViewCell: UITableViewCell {
         backgroundColor = UIColor.clear
         configureUI()
         configureTagUI()
-        //TODO: added for test
-        showBestTag()
-        showDiscountTag(percentage: 50)
     }
     
     private func configureUI() {
