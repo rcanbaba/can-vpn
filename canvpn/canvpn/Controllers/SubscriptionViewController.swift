@@ -86,7 +86,7 @@ class SubscriptionViewController: UIViewController {
                             case .success(let response):
                                 if response.success {
                                     print("💙: restore - success")
-                                    self.subscriptionOperationSucceeded()
+                                    self.subscriptionOperationSucceeded(userInfo: response.user)
                                 } else {
                                     self.showRestoreFailedAlert()
                                 }
@@ -122,7 +122,7 @@ class SubscriptionViewController: UIViewController {
                                     case .success(let response):
                                         if response.success {
                                             print("💙: subscription - success")
-                                            self.subscriptionOperationSucceeded()
+                                            self.subscriptionOperationSucceeded(userInfo: response.user)
                                         } else {
                                             print("💙: subscription - error4")
                                             self.showRestoreFailedAlert()
@@ -161,9 +161,9 @@ class SubscriptionViewController: UIViewController {
         return products?.first(where: { $0.productIdentifier == skuID})
     }
     
-    private func subscriptionOperationSucceeded() {
+    private func subscriptionOperationSucceeded(userInfo: User) {
         DispatchQueue.main.async {
-            SettingsManager.shared.settings?.user.isSubscribed = true
+            SettingsManager.shared.settings?.user.isSubscribed = userInfo.isSubscribed
             NotificationCenter.default.post(name: NSNotification.Name.subscriptionStateUpdated, object: nil)
             self.navigationController?.popViewController(animated: true)
         }

@@ -29,9 +29,9 @@ struct ConsumeReceiptRequest: DataRequest {
     
     var bodyData: Data?
     
-    func decode(_ data: Data) throws -> SuccessResponse {
+    func decode(_ data: Data) throws -> ConsumeReceiptResponse {
         
-        let response = try JSONDecoder().decode(SuccessResponse.self, from: data)
+        let response = try JSONDecoder().decode(ConsumeReceiptResponse.self, from: data)
         
         return response
     }
