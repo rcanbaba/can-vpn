@@ -316,6 +316,7 @@
 		B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20E2A52CE20002258E9 /* NotificationNames.swift */; };
 		B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453D6D22A14E64400ED35A2 /* KeychainManager.swift */; };
 		B46450522A703EAD00AFE4D8 /* splash-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B46450512A703EAD00AFE4D8 /* splash-animation.json */; };
+		B46450542A7069E100AFE4D8 /* ConsumeReceiptResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46450532A7069E100AFE4D8 /* ConsumeReceiptResponse.swift */; };
 		B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */; };
 		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
 		B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E12A125F76008F00FA /* SuccessResponse.swift */; };
@@ -689,6 +690,7 @@
 		B44FB20E2A52CE20002258E9 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		B453D6D22A14E64400ED35A2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		B46450512A703EAD00AFE4D8 /* splash-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-animation.json"; sourceTree = "<group>"; };
+		B46450532A7069E100AFE4D8 /* ConsumeReceiptResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptResponse.swift; sourceTree = "<group>"; };
 		B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
 		B47170E12A125F76008F00FA /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
@@ -1232,6 +1234,7 @@
 			isa = PBXGroup;
 			children = (
 				B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */,
+				B46450532A7069E100AFE4D8 /* ConsumeReceiptResponse.swift */,
 			);
 			path = ConsumeReceipt;
 			sourceTree = "<group>";
@@ -1713,6 +1716,7 @@
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
 				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,
 				B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */,
+				B46450542A7069E100AFE4D8 /* ConsumeReceiptResponse.swift in Sources */,
 				B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
