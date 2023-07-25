@@ -16,9 +16,16 @@ struct SettingsResponse: Codable {
     let servers: [Server]
     let links: Links
     let products: [Product]
+    let interface: UserInterface
+    let isInReview: Bool
+    let localization: String
+    let appUpdate: AppUpdate
 
     enum CodingKeys: String, CodingKey {
-        case servers, links, products, user
+        case user, servers, links, products, interface
+        case isInReview = "is_in_review"
+        case localization
+        case appUpdate = "app_update"
     }
 }
 
@@ -81,5 +88,30 @@ struct User: Codable {
     enum CodingKeys: String, CodingKey {
         case sharedID = "shared_id"
         case isSubscribed = "is_subscribed"
+    }
+}
+
+// MARK: - AppUpdate
+struct AppUpdate: Codable {
+    let isForced: Bool
+    let message, title, confirmText, cancelText: String
+    let updateURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case isForced = "is_forced"
+        case message, title
+        case confirmText = "confirm_text"
+        case cancelText = "cancel_text"
+        case updateURL = "update_url"
+    }
+}
+
+// MARK: - Interface
+struct UserInterface: Codable {
+    let showCoupon, showPurchase: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case showCoupon = "show_coupon"
+        case showPurchase = "show_purchase"
     }
 }
