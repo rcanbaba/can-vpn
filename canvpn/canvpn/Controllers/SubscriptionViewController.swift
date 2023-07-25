@@ -49,7 +49,7 @@ class SubscriptionViewController: UIViewController {
     
     private func checkAndSetProducts() {
         products = PurchaseManager.shared.products
-        print("CAN DENEME 11:", products?.count)
+        print("CAN DENEME 11:", products?.count ?? "boş")
         presentableProducts = SettingsManager.shared.settings?.products ?? []
         print("CAN DENEME 22:", presentableProducts.count)
     }

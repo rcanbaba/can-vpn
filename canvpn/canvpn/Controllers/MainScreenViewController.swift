@@ -180,7 +180,7 @@ extension MainScreenViewController {
                 manager.connectToWg(config: response)
                 self.getIPAddress()
                 
-            case .failure(let error):
+            case .failure(_):
                 self.printDebug("getCredential failure")
                 Toaster.showToast(message: "error_location_again".localize())
                 Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : "happened"])
@@ -203,7 +203,7 @@ extension MainScreenViewController {
                     DispatchQueue.main.async {
                         self.mainView.setLocationIP(text: response.ipAddress)
                     }
-                case .failure(let error):
+                case .failure(_):
                     self.printDebug("getIPAddressRequest failure")
                     Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
                 }

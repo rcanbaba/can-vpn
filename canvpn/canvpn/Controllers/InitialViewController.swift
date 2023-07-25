@@ -89,7 +89,7 @@ extension InitialViewController {
                 self.fetchSettings()
                 self.printDebug("registerDeviceRequest - success")
                 
-            case .failure(let error):
+            case .failure(_):
                 self.printDebug("registerDeviceRequest - failure")
                 // TODO
                 // bi daha register dene hataya göre çözüm
@@ -116,7 +116,7 @@ extension InitialViewController {
                 self.initialSetupDispatchGroup.leave()
                 self.printDebug("fetchSettingsRequest - success")
                 
-            case .failure(let error):
+            case .failure(_):
                 self.printDebug("fetchSettingsRequest - failure")
                 Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
             }
