@@ -43,3 +43,5 @@ Additional Notes
 * send options dictionary from NETunnelProviderManager to NEPacketTunnelProvider in startVPNTunnel method.
 * in NETunnelProviderManager set your NETunnelProviderProtocol configuration providerBundleIdentifier as your PacketTunnel bundle id.
 * 
+--- 
+* the app compatible with iPad and macOS
