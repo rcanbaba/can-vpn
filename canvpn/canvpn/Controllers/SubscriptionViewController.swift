@@ -34,9 +34,17 @@ class SubscriptionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.tintColor = UIColor.black
-        navigationController?.navigationBar.barTintColor = UIColor.white
         Analytics.logEvent("006-SubsScreenPresented", parameters: ["type" : "willAppear"])
+        setNavigationBar()
+    }
+    
+    private func setNavigationBar() {
+        UIApplication.shared.statusBarStyle = .darkContent
+        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
     }
     
     private func checkAndSetProducts() {

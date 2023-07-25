@@ -74,10 +74,13 @@ extension AppDelegate: MessagingDelegate {
     }
 }
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    // bu app içindeyken
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
         PushNotificationHelper.handleWillPresentCompletionHandler(dict: userInfo, completionHandler: completionHandler)
     }
+    // bu app dışındayken
+    // push a tapleyince
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         PushNotificationHelper.processDictionary(dict: userInfo)

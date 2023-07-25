@@ -99,6 +99,7 @@ class PushNotificationHelper {
 
     }
     
+    // bu sadece gösterildiğinde yapılacak şey
     public static func handleWillPresentCompletionHandler(dict: [AnyHashable: Any], completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let json = JSON(dict)
         guard let type = PushNotificationType(rawValue: json["type"].stringValue) else {
@@ -107,6 +108,7 @@ class PushNotificationHelper {
         }
     }
     
+    // app içindeyken taplersem de buraya düşüyor
     public static func processDictionary(dict: [AnyHashable: Any]) {
         let json = JSON(dict)
         

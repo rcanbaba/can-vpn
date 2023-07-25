@@ -49,11 +49,17 @@ class MainScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // TODO: disappear da default a çekebilirsin
+        Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
+        setNavigationBar()
+    }
+    
+    private func setNavigationBar() {
         UIApplication.shared.statusBarStyle = .darkContent
         navigationController?.navigationBar.tintColor = UIColor.black
-        navigationController?.navigationBar.barTintColor = UIColor.white
-        Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
     }
     
     private func setLocationButtonInitialData() {
