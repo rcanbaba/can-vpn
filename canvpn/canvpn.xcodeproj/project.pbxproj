@@ -315,6 +315,7 @@
 		B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */; };
 		B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20E2A52CE20002258E9 /* NotificationNames.swift */; };
 		B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453D6D22A14E64400ED35A2 /* KeychainManager.swift */; };
+		B46450522A703EAD00AFE4D8 /* splash-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B46450512A703EAD00AFE4D8 /* splash-animation.json */; };
 		B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */; };
 		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
 		B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E12A125F76008F00FA /* SuccessResponse.swift */; };
@@ -336,7 +337,6 @@
 		B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
 		B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */; };
-		B4ED25772A61F4CA008F89E7 /* splash-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4ED25762A61F4CA008F89E7 /* splash-animation.json */; };
 		B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */; };
 		B4EE1F592A07AC6E00E219CA /* RegisterDeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */; };
 		B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */; };
@@ -688,6 +688,7 @@
 		B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		B44FB20E2A52CE20002258E9 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		B453D6D22A14E64400ED35A2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		B46450512A703EAD00AFE4D8 /* splash-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-animation.json"; sourceTree = "<group>"; };
 		B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
 		B47170E12A125F76008F00FA /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
@@ -708,7 +709,6 @@
 		B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
-		B4ED25762A61F4CA008F89E7 /* splash-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-animation.json"; sourceTree = "<group>"; };
 		B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceRequest.swift; sourceTree = "<group>"; };
 		B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceResponse.swift; sourceTree = "<group>"; };
 		B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtensions.swift; sourceTree = "<group>"; };
@@ -842,7 +842,7 @@
 		B4023D67295113480008BDA6 /* LottieAnims */ = {
 			isa = PBXGroup;
 			children = (
-				B4ED25762A61F4CA008F89E7 /* splash-animation.json */,
+				B46450512A703EAD00AFE4D8 /* splash-animation.json */,
 				B4023D95295386E10008BDA6 /* connectedVPN.json */,
 				B4023D9C295386E20008BDA6 /* data_secure.json */,
 				B4023D96295386E10008BDA6 /* globe_loading.json */,
@@ -1461,6 +1461,7 @@
 				B44122EA2957550E0072B566 /* kz.png in Resources */,
 				B44122222957550E0072B566 /* ye.png in Resources */,
 				B44122B72957550E0072B566 /* pf.png in Resources */,
+				B46450522A703EAD00AFE4D8 /* splash-animation.json in Resources */,
 				B44122162957550E0072B566 /* mh.png in Resources */,
 				B441224C2957550E0072B566 /* mc.png in Resources */,
 				B44122402957550E0072B566 /* gu.png in Resources */,
@@ -1540,7 +1541,6 @@
 				B44122A92957550E0072B566 /* nr.png in Resources */,
 				B44122762957550E0072B566 /* fk.png in Resources */,
 				B44122C92957550E0072B566 /* pe.png in Resources */,
-				B4ED25772A61F4CA008F89E7 /* splash-animation.json in Resources */,
 				B441227D2957550E0072B566 /* mg.png in Resources */,
 				B44122D22957550E0072B566 /* mo.png in Resources */,
 				B44122522957550E0072B566 /* mu.png in Resources */,
