@@ -15,6 +15,14 @@ enum PushNotificationType: String {
     case silent = "silent"
     case firstSubscription = "first_subscription"
     case reactivateSubscription = "reactivate_subscription"
+    case general = "general"
+}
+
+enum PushNotificationPage: String {
+    case none = "none"
+    case purchase = "purchase"
+    case home = "home"
+    case countrySelection = "country_selection"
 }
 
 class PushNotificationBase {
@@ -114,14 +122,18 @@ class PushNotificationHelper {
         
         guard let type = PushNotificationType(rawValue: json["type"].stringValue) else { return }
         
+        let page = PushNotificationPage(rawValue: json["page"].stringValue)
+        
         switch type {
         case .silent:
             let silentPushNotification = SilentPushNotification(json: json)
             processNotification(notification: silentPushNotification)
         case .firstSubscription:
-            processNotification(type: type)
+            processNotification(type: type, page: page)
         case .reactivateSubscription:
-            processNotification(type: type)
+            processNotification(type: type, page: page)
+        case .general:
+            processNotification(type: type, page: page)
         }
     }
     
@@ -133,8 +145,17 @@ class PushNotificationHelper {
         //NO ACTIONS REQUIRED
     }
     
-    public static func processNotification(type: PushNotificationType) {
-        
+    public static func processNotification(type: PushNotificationType, page: PushNotificationPage?) {
+        if let page = page {
+            switch page {
+            case .none, .home:
+                print("PUSH - home screen present")
+            case .purchase:
+                print("PUSH - purchase screen present")
+            case .countrySelection:
+                print("PUSH - countrySelection screen present")
+            }
+        }
     }
     
     public static func setFCMToken(token: String?) {
