@@ -38,9 +38,10 @@ class SplashScreenView: UIView {
         
         self.addSubview(animationView)
         animationView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.width.equalTo(400)
             make.height.equalTo(400)
+            make.centerX.equalToSuperview().offset(10)
         }
         
         animationView.play { [weak self] _ in
