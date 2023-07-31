@@ -44,6 +44,7 @@ class MainScreenViewController: UIViewController {
         setLocationButtonInitialData()
         configureUI()
         checkSubscriptionState()
+        checkSubscriptionPageThenPresent()
         observeNotifications()
     }
     
@@ -116,7 +117,11 @@ class MainScreenViewController: UIViewController {
     
     private func setStandardUser() {
         mainView.goProButton.setState(isPremium: false)
-        presentSubscriptionPage()
+    }
+    
+    private func checkSubscriptionPageThenPresent() {
+        let isPremium = SettingsManager.shared.settings?.interface.showPurchase ?? false
+        isPremium ? presentSubscriptionPage() : ()
     }
     
     private func presentSubscriptionPage() {
