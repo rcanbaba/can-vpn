@@ -31,7 +31,7 @@ class InitialViewController: UIViewController {
         configureUI()
         initialSetupDispatchGroup.notify(queue: .main) { [weak self] in
             self?.printDebug("dispatchGroup - notify - presentMainScreen")
-            self?.presentMainScreen()
+            self?.checkAvailableUpdatesThenGo()
         }
         Analytics.logEvent("101-InitialScreenPresented", parameters: ["type" : "didload"])
     }
@@ -53,6 +53,10 @@ class InitialViewController: UIViewController {
         present(navigationController, animated:true, completion: nil)
     }
     
+    private func goNextScreenAfterUpdate() {
+        presentMainScreen()
+    }
+    
     private func createNavigationController (with viewController: UIViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.tintColor = UIColor.Custom.orange
@@ -62,6 +66,48 @@ class InitialViewController: UIViewController {
         return navigationController
     }
 }
+
+// MARK: - AppUpdate
+extension InitialViewController {
+    
+    private func checkAvailableUpdatesThenGo() {
+        guard let updateSettings = SettingsManager.shared.settings?.appUpdate else {
+            goNextScreenAfterUpdate()
+            return
+        }
+        
+        let okAlertAction = UIAlertAction(title: updateSettings.confirmText, style: .default) { (action) in
+            self.launchUpdateUrl(urlString: updateSettings.updateURL)
+        }
+        
+        let cancelAlertAction = UIAlertAction(title: updateSettings.cancelText, style: .default) { [weak self] (action) in
+            if updateSettings.isForced {
+                UIControl().sendAction(#selector(URLSessionTask.cancel), to: UIApplication.shared, for: nil)
+            } else {
+                self?.goNextScreenAfterUpdate()
+            }
+        }
+        
+        let alert = UIAlertController(title: updateSettings.title, message: updateSettings.message, preferredStyle: .alert)
+        alert.addAction(okAlertAction)
+        alert.addAction(cancelAlertAction)
+        self.present(alert, animated: true)
+    }
+    
+    private func launchUpdateUrl(urlString: String) {
+        if let url = URL(string: urlString) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            goNextScreenAfterUpdate()
+        }
+    }
+    
+}
+
 
 // MARK: Initial Setup
 extension InitialViewController {
