@@ -267,15 +267,39 @@ extension SubscriptionViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    private func showCouponAlert() {
+        // TODO: Translation keyss
+        let alertController = UIAlertController(title: "Enter Coupon Code", message: nil, preferredStyle: .alert)
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Coupon Code"
+            textField.clearButtonMode = .whileEditing
+        }
+        
+        let tryAction = UIAlertAction(title: "Try", style: .default) { [weak self, weak alertController] _ in
+            if let code = alertController?.textFields?.first?.text {
+                self?.processCouponCode(code)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(tryAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - TryCouponCode
 extension SubscriptionViewController {
     private func tryCouponCode() {
-        // TODO: implement the code input alert
-        print("TAPPED 1231232")
+        showCouponAlert()
     }
     
-    
+    private func processCouponCode(_ code: String) {
+        print("TAPPED 1231232")
+        //TODO: implement backend part
+    }
     
 }
