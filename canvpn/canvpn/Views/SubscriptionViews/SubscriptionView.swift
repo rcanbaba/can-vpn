@@ -71,6 +71,16 @@ class SubscriptionView: UIView {
         return label
     }()
     
+    private lazy var couponLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.Custom.goProFeatureTextGray
+        label.textAlignment = .right
+        label.text = "try_coupon_code_key".localize()
+        label.isHidden = true
+        return label
+    }()
+    
     public lazy var offerTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(OfferTableViewCell.self, forCellReuseIdentifier: "OfferTableViewCell")
@@ -141,20 +151,26 @@ class SubscriptionView: UIView {
         addSubview(termsLabel)
         termsLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(24)
-            make.top.equalTo(subscribeButton.snp.bottom).offset(16)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
         }
         
         addSubview(restoreLabel)
         restoreLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(24)
-            make.top.equalTo(subscribeButton.snp.bottom).offset(16)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
+        }
+        
+        addSubview(couponLabel)
+        couponLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(subscribeButton.snp.top).offset(-13)
         }
         
         addSubview(offerTableView)
         offerTableView.snp.makeConstraints { make in
             make.top.equalTo(featuresMainStackView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(subscribeButton.snp.top).offset(-30)
+            make.bottom.equalTo(subscribeButton.snp.top).offset(-32)
         }
 
         addSubview(activityIndicator)
@@ -235,5 +251,9 @@ extension SubscriptionView {
     public func isLoading(show: Bool) {
         self.isUserInteractionEnabled = !show
         show ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
+    
+    public func setCouponLabel(isHidden: Bool) {
+        couponLabel.isHidden = isHidden
     }
 }

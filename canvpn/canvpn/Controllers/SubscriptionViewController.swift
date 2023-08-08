@@ -30,6 +30,7 @@ class SubscriptionViewController: UIViewController {
         checkAndSetProducts()
         configureUI()
         setOfferTableView()
+        checkThenSetCouponLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +51,13 @@ class SubscriptionViewController: UIViewController {
     private func checkAndSetProducts() {
         products = PurchaseManager.shared.products
         presentableProducts = SettingsManager.shared.settings?.products ?? []
+    }
+    
+    private func checkThenSetCouponLabel() {
+        let showCoupon = SettingsManager.shared.settings?.interface.showCoupon ?? false
+        //TODO: comment out
+        //subscriptionView.setCouponLabel(isHidden: !showCoupon)
+        subscriptionView.setCouponLabel(isHidden: false)
     }
     
     private func configureUI() {

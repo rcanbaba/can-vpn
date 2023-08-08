@@ -601,7 +601,8 @@ class LocalizationManager {
     }
     
     static func getStringForLanguage(key: String, lang: LanguageEnum) -> String {
-        return Dictionaries().getDictionary(language: lang)[key] ?? ""    }
+        return Dictionaries().getDictionary(language: lang)[key] ?? key
+    }
     
 }
 
