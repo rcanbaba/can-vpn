@@ -95,7 +95,7 @@ extension InitialViewController {
     }
     
     private func launchUpdateUrl(urlString: String) {
-        if let url = URL(string: urlString) {
+        if let url = URL(string: urlString), urlString != "" {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
