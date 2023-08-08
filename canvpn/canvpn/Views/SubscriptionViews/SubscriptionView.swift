@@ -11,6 +11,7 @@ protocol PremiumViewDelegate: AnyObject {
     func subscribeTapped()
     func subscriptionTermsTapped()
     func subscriptionRestoreTapped()
+    func tryCouponCodeTapped()
 }
 
 class SubscriptionView: UIView {
@@ -228,6 +229,10 @@ class SubscriptionView: UIView {
         let restoreTapGesture = UITapGestureRecognizer(target: self, action: #selector(restoreLabelTapped(_:)))
         restoreLabel.addGestureRecognizer(restoreTapGesture)
         restoreLabel.isUserInteractionEnabled = true
+        
+        let couponTapGesture = UITapGestureRecognizer(target: self, action: #selector(couponLabelTapped(_:)))
+        couponLabel.addGestureRecognizer(couponTapGesture)
+        couponLabel.isUserInteractionEnabled = true
     }
 }
 
@@ -244,6 +249,11 @@ extension SubscriptionView {
     @objc func restoreLabelTapped(_ gesture: UITapGestureRecognizer) {
         delegate?.subscriptionRestoreTapped()
     }
+    
+    @objc func couponLabelTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.tryCouponCodeTapped()
+    }
+    
 }
 
 // MARK: - PUBLIC METHODS

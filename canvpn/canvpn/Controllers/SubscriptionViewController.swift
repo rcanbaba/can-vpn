@@ -191,6 +191,9 @@ extension SubscriptionViewController: PremiumViewDelegate {
     func subscriptionRestoreTapped() {
         restoreSubscription()
     }
+    func tryCouponCodeTapped() {
+        tryCouponCode()
+    }
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
@@ -263,5 +266,16 @@ extension SubscriptionViewController {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+}
+
+// MARK: - TryCouponCode
+extension SubscriptionViewController {
+    private func tryCouponCode() {
+        // TODO: implement the code input alert
+        print("TAPPED 1231232")
+    }
+    
+    
     
 }
