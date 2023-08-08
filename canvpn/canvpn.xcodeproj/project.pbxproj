@@ -40,6 +40,7 @@
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
 		B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4692A444C7600EB124F /* PurchaseManager.swift */; };
+		B42DE3E52A82C585002137F9 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42DE3E42A82C585002137F9 /* AppTrackingTransparency.framework */; };
 		B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */; };
 		B43E158C2A113F4A0095FF4A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158B2A113F4A0095FF4A /* SwiftyJSON */; };
 		B43E158F2A1142D50095FF4A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B43E158E2A1142D50095FF4A /* FirebaseAnalytics */; };
@@ -419,6 +420,7 @@
 		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
 		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
 		B424E4692A444C7600EB124F /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		B42DE3E42A82C585002137F9 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		B43E15972A1145970095FF4A /* RegisterFCMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMRequest.swift; sourceTree = "<group>"; };
 		B44120DC2956390B0072B566 /* AESCryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESCryption.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 			files = (
 				B43E15952A1142D50095FF4A /* FirebaseMessaging in Frameworks */,
 				B43E158C2A113F4A0095FF4A /* SwiftyJSON in Frameworks */,
+				B42DE3E52A82C585002137F9 /* AppTrackingTransparency.framework in Frameworks */,
 				B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */,
 				B43E158F2A1142D50095FF4A /* FirebaseAnalytics in Frameworks */,
 				B4023D6029510E310008BDA6 /* Lottie in Frameworks */,
@@ -859,6 +862,7 @@
 		B4023D8529530F2F0008BDA6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B42DE3E42A82C585002137F9 /* AppTrackingTransparency.framework */,
 				B48E7E962A49B8A900DEBD74 /* StoreKit.framework */,
 				B4023D8629530F2F0008BDA6 /* NetworkExtension.framework */,
 			);
