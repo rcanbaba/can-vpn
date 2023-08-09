@@ -298,8 +298,20 @@ extension SubscriptionViewController {
     }
     
     private func processCouponCode(_ code: String) {
-        print("TAPPED 1231232")
-        //TODO: implement backend part
+        guard let networkService = networkService else { return }
+        var applyCouponRequest = ApplyCouponRequest()
+        applyCouponRequest.setParams(code: code)
+        
+        networkService.request(applyCouponRequest) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    print("can595959 suc")
+                case .failure(let error):
+                    print("can595959 - fail")
+                }
+            }
+        }
     }
     
 }

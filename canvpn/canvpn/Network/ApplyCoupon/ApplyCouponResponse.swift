@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - ConsumeReceiptResponse
+// MARK: - ApplyCouponResponse
 struct ApplyCouponResponse: Codable {
     let products: [Product]
     

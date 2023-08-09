@@ -29,9 +29,9 @@ struct ApplyCouponRequest: DataRequest {
     
     var bodyData: Data?
     
-    func decode(_ data: Data) throws -> ConsumeReceiptResponse {
+    func decode(_ data: Data) throws -> ApplyCouponResponse {
         
-        let response = try JSONDecoder().decode(ConsumeReceiptResponse.self, from: data)
+        let response = try JSONDecoder().decode(ApplyCouponResponse.self, from: data)
         
         return response
     }
