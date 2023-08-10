@@ -76,21 +76,20 @@ extension InitialViewController {
             return
         }
         
+        let alert = UIAlertController(title: updateSettings.title, message: updateSettings.message, preferredStyle: .alert)
+        
         let okAlertAction = UIAlertAction(title: updateSettings.confirmText, style: .default) { (action) in
             self.launchUpdateUrl(urlString: updateSettings.updateURL)
         }
+        alert.addAction(okAlertAction)
         
-        let cancelAlertAction = UIAlertAction(title: updateSettings.cancelText, style: .default) { [weak self] (action) in
-            if updateSettings.isForced {
-                UIControl().sendAction(#selector(URLSessionTask.cancel), to: UIApplication.shared, for: nil)
-            } else {
+        if !updateSettings.isForced {
+            let cancelAlertAction = UIAlertAction(title: updateSettings.cancelText, style: .default) { [weak self] (action) in
                 self?.goNextScreenAfterUpdate()
             }
+            alert.addAction(cancelAlertAction)
         }
-        
-        let alert = UIAlertController(title: updateSettings.title, message: updateSettings.message, preferredStyle: .alert)
-        alert.addAction(okAlertAction)
-        alert.addAction(cancelAlertAction)
+
         self.present(alert, animated: true)
     }
     
