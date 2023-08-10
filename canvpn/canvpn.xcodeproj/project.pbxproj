@@ -326,7 +326,7 @@
 		B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E32A140EF7008F00FA /* SettingsManager.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
 		B48E7E972A49B8A900DEBD74 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B48E7E962A49B8A900DEBD74 /* StoreKit.framework */; };
-		B48F8A6F295895B900CB69CA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F8A6E295895B900CB69CA /* Localization.swift */; };
+		B48F8A6F295895B900CB69CA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F8A6E295895B900CB69CA /* LocalizationManager.swift */; };
 		B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D38E296C952100651BFC /* NETunnelManager.swift */; };
 		B490D392296C958A00651BFC /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = B490D391296C958A00651BFC /* WireGuardKit */; };
 		B490D3AD296C98EE00651BFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
@@ -338,6 +338,17 @@
 		B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */; };
 		B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */; };
 		B4D8710B2A855FE40080D788 /* ATTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D8710A2A855FE40080D788 /* ATTrackingManager.swift */; };
+		B4D871112A8571F80080D788 /* TurkishDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871102A8571F80080D788 /* TurkishDictionary.swift */; };
+		B4D871132A8572090080D788 /* EnglishDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871122A8572090080D788 /* EnglishDictionary.swift */; };
+		B4D871152A85723C0080D788 /* ArabicDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871142A85723C0080D788 /* ArabicDictionary.swift */; };
+		B4D871172A85724F0080D788 /* SpanishDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871162A85724F0080D788 /* SpanishDictionary.swift */; };
+		B4D871192A85725A0080D788 /* FrenchDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871182A85725A0080D788 /* FrenchDictionary.swift */; };
+		B4D8711B2A8572640080D788 /* GermanDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D8711A2A8572640080D788 /* GermanDictionary.swift */; };
+		B4D8711D2A8572700080D788 /* PersianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D8711C2A8572700080D788 /* PersianDictionary.swift */; };
+		B4D8711F2A85727D0080D788 /* UrduDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D8711E2A85727D0080D788 /* UrduDictionary.swift */; };
+		B4D871212A8572870080D788 /* HindiDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871202A8572870080D788 /* HindiDictionary.swift */; };
+		B4D871242A8572960080D788 /* RussianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871232A8572960080D788 /* RussianDictionary.swift */; };
+		B4D871262A8572A20080D788 /* ChineseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D871252A8572A20080D788 /* ChineseDictionary.swift */; };
 		B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */; };
 		B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
@@ -704,7 +715,7 @@
 		B47170E32A140EF7008F00FA /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
 		B48E7E962A49B8A900DEBD74 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		B48F8A6E295895B900CB69CA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		B48F8A6E295895B900CB69CA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		B490D38E296C952100651BFC /* NETunnelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NETunnelManager.swift; sourceTree = "<group>"; };
 		B490D3AC296C98EE00651BFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B4BBFC16296DF30000613E9F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -715,6 +726,17 @@
 		B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeatureView.swift; sourceTree = "<group>"; };
 		B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionButton.swift; sourceTree = "<group>"; };
 		B4D8710A2A855FE40080D788 /* ATTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTrackingManager.swift; sourceTree = "<group>"; };
+		B4D871102A8571F80080D788 /* TurkishDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurkishDictionary.swift; sourceTree = "<group>"; };
+		B4D871122A8572090080D788 /* EnglishDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishDictionary.swift; sourceTree = "<group>"; };
+		B4D871142A85723C0080D788 /* ArabicDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArabicDictionary.swift; sourceTree = "<group>"; };
+		B4D871162A85724F0080D788 /* SpanishDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanishDictionary.swift; sourceTree = "<group>"; };
+		B4D871182A85725A0080D788 /* FrenchDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenchDictionary.swift; sourceTree = "<group>"; };
+		B4D8711A2A8572640080D788 /* GermanDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GermanDictionary.swift; sourceTree = "<group>"; };
+		B4D8711C2A8572700080D788 /* PersianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersianDictionary.swift; sourceTree = "<group>"; };
+		B4D8711E2A85727D0080D788 /* UrduDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrduDictionary.swift; sourceTree = "<group>"; };
+		B4D871202A8572870080D788 /* HindiDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HindiDictionary.swift; sourceTree = "<group>"; };
+		B4D871232A8572960080D788 /* RussianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RussianDictionary.swift; sourceTree = "<group>"; };
+		B4D871252A8572A20080D788 /* ChineseDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseDictionary.swift; sourceTree = "<group>"; };
 		B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -795,6 +817,7 @@
 				B4023DBE295475070008BDA6 /* KeychainStorage */,
 				B4023D642951120F0008BDA6 /* Helpers */,
 				B44120E3295716110072B566 /* Extensions */,
+				B4D8710E2A85719F0080D788 /* Localization */,
 				B4023D6129510E400008BDA6 /* Resources */,
 				B4023D4A2950E31F0008BDA6 /* Assets.xcassets */,
 				B4023D4F2950E31F0008BDA6 /* Info.plist */,
@@ -922,7 +945,6 @@
 				B453D6D22A14E64400ED35A2 /* KeychainManager.swift */,
 				B44122F829577AFC0072B566 /* IpAddressManager.swift */,
 				B424E4692A444C7600EB124F /* PurchaseManager.swift */,
-				B48F8A6E295895B900CB69CA /* Localization.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1268,6 +1290,33 @@
 				B4D09F3329C7B52600E11069 /* GoProButton.swift */,
 			);
 			path = MainScreenViews;
+			sourceTree = "<group>";
+		};
+		B4D8710E2A85719F0080D788 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				B48F8A6E295895B900CB69CA /* LocalizationManager.swift */,
+				B4D8710F2A8571CB0080D788 /* Dictionaries */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		B4D8710F2A8571CB0080D788 /* Dictionaries */ = {
+			isa = PBXGroup;
+			children = (
+				B4D871102A8571F80080D788 /* TurkishDictionary.swift */,
+				B4D871122A8572090080D788 /* EnglishDictionary.swift */,
+				B4D871142A85723C0080D788 /* ArabicDictionary.swift */,
+				B4D871162A85724F0080D788 /* SpanishDictionary.swift */,
+				B4D871182A85725A0080D788 /* FrenchDictionary.swift */,
+				B4D8711A2A8572640080D788 /* GermanDictionary.swift */,
+				B4D8711C2A8572700080D788 /* PersianDictionary.swift */,
+				B4D8711E2A85727D0080D788 /* UrduDictionary.swift */,
+				B4D871202A8572870080D788 /* HindiDictionary.swift */,
+				B4D871232A8572960080D788 /* RussianDictionary.swift */,
+				B4D871252A8572A20080D788 /* ChineseDictionary.swift */,
+			);
+			path = Dictionaries;
 			sourceTree = "<group>";
 		};
 		B4DA0E8E29AF9FD300CA1A86 /* SubscriptionViews */ = {
@@ -1730,6 +1779,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4EE1F5F2A07BD7500E219CA /* FetchSettingsRequest.swift in Sources */,
+				B4D8711B2A8572640080D788 /* GermanDictionary.swift in Sources */,
+				B4D871212A8572870080D788 /* HindiDictionary.swift in Sources */,
 				B4D09F3629CB635D00E11069 /* LocationViewController.swift in Sources */,
 				B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */,
 				B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */,
@@ -1738,6 +1789,7 @@
 				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,
 				B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */,
 				B46450542A7069E100AFE4D8 /* ConsumeReceiptResponse.swift in Sources */,
+				B4D871192A85725A0080D788 /* FrenchDictionary.swift in Sources */,
 				B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
@@ -1748,19 +1800,22 @@
 				B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */,
 				B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */,
 				B4EE1F662A07C49200E219CA /* Endpoints.swift in Sources */,
+				B4D871132A8572090080D788 /* EnglishDictionary.swift in Sources */,
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
 				B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */,
 				B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */,
+				B4D871262A8572A20080D788 /* ChineseDictionary.swift in Sources */,
 				B4023D462950E31E0008BDA6 /* MainScreenViewController.swift in Sources */,
 				B44122F329575A060072B566 /* SplashScreenView.swift in Sources */,
-				B48F8A6F295895B900CB69CA /* Localization.swift in Sources */,
+				B48F8A6F295895B900CB69CA /* LocalizationManager.swift in Sources */,
 				B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */,
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
 				B43E15982A1145970095FF4A /* RegisterFCMRequest.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
 				B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */,
+				B4D8711F2A85727D0080D788 /* UrduDictionary.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
@@ -1774,12 +1829,16 @@
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
 				B4184A172955C9AA0051EB79 /* LocationListTableViewCell.swift in Sources */,
 				B4EE1F612A07BE0600E219CA /* FetchSettingsResponse.swift in Sources */,
+				B4D871242A8572960080D788 /* RussianDictionary.swift in Sources */,
 				B490D3AD296C98EE00651BFC /* Config.swift in Sources */,
+				B4D871112A8571F80080D788 /* TurkishDictionary.swift in Sources */,
 				B44120E52957162D0072B566 /* UIViewExtensions.swift in Sources */,
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
 				B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */,
+				B4D871172A85724F0080D788 /* SpanishDictionary.swift in Sources */,
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
+				B4D871152A85723C0080D788 /* ArabicDictionary.swift in Sources */,
 				B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */,
 				B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */,
 				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,
@@ -1789,6 +1848,7 @@
 				B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */,
 				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,
 				B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */,
+				B4D8711D2A8572700080D788 /* PersianDictionary.swift in Sources */,
 				B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */,
 				B40D732629D86FF60066FD80 /* GetCredentialRequest.swift in Sources */,
 				B42DE3EE2A840CF3002137F9 /* ApplyCouponResponse.swift in Sources */,
