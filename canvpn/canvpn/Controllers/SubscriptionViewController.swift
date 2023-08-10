@@ -306,6 +306,9 @@ extension SubscriptionViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
+                    self.presentableProducts = response.products
+                    self.setOfferTableView()
+                    self.checkThenSetCouponLabel()
                     print("can595959 suc")
                 case .failure(let error):
                     print("can595959 - fail")

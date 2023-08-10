@@ -337,6 +337,7 @@
 		B4D09F3629CB635D00E11069 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3529CB635D00E11069 /* LocationViewController.swift */; };
 		B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */; };
 		B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */; };
+		B4D8710B2A855FE40080D788 /* ATTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D8710A2A855FE40080D788 /* ATTrackingManager.swift */; };
 		B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */; };
 		B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
@@ -713,6 +714,7 @@
 		B4D09F3529CB635D00E11069 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		B4D09F3729CCA40200E11069 /* PremiumFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeatureView.swift; sourceTree = "<group>"; };
 		B4D09F3A29CDCCE200E11069 /* SubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionButton.swift; sourceTree = "<group>"; };
+		B4D8710A2A855FE40080D788 /* ATTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTrackingManager.swift; sourceTree = "<group>"; };
 		B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -914,6 +916,7 @@
 			isa = PBXGroup;
 			children = (
 				B47170E32A140EF7008F00FA /* SettingsManager.swift */,
+				B4D8710A2A855FE40080D788 /* ATTrackingManager.swift */,
 				B490D38E296C952100651BFC /* NETunnelManager.swift */,
 				B4F31F082959DDE8002FAD0D /* VPNManager.swift */,
 				B453D6D22A14E64400ED35A2 /* KeychainManager.swift */,
@@ -1761,6 +1764,7 @@
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
+				B4D8710B2A855FE40080D788 /* ATTrackingManager.swift in Sources */,
 				B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */,
 				B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */,
 				B44120E9295717300072B566 /* CALayerExtensions.swift in Sources */,
