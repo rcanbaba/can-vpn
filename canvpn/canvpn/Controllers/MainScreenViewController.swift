@@ -9,6 +9,8 @@ import UIKit
 import NetworkExtension
 import Lottie
 import FirebaseAnalytics
+import AppTrackingTransparency
+import AdSupport
 
 class MainScreenViewController: UIViewController {
     
@@ -46,6 +48,7 @@ class MainScreenViewController: UIViewController {
         checkSubscriptionState()
         checkSubscriptionPageThenPresent()
         observeNotifications()
+        requestTrackingPermission()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -326,6 +329,31 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 extension MainScreenViewController: LocationViewControllerDelegate {
     func selectedServer(server: Server) {
         setSelectedServer(server: server)
+    }
+    
+}
+
+//MARK: - App Tracking Transparency
+extension MainScreenViewController {
+    
+    func requestTrackingPermission() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                switch status {
+                case .authorized:  // User has granted permission to track
+                    let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+                    print("CAN3456 - authorized")
+                case .denied: // User has denied permission to track
+                    print("CAN3456 - denied")
+                case .restricted, .notDetermined: // Handle accordingly
+                    print("CAN3456 - restricted, notDetermined")
+                @unknown default:
+                    break
+                }
+            })
+        } else {
+            // Handle scenario for iOS versions < 14 or provide an alternative mechanism
+        }
     }
     
 }

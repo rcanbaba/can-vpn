@@ -24,3 +24,37 @@ enum ErrorResponse: String {
         }
     }
 }
+
+enum NetworkError: Error {
+    case invalidEndpoint
+    case serverError(String)
+    case unknown
+    case couponNotFound
+    case couponExpired
+    
+    init(code: Int) {
+        switch code {
+        case 3001:
+            self = .couponNotFound
+        case 3002:
+            self = .couponExpired
+        default:
+            self = .unknown
+        }
+    }
+    
+    var localizedDescription: String {
+        switch self {
+        case .invalidEndpoint:
+            return "Invalid endpoint."
+        case .serverError(let message):
+            return message
+        case .unknown:
+            return "An unknown error occurred."
+        case .couponNotFound:
+            return "Coupon not found."
+        case .couponExpired:
+            return "Coupon has expired."
+        }
+    }
+}
