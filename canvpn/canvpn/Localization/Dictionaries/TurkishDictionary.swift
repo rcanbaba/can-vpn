@@ -50,6 +50,7 @@ struct TurkishDictionary {
         "subs_terms_detail_key" : "Haftalık, aylık, yıllık ve ömür boyu abonelikler sunuyoruz ve aylık fiyata indirim yapıyoruz. Fiyatlar uygulamada açıkça gösterilmektedir.\n- Ödeme, satın alma onayında iTunes hesabınıza yansıtılır.\n- Aboneliğiniz, otomatik yenileme en az 24 saat kala kapatılmazsa otomatik olarak yenilenecektir.\n- Hesabınız, mevcut dönemin sonundan 24 saat önce yenileme için ücretlendirilir.\n- Aboneliklerinizi yönetebilir ve otomatik yenilemeyi iTunes mağazasındaki Hesap Ayarlarına giderek kapatabilirsiniz.\n- Teklif edilirse, ücretsiz deneme sürümümüzü kullanmayı seçerseniz, ücretsiz deneme süresinin kullanılmayan kısmı, ilgili yayına bir abonelik satın alındığında feshedilir.\n- iLove VPN'yi satın almaya karar vermezseniz, iLove VPN'i ücretsiz olarak kullanmaya ve keyfini çıkarmaya devam edebilirsiniz.\nKişisel verileriniz iLove VPN'de güvenli bir şekilde saklanmaktadır, Gizlilik Politikamızı ve Kullanım Şartlarımızı okuduğunuzdan emin olun.",
         "upgraded_to_pro": "Premium Kullanıcı",
         "upgraded_to_pro_detail": "Premium olarak tüm konumları kullanabiliyorsunuz.",
-        "free_user_selected_premium_message": "Premium konum kullanabilmek için abone olmanız gerekli"
+        "free_user_selected_premium_message": "Premium konum kullanabilmek için abone olmanız gerekli",
+        "try_coupon_code_key": "Kupon Kodu Ekle"
     ]
 }

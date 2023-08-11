@@ -50,7 +50,8 @@ struct ChineseDictionary {
         "subs_terms_detail_key" : "我们提供每周、每月、每年和终身订阅，并对月费给予折扣。价格在应用中明确显示。\n- 购买确认后，费用将从您的iTunes帐户中扣除。\n- 除非您在当前周期结束前至少24小时关闭自动续费功能，否则您的订阅将自动续费。\n- 在当前周期结束前的24小时内，您的帐户将被收取续费费用。\n- 您可以在iTunes商店的帐户设置中管理您的订阅并关闭自动续费功能。\n- 如果提供，如果您选择使用我们的免费试用，当您购买该出版物的订阅时，免费试用期的任何未使用部分将被没收，如适用。\n- 如果您不选择购买iLove VPN，您可以继续免费使用并享受iLove VPN。\n您的个人数据在iLove VPN上安全存储，请务必阅读我们的隐私政策和使用条款。",
         "upgraded_to_pro": "高级用户",
         "upgraded_to_pro_detail": "您可以将所有位置用作高级功能。",
-        "free_user_selected_premium_message": "您需要订阅才能使用高级位置。"
+        "free_user_selected_premium_message": "您需要订阅才能使用高级位置。",
+        "try_coupon_code_key": "尝试优惠码"
     ]
 }
 

@@ -50,7 +50,8 @@ struct GermanDictionary {
         "subs_terms_detail_key" : "Wir bieten wöchentliche, monatliche, jährliche und lebenslange Abonnements mit Rabatten auf den monatlichen Preis an. Die Preise werden in der App deutlich angezeigt.\n- Die Zahlung wird bei Bestätigung des Kaufs von Ihrem iTunes-Konto abgebucht.\n- Ihr Abonnement wird automatisch verlängert, sofern die automatische Verlängerung nicht mindestens 24 Stunden vor Ende des aktuellen Zeitraums deaktiviert wird.\n- Ihrem Konto wird die Verlängerung innerhalb von 24 Stunden vor dem Ende des aktuellen Zeitraums berechnet.\n- Sie können Ihre Abonnements verwalten und die automatische Verlängerung in den Kontoeinstellungen im iTunes Store deaktivieren.\n- Wenn angeboten, und Sie sich entscheiden, unsere kostenlose Testversion zu nutzen, wird der ungenutzte Teil des kostenlosen Testzeitraums verfallen, wenn Sie ein Abonnement für diese Publikation kaufen, wo zutreffend.\n- Wenn Sie sich entscheiden, iLove VPN nicht zu kaufen, können Sie iLove VPN weiterhin kostenlos nutzen und genießen.\nIhre persönlichen Daten werden sicher auf iLove VPN gespeichert. Bitte lesen Sie unsere Datenschutzrichtlinie und Nutzungsbedingungen.",
         "upgraded_to_pro": "Premium-Benutzer",
         "upgraded_to_pro_detail": "Du kannst alle Standorte als Premium nutzen.",
-        "free_user_selected_premium_message": "Du musst ein Abonnement abschließen, um den Premium-Standort zu nutzen."
+        "free_user_selected_premium_message": "Du musst ein Abonnement abschließen, um den Premium-Standort zu nutzen.",
+        "try_coupon_code_key": "Gutscheincode ausprobieren"
     ]
 }
 

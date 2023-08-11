@@ -50,6 +50,7 @@ struct EnglishDictionary {
         "subs_terms_detail_key" : "We offer weekly, monthly, yearly and lifetime subscriptions giving discounts to the monthly price. Prices are clearly displayed in the app.\n- Payment will be charged to your iTunes account at confirmation of purchase.\n- Your subscription will automatically renew itself unless auto-renewal is turned off at least 24 hours before the end of the current period.\n- Your account will be charged for renewal within 24 hours prior to the end of the current period.\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings in the iTunes store.\n- If offered, if you choose to use our free trial, any unused portion of the free trial period will be forfeited when you purchase a subscription to that publication, where applicable.\n- If you don't choose to purchase iLove VPN, you can simply continue using and enjoying iLove VPN for free.\nYour personal data is securely stored on iLove VPN, be sure to read our Privacy Policy and Terms of Use.",
         "upgraded_to_pro": "Premium User",
         "upgraded_to_pro_detail": "You can use all locations as premium.",
-        "free_user_selected_premium_message": "You need to subscribe to use premium location"
+        "free_user_selected_premium_message": "You need to subscribe to use premium location",
+        "try_coupon_code_key": "Try Coupon Code"
     ]
 }

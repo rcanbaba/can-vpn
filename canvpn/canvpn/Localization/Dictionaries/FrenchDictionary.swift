@@ -50,7 +50,8 @@ struct FrenchDictionary {
         "subs_terms_detail_key" : "Nous proposons des abonnements hebdomadaires, mensuels, annuels et à vie offrant des réductions sur le prix mensuel. Les prix sont clairement affichés dans l'application.\n- Le paiement sera débité de votre compte iTunes lors de la confirmation de l'achat.\n- Votre abonnement sera automatiquement renouvelé sauf si le renouvellement automatique est désactivé au moins 24 heures avant la fin de la période en cours.\n- Votre compte sera débité pour le renouvellement dans les 24 heures précédant la fin de la période en cours.\n- Vous pouvez gérer vos abonnements et désactiver le renouvellement automatique en vous rendant dans vos Paramètres de compte sur l'iTunes Store.\n- Si proposé, si vous choisissez d'utiliser notre essai gratuit, toute portion inutilisée de la période d'essai gratuit sera perdue lorsque vous achetez un abonnement à cette publication, le cas échéant.\n- Si vous décidez de ne pas acheter iLove VPN, vous pouvez simplement continuer à utiliser et à profiter de iLove VPN gratuitement.\nVos données personnelles sont stockées en toute sécurité sur iLove VPN, veillez à lire notre Politique de Confidentialité et nos Conditions d'Utilisation.",
         "upgraded_to_pro": "Utilisateur Premium",
         "upgraded_to_pro_detail": "Vous pouvez utiliser toutes les localisations en tant qu'utilisateur premium.",
-        "free_user_selected_premium_message": "Vous devez vous abonner pour utiliser l'emplacement premium."
+        "free_user_selected_premium_message": "Vous devez vous abonner pour utiliser l'emplacement premium.",
+        "try_coupon_code_key": "Essayez le code coupon"
     ]
 }
 

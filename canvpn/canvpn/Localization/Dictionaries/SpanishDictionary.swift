@@ -50,7 +50,8 @@ struct SpanishDictionary {
         "subs_terms_detail_key" : "Ofrecemos suscripciones semanales, mensuales, anuales y de por vida que ofrecen descuentos sobre el precio mensual. Los precios se muestran claramente en la aplicación.\n- El pago se cargará en tu cuenta de iTunes al confirmar la compra.\n- Tu suscripción se renovará automáticamente a menos que la renovación automática se desactive al menos 24 horas antes del final del período actual.\n- Tu cuenta será cargada por la renovación dentro de las 24 horas previas al final del período actual.\n- Puedes gestionar tus suscripciones y desactivar la renovación automática yendo a la Configuración de tu cuenta en la tienda iTunes.\n- Si se ofrece, si eliges usar nuestro período de prueba gratuito, cualquier parte no utilizada del período de prueba gratuito se perderá cuando compres una suscripción a esa publicación, donde aplique.\n- Si decides no comprar iLove VPN, simplemente puedes continuar usando y disfrutando de iLove VPN gratis.\nTus datos personales están almacenados de forma segura en iLove VPN, asegúrate de leer nuestra Política de Privacidad y Términos de Uso.",
         "upgraded_to_pro": "Usuario Premium",
         "upgraded_to_pro_detail": "Puedes usar todas las ubicaciones como premium.",
-        "free_user_selected_premium_message": "Necesitas suscribirte para usar la ubicación premium."
+        "free_user_selected_premium_message": "Necesitas suscribirte para usar la ubicación premium.",
+        "try_coupon_code_key": "Prueba el código de cupón"
     ]
 }
 
