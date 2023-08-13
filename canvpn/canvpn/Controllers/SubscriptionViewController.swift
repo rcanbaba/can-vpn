@@ -312,8 +312,9 @@ extension SubscriptionViewController {
                     self.checkThenSetCouponLabel()
                     print("can595959 suc")
                 case .failure(let error):
-                    Toaster.showToast(message: "Coupon code not found")
-                    print("can595959 - fail")
+                    let errorMessage = ErrorHandler.getErrorMessage(for: error)
+                    Toaster.showToast(message: errorMessage)
+                    print("can595959 fail")
                 }
             }
         }

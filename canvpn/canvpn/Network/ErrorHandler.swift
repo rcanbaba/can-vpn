@@ -8,8 +8,13 @@
 import Foundation
 
 struct ErrorHandler {
-    static func resolve(with serverError: ServerError) -> ErrorResponse {
-        switch serverError.code {
+    // Change the method parameter type to [ServerError] and handle the first error
+    static func resolve(with serverErrors: [ServerError]) -> ErrorResponse {
+        guard let firstError = serverErrors.first else {
+            return .unknownError
+        }
+        
+        switch firstError.code {
         case 3001:
             return .couponNotFound
         case 3002:
@@ -19,11 +24,25 @@ struct ErrorHandler {
             return .serverError
         }
     }
+
+    static func getErrorMessage(for error: Error) -> String {
+        if let errorResponse = error as? ErrorResponse {
+            return NSLocalizedString(errorResponse.localizedKey, comment: "")
+        } else {
+            // General error message for unexpected errors
+            return NSLocalizedString("ERROR_GENERIC", comment: "A generic error message")
+        }
+    }
 }
+
 
 struct ServerError: Decodable {
     let code: Int
     let message: String
+}
+
+struct ServerErrorResponse: Decodable {
+    let errors: [ServerError]
 }
 
 enum ErrorResponse: String, Error {

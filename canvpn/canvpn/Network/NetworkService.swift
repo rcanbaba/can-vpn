@@ -38,8 +38,8 @@ final class DefaultNetworkService: NetworkService {
                     completion(.failure(ErrorResponse.serverError))
                 }
             } else {
-                if let data = data, let serverError = try? JSONDecoder().decode(ServerError.self, from: data) {
-                    let resolvedError = ErrorHandler.resolve(with: serverError)
+                if let data = data, let serverErrorsResponse = try? JSONDecoder().decode(ServerErrorResponse.self, from: data) {
+                    let resolvedError = ErrorHandler.resolve(with: serverErrorsResponse.errors)
                     completion(.failure(resolvedError))
                 } else {
                     completion(.failure(ErrorResponse.unknownError))
