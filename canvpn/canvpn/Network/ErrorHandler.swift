@@ -7,54 +7,27 @@
 
 import Foundation
 
-enum ErrorResponse: String {
-    case apiError
-    case invalidEndpoint
-    case invalidResponse
-    case noData
-    case serializationError
-    
-    public var description: String {
-        switch self {
-        case .apiError: return "Ooops, there is something problem with the api"
-        case .invalidEndpoint: return "Ooops, there is something problem with the endpoint"
-        case .invalidResponse: return "Ooops, there is something problem with the response"
-        case .noData: return "Ooops, there is something problem with the data"
-        case .serializationError: return "Ooops, there is something problem with the serialization process"
-        }
-    }
+enum ErrorResponse: String, Error {
+    case invalidEndpoint = "Invalid endpoint"
+    case serverError = "Server Error"
+    case couponNotFound = "COUPON_NOT_FOUND"
+    case couponExpired = "COUPON_EXPIRED"
+    case unknownError = "Unknown error occurred"
 }
 
-enum NetworkError: Error {
-    case invalidEndpoint
-    case serverError(String)
-    case unknown
-    case couponNotFound
-    case couponExpired
-    
-    init(code: Int) {
-        switch code {
-        case 3001:
-            self = .couponNotFound
-        case 3002:
-            self = .couponExpired
-        default:
-            self = .unknown
-        }
-    }
-    
-    var localizedDescription: String {
+extension ErrorResponse {
+    var localizedKey: String {
         switch self {
         case .invalidEndpoint:
-            return "Invalid endpoint."
-        case .serverError(let message):
-            return message
-        case .unknown:
-            return "An unknown error occurred."
+            return "ERROR_INVALID_ENDPOINT"
+        case .serverError:
+            return "ERROR_SERVER_ERROR"
         case .couponNotFound:
-            return "Coupon not found."
+            return "ERROR_COUPON_NOT_FOUND"
         case .couponExpired:
-            return "Coupon has expired."
+            return "ERROR_COUPON_EXPIRED"
+        case .unknownError:
+            return "ERROR_UNKNOWN"
         }
     }
 }

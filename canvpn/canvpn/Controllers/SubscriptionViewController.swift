@@ -301,9 +301,10 @@ extension SubscriptionViewController {
         guard let networkService = networkService else { return }
         var applyCouponRequest = ApplyCouponRequest()
         applyCouponRequest.setParams(code: code)
-        
+        subscriptionView.isLoading(show: true)
         networkService.request(applyCouponRequest) { result in
             DispatchQueue.main.async {
+                self.subscriptionView.isLoading(show: false)
                 switch result {
                 case .success(let response):
                     self.presentableProducts = response.products
@@ -311,6 +312,7 @@ extension SubscriptionViewController {
                     self.checkThenSetCouponLabel()
                     print("can595959 suc")
                 case .failure(let error):
+                    Toaster.showToast(message: "Coupon code not found")
                     print("can595959 - fail")
                 }
             }
