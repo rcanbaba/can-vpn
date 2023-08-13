@@ -14,49 +14,15 @@ protocol NetworkService {
 final class DefaultNetworkService: NetworkService {
     
     func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
-    
-        guard var urlComponent = URLComponents(string: request.url) else {
-            let error = NSError(
-                domain: ErrorResponse.invalidEndpoint.rawValue,
-                code: 404,
-                userInfo: nil
-            )
-            
-            return completion(.failure(error))
+        guard let urlRequest = prepareURLRequest(from: request) else {
+            return completion(.failure(ErrorResponse.invalidEndpoint))
         }
-        
-        var queryItems: [URLQueryItem] = []
-        
-        request.queryItems.forEach {
-            let urlQueryItem = URLQueryItem(name: $0.key, value: $0.value)
-            urlComponent.queryItems?.append(urlQueryItem)
-            queryItems.append(urlQueryItem)
-        }
-        
-        urlComponent.queryItems = queryItems
-        
-        guard let url = urlComponent.url else {
-            let error = NSError(
-                domain: ErrorResponse.invalidEndpoint.rawValue,
-                code: 404,
-                userInfo: nil
-            )
-            
-            return completion(.failure(error))
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = request.method.rawValue
-        urlRequest.httpBody = request.bodyData
-        urlRequest.allHTTPHeaderFields = request.headers
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
-        
+
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 return completion(.failure(error))
             }
-            
+
             guard let response = response as? HTTPURLResponse else {
                 return completion(.failure(ErrorResponse.serverError))
             }
@@ -65,7 +31,7 @@ final class DefaultNetworkService: NetworkService {
                 guard let data = data else {
                     return completion(.failure(ErrorResponse.serverError))
                 }
-                
+
                 do {
                     try completion(.success(request.decode(data)))
                 } catch {
@@ -81,5 +47,30 @@ final class DefaultNetworkService: NetworkService {
             }
         }
         .resume()
+    }
+
+    private func prepareURLRequest<Request: DataRequest>(from request: Request) -> URLRequest? {
+        guard var urlComponent = URLComponents(string: request.url) else {
+            return nil
+        }
+
+        let queryItems = request.queryItems.map {
+            URLQueryItem(name: $0.key, value: $0.value)
+        }
+        
+        urlComponent.queryItems = queryItems
+        
+        guard let url = urlComponent.url else {
+            return nil
+        }
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = request.method.rawValue
+        urlRequest.httpBody = request.bodyData
+        urlRequest.allHTTPHeaderFields = request.headers
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+
+        return urlRequest
     }
 }
