@@ -7,6 +7,25 @@
 
 import Foundation
 
+struct ErrorHandler {
+    static func resolve(with serverError: ServerError) -> ErrorResponse {
+        switch serverError.code {
+        case 3001:
+            return .couponNotFound
+        case 3002:
+            return .couponExpired
+        // Add all other cases here...
+        default:
+            return .serverError
+        }
+    }
+}
+
+struct ServerError: Decodable {
+    let code: Int
+    let message: String
+}
+
 enum ErrorResponse: String, Error {
     case invalidEndpoint = "Invalid endpoint"
     case serverError = "Server Error"

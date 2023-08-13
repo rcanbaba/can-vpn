@@ -57,24 +57,27 @@ final class DefaultNetworkService: NetworkService {
                 return completion(.failure(error))
             }
             
-            guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
-                let httpUrlResponse = response as? HTTPURLResponse
-                let statusCode = httpUrlResponse?.statusCode
-                
-                // TODO: should retry yapılabilir statusCode == 0 ise ...
-                
-                print("💙💙: statusCode - error - \(statusCode ?? 999)")
-                return completion(.failure(NSError()))
+            guard let response = response as? HTTPURLResponse else {
+                return completion(.failure(ErrorResponse.serverError))
             }
-            
-            guard let data = data else {
-                return completion(.failure(NSError()))
-            }
-            
-            do {
-                try completion(.success(request.decode(data)))
-            } catch let error as NSError {
-                completion(.failure(error))
+
+            if 200..<300 ~= response.statusCode {
+                guard let data = data else {
+                    return completion(.failure(ErrorResponse.serverError))
+                }
+                
+                do {
+                    try completion(.success(request.decode(data)))
+                } catch {
+                    completion(.failure(ErrorResponse.serverError))
+                }
+            } else {
+                if let data = data, let serverError = try? JSONDecoder().decode(ServerError.self, from: data) {
+                    let resolvedError = ErrorHandler.resolve(with: serverError)
+                    completion(.failure(resolvedError))
+                } else {
+                    completion(.failure(ErrorResponse.unknownError))
+                }
             }
         }
         .resume()
