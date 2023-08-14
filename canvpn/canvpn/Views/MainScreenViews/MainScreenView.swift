@@ -87,9 +87,11 @@ class MainScreenView: UIView {
         
         addSubview(backgroundImageView)
         
+        let topOffset = UIScreen.main.bounds.height / 11.7
+        
         addSubview(topLogoImageView)
         topLogoImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(80)
+            make.top.equalToSuperview().offset(topOffset)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.7)
         }
