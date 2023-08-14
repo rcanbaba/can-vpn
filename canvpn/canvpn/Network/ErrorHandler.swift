@@ -57,15 +57,15 @@ extension ErrorResponse {
     var localizedKey: String {
         switch self {
         case .invalidEndpoint:
-            return "ERROR_INVALID_ENDPOINT"
+            return "ERROR_INVALID_ENDPOINT".localize()
         case .serverError:
-            return "ERROR_SERVER_ERROR"
+            return "ERROR_SERVER_ERROR".localize()
         case .couponNotFound:
-            return "ERROR_COUPON_NOT_FOUND"
+            return "ERROR_COUPON_NOT_FOUND".localize()
         case .couponExpired:
-            return "ERROR_COUPON_EXPIRED"
+            return "ERROR_COUPON_EXPIRED".localize()
         case .unknownError:
-            return "ERROR_UNKNOWN"
+            return "ERROR_UNKNOWN".localize()
         }
     }
 }
