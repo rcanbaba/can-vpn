@@ -51,11 +51,14 @@ enum ErrorResponse: String, Error {
     case couponNotFound = "COUPON_NOT_FOUND"
     case couponExpired = "COUPON_EXPIRED"
     case unknownError = "Unknown error occurred"
+    case timeout = "Request timed out"
 }
 
 extension ErrorResponse {
     var localizedKey: String {
         switch self {
+        case .timeout:
+            return "ERROR_TIMEOUT".localize()
         case .invalidEndpoint:
             return "ERROR_INVALID_ENDPOINT".localize()
         case .serverError:

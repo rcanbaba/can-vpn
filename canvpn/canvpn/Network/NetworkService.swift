@@ -20,6 +20,9 @@ final class DefaultNetworkService: NetworkService {
 
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
+                if let urlError = error as? URLError, urlError.code == .timedOut {
+                    return completion(.failure(ErrorResponse.timeout))
+                }
                 return completion(.failure(error))
             }
 
@@ -70,6 +73,8 @@ final class DefaultNetworkService: NetworkService {
         urlRequest.allHTTPHeaderFields = request.headers
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        urlRequest.timeoutInterval = Constants.requestTimeout
 
         return urlRequest
     }
