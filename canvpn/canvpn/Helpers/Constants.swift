@@ -13,6 +13,8 @@ class Constants {
     static let appName = "ilovevpn"
     static let OSType = "ios"
     static let appBuild = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+    static let osVersion = UIDevice.current.systemVersion
+    static let langCode = Locale.preferredLocale().languageCode?.lowercased() ?? "unknown"
     
     static let idfv = KeychainManager.shared.getDeviceIdentifierFromKeychain()
     

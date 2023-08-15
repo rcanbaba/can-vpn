@@ -50,9 +50,8 @@ extension DataRequest {
         ["app": Constants.appName,
          "app_build": Constants.appBuild,
          "os_type": Constants.OSType,
-         "os_version": "unknown",
-         "app_language": "en",
-        // "app_language": Locale.preferredLocale().languageCode ?? "unknown",
+         "os_version": Constants.osVersion,
+         "app_language": Constants.langCode,
          "installation_id": Constants.idfv]
     }
 }
