@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 import FirebaseAnalytics
 
 class InitialViewController: UIViewController {

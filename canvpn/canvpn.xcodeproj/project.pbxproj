@@ -16,13 +16,6 @@
 		B4023D6029510E310008BDA6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B4023D5F29510E310008BDA6 /* Lottie */; };
 		B4023D662951121E0008BDA6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D652951121E0008BDA6 /* Helper.swift */; };
 		B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */; };
-		B4023D9E295386E20008BDA6 /* purchaseAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D94295386E10008BDA6 /* purchaseAnimation.json */; };
-		B4023D9F295386E20008BDA6 /* connectedVPN.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D95295386E10008BDA6 /* connectedVPN.json */; };
-		B4023DA0295386E20008BDA6 /* globe_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D96295386E10008BDA6 /* globe_loading.json */; };
-		B4023DA2295386E20008BDA6 /* vpn_connected.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D98295386E10008BDA6 /* vpn_connected.json */; };
-		B4023DA3295386E20008BDA6 /* vpn_lock.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D99295386E10008BDA6 /* vpn_lock.json */; };
-		B4023DA4295386E20008BDA6 /* guard_button.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D9A295386E10008BDA6 /* guard_button.json */; };
-		B4023DA6295386E20008BDA6 /* data_secure.json in Resources */ = {isa = PBXBuildFile; fileRef = B4023D9C295386E20008BDA6 /* data_secure.json */; };
 		B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023DBF2954751C0008BDA6 /* Keychain.swift */; };
 		B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4023DC12954752C0008BDA6 /* KeychainItemAccessibility.swift */; };
 		B4023DC52954A0050008BDA6 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = B4023DC42954A0050008BDA6 /* KeychainAccess */; };
@@ -353,6 +346,8 @@
 		B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
 		B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */; };
+		B4ECEA272AA790FB00B548DC /* congratsAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4ECEA262AA790FB00B548DC /* congratsAnimation.json */; };
+		B4ECEA292AA7910400B548DC /* flagAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4ECEA282AA7910400B548DC /* flagAnimation.json */; };
 		B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */; };
 		B4EE1F592A07AC6E00E219CA /* RegisterDeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */; };
 		B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */; };
@@ -410,13 +405,6 @@
 		B4023D652951121E0008BDA6 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		B4023D8629530F2F0008BDA6 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		B4023D94295386E10008BDA6 /* purchaseAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = purchaseAnimation.json; sourceTree = "<group>"; };
-		B4023D95295386E10008BDA6 /* connectedVPN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = connectedVPN.json; sourceTree = "<group>"; };
-		B4023D96295386E10008BDA6 /* globe_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = globe_loading.json; sourceTree = "<group>"; };
-		B4023D98295386E10008BDA6 /* vpn_connected.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vpn_connected.json; sourceTree = "<group>"; };
-		B4023D99295386E10008BDA6 /* vpn_lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vpn_lock.json; sourceTree = "<group>"; };
-		B4023D9A295386E10008BDA6 /* guard_button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guard_button.json; sourceTree = "<group>"; };
-		B4023D9C295386E20008BDA6 /* data_secure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data_secure.json; sourceTree = "<group>"; };
 		B4023DBF2954751C0008BDA6 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		B4023DC12954752C0008BDA6 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		B4023DC62954A9DB0008BDA6 /* canvpn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = canvpn.entitlements; sourceTree = "<group>"; };
@@ -741,6 +729,8 @@
 		B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		B4ECEA262AA790FB00B548DC /* congratsAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = congratsAnimation.json; path = ../../../../../../Downloads/congratsAnimation.json; sourceTree = "<group>"; };
+		B4ECEA282AA7910400B548DC /* flagAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = flagAnimation.json; path = ../../../../../../Downloads/flagAnimation.json; sourceTree = "<group>"; };
 		B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceRequest.swift; sourceTree = "<group>"; };
 		B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceResponse.swift; sourceTree = "<group>"; };
 		B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtensions.swift; sourceTree = "<group>"; };
@@ -876,14 +866,9 @@
 		B4023D67295113480008BDA6 /* LottieAnims */ = {
 			isa = PBXGroup;
 			children = (
+				B4ECEA282AA7910400B548DC /* flagAnimation.json */,
+				B4ECEA262AA790FB00B548DC /* congratsAnimation.json */,
 				B46450512A703EAD00AFE4D8 /* splash-animation.json */,
-				B4023D95295386E10008BDA6 /* connectedVPN.json */,
-				B4023D9C295386E20008BDA6 /* data_secure.json */,
-				B4023D96295386E10008BDA6 /* globe_loading.json */,
-				B4023D9A295386E10008BDA6 /* guard_button.json */,
-				B4023D94295386E10008BDA6 /* purchaseAnimation.json */,
-				B4023D98295386E10008BDA6 /* vpn_connected.json */,
-				B4023D99295386E10008BDA6 /* vpn_lock.json */,
 			);
 			path = LottieAnims;
 			sourceTree = "<group>";
@@ -1529,6 +1514,7 @@
 				B441225F2957550E0072B566 /* vi.png in Resources */,
 				B44122572957550E0072B566 /* bg.png in Resources */,
 				B44122152957550E0072B566 /* tf.png in Resources */,
+				B4ECEA272AA790FB00B548DC /* congratsAnimation.json in Resources */,
 				B441228F2957550E0072B566 /* pt.png in Resources */,
 				B441226A2957550E0072B566 /* ht.png in Resources */,
 				B44122EA2957550E0072B566 /* kz.png in Resources */,
@@ -1557,7 +1543,6 @@
 				B44122142957550E0072B566 /* pk.png in Resources */,
 				B44122EE2957550E0072B566 /* nl.png in Resources */,
 				B44122C12957550E0072B566 /* ss.png in Resources */,
-				B4023DA4295386E20008BDA6 /* guard_button.json in Resources */,
 				B441222D2957550E0072B566 /* cv.png in Resources */,
 				B44122232957550E0072B566 /* il.png in Resources */,
 				B44122582957550E0072B566 /* sc.png in Resources */,
@@ -1636,12 +1621,12 @@
 				B44122442957550E0072B566 /* gs.png in Resources */,
 				B44121FC2957550D0072B566 /* cl.png in Resources */,
 				B44121F12957550D0072B566 /* ax.png in Resources */,
-				B4023DA6295386E20008BDA6 /* data_secure.json in Resources */,
 				B44121F52957550D0072B566 /* bz.png in Resources */,
 				B44122982957550E0072B566 /* za.png in Resources */,
 				B441225C2957550E0072B566 /* bi.png in Resources */,
 				B441228E2957550E0072B566 /* kg.png in Resources */,
 				B441220F2957550E0072B566 /* mw.png in Resources */,
+				B4ECEA292AA7910400B548DC /* flagAnimation.json in Resources */,
 				B44122CD2957550E0072B566 /* re.png in Resources */,
 				B44122C62957550E0072B566 /* af.png in Resources */,
 				B44122332957550E0072B566 /* us.png in Resources */,
@@ -1678,7 +1663,6 @@
 				B44122DC2957550E0072B566 /* is.png in Resources */,
 				B44121F42957550D0072B566 /* vc.png in Resources */,
 				B44122512957550E0072B566 /* cw.png in Resources */,
-				B4023DA3295386E20008BDA6 /* vpn_lock.json in Resources */,
 				B44122342957550E0072B566 /* eg.png in Resources */,
 				B44122A42957550E0072B566 /* ch.png in Resources */,
 				B44122922957550E0072B566 /* gl.png in Resources */,
@@ -1706,7 +1690,6 @@
 				B44122B22957550E0072B566 /* fo.png in Resources */,
 				B44122D92957550E0072B566 /* lk.png in Resources */,
 				B44122112957550E0072B566 /* ec.png in Resources */,
-				B4023D9F295386E20008BDA6 /* connectedVPN.json in Resources */,
 				B44122462957550E0072B566 /* ky.png in Resources */,
 				B441226B2957550E0072B566 /* bd.png in Resources */,
 				B44122D32957550E0072B566 /* ps.png in Resources */,
@@ -1717,7 +1700,6 @@
 				B44122272957550E0072B566 /* cz.png in Resources */,
 				B44122192957550E0072B566 /* au.png in Resources */,
 				B44122502957550E0072B566 /* aq.png in Resources */,
-				B4023DA2295386E20008BDA6 /* vpn_connected.json in Resources */,
 				B44121F62957550D0072B566 /* cx.png in Resources */,
 				B441224B2957550E0072B566 /* uy.png in Resources */,
 				B44122802957550E0072B566 /* sb.png in Resources */,
@@ -1740,7 +1722,6 @@
 				B44122062957550E0072B566 /* gr.png in Resources */,
 				B44122DD2957550E0072B566 /* cg.png in Resources */,
 				B441228B2957550E0072B566 /* hm.png in Resources */,
-				B4023D9E295386E20008BDA6 /* purchaseAnimation.json in Resources */,
 				B44122AE2957550E0072B566 /* lt.png in Resources */,
 				B44122CE2957550E0072B566 /* ru.png in Resources */,
 				B44122B82957550E0072B566 /* mf.png in Resources */,
@@ -1754,7 +1735,6 @@
 				B44122822957550E0072B566 /* tr.png in Resources */,
 				B44122D62957550E0072B566 /* um.png in Resources */,
 				B44122A02957550E0072B566 /* la.png in Resources */,
-				B4023DA0295386E20008BDA6 /* globe_loading.json in Resources */,
 				B441224F2957550E0072B566 /* hn.png in Resources */,
 				B44122EF2957550E0072B566 /* mk.png in Resources */,
 				B44122AF2957550E0072B566 /* gw.png in Resources */,

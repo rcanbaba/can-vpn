@@ -7,7 +7,6 @@
 
 import UIKit
 import NetworkExtension
-import Lottie
 import FirebaseAnalytics
 
 class MainScreenViewController: UIViewController {

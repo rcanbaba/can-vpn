@@ -22,7 +22,6 @@ class SplashScreenView: UIView {
         animation.loopMode = .playOnce
         return animation
     }()
-
     
     override init(frame: CGRect) {
         super.init(frame: frame)

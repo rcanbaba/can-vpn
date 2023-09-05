@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 import SnapKit
 
 protocol MainScreenViewDelegate: AnyObject {
