@@ -44,6 +44,7 @@ class MainScreenViewController: UIViewController {
         configureUI()
         checkSubscriptionState()
         checkSubscriptionPageThenPresent()
+        checkGetFreeThenSet()
         observeNotifications()
         requestTrackingPermission()
     }
@@ -125,6 +126,11 @@ class MainScreenViewController: UIViewController {
         isPremium ? presentSubscriptionPage() : ()
     }
     
+    private func checkGetFreeThenSet() {
+        let shouldShowEmailBanner = SettingsManager.shared.settings?.interface.showEmailBanner.enabled ?? false
+        mainView.getFreeAnimation.isHidden = !shouldShowEmailBanner
+    }
+    
     private func presentSubscriptionPage() {
         let subscriptionViewController = SubscriptionViewController()
         subscriptionViewController.hidesBottomBarWhenPushed = true
@@ -132,13 +138,14 @@ class MainScreenViewController: UIViewController {
     }
     
     private func playGetFreeAnimationAfterDelay() {
+        guard let shouldShowEmailBanner = SettingsManager.shared.settings?.interface.showEmailBanner.enabled,
+                shouldShowEmailBanner else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.mainView.getFreeAnimation.play()
         }
     }
     
     private func presentEmailPopup() {
-        
         
         
         
