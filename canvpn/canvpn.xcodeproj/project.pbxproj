@@ -317,6 +317,7 @@
 		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
 		B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E12A125F76008F00FA /* SuccessResponse.swift */; };
 		B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E32A140EF7008F00FA /* SettingsManager.swift */; };
+		B48BC3EC2AA89C9400A00F5E /* EmailPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* EmailPopupView.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
 		B48E7E972A49B8A900DEBD74 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B48E7E962A49B8A900DEBD74 /* StoreKit.framework */; };
 		B48F8A6F295895B900CB69CA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F8A6E295895B900CB69CA /* LocalizationManager.swift */; };
@@ -346,8 +347,8 @@
 		B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */; };
 		B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */; };
 		B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */; };
-		B4ECEA272AA790FB00B548DC /* congratsAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4ECEA262AA790FB00B548DC /* congratsAnimation.json */; };
-		B4ECEA292AA7910400B548DC /* flagAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4ECEA282AA7910400B548DC /* flagAnimation.json */; };
+		B4ECEA272AA790FB00B548DC /* pennantAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4ECEA262AA790FB00B548DC /* pennantAnimation.json */; };
+		B4ECEA292AA7910400B548DC /* congratsAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4ECEA282AA7910400B548DC /* congratsAnimation.json */; };
 		B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */; };
 		B4EE1F592A07AC6E00E219CA /* RegisterDeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */; };
 		B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */; };
@@ -701,6 +702,7 @@
 		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
 		B47170E12A125F76008F00FA /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		B47170E32A140EF7008F00FA /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		B48BC3EB2AA89C9400A00F5E /* EmailPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPopupView.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
 		B48E7E962A49B8A900DEBD74 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B48F8A6E295895B900CB69CA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
@@ -729,8 +731,8 @@
 		B4DA0E8A29AF9EE500CA1A86 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B4DA0E9129AFA60800CA1A86 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
-		B4ECEA262AA790FB00B548DC /* congratsAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = congratsAnimation.json; path = ../../../../../../Downloads/congratsAnimation.json; sourceTree = "<group>"; };
-		B4ECEA282AA7910400B548DC /* flagAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = flagAnimation.json; path = ../../../../../../Downloads/flagAnimation.json; sourceTree = "<group>"; };
+		B4ECEA262AA790FB00B548DC /* pennantAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pennantAnimation.json; path = ../../../../../../Downloads/pennantAnimation.json; sourceTree = "<group>"; };
+		B4ECEA282AA7910400B548DC /* congratsAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = congratsAnimation.json; path = ../../../../../../Downloads/congratsAnimation.json; sourceTree = "<group>"; };
 		B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceRequest.swift; sourceTree = "<group>"; };
 		B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceResponse.swift; sourceTree = "<group>"; };
 		B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtensions.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 				B4184A162955C9AA0051EB79 /* LocationListTableViewCell.swift */,
 				B4D09F3029C7B4E800E11069 /* MainScreenViews */,
 				B4DA0E8E29AF9FD300CA1A86 /* SubscriptionViews */,
+				B48BC3EB2AA89C9400A00F5E /* EmailPopupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -866,8 +869,8 @@
 		B4023D67295113480008BDA6 /* LottieAnims */ = {
 			isa = PBXGroup;
 			children = (
-				B4ECEA282AA7910400B548DC /* flagAnimation.json */,
-				B4ECEA262AA790FB00B548DC /* congratsAnimation.json */,
+				B4ECEA282AA7910400B548DC /* congratsAnimation.json */,
+				B4ECEA262AA790FB00B548DC /* pennantAnimation.json */,
 				B46450512A703EAD00AFE4D8 /* splash-animation.json */,
 			);
 			path = LottieAnims;
@@ -1514,7 +1517,7 @@
 				B441225F2957550E0072B566 /* vi.png in Resources */,
 				B44122572957550E0072B566 /* bg.png in Resources */,
 				B44122152957550E0072B566 /* tf.png in Resources */,
-				B4ECEA272AA790FB00B548DC /* congratsAnimation.json in Resources */,
+				B4ECEA272AA790FB00B548DC /* pennantAnimation.json in Resources */,
 				B441228F2957550E0072B566 /* pt.png in Resources */,
 				B441226A2957550E0072B566 /* ht.png in Resources */,
 				B44122EA2957550E0072B566 /* kz.png in Resources */,
@@ -1626,7 +1629,7 @@
 				B441225C2957550E0072B566 /* bi.png in Resources */,
 				B441228E2957550E0072B566 /* kg.png in Resources */,
 				B441220F2957550E0072B566 /* mw.png in Resources */,
-				B4ECEA292AA7910400B548DC /* flagAnimation.json in Resources */,
+				B4ECEA292AA7910400B548DC /* congratsAnimation.json in Resources */,
 				B44122CD2957550E0072B566 /* re.png in Resources */,
 				B44122C62957550E0072B566 /* af.png in Resources */,
 				B44122332957550E0072B566 /* us.png in Resources */,
@@ -1808,6 +1811,7 @@
 				B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */,
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
 				B4184A172955C9AA0051EB79 /* LocationListTableViewCell.swift in Sources */,
+				B48BC3EC2AA89C9400A00F5E /* EmailPopupView.swift in Sources */,
 				B4EE1F612A07BE0600E219CA /* FetchSettingsResponse.swift in Sources */,
 				B4D871242A8572960080D788 /* RussianDictionary.swift in Sources */,
 				B490D3AD296C98EE00651BFC /* Config.swift in Sources */,

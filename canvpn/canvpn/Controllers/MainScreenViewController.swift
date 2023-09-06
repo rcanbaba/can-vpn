@@ -52,6 +52,7 @@ class MainScreenViewController: UIViewController {
         super.viewWillAppear(animated)
         Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
         setNavigationBar()
+        playGetFreeAnimationAfterDelay()
     }
     
     private func setNavigationBar() {
@@ -129,6 +130,20 @@ class MainScreenViewController: UIViewController {
         subscriptionViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(subscriptionViewController, animated: true)
     }
+    
+    private func playGetFreeAnimationAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.mainView.getFreeAnimation.play()
+        }
+    }
+    
+    private func presentEmailPopup() {
+        
+        
+        
+        
+    }
+    
     
     private func observeNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -275,6 +290,10 @@ extension MainScreenViewController {
 
 // MARK: - VPN manager interactions
 extension MainScreenViewController: MainScreenViewDelegate {
+    func getFreeTapped() {
+        presentEmailPopup()
+    }
+    
     func goProButtonTapped() {
         presentSubscriptionPage()
     }

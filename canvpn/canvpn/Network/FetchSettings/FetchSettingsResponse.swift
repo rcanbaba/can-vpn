@@ -46,13 +46,13 @@ struct AppUpdate: Codable {
 // MARK: - Interface
 struct UserInterface: Codable {
     let showCoupon, showPurchase: Bool
-    let showReview: ShowReview
+    let showRateUs: ShowRateUs
     let showEmailBanner: ShowEmailBanner
 
     enum CodingKeys: String, CodingKey {
         case showCoupon = "show_coupon"
         case showPurchase = "show_purchase"
-        case showReview = "show_review"
+        case showRateUs = "show_rate_us"
         case showEmailBanner = "show_email_banner"
     }
 }
@@ -65,7 +65,7 @@ struct ShowEmailBanner: Codable {
 }
 
 // MARK: - ShowReview
-struct ShowReview: Codable {
+struct ShowRateUs: Codable {
     let enabled: Bool
     let count: Int
 }

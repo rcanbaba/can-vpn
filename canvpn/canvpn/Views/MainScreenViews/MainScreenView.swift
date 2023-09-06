@@ -7,11 +7,13 @@
 
 import UIKit
 import SnapKit
+import Lottie
 
 protocol MainScreenViewDelegate: AnyObject {
     func changeStateTapped()
     func locationButtonTapped()
     func goProButtonTapped()
+    func getFreeTapped()
 }
 
 class MainScreenView: UIView {
@@ -70,6 +72,26 @@ class MainScreenView: UIView {
         let button = GoProButton()
         button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goProButtonTapped(_:))))
         return button
+    }()
+    
+    public lazy var getFreeAnimation: LottieAnimationView = {
+        let animation = LottieAnimationView(name: "pennantAnimation")
+        animation.loopMode = .playOnce
+        animation.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getFreeTapped(_:))))
+        return animation
+    }()
+    
+    public lazy var getFreeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.numberOfLines = 0
+        label.textColor = UIColor.Custom.orange
+        label.textAlignment = .center
+        label.text = "FREE"
+       // label.text = SettingsManager.shared.settings?.interface.showEmailBanner.text
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -135,6 +157,19 @@ class MainScreenView: UIView {
             make.height.equalTo(centerButton.snp.width)
             make.bottom.equalTo(connectionStateLabel.snp.top).inset(-10)
         }
+        
+        addSubview(getFreeAnimation)
+        getFreeAnimation.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview()
+            make.top.equalTo(topLogoImageView.snp.top)
+            make.size.equalTo(100)
+        }
+        
+        getFreeAnimation.addSubview(getFreeLabel)
+        getFreeLabel.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.bottom.top.equalToSuperview().inset(20)
+        }
 
     }
     
@@ -189,6 +224,10 @@ class MainScreenView: UIView {
     
     @objc private func goProButtonTapped (_ sender: UIControl) {
         delegate?.goProButtonTapped()
+    }
+    
+    @objc private func getFreeTapped (_ sender: UIControl) {
+        delegate?.getFreeTapped()
     }
     
 }
