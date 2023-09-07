@@ -162,14 +162,14 @@ class MainScreenView: UIView {
         
         addSubview(getFreeAnimation)
         getFreeAnimation.snp.makeConstraints { (make) in
-            make.trailing.equalToSuperview()
-            make.top.equalTo(topLogoImageView.snp.top)
-            make.size.equalTo(100)
+            make.trailing.equalToSuperview().inset(6)
+            make.top.equalTo(topLogoImageView.snp.top).offset(-10)
+            make.size.equalTo(84)
         }
         
         getFreeAnimation.addSubview(getFreeLabel)
         getFreeLabel.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.top.equalToSuperview().inset(20)
         }
 

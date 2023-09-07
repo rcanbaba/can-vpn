@@ -142,8 +142,12 @@ class MainScreenViewController: UIViewController {
     private func playGetFreeAnimationAfterDelay() {
         guard let shouldShowEmailBanner = SettingsManager.shared.settings?.interface.showEmailBanner.enabled,
                 shouldShowEmailBanner else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+        mainView.getFreeLabel.alpha = 0.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.mainView.getFreeAnimation.play()
+            UIView.animate(withDuration: 0.2, delay: 1.6) { [weak self] in
+                self?.mainView.getFreeLabel.alpha = 1.0
+            }
         }
     }
     
