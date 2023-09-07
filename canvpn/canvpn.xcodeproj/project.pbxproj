@@ -317,7 +317,8 @@
 		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
 		B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E12A125F76008F00FA /* SuccessResponse.swift */; };
 		B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E32A140EF7008F00FA /* SettingsManager.swift */; };
-		B48BC3EC2AA89C9400A00F5E /* EmailPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* EmailPopupView.swift */; };
+		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
+		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
 		B48E7E972A49B8A900DEBD74 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B48E7E962A49B8A900DEBD74 /* StoreKit.framework */; };
 		B48F8A6F295895B900CB69CA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F8A6E295895B900CB69CA /* LocalizationManager.swift */; };
@@ -702,7 +703,8 @@
 		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
 		B47170E12A125F76008F00FA /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		B47170E32A140EF7008F00FA /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
-		B48BC3EB2AA89C9400A00F5E /* EmailPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPopupView.swift; sourceTree = "<group>"; };
+		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
+		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
 		B48E7E962A49B8A900DEBD74 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B48F8A6E295895B900CB69CA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
@@ -828,7 +830,7 @@
 				B4184A162955C9AA0051EB79 /* LocationListTableViewCell.swift */,
 				B4D09F3029C7B4E800E11069 /* MainScreenViews */,
 				B4DA0E8E29AF9FD300CA1A86 /* SubscriptionViews */,
-				B48BC3EB2AA89C9400A00F5E /* EmailPopupView.swift */,
+				B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -977,6 +979,7 @@
 				B4BBFC16296DF30000613E9F /* InitialViewController.swift */,
 				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
 				B4D09F3529CB635D00E11069 /* LocationViewController.swift */,
+				B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1781,6 +1784,7 @@
 				B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */,
 				B40D732829DB21350066FD80 /* Toaster.swift in Sources */,
 				B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */,
+				B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */,
 				B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */,
 				B4EE1F662A07C49200E219CA /* Endpoints.swift in Sources */,
 				B4D871132A8572090080D788 /* EnglishDictionary.swift in Sources */,
@@ -1811,7 +1815,7 @@
 				B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */,
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
 				B4184A172955C9AA0051EB79 /* LocationListTableViewCell.swift in Sources */,
-				B48BC3EC2AA89C9400A00F5E /* EmailPopupView.swift in Sources */,
+				B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */,
 				B4EE1F612A07BE0600E219CA /* FetchSettingsResponse.swift in Sources */,
 				B4D871242A8572960080D788 /* RussianDictionary.swift in Sources */,
 				B490D3AD296C98EE00651BFC /* Config.swift in Sources */,

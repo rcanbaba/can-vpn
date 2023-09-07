@@ -23,6 +23,8 @@ class MainScreenViewController: UIViewController {
     private var selectedServer: Server?
     private var selectedServerConfig: Configuration?
     
+    private var popupPresenterViewController: PopupPresenterViewController?
+    
     //TODO: alttan yukarı gelince ne oluyor
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,7 @@ class MainScreenViewController: UIViewController {
         configureUI()
         checkSubscriptionState()
         checkSubscriptionPageThenPresent()
-        checkGetFreeThenSet()
+       // checkGetFreeThenSet()
         observeNotifications()
         requestTrackingPermission()
     }
@@ -128,7 +130,7 @@ class MainScreenViewController: UIViewController {
     
     private func checkGetFreeThenSet() {
         let shouldShowEmailBanner = SettingsManager.shared.settings?.interface.showEmailBanner.enabled ?? false
-        mainView.getFreeAnimation.isHidden = !shouldShowEmailBanner
+        mainView.setGetFreeView(isHidden: !shouldShowEmailBanner)
     }
     
     private func presentSubscriptionPage() {
@@ -146,9 +148,18 @@ class MainScreenViewController: UIViewController {
     }
     
     private func presentEmailPopup() {
+        // already presenting
+        guard popupPresenterViewController == nil else { return }
         
+        let freePopupView = GetFreePopupView()
+        freePopupView.delegate = self
+      //  freePopupView.set
         
-        
+        popupPresenterViewController = PopupPresenterViewController()
+        popupPresenterViewController!.popupView = freePopupView
+        popupPresenterViewController!.modalPresentationStyle = .overFullScreen
+        popupPresenterViewController!.modalTransitionStyle  = .crossDissolve
+        self.present(popupPresenterViewController!, animated: true, completion: nil)
     }
     
     
@@ -352,6 +363,23 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 extension MainScreenViewController: LocationViewControllerDelegate {
     func selectedServer(server: Server) {
         setSelectedServer(server: server)
+    }
+    
+}
+
+// MARK: - GetFreePopupViewDelegate
+extension MainScreenViewController: GetFreePopupViewDelegate {
+    func getButtonTapped(view: GetFreePopupView) {
+        print("AAAAAAAAAAAAAAAAAAAAA")
+        popupPresenterViewController?.dismiss(animated: true, completion: {[weak self] in
+            guard let self = self else { return }
+            self.popupPresenterViewController = nil
+        })
+    }
+    
+    func closeButtonTapped(view: GetFreePopupView) {
+        print("BBBBBBBBBBBBBBBBBBBBBB")
+        popupPresenterViewController?.dismiss(animated: true)
     }
     
 }

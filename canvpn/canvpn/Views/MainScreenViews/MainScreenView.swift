@@ -78,6 +78,7 @@ class MainScreenView: UIView {
         let animation = LottieAnimationView(name: "pennantAnimation")
         animation.loopMode = .playOnce
         animation.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getFreeTapped(_:))))
+        animation.isHidden = true
         return animation
     }()
     
@@ -90,6 +91,7 @@ class MainScreenView: UIView {
         label.textColor = UIColor.Custom.orange
         label.textAlignment = .center
         label.text = "FREE"
+        label.isHidden = true
        // label.text = SettingsManager.shared.settings?.interface.showEmailBanner.text
         return label
     }()
@@ -261,6 +263,10 @@ extension MainScreenView {
     public func setLocationSignal(level: Int?) {
         let signalLevel = level ?? 3
         locationButton.set(signalImage: SignalLevel(rawValue: signalLevel)?.getSignalImage())
+    }
+    public func setGetFreeView(isHidden: Bool) {
+        getFreeLabel.isHidden = isHidden
+        getFreeAnimation.isHidden = isHidden
     }
 
 }
