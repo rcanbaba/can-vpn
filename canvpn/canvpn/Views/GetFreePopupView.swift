@@ -24,7 +24,7 @@ class GetFreePopupView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = UIColor.black
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -37,7 +37,7 @@ class GetFreePopupView: UIView {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "You should enter your email adress to get free 1 month access premium. After the email enter you should check your email then get your promo code, promo code could be applied on the subscription page, coupon code area."
+        label.text = "You won a chance for a one-month premium membership invitation with your account over an exclusive promo code. \nJust provide your email, and you can start experiencing the perks of premium access."
         label.textColor = UIColor.gray
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -53,10 +53,11 @@ class GetFreePopupView: UIView {
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.tintColor = .Custom.green
         textField.textColor = UIColor.gray
-        textField.layer.borderWidth = 1.0
-        textField.layer.cornerRadius = 15.0
+      //  textField.layer.borderWidth = 0.2
+        textField.layer.cornerRadius = 6.0
         textField.backgroundColor = UIColor.white
-        textField.layer.borderColor = UIColor.Custom.green.cgColor
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.applySketchShadow()
         
         let placeholder = "Enter your email"
         let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray]
@@ -85,8 +86,8 @@ class GetFreePopupView: UIView {
     
     private lazy var closeButton: UIButton = {
         var button = UIButton()
-        button.setImage(UIImage(named: "close-icon"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
+        button.setImage(UIImage(named: "bordered-close-icon"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -113,24 +114,24 @@ class GetFreePopupView: UIView {
         mainAnimation.play()
         
         self.snp.makeConstraints { make in
-            make.width.equalTo(280)
+            make.width.equalTo(300)
         }
         
         self.addSubview(mainAnimation)
         mainAnimation.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(32)
             make.centerX.equalToSuperview()
         }
         
         self.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainAnimation.snp.bottom).inset(12)
+            make.top.equalTo(mainAnimation.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
         self.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(32)
         }
         
@@ -138,15 +139,15 @@ class GetFreePopupView: UIView {
         emailTextField.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(16)
             make.height.equalTo(32)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(42)
         }
         
         self.addSubview(getButton)
         getButton.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(32)
             make.height.equalTo(42)
-            make.bottom.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(24)
         }
 
         self.addSubview(closeButton)

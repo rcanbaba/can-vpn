@@ -46,7 +46,7 @@ class MainScreenViewController: UIViewController {
         configureUI()
         checkSubscriptionState()
         checkSubscriptionPageThenPresent()
-       // checkGetFreeThenSet()
+        checkGetFreeThenSet()
         observeNotifications()
         requestTrackingPermission()
     }
@@ -370,7 +370,6 @@ extension MainScreenViewController: LocationViewControllerDelegate {
 // MARK: - GetFreePopupViewDelegate
 extension MainScreenViewController: GetFreePopupViewDelegate {
     func getButtonTapped(view: GetFreePopupView) {
-        print("AAAAAAAAAAAAAAAAAAAAA")
         popupPresenterViewController?.dismiss(animated: true, completion: {[weak self] in
             guard let self = self else { return }
             self.popupPresenterViewController = nil
@@ -378,8 +377,10 @@ extension MainScreenViewController: GetFreePopupViewDelegate {
     }
     
     func closeButtonTapped(view: GetFreePopupView) {
-        print("BBBBBBBBBBBBBBBBBBBBBB")
-        popupPresenterViewController?.dismiss(animated: true)
+        popupPresenterViewController?.dismiss(animated: true, completion: {[weak self] in
+            guard let self = self else { return }
+            self.popupPresenterViewController = nil
+        })
     }
     
 }
