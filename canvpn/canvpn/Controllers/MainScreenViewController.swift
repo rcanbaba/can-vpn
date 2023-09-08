@@ -223,6 +223,7 @@ extension MainScreenViewController {
                 self.getIPAddress()
                 
             case .failure(_):
+                self.setMainUI(state: .disconnected)
                 self.printDebug("getCredential failure")
                 Toaster.showToast(message: "error_location_again".localize())
                 Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : "happened"])
