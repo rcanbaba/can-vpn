@@ -9,5 +9,5 @@ import Foundation
 
 // MARK: - SuccessResponse
 struct SuccessResponse: Codable {
-    let success: Bool
+    var success: Bool
 }

@@ -10,7 +10,7 @@ import SnapKit
 import Lottie
 
 protocol GetFreePopupViewDelegate: AnyObject {
-    func getButtonTapped(view: GetFreePopupView)
+    func getButtonTapped(view: GetFreePopupView, email: String)
     func closeButtonTapped(view: GetFreePopupView)
 }
 
@@ -161,7 +161,8 @@ class GetFreePopupView: UIView {
     
     // MARK: Actions
     @objc private func getButtonTapped(_ sender: UIButton) {
-        delegate?.getButtonTapped(view: self)
+        guard let emailText = emailTextField.text, !emailText.isEmpty else { return }
+        delegate?.getButtonTapped(view: self, email: emailText)
     }
     
     @objc private func closeButtonTapped(_ sender: UIButton) {

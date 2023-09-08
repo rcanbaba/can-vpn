@@ -35,6 +35,10 @@ final class DefaultNetworkService: NetworkService {
                     return completion(.failure(ErrorResponse.serverError))
                 }
                 
+                if response.statusCode == 204 {
+                    return completion(.success(SuccessResponse(success: true) as! Request.Response))
+                }
+                
                 do {
                     try completion(.success(request.decode(data)))
                 } catch let decodingError as DecodingError {

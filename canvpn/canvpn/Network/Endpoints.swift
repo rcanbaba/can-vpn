@@ -16,4 +16,5 @@ public struct Endpoints {
     static let getIPAddress = "/v1/utils/ip_address"
     static let consumeReceipt = "/v1/inapp_purchase/app_store/consume"
     static let applyCoupon = "/v1/coupon/apply"
+    static let generateCoupon = "/v1/coupon/generate"
 }

@@ -52,6 +52,7 @@ enum ErrorResponse: String, Error {
     case couponExpired = "COUPON_EXPIRED"
     case unknownError = "Unknown error occurred"
     case timeout = "Request timed out"
+    case invalidEmail = "Invalid email"
 }
 
 extension ErrorResponse {
@@ -69,6 +70,8 @@ extension ErrorResponse {
             return "ERROR_COUPON_EXPIRED".localize()
         case .unknownError:
             return "ERROR_UNKNOWN".localize()
+        case .invalidEmail:
+            return "ERROR_EMAIL_INVALID".localize()
         }
     }
 }

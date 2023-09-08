@@ -310,11 +310,9 @@ extension SubscriptionViewController {
                     self.presentableProducts = response.products
                     self.setOfferTableView()
                     self.checkThenSetCouponLabel()
-                    print("can595959 suc")
                 case .failure(let error):
                     let errorMessage = ErrorHandler.getErrorMessage(for: error)
                     Toaster.showToast(message: errorMessage)
-                    print("can595959 fail")
                 }
             }
         }

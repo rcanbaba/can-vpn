@@ -253,6 +253,27 @@ extension MainScreenViewController {
             }
         }
     }
+    
+    private func getFreeCouponRequest(email: String) {
+        guard let service = networkService else { return }
+        var generateCouponRequest = GenerateCouponRequest()
+        generateCouponRequest.setParams(email: email)
+        
+        service.request(generateCouponRequest) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_):
+                self.printDebug("generateCouponRequest success")
+                
+            case .failure(let error):
+                let errorMessage = ErrorHandler.getErrorMessage(for: error)
+                Toaster.showToast(message: errorMessage)
+                Analytics.logEvent("005-API-generateCouponRequest", parameters: ["error" : "happened"])
+            }
+            
+        }
+    }
+    
 }
 
 // MARK: - Set Selected Server
@@ -374,7 +395,8 @@ extension MainScreenViewController: LocationViewControllerDelegate {
 
 // MARK: - GetFreePopupViewDelegate
 extension MainScreenViewController: GetFreePopupViewDelegate {
-    func getButtonTapped(view: GetFreePopupView) {
+    func getButtonTapped(view: GetFreePopupView, email: String) {
+        getFreeCouponRequest(email: email)
         popupPresenterViewController?.dismiss(animated: true, completion: {[weak self] in
             guard let self = self else { return }
             self.popupPresenterViewController = nil
