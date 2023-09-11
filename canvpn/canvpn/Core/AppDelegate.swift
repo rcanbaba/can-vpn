@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         registerForPushNotifications()
+        LaunchCountManager.shared.incrementLaunchCount()
         return true
     }
     
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
+        LaunchCountManager.shared.shouldShowPopup() ? LaunchCountManager.shared.resetLaunchCount() : ()
         PurchaseManager.shared.stopObserving()
     }
     

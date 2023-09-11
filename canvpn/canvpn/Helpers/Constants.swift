@@ -22,10 +22,12 @@ class Constants {
     
     static let appNavBarName = "I Love VPN"
     static let vpnListingName = "iLoveVPN"
-    static let animationDuration = 0.3
+    static let animationDuration: Double = 0.3
     static let appWebPageURLString = "https://ilovevpn.app/"
     static let appPrivacyPolicyPageURLString = "https://ilovevpn.app/privacy-policy/"
     static let appTermsOfServicePageURLString = "https://ilovevpn.app/terms-of-service/"
+    
+    static let getFreeAnimationDuration: Double = 8.0
     
     static let requestTimeout = TimeInterval(5)
 }

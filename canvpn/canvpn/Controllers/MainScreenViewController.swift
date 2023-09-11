@@ -25,6 +25,8 @@ class MainScreenViewController: UIViewController {
     
     private var popupPresenterViewController: PopupPresenterViewController?
     
+    private var getFreeAnimationTimer: Timer?
+    
     //TODO: alttan yukarı gelince ne oluyor
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,12 @@ class MainScreenViewController: UIViewController {
         Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
         setNavigationBar()
         playGetFreeAnimationAfterDelay()
+        startAnimationTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopAnimationTimer()
     }
     
     private func setNavigationBar() {
@@ -129,8 +137,9 @@ class MainScreenViewController: UIViewController {
     }
     
     private func checkGetFreeThenSet() {
-        let shouldShowEmailBanner = SettingsManager.shared.settings?.interface.showEmailBanner.enabled ?? false
-        mainView.setGetFreeView(isHidden: !shouldShowEmailBanner)
+        mainView.setGetFreeView(isHidden: !LaunchCountManager.shared.shouldShowPopup())
+        LaunchCountManager.shared.shouldShowPopup() ? playGetFreeAnimationAfterDelay() : ()
+        LaunchCountManager.shared.shouldShowPopup() ? presentEmailPopup() : ()
     }
     
     private func presentSubscriptionPage() {
@@ -140,8 +149,6 @@ class MainScreenViewController: UIViewController {
     }
     
     private func playGetFreeAnimationAfterDelay() {
-        guard let shouldShowEmailBanner = SettingsManager.shared.settings?.interface.showEmailBanner.enabled,
-                shouldShowEmailBanner else { return }
         mainView.getFreeLabel.alpha = 0.0
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.mainView.getFreeAnimation.play()
@@ -157,7 +164,6 @@ class MainScreenViewController: UIViewController {
         
         let freePopupView = GetFreePopupView()
         freePopupView.delegate = self
-      //  freePopupView.set
         
         popupPresenterViewController = PopupPresenterViewController()
         popupPresenterViewController!.popupView = freePopupView
@@ -264,13 +270,15 @@ extension MainScreenViewController {
             switch result {
             case .success(_):
                 self.printDebug("generateCouponRequest success")
-                
+                LaunchCountManager.shared.resetLaunchCount()
+                DispatchQueue.main.async {
+                    self.mainView.setGetFreeView(isHidden: true)
+                }
             case .failure(let error):
                 let errorMessage = ErrorHandler.getErrorMessage(for: error)
                 Toaster.showToast(message: errorMessage)
                 Analytics.logEvent("005-API-generateCouponRequest", parameters: ["error" : "happened"])
             }
-            
         }
     }
     
@@ -332,7 +340,7 @@ extension MainScreenViewController {
     }
 }
 
-// MARK: - VPN manager interactions
+// MARK: - MainScreenViewDelegate
 extension MainScreenViewController: MainScreenViewDelegate {
     func getFreeTapped() {
         presentEmailPopup()
@@ -373,7 +381,6 @@ extension MainScreenViewController: MainScreenViewDelegate {
             Toaster.showToast(message: "error_try_again".localize())
             Analytics.logEvent("099-ChangeState", parameters: ["error" : "connectedElse"])
         }
-
     }
 }
 
@@ -409,7 +416,28 @@ extension MainScreenViewController: GetFreePopupViewDelegate {
             self.popupPresenterViewController = nil
         })
     }
-    
+}
+
+// MARK: ~ GetFree Flow Related Methods
+extension MainScreenViewController {
+    func startAnimationTimer() {
+        // Invalidate any existing timer before creating a new one
+        getFreeAnimationTimer?.invalidate()
+        getFreeAnimationTimer = Timer.scheduledTimer(timeInterval: Constants.getFreeAnimationDuration,
+                                                     target: self,
+                                                     selector: #selector(startGetFreeAnimation),
+                                                     userInfo: nil,
+                                                     repeats: true)
+    }
+
+    func stopAnimationTimer() {
+        getFreeAnimationTimer?.invalidate()
+        getFreeAnimationTimer = nil
+    }
+
+    @objc func startGetFreeAnimation() {
+        playGetFreeAnimationAfterDelay()
+    }
 }
 
 //MARK: - App Tracking Transparency
@@ -419,5 +447,4 @@ extension MainScreenViewController {
             self.printDebug("ATTracking completed, status: \(status)")
         }
     }
-    
 }
