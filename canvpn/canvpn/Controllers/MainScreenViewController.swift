@@ -311,7 +311,7 @@ extension MainScreenViewController {
                 }
             } else if currentManagerState == .connected {
                 manager.disconnectFromWg()
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     if let selectedServer = self.selectedServer {
                         DispatchQueue.main.async {
                             self.setMainUI(state: .connecting)

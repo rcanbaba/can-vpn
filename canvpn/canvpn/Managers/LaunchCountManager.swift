@@ -28,8 +28,7 @@ class LaunchCountManager {
             return false
         }
         
-        return count >= emailBannerSettings.count - 8
-
+        return count >= emailBannerSettings.count
     }
     
     public func resetLaunchCount() {

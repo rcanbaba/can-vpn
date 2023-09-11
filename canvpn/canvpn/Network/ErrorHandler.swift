@@ -19,6 +19,8 @@ struct ErrorHandler {
             return .couponNotFound
         case 3002:
             return .couponExpired
+        case 1001:
+            return .invalidEmail
         // Add all other cases here...
         default:
             return .serverError

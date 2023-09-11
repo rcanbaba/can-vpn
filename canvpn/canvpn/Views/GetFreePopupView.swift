@@ -158,10 +158,11 @@ class GetFreePopupView: UIView {
         }
     }
     
-    
     // MARK: Actions
     @objc private func getButtonTapped(_ sender: UIButton) {
-        guard let emailText = emailTextField.text, !emailText.isEmpty else { return }
+        guard let emailText = emailTextField.text, !emailText.isEmpty else {
+            Toaster.showToast(message: "Email could not be empty!")
+            return }
         delegate?.getButtonTapped(view: self, email: emailText)
     }
     

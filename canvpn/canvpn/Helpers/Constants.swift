@@ -27,7 +27,7 @@ class Constants {
     static let appPrivacyPolicyPageURLString = "https://ilovevpn.app/privacy-policy/"
     static let appTermsOfServicePageURLString = "https://ilovevpn.app/terms-of-service/"
     
-    static let getFreeAnimationDuration: Double = 8.0
+    static let getFreeAnimationDuration: Double = 7.0
     
     static let requestTimeout = TimeInterval(5)
 }
