@@ -51,7 +51,26 @@ struct GermanDictionary {
         "upgraded_to_pro": "Premium-Benutzer",
         "upgraded_to_pro_detail": "Du kannst alle Standorte als Premium nutzen.",
         "free_user_selected_premium_message": "Du musst ein Abonnement abschließen, um den Premium-Standort zu nutzen.",
-        "try_coupon_code_key": "Gutscheincode ausprobieren"
+        "try_coupon_code_key": "Coupon-Code versuchen",
+        "enter_coupon_code": "Coupon-Code eingeben",
+        "coupon_code_placeholder": "Coupon-Code",
+        "coupon_alert_cancel": "Abbrechen",
+        "coupon_alert_try": "Versuchen",
+        "best_tag": "Bestes Angebot",
+        "discount_tag": "Rabatt",
+        "unknown_product_title": "Unbekanntes Produkt",
+        "congrats_title": "Herzlichen Glückwunsch!",
+        "get_free_popup_description": "Sie haben die Chance gewonnen, eine exklusive Einladung für eine einmonatige Premium-Mitgliedschaft mit Ihrem Konto über einen exklusiven Promo-Code zu erhalten. \nGeben Sie einfach Ihre E-Mail-Adresse ein, und Sie können die Vorteile des Premium-Zugangs genießen.",
+        "get_free_popup_email_placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+        "get_free_popup_get_code": "Code erhalten",
+        "get_free_popup_empty_email_error": "Die E-Mail-Adresse darf nicht leer sein.",
+        "ERROR_TIMEOUT" : "Die Anfrage an den Server hat das Zeitlimit überschritten. Bitte versuchen Sie es erneut.",
+        "ERROR_INVALID_ENDPOINT" : "Bei der Verarbeitung der Anfrage ist ein interner Serverfehler aufgetreten. Bitte versuchen Sie es erneut.",
+        "ERROR_SERVER_ERROR" : "Bei der Verarbeitung der Anfrage ist ein interner Serverfehler aufgetreten.",
+        "ERROR_COUPON_NOT_FOUND" : "Der angeforderte Gutscheincode konnte nicht gefunden werden.",
+        "ERROR_COUPON_EXPIRED" : "Der Gutscheincode ist abgelaufen und ungültig geworden.",
+        "ERROR_UNKNOWN" : "Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+        "ERROR_EMAIL_INVALID": "Die angegebene E-Mail-Adresse ist ungültig."
     ]
 }
 

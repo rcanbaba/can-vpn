@@ -51,7 +51,26 @@ struct ChineseDictionary {
         "upgraded_to_pro": "高级用户",
         "upgraded_to_pro_detail": "您可以将所有位置用作高级功能。",
         "free_user_selected_premium_message": "您需要订阅才能使用高级位置。",
-        "try_coupon_code_key": "尝试优惠码"
+        "try_coupon_code_key": "尝试优惠券代码",
+        "enter_coupon_code": "输入优惠券代码",
+        "coupon_code_placeholder": "优惠券代码",
+        "coupon_alert_cancel": "取消",
+        "coupon_alert_try": "尝试",
+        "best_tag": "最佳优惠",
+        "discount_tag": "折扣",
+        "unknown_product_title": "未知产品",
+        "congrats_title": "恭喜！",
+        "get_free_popup_description": "您赢得了一个机会，可以使用独家促销代码在一个月的时间内获得高级会员邀请。 \n只需提供您的电子邮件地址，即可开始体验高级访问的各种好处。",
+        "get_free_popup_email_placeholder": "输入您的电子邮件地址",
+        "get_free_popup_get_code": "获取代码",
+        "get_free_popup_empty_email_error": "电子邮件地址不能为空！",
+        "ERROR_TIMEOUT" : "与服务器的请求超时。请重试。",
+        "ERROR_INVALID_ENDPOINT" : "在处理请求时发生了服务器内部错误。请重试。",
+        "ERROR_SERVER_ERROR" : "在处理请求时发生了服务器内部错误。",
+        "ERROR_COUPON_NOT_FOUND" : "找不到请求的优惠券代码。",
+        "ERROR_COUPON_EXPIRED" : "优惠券代码已过期，不再有效。",
+        "ERROR_UNKNOWN" : "发生了未知错误。请重试。",
+        "ERROR_EMAIL_INVALID": "提供的电子邮件地址无效。"
     ]
 }
 

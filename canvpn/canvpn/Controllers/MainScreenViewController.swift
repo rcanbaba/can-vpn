@@ -27,7 +27,6 @@ class MainScreenViewController: UIViewController {
     
     private var getFreeAnimationTimer: Timer?
     
-    //TODO: alttan yukarı gelince ne oluyor
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -30,14 +30,14 @@ class GetFreePopupView: UIView {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.8
-        label.text = "Congratulations!"
+        label.text = "congrats_title".localize()
         return label
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "You won a chance for a one-month premium membership invitation with your account over an exclusive promo code. \nJust provide your email, and you can start experiencing the perks of premium access."
+        label.text = "get_free_popup_description".localize()
         label.textColor = UIColor.gray
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -53,13 +53,12 @@ class GetFreePopupView: UIView {
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.tintColor = .Custom.green
         textField.textColor = UIColor.gray
-      //  textField.layer.borderWidth = 0.2
         textField.layer.cornerRadius = 6.0
         textField.backgroundColor = UIColor.white
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.applySketchShadow()
         
-        let placeholder = "Enter your email"
+        let placeholder = "get_free_popup_email_placeholder".localize()
         let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray]
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: placeholderAttributes)
         
@@ -75,7 +74,7 @@ class GetFreePopupView: UIView {
     
     private lazy var getButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Get Code".localize(), for: .normal)
+        button.setTitle("get_free_popup_get_code".localize(), for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         button.backgroundColor = UIColor.Custom.green
@@ -161,8 +160,9 @@ class GetFreePopupView: UIView {
     // MARK: Actions
     @objc private func getButtonTapped(_ sender: UIButton) {
         guard let emailText = emailTextField.text, !emailText.isEmpty else {
-            Toaster.showToast(message: "Email could not be empty!")
-            return }
+            Toaster.showToast(message: "get_free_popup_empty_email_error".localize())
+            return
+        }
         delegate?.getButtonTapped(view: self, email: emailText)
     }
     
@@ -172,15 +172,6 @@ class GetFreePopupView: UIView {
     
     @objc private func dismissKeyboard() {
         self.endEditing(true)
-    }
-    
-}
-
-// MARK: Public Functions
-extension GetFreePopupView {
-    
-    public func set(leaveButtonText: String) {
-       // leaveGameButton.setTitle(leaveButtonText, for: .normal)
     }
     
 }

@@ -51,7 +51,26 @@ struct PersianDictionary {
         "upgraded_to_pro": "کاربر پریمیوم",
         "upgraded_to_pro_detail": "شما می‌توانید تمام مکان‌ها را به عنوان پریمیوم استفاده کنید.",
         "free_user_selected_premium_message": "برای استفاده از مکان پریمیوم باید مشترک شوید.",
-        "try_coupon_code_key": "کد کوپن را امتحان کنید"
+        "try_coupon_code_key": "کد تخفیف را امتحان کنید",
+        "enter_coupon_code": "کد تخفیف را وارد کنید",
+        "coupon_code_placeholder": "کد تخفیف",
+        "coupon_alert_cancel": "لغو",
+        "coupon_alert_try": "امتحان کنید",
+        "best_tag": "بهترین پیشنهاد",
+        "discount_tag": "تخفیف",
+        "unknown_product_title": "محصول ناشناخته",
+        "congrats_title": "تبریک می‌گوییم!",
+        "get_free_popup_description": "شما فرصت برنده شدن به یک عضویت پریمیوم یک ماهه با حساب کاربری خودتان از طریق یک کد تبلیغاتی اختصاصی را بدست آورده‌اید. \nفقط آدرس ایمیل خود را وارد کنید و می‌توانید از مزایای دسترسی پریمیوم استفاده کنید.",
+        "get_free_popup_email_placeholder": "آدرس ایمیل خود را وارد کنید",
+        "get_free_popup_get_code": "گرفتن کد",
+        "get_free_popup_empty_email_error": "آدرس ایمیل نمی‌تواند خالی باشد.",
+        "ERROR_TIMEOUT" : "درخواست به سرور به پایان رسیده است. لطفاً دوباره تلاش کنید.",
+        "ERROR_INVALID_ENDPOINT" : "یک خطای داخلی سرور در حین پردازش درخواست رخ داده است. لطفاً دوباره تلاش کنید.",
+        "ERROR_SERVER_ERROR" : "یک خطای داخلی سرور در حین پردازش درخواست رخ داده است.",
+        "ERROR_COUPON_NOT_FOUND" : "کد کوپن درخواست شده یافت نشد.",
+        "ERROR_COUPON_EXPIRED" : "کد کوپن منقضی شده است و دیگر معتبر نیست.",
+        "ERROR_UNKNOWN" : "یک خطای ناشناخته رخ داده است. لطفاً دوباره تلاش کنید.",
+        "ERROR_EMAIL_INVALID": "آدرس ایمیل ارائه شده معتبر نمی‌باشد."
     ]
 }
 

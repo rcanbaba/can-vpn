@@ -51,6 +51,25 @@ struct EnglishDictionary {
         "upgraded_to_pro": "Premium User",
         "upgraded_to_pro_detail": "You can use all locations as premium.",
         "free_user_selected_premium_message": "You need to subscribe to use premium location",
-        "try_coupon_code_key": "Try Coupon Code"
+        "try_coupon_code_key": "Try Coupon Code",
+        "enter_coupon_code": "Enter Coupon Code",
+        "coupon_code_placeholder": "Coupon Code",
+        "coupon_alert_cancel": "Cancel",
+        "coupon_alert_try": "Try",
+        "best_tag": "Best Offer",
+        "discount_tag": "Discount",
+        "unknown_product_title": "Unknown product",
+        "congrats_title": "Congratulations!",
+        "get_free_popup_description": "You won a chance for a one-month premium membership invitation with your account over an exclusive promo code. \nJust provide your email, and you can start experiencing the perks of premium access.",
+        "get_free_popup_email_placeholder": "Enter your email",
+        "get_free_popup_get_code": "Get Code",
+        "get_free_popup_empty_email_error": "Email could not be empty!",
+        "ERROR_TIMEOUT" : "Request to the server has timed out. Please try again.",
+        "ERROR_INVALID_ENDPOINT" : "An internal server error occurred while processing the request. Please try again.",
+        "ERROR_SERVER_ERROR" : "An internal server error occurred while processing the request.",
+        "ERROR_COUPON_NOT_FOUND" : "The requested coupon code could not be found.",
+        "ERROR_COUPON_EXPIRED" : "The coupon code has expired and is no longer valid.",
+        "ERROR_UNKNOWN" : "An unknown error occurred. Please try again.",
+        "ERROR_EMAIL_INVALID": "The email address provided is not valid."
     ]
 }

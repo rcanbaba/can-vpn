@@ -90,9 +90,8 @@ class MainScreenView: UIView {
         label.numberOfLines = 0
         label.textColor = UIColor.Custom.orange
         label.textAlignment = .center
-        label.text = "FREE"
         label.isHidden = true
-       // label.text = SettingsManager.shared.settings?.interface.showEmailBanner.text
+        label.text = SettingsManager.shared.settings?.interface.showEmailBanner.text
         return label
     }()
     

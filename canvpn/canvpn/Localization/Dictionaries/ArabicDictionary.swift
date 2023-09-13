@@ -51,7 +51,26 @@ struct ArabicDictionary {
         "upgraded_to_pro": "مستخدم مميز",
         "upgraded_to_pro_detail": "يمكنك استخدام جميع المواقع كمستخدم مميز.",
         "free_user_selected_premium_message": "يجب أن تشترك لاستخدام موقع مميز",
-        "try_coupon_code_key": "جرب كود الكوبون"
+        "try_coupon_code_key": "جرب كود القسيمة",
+        "enter_coupon_code": "أدخل كود القسيمة",
+        "coupon_code_placeholder": "كود القسيمة",
+        "coupon_alert_cancel": "إلغاء",
+        "coupon_alert_try": "جرب",
+        "best_tag": "أفضل عرض",
+        "discount_tag": "خصم",
+        "unknown_product_title": "منتج غير معروف",
+        "congrats_title": "تهانينا!",
+        "get_free_popup_description": "لقد فزت بفرصة للحصول على دعوة لعضوية مميزة لمدة شهر واحد مع حسابك عبر رمز ترويجي حصري. \nفقط قدم بريدك الإلكتروني، ويمكنك بدء تجربة مزايا الوصول المميزة.",
+        "get_free_popup_email_placeholder": "أدخل بريدك الإلكتروني",
+        "get_free_popup_get_code": "احصل على الرمز",
+        "get_free_popup_empty_email_error": "لا يمكن ترك حقل البريد الإلكتروني فارغًا!",
+        "ERROR_TIMEOUT" : "تمت إطالة الوقت المخصص للاستجابة من الخادم. يُرجى المحاولة مرة أخرى.",
+        "ERROR_INVALID_ENDPOINT" : "حدث خطأ داخلي في الخادم أثناء معالجة الطلب. يُرجى المحاولة مرة أخرى.",
+        "ERROR_SERVER_ERROR" : "حدث خطأ داخلي في الخادم أثناء معالجة الطلب.",
+        "ERROR_COUPON_NOT_FOUND" : "تعذر العثور على رمز الكوبون المطلوب.",
+        "ERROR_COUPON_EXPIRED" : "انتهت صلاحية رمز الكوبون ولم يعد صالحًا.",
+        "ERROR_UNKNOWN" : "حدث خطأ غير معروف. يُرجى المحاولة مرة أخرى.",
+        "ERROR_EMAIL_INVALID": "عنوان البريد الإلكتروني المُقدم غير صالح."
     ]
 }
 

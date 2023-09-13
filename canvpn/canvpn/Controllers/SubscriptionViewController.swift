@@ -55,9 +55,7 @@ class SubscriptionViewController: UIViewController {
     
     private func checkThenSetCouponLabel() {
         let showCoupon = SettingsManager.shared.settings?.interface.showCoupon ?? false
-        //TODO: comment out
-        //subscriptionView.setCouponLabel(isHidden: !showCoupon)
-        subscriptionView.setCouponLabel(isHidden: false)
+        subscriptionView.setCouponLabel(isHidden: !showCoupon)
     }
     
     private func configureUI() {
@@ -182,7 +180,7 @@ extension SubscriptionViewController: PremiumViewDelegate {
         if let index = selectedOfferIndex, let skuID = SettingsManager.shared.settings?.products[index].sku {
             subscribeItem(productId: skuID)
         } else {
-            showAlert123()
+            Toaster.showToast(message: "error_try_again".localize())
         }
     }
     func subscriptionTermsTapped() {
@@ -214,7 +212,7 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
             cellData.isBestOffer ? cell.showBestTag() : ()
             cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()
         } else {
-            cell.setName(text: "unknown product")
+            cell.setName(text: "unknown_product_title".localize())
             cell.setPrice(text: "-")
             cell.setDescription(text: "...")
         }
@@ -247,17 +245,6 @@ extension SubscriptionViewController {
         }
     }
     
-    private func showAlert123() {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "MOCK",
-                                                    message: "dummy item",
-                                                    preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel)
-            alertController.addAction(cancelAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
     private func showSubscriptionTerms() {
         let alertController = UIAlertController(title: "subs_terms_key".localize(),
                                                 message: "subs_terms_detail_key".localize(),
@@ -268,21 +255,20 @@ extension SubscriptionViewController {
     }
     
     private func showCouponAlert() {
-        // TODO: Translation keyss
-        let alertController = UIAlertController(title: "Enter Coupon Code", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "enter_coupon_code".localize(), message: nil, preferredStyle: .alert)
         
         alertController.addTextField { (textField) in
-            textField.placeholder = "Coupon Code"
+            textField.placeholder = "coupon_code_placeholder".localize()
             textField.clearButtonMode = .whileEditing
         }
         
-        let tryAction = UIAlertAction(title: "Try", style: .default) { [weak self, weak alertController] _ in
+        let tryAction = UIAlertAction(title: "coupon_alert_try".localize(), style: .default) { [weak self, weak alertController] _ in
             if let code = alertController?.textFields?.first?.text {
                 self?.processCouponCode(code)
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "coupon_alert_cancel".localize(), style: .cancel, handler: nil)
         
         alertController.addAction(tryAction)
         alertController.addAction(cancelAction)

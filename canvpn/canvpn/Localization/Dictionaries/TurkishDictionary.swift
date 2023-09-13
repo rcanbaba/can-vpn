@@ -51,6 +51,25 @@ struct TurkishDictionary {
         "upgraded_to_pro": "Premium Kullanıcı",
         "upgraded_to_pro_detail": "Premium olarak tüm konumları kullanabiliyorsunuz.",
         "free_user_selected_premium_message": "Premium konum kullanabilmek için abone olmanız gerekli",
-        "try_coupon_code_key": "Kupon Kodu Ekle"
+        "try_coupon_code_key": "Kupon Kodu Ekle",
+        "enter_coupon_code": "Kupon Kodunu Girin",
+        "coupon_code_placeholder": "Kupon Kodu",
+        "coupon_alert_cancel": "İptal",
+        "coupon_alert_try": "Dene",
+        "best_tag": "En İyi",
+        "discount_tag": "İndirim",
+        "unknown_product_title": "Bilinmeyen Ürün",
+        "congrats_title": "Tebrikler!",
+        "get_free_popup_description": "Hesabınıza özel bir promosyon koduyla bir aylık premium üyelik daveti kazandınız. \nSadece e-postanızı girerek premium avantajlarını denemeye başlayın.",
+        "get_free_popup_email_placeholder": "E-postanızı girin",
+        "get_free_popup_get_code": "Kodu Al",
+        "get_free_popup_empty_email_error": "E-posta boş bırakılamaz!",
+        "ERROR_TIMEOUT" : "İstek zaman aşımına uğradı. Lütfen tekrar deneyin.",
+        "ERROR_INVALID_ENDPOINT" : "Sunucu hatası oluştu. Lütfen tekrar deneyin.",
+        "ERROR_SERVER_ERROR" : "İstek işlenirken sunucu hatası oluştu.",
+        "ERROR_COUPON_NOT_FOUND" : "İstenen kupon kodu bulunamadı.",
+        "ERROR_COUPON_EXPIRED" : "Kupon kodunuzun süresi dolmuş ve artık geçerli değil.",
+        "ERROR_UNKNOWN" : "Bilinmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+        "ERROR_EMAIL_INVALID": "e-posta adresi geçerli değil."
     ]
 }

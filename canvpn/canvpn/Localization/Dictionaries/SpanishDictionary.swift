@@ -51,7 +51,26 @@ struct SpanishDictionary {
         "upgraded_to_pro": "Usuario Premium",
         "upgraded_to_pro_detail": "Puedes usar todas las ubicaciones como premium.",
         "free_user_selected_premium_message": "Necesitas suscribirte para usar la ubicación premium.",
-        "try_coupon_code_key": "Prueba el código de cupón"
+        "try_coupon_code_key": "Prueba el Código del Cupón",
+        "enter_coupon_code": "Introduce el Código del Cupón",
+        "coupon_code_placeholder": "Código del Cupón",
+        "coupon_alert_cancel": "Cancelar",
+        "coupon_alert_try": "Probar",
+        "best_tag": "Mejor Oferta",
+        "discount_tag": "Descuento",
+        "unknown_product_title": "Producto Desconocido",
+        "congrats_title": "¡Felicidades!",
+        "get_free_popup_description": "Has ganado la oportunidad de obtener una invitación de membresía premium de un mes con tu cuenta a través de un código promocional exclusivo. \nSolo proporciona tu correo electrónico y podrás comenzar a disfrutar de las ventajas del acceso premium.",
+        "get_free_popup_email_placeholder": "Introduce tu correo electrónico",
+        "get_free_popup_get_code": "Obtener Código",
+        "get_free_popup_empty_email_error": "El correo electrónico no puede estar vacío.",
+        "ERROR_TIMEOUT" : "La solicitud al servidor ha agotado el tiempo de espera. Por favor, inténtelo de nuevo.",
+        "ERROR_INVALID_ENDPOINT" : "Se produjo un error interno del servidor al procesar la solicitud. Por favor, inténtelo de nuevo.",
+        "ERROR_SERVER_ERROR" : "Se produjo un error interno del servidor al procesar la solicitud.",
+        "ERROR_COUPON_NOT_FOUND" : "No se pudo encontrar el código de cupón solicitado.",
+        "ERROR_COUPON_EXPIRED" : "El código de cupón ha caducado y ya no es válido.",
+        "ERROR_UNKNOWN" : "Se produjo un error desconocido. Por favor, inténtelo de nuevo.",
+        "ERROR_EMAIL_INVALID": "La dirección de correo electrónico proporcionada no es válida."
     ]
 }
 

@@ -82,7 +82,7 @@ class OfferTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 11)
         label.textColor = .white
         label.textAlignment = .natural
-        label.text = "Best Offer"
+        label.text = "best_tag".localize()
         return label
     }()
     
@@ -207,7 +207,7 @@ extension OfferTableViewCell {
         descriptionLabel.text = text
     }
     public func showDiscountTag(percentage: Int) {
-        discountTagLabel.text = "\(percentage)% " + "Discount"
+        discountTagLabel.text = "\(percentage)% " + "discount_tag".localize()
         tagStackView.addArrangedSubview(discountTagBGImageView)
         tagStackView.layoutIfNeeded()
         tagStackView.setNeedsLayout()

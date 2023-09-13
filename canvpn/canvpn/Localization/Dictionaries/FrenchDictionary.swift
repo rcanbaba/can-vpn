@@ -51,7 +51,26 @@ struct FrenchDictionary {
         "upgraded_to_pro": "Utilisateur Premium",
         "upgraded_to_pro_detail": "Vous pouvez utiliser toutes les localisations en tant qu'utilisateur premium.",
         "free_user_selected_premium_message": "Vous devez vous abonner pour utiliser l'emplacement premium.",
-        "try_coupon_code_key": "Essayez le code coupon"
+        "try_coupon_code_key": "Essayer le Code de Coupon",
+        "enter_coupon_code": "Entrez le Code de Coupon",
+        "coupon_code_placeholder": "Code de Coupon",
+        "coupon_alert_cancel": "Annuler",
+        "coupon_alert_try": "Essayer",
+        "best_tag": "Meilleure Offre",
+        "discount_tag": "Remise",
+        "unknown_product_title": "Produit Inconnu",
+        "congrats_title": "Félicitations !",
+        "get_free_popup_description": "Vous avez gagné une chance pour une invitation d'adhésion premium d'un mois avec votre compte grâce à un code promotionnel exclusif. \nIl suffit de fournir votre adresse e-mail et vous pourrez commencer à profiter des avantages de l'accès premium.",
+        "get_free_popup_email_placeholder": "Entrez votre adresse e-mail",
+        "get_free_popup_get_code": "Obtenir le Code",
+        "get_free_popup_empty_email_error": "L'adresse e-mail ne peut pas être vide.",
+        "ERROR_TIMEOUT" : "La requête vers le serveur a expiré. Veuillez réessayer.",
+        "ERROR_INVALID_ENDPOINT" : "Une erreur interne du serveur s'est produite lors du traitement de la demande. Veuillez réessayer.",
+        "ERROR_SERVER_ERROR" : "Une erreur interne du serveur s'est produite lors du traitement de la demande.",
+        "ERROR_COUPON_NOT_FOUND" : "Le code de coupon demandé est introuvable.",
+        "ERROR_COUPON_EXPIRED" : "Le code de coupon a expiré et n'est plus valide.",
+        "ERROR_UNKNOWN" : "Une erreur inconnue s'est produite. Veuillez réessayer.",
+        "ERROR_EMAIL_INVALID": "L'adresse e-mail fournie n'est pas valide."
     ]
 }
 

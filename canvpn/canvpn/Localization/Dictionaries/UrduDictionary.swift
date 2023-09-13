@@ -51,7 +51,26 @@ struct UrduDictionary {
         "upgraded_to_pro": "پریمیم صارف",
         "upgraded_to_pro_detail": "آپ پریمیم طور پر تمام مقامات استعمال کرسکتے ہیں۔",
         "free_user_selected_premium_message": "آپ کو پریمیوم مقام استعمال کرنے کیلئے سبسکرائب کرنا ہوگا۔",
-        "try_coupon_code_key": "کوپن کوڈ آزمائیں"
+        "try_coupon_code_key": "کوپن کوڈ کو آزمائیں",
+        "enter_coupon_code": "کوپن کوڈ درج کریں",
+        "coupon_code_placeholder": "کوپن کوڈ",
+        "coupon_alert_cancel": "منسوخ کریں",
+        "coupon_alert_try": "آزمائیں",
+        "best_tag": "بہترین پیشکش",
+        "discount_tag": "چھوٹ",
+        "unknown_product_title": "نامعلوم مصنوعات",
+        "congrats_title": "مبارک ہو!",
+        "get_free_popup_description": "آپ نے اپنے اکاؤنٹ کے ساتھ ایک ماہہ پریمیم ممبرشپ کی دعوت کی ایک موڈ سے حاصل کرنے کا موقع جیتا ہے۔ \nبس اپنا ای میل پتہ فراہم کریں، اور آپ پریمیم اکسیس کے فوائد کا تجربہ کرنا شروع کرسکتے ہیں۔",
+        "get_free_popup_email_placeholder": "اپنا ای میل پتہ درج کریں",
+        "get_free_popup_get_code": "کوڈ حاصل کریں",
+        "get_free_popup_empty_email_error": "ای میل خالی نہیں ہو سکتا۔",
+        "ERROR_TIMEOUT" : "سرور کی طرف سے درخواست کا وقت ختم ہوگیا ہے۔ براہ کرم دوبارہ کوشش کریں۔",
+        "ERROR_INVALID_ENDPOINT" : "درخواست کی پراسیسنگ کے دوران سرور میں داخلی خرابی واقع ہوئی۔ براہ کرم دوبارہ کوشش کریں۔",
+        "ERROR_SERVER_ERROR" : "درخواست کی پراسیسنگ کے دوران سرور میں داخلی خرابی واقع ہوئی۔",
+        "ERROR_COUPON_NOT_FOUND" : "درخواست کردہ کوپن کوڈ نہیں ملا۔",
+        "ERROR_COUPON_EXPIRED" : "کوپن کوڈ کی میعاد ختم ہوگئی ہے اور اب واپس نہیں کیا جا سکتا۔",
+        "ERROR_UNKNOWN" : "ایک نامعلوم خرابی واقع ہوئی ہے۔ براہ کرم دوبارہ کوشش کریں۔",
+        "ERROR_EMAIL_INVALID": "فراہم کی گئی ای میل ایڈریس معتبر نہیں ہے۔"
     ]
 }
 

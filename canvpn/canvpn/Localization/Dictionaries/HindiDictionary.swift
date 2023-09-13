@@ -51,7 +51,25 @@ struct HindiDictionary {
         "upgraded_to_pro": "प्रीमियम उपयोगकर्ता",
         "upgraded_to_pro_detail": "आप प्रीमियम के रूप में सभी स्थानों का उपयोग कर सकते हैं।",
         "free_user_selected_premium_message": "प्रीमियम स्थान का उपयोग करने के लिए आपको सदस्यता लेनी होगी।",
-        "try_coupon_code_key": "कूपन कोड प्रयास करें"
+        "try_coupon_code_key": "कूपन कोड का प्रयास करें",
+        "enter_coupon_code": "कूपन कोड दर्ज करें",
+        "coupon_code_placeholder": "कूपन कोड",
+        "coupon_alert_cancel": "रद्द करें",
+        "coupon_alert_try": "प्रयास करें",
+        "best_tag": "सर्वोत्तम प्रस्ताव",
+        "discount_tag": "छूट",
+        "unknown_product_title": "अज्ञात उत्पाद",
+        "congrats_title": "बधाई हो!",
+        "get_free_popup_description": "आपने अपने खाते के साथ एक महीने के प्रीमियम सदस्यता निमंत्रण के लिए अपने खाते के साथ एक विशेष प्रोमो कोड के साथ एक मौका जीता है। \nबस अपना ईमेल प्रदान करें, और आप प्रीमियम पहुंच के लाभों का अनुभव करना शुरू कर सकते हैं।",
+        "get_free_popup_email_placeholder": "अपना ईमेल दर्ज करें",
+        "get_free_popup_get_code": "कोड प्राप्त करें",
+        "get_free_popup_empty_email_error": "ईमेल खाली नहीं हो सकता है।",
+        "ERROR_TIMEOUT" : "सर्वर को अनुरोध का समय समाप्त हो गया है। कृपया पुनः प्रयास करें।",
+        "ERROR_INVALID_ENDPOINT" : "अनुरोध की प्रोसेसिंग के दौरान सर्वर में आंतरिक त्रुटि हुई। कृपया पुनः प्रयास करें।",
+        "ERROR_SERVER_ERROR" : "अनुरोध की प्रोसेसिंग के दौरान सर्वर में आंतरिक त्रुटि हुई।",
+        "ERROR_COUPON_NOT_FOUND" : "अनुरोधित कूपन कोड नहीं मिला।",
+        "ERROR_COUPON_EXPIRED" : "कूपन कोड समय सीमा समाप्त हो गया है और अब वैध नहीं है।",
+        "ERROR_UNKNOWN" : "एक अज्ञात त्रुटि हुई।"
     ]
 }
 
