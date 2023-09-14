@@ -20,7 +20,7 @@ struct GetIPAddressRequest: DataRequest {
     }
     
     var method: HTTPMethod {
-        .post
+        .get
     }
     
     var bodyData: Data?
@@ -30,16 +30,5 @@ struct GetIPAddressRequest: DataRequest {
         let response = try JSONDecoder().decode(IPAddressResponse.self, from: data)
         
         return response
-    }
-    
-    mutating func setParams() {
-        let body = clientParams
-        
-        let data = try? JSONSerialization.data(
-            withJSONObject: body,
-            options: []
-        )
-        
-        bodyData = data
     }
 }

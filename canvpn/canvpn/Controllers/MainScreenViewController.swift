@@ -240,8 +240,7 @@ extension MainScreenViewController {
     private func getIPAddress() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             guard let service = self.networkService else { return }
-            var getIPAddressRequest = GetIPAddressRequest()
-            getIPAddressRequest.setParams()
+            let getIPAddressRequest = GetIPAddressRequest()
             
             service.request(getIPAddressRequest) { [weak self] result in
                 guard let self = self else { return }
