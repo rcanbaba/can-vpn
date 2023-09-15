@@ -36,10 +36,18 @@ struct ConsumeReceiptRequest: DataRequest {
         return response
     }
     
-    mutating func setParams(receipt: String) {
+    mutating func setParams(receipt: String, code: String? = nil) {
         
-        let body = ["client_params": clientParams,
+        var body: [String : Any]
+        
+        if let code = code {
+            body = ["client_params": clientParams,
+                    "receipt": receipt,
+                    "coupon_code": code] as [String : Any]
+        } else {
+            body = ["client_params": clientParams,
                     "receipt": receipt] as [String : Any]
+        }
         
         let data = try? JSONSerialization.data(
             withJSONObject: body,

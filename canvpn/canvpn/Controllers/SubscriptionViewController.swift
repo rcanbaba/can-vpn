@@ -23,6 +23,7 @@ class SubscriptionViewController: UIViewController {
     private var presentableProducts: [Product] = []
     
     private var selectedOfferIndex: Int?
+    private var appliedCouponCode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class SubscriptionViewController: UIViewController {
         super.viewWillAppear(animated)
         Analytics.logEvent("006-SubsScreenPresented", parameters: ["type" : "willAppear"])
         setNavigationBar()
+        appliedCouponCode = nil
     }
     
     private func setNavigationBar() {
@@ -118,7 +120,7 @@ class SubscriptionViewController: UIViewController {
                     if success {
                         if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
                             var consumeReceiptRequest = ConsumeReceiptRequest()
-                            consumeReceiptRequest.setParams(receipt: receipt)
+                            consumeReceiptRequest.setParams(receipt: receipt, code: self.appliedCouponCode)
                             
                             networkService.request(consumeReceiptRequest) { result in
                                 DispatchQueue.main.async {
@@ -296,9 +298,11 @@ extension SubscriptionViewController {
                     self.presentableProducts = response.products
                     self.setOfferTableView()
                     self.checkThenSetCouponLabel()
+                    self.appliedCouponCode = code
                 case .failure(let error):
                     let errorMessage = ErrorHandler.getErrorMessage(for: error)
                     Toaster.showToast(message: errorMessage)
+                    self.appliedCouponCode = nil
                 }
             }
         }
