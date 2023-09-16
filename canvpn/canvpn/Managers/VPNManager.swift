@@ -80,14 +80,11 @@ class VPNManager {
         @unknown default:
             break
         }
-        // TODO:
-       // loadIP()
     }
     
     
     private func loadPreferences(completion: @escaping () -> Void) {
         guard let manager = manager else { return }
-        //TODO: weak reference
         manager.loadFromPreferences { error in
             assert(error == nil, "Failed to load preferences \(error?.localizedDescription ?? "Unknown Error")")
             self.delegate?.statusChanged(state: .initial)
