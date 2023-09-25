@@ -70,7 +70,8 @@ struct GermanDictionary {
         "ERROR_COUPON_NOT_FOUND" : "Der angeforderte Gutscheincode konnte nicht gefunden werden.",
         "ERROR_COUPON_EXPIRED" : "Der Gutscheincode ist abgelaufen und ungültig geworden.",
         "ERROR_UNKNOWN" : "Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-        "ERROR_EMAIL_INVALID": "Die angegebene E-Mail-Adresse ist ungültig."
+        "ERROR_EMAIL_INVALID": "Die angegebene E-Mail-Adresse ist ungültig.",
+        "coupon_generate_success": "Der Gutschein wurde an Ihre E-Mail-Adresse gesendet!"
     ]
 }
 

@@ -70,7 +70,8 @@ struct ChineseDictionary {
         "ERROR_COUPON_NOT_FOUND" : "找不到请求的优惠券代码。",
         "ERROR_COUPON_EXPIRED" : "优惠券代码已过期，不再有效。",
         "ERROR_UNKNOWN" : "发生了未知错误。请重试。",
-        "ERROR_EMAIL_INVALID": "提供的电子邮件地址无效。"
+        "ERROR_EMAIL_INVALID": "提供的电子邮件地址无效。",
+        "coupon_generate_success": "优惠券已发送至您的电子邮件地址！"
     ]
 }
 

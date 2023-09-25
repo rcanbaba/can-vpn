@@ -62,6 +62,12 @@ struct ShowEmailBanner: Codable {
     let enabled: Bool
     let count: Int
     let text: String
+    let dialog: Dialog
+}
+
+// MARK: - Dialog
+struct Dialog: Codable {
+    let title, description: String
 }
 
 // MARK: - ShowReview

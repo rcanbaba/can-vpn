@@ -30,14 +30,14 @@ class GetFreePopupView: UIView {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.8
-        label.text = "congrats_title".localize()
+        label.text = SettingsManager.shared.settings?.interface.showEmailBanner.dialog.title
         return label
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "get_free_popup_description".localize()
+        label.text = SettingsManager.shared.settings?.interface.showEmailBanner.dialog.description
         label.textColor = UIColor.gray
         label.textAlignment = .center
         label.numberOfLines = 0

@@ -70,7 +70,8 @@ struct SpanishDictionary {
         "ERROR_COUPON_NOT_FOUND" : "No se pudo encontrar el código de cupón solicitado.",
         "ERROR_COUPON_EXPIRED" : "El código de cupón ha caducado y ya no es válido.",
         "ERROR_UNKNOWN" : "Se produjo un error desconocido. Por favor, inténtelo de nuevo.",
-        "ERROR_EMAIL_INVALID": "La dirección de correo electrónico proporcionada no es válida."
+        "ERROR_EMAIL_INVALID": "La dirección de correo electrónico proporcionada no es válida.",
+        "coupon_generate_success": "¡El cupón ha sido enviado a su dirección de correo electrónico!"
     ]
 }
 

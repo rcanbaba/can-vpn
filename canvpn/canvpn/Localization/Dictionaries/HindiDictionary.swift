@@ -69,7 +69,8 @@ struct HindiDictionary {
         "ERROR_SERVER_ERROR" : "अनुरोध की प्रोसेसिंग के दौरान सर्वर में आंतरिक त्रुटि हुई।",
         "ERROR_COUPON_NOT_FOUND" : "अनुरोधित कूपन कोड नहीं मिला।",
         "ERROR_COUPON_EXPIRED" : "कूपन कोड समय सीमा समाप्त हो गया है और अब वैध नहीं है।",
-        "ERROR_UNKNOWN" : "एक अज्ञात त्रुटि हुई।"
+        "ERROR_UNKNOWN" : "एक अज्ञात त्रुटि हुई।",
+        "coupon_generate_success": "कूपन आपके ईमेल पते पर भेज दिया गया है!"
     ]
 }
 

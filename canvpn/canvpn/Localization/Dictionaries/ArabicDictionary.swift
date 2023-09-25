@@ -70,7 +70,8 @@ struct ArabicDictionary {
         "ERROR_COUPON_NOT_FOUND" : "تعذر العثور على رمز الكوبون المطلوب.",
         "ERROR_COUPON_EXPIRED" : "انتهت صلاحية رمز الكوبون ولم يعد صالحًا.",
         "ERROR_UNKNOWN" : "حدث خطأ غير معروف. يُرجى المحاولة مرة أخرى.",
-        "ERROR_EMAIL_INVALID": "عنوان البريد الإلكتروني المُقدم غير صالح."
+        "ERROR_EMAIL_INVALID": "عنوان البريد الإلكتروني المُقدم غير صالح.",
+        "coupon_generate_success": "تم إرسال القسيمة إلى عنوان البريد الإلكتروني الخاص بك!"
     ]
 }
 

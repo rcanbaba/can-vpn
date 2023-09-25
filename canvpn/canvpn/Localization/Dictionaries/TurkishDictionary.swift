@@ -70,6 +70,7 @@ struct TurkishDictionary {
         "ERROR_COUPON_NOT_FOUND" : "İstenen kupon kodu bulunamadı.",
         "ERROR_COUPON_EXPIRED" : "Kupon kodunuzun süresi dolmuş ve artık geçerli değil.",
         "ERROR_UNKNOWN" : "Bilinmeyen bir hata oluştu. Lütfen tekrar deneyin.",
-        "ERROR_EMAIL_INVALID": "e-posta adresi geçerli değil."
+        "ERROR_EMAIL_INVALID": "e-posta adresi geçerli değil.",
+        "coupon_generate_success": "Kupon mail adresinize gönderildi!"
     ]
 }

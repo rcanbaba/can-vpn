@@ -70,7 +70,8 @@ struct UrduDictionary {
         "ERROR_COUPON_NOT_FOUND" : "درخواست کردہ کوپن کوڈ نہیں ملا۔",
         "ERROR_COUPON_EXPIRED" : "کوپن کوڈ کی میعاد ختم ہوگئی ہے اور اب واپس نہیں کیا جا سکتا۔",
         "ERROR_UNKNOWN" : "ایک نامعلوم خرابی واقع ہوئی ہے۔ براہ کرم دوبارہ کوشش کریں۔",
-        "ERROR_EMAIL_INVALID": "فراہم کی گئی ای میل ایڈریس معتبر نہیں ہے۔"
+        "ERROR_EMAIL_INVALID": "فراہم کی گئی ای میل ایڈریس معتبر نہیں ہے۔",
+        "coupon_generate_success": "کوپان آپ کے ای میل ایڈریس پر بھیجا گیا ہے!"
     ]
 }
 

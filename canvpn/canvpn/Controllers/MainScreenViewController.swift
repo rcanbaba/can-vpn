@@ -271,6 +271,7 @@ extension MainScreenViewController {
                 LaunchCountManager.shared.resetLaunchCount()
                 DispatchQueue.main.async {
                     self.mainView.setGetFreeView(isHidden: true)
+                    Toaster.showToast(message: "coupon_generate_success".localize())
                 }
             case .failure(let error):
                 let errorMessage = ErrorHandler.getErrorMessage(for: error)

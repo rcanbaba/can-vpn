@@ -70,6 +70,7 @@ struct EnglishDictionary {
         "ERROR_COUPON_NOT_FOUND" : "The requested coupon code could not be found.",
         "ERROR_COUPON_EXPIRED" : "The coupon code has expired and is no longer valid.",
         "ERROR_UNKNOWN" : "An unknown error occurred. Please try again.",
-        "ERROR_EMAIL_INVALID": "The email address provided is not valid."
+        "ERROR_EMAIL_INVALID": "The email address provided is not valid.",
+        "coupon_generate_success": "The coupon has been sent to your email address!"
     ]
 }

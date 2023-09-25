@@ -70,7 +70,8 @@ struct PersianDictionary {
         "ERROR_COUPON_NOT_FOUND" : "کد کوپن درخواست شده یافت نشد.",
         "ERROR_COUPON_EXPIRED" : "کد کوپن منقضی شده است و دیگر معتبر نیست.",
         "ERROR_UNKNOWN" : "یک خطای ناشناخته رخ داده است. لطفاً دوباره تلاش کنید.",
-        "ERROR_EMAIL_INVALID": "آدرس ایمیل ارائه شده معتبر نمی‌باشد."
+        "ERROR_EMAIL_INVALID": "آدرس ایمیل ارائه شده معتبر نمی‌باشد.",
+        "coupon_generate_success": "کوپن به آدرس ایمیل شما ارسال شده است!"
     ]
 }
 
