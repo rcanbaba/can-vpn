@@ -178,15 +178,13 @@ extension InitialViewController {
         service.request(userEntryRequest) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_ ): // break
-                print("SUCESSSSS 123994")
+            case .success(_ ): break
             case .failure(let error):
                 self.printDebug("userEntryRequest - failure")
                 Analytics.logEvent("025-API-userEntryRequest", parameters: ["error" : ErrorHandler.getErrorMessage(for: error)])
             }
         }
     }
-    
     
     private func getProductPrices(completion: @escaping () -> Void) {
         PurchaseManager.shared.getProducts { success, products, error, arg  in
