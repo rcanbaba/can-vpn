@@ -9,6 +9,7 @@ import Foundation
 
 public struct Endpoints {
     static let registerDevice = "/v1/devices"
+    static let userEntry = "/v1/entry"
     static let fetchSettings = "/v1/settings"
     static let getCredential = "/v1/connect"
     static let registerFCM = "/v1/devices/notification/fcm"

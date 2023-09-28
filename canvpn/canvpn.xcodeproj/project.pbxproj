@@ -29,6 +29,7 @@
 		B4184A1E295614950051EB79 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4184A1D295614950051EB79 /* DataRequest.swift */; };
 		B418EDF02A2680020036B747 /* GetIPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418EDEF2A2680020036B747 /* GetIPAddressRequest.swift */; };
 		B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */; };
+		B41C82492AC592DE00D741D8 /* UserEntryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41C82482AC592DE00D741D8 /* UserEntryRequest.swift */; };
 		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
@@ -422,6 +423,7 @@
 		B4184A1D295614950051EB79 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		B418EDEF2A2680020036B747 /* GetIPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPAddressRequest.swift; sourceTree = "<group>"; };
 		B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPAddressResponse.swift; sourceTree = "<group>"; };
+		B41C82482AC592DE00D741D8 /* UserEntryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntryRequest.swift; sourceTree = "<group>"; };
 		B424E4622A43637C00EB124F /* PremiumTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTopView.swift; sourceTree = "<group>"; };
 		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
 		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				B418EDEE2A267FCC0036B747 /* GetIPAddress */,
 				B43E15962A11455A0095FF4A /* RegisterNotification */,
 				B4EE1F622A07C3D700E219CA /* RegisterDevice */,
+				B41C82472AC5929300D741D8 /* UserEntry */,
 				B4EE1F632A07C3EF00E219CA /* FetchSettings */,
 				B42DE3EA2A840C0A002137F9 /* ApplyCoupon */,
 				B4DA8EDE2AAB5CE300F4C643 /* GenerateCoupon */,
@@ -928,6 +931,14 @@
 				B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */,
 			);
 			path = GetIPAddress;
+			sourceTree = "<group>";
+		};
+		B41C82472AC5929300D741D8 /* UserEntry */ = {
+			isa = PBXGroup;
+			children = (
+				B41C82482AC592DE00D741D8 /* UserEntryRequest.swift */,
+			);
+			path = UserEntry;
 			sourceTree = "<group>";
 		};
 		B424E4682A444BE800EB124F /* Managers */ = {
@@ -1805,6 +1816,7 @@
 				B4D871132A8572090080D788 /* EnglishDictionary.swift in Sources */,
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
+				B41C82492AC592DE00D741D8 /* UserEntryRequest.swift in Sources */,
 				B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */,
 				B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */,
 				B4D871262A8572A20080D788 /* ChineseDictionary.swift in Sources */,
