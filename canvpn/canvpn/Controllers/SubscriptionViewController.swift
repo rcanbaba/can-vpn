@@ -303,9 +303,9 @@ extension SubscriptionViewController {
                     let errorMessage = ErrorHandler.getErrorMessage(for: error)
                     Toaster.showToast(message: errorMessage)
                     self.appliedCouponCode = nil
+                    Analytics.logEvent("032-API-ApplyCouponRequest", parameters: ["error" : errorMessage])
                 }
             }
         }
     }
-    
 }

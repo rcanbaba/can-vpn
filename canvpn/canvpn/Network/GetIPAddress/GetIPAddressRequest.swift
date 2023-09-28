@@ -16,7 +16,7 @@ struct GetIPAddressRequest: DataRequest {
     }
     
     var queryItems: [String : String] {
-        [ : ]
+        ["format": "json"]
     }
     
     var method: HTTPMethod {
