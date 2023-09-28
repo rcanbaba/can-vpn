@@ -15,13 +15,14 @@ struct SettingsResponse: Codable {
     let servers: [Server]
     let links: Links
     let products: [Product]
+    let skus: [String]
     let interface: UserInterface
     let isInReview: Bool
     let appUpdate: AppUpdate?
     let text: Text
 
     enum CodingKeys: String, CodingKey {
-        case user, servers, links, products, interface
+        case user, servers, links, products, skus, interface
         case isInReview = "is_in_review"
         case appUpdate = "app_update"
         case text

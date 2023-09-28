@@ -82,7 +82,7 @@ class PurchaseManager: NSObject {
     // MARK: - Get IAP Products
     func getProducts(_ completionHandler: @escaping ProductsRequestCompletionHandler) {
         productsRequestCompletionHandler = completionHandler
-        let productIds = SettingsManager.shared.settings?.products.compactMap({$0.sku}) ?? []
+        let productIds = SettingsManager.shared.settings?.skus ?? []
         if !productIds.isEmpty {
             let productIdentifiers = Set<String>(productIds)
             let request = SKProductsRequest(productIdentifiers: productIdentifiers)
