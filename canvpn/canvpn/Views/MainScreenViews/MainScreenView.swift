@@ -175,7 +175,7 @@ class MainScreenView: UIView {
     }
     
     private func setPrivacyText () {
-        let baseString = "pp_tos_key".localize()
+        let baseString = "pp_tos_key".localize() + "\n" + "Need help? Visit F.A.Q or reach out via Contact Us"
         let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
         let tosDefaultUrl = SettingsManager.shared.settings?.links.termsURL ?? Constants.appTermsOfServicePageURLString
         var attributedString = NSMutableAttributedString(string: baseString)
@@ -205,6 +205,24 @@ class MainScreenView: UIView {
         attributedString = AttributedTextHelper.replaceAttributedString(
             attributedString: attributedString,
             replaceText: "privacy_policy_key".localize(),
+            replaceTextAttributes: [
+                .link: ppDefaultUrl as Any,
+                .font: UIFont.boldSystemFont(ofSize: 10)
+            ]
+        )
+        
+        attributedString = AttributedTextHelper.replaceAttributedString(
+            attributedString: attributedString,
+            replaceText: "Contact Us",
+            replaceTextAttributes: [
+                .link: ppDefaultUrl as Any,
+                .font: UIFont.boldSystemFont(ofSize: 10)
+            ]
+        )
+        
+        attributedString = AttributedTextHelper.replaceAttributedString(
+            attributedString: attributedString,
+            replaceText: "F.A.Q",
             replaceTextAttributes: [
                 .link: ppDefaultUrl as Any,
                 .font: UIFont.boldSystemFont(ofSize: 10)

@@ -120,6 +120,7 @@ class MainScreenViewController: UIViewController {
     private func checkSubscriptionState() {
         let isPremium = SettingsManager.shared.settings?.user.isSubscribed ?? false
         isPremium ? setPremiumUser() : setStandardUser()
+        mainView.setGetFreeView(isHidden: isPremium)
     }
     
     private func setPremiumUser() {

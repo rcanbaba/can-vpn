@@ -27,9 +27,7 @@ class LaunchCountManager {
               emailBannerSettings.enabled else {
             return false
         }
-        
-        return count >= 2
-        // return count >= emailBannerSettings.count
+        return count >= emailBannerSettings.count
     }
     
     public func resetLaunchCount() {
