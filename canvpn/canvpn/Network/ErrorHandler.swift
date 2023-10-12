@@ -21,6 +21,8 @@ struct ErrorHandler {
             return .couponExpired
         case 1001:
             return .invalidEmail
+        case 1003:
+            return .registerFailed
         // Add all other cases here...
         default:
             return .serverError
@@ -32,7 +34,7 @@ struct ErrorHandler {
             return NSLocalizedString(errorResponse.localizedKey, comment: "")
         } else {
             // General error message for unexpected errors
-            return NSLocalizedString("ERROR_GENERIC", comment: "A generic error message")
+            return NSLocalizedString("ERROR_GENERIC".localize(), comment: "A generic error message")
         }
     }
 }
@@ -55,6 +57,7 @@ enum ErrorResponse: String, Error {
     case unknownError = "Unknown error occurred"
     case timeout = "Request timed out"
     case invalidEmail = "Invalid email"
+    case registerFailed = "Register failed"
 }
 
 extension ErrorResponse {
@@ -74,6 +77,8 @@ extension ErrorResponse {
             return "ERROR_UNKNOWN".localize()
         case .invalidEmail:
             return "ERROR_EMAIL_INVALID".localize()
+        case .registerFailed:
+            return "registerFailed"
         }
     }
 }

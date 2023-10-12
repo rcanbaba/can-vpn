@@ -118,7 +118,6 @@ extension InitialViewController {
             printDebug("try - fetchSettings")
             fetchSettings()
         }
-        userEntry()
     }
     
     private func registerDevice() {
@@ -134,11 +133,11 @@ extension InitialViewController {
                 self.fetchSettings()
                 self.printDebug("registerDeviceRequest - success")
                 
-            case .failure(_):
-                self.printDebug("registerDeviceRequest - failure")
-                // TODO
-                // bi daha register dene hataya göre çözüm
-                // registerDevice()
+            case .failure(let error):
+                let errorMessage = ErrorHandler.getErrorMessage(for: error)
+                if errorMessage == "registerFailed" {
+                    self.registerDevice()
+                }
                 Analytics.logEvent("004-API-registerDeviceRequest", parameters: ["error" : "happened"])
             }
             
@@ -163,6 +162,7 @@ extension InitialViewController {
                     strongSelf.printDebug("getProductPrices - completed")
                 }
                 self.printDebug("fetchSettingsRequest - success")
+                self.userEntry()
             case .failure(_):
                 self.printDebug("fetchSettingsRequest - failure")
                 Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
