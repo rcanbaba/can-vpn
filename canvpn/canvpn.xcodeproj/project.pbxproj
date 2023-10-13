@@ -318,6 +318,8 @@
 		B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */; };
 		B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E12A125F76008F00FA /* SuccessResponse.swift */; };
 		B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E32A140EF7008F00FA /* SettingsManager.swift */; };
+		B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A22592AD9562C003271BA /* PortugueseDictionary.swift */; };
+		B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -707,6 +709,8 @@
 		B47170DD2A125ECC008F00FA /* RegisterAPNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPNSRequest.swift; sourceTree = "<group>"; };
 		B47170E12A125F76008F00FA /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		B47170E32A140EF7008F00FA /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		B47A22592AD9562C003271BA /* PortugueseDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortugueseDictionary.swift; sourceTree = "<group>"; };
+		B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndonesianDictionary.swift; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -1318,6 +1322,8 @@
 				B4D871162A85724F0080D788 /* SpanishDictionary.swift */,
 				B4D871182A85725A0080D788 /* FrenchDictionary.swift */,
 				B4D8711A2A8572640080D788 /* GermanDictionary.swift */,
+				B47A22592AD9562C003271BA /* PortugueseDictionary.swift */,
+				B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */,
 				B4D8711C2A8572700080D788 /* PersianDictionary.swift */,
 				B4D8711E2A85727D0080D788 /* UrduDictionary.swift */,
 				B4D871202A8572870080D788 /* HindiDictionary.swift */,
@@ -1832,6 +1838,7 @@
 				B4D8711F2A85727D0080D788 /* UrduDictionary.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
+				B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
 				B4D8710B2A855FE40080D788 /* ATTrackingManager.swift in Sources */,
 				B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */,
@@ -1859,6 +1866,7 @@
 				B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */,
 				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,
 				B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */,
+				B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */,
 				B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */,
 				B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */,
 				B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */,

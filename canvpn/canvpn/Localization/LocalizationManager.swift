@@ -14,12 +14,13 @@ enum LanguageEnum {
     case es
     case fr
     case de
+    case pt
+    case id
     case zh // chinese
     case fa // persian
     case ur // urdu
     case ru // russian
     case hi // hindi
-    
 }
 
 class Dictionaries {
@@ -59,6 +60,10 @@ class Dictionaries {
             return FrenchDictionary.values
         case .de:
             return GermanDictionary.values
+        case .pt:
+            return PortugueseDictionary.values
+        case .id:
+            return IndonesianDictionary.values
         case .fa:
             return PersianDictionary.values
         case .ur:
@@ -87,6 +92,12 @@ class LocalizationManager {
             return .es
         } else if languageCode == "fr" {
             return .fr
+        } else if languageCode == "de" {
+            return .de
+        } else if languageCode == "pt" || languageCode == "pt-BR" {
+            return .pt
+        } else if languageCode == "id" || languageCode == "in-ID" {
+            return .id
         } else if languageCode == "zh-Hans" || languageCode == "zh-Hant" || languageCode == "zh-HK" {
             return .zh
         } else if languageCode == "fa" {
@@ -97,17 +108,13 @@ class LocalizationManager {
             return .ru
         } else if languageCode == "hi" {
             return .hi
-        } else if languageCode == "de" {
-            return .de
         } else {
             return .eng
         }
-        
     }
     
     static func localize(key: String) -> String {
         return getStringForLanguage(key: key, lang: getUserLanguage())
-        
     }
     
     static func getStringForLanguage(key: String, lang: LanguageEnum) -> String {
