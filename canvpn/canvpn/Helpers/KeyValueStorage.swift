@@ -14,6 +14,7 @@ class KeyValueStorage {
         case installationId = "installationId"
         case deviceId = "deviceId"
         case pushNotificationFCMToken = "kPushNotificationFCMToken"
+        case lastConnectedLocation = "lastConnectedLocation"
         
     }
     
@@ -36,8 +37,7 @@ class KeyValueStorage {
     static var deviceId: String? {
         get {
             return userDefaults.string(forKey: Keys.deviceId.rawValue)
-        }
-        set(newValue) {
+        } set(newValue) {
             userDefaults.set(newValue, forKey: Keys.deviceId.rawValue)
         }
     }
@@ -49,7 +49,22 @@ class KeyValueStorage {
             userDefaults.set(newValue, forKey: Keys.pushNotificationFCMToken.rawValue)
         }
     }
+
     
+    static var lastConnectedLocation: Server? {
+        get {
+            if let data = UserDefaults.standard.data(forKey: Keys.lastConnectedLocation.rawValue),
+               let server = try? JSONDecoder().decode(Server.self, from: data) {
+                return server
+            }
+            return nil
+        }
+        set(newValue) {
+            if let encoded = try? JSONEncoder().encode(newValue) {
+                UserDefaults.standard.set(encoded, forKey: Keys.lastConnectedLocation.rawValue)
+            }
+        }
+    }
     
 }
 

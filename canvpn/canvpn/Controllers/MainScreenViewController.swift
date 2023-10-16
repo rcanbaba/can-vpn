@@ -27,6 +27,8 @@ class MainScreenViewController: UIViewController {
     
     private var getFreeAnimationTimer: Timer?
     
+    private var userTriggeredConnection: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -332,10 +334,18 @@ extension MainScreenViewController {
     }
     
     private func setSelectedServerData(server: Server?) {
+        KeyValueStorage.lastConnectedLocation = server
         DispatchQueue.main.async {
             self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
             self.mainView.setLocationCountry(text: server?.location.city)
             self.mainView.setLocationSignal(level: server?.ping)
+        }
+    }
+    
+    private func handleAlreadyConnectedIfPossible() {
+        guard !userTriggeredConnection else { return }
+        if let lastConnectedLocation = KeyValueStorage.lastConnectedLocation {
+            setSelectedServerData(server: lastConnectedLocation)
         }
     }
 }
@@ -359,11 +369,11 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func changeStateTapped() {
+        userTriggeredConnection = true
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "error_occur_1".localize())
             Analytics.logEvent("097-ChangeState", parameters: ["error" : "guard"])
             return }
-        
         if currentManagerState == .disconnected {
             // TO CONNECT
             if let selectedServer = selectedServer {
@@ -389,12 +399,14 @@ extension MainScreenViewController: MainScreenViewDelegate {
 extension MainScreenViewController: NETunnelManagerDelegate {
     func stateChanged(state: NEVPNStatus) {
         setState(state: state)
+        state == .connected ? handleAlreadyConnectedIfPossible() : ()
     }
 }
 
 // MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
     func selectedServer(server: Server) {
+        userTriggeredConnection = true
         setSelectedServer(server: server)
     }
     
