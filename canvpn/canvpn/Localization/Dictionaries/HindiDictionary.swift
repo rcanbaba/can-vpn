@@ -70,7 +70,10 @@ struct HindiDictionary {
         "ERROR_COUPON_NOT_FOUND" : "अनुरोधित कूपन कोड नहीं मिला।",
         "ERROR_COUPON_EXPIRED" : "कूपन कोड समय सीमा समाप्त हो गया है और अब वैध नहीं है।",
         "ERROR_UNKNOWN" : "एक अज्ञात त्रुटि हुई।",
-        "coupon_generate_success": "कूपन आपके ईमेल पते पर भेज दिया गया है!"
+        "coupon_generate_success": "कूपन आपके ईमेल पते पर भेज दिया गया है!",
+        "FAQ_contactUs_key": "मदद चाहिए? सामान्य प्रश्न देखें या हमसे संपर्क करें।",
+        "FAQ_key": "सामान्य प्रश्न",
+        "contactUs_key": "हमसे संपर्ट करें"
     ]
 }
 

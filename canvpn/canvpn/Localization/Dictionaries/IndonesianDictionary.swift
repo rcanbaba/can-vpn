@@ -69,7 +69,10 @@ struct IndonesianDictionary {
         "ERROR_COUPON_EXPIRED" : "Kode kupon telah kedaluwarsa dan tidak lagi valid.",
         "ERROR_UNKNOWN" : "Terjadi kesalahan yang tidak diketahui. Silakan coba lagi.",
         "ERROR_EMAIL_INVALID": "Alamat email yang diberikan tidak valid.",
-        "coupon_generate_success": "Kode kupon telah dikirim ke alamat email Anda!"
+        "coupon_generate_success": "Kode kupon telah dikirim ke alamat email Anda!",
+        "FAQ_contactUs_key": "Butuh bantuan? Kunjungi Tanya Jawab atau hubungi kami melalui Hubungi Kami.",
+        "FAQ_key": "Tanya Jawab",
+        "contactUs_key": "Hubungi Kami"
     ]
 }
 

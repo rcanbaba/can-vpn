@@ -1319,14 +1319,14 @@
 		B4D8710F2A8571CB0080D788 /* Dictionaries */ = {
 			isa = PBXGroup;
 			children = (
-				B4D871102A8571F80080D788 /* TurkishDictionary.swift */,
 				B4D871122A8572090080D788 /* EnglishDictionary.swift */,
+				B47A22592AD9562C003271BA /* PortugueseDictionary.swift */,
+				B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */,
 				B4D871142A85723C0080D788 /* ArabicDictionary.swift */,
+				B4D871102A8571F80080D788 /* TurkishDictionary.swift */,
 				B4D871162A85724F0080D788 /* SpanishDictionary.swift */,
 				B4D871182A85725A0080D788 /* FrenchDictionary.swift */,
 				B4D8711A2A8572640080D788 /* GermanDictionary.swift */,
-				B47A22592AD9562C003271BA /* PortugueseDictionary.swift */,
-				B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */,
 				B4D8711C2A8572700080D788 /* PersianDictionary.swift */,
 				B4D8711E2A85727D0080D788 /* UrduDictionary.swift */,
 				B4D871202A8572870080D788 /* HindiDictionary.swift */,

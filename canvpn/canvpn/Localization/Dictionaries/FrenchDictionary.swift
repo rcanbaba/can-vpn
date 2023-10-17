@@ -71,7 +71,10 @@ struct FrenchDictionary {
         "ERROR_COUPON_EXPIRED" : "Le code de coupon a expiré et n'est plus valide.",
         "ERROR_UNKNOWN" : "Une erreur inconnue s'est produite. Veuillez réessayer.",
         "ERROR_EMAIL_INVALID": "L'adresse e-mail fournie n'est pas valide.",
-        "coupon_generate_success": "Le coupon a été envoyé à votre adresse e-mail !"
+        "coupon_generate_success": "Le coupon a été envoyé à votre adresse e-mail!",
+        "FAQ_contactUs_key": "Besoin d'aide? Visitez la FAQ ou contactez-nous via Contactez-nous.",
+        "FAQ_key": "FAQ",
+        "contactUs_key": "Contactez-nous"
     ]
 }
 

@@ -71,7 +71,10 @@ struct GermanDictionary {
         "ERROR_COUPON_EXPIRED" : "Der Gutscheincode ist abgelaufen und ungültig geworden.",
         "ERROR_UNKNOWN" : "Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
         "ERROR_EMAIL_INVALID": "Die angegebene E-Mail-Adresse ist ungültig.",
-        "coupon_generate_success": "Der Gutschein wurde an Ihre E-Mail-Adresse gesendet!"
+        "coupon_generate_success": "Der Gutschein wurde an Ihre E-Mail-Adresse gesendet!",
+        "FAQ_contactUs_key": "Brauchen Sie Hilfe? Besuchen Sie Häufig Gestellte Fragen oder kontaktieren Sie uns über Kontaktieren Sie Uns.",
+        "FAQ_key": "Häufig Gestellte Fragen",
+        "contactUs_key": "Kontaktieren Sie Uns"
     ]
 }
 

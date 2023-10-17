@@ -71,6 +71,9 @@ struct EnglishDictionary {
         "ERROR_COUPON_EXPIRED" : "The coupon code has expired and is no longer valid.",
         "ERROR_UNKNOWN" : "An unknown error occurred. Please try again.",
         "ERROR_EMAIL_INVALID": "The email address provided is not valid.",
-        "coupon_generate_success": "The coupon has been sent to your email address!"
+        "coupon_generate_success": "The coupon has been sent to your email address!",
+        "FAQ_contactUs_key": "Need help? Visit F.A.Q or reach out via Contact Us.",
+        "FAQ_key": "F.A.Q",
+        "contactUs_key" :"Contact Us"
     ]
 }

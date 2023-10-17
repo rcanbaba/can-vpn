@@ -71,7 +71,10 @@ struct SpanishDictionary {
         "ERROR_COUPON_EXPIRED" : "El código de cupón ha caducado y ya no es válido.",
         "ERROR_UNKNOWN" : "Se produjo un error desconocido. Por favor, inténtelo de nuevo.",
         "ERROR_EMAIL_INVALID": "La dirección de correo electrónico proporcionada no es válida.",
-        "coupon_generate_success": "¡El cupón ha sido enviado a su dirección de correo electrónico!"
+        "coupon_generate_success": "¡El cupón ha sido enviado a su dirección de correo electrónico!",
+        "FAQ_contactUs_key": "¿Necesitas ayuda? Visita Preguntas Frecuentes o contáctanos a través de Contáctanos.",
+        "FAQ_key": "Preguntas Frecuentes",
+        "contactUs_key": "Contáctanos"
     ]
 }
 

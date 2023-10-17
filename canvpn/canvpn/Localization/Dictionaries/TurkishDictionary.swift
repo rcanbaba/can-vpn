@@ -72,8 +72,8 @@ struct TurkishDictionary {
         "ERROR_UNKNOWN" : "Bilinmeyen bir hata oluştu. Lütfen tekrar deneyin.",
         "ERROR_EMAIL_INVALID": "e-posta adresi geçerli değil.",
         "coupon_generate_success": "Kupon mail adresinize gönderildi!",
-        "FAQ_contactUs_key": "Need help? Visit F.A.Q or reach out via Contact Us.",
-        "FAQ_key": "F.A.Q",
-        "contactUs_key" :"Contact Us"
+        "FAQ_contactUs_key": "Yardıma mı ihtiyacınız var? S.S.S.'yi ziyaret edin veya Bize Ulaşın.",
+        "FAQ_key": "S.S.S.",
+        "contactUs_key": "Bize Ulaşın"
     ]
 }

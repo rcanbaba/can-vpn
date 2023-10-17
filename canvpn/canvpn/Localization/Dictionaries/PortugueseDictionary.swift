@@ -71,6 +71,9 @@ struct PortugueseDictionary {
         "ERROR_COUPON_EXPIRED" : "O código do cupom expirou e não é mais válido.",
         "ERROR_UNKNOWN" : "Ocorreu um erro desconhecido. Por favor, tente novamente.",
         "ERROR_EMAIL_INVALID": "O endereço de e-mail fornecido não é válido.",
-        "coupon_generate_success": "O cupom foi enviado para o seu endereço de e-mail!"
+        "coupon_generate_success": "O cupom foi enviado para o seu endereço de e-mail!",
+        "FAQ_contactUs_key": "Precisa de ajuda? Visite Perguntas Frequentes ou entre em contato via Fale Conosco.",
+        "FAQ_key": "Perguntas Frequentes",
+        "contactUs_key": "Fale Conosco"
     ]
 }
