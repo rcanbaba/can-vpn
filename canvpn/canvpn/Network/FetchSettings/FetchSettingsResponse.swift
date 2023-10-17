@@ -20,12 +20,13 @@ struct SettingsResponse: Codable {
     let isInReview: Bool
     let appUpdate: AppUpdate?
     let text: Text
+    let contactUs: ContactUs
 
     enum CodingKeys: String, CodingKey {
-        case user, servers, links, products, skus, interface
+        case user, servers, links, products, skus, interface, text
         case isInReview = "is_in_review"
         case appUpdate = "app_update"
-        case text
+        case contactUs = "contact_us"
     }
 }
 
@@ -79,12 +80,13 @@ struct ShowRateUs: Codable {
 
 // MARK: - Links
 struct Links: Codable {
-    let privacyURL, termsURL, subscriptionTermsURL: String
+    let privacyURL, termsURL, subscriptionTermsURL, faqsURL: String
 
     enum CodingKeys: String, CodingKey {
         case privacyURL = "privacy_url"
         case termsURL = "terms_url"
         case subscriptionTermsURL = "subscription_terms_url"
+        case faqsURL = "faqs_url"
     }
 }
 
@@ -143,4 +145,9 @@ struct User: Codable {
         case isSubscribed = "is_subscribed"
         case isInGracePeriod = "is_in_grace_period"
     }
+}
+
+// MARK: - ContactUs
+struct ContactUs: Codable {
+    let subject, email: String
 }

@@ -99,7 +99,7 @@ class PushNotificationHelper {
             switch result {
             case .success(let response):
                 print("💙: registerAPNSRequest - success - \(response.success)")
-            case .failure(let error):
+            case .failure(_):
                 print("💙: registerAPNSRequest - failure")
                 Analytics.logEvent("006-API-registerAPNSRequest", parameters: ["error" : "happened"])
             }
@@ -195,7 +195,7 @@ class PushNotificationHelper {
                         setFCMToken(token: token)
                     }
                 }
-            case .failure(let error):
+            case .failure(_):
                 print("💙: registerFCMRequest - failure")
                 if !retryFCMToken {
                     return
