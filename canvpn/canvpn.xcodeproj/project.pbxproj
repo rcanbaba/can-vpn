@@ -320,6 +320,7 @@
 		B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47170E32A140EF7008F00FA /* SettingsManager.swift */; };
 		B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A22592AD9562C003271BA /* PortugueseDictionary.swift */; };
 		B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */; };
+		B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -711,6 +712,7 @@
 		B47170E32A140EF7008F00FA /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B47A22592AD9562C003271BA /* PortugueseDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortugueseDictionary.swift; sourceTree = "<group>"; };
 		B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndonesianDictionary.swift; sourceTree = "<group>"; };
+		B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailToURLGenerator.swift; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -868,6 +870,7 @@
 			isa = PBXGroup;
 			children = (
 				B43E15882A113D6C0095FF4A /* PushNotificationHelper.swift */,
+				B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */,
 				B44120DC2956390B0072B566 /* AESCryption.swift */,
 				B4023D652951121E0008BDA6 /* Helper.swift */,
 				B44120E1295712D10072B566 /* Constants.swift */,
@@ -1858,6 +1861,7 @@
 				B44120E52957162D0072B566 /* UIViewExtensions.swift in Sources */,
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
 				B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */,
+				B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */,
 				B4D871172A85724F0080D788 /* SpanishDictionary.swift in Sources */,
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
