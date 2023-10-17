@@ -175,9 +175,15 @@ class MainScreenView: UIView {
     }
     
     private func setPrivacyText () {
-        let baseString = "pp_tos_key".localize() + "\n" + "Need help? Visit F.A.Q or reach out via Contact Us"
+        let baseString = "pp_tos_key".localize() + "\n" + "FAQ_contactUs_key".localize()
         let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
         let tosDefaultUrl = SettingsManager.shared.settings?.links.termsURL ?? Constants.appTermsOfServicePageURLString
+        let faqDefaultUrl = SettingsManager.shared.settings?.links.faqsURL ?? Constants.appFAQPageURLString
+        
+        let contactMailDefault = SettingsManager.shared.settings?.contactUs.email ?? Constants.appContactUsMailString
+        let contactMailSubject = SettingsManager.shared.settings?.contactUs.subject
+        let contactUsDefaultUrl = MailToURLGenerator.generateMailToURL(email: contactMailDefault, subject: contactMailSubject)
+        
         var attributedString = NSMutableAttributedString(string: baseString)
         
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
@@ -213,18 +219,18 @@ class MainScreenView: UIView {
         
         attributedString = AttributedTextHelper.replaceAttributedString(
             attributedString: attributedString,
-            replaceText: "Contact Us",
+            replaceText: "FAQ_key".localize(),
             replaceTextAttributes: [
-                .link: ppDefaultUrl as Any,
+                .link: faqDefaultUrl as Any,
                 .font: UIFont.boldSystemFont(ofSize: 10)
             ]
         )
         
         attributedString = AttributedTextHelper.replaceAttributedString(
             attributedString: attributedString,
-            replaceText: "F.A.Q",
+            replaceText: "contactUs_key".localize(),
             replaceTextAttributes: [
-                .link: ppDefaultUrl as Any,
+                .link: contactUsDefaultUrl as Any,
                 .font: UIFont.boldSystemFont(ofSize: 10)
             ]
         )

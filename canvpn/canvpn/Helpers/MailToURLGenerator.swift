@@ -16,12 +16,12 @@ struct MailToURLGenerator {
         
         var queryItems: [URLQueryItem] = []
         
-        if let subject = subject, let encodedSubject = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            queryItems.append(URLQueryItem(name: "subject", value: encodedSubject))
+        if let subject = subject {
+            queryItems.append(URLQueryItem(name: "subject", value: subject))
         }
         
-        if let body = body, let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            queryItems.append(URLQueryItem(name: "body", value: encodedBody))
+        if let body = body {
+            queryItems.append(URLQueryItem(name: "body", value: body))
         }
         
         components.queryItems = queryItems

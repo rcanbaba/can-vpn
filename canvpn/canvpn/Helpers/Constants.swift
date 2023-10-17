@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Constants {
+struct Constants {
     
     static let appName = "ilovevpn"
     static let OSType = "ios"
@@ -26,6 +26,8 @@ class Constants {
     static let appWebPageURLString = "https://ilovevpn.app/"
     static let appPrivacyPolicyPageURLString = "https://ilovevpn.app/privacy-policy/"
     static let appTermsOfServicePageURLString = "https://ilovevpn.app/terms-of-service/"
+    static let appFAQPageURLString = "https://ilovevpn.app/faqs/"
+    static let appContactUsMailString = "info@ilovevpn.app"
     
     static let getFreeAnimationDuration: Double = 7.0
     
