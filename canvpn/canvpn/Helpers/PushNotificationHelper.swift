@@ -110,7 +110,7 @@ class PushNotificationHelper {
     // bu sadece gösterildiğinde yapılacak şey
     public static func handleWillPresentCompletionHandler(dict: [AnyHashable: Any], completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let json = JSON(dict)
-        guard let type = PushNotificationType(rawValue: json["type"].stringValue) else {
+        guard PushNotificationType(rawValue: json["type"].stringValue) != nil else {
             completionHandler([.alert, .sound])
             return
         }

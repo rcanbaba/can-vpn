@@ -175,7 +175,7 @@ class MainScreenView: UIView {
     }
     
     private func setPrivacyText () {
-        let baseString = "pp_tos_key".localize() + "\n" + "FAQ_contactUs_key".localize()
+        let baseString = "pp_tos_key".localize() + " " + "FAQ_contactUs_key".localize()
         let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
         let tosDefaultUrl = SettingsManager.shared.settings?.links.termsURL ?? Constants.appTermsOfServicePageURLString
         let faqDefaultUrl = SettingsManager.shared.settings?.links.faqsURL ?? Constants.appFAQPageURLString

@@ -31,7 +31,9 @@ class GoProButton: UIView {
         label.textColor = UIColor.Custom.goPreGrayText
         label.textAlignment = .natural
         label.text = "upgrade_pro_detail".localize()
-        label.numberOfLines = 2
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
@@ -100,7 +102,7 @@ class GoProButton: UIView {
         mainStackView.snp.makeConstraints { make in
             make.leading.equalTo(premiumImageView.snp.trailing).offset(10)
             make.centerY.equalToSuperview()
-            make.top.bottom.lessThanOrEqualToSuperview().inset(9)
+            make.top.bottom.lessThanOrEqualToSuperview().inset(4)
             make.trailing.equalTo(rightArrowBackView.snp.leading).inset(-10)
         }
     }
