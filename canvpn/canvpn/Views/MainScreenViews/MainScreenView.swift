@@ -130,33 +130,66 @@ class MainScreenView: UIView {
         }
         setPrivacyText()
         
-        addSubview(goProButton)
-        goProButton.snp.makeConstraints { (make) in
-            make.height.equalTo(90)
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(privacyTextView.snp.top).inset(-35)
-        }
-        
-        addSubview(locationButton)
-        locationButton.snp.makeConstraints { (make) in
-            make.height.equalTo(60)
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(goProButton.snp.top).inset(-35)
-        }
-
-        addSubview(connectionStateLabel)
-        connectionStateLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(locationButton.snp.top).inset(-30)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().inset(40)
-        }
-        
-        addSubview(centerButton)
-        centerButton.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(1.9)
-            make.height.equalTo(centerButton.snp.width)
-            make.bottom.equalTo(connectionStateLabel.snp.top).inset(-10)
+        let screenSize = UIScreen.main.bounds.size
+        if screenSize.width == 375.0 && screenSize.height == 667.0 {
+            addSubview(goProButton)
+            goProButton.snp.makeConstraints { (make) in
+                make.height.equalTo(90)
+                make.leading.trailing.equalToSuperview().inset(24)
+                make.bottom.equalTo(privacyTextView.snp.top).inset(-30)
+            }
+            
+            addSubview(locationButton)
+            locationButton.snp.makeConstraints { (make) in
+                make.height.equalTo(60)
+                make.leading.trailing.equalToSuperview().inset(24)
+                make.bottom.equalTo(goProButton.snp.top).inset(-30)
+            }
+            
+            addSubview(connectionStateLabel)
+            connectionStateLabel.snp.makeConstraints { (make) in
+                make.bottom.equalTo(locationButton.snp.top).inset(-25)
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().inset(40)
+            }
+            
+            addSubview(centerButton)
+            centerButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().dividedBy(2.2)
+                make.height.equalTo(centerButton.snp.width)
+                make.bottom.equalTo(connectionStateLabel.snp.top).inset(-10)
+            }
+            
+        } else {
+            addSubview(goProButton)
+            goProButton.snp.makeConstraints { (make) in
+                make.height.equalTo(90)
+                make.leading.trailing.equalToSuperview().inset(24)
+                make.bottom.equalTo(privacyTextView.snp.top).inset(-35)
+            }
+            
+            addSubview(locationButton)
+            locationButton.snp.makeConstraints { (make) in
+                make.height.equalTo(60)
+                make.leading.trailing.equalToSuperview().inset(24)
+                make.bottom.equalTo(goProButton.snp.top).inset(-35)
+            }
+            
+            addSubview(connectionStateLabel)
+            connectionStateLabel.snp.makeConstraints { (make) in
+                make.bottom.equalTo(locationButton.snp.top).inset(-30)
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().inset(40)
+            }
+            
+            addSubview(centerButton)
+            centerButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().dividedBy(1.9)
+                make.height.equalTo(centerButton.snp.width)
+                make.bottom.equalTo(connectionStateLabel.snp.top).inset(-10)
+            }
         }
         
         addSubview(getFreeAnimation)
