@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import StoreKit
 
 class SideMenuViewController: UIViewController {
     
@@ -81,7 +81,10 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
             
         case .shareUs:
             presentShareSheet()
-
+            break
+         
+        case .rateUs:
+            presentRateUs()
             break
             
         // Handle other cases here
@@ -109,6 +112,12 @@ extension SideMenuViewController {
         let urlString = type.getURLString()
         let webVC = WebViewController.getInstance(with: urlString)
         self.present(webVC, animated: true, completion: nil)
+    }
+    
+    func presentRateUs() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+        }
     }
     
 }
