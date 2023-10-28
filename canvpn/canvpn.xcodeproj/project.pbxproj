@@ -330,6 +330,7 @@
 		B481C28D2AED48BE00D90453 /* SecurityCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */; };
 		B481C28F2AED65BA00D90453 /* SubscriptionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28E2AED65BA00D90453 /* SubscriptionHistoryViewController.swift */; };
 		B481C2912AED700A00D90453 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2902AED700A00D90453 /* UIDeviceExtensions.swift */; };
+		B481C2932AEDAB0500D90453 /* checking-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B481C2922AEDAB0500D90453 /* checking-animation.json */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -731,6 +732,7 @@
 		B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCheckViewController.swift; sourceTree = "<group>"; };
 		B481C28E2AED65BA00D90453 /* SubscriptionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionHistoryViewController.swift; sourceTree = "<group>"; };
 		B481C2902AED700A00D90453 /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		B481C2922AEDAB0500D90453 /* checking-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "checking-animation.json"; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -903,6 +905,7 @@
 		B4023D67295113480008BDA6 /* LottieAnims */ = {
 			isa = PBXGroup;
 			children = (
+				B481C2922AEDAB0500D90453 /* checking-animation.json */,
 				B4E4B8582AAB4E1300743CFB /* congratsAnimation.json */,
 				B4E4B8572AAB4E1300743CFB /* pennantAnimation.json */,
 				B46450512A703EAD00AFE4D8 /* splash-animation.json */,
@@ -1618,6 +1621,7 @@
 				B44122B12957550E0072B566 /* bt.png in Resources */,
 				B441221A2957550E0072B566 /* gd.png in Resources */,
 				B44122BF2957550E0072B566 /* at.png in Resources */,
+				B481C2932AEDAB0500D90453 /* checking-animation.json in Resources */,
 				B44122592957550E0072B566 /* lv.png in Resources */,
 				B44122382957550E0072B566 /* ai.png in Resources */,
 				B44121FA2957550D0072B566 /* pa.png in Resources */,

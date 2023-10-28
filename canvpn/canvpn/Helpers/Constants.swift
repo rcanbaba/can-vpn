@@ -17,6 +17,8 @@ struct Constants {
     static let osVersion = UIDevice.current.systemVersion
     static let langCode = Locale.preferredLocale().languageCode?.lowercased() ?? "unknown"
     
+    static var originalIP = ""
+    
     static let idfv = KeychainManager.shared.getDeviceIdentifierFromKeychain()
     
     static let baseURL = "https://api.ilovevpn.co"

@@ -117,7 +117,25 @@ extension InitialViewController {
             registerCreationDate()
         } else {
             printDebug("try - fetchSettings")
+            fetchCurrentIP()
             fetchSettings()
+        }
+    }
+    
+    private func fetchCurrentIP() {
+        guard let service = self.networkService else { return }
+        let getIPAddressRequest = GetIPAddressRequest()
+        
+        service.request(getIPAddressRequest) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                self.printDebug("getIPAddressRequest success \(response.ipAddress)")
+                Constants.originalIP = response.ipAddress
+            case .failure(_):
+                self.printDebug("getIPAddressRequest failure")
+                Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
+            }
         }
     }
     
@@ -125,7 +143,7 @@ extension InitialViewController {
         let currentDate = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current
-        dateFormatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        dateFormatter.dateStyle = .short
         let formattedDate = dateFormatter.string(from: currentDate)
         KeyValueStorage.creationDate = formattedDate
     }
