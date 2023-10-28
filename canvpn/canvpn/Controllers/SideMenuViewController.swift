@@ -66,6 +66,7 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "MenuCell")
         let menuItem = menuItems[indexPath.row]
+        cell.selectionStyle = .none
         cell.imageView?.image = menuItem.getImage()
         cell.textLabel?.text = menuItem.getTitle()
         cell.textLabel?.textColor = UIColor.Custom.goPreGrayText
