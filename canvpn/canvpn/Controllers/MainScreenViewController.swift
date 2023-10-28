@@ -52,6 +52,46 @@ class MainScreenViewController: UIViewController {
         checkGetFreeThenSet()
         observeNotifications()
         requestTrackingPermission()
+        setSideMenuUI()
+    }
+    
+    private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.5
+    private var sideMenu: SideMenuViewController!
+    private var isSideMenuOpen = false
+    
+    private func setSideMenuUI() {
+        let menuButton = UIButton(type: .system)
+        menuButton.setTitle("Menu", for: .normal)
+        menuButton.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        
+        sideMenu = SideMenuViewController()
+        addChild(sideMenu)
+        view.addSubview(sideMenu.view)
+        sideMenu.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
+        sideMenu.didMove(toParent: self)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func toggleSideMenu() {
+        isSideMenuOpen.toggle()
+        UIView.animate(withDuration: 0.3) {
+            if self.isSideMenuOpen {
+                self.sideMenu.view.frame.origin.x = 0
+            } else {
+                self.sideMenu.view.frame.origin.x = -self.sideMenuWidth
+            }
+        }
+    }
+    
+    @objc func handleTapOutsideMenu(_ gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: view)
+        if isSideMenuOpen && location.x > sideMenuWidth {
+            toggleSideMenu()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

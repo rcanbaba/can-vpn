@@ -321,6 +321,8 @@
 		B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A22592AD9562C003271BA /* PortugueseDictionary.swift */; };
 		B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */; };
 		B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */; };
+		B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C27B2AED082800D90453 /* SideMenuViewController.swift */; };
+		B481C2812AED1C9900D90453 /* loading-icon-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B481C2802AED1C9900D90453 /* loading-icon-animation.json */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -713,6 +715,8 @@
 		B47A22592AD9562C003271BA /* PortugueseDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortugueseDictionary.swift; sourceTree = "<group>"; };
 		B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndonesianDictionary.swift; sourceTree = "<group>"; };
 		B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailToURLGenerator.swift; sourceTree = "<group>"; };
+		B481C27B2AED082800D90453 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		B481C2802AED1C9900D90453 /* loading-icon-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-icon-animation.json"; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -887,6 +891,7 @@
 				B4E4B8582AAB4E1300743CFB /* congratsAnimation.json */,
 				B4E4B8572AAB4E1300743CFB /* pennantAnimation.json */,
 				B46450512A703EAD00AFE4D8 /* splash-animation.json */,
+				B481C2802AED1C9900D90453 /* loading-icon-animation.json */,
 			);
 			path = LottieAnims;
 			sourceTree = "<group>";
@@ -1004,6 +1009,7 @@
 				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
 				B4D09F3529CB635D00E11069 /* LocationViewController.swift */,
 				B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */,
+				B481C27B2AED082800D90453 /* SideMenuViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1555,6 +1561,7 @@
 				B44122572957550E0072B566 /* bg.png in Resources */,
 				B44122152957550E0072B566 /* tf.png in Resources */,
 				B441228F2957550E0072B566 /* pt.png in Resources */,
+				B481C2812AED1C9900D90453 /* loading-icon-animation.json in Resources */,
 				B441226A2957550E0072B566 /* ht.png in Resources */,
 				B44122EA2957550E0072B566 /* kz.png in Resources */,
 				B44122222957550E0072B566 /* ye.png in Resources */,
@@ -1876,6 +1883,7 @@
 				B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */,
 				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,
 				B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */,
+				B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */,
 				B4D8711D2A8572700080D788 /* PersianDictionary.swift in Sources */,
 				B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */,
 				B40D732629D86FF60066FD80 /* GetCredentialRequest.swift in Sources */,
