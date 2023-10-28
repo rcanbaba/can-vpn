@@ -129,7 +129,7 @@ extension SideMenuViewController {
         case .restoreSubscriptions:
             subscriptionViewController.restoreSubscriptionFromOutside()
         case .subscriptionHistory:
-            subscriptionViewController.usePromoCodeFromOutside()
+            subscriptionViewController.presentSubscriptionHistoryFromOutside()
         case .usePromoCode:
             subscriptionViewController.usePromoCodeFromOutside()
         default:

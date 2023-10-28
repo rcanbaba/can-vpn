@@ -30,8 +30,10 @@ class SubscriptionViewController: UIViewController {
         networkService = DefaultNetworkService()
         checkAndSetProducts()
         configureUI()
+        setNavigationButton()
         setOfferTableView()
         checkThenSetCouponLabel()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,12 +70,25 @@ class SubscriptionViewController: UIViewController {
         }
     }
     
+    private func setNavigationButton() {
+        let historyButton = UIButton(type: .system)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .bold)
+        let historyImage = UIImage(systemName: "clock.arrow.circlepath", withConfiguration: configuration)?.withTintColor(UIColor.Custom.goPreButtonGold, renderingMode: .alwaysOriginal)
+        historyButton.setImage(historyImage, for: .normal)
+        historyButton.addTarget(self, action: #selector(presentSubscriptionHistory), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: historyButton)
+        
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+    }
+    
     private func setOfferTableView() {
         subscriptionView.offerTableView.delegate = self
         subscriptionView.offerTableView.dataSource = self
         subscriptionView.offerTableView.reloadData()
     }
-
+    
     private func restoreSubscription() {
         subscriptionView.isLoading(show: true)
         PurchaseManager.shared.restorePurchases { [weak self] success, _, _ in
@@ -174,6 +189,12 @@ class SubscriptionViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    @objc func presentSubscriptionHistory() {
+        let viewController = SubscriptionHistoryViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - PremiumViewDelegate
@@ -205,7 +226,7 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
         let cellData = presentableProducts[indexPath.row]
-
+        
         if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
             cell.setName(text: skProduct.localizedTitle)
             cell.setPrice(text: skPrice)
@@ -317,7 +338,7 @@ extension SubscriptionViewController {
     }
     
     public func presentSubscriptionHistoryFromOutside() {
-        tryCouponCode()
+        presentSubscriptionHistory()
     }
     
     public func usePromoCodeFromOutside() {

@@ -328,6 +328,7 @@
 		B481C2882AED484000D90453 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2872AED484000D90453 /* AccountViewController.swift */; };
 		B481C28B2AED489B00D90453 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28A2AED489B00D90453 /* SettingsViewController.swift */; };
 		B481C28D2AED48BE00D90453 /* SecurityCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */; };
+		B481C28F2AED65BA00D90453 /* SubscriptionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28E2AED65BA00D90453 /* SubscriptionHistoryViewController.swift */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -727,6 +728,7 @@
 		B481C2872AED484000D90453 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B481C28A2AED489B00D90453 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCheckViewController.swift; sourceTree = "<group>"; };
+		B481C28E2AED65BA00D90453 /* SubscriptionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionHistoryViewController.swift; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -1321,6 +1323,7 @@
 			isa = PBXGroup;
 			children = (
 				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
+				B481C28E2AED65BA00D90453 /* SubscriptionHistoryViewController.swift */,
 			);
 			path = SubscriptionViewController;
 			sourceTree = "<group>";
@@ -1846,6 +1849,7 @@
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
 				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,
 				B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */,
+				B481C28F2AED65BA00D90453 /* SubscriptionHistoryViewController.swift in Sources */,
 				B481C2882AED484000D90453 /* AccountViewController.swift in Sources */,
 				B46450542A7069E100AFE4D8 /* ConsumeReceiptResponse.swift in Sources */,
 				B4DA8EE02AAB5D0C00F4C643 /* GenerateCouponRequest.swift in Sources */,
