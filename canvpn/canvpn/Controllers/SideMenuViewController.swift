@@ -7,29 +7,28 @@
 
 import UIKit
 
+
 class SideMenuViewController: UIViewController {
     
-    private let menuItems: [(icon: UIImage?, title: String)] = [
-        (icon: UIImage(named: "accountIcon"), title: "Account Information"),
-        (icon: UIImage(named: "feedbackIcon"), title: "Feedback"),
-        (icon: UIImage(named: "feedbackIcon"), title: "F.A.Q"),
-        (icon: UIImage(named: "feedbackIcon"), title: "About Us"),
-        (icon: UIImage(named: "feedbackIcon"), title: "Share Us"),
-        (icon: UIImage(named: "systemIcon"), title: "Restore Subscriptions"),
-        (icon: UIImage(named: "aboutIcon"), title: "Subscription History"),
-        (icon: UIImage(named: "aboutIcon"), title: "Use Promo Code"),
-        (icon: UIImage(named: "sharingIcon"), title: "Rate Us"),
-        (icon: UIImage(named: "purchaseIcon"), title: "Check Secure"),
-        (icon: UIImage(named: "purchaseIcon"), title: "What is my ip"),
-        (icon: UIImage(named: "purchaseIcon"), title: "What is my speed"),
-        (icon: UIImage(named: "purchaseIcon"), title: "Settings"),
-        (icon: UIImage(named: "purchaseIcon"), title: ""),
-        (icon: UIImage(named: "purchaseIcon"), title: ""),
-        (icon: UIImage(named: "purchaseIcon"), title: ""),
-        (icon: UIImage(named: "purchaseIcon"), title: "Version 1.0.1"),
-        (icon: UIImage(named: "purchaseIcon"), title: "Stay secure with Love")
-        
-        // Add more items here
+    private let menuItems: [MenuItem] = [
+        .accountInformation, // ip adress - subs type
+        .restoreSubscriptions, // yönlendir
+        .subscriptionHistory, // VC yarat göster
+        .usePromoCode, // yönlendir orda aç
+        .checkSecurity, // ayrı bir popup
+        .rateUs, // ayrı rating popup
+        .feedback, // WEB
+        .faq, // WEB
+        .aboutUs, // WEB
+        .whatIsMyIP, // WEB
+        .whatIsMySpeed, // WEB
+        .shareUs, // Share Sheet
+        .settings, // VC -> language
+        .blankItem,
+        .blankItem,
+        .blankItem,
+        .version, // version
+        .staySecureWithLove // Motto
     ]
     
     private lazy var menuTableView: UITableView = {
@@ -67,8 +66,8 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "MenuCell")
         let menuItem = menuItems[indexPath.row]
-        cell.imageView?.image = menuItem.icon
-        cell.textLabel?.text = menuItem.title
+        cell.imageView?.image = menuItem.getImage()
+        cell.textLabel?.text = menuItem.getTitle()
         cell.textLabel?.textColor = UIColor.Custom.goPreGrayText
         cell.backgroundColor = UIColor.clear
         return cell
@@ -76,21 +75,45 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedItem = menuItems[indexPath.row].title
+        let selectedItem = menuItems[indexPath.row]
+        
         switch selectedItem {
-        case "Feedback":
-//            let feedbackVC = YourFeedbackViewController() // Replace with your ViewController
-//            self.presentingViewController?.present(feedbackVC, animated: true, completion: nil)
+        case .feedback:
+            // Present Feedback ViewController
+            //let feedbackVC = YourFeedbackViewController()
+            //self.presentingViewController?.present(feedbackVC, animated: true, completion: nil)
             break
-        case "Share Us":
-            // Present Share Menu
-            let webVC = WebViewController.getInstance(with: "https://ilovevpn.app/faqs/")
-                self.present(webVC, animated: true, completion: nil)
+            
+        case .shareUs:
+            presentShareSheet()
+
             break
+            
         // Handle other cases here
         default:
             break
         }
     }
+    
+}
+
+// MARK: - Menu operations
+extension SideMenuViewController {
+    
+    func presentShareSheet() {
+        let appLogo = UIImage(named: "top-logo-green")!
+        let appLink = "https://appstore.com/yourapp" // Replace with your app's link
+        let customMessage = "Check out \(Constants.appVisibleName)! I've been using it and it's been great. \(appLink)"
+        
+        let activityViewController = UIActivityViewController(activityItems: [customMessage, appLogo], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func presentWebSheet() {
+        let webVC = WebViewController.getInstance(with: "https://ilovevpn.app/faqs/")
+        self.present(webVC, animated: true, completion: nil)
+    }
+    
+    
     
 }

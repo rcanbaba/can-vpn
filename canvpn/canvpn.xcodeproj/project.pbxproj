@@ -323,6 +323,8 @@
 		B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */; };
 		B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C27B2AED082800D90453 /* SideMenuViewController.swift */; };
 		B481C2812AED1C9900D90453 /* loading-icon-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B481C2802AED1C9900D90453 /* loading-icon-animation.json */; };
+		B481C2832AED1F4100D90453 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2822AED1F4100D90453 /* WebViewController.swift */; };
+		B481C2852AED20FA00D90453 /* SideMenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2842AED20FA00D90453 /* SideMenuHelper.swift */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -717,6 +719,8 @@
 		B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailToURLGenerator.swift; sourceTree = "<group>"; };
 		B481C27B2AED082800D90453 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		B481C2802AED1C9900D90453 /* loading-icon-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-icon-animation.json"; sourceTree = "<group>"; };
+		B481C2822AED1F4100D90453 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B481C2842AED20FA00D90453 /* SideMenuHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHelper.swift; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -881,6 +885,7 @@
 				B44122F0295758080072B566 /* AttributedTextHelper.swift */,
 				B40D732729DB21350066FD80 /* Toaster.swift */,
 				B4EE1F5C2A07B02C00E219CA /* KeyValueStorage.swift */,
+				B481C2842AED20FA00D90453 /* SideMenuHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1010,6 +1015,7 @@
 				B4D09F3529CB635D00E11069 /* LocationViewController.swift */,
 				B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */,
 				B481C27B2AED082800D90453 /* SideMenuViewController.swift */,
+				B481C2822AED1F4100D90453 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1826,6 +1832,7 @@
 				B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */,
 				B40D732829DB21350066FD80 /* Toaster.swift in Sources */,
 				B4DA0E8729AF96E500CA1A86 /* SubscriptionViewController.swift in Sources */,
+				B481C2832AED1F4100D90453 /* WebViewController.swift in Sources */,
 				B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */,
 				B47170DE2A125ECC008F00FA /* RegisterAPNSRequest.swift in Sources */,
 				B4EE1F662A07C49200E219CA /* Endpoints.swift in Sources */,
@@ -1834,6 +1841,7 @@
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
 				B41C82492AC592DE00D741D8 /* UserEntryRequest.swift in Sources */,
 				B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */,
+				B481C2852AED20FA00D90453 /* SideMenuHelper.swift in Sources */,
 				B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */,
 				B4D871262A8572A20080D788 /* ChineseDictionary.swift in Sources */,
 				B4023D462950E31E0008BDA6 /* MainScreenViewController.swift in Sources */,

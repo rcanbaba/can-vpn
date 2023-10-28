@@ -11,6 +11,7 @@ import UIKit
 struct Constants {
     
     static let appName = "ilovevpn"
+    static let appVisibleName = "iLove VPN"
     static let OSType = "ios"
     static let appBuild = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
     static let osVersion = UIDevice.current.systemVersion
