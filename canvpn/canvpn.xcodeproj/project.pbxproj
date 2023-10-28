@@ -329,6 +329,7 @@
 		B481C28B2AED489B00D90453 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28A2AED489B00D90453 /* SettingsViewController.swift */; };
 		B481C28D2AED48BE00D90453 /* SecurityCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */; };
 		B481C28F2AED65BA00D90453 /* SubscriptionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28E2AED65BA00D90453 /* SubscriptionHistoryViewController.swift */; };
+		B481C2912AED700A00D90453 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2902AED700A00D90453 /* UIDeviceExtensions.swift */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -729,6 +730,7 @@
 		B481C28A2AED489B00D90453 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCheckViewController.swift; sourceTree = "<group>"; };
 		B481C28E2AED65BA00D90453 /* SubscriptionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionHistoryViewController.swift; sourceTree = "<group>"; };
+		B481C2902AED700A00D90453 /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -1010,6 +1012,7 @@
 				B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */,
 				B47170DB2A125DE3008F00FA /* UIViewControllerExtensions.swift */,
 				B44FB20E2A52CE20002258E9 /* NotificationNames.swift */,
+				B481C2902AED700A00D90453 /* UIDeviceExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1912,6 +1915,7 @@
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
 				B4D871152A85723C0080D788 /* ArabicDictionary.swift in Sources */,
+				B481C2912AED700A00D90453 /* UIDeviceExtensions.swift in Sources */,
 				B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */,
 				B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */,
 				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,

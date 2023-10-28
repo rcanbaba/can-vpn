@@ -114,10 +114,20 @@ extension InitialViewController {
         if KeyValueStorage.deviceId == nil {
             printDebug("try - registerDevice")
             registerDevice()
+            registerCreationDate()
         } else {
             printDebug("try - fetchSettings")
             fetchSettings()
         }
+    }
+    
+    private func registerCreationDate() {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        let formattedDate = dateFormatter.string(from: currentDate)
+        KeyValueStorage.creationDate = formattedDate
     }
     
     private func registerDevice() {

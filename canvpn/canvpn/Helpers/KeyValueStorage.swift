@@ -15,7 +15,7 @@ class KeyValueStorage {
         case deviceId = "deviceId"
         case pushNotificationFCMToken = "kPushNotificationFCMToken"
         case lastConnectedLocation = "lastConnectedLocation"
-        
+        case creationDate = "creationDate"
     }
     
     static let userDefaults = UserDefaults.standard
@@ -49,7 +49,6 @@ class KeyValueStorage {
             userDefaults.set(newValue, forKey: Keys.pushNotificationFCMToken.rawValue)
         }
     }
-
     
     static var lastConnectedLocation: Server? {
         get {
@@ -66,5 +65,18 @@ class KeyValueStorage {
         }
     }
     
+    static var creationDate: String {
+        get {
+            if let value = userDefaults.string(forKey: Keys.creationDate.rawValue) {
+                return value
+            } else {
+                let value = UUID().uuidString
+                KeyValueStorage.creationDate = value
+                return value
+            }
+        } set(newValue) {
+            userDefaults.set(newValue, forKey: Keys.creationDate.rawValue)
+        }
+    }
 }
 

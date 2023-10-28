@@ -11,7 +11,7 @@ class AccountViewController: UIViewController {
     
     private lazy var topLogoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "top-logo-orange")
+        imageView.image = UIImage(named: "top-logo-green")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -25,14 +25,14 @@ class AccountViewController: UIViewController {
     
     private let deviceModelLabel: UILabel = {
         let label = UILabel()
-        label.text = "Device Model: \(UIDevice.current.model)"
+        label.text = "Device Model: \(UIDevice.current.modelName)"
         label.textColor = UIColor.Custom.goPreGrayText
         return label
     }()
     
     private let creationDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Creation Date: \(Date())" // Set your user's creation date here
+        label.text = "Creation Date: \(KeyValueStorage.creationDate)" // Set your user's creation date here
         label.textColor = UIColor.Custom.goPreGrayText
         return label
     }()
@@ -53,7 +53,7 @@ class AccountViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(white: 1, alpha: 0.9)
+        view.backgroundColor = .white
         
         // Set the navigation title
         navigationItem.title = "About Us"
