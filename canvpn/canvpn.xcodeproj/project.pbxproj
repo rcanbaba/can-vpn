@@ -325,6 +325,9 @@
 		B481C2812AED1C9900D90453 /* loading-icon-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B481C2802AED1C9900D90453 /* loading-icon-animation.json */; };
 		B481C2832AED1F4100D90453 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2822AED1F4100D90453 /* WebViewController.swift */; };
 		B481C2852AED20FA00D90453 /* SideMenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2842AED20FA00D90453 /* SideMenuHelper.swift */; };
+		B481C2882AED484000D90453 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2872AED484000D90453 /* AccountViewController.swift */; };
+		B481C28B2AED489B00D90453 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28A2AED489B00D90453 /* SettingsViewController.swift */; };
+		B481C28D2AED48BE00D90453 /* SecurityCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */; };
 		B48BC3EC2AA89C9400A00F5E /* GetFreePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */; };
 		B48BC3EE2AA8A15A00A00F5E /* PopupPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */; };
 		B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */; };
@@ -721,6 +724,9 @@
 		B481C2802AED1C9900D90453 /* loading-icon-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-icon-animation.json"; sourceTree = "<group>"; };
 		B481C2822AED1F4100D90453 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B481C2842AED20FA00D90453 /* SideMenuHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHelper.swift; sourceTree = "<group>"; };
+		B481C2872AED484000D90453 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		B481C28A2AED489B00D90453 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCheckViewController.swift; sourceTree = "<group>"; };
 		B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFreePopupView.swift; sourceTree = "<group>"; };
 		B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenterViewController.swift; sourceTree = "<group>"; };
 		B48E7E942A49924A00DEBD74 /* ConsumeReceiptRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeReceiptRequest.swift; sourceTree = "<group>"; };
@@ -1009,10 +1015,10 @@
 		B44120EA295727D00072B566 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B481C2892AED485200D90453 /* SubscriptionViewController */,
 				B481C2862AED47EA00D90453 /* SideMenuControllers */,
 				B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */,
 				B4BBFC16296DF30000613E9F /* InitialViewController.swift */,
-				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
 				B4D09F3529CB635D00E11069 /* LocationViewController.swift */,
 				B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */,
 				B481C27B2AED082800D90453 /* SideMenuViewController.swift */,
@@ -1304,8 +1310,19 @@
 		B481C2862AED47EA00D90453 /* SideMenuControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B481C2872AED484000D90453 /* AccountViewController.swift */,
+				B481C28A2AED489B00D90453 /* SettingsViewController.swift */,
+				B481C28C2AED48BE00D90453 /* SecurityCheckViewController.swift */,
 			);
 			path = SideMenuControllers;
+			sourceTree = "<group>";
+		};
+		B481C2892AED485200D90453 /* SubscriptionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
+			);
+			path = SubscriptionViewController;
 			sourceTree = "<group>";
 		};
 		B48E7E932A4990C600DEBD74 /* ConsumeReceipt */ = {
@@ -1829,6 +1846,7 @@
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
 				B4DA0E8D29AF9F1100CA1A86 /* GradientView.swift in Sources */,
 				B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */,
+				B481C2882AED484000D90453 /* AccountViewController.swift in Sources */,
 				B46450542A7069E100AFE4D8 /* ConsumeReceiptResponse.swift in Sources */,
 				B4DA8EE02AAB5D0C00F4C643 /* GenerateCouponRequest.swift in Sources */,
 				B4D871192A85725A0080D788 /* FrenchDictionary.swift in Sources */,
@@ -1859,6 +1877,7 @@
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
 				B43E15982A1145970095FF4A /* RegisterFCMRequest.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
+				B481C28D2AED48BE00D90453 /* SecurityCheckViewController.swift in Sources */,
 				B4023D662951121E0008BDA6 /* Helper.swift in Sources */,
 				B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */,
 				B4D8711F2A85727D0080D788 /* UrduDictionary.swift in Sources */,
@@ -1900,6 +1919,7 @@
 				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,
 				B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */,
 				B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */,
+				B481C28B2AED489B00D90453 /* SettingsViewController.swift in Sources */,
 				B4D8711D2A8572700080D788 /* PersianDictionary.swift in Sources */,
 				B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */,
 				B40D732629D86FF60066FD80 /* GetCredentialRequest.swift in Sources */,

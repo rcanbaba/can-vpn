@@ -76,34 +76,7 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedItem = menuItems[indexPath.row]
-        
-        switch selectedItem {
-            
-        case .shareUs:
-            presentShareSheet()
-            break
-         
-        case .rateUs:
-            presentRateUs()
-            break
-            
-        case .restoreSubscriptions:
-            presentRateUs()
-            break
-            
-        case .subscriptionHistory:
-            presentRateUs()
-            break
-            
-        case .usePromoCode:
-            presentRateUs()
-            break
-
-        // Handle other cases here
-        default:
-            presentWebSheet(type: selectedItem)
-            break
-        }
+        makeRelatedMenuOperation(type: selectedItem)
     }
     
 }
@@ -111,7 +84,68 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Menu operations
 extension SideMenuViewController {
     
-    func presentShareSheet() {
+    private func makeRelatedMenuOperation(type: MenuItemType) {
+        switch type {
+        case .accountInformation, .settings, .checkSecurity:
+            presentViewController(type: type)
+        case .restoreSubscriptions, .subscriptionHistory, .usePromoCode:
+            presentSubscriptionFlow(type: type)
+        case .rateUs:
+            presentRateUs()
+        case .feedback, .faq, .aboutUs, .whatIsMyIP, .whatIsMySpeed:
+            presentWebSheet(type: type)
+        case .shareUs:
+            presentShareSheet()
+        case .blankItem, .version, .staySecureWithLove:
+            break
+        }
+    }
+    
+    private func presentViewController(type: MenuItemType) {
+        switch type {
+        case .accountInformation:
+            let viewController = AccountViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case .checkSecurity:
+            let viewController = SecurityCheckViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case .settings:
+            let viewController = SettingsViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        default:
+            break
+        }
+    }
+    
+    private func presentSubscriptionFlow(type: MenuItemType) {
+        switch type {
+        case .restoreSubscriptions:
+            let subscriptionViewController = SubscriptionViewController()
+            subscriptionViewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+        case .subscriptionHistory:
+            let subscriptionViewController = SubscriptionViewController()
+            subscriptionViewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+        case .usePromoCode:
+            let subscriptionViewController = SubscriptionViewController()
+            subscriptionViewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+        default:
+            break
+        }
+    }
+    
+    private func presentWebSheet(type: MenuItemType) {
+        let urlString = type.getURLString()
+        let webVC = WebViewController.getInstance(with: urlString)
+        self.present(webVC, animated: true, completion: nil)
+    }
+    
+    private func presentShareSheet() {
         let appLogo = UIImage(named: "top-logo-green")!
         let appLink = "https://appstore.com/yourapp" // Replace with your app's link
         let customMessage = "Check out \(Constants.appVisibleName)! I've been using it and it's been great. \(appLink)"
@@ -120,13 +154,7 @@ extension SideMenuViewController {
         present(activityViewController, animated: true, completion: nil)
     }
     
-    func presentWebSheet(type: MenuItemType) {
-        let urlString = type.getURLString()
-        let webVC = WebViewController.getInstance(with: urlString)
-        self.present(webVC, animated: true, completion: nil)
-    }
-    
-    func presentRateUs() {
+    private func presentRateUs() {
         if #available(iOS 10.3, *) {
             SKStoreReviewController.requestReview()
         }
