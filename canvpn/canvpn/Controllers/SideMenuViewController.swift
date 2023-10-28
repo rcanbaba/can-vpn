@@ -10,19 +10,19 @@ import UIKit
 
 class SideMenuViewController: UIViewController {
     
-    private let menuItems: [MenuItem] = [
+    private let menuItems: [MenuItemType] = [
         .accountInformation, // ip adress - subs type
         .restoreSubscriptions, // yönlendir
         .subscriptionHistory, // VC yarat göster
         .usePromoCode, // yönlendir orda aç
-        .checkSecurity, // ayrı bir popup
-        .rateUs, // ayrı rating popup
-        .feedback, // WEB
-        .faq, // WEB
+        .shareUs,
+        .rateUs,
         .aboutUs, // WEB
+        .faq, // WEB
+        .feedback, // WEB
+        .checkSecurity, // ayrı bir popup
         .whatIsMyIP, // WEB
         .whatIsMySpeed, // WEB
-        .shareUs, // Share Sheet
         .settings, // VC -> language
         .blankItem,
         .blankItem,
@@ -78,11 +78,6 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedItem = menuItems[indexPath.row]
         
         switch selectedItem {
-        case .feedback:
-            // Present Feedback ViewController
-            //let feedbackVC = YourFeedbackViewController()
-            //self.presentingViewController?.present(feedbackVC, animated: true, completion: nil)
-            break
             
         case .shareUs:
             presentShareSheet()
@@ -91,6 +86,7 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
             
         // Handle other cases here
         default:
+            presentWebSheet(type: selectedItem)
             break
         }
     }
@@ -109,11 +105,10 @@ extension SideMenuViewController {
         present(activityViewController, animated: true, completion: nil)
     }
     
-    func presentWebSheet() {
-        let webVC = WebViewController.getInstance(with: "https://ilovevpn.app/faqs/")
+    func presentWebSheet(type: MenuItemType) {
+        let urlString = type.getURLString()
+        let webVC = WebViewController.getInstance(with: urlString)
         self.present(webVC, animated: true, completion: nil)
     }
-    
-    
     
 }

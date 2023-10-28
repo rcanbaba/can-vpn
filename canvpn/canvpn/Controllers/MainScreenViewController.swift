@@ -55,13 +55,13 @@ class MainScreenViewController: UIViewController {
         setSideMenuUI()
     }
     
-    private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.5
+    private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
     private var sideMenu: SideMenuViewController!
     private var isSideMenuOpen = false
     
     private func setSideMenuUI() {
         let menuButton = UIButton(type: .system)
-        menuButton.setTitle("Menu", for: .normal)
+        menuButton.setImage(UIImage(systemName: "list.bullet"), for: .normal)
         menuButton.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
         

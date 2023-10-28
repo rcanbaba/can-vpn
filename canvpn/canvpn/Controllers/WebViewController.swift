@@ -101,12 +101,14 @@ extension WebViewController: WKNavigationDelegate {
         // For instance, you can show an activity indicator here
         animationView.isHidden = false
         animationView.play()
+        print("CAN - - STARTED")
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // Stop the activity indicator, if you added one
         animationView.isHidden = true
         animationView.stop()
+        print("CAN - - STOPPED")
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -114,5 +116,6 @@ extension WebViewController: WKNavigationDelegate {
         Toaster.showToast(message: "Error occurred, please reload.")
         animationView.isHidden = false
         animationView.stop()
+        print("CAN - - FAILED")
     }
 }
