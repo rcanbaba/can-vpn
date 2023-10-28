@@ -16,8 +16,11 @@ class WebViewController: UIViewController {
         bar.barStyle = .default
         bar.isTranslucent = true
         bar.barTintColor = UIColor.white
-        let close = UIBarButtonItem.init(title: "close".localize(), style: .plain, target: self, action: #selector(self.backButtonTapped))
-        let reload = UIBarButtonItem.init(title: "reload".localize(), style: .plain, target: self, action: #selector(self.reloadButtonTapped))
+
+        let close = UIBarButtonItem(image: UIImage(systemName: "xmark")?.withConfiguration(UIImage.SymbolConfiguration(weight: .bold)).withTintColor(UIColor.orange, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(self.backButtonTapped))
+
+        let reload = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise")?.withConfiguration(UIImage.SymbolConfiguration(weight: .bold)).withTintColor(UIColor.orange, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(self.reloadButtonTapped))
+
         let navItem = UINavigationItem.init()
         navItem.setRightBarButton(close, animated: false)
         navItem.setLeftBarButton(reload, animated: false)

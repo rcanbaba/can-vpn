@@ -1009,6 +1009,7 @@
 		B44120EA295727D00072B566 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B481C2862AED47EA00D90453 /* SideMenuControllers */,
 				B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */,
 				B4BBFC16296DF30000613E9F /* InitialViewController.swift */,
 				B4DA0E8629AF96E500CA1A86 /* SubscriptionViewController.swift */,
@@ -1298,6 +1299,13 @@
 				B4DA0E8C29AF9F1100CA1A86 /* GradientView.swift */,
 			);
 			path = ReusableComponents;
+			sourceTree = "<group>";
+		};
+		B481C2862AED47EA00D90453 /* SideMenuControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SideMenuControllers;
 			sourceTree = "<group>";
 		};
 		B48E7E932A4990C600DEBD74 /* ConsumeReceipt */ = {

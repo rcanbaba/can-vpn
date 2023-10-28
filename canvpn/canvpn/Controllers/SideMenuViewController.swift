@@ -87,6 +87,18 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
             presentRateUs()
             break
             
+        case .restoreSubscriptions:
+            presentRateUs()
+            break
+            
+        case .subscriptionHistory:
+            presentRateUs()
+            break
+            
+        case .usePromoCode:
+            presentRateUs()
+            break
+
         // Handle other cases here
         default:
             presentWebSheet(type: selectedItem)
