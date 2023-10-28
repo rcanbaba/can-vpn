@@ -309,3 +309,18 @@ extension SubscriptionViewController {
         }
     }
 }
+
+// MARK: - Public Methods
+extension SubscriptionViewController {
+    public func restoreSubscriptionFromOutside() {
+        restoreSubscription()
+    }
+    
+    public func presentSubscriptionHistoryFromOutside() {
+        tryCouponCode()
+    }
+    
+    public func usePromoCodeFromOutside() {
+        tryCouponCode()
+    }
+}

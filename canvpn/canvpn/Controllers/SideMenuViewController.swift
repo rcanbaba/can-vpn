@@ -122,19 +122,16 @@ extension SideMenuViewController {
     }
     
     private func presentSubscriptionFlow(type: MenuItemType) {
+        let subscriptionViewController = SubscriptionViewController()
+        subscriptionViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(subscriptionViewController, animated: true)
         switch type {
         case .restoreSubscriptions:
-            let subscriptionViewController = SubscriptionViewController()
-            subscriptionViewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+            subscriptionViewController.restoreSubscriptionFromOutside()
         case .subscriptionHistory:
-            let subscriptionViewController = SubscriptionViewController()
-            subscriptionViewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+            subscriptionViewController.usePromoCodeFromOutside()
         case .usePromoCode:
-            let subscriptionViewController = SubscriptionViewController()
-            subscriptionViewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+            subscriptionViewController.usePromoCodeFromOutside()
         default:
             break
         }
