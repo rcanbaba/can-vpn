@@ -24,11 +24,21 @@ class SecurityCheckViewController: UIViewController {
         return label
     }()
     
-    private lazy var mainStackView: UIStackView = {
+    private lazy var mainStackViewNotSecure: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 10
+        stackView.backgroundColor = UIColor.red
+        return stackView
+    }()
+    
+    private lazy var mainStackViewSecure: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.spacing = 10
+        stackView.backgroundColor = UIColor.red
         return stackView
     }()
     
@@ -39,10 +49,13 @@ class SecurityCheckViewController: UIViewController {
         return animation
     }()
     
+    private var warningLabelArray: [UILabel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setChecking()
-        setMainStackView(alpha: 0.0)
+        setSecureMainStackView(alpha: 0.0)
+        setNotSecureMainStackView(alpha: 0.0)
         configureUI()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             self?.animationView.play()
@@ -68,6 +81,9 @@ class SecurityCheckViewController: UIViewController {
             self.mainLabel.text = "Your network is secure!"
             self.topLogoImageView.image = UIImage(named: "top-logo-green")
             self.mainLabel.textColor = UIColor.Custom.green
+            UIView.animate(withDuration: 0.2, delay: 0.2) { [weak self] in
+                self?.setSecureMainStackView(alpha: 1.0)
+            }
         }
     }
     
@@ -77,20 +93,25 @@ class SecurityCheckViewController: UIViewController {
             self.topLogoImageView.image = UIImage(named: "top-logo-orange")
             self.mainLabel.textColor = UIColor.Custom.orange
             UIView.animate(withDuration: 0.2, delay: 0.2) { [weak self] in
-                self?.setMainStackView(alpha: 1.0)
+                self?.setNotSecureMainStackView(alpha: 1.0)
             }
         }
     }
     
-    private func setMainStackView(alpha: CGFloat) {
-        mainStackView.alpha = alpha
+    private func setNotSecureMainStackView(alpha: CGFloat) {
+        mainStackViewNotSecure.alpha = alpha
+    }
+    
+    private func setSecureMainStackView(alpha: CGFloat) {
+        mainStackViewSecure.alpha = alpha
     }
     
     private func configureUI() {
         view.backgroundColor = UIColor.white
         view.addSubview(topLogoImageView)
         view.addSubview(mainLabel)
-        view.addSubview(mainStackView)
+        view.addSubview(mainStackViewNotSecure)
+        view.addSubview(mainStackViewSecure)
         
         topLogoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -103,7 +124,12 @@ class SecurityCheckViewController: UIViewController {
             make.top.equalTo(topLogoImageView.snp.bottom).offset(48)
         }
         
-        mainStackView.snp.makeConstraints { make in
+        mainStackViewNotSecure.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(mainLabel.snp.bottom).offset(24)
+        }
+        
+        mainStackViewSecure.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(mainLabel.snp.bottom).offset(24)
         }
@@ -129,7 +155,31 @@ class SecurityCheckViewController: UIViewController {
             horizontalStackView.spacing = 12
             horizontalStackView.alignment = .center
 
-            mainStackView.addArrangedSubview(horizontalStackView)
+            mainStackViewNotSecure.addArrangedSubview(horizontalStackView)
+        }
+        
+        let warnings2 = [
+            ("exclamationmark.triangle.fill", "Your IP address: \(Constants.originalIP)123"),
+            ("exclamationmark.triangle.fill", "Network activities may be being tracked123"),
+            ("exclamationmark.triangle.fill", "Not encrypted tunnel123"),
+            ("exclamationmark.triangle.fill", "Hacker attacks123"),
+        ]
+        
+        for warning in warnings2 {
+            let iconImageView = UIImageView()
+            iconImageView.image = UIImage(systemName: warning.0)
+            iconImageView.tintColor = UIColor.Custom.orange
+            iconImageView.contentMode = .scaleAspectFit
+
+            let textLabel = UILabel()
+            textLabel.text = warning.1
+            textLabel.textColor = UIColor.Custom.gray
+
+            let horizontalStackView = UIStackView(arrangedSubviews: [iconImageView, textLabel])
+            horizontalStackView.spacing = 12
+            horizontalStackView.alignment = .center
+
+            mainStackViewSecure.addArrangedSubview(horizontalStackView)
         }
         
         view.addSubview(animationView)

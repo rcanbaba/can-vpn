@@ -84,8 +84,8 @@ enum MenuItemType {
         case .feedback: return Constants.appContactUsURLString
         case .faq: return Constants.appFAQPageURLString
         case .aboutUs: return Constants.appWebPageURLString
-        case .whatIsMyIP: return "https://ilovevpn.app/what-is-my-ip/"
-        case .whatIsMySpeed: return "https://ilovevpn.app/how-fast-my-internet/"
+        case .whatIsMyIP: return Constants.appIPTestURLString
+        case .whatIsMySpeed: return Constants.appSpeedTestURLString
         default: return ""
         }
     }

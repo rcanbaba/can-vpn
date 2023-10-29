@@ -26,7 +26,6 @@ class SideMenuViewController: UIViewController {
         .settings, // VC -> language
         .blankItem,
         .blankItem,
-        .blankItem,
         .version, // version
         .staySecureWithLove // Motto
     ]
@@ -52,7 +51,8 @@ class SideMenuViewController: UIViewController {
         view.addSubview(menuTableView)
 
         menuTableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     
