@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LanguageEnum {
+enum LanguageEnum: String, CaseIterable {
     case tr
     case eng
     case ar
@@ -21,6 +21,24 @@ enum LanguageEnum {
     case ur // urdu
     case ru // russian
     case hi // hindi
+    
+    var displayName: String {
+        switch self {
+        case .tr: return "Turkish"
+        case .eng: return "English"
+        case .ar: return "Arabic"
+        case .es: return "Spanish"
+        case .fr: return "French"
+        case .de: return "German"
+        case .pt: return "Portuguese"
+        case .id: return "Indonesian"
+        case .fa: return "Persian"
+        case .ur: return "Urdu"
+        case .hi: return "Hindi"
+        case .ru: return "Russian"
+        case .zh: return "Chinese"
+        }
+    }
 }
 
 class Dictionaries {
