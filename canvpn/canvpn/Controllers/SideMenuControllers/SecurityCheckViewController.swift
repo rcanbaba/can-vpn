@@ -29,7 +29,6 @@ class SecurityCheckViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 10
-        stackView.backgroundColor = UIColor.red
         return stackView
     }()
     
@@ -38,7 +37,6 @@ class SecurityCheckViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 10
-        stackView.backgroundColor = UIColor.red
         return stackView
     }()
     
@@ -159,16 +157,16 @@ class SecurityCheckViewController: UIViewController {
         }
         
         let warnings2 = [
-            ("exclamationmark.triangle.fill", "Your IP address: \(Constants.originalIP)123"),
-            ("exclamationmark.triangle.fill", "Network activities may be being tracked123"),
-            ("exclamationmark.triangle.fill", "Not encrypted tunnel123"),
-            ("exclamationmark.triangle.fill", "Hacker attacks123"),
+            ("checkmark.circle.fill", "Your IP address: Hidden"),
+            ("checkmark.circle.fill", "Network can not be being tracked"),
+            ("checkmark.circle.fill", "Encrypted tunnel"),
+            ("checkmark.circle.fill", "Hacker attacks blocked"),
         ]
         
         for warning in warnings2 {
             let iconImageView = UIImageView()
             iconImageView.image = UIImage(systemName: warning.0)
-            iconImageView.tintColor = UIColor.Custom.orange
+            iconImageView.tintColor = UIColor.Custom.green
             iconImageView.contentMode = .scaleAspectFit
 
             let textLabel = UILabel()
