@@ -59,15 +59,16 @@ class MainScreenViewController: UIViewController {
     private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
     private var sideMenu: SideMenuViewController!
     private var isSideMenuOpen = false
+    private var menuButton: UIButton?
     
     private func setSideMenuUI() {
-        let menuButton = UIButton(type: .system)
+        menuButton = UIButton(type: .system)
         
         let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium) // Adjust the pointSize and weight as needed
         let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
-        menuButton.setImage(menuImage, for: .normal)
-        menuButton.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        menuButton!.setImage(menuImage, for: .normal)
+        menuButton!.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton!)
         
         sideMenu = SideMenuViewController()
         addChild(sideMenu)
@@ -139,6 +140,14 @@ class MainScreenViewController: UIViewController {
     private func setMainUI(state: ConnectionState) {
         DispatchQueue.main.async {
             self.mainView.setState(state: state)
+            self.changeMenuImageColor(to: state.getUIColor())
+        }
+    }
+    
+    private func changeMenuImageColor(to newColor: UIColor) {
+        if let menuButton = menuButton, let currentImage = menuButton.currentImage {
+            let tintedImage = currentImage.withTintColor(newColor, renderingMode: .alwaysOriginal)
+            menuButton.setImage(tintedImage, for: .normal)
         }
     }
     

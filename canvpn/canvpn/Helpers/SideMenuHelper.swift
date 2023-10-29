@@ -74,7 +74,7 @@ enum MenuItemType {
         case .shareUs: return "Share Us"
         case .settings: return "Settings"
         case .blankItem: return ""
-        case .version: return "Version 1.0.1"
+        case .version: return "Version \(Constants.appBuild)"
         case .staySecureWithLove: return "Stay secure with Love"
         }
     }
