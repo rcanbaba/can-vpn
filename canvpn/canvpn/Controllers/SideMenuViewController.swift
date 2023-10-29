@@ -44,7 +44,7 @@ class SideMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white: 1, alpha: 0.95) // You can set any color you want
+        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
 
         menuTableView.delegate = self
         menuTableView.dataSource = self
