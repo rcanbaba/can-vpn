@@ -9,5 +9,5 @@ import Foundation
 
 extension Notification.Name {
     static let subscriptionStateUpdated = Notification.Name("subscriptionStateUpdated")
-    
+    static let languageChanged = Notification.Name("languageChanged")
 }

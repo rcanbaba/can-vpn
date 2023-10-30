@@ -41,22 +41,24 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return view
     }()
     
+    private var selectedIndex: Int = 0
+    
     private var networkService: DefaultNetworkService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
         configureUI()
-        Constants.langCode
-        findSelectedLanguageIndex(language: <#T##<<error type>>#>)
+        setSelectedLanguage(index: findSelectedLanguageIndex(code: Constants.langCode))
     }
     
-    private func findSelectedLanguageIndex(code) -> Int {
-        
+    private func findSelectedLanguageIndex(code: String) -> Int {
+        return languages.firstIndex(where: { $0.rawValue == code }) ?? 0
     }
     
-    private func setSelectedLanguage() {
-        
+    private func setSelectedLanguage(index: Int) {
+        selectedIndex = index
+        tableView.reloadData()
     }
     
     private func configureUI() {
@@ -93,14 +95,23 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = languages[indexPath.row].displayName
+        
+        if indexPath.row == selectedIndex {
+            cell.textLabel?.text = languages[indexPath.row].displayName + " Selected"
+            cell.textLabel?.textColor = UIColor.Custom.dark
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        } else {
+            cell.textLabel?.text = languages[indexPath.row].displayName
+            cell.textLabel?.textColor = UIColor.Custom.goPreGrayText
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+        }
         cell.backgroundColor = UIColor.clear
-        cell.textLabel?.textColor = UIColor.Custom.goPreGrayText
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        setSelectedLanguage(index: indexPath.row)
         print("Selected language: \(languages[indexPath.row].displayName)")
         let languageCode = languages[indexPath.row].rawValue
         KeyValueStorage.languageCode = languageCode
@@ -130,6 +141,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.printDebug("fetchSettingsRequest - success")
                 self.userEntry()
                 self.isLoading(show: false)
+                NotificationCenter.default.post(name: NSNotification.Name.languageChanged, object: nil)
             case .failure(_):
                 self.isLoading(show: false)
                 self.printDebug("fetchSettingsRequest - failure")

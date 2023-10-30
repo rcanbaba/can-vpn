@@ -42,9 +42,8 @@ class MainScreenViewController: UIViewController {
         tunnelManager = NETunnelManager()
         tunnelManager?.delegate = self
         // ipSecManager = VPNManager()
-        
         networkService = DefaultNetworkService()
-        
+        addNotifications()
         setLocationButtonInitialData()
         configureUI()
         checkSubscriptionState()
@@ -90,6 +89,14 @@ class MainScreenViewController: UIViewController {
                 self.sideMenu.view.frame.origin.x = -self.sideMenuWidth
             }
         }
+    }
+    
+    private func addNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name.languageChanged, object: nil)
+    }
+    
+    @objc func updateLanguage() {
+        // TODO: CAN view içindekileri localize tekrar call et
     }
     
     @objc func handleTapOutsideMenu(_ gesture: UITapGestureRecognizer) {
