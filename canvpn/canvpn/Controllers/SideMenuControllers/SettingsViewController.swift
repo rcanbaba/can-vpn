@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,9 +21,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         label.textColor = UIColor.Custom.goPreGrayText
         return label
     }()
+    
+    private var networkService: DefaultNetworkService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkService = DefaultNetworkService()
+        configureUI()
+    }
+    
+    private func configureUI() {
         view.backgroundColor = UIColor(white: 1, alpha: 0.95)
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = self
@@ -43,7 +51,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,6 +69,44 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
         print("Selected language: \(languages[indexPath.row])")
         // Implement further actions here...
+        
+        Constants.langCode = "es"
+        fetchSettings(languageCode: "es")
+    }
+    
+    private func fetchSettings(languageCode: String) {
+        guard let service = networkService else { return }
+        var fetchSettingsRequest = FetchSettingsRequest()
+        fetchSettingsRequest.setClientParams(languageCode: languageCode)
+        
+        service.request(fetchSettingsRequest) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                SettingsManager.shared.settings = response
+                self.printDebug("fetchSettingsRequest - success")
+                self.userEntry()
+            case .failure(_):
+                self.printDebug("fetchSettingsRequest - failure")
+                Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
+            }
+        }
+    }
+    
+    private func userEntry() {
+        guard let service = networkService else { return }
+        var userEntryRequest = UserEntryRequest()
+        userEntryRequest.setClientParams()
+        
+        service.request(userEntryRequest) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_ ): break
+            case .failure(let error):
+                self.printDebug("userEntryRequest - failure")
+                Analytics.logEvent("025-API-userEntryRequest", parameters: ["error" : ErrorHandler.getErrorMessage(for: error)])
+            }
+        }
     }
 
 }

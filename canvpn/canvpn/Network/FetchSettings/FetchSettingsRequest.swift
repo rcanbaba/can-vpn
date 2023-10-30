@@ -46,5 +46,21 @@ struct FetchSettingsRequest: DataRequest {
         
         bodyData = data
     }
+    
+    mutating func setClientParams(languageCode: String) {
+        var body = ["client_params" : clientParams]
+        
+        if var clientParamsDict = body["client_params"] {
+            clientParamsDict["app_language"] = languageCode
+            body["client_params"] = clientParamsDict
+        }
+        
+        let data = try? JSONSerialization.data(
+            withJSONObject: body,
+            options: []
+        )
+        
+        bodyData = data
+    }
 
 }
