@@ -100,7 +100,7 @@ class Dictionaries {
 class LocalizationManager {
     
     static func getUserLanguage() -> LanguageEnum {
-        let languageCode = Locale.preferredLocale().languageCode?.lowercased()
+        let languageCode = KeyValueStorage.languageCode ?? Constants.langCode
         
         if languageCode == "tr" {
             return .tr

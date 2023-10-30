@@ -259,8 +259,10 @@ extension SubscriptionView {
 // MARK: - PUBLIC METHODS
 extension SubscriptionView {
     public func isLoading(show: Bool) {
-        self.isUserInteractionEnabled = !show
-        show ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        DispatchQueue.main.async {
+            self.isUserInteractionEnabled = !show
+            show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
+        }
     }
     
     public func setCouponLabel(isHidden: Bool) {

@@ -11,7 +11,19 @@ import FirebaseAnalytics
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView: UITableView!
-    let languages = ["Turkish", "English", "Arabic", "Spanish", "French", "German", "Portuguese", "Indonesian", "Persian", "Urdu", "Hindi", "Russian", "Chinese"]
+    let languages = [LanguageEnum.eng,
+                     LanguageEnum.pt,
+                     LanguageEnum.id,
+                     LanguageEnum.es,
+                     LanguageEnum.de,
+                     LanguageEnum.fr,
+                     LanguageEnum.ar,
+                     LanguageEnum.ru,
+                     LanguageEnum.tr,
+                     LanguageEnum.zh,
+                     LanguageEnum.hi,
+                     LanguageEnum.fa,
+                     LanguageEnum.ur]
     
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
@@ -22,12 +34,29 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return label
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.color = .black
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
     private var networkService: DefaultNetworkService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
         configureUI()
+        Constants.langCode
+        findSelectedLanguageIndex(language: <#T##<<error type>>#>)
+    }
+    
+    private func findSelectedLanguageIndex(code) -> Int {
+        
+    }
+    
+    private func setSelectedLanguage() {
+        
     }
     
     private func configureUI() {
@@ -40,6 +69,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         view.addSubview(mainLabel)
         view.addSubview(tableView)
+        view.addSubview(activityIndicator)
         
         mainLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -51,6 +81,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +93,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = languages[indexPath.row]
+        cell.textLabel?.text = languages[indexPath.row].displayName
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.textColor = UIColor.Custom.goPreGrayText
         return cell
@@ -67,15 +101,24 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("Selected language: \(languages[indexPath.row])")
-        // Implement further actions here...
-        
-        Constants.langCode = "es"
-        fetchSettings(languageCode: "es")
+        print("Selected language: \(languages[indexPath.row].displayName)")
+        let languageCode = languages[indexPath.row].rawValue
+        KeyValueStorage.languageCode = languageCode
+        Constants.langCode = languageCode
+        fetchSettings(languageCode: languageCode)
+    }
+    
+    private func isLoading(show: Bool) {
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = !show
+            self.tableView.isUserInteractionEnabled = !show
+            show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
+        }
     }
     
     private func fetchSettings(languageCode: String) {
         guard let service = networkService else { return }
+        isLoading(show: true)
         var fetchSettingsRequest = FetchSettingsRequest()
         fetchSettingsRequest.setClientParams(languageCode: languageCode)
         
@@ -86,7 +129,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 SettingsManager.shared.settings = response
                 self.printDebug("fetchSettingsRequest - success")
                 self.userEntry()
+                self.isLoading(show: false)
             case .failure(_):
+                self.isLoading(show: false)
                 self.printDebug("fetchSettingsRequest - failure")
                 Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
             }

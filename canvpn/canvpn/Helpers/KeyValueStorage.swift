@@ -16,6 +16,7 @@ class KeyValueStorage {
         case pushNotificationFCMToken = "kPushNotificationFCMToken"
         case lastConnectedLocation = "lastConnectedLocation"
         case creationDate = "creationDate"
+        case languageCode = "languageCode"
     }
     
     static let userDefaults = UserDefaults.standard
@@ -76,6 +77,14 @@ class KeyValueStorage {
             }
         } set(newValue) {
             userDefaults.set(newValue, forKey: Keys.creationDate.rawValue)
+        }
+    }
+    
+    static var languageCode: String? {
+        get {
+            return userDefaults.string(forKey: Keys.languageCode.rawValue)
+        } set(newValue) {
+            userDefaults.set(newValue, forKey: Keys.languageCode.rawValue)
         }
     }
 }

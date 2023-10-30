@@ -112,6 +112,7 @@ extension InitialViewController {
     
     private func startInitialSetup() {
         if KeyValueStorage.deviceId == nil {
+            KeyValueStorage.languageCode = Locale.preferredLocale().languageCode?.lowercased()
             printDebug("try - registerDevice")
             registerDevice()
             registerCreationDate()
