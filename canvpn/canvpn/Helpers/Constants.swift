@@ -31,7 +31,7 @@ struct Constants {
     static let appWebPageURLString = "https://ilovevpn.app/"
     static let appPrivacyPolicyPageURLString = "https://ilovevpn.app/privacy-policy/"
     static let appTermsOfServicePageURLString = "https://ilovevpn.app/terms-of-service/"
-    static let appFAQPageURLString = "https://ilovevpn.app/faqs/"
+    static let appFAQPageURLString = "https://ilovevpn.app/frequently-asked-questions/"
     static let appContactUsURLString = "https://ilovevpn.app/contact-us/"
     static let appIPTestURLString = "https://utils.ilovevpn.co/what-is-my-ip"
     static let appSpeedTestURLString = "https://utils.ilovevpn.co/speed-test"
