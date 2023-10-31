@@ -61,10 +61,10 @@ class LocationViewController: UIViewController {
         
         
         serverData = [
-            Section(name: "Premium", items: premiumServers, isExpanded: true),
-            Section(name: "Free", items: freeServers, isExpanded: true),
-            Section(name: "Streaming", items: serverList, isExpanded: false),
-            Section(name: "Gaming", items: serverList, isExpanded: false),
+            Section(name: "loc_header_premium".localize(), items: premiumServers, isExpanded: true),
+            Section(name: "loc_header_free".localize(), items: freeServers, isExpanded: true),
+            Section(name: "loc_header_stream".localize(), items: serverList, isExpanded: false),
+            Section(name: "loc_header_game".localize(), items: serverList, isExpanded: false),
         ]
         
         view.backgroundColor = UIColor.white

@@ -69,14 +69,14 @@ class SecurityCheckViewController: UIViewController {
     }
     
     private func setChecking() {
-        mainLabel.text = "Checking..."
+        mainLabel.text = "checking_key".localize()
         topLogoImageView.image = UIImage(named: "top-logo-gray")
         self.mainLabel.textColor = UIColor.Custom.gray
     }
     
     private func setSecure() {
         DispatchQueue.main.async {
-            self.mainLabel.text = "Your network is secure!"
+            self.mainLabel.text = "network_secure_key".localize()
             self.topLogoImageView.image = UIImage(named: "top-logo-green")
             self.mainLabel.textColor = UIColor.Custom.green
             UIView.animate(withDuration: 0.2, delay: 0.2) { [weak self] in
@@ -87,7 +87,7 @@ class SecurityCheckViewController: UIViewController {
     
     private func setNotSecure() {
         DispatchQueue.main.async {
-            self.mainLabel.text = "Your network is being threatened!"
+            self.mainLabel.text = "network_not_secure_key".localize()
             self.topLogoImageView.image = UIImage(named: "top-logo-orange")
             self.mainLabel.textColor = UIColor.Custom.orange
             UIView.animate(withDuration: 0.2, delay: 0.2) { [weak self] in
@@ -133,10 +133,10 @@ class SecurityCheckViewController: UIViewController {
         }
 
         let warnings = [
-            ("exclamationmark.triangle.fill", "Your IP address: \(Constants.originalIP)"),
-            ("exclamationmark.triangle.fill", "Network activities may be being tracked"),
-            ("exclamationmark.triangle.fill", "Not encrypted tunnel"),
-            ("exclamationmark.triangle.fill", "Hacker attacks"),
+            ("exclamationmark.triangle.fill", "sec_ip_address".localize() + ": \(Constants.originalIP)"),
+            ("exclamationmark.triangle.fill", "sec_tracked".localize()),
+            ("exclamationmark.triangle.fill", "sec_encrypted".localize()),
+            ("exclamationmark.triangle.fill", "sec_hacker".localize()),
         ]
         
         for warning in warnings {
@@ -157,10 +157,10 @@ class SecurityCheckViewController: UIViewController {
         }
         
         let warnings2 = [
-            ("checkmark.circle.fill", "Your IP address: Hidden"),
-            ("checkmark.circle.fill", "Network can not be being tracked"),
-            ("checkmark.circle.fill", "Encrypted tunnel"),
-            ("checkmark.circle.fill", "Hacker attacks blocked"),
+            ("checkmark.circle.fill", "not_sec_ip_address".localize()),
+            ("checkmark.circle.fill", "not_sec_tracked".localize()),
+            ("checkmark.circle.fill", "not_sec_encrypted".localize()),
+            ("checkmark.circle.fill", "not_sec_hacker".localize()),
         ]
         
         for warning in warnings2 {

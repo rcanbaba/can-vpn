@@ -431,7 +431,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     func changeStateTapped() {
         userTriggeredConnection = true
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
-            Toaster.showToast(message: "error_occur_1".localize())
+            Toaster.showToast(message: "error_try_again".localize())
             Analytics.logEvent("097-ChangeState", parameters: ["error" : "guard"])
             return }
         if currentManagerState == .disconnected {

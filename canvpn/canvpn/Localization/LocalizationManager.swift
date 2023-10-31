@@ -24,19 +24,19 @@ enum LanguageEnum: String, CaseIterable {
     
     var displayName: String {
         switch self {
-        case .tr: return "Turkish"
-        case .eng: return "English"
-        case .ar: return "Arabic"
-        case .es: return "Spanish"
-        case .fr: return "French"
-        case .de: return "German"
-        case .pt: return "Portuguese"
-        case .id: return "Indonesian"
-        case .fa: return "Persian"
-        case .ur: return "Urdu"
-        case .hi: return "Hindi"
-        case .ru: return "Russian"
-        case .zh: return "Chinese"
+        case .tr: return "display_turkish".localize()
+        case .eng: return "display_english".localize()
+        case .ar: return "display_arabic".localize()
+        case .es: return "display_spanish".localize()
+        case .fr: return "display_french".localize()
+        case .de: return "display_german".localize()
+        case .pt: return "display_portuguese".localize()
+        case .id: return "display_indonesian".localize()
+        case .fa: return "display_persian".localize()
+        case .ur: return "display_urdu".localize()
+        case .hi: return "display_hindi".localize()
+        case .ru: return "display_russian".localize()
+        case .zh: return "display_chinese".localize()
         }
     }
 }

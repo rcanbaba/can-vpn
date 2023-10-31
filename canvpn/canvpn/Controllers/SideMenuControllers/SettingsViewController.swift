@@ -42,7 +42,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        label.text = "Language Settings"
+        label.text = "language_settings_key".localize()
         label.textColor = UIColor.Custom.goPreGrayText
         return label
     }()

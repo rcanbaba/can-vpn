@@ -42,7 +42,7 @@ class AccountViewController: UIViewController {
     
     private lazy var tosButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Terms of Service", for: .normal)
+        button.setTitle("terms_of_service".localize(), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitleColor(UIColor.Custom.goPreGrayText, for: .normal)
         button.addTarget(self, action: #selector(presentTos), for: .touchUpInside)
@@ -51,7 +51,7 @@ class AccountViewController: UIViewController {
     
     private lazy var ppButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Privacy & Policy", for: .normal)
+        button.setTitle("privacy_policy".localize(), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitleColor(UIColor.Custom.goPreGrayText, for: .normal)
         button.addTarget(self, action: #selector(presentPp), for: .touchUpInside)
@@ -60,7 +60,6 @@ class AccountViewController: UIViewController {
     
     private lazy var subscriptionTypeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Account Subscription: Free", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitleColor(UIColor.Custom.goPreGrayText, for: .normal)
         button.addTarget(self, action: #selector(presentSubscriptionPlan), for: .touchUpInside)
@@ -171,19 +170,19 @@ class AccountViewController: UIViewController {
     }
     
     private func setSubscriptionButtonText(isPremium: Bool) {
-        let text = isPremium ? "Premium" : "Free"
-        subscriptionTypeButton.setTitle("Account Subscription: \(text)", for: .normal)
+        let text = isPremium ? "premium_key".localize() : "free_key".localize()
+        subscriptionTypeButton.setTitle("acc_subs_key".localize() + ": \(text)", for: .normal)
     }
     
     private func setCreationDateText() {
-        creationDateLabel.text = "Account Creation Date: \(KeyValueStorage.creationDate)"
+        creationDateLabel.text = "acc_creation_date_key".localize() + ": \(KeyValueStorage.creationDate)"
     }
     
     private func setDeviceModelText() {
-        deviceModelLabel.text = "Device Model: \(UIDevice.current.modelName)"
+        deviceModelLabel.text = "device_model_key".localize() + ": \(UIDevice.current.modelName)"
     }
     
     private func setIpAddressText() {
-        ipAddressLabel.text = "Original IP Address: \(Constants.originalIP)"
+        ipAddressLabel.text = "original_ip_address".localize() + " : \(Constants.originalIP)"
     }
 }

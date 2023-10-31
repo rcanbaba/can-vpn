@@ -60,22 +60,22 @@ enum MenuItemType {
     
     func getTitle() -> String {
         switch self {
-        case .accountInformation: return "Account"
-        case .restoreSubscriptions: return "Restore Subscriptions"
-        case .subscriptionHistory: return "Subscription History"
-        case .usePromoCode: return "Use Promo Code"
-        case .checkSecurity: return "Check Security"
-        case .rateUs: return "Rate Us"
-        case .feedback: return "Feedback"
-        case .faq: return "F.A.Q"
-        case .aboutUs: return "About Us"
-        case .whatIsMyIP: return "What is my ip"
-        case .whatIsMySpeed: return "What is my speed"
-        case .shareUs: return "Share Us"
-        case .settings: return "Settings"
+        case .accountInformation: return "account_side_title".localize()
+        case .restoreSubscriptions: return "restore_subs_side_title".localize()
+        case .subscriptionHistory: return "subs_history_side_title".localize()
+        case .usePromoCode: return "promo_code_side_title".localize()
+        case .checkSecurity: return "security_side_title".localize()
+        case .rateUs: return "rate_side_title".localize()
+        case .feedback: return "feedback_side_title".localize()
+        case .faq: return "faq_side_title".localize()
+        case .aboutUs: return "about_side_title".localize()
+        case .whatIsMyIP: return "ip_side_title".localize()
+        case .whatIsMySpeed: return "speed_side_title".localize()
+        case .shareUs: return "share_side_title".localize()
+        case .settings: return "settings_side_title".localize()
         case .blankItem: return ""
-        case .version: return "Version \(Constants.appBuild)"
-        case .staySecureWithLove: return "Stay secure with Love"
+        case .version: return "version_side_title".localize() + " \(Constants.appBuild)"
+        case .staySecureWithLove: return "motto_side_title".localize()
         }
     }
     

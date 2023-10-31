@@ -39,7 +39,7 @@ class SubscriptionHistoryViewController: UIViewController {
     
     private lazy var noContentLabel: UILabel = {
         let label = UILabel()
-        label.text = "There is no subscription!"
+        label.text = "subs_history_empty".localize()
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.textColor = .darkGray
         label.textAlignment = .center
@@ -53,7 +53,7 @@ class SubscriptionHistoryViewController: UIViewController {
         setNoContent(isHidden: false)
         
         let titleLabel = UILabel()
-        titleLabel.text = "Subscription History"
+        titleLabel.text = "subs_history_title".localize()
         titleLabel.textColor = UIColor.Custom.goPreButtonGold
         titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .regular)
         navigationItem.titleView = titleLabel
