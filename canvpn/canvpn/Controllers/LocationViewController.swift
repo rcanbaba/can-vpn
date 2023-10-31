@@ -56,9 +56,13 @@ class LocationViewController: UIViewController {
         Analytics.logEvent("201-PresentLocationScreen", parameters: ["type" : "didload"])
         let serverList = SettingsManager.shared.settings?.servers ?? []
         
+        let premiumServers = serverList.filter { $0.type.isPremium()}
+        let freeServers = serverList.filter { !$0.type.isPremium()}
+        
+        
         serverData = [
-            Section(name: "Premium", items: serverList, isExpanded: true),
-            Section(name: "Free", items: serverList, isExpanded: true),
+            Section(name: "Premium", items: premiumServers, isExpanded: true),
+            Section(name: "Free", items: freeServers, isExpanded: true),
             Section(name: "Streaming", items: serverList, isExpanded: false),
             Section(name: "Gaming", items: serverList, isExpanded: false),
         ]

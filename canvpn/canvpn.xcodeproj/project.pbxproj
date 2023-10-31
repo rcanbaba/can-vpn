@@ -340,6 +340,7 @@
 		B490D392296C958A00651BFC /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = B490D391296C958A00651BFC /* WireGuardKit */; };
 		B490D3AD296C98EE00651BFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
 		B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBFC16296DF30000613E9F /* InitialViewController.swift */; };
+		B4BE348A2AF1014F0038D8E3 /* LanguageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */; };
 		B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C91E9C298562950042500B /* GoogleService-Info.plist */; };
 		B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3129C7B50F00E11069 /* LocationButton.swift */; };
 		B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3329C7B52600E11069 /* GoProButton.swift */; };
@@ -741,6 +742,7 @@
 		B490D38E296C952100651BFC /* NETunnelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NETunnelManager.swift; sourceTree = "<group>"; };
 		B490D3AC296C98EE00651BFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B4BBFC16296DF30000613E9F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageListTableViewCell.swift; sourceTree = "<group>"; };
 		B4C91E9C298562950042500B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4D09F3129C7B50F00E11069 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		B4D09F3329C7B52600E11069 /* GoProButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProButton.swift; sourceTree = "<group>"; };
@@ -860,6 +862,7 @@
 				B44FB20B2A5061ED002258E9 /* ReusableComponents */,
 				B44122F229575A060072B566 /* SplashScreenView.swift */,
 				B4184A162955C9AA0051EB79 /* LocationListTableViewCell.swift */,
+				B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */,
 				B4D09F3029C7B4E800E11069 /* MainScreenViews */,
 				B4DA0E8E29AF9FD300CA1A86 /* SubscriptionViews */,
 				B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */,
@@ -1900,6 +1903,7 @@
 				B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */,
 				B4D09F3829CCA40200E11069 /* PremiumFeatureView.swift in Sources */,
 				B44120E9295717300072B566 /* CALayerExtensions.swift in Sources */,
+				B4BE348A2AF1014F0038D8E3 /* LanguageListTableViewCell.swift in Sources */,
 				B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */,
 				B40D732A29DB21900066FD80 /* UIApplicationExtensions.swift in Sources */,
 				B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */,

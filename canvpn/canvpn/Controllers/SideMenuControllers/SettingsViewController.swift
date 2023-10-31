@@ -10,7 +10,20 @@ import FirebaseAnalytics
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var tableView: UITableView!
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(LanguageListTableViewCell.self, forCellReuseIdentifier: "LanguageListTableViewCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = .singleLine
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor.clear
+        return tableView
+    }()
+    
     let languages = [LanguageEnum.eng,
                      LanguageEnum.pt,
                      LanguageEnum.id,
@@ -63,11 +76,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func configureUI() {
         view.backgroundColor = UIColor(white: 1, alpha: 0.95)
-        tableView = UITableView(frame: view.bounds, style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = UIColor.clear
         
         view.addSubview(mainLabel)
         view.addSubview(tableView)
@@ -92,20 +100,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return languages.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LanguageListTableViewCell", for: indexPath) as! LanguageListTableViewCell
+        cell.titleLabel.text = languages[indexPath.row].displayName
+        cell.backgroundColor = UIColor.clear
         
         if indexPath.row == selectedIndex {
-            cell.textLabel?.text = languages[indexPath.row].displayName + " Selected"
-            cell.textLabel?.textColor = UIColor.Custom.dark
-            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+            cell.titleLabel.textColor = UIColor.Custom.dark
+            cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+            cell.checkmarkImageView.isHidden = false
         } else {
-            cell.textLabel?.text = languages[indexPath.row].displayName
-            cell.textLabel?.textColor = UIColor.Custom.goPreGrayText
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+            cell.titleLabel.textColor = UIColor.Custom.goPreGrayText
+            cell.titleLabel.font = UIFont.systemFont(ofSize: 17)
+            cell.checkmarkImageView.isHidden = true
         }
-        cell.backgroundColor = UIColor.clear
         return cell
     }
 
