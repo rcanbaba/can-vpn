@@ -116,7 +116,7 @@ class LocalizationManager {
             return .pt
         } else if languageCode == "id" || languageCode == "in-ID" {
             return .id
-        } else if languageCode == "zh-Hans" || languageCode == "zh-Hant" || languageCode == "zh-HK" {
+        } else if languageCode == "zh" || languageCode == "zh-Hant" || languageCode == "zh-HK" || languageCode == "zh-Hans" {
             return .zh
         } else if languageCode == "fa" {
             return .fa

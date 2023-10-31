@@ -19,7 +19,7 @@ class PremiumFeatureView: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = UIColor.black
-        label.textAlignment = .center
+        label.textAlignment = .natural
         return label
     }()
     
@@ -45,7 +45,7 @@ class PremiumFeatureView: UIView {
     private func configureUI() {
         addSubview(premiumImageView)
         premiumImageView.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview()
+            make.leading.top.equalToSuperview().offset(10)
             make.size.equalTo(30)
         }
         
@@ -53,13 +53,13 @@ class PremiumFeatureView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(premiumImageView.snp.trailing).offset(10)
             make.centerY.equalTo(premiumImageView.snp.centerY)
+            make.trailing.equalToSuperview().inset(4)
         }
         
         addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(premiumImageView.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview().inset(10)
         }
     }
     
@@ -72,11 +72,9 @@ extension PremiumFeatureView {
         premiumImageView.image = type.getImage()
         
         if type == .noAds {
-            premiumImageView.snp.remakeConstraints { make in
-                make.leading.top.equalToSuperview()
-                make.size.equalTo(28)
-            }
-            
+            premiumImageView.contentMode = .scaleAspectFit
+        } else {
+            premiumImageView.contentMode = .scaleToFill
         }
     }
 }

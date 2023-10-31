@@ -44,6 +44,7 @@ class SubscriptionView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 10.0
+        stackView.distribution = .fillEqually
         return stackView
     }()
     
@@ -192,30 +193,24 @@ class SubscriptionView: UIView {
         firstRowStackView.alignment = .center
         firstRowStackView.spacing = 10.0
         
+        let stackViews = [firstRowStackView, secondRowStackView]
+        
         featuresMainStackView.addArrangedSubview(firstRowStackView)
         featuresMainStackView.addArrangedSubview(secondRowStackView)
         
-        var featureViewArray: [PremiumFeatureView] = []
         
-        for _ in 0..<4 {
-            featureViewArray.append(PremiumFeatureView())
-        }
-        
-        featureViewArray[0].set(type: .secure)
-        featureViewArray[1].set(type: .fast)
-        featureViewArray[2].set(type: .noAds)
-        featureViewArray[3].set(type: .anonymous)
-                
-        firstRowStackView.addArrangedSubview(featureViewArray[0])
-        firstRowStackView.addArrangedSubview(featureViewArray[1])
-        
-        secondRowStackView.addArrangedSubview(featureViewArray[2])
-        secondRowStackView.addArrangedSubview(featureViewArray[3])
-        
+        let premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous]
         let featureItemWidth = (UIScreen.main.bounds.width - 70 - 10) / 2
         
-        for item in featureViewArray {
-            item.snp.makeConstraints { make in
+        for (index, featureType) in premiumFeatures.enumerated() {
+            let featureView = PremiumFeatureView()
+            featureView.set(type: featureType)
+            
+            // Get the corresponding stackView (first or second) based on index
+            let currentStackView = stackViews[index / 2] // This will result in 0 for the first two and 1 for the next two
+            currentStackView.addArrangedSubview(featureView)
+            
+            featureView.snp.makeConstraints { make in
                 make.width.equalTo(featureItemWidth)
             }
         }
