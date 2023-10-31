@@ -57,8 +57,8 @@ class LocationViewController: UIViewController {
         let serverList = SettingsManager.shared.settings?.servers ?? []
         
         serverData = [
-            Section(name: "Premium", items: serverList, isExpanded: false),
-            Section(name: "Free", items: serverList, isExpanded: false),
+            Section(name: "Premium", items: serverList, isExpanded: true),
+            Section(name: "Free", items: serverList, isExpanded: true),
             Section(name: "Streaming", items: serverList, isExpanded: false),
             Section(name: "Gaming", items: serverList, isExpanded: false),
         ]
@@ -129,12 +129,41 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let button = UIButton(type: .system)
-        button.setTitle(serverData[section].name, for: .normal)
-        button.tag = section
-        button.addTarget(self, action: #selector(toggleSection(_:)), for: .touchUpInside)
-        return button
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        headerView.tag = section
+        
+        // Set up the title label
+        let titleLabel = UILabel()
+        titleLabel.text = serverData[section].name
+        titleLabel.textColor = UIColor.Custom.dark
+        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        headerView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(headerView).offset(16)  // 16 point left padding
+            make.centerY.equalTo(headerView)
+        }
+        
+        // Set up the arrow image view
+        let arrowImageView = UIImageView(image:  UIImage(systemName: "location.circle.fill")?.withTintColor(UIColor.Custom.green, renderingMode: .alwaysOriginal))
+        if serverData[section].isExpanded {
+            arrowImageView.transform = CGAffineTransform(rotationAngle: .pi / 2)
+        }
+        headerView.addSubview(arrowImageView)
+        arrowImageView.snp.makeConstraints { make in
+            make.trailing.equalTo(headerView).offset(-16)  // 16 point right padding
+            make.centerY.equalTo(headerView)
+            make.width.equalTo(24)   // 24 point width
+            make.height.equalTo(24)   // 24 point height
+        }
+        
+        // Add tap gesture to the headerView
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleSection(_:)))
+        headerView.addGestureRecognizer(tapGestureRecognizer)
+        
+        return headerView
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
@@ -162,8 +191,10 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    @objc func toggleSection(_ sender: UIButton) {
-        let section = sender.tag
+    @objc func toggleSection(_ gesture: UITapGestureRecognizer) {
+        guard let headerView = gesture.view  else { return}
+        
+        let section = headerView.tag
         let numberOfRows = serverData[section].items.count
         var indexPaths = [IndexPath]()
         
@@ -172,6 +203,16 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         serverData[section].isExpanded.toggle()
+        
+        if let arrowImageView = headerView.subviews.compactMap({ $0 as? UIImageView }).first {
+            UIView.animate(withDuration: 0.3) {
+                if self.serverData[section].isExpanded {
+                    arrowImageView.transform = CGAffineTransform(rotationAngle: .pi / 2)
+                } else {
+                    arrowImageView.transform = CGAffineTransform(rotationAngle: 0)
+                }
+            }
+        }
         
         locationTableView.beginUpdates()
         if serverData[section].isExpanded {
