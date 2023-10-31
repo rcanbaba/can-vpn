@@ -96,7 +96,9 @@ class MainScreenViewController: UIViewController {
     }
     
     @objc func updateLanguage() {
-        // TODO: CAN view içindekileri localize tekrar call et
+        DispatchQueue.main.async {
+            self.mainView.reloadLocalization()
+        }
     }
     
     @objc func handleTapOutsideMenu(_ gesture: UITapGestureRecognizer) {
@@ -301,7 +303,7 @@ extension MainScreenViewController {
     }
     
     private func getIPAddress() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             guard let service = self.networkService else { return }
             let getIPAddressRequest = GetIPAddressRequest()
             

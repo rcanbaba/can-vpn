@@ -43,16 +43,29 @@ class SideMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
-
         menuTableView.delegate = self
         menuTableView.dataSource = self
+        addNotifications()
+        configureUI()
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
         
         view.addSubview(menuTableView)
-
         menuTableView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    private func addNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name.languageChanged, object: nil)
+    }
+    
+    @objc func updateLanguage() {
+        DispatchQueue.main.async {
+            self.menuTableView.reloadData()
         }
     }
     

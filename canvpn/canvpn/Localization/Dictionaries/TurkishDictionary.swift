@@ -111,7 +111,7 @@ struct TurkishDictionary {
         "display_french": "Fransızca",
         "display_german": "Almanca",
         "display_portuguese": "Portekizce",
-        "display_indonesian": "Endonezya Dili",
+        "display_indonesian": "Endonezyaca",
         "display_persian": "Farsça",
         "display_urdu": "Urduca",
         "display_hindi": "Hintçe",

@@ -288,6 +288,8 @@ class MainScreenView: UIView {
         delegate?.getFreeTapped()
     }
     
+    private var connectionState: ConnectionState?
+    
 }
 
 extension MainScreenView {
@@ -295,9 +297,11 @@ extension MainScreenView {
         self.isUserInteractionEnabled = state.getUserInteraction()
     }
     public func setStateLabel(state: ConnectionState) {
+        connectionState = state
         connectionStateLabel.text = state.getText()
     }
     public func setState(state: ConnectionState) {
+        connectionState = state
         backgroundImageView.image = state.getBgWorldUIImage()
         centerButton.setImage(state.getCenterButtonUIImage(), for: .normal)
         connectionStateLabel.textColor = state.getUIColor()
@@ -324,5 +328,11 @@ extension MainScreenView {
         getFreeLabel.isHidden = isHidden
         getFreeAnimation.isHidden = isHidden
     }
-
+    
+    public func reloadLocalization() {
+        guard let state = connectionState else { return }
+        connectionStateLabel.text = state.getText()
+        setPrivacyText()
+        goProButton.reloadLocalization()
+    }
 }

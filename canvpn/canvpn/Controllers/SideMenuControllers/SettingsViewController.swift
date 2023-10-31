@@ -126,6 +126,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         KeyValueStorage.languageCode = languageCode
         Constants.langCode = languageCode
         fetchSettings(languageCode: languageCode)
+        reloadLocalization()
     }
     
     private func isLoading(show: Bool) {
@@ -175,4 +176,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+}
+
+extension SettingsViewController {
+    private func reloadLocalization() {
+        mainLabel.text = "language_settings_key".localize()
+    }
 }

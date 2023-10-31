@@ -107,6 +107,8 @@ class GoProButton: UIView {
         }
     }
     
+    private var isPremiumState: Bool?
+    
     private func setAsPremium() {
         rightArrowBackView.isHidden = true
         titleLabel.text = "upgraded_to_pro".localize()
@@ -140,6 +142,13 @@ class GoProButton: UIView {
 // MARK: - public methods
 extension GoProButton {
     public func setState(isPremium: Bool) {
+        isPremiumState = isPremium
         isPremium ? setAsPremium() : setAsStandard()
+    }
+    
+    public func reloadLocalization() {
+        guard let isPremium = isPremiumState else { return }
+        titleLabel.text = isPremium ? "upgraded_to_pro".localize() : "upgrade_pro".localize()
+        detailLabel.text = isPremium ? "upgraded_to_pro_detail".localize() : "upgrade_pro_detail".localize()
     }
 }
