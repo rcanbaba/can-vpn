@@ -14,6 +14,12 @@ protocol LocationViewControllerDelegate: AnyObject {
 
 class LocationViewController: UIViewController {
     
+    struct Section {
+        var name: String
+        var items: [Server]
+        var isExpanded: Bool
+    }
+    
     weak var delegate: LocationViewControllerDelegate?
     
     private lazy var locationTableView: UITableView = {
@@ -42,12 +48,21 @@ class LocationViewController: UIViewController {
         return imageView
     }()
     
-    private var serverList: [Server] = []
+    private var serverData: [Section] = []
+   // private var serverList: [Server] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Analytics.logEvent("201-PresentLocationScreen", parameters: ["type" : "didload"])
-        serverList = SettingsManager.shared.settings?.servers ?? []
+        let serverList = SettingsManager.shared.settings?.servers ?? []
+        
+        serverData = [
+            Section(name: "Premium", items: serverList, isExpanded: false),
+            Section(name: "Free", items: serverList, isExpanded: false),
+            Section(name: "Streaming", items: serverList, isExpanded: false),
+            Section(name: "Gaming", items: serverList, isExpanded: false),
+        ]
+        
         view.backgroundColor = UIColor.white
         configureUI()
         locationTableView.reloadData()
@@ -101,15 +116,31 @@ class LocationViewController: UIViewController {
 }
 
 extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return serverData.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return serverList.count
+        return serverData[section].isExpanded ? serverData[section].items.count : 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return serverData[section].name
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let button = UIButton(type: .system)
+        button.setTitle(serverData[section].name, for: .normal)
+        button.tag = section
+        button.addTarget(self, action: #selector(toggleSection(_:)), for: .touchUpInside)
+        return button
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
         cell.backgroundColor = UIColor.clear
         cell.contentView.backgroundColor = UIColor.clear
-        let cellData = serverList[indexPath.row]
+        let cellData = serverData[indexPath.section].items[indexPath.row]
         cell.set(country: cellData.location.city)
         cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
         cell.set(signalImage: SignalLevel(rawValue: cellData.ping)?.getSignalImage())
@@ -119,9 +150,8 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
-        let selectedServer = serverList[indexPath.row]
-        
+        let selectedServer = serverData[indexPath.section].items[indexPath.row]
+    
         if selectedServer.type.isPremium() && SettingsManager.shared.settings?.user.isSubscribed == false {
             presentSubscriptionPage()
             Toaster.showToast(message: "free_user_selected_premium_message".localize())
@@ -130,7 +160,26 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.popViewController(animated: true)
             delegate?.selectedServer(server: selectedServer)
         }
-
+    }
+    
+    @objc func toggleSection(_ sender: UIButton) {
+        let section = sender.tag
+        let numberOfRows = serverData[section].items.count
+        var indexPaths = [IndexPath]()
+        
+        for row in 0..<numberOfRows {
+            indexPaths.append(IndexPath(row: row, section: section))
+        }
+        
+        serverData[section].isExpanded.toggle()
+        
+        locationTableView.beginUpdates()
+        if serverData[section].isExpanded {
+            locationTableView.insertRows(at: indexPaths, with: .fade)
+        } else {
+            locationTableView.deleteRows(at: indexPaths, with: .fade)
+        }
+        locationTableView.endUpdates()
     }
     
 }
