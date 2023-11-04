@@ -63,6 +63,12 @@ class SecurityCheckViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.animationView.stop()
+        self.animationView.isHidden = true
+    }
+    
     private func checkIsSecure() {
         let tunnelManager = NETunnelManager()
         tunnelManager.delegate = self

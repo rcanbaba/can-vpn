@@ -133,7 +133,7 @@ struct TurkishDictionary {
 
         "loc_header_premium": "Premium",
         "loc_header_free": "Ücretsiz",
-        "loc_header_stream": "Akış",
+        "loc_header_stream": "Yayın",
         "loc_header_game": "Oyun"
     ]
 }

@@ -111,6 +111,7 @@ struct Server: Codable {
     let url: String
     let location: Location
     let ping: Int
+    let categories: [Int]
 }
 
 // MARK: - Location

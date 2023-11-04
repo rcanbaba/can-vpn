@@ -49,7 +49,6 @@ class LocationViewController: UIViewController {
     }()
     
     private var serverData: [Section] = []
-   // private var serverList: [Server] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +57,13 @@ class LocationViewController: UIViewController {
         
         let premiumServers = serverList.filter { $0.type.isPremium()}
         let freeServers = serverList.filter { !$0.type.isPremium()}
-        
-        
+        let gamingServers = serverList.filter { $0.categories.contains(3)}
+        let streamingServers = serverList.filter { $0.categories.contains(4)}
         serverData = [
             Section(name: "loc_header_premium".localize(), items: premiumServers, isExpanded: true),
             Section(name: "loc_header_free".localize(), items: freeServers, isExpanded: true),
-            Section(name: "loc_header_stream".localize(), items: serverList, isExpanded: false),
-            Section(name: "loc_header_game".localize(), items: serverList, isExpanded: false),
+            Section(name: "loc_header_game".localize(), items: gamingServers, isExpanded: false),
+            Section(name: "loc_header_stream".localize(), items: streamingServers, isExpanded: false),
         ]
         
         view.backgroundColor = UIColor.white
@@ -134,17 +133,16 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
+        headerView.backgroundColor = UIColor.white
         headerView.tag = section
         
-        // Set up the title label
         let titleLabel = UILabel()
         titleLabel.text = serverData[section].name
         titleLabel.textColor = UIColor.Custom.dark
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         headerView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(headerView).offset(16)  // 16 point left padding
+            make.leading.equalTo(headerView).offset(16)
             make.centerY.equalTo(headerView)
         }
         
@@ -155,10 +153,10 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
         }
         headerView.addSubview(arrowImageView)
         arrowImageView.snp.makeConstraints { make in
-            make.trailing.equalTo(headerView).offset(-16)  // 16 point right padding
+            make.trailing.equalTo(headerView).offset(-16)
             make.centerY.equalTo(headerView)
-            make.width.equalTo(24)   // 24 point width
-            make.height.equalTo(24)   // 24 point height
+            make.width.equalTo(24)
+            make.height.equalTo(24)
         }
         
         // Add tap gesture to the headerView

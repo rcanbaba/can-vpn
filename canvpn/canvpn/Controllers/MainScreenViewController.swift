@@ -290,7 +290,7 @@ extension MainScreenViewController {
                 
                 guard let manager = self.tunnelManager else { return }
                 manager.connectToWg(config: response)
-                self.getIPAddress()
+               // self.getIPAddress()
                 
             case .failure(_):
                 self.setMainUI(state: .disconnected)
@@ -462,6 +462,7 @@ extension MainScreenViewController: NETunnelManagerDelegate {
     func stateChanged(state: NEVPNStatus) {
         setState(state: state)
         state == .connected ? handleAlreadyConnectedIfPossible() : ()
+        state == .connected ? getIPAddress() : ()
     }
 }
 
