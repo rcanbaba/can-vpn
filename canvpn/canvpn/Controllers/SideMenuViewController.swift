@@ -50,7 +50,7 @@ class SideMenuViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
         
         view.addSubview(menuTableView)
         menuTableView.snp.makeConstraints { (make) in
