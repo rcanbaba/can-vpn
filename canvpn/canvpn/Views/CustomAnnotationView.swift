@@ -30,7 +30,8 @@ class CustomAnnotationView: MKAnnotationView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.systemFont(ofSize: 14)
-        titleLabel.shadowOffset = CGSize(width: 1, height: 1)
+        titleLabel.shadowOffset = CGSize(width: 2, height: 2)
+        titleLabel.shadowColor = .black
         titleLabel.textColor = .white
         addSubview(titleLabel)
 
@@ -45,7 +46,6 @@ class CustomAnnotationView: MKAnnotationView {
         pinImageView.translatesAutoresizingMaskIntoConstraints = false
         pinImageView.contentMode = .scaleAspectFit
         pinImageView.image = UIImage(systemName: "mappin.and.ellipse")?.withTintColor(UIColor.Custom.orange.withAlphaComponent(0.6), renderingMode: .alwaysOriginal)
-        pinImageView.layer.shadowOffset = CGSize(width: 1, height: 1)
         addSubview(pinImageView)
 
         NSLayoutConstraint.activate([
@@ -89,5 +89,19 @@ class CustomAnnotationView: MKAnnotationView {
         // Center the subviews horizontally
         pinImageView.center.x = self.frame.size.width / 2
         titleLabel.center.x = self.frame.size.width / 2
+    }
+}
+
+
+class CustomAnnotation: NSObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D
+    var title: String?
+    var isPremium: Bool
+
+    init(name: String, coordinate: CLLocationCoordinate2D, isPremium: Bool) {
+        self.title = name
+        self.coordinate = coordinate
+        self.isPremium = isPremium
+        super.init()
     }
 }

@@ -208,27 +208,23 @@ extension HomeViewController {
         homeView.mapView.camera = camera
         homeView.mapView.mapType = .satellite
     }
+    
+    private func setMapRegionToSelectedLocation(server: Server) {
+        let coordinate = CLLocationCoordinate2D(latitude: server.location.latitude, longitude: server.location.longitude)
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 50000, longitudinalMeters: 50000)
+        homeView.mapView.setRegion(region, animated: true)
+    }
 }
 
 //MARK: - MKMapViewDelegate
 extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let annotation = view.annotation {
-            // Connect to VPN server corresponding to the annotation
-            
-            // Focus map on selected annotation
-            let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
-            mapView.setRegion(region, animated: true)
-            
-//            if let title = annotation.title, let index = vpnLocations.firstIndex(where: { $0.name == title }) {
-//                pickerView.selectRow(index, inComponent: 0, animated: true)
-//                let selectedLocation = vpnLocations[index]
-//                connectToVPNServer(selectedLocation)
-//            }
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { // Adjust time as needed
-//                self.zoomOutMap()
-//            }
+            if let title = annotation.title, let index = serverList.firstIndex(where: { $0.location.city == title }) {
+                homeView.pickerView.selectRow(index, inComponent: 0, animated: true)
+                setMapRegionToSelectedLocation(server: serverList[index])
+                selectedServer = serverList[index]
+            }
         }
     }
     
@@ -258,17 +254,9 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedServer = serverList[row]
-
-        // Create a coordinate from the selected location
-        let coordinate = CLLocationCoordinate2D(latitude: selectedServer.location.latitude, longitude: selectedServer.location.longitude)
-
-        // Define the region to display on the map (adjust latitudinalMeters and longitudinalMeters as needed)
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 50000, longitudinalMeters: 50000)
-
-        // Set the map view to the new region
-        homeView.mapView.setRegion(region, animated: true)
-
+        let selected = serverList[row]
+        selectedServer = selected
+        setMapRegionToSelectedLocation(server: selected)
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -318,20 +306,6 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return customView!
     }
     
-}
-
-
-class CustomAnnotation: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
-    var title: String?
-    var isPremium: Bool
-
-    init(name: String, coordinate: CLLocationCoordinate2D, isPremium: Bool) {
-        self.title = name
-        self.coordinate = coordinate
-        self.isPremium = isPremium
-        super.init()
-    }
 }
 
 //MARK: - App Tracking Transparency
