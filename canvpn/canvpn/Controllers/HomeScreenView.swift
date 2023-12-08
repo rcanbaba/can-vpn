@@ -28,11 +28,12 @@ class HomeScreenView: UIView {
         return imageView
     }()
     
-    private lazy var connectionStateLabel: UILabel = {
+    private lazy var stateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor.orange
+        label.textColor = UIColor.black
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
     
@@ -146,16 +147,16 @@ class HomeScreenView: UIView {
             make.trailing.equalTo(centerButton.snp.leading).inset(-12)
         }
         
-       // addSubview(connectionStateLabel)
-//        connectionStateLabel.snp.makeConstraints { (make) in
-//            make.bottom.equalTo(goProButton.snp.top).inset(-12)
-//            make.centerX.equalToSuperview()
-//            make.width.equalToSuperview().inset(40)
-//        }
-        
         bottomView.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(280)
+        }
+        
+        bottomView.addSubview(stateLabel)
+        stateLabel.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.top.equalToSuperview().inset(12)
+            make.bottom.equalTo(pickerView.snp.top).inset(-12)
         }
         
     }
@@ -241,30 +242,8 @@ class HomeScreenView: UIView {
         delegate?.getFreeTapped()
     }
     
-    private var connectionState: ConnectionState?
-    
-}
-
-extension HomeScreenView {
-    public func setUserInteraction(state: ConnectionState) {
-        self.isUserInteractionEnabled = state.getUserInteraction()
-    }
-    public func setStateLabel(state: ConnectionState) {
-        connectionState = state
-        connectionStateLabel.text = state.getText()
-    }
-    public func setState(state: ConnectionState) {
-        connectionState = state
-        centerButton.setImage(state.getCenterButtonUIImage(), for: .normal)
-        connectionStateLabel.textColor = state.getUIColor()
-        connectionStateLabel.text = state.getText()
-        isUserInteractionEnabled = state.getUserInteraction()
-        topLogoImageView.image = state.getTopLogoImage()
+    public func setStateLabel(text: String) {
+        stateLabel.text = text
     }
     
-    public func reloadLocalization() {
-        guard let state = connectionState else { return }
-        connectionStateLabel.text = state.getText()
-        setPrivacyText()
-    }
 }

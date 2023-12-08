@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
         addVPNServerAnnotations()
         configureUI()
         setup3DMapView()
+        homeView.setStateLabel(text: "Select a location from map or picker then connect")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -213,6 +214,8 @@ extension HomeViewController {
         let coordinate = CLLocationCoordinate2D(latitude: server.location.latitude, longitude: server.location.longitude)
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 50000, longitudinalMeters: 50000)
         homeView.mapView.setRegion(region, animated: true)
+        
+        homeView.setStateLabel(text: "Connect to: \(server.location.city) \n Premium server, \n IP: 212.8.23.23")
     }
 }
 
@@ -305,7 +308,6 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         return customView!
     }
-    
 }
 
 //MARK: - App Tracking Transparency
