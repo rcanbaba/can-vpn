@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
         addVPNServerAnnotations()
         configureUI()
         setup3DMapView()
+        setNavigationBar()
         homeView.setStateLabel(text: "Select a location from map or picker then connect")
     }
     
@@ -46,12 +47,10 @@ class HomeViewController: UIViewController {
     }
     
     private func setNavigationBar() {
-        UIApplication.shared.statusBarStyle = .darkContent
-        navigationController?.navigationBar.tintColor = UIColor.black
+        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = .clear
     }
 
     private func configureUI() {
