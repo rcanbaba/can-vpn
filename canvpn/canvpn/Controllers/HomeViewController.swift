@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         configureUI()
         setup3DMapView()
         setNavigationBar()
-        homeView.setStateLabel(text: "Select a location from map or picker then connect")
+        checkSubscriptionState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +61,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setDelegates() {
+        homeView.delegate = self
         homeView.pickerView.delegate = self
         homeView.pickerView.dataSource = self
         homeView.mapView.delegate = self
@@ -80,11 +81,22 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func willEnterForegroundNotification(_ sender: Notification) {
-
+        // TODO: restore vpn manager state
     }
     
     @objc private func subscriptionStateUpdated (_ notification: Notification) {
-       
+        checkSubscriptionState()
+    }
+    
+    private func checkSubscriptionState() {
+        let isPremium = SettingsManager.shared.settings?.user.isSubscribed ?? false
+        homeView.goProButton.isHidden = isPremium
+    }
+    
+    private func presentSubscriptionPage() {
+        let subscriptionViewController = SubscriptionViewController()
+        subscriptionViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(subscriptionViewController, animated: true)
     }
 }
 
@@ -182,6 +194,17 @@ extension HomeViewController {
     
 }
 
+//MARK: - HomeScreenViewDelegate
+extension HomeViewController: HomeScreenViewDelegate {
+    func changeStateTapped() {
+        print("STATE CHANGE")
+    }
+    
+    func goProButtonTapped() {
+        presentSubscriptionPage()
+    }
+}
+
 //MARK: - Map Methods
 extension HomeViewController {
     private func addVPNServerAnnotations() {
@@ -213,7 +236,7 @@ extension HomeViewController {
         let coordinate = CLLocationCoordinate2D(latitude: server.location.latitude, longitude: server.location.longitude)
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 50000, longitudinalMeters: 50000)
         homeView.mapView.setRegion(region, animated: true)
-        
+        // TODO: connectto selected server
         homeView.setStateLabel(text: "Connect to: \(server.location.city) \n Premium server, \n IP: 212.8.23.23")
     }
 }

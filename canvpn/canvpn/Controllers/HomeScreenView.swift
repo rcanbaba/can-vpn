@@ -12,14 +12,12 @@ import MapKit
 
 protocol HomeScreenViewDelegate: AnyObject {
     func changeStateTapped()
-    func locationButtonTapped()
     func goProButtonTapped()
-    func getFreeTapped()
 }
 
 class HomeScreenView: UIView {
     
-    public weak var delegate: MainScreenViewDelegate?
+    public weak var delegate: HomeScreenViewDelegate?
     
     private lazy var topLogoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -30,15 +28,32 @@ class HomeScreenView: UIView {
     
     private lazy var stateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = UIColor.black
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         return label
     }()
     
+    private lazy var ipLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.black
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    private lazy var labelStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [stateLabel, ipLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 6
+        return stackView
+    }()
+    
     private lazy var centerButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(connectButtonTapped(_:)), for: .touchUpInside)
         button.layer.cornerRadius = 85
         button.setImage(UIImage(named: "power-orange-button")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -59,7 +74,7 @@ class HomeScreenView: UIView {
     
     public lazy var goProButton: GoProTopButton = {
         let button = GoProTopButton()
-        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goProButtonTapped(_:))))
+        button.addTarget(self, action: #selector(goProButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -149,11 +164,11 @@ class HomeScreenView: UIView {
         
         bottomView.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(280)
+            make.height.equalTo(240)
         }
         
-        bottomView.addSubview(stateLabel)
-        stateLabel.snp.makeConstraints { (make) in
+        bottomView.addSubview(labelStackView)
+        labelStackView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview().inset(24)
             make.top.equalToSuperview().inset(12)
             make.bottom.equalTo(pickerView.snp.top).inset(-12)
@@ -229,21 +244,18 @@ class HomeScreenView: UIView {
     @objc private func connectButtonTapped(_ sender: UIButton) {
         delegate?.changeStateTapped()
     }
-    
-    @objc private func locationButtonTapped (_ sender: UIControl) {
-        delegate?.locationButtonTapped()
-    }
-    
+
     @objc private func goProButtonTapped (_ sender: UIControl) {
         delegate?.goProButtonTapped()
     }
-    
-    @objc private func getFreeTapped (_ sender: UIControl) {
-        delegate?.getFreeTapped()
+
+    public func setStateLabel(text: String) {
+        stateLabel.text = "Disconnected"
+        setIpLabel(text: "asd")
     }
     
-    public func setStateLabel(text: String) {
-        stateLabel.text = text
+    public func setIpLabel(text: String) {
+        ipLabel.text = "IP: 121.323.2.12"
     }
     
 }
