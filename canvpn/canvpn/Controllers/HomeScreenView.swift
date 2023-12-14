@@ -28,7 +28,7 @@ class HomeScreenView: UIView {
     
     private lazy var stateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = UIColor.black
         label.textAlignment = .center
         label.numberOfLines = 1
@@ -41,6 +41,7 @@ class HomeScreenView: UIView {
         label.textColor = UIColor.black
         label.textAlignment = .center
         label.numberOfLines = 1
+        label.text = "IP: "
         return label
     }()
     
@@ -164,7 +165,6 @@ class HomeScreenView: UIView {
         
         bottomView.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(240)
         }
         
         bottomView.addSubview(labelStackView)
@@ -248,14 +248,21 @@ class HomeScreenView: UIView {
     @objc private func goProButtonTapped (_ sender: UIControl) {
         delegate?.goProButtonTapped()
     }
+}
 
-    public func setStateLabel(text: String) {
-        stateLabel.text = "Disconnected"
-        setIpLabel(text: "asd")
+// MARK: Public methods
+extension HomeScreenView {
+    public func setState(state: ConnectionState) {
+        centerButton.setImage(state.getCenterButtonUIImage(), for: .normal)
+        stateLabel.textColor = state.getUIColor()
+        stateLabel.text = state.getText()
+        isUserInteractionEnabled = state.getUserInteraction()
+        mapView.isUserInteractionEnabled = state.getUserInteraction()
+        pickerView.isUserInteractionEnabled = state.getUserInteraction()
+        topLogoImageView.image = state.getTopLogoImage()
     }
     
     public func setIpLabel(text: String) {
-        ipLabel.text = "IP: 121.323.2.12"
+        ipLabel.text = "IP: " + text
     }
-    
 }

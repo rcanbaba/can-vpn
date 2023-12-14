@@ -19,14 +19,17 @@ class HomeViewController: UIViewController {
     private var isSideMenuOpen = false
     private var menuButton: UIButton?
     private let serverList = SettingsManager.shared.settings?.servers ?? []
+    
     private var selectedServer: Server?
+    private var selectedServerConfig: Configuration?
     
     private var networkService: DefaultNetworkService?
+    private var tunnelManager: NETunnelManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
-        
+        tunnelManager = NETunnelManager()
         Analytics.logEvent("001-HomeVCPresented", parameters: ["type" : "didload"])
 
         setDelegates()
@@ -34,7 +37,7 @@ class HomeViewController: UIViewController {
         configureUI()
         setup3DMapView()
         setNavigationBar()
-        checkSubscriptionState()
+        setSubscriptionState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +64,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setDelegates() {
+        tunnelManager?.delegate = self
         homeView.delegate = self
         homeView.pickerView.delegate = self
         homeView.pickerView.dataSource = self
@@ -85,10 +89,10 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func subscriptionStateUpdated (_ notification: Notification) {
-        checkSubscriptionState()
+        setSubscriptionState()
     }
     
-    private func checkSubscriptionState() {
+    private func setSubscriptionState() {
         let isPremium = SettingsManager.shared.settings?.user.isSubscribed ?? false
         homeView.goProButton.isHidden = isPremium
     }
@@ -97,6 +101,56 @@ class HomeViewController: UIViewController {
         let subscriptionViewController = SubscriptionViewController()
         subscriptionViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(subscriptionViewController, animated: true)
+    }
+    
+    private func checkPremiumSelectionPossible(server: Server) -> Bool {
+        if server.type.isPremium() && SettingsManager.shared.settings?.user.isSubscribed == false {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    private func changeState() {
+        guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
+            Toaster.showToast(message: "error_try_again".localize())
+            Analytics.logEvent("097-ChangeState", parameters: ["error" : "guard"])
+            return
+        }
+        if currentManagerState == .disconnected {
+            // TO CONNECT
+            if let selectedServer = selectedServer {
+                if checkPremiumSelectionPossible(server: selectedServer) {
+                    setMainUI(state: .connecting)
+                    getCredential(serverId: selectedServer.id)
+                } else {
+                    Toaster.showToast(message: "free_user_selected_premium_message".localize())
+                    presentSubscriptionPage()
+                }
+            } else {
+                Toaster.showToast(message: "error_occur_location".localize())
+                Analytics.logEvent("098-ChangeState", parameters: ["error" : "selectedServer nil"])
+            }
+        } else if currentManagerState == .connected {
+            manager.disconnectFromWg()
+        } else {
+            Toaster.showToast(message: "error_try_again".localize())
+            Analytics.logEvent("099-ChangeState", parameters: ["error" : "connectedElse"])
+        }
+    }
+    
+    
+    
+    private func setMainUI(state: ConnectionState) {
+        DispatchQueue.main.async {
+            self.homeView.setState(state: state)
+        }
+    }
+    
+    private func setMainUI(ipText: String) {
+        DispatchQueue.main.async {
+            self.homeView.setIpLabel(text: ipText)
+        }
     }
 }
 
@@ -155,14 +209,14 @@ extension HomeViewController {
             switch result {
             case .success(let response):
                 self.printDebug("getCredential success")
-                // TODO: bura bak
-              //  self.selectedServerConfig = response
+                self.selectedServerConfig = response
                 
-          //      guard let manager = self.tunnelManager else { return }
-           //o     manager.connectToWg(config: response)
+                guard let manager = self.tunnelManager else { return }
+                manager.connectToWg(config: response)
+                self.getIPAddress()
                 
             case .failure(_):
-             
+                self.setMainUI(state: .disconnected)
                 self.printDebug("getCredential failure")
                 Toaster.showToast(message: "error_location_again".localize())
                 Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : "happened"])
@@ -181,9 +235,7 @@ extension HomeViewController {
                 switch result {
                 case .success(let response):
                     self.printDebug("getIPAddressRequest success \(response.ipAddress)")
-                    DispatchQueue.main.async {
-                      //  self.homeView.setLocationIP(text: response.ipAddress)
-                    }
+                    self.setMainUI(ipText: response.ipAddress)
                 case .failure(_):
                     self.printDebug("getIPAddressRequest failure")
                     Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
@@ -197,11 +249,20 @@ extension HomeViewController {
 //MARK: - HomeScreenViewDelegate
 extension HomeViewController: HomeScreenViewDelegate {
     func changeStateTapped() {
-        print("STATE CHANGE")
+        changeState()
     }
     
     func goProButtonTapped() {
         presentSubscriptionPage()
+    }
+}
+
+// MARK: - NETunnelManagerDelegate
+extension HomeViewController: NETunnelManagerDelegate {
+    func stateChanged(state: NEVPNStatus) {
+        setMainUI(state: state.getConnectionState())
+//        state == .connected ? handleAlreadyConnectedIfPossible() : ()
+//        state == .connected ? getIPAddress() : ()
     }
 }
 
@@ -236,8 +297,8 @@ extension HomeViewController {
         let coordinate = CLLocationCoordinate2D(latitude: server.location.latitude, longitude: server.location.longitude)
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 50000, longitudinalMeters: 50000)
         homeView.mapView.setRegion(region, animated: true)
-        // TODO: connectto selected server
-        homeView.setStateLabel(text: "Connect to: \(server.location.city) \n Premium server, \n IP: 212.8.23.23")
+        // TODO: selected olan bir şeklinde belirt
+        homeView.setIpLabel(text: server.location.city)
     }
 }
 
@@ -247,8 +308,8 @@ extension HomeViewController: MKMapViewDelegate {
         if let annotation = view.annotation {
             if let title = annotation.title, let index = serverList.firstIndex(where: { $0.location.city == title }) {
                 homeView.pickerView.selectRow(index, inComponent: 0, animated: true)
-                setMapRegionToSelectedLocation(server: serverList[index])
                 selectedServer = serverList[index]
+                setMapRegionToSelectedLocation(server: serverList[index])
             }
         }
     }
