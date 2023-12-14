@@ -111,6 +111,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func freeUserTryToConnectPremium() {
+        Toaster.showToast(message: "free_user_selected_premium_message".localize())
+        homeView.shakeGoProButton()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak self] in
+            self?.presentSubscriptionPage()
+        }
+    }
+    
     private func changeState() {
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "error_try_again".localize())
@@ -124,8 +132,7 @@ class HomeViewController: UIViewController {
                     setMainUI(state: .connecting)
                     getCredential(serverId: selectedServer.id)
                 } else {
-                    Toaster.showToast(message: "free_user_selected_premium_message".localize())
-                    presentSubscriptionPage()
+                    freeUserTryToConnectPremium()
                 }
             } else {
                 Toaster.showToast(message: "error_occur_location".localize())

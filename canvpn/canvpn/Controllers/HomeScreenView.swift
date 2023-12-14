@@ -265,4 +265,15 @@ extension HomeScreenView {
     public func setIpLabel(text: String) {
         ipLabel.text = "IP: " + text
     }
+    
+    public func shakeGoProButton() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            let shake = CAKeyframeAnimation(keyPath: "transform.translation.x")
+            shake.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
+            shake.values = [8, -8, 4, -4, 2, -2, 0]
+            shake.duration = 0.6
+            shake.repeatCount = 1
+            self?.goProButton.layer.add(shake, forKey: "shake")
+        }
+    }
 }

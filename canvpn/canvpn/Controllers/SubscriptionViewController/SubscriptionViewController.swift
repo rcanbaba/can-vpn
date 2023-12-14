@@ -76,7 +76,7 @@ class SubscriptionViewController: UIViewController {
         let historyImage = UIImage(systemName: "clock.arrow.circlepath", withConfiguration: configuration)?.withTintColor(UIColor.Custom.goPreButtonGold, renderingMode: .alwaysOriginal)
         historyButton.setImage(historyImage, for: .normal)
         historyButton.addTarget(self, action: #selector(presentSubscriptionHistory), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: historyButton)
+      //  navigationItem.rightBarButtonItem = UIBarButtonItem(customView: historyButton)
         
         let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
