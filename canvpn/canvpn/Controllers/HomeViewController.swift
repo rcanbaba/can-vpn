@@ -15,9 +15,8 @@ class HomeViewController: UIViewController {
     private lazy var homeView = HomeScreenView()
 
     private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
-    private var sideMenu: SideMenuViewController!
+    private var sideMenu: SideMenuViewController?
     private var isSideMenuOpen = false
-  //  private var menuButton: UIButton?
     private var serverList: [Server] = []
     
     private var selectedServer: Server?
@@ -33,6 +32,7 @@ class HomeViewController: UIViewController {
         tunnelManager = NETunnelManager()
         setInitialServerData()
         setDelegates()
+        observeNotifications()
         addVPNServerAnnotations()
         configureUI()
         setup3DMapView()
@@ -88,6 +88,11 @@ class HomeViewController: UIViewController {
                                                name: .subscriptionStateUpdated,
                                                object: nil)
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateLanguage),
+                                               name: NSNotification.Name.languageChanged,
+                                               object: nil)
+        
     }
     
     @objc private func willEnterForegroundNotification(_ sender: Notification) {
@@ -96,6 +101,12 @@ class HomeViewController: UIViewController {
     
     @objc private func subscriptionStateUpdated (_ notification: Notification) {
         setSubscriptionState()
+    }
+    
+    @objc func updateLanguage() {
+        DispatchQueue.main.async {
+            self.homeView.reloadLocalization()
+        }
     }
     
     private func setSubscriptionState() {
@@ -204,52 +215,25 @@ extension HomeViewController {
 
 // MARK: - Side Menu
 extension HomeViewController {
-//    private func setSideMenuUI() {
-//        menuButton = UIButton(type: .system)
-//
-//        let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium) // Adjust the pointSize and weight as needed
-//        let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
-//        menuButton!.setImage(menuImage, for: .normal)
-//        menuButton!.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton!)
-//
-//        sideMenu = SideMenuViewController()
-//        addChild(sideMenu)
-//        view.addSubview(sideMenu.view)
-//        sideMenu.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
-//        sideMenu.didMove(toParent: self)
-//
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
-//        tapGesture.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tapGesture)
-//    }
-    
     private func setupMenuButton() {
-        view.addSubview(menuButton)
-        menuButton.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().inset(40)
-            make.top.equalToSuperview().inset(140)
-        }
+        sideMenu = SideMenuViewController()
+        addChild(sideMenu!)
+        view.addSubview(sideMenu!.view)
+        sideMenu!.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
+        sideMenu!.didMove(toParent: self)
         
-                sideMenu = SideMenuViewController()
-                addChild(sideMenu)
-                view.addSubview(sideMenu.view)
-                sideMenu.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
-                sideMenu.didMove(toParent: self)
-        
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
-                tapGesture.cancelsTouchesInView = false
-                view.addGestureRecognizer(tapGesture)
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     @objc func toggleSideMenu() {
         isSideMenuOpen.toggle()
         UIView.animate(withDuration: 0.3) {
             if self.isSideMenuOpen {
-                self.sideMenu.view.frame.origin.x = 0
+                self.sideMenu!.view.frame.origin.x = 0
             } else {
-                self.sideMenu.view.frame.origin.x = -self.sideMenuWidth
+                self.sideMenu!.view.frame.origin.x = -self.sideMenuWidth
             }
         }
     }
@@ -318,20 +302,18 @@ extension HomeViewController: HomeScreenViewDelegate {
     func changeStateTapped() {
         changeState()
     }
-    
     func goProButtonTapped() {
         presentSubscriptionPage()
     }
-    
-    
+    func sideMenuButtonTapped() {
+        toggleSideMenu()
+    }
 }
 
 // MARK: - NETunnelManagerDelegate
 extension HomeViewController: NETunnelManagerDelegate {
     func stateChanged(state: NEVPNStatus) {
         setMainUI(state: state.getConnectionState())
-//        state == .connected ? handleAlreadyConnectedIfPossible() : ()
-//        state == .connected ? getIPAddress() : ()
     }
 }
 
@@ -345,17 +327,11 @@ extension HomeViewController {
         }
     }
     
-    private func zoomOutMap() {
-        let worldSpan = MKCoordinateSpan(latitudeDelta: 120, longitudeDelta: 120)
-        let worldRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), span: worldSpan)
-        homeView.mapView.setRegion(worldRegion, animated: true)
-    }
-    
     private func setup3DMapView() {
         let camera = MKMapCamera()
-        camera.centerCoordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0) // Focus on the center of the map
+        camera.centerCoordinate = CLLocationCoordinate2D(latitude: 45, longitude: 12) // Focus on the center of the map
         camera.pitch = 45.0 // Tilt angle in degrees
-        camera.altitude = 60000000 // Altitude in meters
+        camera.altitude = 7000000 // Altitude in meters
         camera.heading = 0 // Camera heading in degrees; north is 0
         
         homeView.mapView.camera = camera
@@ -364,7 +340,7 @@ extension HomeViewController {
     
     private func setMapRegionToSelectedLocation(server: Server) {
         let coordinate = CLLocationCoordinate2D(latitude: server.location.latitude, longitude: server.location.longitude)
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 50000, longitudinalMeters: 50000)
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 300000, longitudinalMeters: 300000)
         homeView.mapView.setRegion(region, animated: true)
     }
 }

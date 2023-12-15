@@ -61,6 +61,9 @@ class SecurityCheckViewController: UIViewController {
                 self?.checkIsSecure()
             }
         }
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
     }
     
     override func viewWillDisappear(_ animated: Bool) {

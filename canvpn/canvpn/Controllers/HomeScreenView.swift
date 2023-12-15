@@ -20,6 +20,8 @@ class HomeScreenView: UIView {
     
     public weak var delegate: HomeScreenViewDelegate?
     
+    private var connectionState: ConnectionState?
+    
     private lazy var topLogoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "top-logo-orange")
@@ -84,7 +86,11 @@ class HomeScreenView: UIView {
         let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
         let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
         button.setImage(menuImage, for: .normal)
-        button.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sideMenuButtonTapped(_:)), for: .touchUpInside)
+        
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 12
+        button.layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
         return button
     }()
     
@@ -138,8 +144,15 @@ class HomeScreenView: UIView {
         
         addSubview(goProButton)
         goProButton.snp.makeConstraints { (make) in
-            make.size.equalTo(60)
+            make.size.equalTo(50)
             make.trailing.equalToSuperview().inset(24)
+            make.centerY.equalTo(topLogoImageView.snp.centerY)
+        }
+        
+        addSubview(menuButton)
+        menuButton.snp.makeConstraints { (make) in
+            make.size.equalTo(50)
+            make.leading.equalToSuperview().inset(24)
             make.centerY.equalTo(topLogoImageView.snp.centerY)
         }
         
@@ -249,6 +262,13 @@ class HomeScreenView: UIView {
         privacyTextView.attributedText = attributedString
     }
     
+    private func changeMenuImageColor(to newColor: UIColor) {
+        if let currentImage = menuButton.currentImage {
+            let tintedImage = currentImage.withTintColor(newColor, renderingMode: .alwaysOriginal)
+            menuButton.setImage(tintedImage, for: .normal)
+        }
+    }
+    
     // MARK: Actions
     @objc private func connectButtonTapped(_ sender: UIButton) {
         delegate?.changeStateTapped()
@@ -266,6 +286,7 @@ class HomeScreenView: UIView {
 // MARK: Public methods
 extension HomeScreenView {
     public func setState(state: ConnectionState) {
+        connectionState = state
         centerButton.setImage(state.getCenterButtonUIImage(), for: .normal)
         stateLabel.textColor = state.getUIColor()
         stateLabel.text = state.getText()
@@ -273,6 +294,7 @@ extension HomeScreenView {
         mapView.isUserInteractionEnabled = state.getUserInteraction()
         pickerView.isUserInteractionEnabled = state.getUserInteraction()
         topLogoImageView.image = state.getTopLogoImage()
+        changeMenuImageColor(to: state.getUIColor())
     }
     
     public func setIpLabel(text: String) {
@@ -288,5 +310,11 @@ extension HomeScreenView {
             shake.repeatCount = 1
             self?.goProButton.layer.add(shake, forKey: "shake")
         }
+    }
+    
+    public func reloadLocalization() {
+        guard let state = connectionState else { return }
+        stateLabel.text = state.getText()
+        setPrivacyText()
     }
 }
