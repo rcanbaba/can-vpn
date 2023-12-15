@@ -17,8 +17,8 @@ class HomeViewController: UIViewController {
     private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
     private var sideMenu: SideMenuViewController!
     private var isSideMenuOpen = false
-    private var menuButton: UIButton?
-    private let serverList = SettingsManager.shared.settings?.servers ?? []
+  //  private var menuButton: UIButton?
+    private var serverList: [Server] = []
     
     private var selectedServer: Server?
     private var selectedServerConfig: Configuration?
@@ -28,16 +28,22 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Analytics.logEvent("001-HomeVCPresented", parameters: ["type" : "didload"])
         networkService = DefaultNetworkService()
         tunnelManager = NETunnelManager()
-        Analytics.logEvent("001-HomeVCPresented", parameters: ["type" : "didload"])
-
+        setInitialServerData()
         setDelegates()
         addVPNServerAnnotations()
         configureUI()
         setup3DMapView()
         setNavigationBar()
         setSubscriptionState()
+        setupMenuButton()
+    }
+    
+    private func setInitialServerData() {
+        serverList = (SettingsManager.shared.settings?.servers ?? []).reversed()
+        selectedServer = serverList.first
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,35 +125,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func changeState() {
-        guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
-            Toaster.showToast(message: "error_try_again".localize())
-            Analytics.logEvent("097-ChangeState", parameters: ["error" : "guard"])
-            return
-        }
-        if currentManagerState == .disconnected {
-            // TO CONNECT
-            if let selectedServer = selectedServer {
-                if checkPremiumSelectionPossible(server: selectedServer) {
-                    setMainUI(state: .connecting)
-                    getCredential(serverId: selectedServer.id)
-                } else {
-                    freeUserTryToConnectPremium()
-                }
-            } else {
-                Toaster.showToast(message: "error_occur_location".localize())
-                Analytics.logEvent("098-ChangeState", parameters: ["error" : "selectedServer nil"])
-            }
-        } else if currentManagerState == .connected {
-            manager.disconnectFromWg()
-        } else {
-            Toaster.showToast(message: "error_try_again".localize())
-            Analytics.logEvent("099-ChangeState", parameters: ["error" : "connectedElse"])
-        }
-    }
-    
-    
-    
     private func setMainUI(state: ConnectionState) {
         DispatchQueue.main.async {
             self.homeView.setState(state: state)
@@ -161,26 +138,109 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - Connection methods
+extension HomeViewController {
+    private func startConnection(forSelectedServer server: Server?) {
+        if let selectedServer = server {
+            if checkPremiumSelectionPossible(server: selectedServer) {
+                setMainUI(state: .connecting)
+                getCredential(serverId: selectedServer.id)
+            } else {
+                freeUserTryToConnectPremium()
+            }
+        } else {
+            Toaster.showToast(message: "error_occur_location".localize())
+        }
+    }
+    
+    private func startDisconnection(forManager manager: NETunnelManager) {
+        manager.disconnectFromWg()
+    }
+    
+    // Using Button
+    private func changeState() {
+        guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
+            Toaster.showToast(message: "error_try_again".localize())
+            return
+        }
+
+        switch currentManagerState {
+        case .disconnected:
+            startConnection(forSelectedServer: selectedServer)
+        case .connected:
+            startDisconnection(forManager: manager)
+        default:
+            Toaster.showToast(message: "error_try_again".localize())
+        }
+    }
+    
+    // Using Picker or Map
+    private func setSelectedServer(server: Server?) {
+        if server?.location.city == selectedServer?.location.city {
+            return
+        }
+        selectedServer = server
+        setMainUI(ipText: "")
+        
+        guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
+            Toaster.showToast(message: "error_try_again".localize())
+            return
+        }
+
+        switch currentManagerState {
+        case .disconnected:
+            startConnection(forSelectedServer: selectedServer)
+        case .connected:
+            startDisconnection(forManager: manager)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                self?.startConnection(forSelectedServer: self?.selectedServer)
+            }
+        default:
+            Toaster.showToast(message: "error_try_again".localize())
+        }
+    }
+    
+}
+
 // MARK: - Side Menu
 extension HomeViewController {
-    private func setSideMenuUI() {
-        menuButton = UIButton(type: .system)
+//    private func setSideMenuUI() {
+//        menuButton = UIButton(type: .system)
+//
+//        let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium) // Adjust the pointSize and weight as needed
+//        let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
+//        menuButton!.setImage(menuImage, for: .normal)
+//        menuButton!.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton!)
+//
+//        sideMenu = SideMenuViewController()
+//        addChild(sideMenu)
+//        view.addSubview(sideMenu.view)
+//        sideMenu.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
+//        sideMenu.didMove(toParent: self)
+//
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
+//        tapGesture.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tapGesture)
+//    }
+    
+    private func setupMenuButton() {
+        view.addSubview(menuButton)
+        menuButton.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().inset(40)
+            make.top.equalToSuperview().inset(140)
+        }
         
-        let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium) // Adjust the pointSize and weight as needed
-        let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
-        menuButton!.setImage(menuImage, for: .normal)
-        menuButton!.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton!)
+                sideMenu = SideMenuViewController()
+                addChild(sideMenu)
+                view.addSubview(sideMenu.view)
+                sideMenu.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
+                sideMenu.didMove(toParent: self)
         
-        sideMenu = SideMenuViewController()
-        addChild(sideMenu)
-        view.addSubview(sideMenu.view)
-        sideMenu.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
-        sideMenu.didMove(toParent: self)
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
+                tapGesture.cancelsTouchesInView = false
+                view.addGestureRecognizer(tapGesture)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
     }
     
     @objc func toggleSideMenu() {
@@ -262,6 +322,8 @@ extension HomeViewController: HomeScreenViewDelegate {
     func goProButtonTapped() {
         presentSubscriptionPage()
     }
+    
+    
 }
 
 // MARK: - NETunnelManagerDelegate
@@ -304,8 +366,6 @@ extension HomeViewController {
         let coordinate = CLLocationCoordinate2D(latitude: server.location.latitude, longitude: server.location.longitude)
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 50000, longitudinalMeters: 50000)
         homeView.mapView.setRegion(region, animated: true)
-        // TODO: selected olan bir şeklinde belirt
-        homeView.setIpLabel(text: server.location.city)
     }
 }
 
@@ -314,9 +374,10 @@ extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let annotation = view.annotation {
             if let title = annotation.title, let index = serverList.firstIndex(where: { $0.location.city == title }) {
+                let selectedItem = serverList[index]
                 homeView.pickerView.selectRow(index, inComponent: 0, animated: true)
-                selectedServer = serverList[index]
-                setMapRegionToSelectedLocation(server: serverList[index])
+                setMapRegionToSelectedLocation(server: selectedItem)
+                setSelectedServer(server: selectedItem)
             }
         }
     }
@@ -347,9 +408,9 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selected = serverList[row]
-        selectedServer = selected
-        setMapRegionToSelectedLocation(server: selected)
+        let selectedItem = serverList[row]
+        setMapRegionToSelectedLocation(server: selectedItem)
+        setSelectedServer(server: selectedItem)
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

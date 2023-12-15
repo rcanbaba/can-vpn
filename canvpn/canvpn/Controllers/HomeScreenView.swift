@@ -13,6 +13,7 @@ import MapKit
 protocol HomeScreenViewDelegate: AnyObject {
     func changeStateTapped()
     func goProButtonTapped()
+    func sideMenuButtonTapped()
 }
 
 class HomeScreenView: UIView {
@@ -41,7 +42,6 @@ class HomeScreenView: UIView {
         label.textColor = UIColor.black
         label.textAlignment = .center
         label.numberOfLines = 1
-        label.text = "IP: "
         return label
     }()
     
@@ -76,6 +76,15 @@ class HomeScreenView: UIView {
     public lazy var goProButton: GoProTopButton = {
         let button = GoProTopButton()
         button.addTarget(self, action: #selector(goProButtonTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    public lazy var menuButton: UIButton = {
+        let button = UIButton(type: .system)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+        let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
+        button.setImage(menuImage, for: .normal)
+        button.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
         return button
     }()
     
@@ -248,6 +257,10 @@ class HomeScreenView: UIView {
     @objc private func goProButtonTapped (_ sender: UIControl) {
         delegate?.goProButtonTapped()
     }
+    
+    @objc private func sideMenuButtonTapped (_ sender: UIControl) {
+        delegate?.sideMenuButtonTapped()
+    }
 }
 
 // MARK: Public methods
@@ -263,7 +276,7 @@ extension HomeScreenView {
     }
     
     public func setIpLabel(text: String) {
-        ipLabel.text = "IP: " + text
+        ipLabel.text = text
     }
     
     public func shakeGoProButton() {
