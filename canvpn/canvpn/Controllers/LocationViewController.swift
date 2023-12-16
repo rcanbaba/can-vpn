@@ -88,12 +88,15 @@ class LocationViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         navigationItem.titleView = headerView
-        UIApplication.shared.statusBarStyle = .darkContent
         navigationController?.navigationBar.tintColor = UIColor.black
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
     }
     
     private func configureUI() {
