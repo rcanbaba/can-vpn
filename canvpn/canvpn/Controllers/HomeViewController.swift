@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
+        Analytics.logEvent("002-HomeVCPresented", parameters: ["type" : "willAppear"])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -163,6 +163,7 @@ extension HomeViewController {
                 freeUserTryToConnectPremium()
             }
         } else {
+            Analytics.logEvent("004-HomeVC", parameters: ["error" : "selectedServer"])
             Toaster.showToast(message: "error_occur_location".localize())
         }
     }
@@ -174,6 +175,7 @@ extension HomeViewController {
     // Using Button
     private func changeState() {
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
+            Analytics.logEvent("005-HomeVC-changeState", parameters: ["error" : "manager"])
             Toaster.showToast(message: "error_try_again".localize())
             return
         }
@@ -184,6 +186,7 @@ extension HomeViewController {
         case .connected:
             startDisconnection(forManager: manager)
         default:
+            Analytics.logEvent("006-HomeVC-changeState", parameters: ["error" : "managerState"])
             Toaster.showToast(message: "error_try_again".localize())
         }
     }
@@ -191,6 +194,7 @@ extension HomeViewController {
     // Using Picker or Map
     private func setSelectedServer(server: Server?) {
         if server?.location.city == selectedServer?.location.city {
+            Analytics.logEvent("007-HomeVC-setSelectedServer", parameters: ["error" : "city"])
             return
         }
         selectedServer = server
@@ -198,6 +202,7 @@ extension HomeViewController {
         
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "error_try_again".localize())
+            Analytics.logEvent("008-HomeVC-setSelectedServer", parameters: ["error" : "manager"])
             return
         }
 
@@ -210,6 +215,7 @@ extension HomeViewController {
                 self?.startConnection(forSelectedServer: self?.selectedServer)
             }
         default:
+            Analytics.logEvent("009-HomeVC-setSelectedServer", parameters: ["error" : "managerState"])
             Toaster.showToast(message: "error_try_again".localize())
         }
     }
@@ -273,7 +279,7 @@ extension HomeViewController {
                 self.setMainUI(state: .disconnected)
                 self.printDebug("getCredential failure")
                 Toaster.showToast(message: "error_location_again".localize())
-                Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : "happened"])
+                Analytics.logEvent("033-API-getCredentialRequest", parameters: ["error" : "happened"])
             }
             
         }
@@ -292,7 +298,7 @@ extension HomeViewController {
                     self.setMainUI(ipText: response.ipAddress)
                 case .failure(_):
                     self.printDebug("getIPAddressRequest failure")
-                    Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
+                    Analytics.logEvent("039-API-getIPAddressRequest", parameters: ["error" : "happened"])
                 }
             }
         }
