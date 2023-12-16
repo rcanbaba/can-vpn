@@ -44,12 +44,15 @@ class SubscriptionViewController: UIViewController {
     }
     
     private func setNavigationBar() {
-        UIApplication.shared.statusBarStyle = .darkContent
         navigationController?.navigationBar.tintColor = UIColor.black
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
     }
     
     private func checkAndSetProducts() {

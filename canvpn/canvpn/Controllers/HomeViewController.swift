@@ -56,10 +56,13 @@ class HomeViewController: UIViewController {
     }
     
     private func setNavigationBar() {
-        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
     }
 
     private func configureUI() {

@@ -86,11 +86,10 @@ class WebViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .darkContent
     }
     
     @objc func backButtonTapped() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         self.dismiss(animated: true, completion: nil)
     }
     
