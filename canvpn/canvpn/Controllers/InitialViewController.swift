@@ -45,7 +45,7 @@ class InitialViewController: UIViewController {
     
     private func presentMainScreen(){
         Analytics.logEvent("102-PresentMainScreen", parameters: ["type" : "present"])
-        let navigationController = createNavigationController(with: MainScreenViewController())
+        let navigationController = createNavigationController(with: HomeViewController())
         navigationController.navigationBar.tintColor = UIColor.clear
         navigationController.navigationBar.backgroundColor = UIColor.clear
         navigationController.navigationBar.barTintColor = UIColor.clear

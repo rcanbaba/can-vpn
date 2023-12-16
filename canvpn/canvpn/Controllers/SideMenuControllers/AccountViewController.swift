@@ -79,6 +79,9 @@ class AccountViewController: UIViewController {
         setCreationDateText()
         setDeviceModelText()
         setIpAddressText()
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
     }
     
     private func configureUI() {

@@ -34,6 +34,8 @@
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
 		B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4692A444C7600EB124F /* PurchaseManager.swift */; };
+		B42821022B1B53B800E5424B /* GoProTopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42821012B1B53B800E5424B /* GoProTopButton.swift */; };
+		B42821042B1B591700E5424B /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42821032B1B591700E5424B /* CustomAnnotationView.swift */; };
 		B42DE3E52A82C585002137F9 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42DE3E42A82C585002137F9 /* AppTrackingTransparency.framework */; };
 		B42DE3EC2A840C66002137F9 /* ApplyCouponRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42DE3EB2A840C66002137F9 /* ApplyCouponRequest.swift */; };
 		B42DE3EE2A840CF3002137F9 /* ApplyCouponResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42DE3ED2A840CF3002137F9 /* ApplyCouponResponse.swift */; };
@@ -321,6 +323,8 @@
 		B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A22592AD9562C003271BA /* PortugueseDictionary.swift */; };
 		B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */; };
 		B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */; };
+		B4805CAE2B14D65600D53574 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAD2B14D65600D53574 /* HomeViewController.swift */; };
+		B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */; };
 		B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C27B2AED082800D90453 /* SideMenuViewController.swift */; };
 		B481C2812AED1C9900D90453 /* loading-icon-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B481C2802AED1C9900D90453 /* loading-icon-animation.json */; };
 		B481C2832AED1F4100D90453 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C2822AED1F4100D90453 /* WebViewController.swift */; };
@@ -442,6 +446,8 @@
 		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
 		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
 		B424E4692A444C7600EB124F /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		B42821012B1B53B800E5424B /* GoProTopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProTopButton.swift; sourceTree = "<group>"; };
+		B42821032B1B591700E5424B /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		B42DE3E42A82C585002137F9 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		B42DE3EB2A840C66002137F9 /* ApplyCouponRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyCouponRequest.swift; sourceTree = "<group>"; };
 		B42DE3ED2A840CF3002137F9 /* ApplyCouponResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyCouponResponse.swift; sourceTree = "<group>"; };
@@ -724,6 +730,8 @@
 		B47A22592AD9562C003271BA /* PortugueseDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortugueseDictionary.swift; sourceTree = "<group>"; };
 		B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndonesianDictionary.swift; sourceTree = "<group>"; };
 		B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailToURLGenerator.swift; sourceTree = "<group>"; };
+		B4805CAD2B14D65600D53574 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		B481C27B2AED082800D90453 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		B481C2802AED1C9900D90453 /* loading-icon-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-icon-animation.json"; sourceTree = "<group>"; };
 		B481C2822AED1F4100D90453 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -866,6 +874,7 @@
 				B4D09F3029C7B4E800E11069 /* MainScreenViews */,
 				B4DA0E8E29AF9FD300CA1A86 /* SubscriptionViews */,
 				B48BC3EB2AA89C9400A00F5E /* GetFreePopupView.swift */,
+				B42821032B1B591700E5424B /* CustomAnnotationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1034,6 +1043,8 @@
 				B48BC3ED2AA8A15A00A00F5E /* PopupPresenterViewController.swift */,
 				B481C27B2AED082800D90453 /* SideMenuViewController.swift */,
 				B481C2822AED1F4100D90453 /* WebViewController.swift */,
+				B4805CAD2B14D65600D53574 /* HomeViewController.swift */,
+				B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1352,6 +1363,7 @@
 				B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */,
 				B4D09F3129C7B50F00E11069 /* LocationButton.swift */,
 				B4D09F3329C7B52600E11069 /* GoProButton.swift */,
+				B42821012B1B53B800E5424B /* GoProTopButton.swift */,
 			);
 			path = MainScreenViews;
 			sourceTree = "<group>";
@@ -1854,6 +1866,7 @@
 				B4D871212A8572870080D788 /* HindiDictionary.swift in Sources */,
 				B4D09F3629CB635D00E11069 /* LocationViewController.swift in Sources */,
 				B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */,
+				B42821022B1B53B800E5424B /* GoProTopButton.swift in Sources */,
 				B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */,
 				B40D732429D86FC20066FD80 /* CredentialResponse.swift in Sources */,
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
@@ -1867,6 +1880,7 @@
 				B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
+				B42821042B1B591700E5424B /* CustomAnnotationView.swift in Sources */,
 				B42DE3EC2A840C66002137F9 /* ApplyCouponRequest.swift in Sources */,
 				B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */,
 				B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */,
@@ -1888,6 +1902,7 @@
 				B44122F329575A060072B566 /* SplashScreenView.swift in Sources */,
 				B48F8A6F295895B900CB69CA /* LocalizationManager.swift in Sources */,
 				B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */,
+				B4805CAE2B14D65600D53574 /* HomeViewController.swift in Sources */,
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
 				B43E15982A1145970095FF4A /* RegisterFCMRequest.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
@@ -1898,6 +1913,7 @@
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */,
+				B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
 				B4D8710B2A855FE40080D788 /* ATTrackingManager.swift in Sources */,
 				B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */,

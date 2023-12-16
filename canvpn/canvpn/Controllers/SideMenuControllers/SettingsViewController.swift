@@ -63,6 +63,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         networkService = DefaultNetworkService()
         configureUI()
         setSelectedLanguage(index: findSelectedLanguageIndex(code: Constants.langCode))
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
     }
     
     private func findSelectedLanguageIndex(code: String) -> Int {

@@ -117,10 +117,11 @@ struct Server: Codable {
 // MARK: - Location
 struct Location: Codable {
     let countryCode, city: String
+    let latitude, longitude: Double
 
     enum CodingKeys: String, CodingKey {
         case countryCode = "country_code"
-        case city
+        case city, latitude, longitude
     }
 }
 

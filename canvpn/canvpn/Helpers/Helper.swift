@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkExtension
 
 enum ConnectionState {
     case initial
@@ -74,15 +75,15 @@ extension ConnectionState {
     func getCenterButtonUIImage() -> UIImage? {
         switch self {
         case .initial:
-            return UIImage(named: "power-orange-button")
+            return UIImage(named: "power-orange-button")?.withRenderingMode(.alwaysOriginal)
         case .disconnected:
-            return UIImage(named: "power-orange-button")
+            return UIImage(named: "power-orange-button")?.withRenderingMode(.alwaysOriginal)
         case .connecting:
-            return UIImage(named: "power-gray-button")
+            return UIImage(named: "power-gray-button")?.withRenderingMode(.alwaysOriginal)
         case .connected:
-            return UIImage(named: "power-green-button")
+            return UIImage(named: "power-green-button")?.withRenderingMode(.alwaysOriginal)
         case .disconnecting:
-            return UIImage(named: "power-gray-button")
+            return UIImage(named: "power-gray-button")?.withRenderingMode(.alwaysOriginal)
         }
     }
     
@@ -182,4 +183,25 @@ extension Int {
         }
     }
     
+}
+
+extension NEVPNStatus {
+    func getConnectionState() -> ConnectionState {
+        switch self {
+        case .invalid:
+            return .disconnected
+        case .disconnected:
+            return .disconnected
+        case .connecting:
+            return .connecting
+        case .connected:
+            return .connected
+        case .reasserting:
+            return .connecting
+        case .disconnecting:
+            return .disconnecting
+        @unknown default:
+            fatalError()
+        }
+    }
 }

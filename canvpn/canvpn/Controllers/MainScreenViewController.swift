@@ -16,8 +16,6 @@ class MainScreenViewController: UIViewController {
     private var tunnelManager: NETunnelManager?
     //  private var ipSecManager: VPNManager?
     
-    private var vpnStatus: NEVPNStatus = .invalid
-    
     private var networkService: DefaultNetworkService?
     
     private var selectedServer: Server?
@@ -161,7 +159,6 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setState(state: NEVPNStatus) {
-        vpnStatus = state
         switch state {
         case .invalid:
             setMainUI(state: .disconnected)
@@ -472,7 +469,7 @@ extension MainScreenViewController: LocationViewControllerDelegate {
         userTriggeredConnection = true
         setSelectedServer(server: server)
     }
-    
+
 }
 
 // MARK: - GetFreePopupViewDelegate
