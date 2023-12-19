@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
         tunnelManager = NETunnelManager()
         setInitialServerData()
         setDelegates()
+        requestTrackingPermission()
         observeNotifications()
         addVPNServerAnnotations()
         configureUI()

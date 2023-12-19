@@ -22,7 +22,7 @@ class SubscriptionViewController: UIViewController {
     private var products: [SKProduct]?
     private var presentableProducts: [Product] = []
     
-    private var selectedOfferIndex: Int?
+    private var selectedOfferSKU: String?
     private var appliedCouponCode: String?
     
     override func viewDidLoad() {
@@ -178,7 +178,7 @@ class SubscriptionViewController: UIViewController {
     
     private func selectGivenOffer(indexPath: IndexPath) {
         subscriptionView.offerTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-        selectedOfferIndex = indexPath.row
+        selectedOfferSKU = presentableProducts[indexPath.row].sku
     }
     
     private func getSKProduct(skuID: String) -> SKProduct? {
@@ -203,8 +203,9 @@ class SubscriptionViewController: UIViewController {
 // MARK: - PremiumViewDelegate
 extension SubscriptionViewController: PremiumViewDelegate {
     func subscribeTapped() {
-        if let index = selectedOfferIndex, let skuID = SettingsManager.shared.settings?.products[index].sku {
-            subscribeItem(productId: skuID)
+        if let selectedSKU = selectedOfferSKU,
+           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
+            subscribeItem(productId: product.sku)
         } else {
             Toaster.showToast(message: "error_try_again".localize())
         }
@@ -252,7 +253,7 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
                 tableView.deselectRow(at: selectedIndexPath, animated: false)
             }
         }
-        selectedOfferIndex = indexPath.row
+        selectedOfferSKU = presentableProducts[indexPath.row].sku
         tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
     }
 }
