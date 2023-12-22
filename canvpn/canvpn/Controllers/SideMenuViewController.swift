@@ -10,25 +10,7 @@ import StoreKit
 
 class SideMenuViewController: UIViewController {
     
-    private let menuItems: [MenuItemType] = [
-        .accountInformation, // ip adress - subs type
-        .restoreSubscriptions, // yönlendir
-        .subscriptionHistory, // VC yarat göster
-        .usePromoCode, // yönlendir orda aç
-        .shareUs,
-        .rateUs,
-        .aboutUs, // WEB
-        .faq, // WEB
-        .feedback, // WEB
-        .checkSecurity, // ayrı bir popup
-        .whatIsMyIP, // WEB
-        .whatIsMySpeed, // WEB
-        .settings, // VC -> language
-        .blankItem,
-        .blankItem,
-        .version, // version
-        .staySecureWithLove // Motto
-    ]
+    private var menuItems: [MenuItemType] = []
     
     private lazy var menuTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -43,10 +25,36 @@ class SideMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setMenuItemArray()
         menuTableView.delegate = self
         menuTableView.dataSource = self
         addNotifications()
         configureUI()
+    }
+    
+    private func setMenuItemArray() {
+        menuItems = [
+            .accountInformation, // ip adress - subs type
+            .restoreSubscriptions, // yönlendir
+            .subscriptionHistory, // VC yarat göster
+            .shareUs,
+            .rateUs,
+            .aboutUs, // WEB
+            .faq, // WEB
+            .feedback, // WEB
+            .checkSecurity, // ayrı bir popup
+            .whatIsMyIP, // WEB
+            .whatIsMySpeed, // WEB
+            .settings, // VC -> language
+            .blankItem,
+            .blankItem,
+            .version, // version
+            .staySecureWithLove // Motto
+        ]
+        
+        if SettingsManager.shared.settings?.isInReview != true {
+            menuItems.insert(.usePromoCode, at: 3)
+        }
     }
     
     private func configureUI() {

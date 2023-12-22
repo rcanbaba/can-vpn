@@ -32,7 +32,6 @@ class HomeViewController: UIViewController {
         tunnelManager = NETunnelManager()
         setInitialServerData()
         setDelegates()
-        requestTrackingPermission()
         observeNotifications()
         addVPNServerAnnotations()
         configureUI()
@@ -40,6 +39,11 @@ class HomeViewController: UIViewController {
         setNavigationBar()
         setSubscriptionState()
         setupMenuButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        requestTrackingPermission()
     }
     
     private func setInitialServerData() {
@@ -450,8 +454,10 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 //MARK: - App Tracking Transparency
 extension HomeViewController {
     func requestTrackingPermission() {
-        TrackingManager.shared.requestTrackingPermission { (status) in
-            self.printDebug("ATTracking completed, status: \(status)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            TrackingManager.shared.requestTrackingPermission { [weak self] status in
+                self?.printDebug("ATTracking completed, status: \(status)")
+            }
         }
     }
 }
