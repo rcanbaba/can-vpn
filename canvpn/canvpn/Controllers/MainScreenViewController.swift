@@ -8,6 +8,7 @@
 import UIKit
 import NetworkExtension
 import FirebaseAnalytics
+import MapKit
 
 class MainScreenViewController: UIViewController {
     
@@ -353,6 +354,7 @@ extension MainScreenViewController {
             self.mainView.setLocationFlag(countryCode: server?.location.countryCode.lowercased())
             self.mainView.setLocationCountry(text: server?.location.city)
             self.mainView.setLocationSignal(level: server?.ping)
+            self.setMapRegionToSelectedLocation(server: server)
         }
     }
     
@@ -501,6 +503,16 @@ extension MainScreenViewController {
 
     @objc func startGetFreeAnimation() {
         playGetFreeAnimationAfterDelay()
+    }
+}
+
+//MARK: - Set MAP
+extension MainScreenViewController {
+    private func setMapRegionToSelectedLocation(server: Server?) {
+        guard let server = server else { return }
+        let coordinate = CLLocationCoordinate2D(latitude: server.location.latitude, longitude: server.location.longitude)
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000000, longitudinalMeters: 1000000)
+        mainView.mapView.setRegion(region, animated: true)
     }
 }
 

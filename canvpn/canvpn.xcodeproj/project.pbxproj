@@ -1044,7 +1044,6 @@
 				B481C27B2AED082800D90453 /* SideMenuViewController.swift */,
 				B481C2822AED1F4100D90453 /* WebViewController.swift */,
 				B4805CAD2B14D65600D53574 /* HomeViewController.swift */,
-				B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1360,6 +1359,7 @@
 		B4D09F3029C7B4E800E11069 /* MainScreenViews */ = {
 			isa = PBXGroup;
 			children = (
+				B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */,
 				B4023D7E2951F4E90008BDA6 /* MainScreenView.swift */,
 				B4D09F3129C7B50F00E11069 /* LocationButton.swift */,
 				B4D09F3329C7B52600E11069 /* GoProButton.swift */,
