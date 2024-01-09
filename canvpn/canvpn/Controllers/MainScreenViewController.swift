@@ -49,45 +49,12 @@ class MainScreenViewController: UIViewController {
         checkGetFreeThenSet()
         observeNotifications()
         requestTrackingPermission()
-        setSideMenuUI()
-        toggleSideMenu()
+        setupMenuButton()
     }
     
     private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
-    private var sideMenu: SideMenuViewController!
+    private var sideMenu: SideMenuViewController?
     private var isSideMenuOpen = false
-    private var menuButton: UIButton?
-    
-    private func setSideMenuUI() {
-        menuButton = UIButton(type: .system)
-        
-        let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium) // Adjust the pointSize and weight as needed
-        let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
-        menuButton!.setImage(menuImage, for: .normal)
-        menuButton!.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton!)
-        
-        sideMenu = SideMenuViewController()
-        addChild(sideMenu)
-        view.addSubview(sideMenu.view)
-        sideMenu.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
-        sideMenu.didMove(toParent: self)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func toggleSideMenu() {
-        isSideMenuOpen.toggle()
-        UIView.animate(withDuration: 0.3) {
-            if self.isSideMenuOpen {
-                self.sideMenu.view.frame.origin.x = 0
-            } else {
-                self.sideMenu.view.frame.origin.x = -self.sideMenuWidth
-            }
-        }
-    }
     
     private func addNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name.languageChanged, object: nil)
@@ -96,13 +63,6 @@ class MainScreenViewController: UIViewController {
     @objc func updateLanguage() {
         DispatchQueue.main.async {
             self.mainView.reloadLocalization()
-        }
-    }
-    
-    @objc func handleTapOutsideMenu(_ gesture: UITapGestureRecognizer) {
-        let location = gesture.location(in: view)
-        if isSideMenuOpen && location.x > sideMenuWidth {
-            toggleSideMenu()
         }
     }
     
@@ -150,14 +110,6 @@ class MainScreenViewController: UIViewController {
     private func setMainUI(state: ConnectionState) {
         DispatchQueue.main.async {
             self.mainView.setState(state: state)
-            self.changeMenuImageColor(to: state.getUIColor())
-        }
-    }
-    
-    private func changeMenuImageColor(to newColor: UIColor) {
-        if let menuButton = menuButton, let currentImage = menuButton.currentImage {
-            let tintedImage = currentImage.withTintColor(newColor, renderingMode: .alwaysOriginal)
-            menuButton.setImage(tintedImage, for: .normal)
         }
     }
     
@@ -412,8 +364,45 @@ extension MainScreenViewController {
     }
 }
 
+// MARK: - Side Menu
+extension MainScreenViewController {
+    private func setupMenuButton() {
+        sideMenu = SideMenuViewController()
+        addChild(sideMenu!)
+        view.addSubview(sideMenu!.view)
+        sideMenu!.view.frame = CGRect(x: -sideMenuWidth, y: 0, width: sideMenuWidth, height: UIScreen.main.bounds.height)
+        sideMenu!.didMove(toParent: self)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu(_:)))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func toggleSideMenu() {
+        isSideMenuOpen.toggle()
+        UIView.animate(withDuration: 0.3) {
+            if self.isSideMenuOpen {
+                self.sideMenu!.view.frame.origin.x = 0
+            } else {
+                self.sideMenu!.view.frame.origin.x = -self.sideMenuWidth
+            }
+        }
+    }
+    
+    @objc func handleTapOutsideMenu(_ gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: view)
+        if isSideMenuOpen && location.x > sideMenuWidth {
+            toggleSideMenu()
+        }
+    }
+}
+
 // MARK: - MainScreenViewDelegate
 extension MainScreenViewController: MainScreenViewDelegate {
+    func sideMenuButtonTapped() {
+        toggleSideMenu()
+    }
+    
     func getFreeTapped() {
         presentEmailPopup()
     }

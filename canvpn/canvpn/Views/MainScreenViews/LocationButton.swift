@@ -69,7 +69,7 @@ class LocationButton: UIView {
     
     private func configureUI() {
         isUserInteractionEnabled = true
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.white.withAlphaComponent(0.8)
         layer.cornerRadius = 12
         layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
         

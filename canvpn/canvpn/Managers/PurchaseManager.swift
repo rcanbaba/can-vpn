@@ -82,7 +82,8 @@ class PurchaseManager: NSObject {
     // MARK: - Get IAP Products
     func getProducts(_ completionHandler: @escaping ProductsRequestCompletionHandler) {
         productsRequestCompletionHandler = completionHandler
-        let productIds = SettingsManager.shared.settings?.skus ?? []
+        var productIds = SettingsManager.shared.settings?.skus ?? []
+        productIds.append("com.ilovevpn.1month_vip")
         if !productIds.isEmpty {
             let productIdentifiers = Set<String>(productIds)
             let request = SKProductsRequest(productIdentifiers: productIdentifiers)

@@ -8,12 +8,14 @@
 import UIKit
 import SnapKit
 import Lottie
+import MapKit
 
 protocol MainScreenViewDelegate: AnyObject {
     func changeStateTapped()
     func locationButtonTapped()
     func goProButtonTapped()
     func getFreeTapped()
+    func sideMenuButtonTapped()
 }
 
 class MainScreenView: UIView {
@@ -36,7 +38,7 @@ class MainScreenView: UIView {
     
     private lazy var connectionStateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = UIColor.orange
         label.textAlignment = .center
         return label
@@ -95,6 +97,27 @@ class MainScreenView: UIView {
         return label
     }()
     
+    public lazy var mapView = MKMapView()
+    
+    private lazy var backView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        return view
+    }()
+    
+    public lazy var menuButton: UIButton = {
+        let button = UIButton(type: .system)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+        let menuImage = UIImage(systemName: "list.bullet", withConfiguration: configuration)?.withTintColor(UIColor.Custom.orange, renderingMode: .alwaysOriginal)
+        button.setImage(menuImage, for: .normal)
+        button.addTarget(self, action: #selector(sideMenuButtonTapped(_:)), for: .touchUpInside)
+        
+        button.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        button.layer.cornerRadius = 12
+        button.layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -106,6 +129,15 @@ class MainScreenView: UIView {
     }
     
     private func configureUI() {
+        addSubview(mapView)
+        mapView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        addSubview(backView)
+        backView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         
         addSubview(backgroundImageView)
         
@@ -116,6 +148,13 @@ class MainScreenView: UIView {
             make.top.equalToSuperview().offset(topOffset)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.7)
+        }
+        
+        addSubview(menuButton)
+        menuButton.snp.makeConstraints { (make) in
+            make.size.equalTo(50)
+            make.leading.equalToSuperview().inset(24)
+            make.centerY.equalTo(topLogoImageView.snp.centerY)
         }
         
         backgroundImageView.snp.makeConstraints { (make) in
@@ -195,7 +234,7 @@ class MainScreenView: UIView {
         addSubview(getFreeAnimation)
         getFreeAnimation.snp.makeConstraints { (make) in
             make.trailing.equalToSuperview().inset(6)
-            make.top.equalTo(topLogoImageView.snp.top).offset(-10)
+            make.centerY.equalTo(topLogoImageView.snp.centerY)
             make.size.equalTo(84)
         }
         
@@ -288,7 +327,18 @@ class MainScreenView: UIView {
         delegate?.getFreeTapped()
     }
     
+    @objc private func sideMenuButtonTapped (_ sender: UIControl) {
+        delegate?.sideMenuButtonTapped()
+    }
+    
     private var connectionState: ConnectionState?
+    
+    private func changeMenuImageColor(to newColor: UIColor) {
+        if let currentImage = menuButton.currentImage {
+            let tintedImage = currentImage.withTintColor(newColor, renderingMode: .alwaysOriginal)
+            menuButton.setImage(tintedImage, for: .normal)
+        }
+    }
     
 }
 
@@ -308,6 +358,7 @@ extension MainScreenView {
         connectionStateLabel.text = state.getText()
         isUserInteractionEnabled = state.getUserInteraction()
         topLogoImageView.image = state.getTopLogoImage()
+        changeMenuImageColor(to: state.getUIColor())
     }
 
     // MARK: - Selected Location View
