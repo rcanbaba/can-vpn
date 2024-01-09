@@ -17,7 +17,7 @@ struct SettingsResponse: Codable {
     let products: [Product]
     let skus: [String]
     let interface: UserInterface
-    let isInReview: Bool
+    var isInReview: Bool
     let appUpdate: AppUpdate?
     let text: Text
     let contactUs: ContactUs

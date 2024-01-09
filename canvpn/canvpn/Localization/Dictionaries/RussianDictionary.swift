@@ -134,7 +134,18 @@ struct RussianDictionary {
         "loc_header_premium": "Премиум",
         "loc_header_free": "Бесплатно",
         "loc_header_stream": "Стриминг",
-        "loc_header_game": "Игры"
+        "loc_header_game": "Игры",
+        
+        // subs
+        "1 Month Plan": "1 Месяц",
+        "6 Month Plan": "6 Месяцев",
+        "1 Year Plan": "1 Год",
+        "1 Month VIP Plan": "VIP 1 Месяц",
+        
+        "Unlimited Access for 1 Month": "Безлимитный доступ на 1 месяц",
+        "Unlimited Access for 6 Months": "Безлимитный доступ на 6 месяцев",
+        "Unlimited Access for 1 Year": "Безлимитный доступ на 1 год",
+        "VIP Access for 1 Month": "VIP доступ на 1 месяц"
     ]
 }
 

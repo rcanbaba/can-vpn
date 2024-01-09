@@ -133,7 +133,18 @@ struct HindiDictionary {
         "loc_header_premium": "प्रीमियम",
         "loc_header_free": "मुफ्त",
         "loc_header_stream": "स्ट्रीमिंग",
-        "loc_header_game": "गेमिंग"
+        "loc_header_game": "गेमिंग",
+        
+        // subs
+        "1 Month Plan": "1 महीने की योजना",
+        "6 Month Plan": "6 महीने की योजना",
+        "1 Year Plan": "1 साल की योजना",
+        "1 Month VIP Plan": "1 महीने की VIP योजना",
+        
+        "Unlimited Access for 1 Month": "1 महीने के लिए असीमित एक्सेस",
+        "Unlimited Access for 6 Months": "6 महीनों के लिए असीमित एक्सेस",
+        "Unlimited Access for 1 Year": "1 साल के लिए असीमित एक्सेस",
+        "VIP Access for 1 Month": "1 महीने के लिए VIP एक्सेस"
     ]
 }
 

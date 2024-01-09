@@ -198,6 +198,16 @@ class SubscriptionViewController: UIViewController {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    private func getCellName(key: String) -> String {
+        guard SettingsManager.shared.settings?.isInReview == false else { return key }
+        return key.localize()
+    }
+    
+    private func getCellDescription(key: String) -> String {
+        guard SettingsManager.shared.settings?.isInReview == false else { return key }
+        return key.localize()
+    }
 }
 
 // MARK: - PremiumViewDelegate
@@ -232,9 +242,9 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
         let cellData = presentableProducts[indexPath.row]
         
         if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
-            cell.setName(text: skProduct.localizedTitle)
+            cell.setName(text: getCellName(key: skProduct.localizedTitle))
             cell.setPrice(text: skPrice)
-            cell.setDescription(text: skProduct.localizedDescription)
+            cell.setDescription(text: getCellDescription(key: skProduct.localizedDescription))
             cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
             cellData.isBestOffer ? cell.showBestTag() : ()
             cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()

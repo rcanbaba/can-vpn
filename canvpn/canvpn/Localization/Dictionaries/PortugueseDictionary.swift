@@ -134,7 +134,18 @@ struct PortugueseDictionary {
         "loc_header_premium": "Premium",
         "loc_header_free": "Grátis",
         "loc_header_stream": "Streaming",
-        "loc_header_game": "Jogos"
+        "loc_header_game": "Jogos",
+        
+        // subs
+        "1 Month Plan": "Plano de 1 Mês",
+        "6 Month Plan": "Plano de 6 Meses",
+        "1 Year Plan": "Plano de 1 Ano",
+        "1 Month VIP Plan": "Plano VIP de 1 Mês",
+        
+        "Unlimited Access for 1 Month": "Acesso Ilimitado por 1 Mês",
+        "Unlimited Access for 6 Months": "Acesso Ilimitado por 6 Meses",
+        "Unlimited Access for 1 Year": "Acesso Ilimitado por 1 Ano",
+        "VIP Access for 1 Month": "Acesso VIP por 1 Mês"
 
     ]
 }

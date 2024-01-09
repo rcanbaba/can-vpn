@@ -44,12 +44,14 @@ class InitialViewController: UIViewController {
     }
     
     private func presentMainScreen(){
+        // TODO: DO NOT FORGET
+        SettingsManager.shared.settings?.isInReview = false
         Analytics.logEvent("102-PresentMainScreen", parameters: ["type" : "present"])
         var navigationController: UINavigationController
         if SettingsManager.shared.settings?.isInReview == true {
-            navigationController = createNavigationController(with: MainScreenViewController())
-        } else {
             navigationController = createNavigationController(with: HomeViewController())
+        } else {
+            navigationController = createNavigationController(with: MainScreenViewController())
         }
         navigationController.navigationBar.tintColor = UIColor.clear
         navigationController.navigationBar.backgroundColor = UIColor.clear

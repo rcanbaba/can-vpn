@@ -134,7 +134,18 @@ struct ChineseDictionary {
         "loc_header_premium": "高级",
         "loc_header_free": "免费",
         "loc_header_stream": "流媒体",
-        "loc_header_game": "游戏"
+        "loc_header_game": "游戏",
+        
+        // subs
+        "1 Month Plan": "1个月计划",
+        "6 Month Plan": "6个月计划",
+        "1 Year Plan": "1年计划",
+        "1 Month VIP Plan": "VIP 1个月计划",
+        
+        "Unlimited Access for 1 Month": "1个月无限访问",
+        "Unlimited Access for 6 Months": "6个月无限访问",
+        "Unlimited Access for 1 Year": "1年无限访问",
+        "VIP Access for 1 Month": "VIP 1个月访问"
     ]
 }
 

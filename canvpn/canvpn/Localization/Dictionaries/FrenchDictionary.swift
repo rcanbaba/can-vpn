@@ -134,7 +134,18 @@ struct FrenchDictionary {
         "loc_header_premium": "Premium",
         "loc_header_free": "Gratuit",
         "loc_header_stream": "Streaming",
-        "loc_header_game": "Jeux"
+        "loc_header_game": "Jeux",
+        
+        // subs
+        "1 Month Plan": "Forfait 1 Mois",
+        "6 Month Plan": "Forfait 6 Mois",
+        "1 Year Plan": "Forfait 1 An",
+        "1 Month VIP Plan": "Forfait VIP 1 Mois",
+        
+        "Unlimited Access for 1 Month": "Accès Illimité pour 1 Mois",
+        "Unlimited Access for 6 Months": "Accès Illimité pour 6 Mois",
+        "Unlimited Access for 1 Year": "Accès Illimité pour 1 An",
+        "VIP Access for 1 Month": "Accès VIP pour 1 Mois"
         
     ]
 }

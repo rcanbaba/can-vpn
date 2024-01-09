@@ -135,6 +135,17 @@ struct EnglishDictionary {
         "loc_header_premium": "Premium",
         "loc_header_free": "Free",
         "loc_header_stream": "Streaming",
-        "loc_header_game": "Gaming"
+        "loc_header_game": "Gaming",
+        
+        // subscription
+        "1 Month Plan": "1 Month Plan",
+        "6 Month Plan": "6 Month Plan",
+        "1 Year Plan": "1 Year Plan",
+        "1 Month VIP Plan": "1 Month VIP Plan",
+        
+        "Unlimited Access for 1 Month": "Unlimited Access for 1 Month",
+        "Unlimited Access for 6 Months": "Unlimited Access for 6 Months",
+        "Unlimited Access for 1 Year": "Unlimited Access for 1 Year",
+        "VIP Access for 1 Month": "VIP Access for 1 Month"
     ]
 }

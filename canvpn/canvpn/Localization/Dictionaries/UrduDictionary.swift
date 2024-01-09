@@ -134,7 +134,18 @@ struct UrduDictionary {
         "loc_header_premium": "پریمیم",
         "loc_header_free": "مفت",
         "loc_header_stream": "استریمنگ",
-        "loc_header_game": "گیمنگ"
+        "loc_header_game": "گیمنگ",
+        
+        // subs
+        "1 Month Plan": "1 مہینہ کا پلان",
+        "6 Month Plan": "6 مہینے کا پلان",
+        "1 Year Plan": "1 سال کا پلان",
+        "1 Month VIP Plan": "1 مہینہ کا VIP پلان",
+        
+        "Unlimited Access for 1 Month": "1 مہینہ کے لئے بے حد رسائی",
+        "Unlimited Access for 6 Months": "6 مہینوں کے لئے بے حد رسائی",
+        "Unlimited Access for 1 Year": "1 سال کے لئے بے حد رسائی",
+        "VIP Access for 1 Month": "1 مہینہ کے لئے VIP رسائی"
     ]
 }
 

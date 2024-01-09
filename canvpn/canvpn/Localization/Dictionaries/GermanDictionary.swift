@@ -134,7 +134,18 @@ struct GermanDictionary {
         "loc_header_premium": "Premium",
         "loc_header_free": "Kostenlos",
         "loc_header_stream": "Streaming",
-        "loc_header_game": "Gaming"
+        "loc_header_game": "Gaming",
+        
+        // subs
+        "1 Month Plan": "1-Monats-Plan",
+        "6 Month Plan": "6-Monats-Plan",
+        "1 Year Plan": "1-Jahres-Plan",
+        "1 Month VIP Plan": "1-Monats-VIP-Plan",
+        
+        "Unlimited Access for 1 Month": "Unbegrenzter Zugang für 1 Monat",
+        "Unlimited Access for 6 Months": "Unbegrenzter Zugang für 6 Monate",
+        "Unlimited Access for 1 Year": "Unbegrenzter Zugang für 1 Jahr",
+        "VIP Access for 1 Month": "VIP-Zugang für 1 Monat"
     ]
 }
 

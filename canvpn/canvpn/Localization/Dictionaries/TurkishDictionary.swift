@@ -134,6 +134,17 @@ struct TurkishDictionary {
         "loc_header_premium": "Premium",
         "loc_header_free": "Ücretsiz",
         "loc_header_stream": "Yayın",
-        "loc_header_game": "Oyun"
+        "loc_header_game": "Oyun",
+        
+        // subscription
+        "1 Month Plan": "1 Aylık Plan",
+        "6 Month Plan": "6 Aylık Plan",
+        "1 Year Plan": "1 Yıllık Plan",
+        "1 Month VIP Plan": "1 Aylık VIP Planı",
+        
+        "Unlimited Access for 1 Month": "1 Ay Boyunca Sınırsız Erişim",
+        "Unlimited Access for 6 Months": "6 Ay Boyunca Sınırsız Erişim",
+        "Unlimited Access for 1 Year": "1 Yıl Boyunca Sınırsız Erişim",
+        "VIP Access for 1 Month": "1 Ay Boyunca VIP Erişim"
     ]
 }
