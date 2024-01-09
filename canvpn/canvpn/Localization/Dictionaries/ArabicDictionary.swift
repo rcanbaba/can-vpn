@@ -136,16 +136,18 @@ struct ArabicDictionary {
         "loc_header_stream": "البث",
         "loc_header_game": "الألعاب",
         
-        // subs
+        // subscription
         "1 Month Plan": "خطة شهر واحد",
         "6 Month Plan": "خطة 6 أشهر",
         "1 Year Plan": "خطة سنة واحدة",
-        "1 Month VIP Plan": "خطة VIP شهر واحد",
+        "1 Month VIP Plan": "خطة VIP لمدة شهر واحد",
+        "1 Month Introductory Plan": "خطة تعريفية لمدة شهر واحد مجانًا",
         
         "Unlimited Access for 1 Month": "وصول غير محدود لمدة شهر واحد",
         "Unlimited Access for 6 Months": "وصول غير محدود لمدة 6 أشهر",
         "Unlimited Access for 1 Year": "وصول غير محدود لمدة سنة واحدة",
-        "VIP Access for 1 Month": "وصول VIP لمدة شهر واحد"
+        "VIP Access for 1 Month": "وصول VIP بخصم 60%",
+        "Unlimited Access for 1 Month Introductory": "وصول غير محدود لمدة شهر واحد مجانًا"
     ]
 }
 

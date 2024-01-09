@@ -136,16 +136,18 @@ struct SpanishDictionary {
         "loc_header_stream": "Transmisión",
         "loc_header_game": "Juegos",
         
-        // subs
+        // subscription
         "1 Month Plan": "Plan de 1 Mes",
         "6 Month Plan": "Plan de 6 Meses",
         "1 Year Plan": "Plan de 1 Año",
         "1 Month VIP Plan": "Plan VIP de 1 Mes",
+        "1 Month Introductory Plan": "Plan Introductorio de 1 Mes Gratis",
         
         "Unlimited Access for 1 Month": "Acceso Ilimitado por 1 Mes",
         "Unlimited Access for 6 Months": "Acceso Ilimitado por 6 Meses",
         "Unlimited Access for 1 Year": "Acceso Ilimitado por 1 Año",
-        "VIP Access for 1 Month": "Acceso VIP por 1 Mes"
+        "VIP Access for 1 Month": "Acceso VIP con 60% de Descuento",
+        "Unlimited Access for 1 Month Introductory": "Acceso Ilimitado por 1 Mes Gratis"
     ]
 }
 

@@ -136,16 +136,18 @@ struct PersianDictionary {
         "loc_header_stream": "استریم",
         "loc_header_game": "گیم",
         
-        // subs
+        // subscription
         "1 Month Plan": "طرح 1 ماهه",
         "6 Month Plan": "طرح 6 ماهه",
         "1 Year Plan": "طرح 1 ساله",
         "1 Month VIP Plan": "طرح VIP 1 ماهه",
+        "1 Month Introductory Plan": "طرح معرفی 1 ماهه رایگان",
         
         "Unlimited Access for 1 Month": "دسترسی نامحدود برای 1 ماه",
         "Unlimited Access for 6 Months": "دسترسی نامحدود برای 6 ماه",
         "Unlimited Access for 1 Year": "دسترسی نامحدود برای 1 سال",
-        "VIP Access for 1 Month": "دسترسی VIP برای 1 ماه"
+        "VIP Access for 1 Month": "دسترسی VIP با 60% تخفیف",
+        "Unlimited Access for 1 Month Introductory": "دسترسی نامحدود برای 1 ماه رایگان"
     ]
 }
 

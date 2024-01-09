@@ -141,11 +141,13 @@ struct EnglishDictionary {
         "1 Month Plan": "1 Month Plan",
         "6 Month Plan": "6 Month Plan",
         "1 Year Plan": "1 Year Plan",
-        "1 Month VIP Plan": "1 Month VIP Plan",
+        "1 Month VIP Plan": "1 Month Discounted Plan",
+        "1 Month Introductory Plan": "1 Month Free Then Pay",
         
         "Unlimited Access for 1 Month": "Unlimited Access for 1 Month",
         "Unlimited Access for 6 Months": "Unlimited Access for 6 Months",
         "Unlimited Access for 1 Year": "Unlimited Access for 1 Year",
-        "VIP Access for 1 Month": "VIP Access for 1 Month"
+        "VIP Access for 1 Month": "Unlimited Access with %60 Off",
+        "Unlimited Access for 1 Month Introductory": "1 Month Free Unlimited Access"
     ]
 }

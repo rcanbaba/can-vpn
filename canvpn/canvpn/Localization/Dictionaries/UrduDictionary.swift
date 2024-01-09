@@ -136,16 +136,18 @@ struct UrduDictionary {
         "loc_header_stream": "استریمنگ",
         "loc_header_game": "گیمنگ",
         
-        // subs
-        "1 Month Plan": "1 مہینہ کا پلان",
-        "6 Month Plan": "6 مہینے کا پلان",
-        "1 Year Plan": "1 سال کا پلان",
-        "1 Month VIP Plan": "1 مہینہ کا VIP پلان",
+        // subscription
+        "1 Month Plan": "1 مہینہ منصوبہ",
+        "6 Month Plan": "6 مہینہ منصوبہ",
+        "1 Year Plan": "1 سالہ منصوبہ",
+        "1 Month VIP Plan": "1 مہینہ VIP منصوبہ",
+        "1 Month Introductory Plan": "1 مہینہ معرفتی منصوبہ، پھر ادائیگی",
         
-        "Unlimited Access for 1 Month": "1 مہینہ کے لئے بے حد رسائی",
-        "Unlimited Access for 6 Months": "6 مہینوں کے لئے بے حد رسائی",
-        "Unlimited Access for 1 Year": "1 سال کے لئے بے حد رسائی",
-        "VIP Access for 1 Month": "1 مہینہ کے لئے VIP رسائی"
+        "Unlimited Access for 1 Month": "1 مہینہ کے لئے بلا محدود رسائی",
+        "Unlimited Access for 6 Months": "6 مہینوں کے لئے بلا محدود رسائی",
+        "Unlimited Access for 1 Year": "1 سال کے لئے بلا محدود رسائی",
+        "VIP Access for 1 Month": "1 مہینہ کے لئے VIP رسائی مع 60٪ چھٹ",
+        "Unlimited Access for 1 Month Introductory": "1 مہینہ مفت بلا محدود رسائی"
     ]
 }
 

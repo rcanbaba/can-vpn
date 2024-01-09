@@ -44,8 +44,6 @@ class InitialViewController: UIViewController {
     }
     
     private func presentMainScreen(){
-        // TODO: DO NOT FORGET
-        SettingsManager.shared.settings?.isInReview = false
         Analytics.logEvent("102-PresentMainScreen", parameters: ["type" : "present"])
         var navigationController: UINavigationController
         if SettingsManager.shared.settings?.isInReview == true {

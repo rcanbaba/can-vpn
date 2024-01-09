@@ -134,16 +134,18 @@ struct IndonesianDictionary {
         "loc_header_stream": "Streaming",
         "loc_header_game": "Gaming",
         
-        // subs
-        "1 Month Plan": "Paket 1 Bulan",
-        "6 Month Plan": "Paket 6 Bulan",
-        "1 Year Plan": "Paket 1 Tahun",
-        "1 Month VIP Plan": "Paket VIP 1 Bulan",
+        // subscription
+        "1 Month Plan": "Rencana 1 Bulan",
+        "6 Month Plan": "Rencana 6 Bulan",
+        "1 Year Plan": "Rencana 1 Tahun",
+        "1 Month VIP Plan": "Rencana VIP 1 Bulan",
+        "1 Month Introductory Plan": "Rencana Perkenalan 1 Bulan",
         
         "Unlimited Access for 1 Month": "Akses Tanpa Batas selama 1 Bulan",
         "Unlimited Access for 6 Months": "Akses Tanpa Batas selama 6 Bulan",
         "Unlimited Access for 1 Year": "Akses Tanpa Batas selama 1 Tahun",
-        "VIP Access for 1 Month": "Akses VIP selama 1 Bulan"
+        "VIP Access for 1 Month": "Akses VIP dengan Diskon 60%",
+        "Unlimited Access for 1 Month Introductory": "Akses Tanpa Batas selama 1 Bulan Gratis"
     ]
 }
 

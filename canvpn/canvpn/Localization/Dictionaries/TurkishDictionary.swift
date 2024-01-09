@@ -140,11 +140,13 @@ struct TurkishDictionary {
         "1 Month Plan": "1 Aylık Plan",
         "6 Month Plan": "6 Aylık Plan",
         "1 Year Plan": "1 Yıllık Plan",
-        "1 Month VIP Plan": "1 Aylık VIP Planı",
+        "1 Month VIP Plan": "1 Aylık İndirimli Plan",
+        "1 Month Introductory Plan": "1 Ay Ücretsiz Sonra Öde",
         
         "Unlimited Access for 1 Month": "1 Ay Boyunca Sınırsız Erişim",
         "Unlimited Access for 6 Months": "6 Ay Boyunca Sınırsız Erişim",
         "Unlimited Access for 1 Year": "1 Yıl Boyunca Sınırsız Erişim",
-        "VIP Access for 1 Month": "1 Ay Boyunca VIP Erişim"
+        "VIP Access for 1 Month": "%60 İndirimli Sınırsız Erişim",
+        "Unlimited Access for 1 Month Introductory": "1 Ay Ücretsiz Sınırsız Erişim"
     ]
 }

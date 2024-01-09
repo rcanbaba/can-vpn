@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "power-orange-button.png",
+      "filename" : "power-orange-button3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "power-orange-button@2x.png",
+      "filename" : "power-orange-button3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "power-orange-button@3x.png",
+      "filename" : "power-orange-button3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

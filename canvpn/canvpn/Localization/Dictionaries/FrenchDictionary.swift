@@ -136,17 +136,18 @@ struct FrenchDictionary {
         "loc_header_stream": "Streaming",
         "loc_header_game": "Jeux",
         
-        // subs
-        "1 Month Plan": "Forfait 1 Mois",
-        "6 Month Plan": "Forfait 6 Mois",
-        "1 Year Plan": "Forfait 1 An",
-        "1 Month VIP Plan": "Forfait VIP 1 Mois",
+        // subscription
+        "1 Month Plan": "Forfait 1 mois",
+        "6 Month Plan": "Forfait 6 mois",
+        "1 Year Plan": "Forfait 1 an",
+        "1 Month VIP Plan": "Forfait VIP 1 mois",
+        "1 Month Introductory Plan": "Forfait introductif de 1 mois gratuit",
         
-        "Unlimited Access for 1 Month": "Accès Illimité pour 1 Mois",
-        "Unlimited Access for 6 Months": "Accès Illimité pour 6 Mois",
-        "Unlimited Access for 1 Year": "Accès Illimité pour 1 An",
-        "VIP Access for 1 Month": "Accès VIP pour 1 Mois"
-        
+        "Unlimited Access for 1 Month": "Accès illimité pendant 1 mois",
+        "Unlimited Access for 6 Months": "Accès illimité pendant 6 mois",
+        "Unlimited Access for 1 Year": "Accès illimité pendant 1 an",
+        "VIP Access for 1 Month": "Accès VIP avec 60% de réduction",
+        "Unlimited Access for 1 Month Introductory": "Accès illimité pendant 1 mois gratuit"
     ]
 }
 

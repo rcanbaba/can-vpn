@@ -136,16 +136,18 @@ struct ChineseDictionary {
         "loc_header_stream": "流媒体",
         "loc_header_game": "游戏",
         
-        // subs
-        "1 Month Plan": "1个月计划",
-        "6 Month Plan": "6个月计划",
-        "1 Year Plan": "1年计划",
-        "1 Month VIP Plan": "VIP 1个月计划",
+        // subscription
+        "1 Month Plan": "1 个月计划",
+        "6 Month Plan": "6 个月计划",
+        "1 Year Plan": "1 年计划",
+        "1 Month VIP Plan": "1 个月 VIP 计划",
+        "1 Month Introductory Plan": "1 个月免费试用，然后支付",
         
-        "Unlimited Access for 1 Month": "1个月无限访问",
-        "Unlimited Access for 6 Months": "6个月无限访问",
-        "Unlimited Access for 1 Year": "1年无限访问",
-        "VIP Access for 1 Month": "VIP 1个月访问"
+        "Unlimited Access for 1 Month": "1 个月无限访问",
+        "Unlimited Access for 6 Months": "6 个月无限访问",
+        "Unlimited Access for 1 Year": "1 年无限访问",
+        "VIP Access for 1 Month": "1 个月 VIP 访问，享 60% 折扣",
+        "Unlimited Access for 1 Month Introductory": "1 个月免费无限访问"
     ]
 }
 

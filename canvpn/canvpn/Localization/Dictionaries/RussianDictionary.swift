@@ -56,7 +56,7 @@ struct RussianDictionary {
         "coupon_code_placeholder": "Код купона",
         "coupon_alert_cancel": "Отменить",
         "coupon_alert_try": "Попробовать",
-        "best_tag": "Лучшее предложение",
+        "best_tag": "Лучшее",
         "discount_tag": "Скидка",
         "unknown_product_title": "Неизвестный продукт",
         "congrats_title": "Поздравляем!",
@@ -136,16 +136,18 @@ struct RussianDictionary {
         "loc_header_stream": "Стриминг",
         "loc_header_game": "Игры",
         
-        // subs
-        "1 Month Plan": "1 Месяц",
-        "6 Month Plan": "6 Месяцев",
-        "1 Year Plan": "1 Год",
-        "1 Month VIP Plan": "VIP 1 Месяц",
+        // subscription
+        "1 Month Plan": "План на 1 месяц",
+        "6 Month Plan": "План на 6 месяцев",
+        "1 Year Plan": "План на 1 год",
+        "1 Month VIP Plan": "VIP-план на 1 месяц",
+        "1 Month Introductory Plan": "1 Месяц бесплатно, оплата",
         
-        "Unlimited Access for 1 Month": "Безлимитный доступ на 1 месяц",
-        "Unlimited Access for 6 Months": "Безлимитный доступ на 6 месяцев",
-        "Unlimited Access for 1 Year": "Безлимитный доступ на 1 год",
-        "VIP Access for 1 Month": "VIP доступ на 1 месяц"
+        "Unlimited Access for 1 Month": "Неограниченный доступ на 1 месяц",
+        "Unlimited Access for 6 Months": "Неограниченный доступ на 6 месяцев",
+        "Unlimited Access for 1 Year": "Неограниченный доступ на 1 год",
+        "VIP Access for 1 Month": "VIP-доступ на 1 месяц со скидкой 60%",
+        "Unlimited Access for 1 Month Introductory": "Бесплатный месяц без ограничений"
     ]
 }
 

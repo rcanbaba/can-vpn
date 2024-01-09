@@ -107,6 +107,11 @@ class OfferTableViewCell: UITableViewCell {
         configureTagUI()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        tagStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
+    
     private func configureUI() {
         contentView.addSubview(mainView)
         mainView.snp.makeConstraints { (make) in
