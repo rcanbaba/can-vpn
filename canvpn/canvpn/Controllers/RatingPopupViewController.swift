@@ -65,7 +65,7 @@ class RatingPopupViewController: UIViewController {
         button.setTitleColor(.Custom.RatingPopup.description, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.setBackgroundColor(color: UIColor.red, forState: .normal)
+        button.setBackgroundColor(color: UIColor.white, forState: .normal)
         button.setBackgroundColor(color: .Custom.RatingPopup.viewBackground, forState: .highlighted)
         return button
     }()
@@ -77,7 +77,7 @@ class RatingPopupViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.addTarget(self, action: #selector(rateButtonTapped(_:)), for: .touchUpInside)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.setBackgroundColor(color: UIColor.red, forState: .normal)
+        button.setBackgroundColor(color: UIColor.white, forState: .normal)
         button.setBackgroundColor(color: .Custom.RatingPopup.viewBackground, forState: .highlighted)
         return button
     }()
@@ -148,7 +148,7 @@ class RatingPopupViewController: UIViewController {
         
         view.addSubview(windowWrapperView)
         windowWrapperView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(40)
             make.centerY.equalToSuperview()
         }
         

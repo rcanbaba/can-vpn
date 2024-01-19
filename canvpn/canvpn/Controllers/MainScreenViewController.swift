@@ -9,6 +9,7 @@ import UIKit
 import NetworkExtension
 import FirebaseAnalytics
 import MapKit
+import StoreKit
 
 class MainScreenViewController: UIViewController {
     
@@ -23,7 +24,6 @@ class MainScreenViewController: UIViewController {
     private var selectedServerConfig: Configuration?
     
     private var popupPresenterViewController: PopupPresenterViewController?
-    
     private var ratingPopupViewController: RatingPopupViewController?
     
     private var getFreeAnimationTimer: Timer?
@@ -53,6 +53,7 @@ class MainScreenViewController: UIViewController {
         observeNotifications()
         requestTrackingPermission()
         setupMenuButton()
+      //  presentRatingPopup()
     }
     
     private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
@@ -191,6 +192,16 @@ class MainScreenViewController: UIViewController {
         self.present(popupPresenterViewController!, animated: true, completion: nil)
     }
     
+    public func presentRatingPopup() {
+        // already presenting
+        guard ratingPopupViewController == nil else { return }
+        
+        ratingPopupViewController = RatingPopupViewController()
+        ratingPopupViewController!.modalPresentationStyle = .overFullScreen
+        ratingPopupViewController!.modalTransitionStyle  = .crossDissolve
+        ratingPopupViewController!.delegate = self
+        present(ratingPopupViewController!, animated: true)
+    }
     
     private func observeNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -230,7 +241,6 @@ class MainScreenViewController: UIViewController {
 
 // MARK: - API Calls
 extension MainScreenViewController {
-    
     private func getCredential(serverId: String) {
         guard let service = networkService else { return }
         var getCredentialRequest = GetCredentialRequest()
@@ -416,14 +426,11 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func locationButtonTapped() {
-        ratingPopupViewController = RatingPopupViewController()
-        ratingPopupViewController?.delegate = self
-        present(ratingPopupViewController!, animated: true)
-//        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
-//        let locationViewController = LocationViewController()
-//        locationViewController.hidesBottomBarWhenPushed = true
-//        locationViewController.delegate = self
-//        self.navigationController?.pushViewController(locationViewController, animated: true)
+        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
+        let locationViewController = LocationViewController()
+        locationViewController.hidesBottomBarWhenPushed = true
+        locationViewController.delegate = self
+        self.navigationController?.pushViewController(locationViewController, animated: true)
     }
     
     func changeStateTapped() {
@@ -532,5 +539,25 @@ extension MainScreenViewController {
 
 
 extension MainScreenViewController: RatingPopupViewControllerDelegate {
+    func didTapRateButton(_ controller: RatingPopupViewController, rate: Int) {
+        closeRatingPopup()
+        if rate >= 4 {
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            }
+        } else {
+            Toaster.showToast(message: "Thank you for your feedback!".localize())
+        }
+    }
     
+    func didTapCancelButton(_ controller: RatingPopupViewController) {
+        closeRatingPopup()
+    }
+    
+    private func closeRatingPopup() {
+        ratingPopupViewController?.dismiss(animated: true, completion: {[weak self] in
+            guard let self = self else { return }
+            self.ratingPopupViewController = nil
+        })
+    }
 }
