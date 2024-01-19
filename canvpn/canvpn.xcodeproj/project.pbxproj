@@ -30,6 +30,7 @@
 		B418EDF02A2680020036B747 /* GetIPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418EDEF2A2680020036B747 /* GetIPAddressRequest.swift */; };
 		B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */; };
 		B41C82492AC592DE00D741D8 /* UserEntryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41C82482AC592DE00D741D8 /* UserEntryRequest.swift */; };
+		B4216DC42B5ADEDA00F8B0D6 /* RatingPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DC32B5ADEDA00F8B0D6 /* RatingPopupViewController.swift */; };
 		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
@@ -442,6 +443,7 @@
 		B418EDEF2A2680020036B747 /* GetIPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPAddressRequest.swift; sourceTree = "<group>"; };
 		B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPAddressResponse.swift; sourceTree = "<group>"; };
 		B41C82482AC592DE00D741D8 /* UserEntryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntryRequest.swift; sourceTree = "<group>"; };
+		B4216DC32B5ADEDA00F8B0D6 /* RatingPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPopupViewController.swift; sourceTree = "<group>"; };
 		B424E4622A43637C00EB124F /* PremiumTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTopView.swift; sourceTree = "<group>"; };
 		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
 		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 				B481C27B2AED082800D90453 /* SideMenuViewController.swift */,
 				B481C2822AED1F4100D90453 /* WebViewController.swift */,
 				B4805CAD2B14D65600D53574 /* HomeViewController.swift */,
+				B4216DC32B5ADEDA00F8B0D6 /* RatingPopupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1911,6 +1914,7 @@
 				B47170E22A125F76008F00FA /* SuccessResponse.swift in Sources */,
 				B4D8711F2A85727D0080D788 /* UrduDictionary.swift in Sources */,
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
+				B4216DC42B5ADEDA00F8B0D6 /* RatingPopupViewController.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */,
 				B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */,

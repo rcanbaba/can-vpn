@@ -24,6 +24,8 @@ class MainScreenViewController: UIViewController {
     
     private var popupPresenterViewController: PopupPresenterViewController?
     
+    private var ratingPopupViewController: RatingPopupViewController?
+    
     private var getFreeAnimationTimer: Timer?
     
     private var userTriggeredConnection: Bool = false
@@ -414,11 +416,14 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func locationButtonTapped() {
-        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
-        let locationViewController = LocationViewController()
-        locationViewController.hidesBottomBarWhenPushed = true
-        locationViewController.delegate = self
-        self.navigationController?.pushViewController(locationViewController, animated: true)
+        ratingPopupViewController = RatingPopupViewController()
+        ratingPopupViewController?.delegate = self
+        present(ratingPopupViewController!, animated: true)
+//        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
+//        let locationViewController = LocationViewController()
+//        locationViewController.hidesBottomBarWhenPushed = true
+//        locationViewController.delegate = self
+//        self.navigationController?.pushViewController(locationViewController, animated: true)
     }
     
     func changeStateTapped() {
@@ -523,4 +528,9 @@ extension MainScreenViewController {
             self.printDebug("ATTracking completed, status: \(status)")
         }
     }
+}
+
+
+extension MainScreenViewController: RatingPopupViewControllerDelegate {
+    
 }

@@ -56,6 +56,11 @@ extension UIColor {
         static let offerButtonTextOrange = UIColor("FF852C")
         static let offerButtonBorderGray = UIColor("DADADA")
         static let offerButtonTextGray = UIColor("000000").withAlphaComponent(0.6)
+
+        struct RatingPopup {
+            static let description = UIColor("646464")
+            static let viewBackground = UIColor("F6F6F6")
+        }
         
     }
     
