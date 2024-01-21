@@ -61,7 +61,13 @@ extension UIColor {
             static let description = UIColor("646464")
             static let viewBackground = UIColor("F6F6F6")
         }
-        
+    }
+    
+    struct Landing {
+        static let backGradientStart = UIColor("FFFFFF")
+        static let backGradientEnd = UIColor("FFF4EA")
+        static let buttonGradientStart = UIColor("FFA341")
+        static let buttonGradientEnd = UIColor("FD6143")
     }
     
 }

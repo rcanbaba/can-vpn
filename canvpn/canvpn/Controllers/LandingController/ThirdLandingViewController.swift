@@ -22,6 +22,7 @@ class ThirdLandingViewController: UIViewController {
         landingView.delegate = self
         configureUI()
         landingView.setTitle(text: "Third")
+        landingView.setCenterImage(image: UIImage(named: "landing-img-3"))
     }
     
     private func configureUI() {

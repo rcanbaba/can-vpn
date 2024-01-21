@@ -22,6 +22,7 @@ class SecondLandingViewController: UIViewController {
         landingView.delegate = self
         configureUI()
         landingView.setTitle(text: "Second")
+        landingView.setCenterImage(image: UIImage(named: "landing-img-2"))
     }
     
     private func configureUI() {

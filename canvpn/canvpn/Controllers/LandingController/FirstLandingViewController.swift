@@ -24,6 +24,7 @@ class FirstLandingViewController: UIViewController {
         landingView.delegate = self
         configureUI()
         landingView.setTitle(text: "First")
+        landingView.setCenterImage(image: UIImage(named: "landing-img-1"))
     }
     
     private func configureUI() {

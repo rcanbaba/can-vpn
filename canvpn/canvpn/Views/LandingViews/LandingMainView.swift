@@ -16,17 +16,28 @@ class LandingMainView: UIView {
     
     public weak var delegate: LandingMainViewDelegate?
     
+    private lazy var backGradientView: GradientView = {
+        let gradientView = GradientView()
+        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientView.gradientLayer.locations = [0.0, 1.0]
+        gradientView.gradientLayer.colors = [
+            UIColor.Landing.backGradientStart.cgColor,
+            UIColor.Landing.backGradientEnd.cgColor
+        ]
+        return gradientView
+    }()
+    
     private lazy var topLogoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "top-logo-green")
+        imageView.image = UIImage(named: "top-logo-orange")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    private lazy var imageView: UIImageView = {
+    private lazy var centerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "exclamationmark.triangle.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal)
         return imageView
     }()
     
@@ -58,34 +69,37 @@ class LandingMainView: UIView {
     private func configureUI() {
         backgroundColor = UIColor.white
         
+        addSubview(backGradientView)
         addSubview(topLogoImageView)
-        addSubview(imageView)
+        addSubview(centerImageView)
         addSubview(titleLabel)
         addSubview(subscribeButton)
         
+        backGradientView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         topLogoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(safeAreaLayoutGuide).offset(24)
-            make.width.height.equalTo(100)
+            make.width.equalToSuperview().inset(80)
         }
         
-        
-        imageView.snp.makeConstraints { make in
+        centerImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(topLogoImageView.snp.bottom).offset(24)
-            make.width.height.equalTo(100)
+            make.top.equalTo(topLogoImageView.snp.bottom).offset(36)
+            make.width.equalToSuperview().inset(80)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(36)
-            make.top.equalTo(imageView.snp.bottom).offset(36)
+            make.leading.trailing.equalToSuperview().inset(48)
+            make.top.equalTo(centerImageView.snp.bottom).offset(36)
         }
         
         subscribeButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(60)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
+            make.height.equalTo(48)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(64)
         }
         
     }
@@ -97,4 +111,9 @@ class LandingMainView: UIView {
     public func setTitle(text: String) {
         titleLabel.text = text
     }
+    
+    public func setCenterImage(image: UIImage?) {
+        centerImageView.image = image
+    }
+
 }

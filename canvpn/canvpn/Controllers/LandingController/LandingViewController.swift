@@ -16,7 +16,7 @@ class LandingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = UIColor.white
         
         firstViewController = FirstLandingViewController()
         secondViewController = SecondLandingViewController()
@@ -26,11 +26,18 @@ class LandingViewController: UIViewController {
         secondViewController.delegate = self
         thirdViewController.delegate = self
         
+        firstViewController.modalTransitionStyle = .crossDissolve
+        secondViewController.modalTransitionStyle = .crossDissolve
+        thirdViewController.modalTransitionStyle = .crossDissolve
+        
+        firstViewController.modalPresentationStyle = .overFullScreen
+        secondViewController.modalPresentationStyle = .overFullScreen
+        thirdViewController.modalPresentationStyle = .overFullScreen
+        
         startPresentation()
     }
     
     func startPresentation() {
-        
         present(firstViewController, animated: true)
     }
 }
@@ -38,23 +45,19 @@ class LandingViewController: UIViewController {
 extension LandingViewController: FirstLandingDelegate, SecondLandingDelegate, ThirdLandingDelegate {
     func goNextFromFirst() {
         firstViewController.dismiss(animated: true) {
-            // Present the second view controller
-            self.secondViewController.modalPresentationStyle = .fullScreen
             self.present(self.secondViewController, animated: true)
         }
     }
     
     func goNextFromSecond() {
         secondViewController.dismiss(animated: true) {
-            // Present the third view controller
-            self.thirdViewController.modalPresentationStyle = .fullScreen
             self.present(self.thirdViewController, animated: true)
         }
     }
     
     func goNextFromThird() {
         thirdViewController.dismiss(animated: true) {
-            // Continue with your app flow
+
         }
     }
     
