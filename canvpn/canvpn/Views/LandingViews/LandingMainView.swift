@@ -57,6 +57,15 @@ class LandingMainView: UIView {
         return label
     }()
     
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.textColor = .darkGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -87,7 +96,7 @@ class LandingMainView: UIView {
         
         centerImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(topLogoImageView.snp.bottom).offset(36)
+            make.top.equalTo(topLogoImageView.snp.bottom).offset(48)
             make.width.equalToSuperview().inset(80)
         }
         
@@ -107,13 +116,21 @@ class LandingMainView: UIView {
     @objc private func subscribeTapped (_ sender: UITapGestureRecognizer) {
         delegate?.nextTapped()
     }
-    
+
+}
+
+// MARK: Public methods
+extension LandingMainView {
     public func setTitle(text: String) {
         titleLabel.text = text
     }
-    
+    public func setDescription(text: String) {
+        titleLabel.text = text
+    }
     public func setCenterImage(image: UIImage?) {
         centerImageView.image = image
     }
-
+    public func setStep(image: UIImage?) {
+        centerImageView.image = image
+    }
 }

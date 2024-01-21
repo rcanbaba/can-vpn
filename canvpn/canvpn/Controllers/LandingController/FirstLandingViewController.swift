@@ -20,11 +20,8 @@ class FirstLandingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
-        
         landingView.delegate = self
         configureUI()
-        landingView.setTitle(text: "First")
-        landingView.setCenterImage(image: UIImage(named: "landing-img-1"))
     }
     
     private func configureUI() {
@@ -33,6 +30,13 @@ class FirstLandingViewController: UIViewController {
         landingView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    public func set(data: LandingData) {
+        landingView.setStep(image: data.stepImage )
+        landingView.setCenterImage(image: data.stepImage)
+        landingView.setTitle(text: data.title)
+        landingView.setDescription(text: data.description)
     }
     
 }

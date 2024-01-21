@@ -21,8 +21,6 @@ class SecondLandingViewController: UIViewController {
         super.viewDidLoad()
         landingView.delegate = self
         configureUI()
-        landingView.setTitle(text: "Second")
-        landingView.setCenterImage(image: UIImage(named: "landing-img-2"))
     }
     
     private func configureUI() {
@@ -31,6 +29,13 @@ class SecondLandingViewController: UIViewController {
         landingView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    public func set(data: LandingData) {
+        landingView.setStep(image: data.stepImage )
+        landingView.setCenterImage(image: data.stepImage)
+        landingView.setTitle(text: data.title)
+        landingView.setDescription(text: data.description)
     }
     
 }
