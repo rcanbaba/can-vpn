@@ -20,12 +20,11 @@ class LandingButton: UIButton {
         return gradientView
     }()
     
-    private lazy var textLabel: UILabel = {
+    public lazy var textLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.text = "Continue".localize()
         return label
     }()
     

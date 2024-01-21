@@ -152,4 +152,7 @@ extension LandingMainView {
     public func setStep(image: UIImage?) {
         stepImageView.image = image
     }
+    public func setButonText(text: String) {
+        landingButton.textLabel.text = text
+    }
 }

@@ -36,6 +36,7 @@ class ThirdLandingViewController: UIViewController {
         landingView.setCenterImage(image: data.centerImage)
         landingView.setTitle(text: data.title)
         landingView.setDescription(text: data.description)
+        landingView.setButonText(text: data.butonText)
     }
     
 }

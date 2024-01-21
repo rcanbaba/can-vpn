@@ -63,19 +63,22 @@ class LandingViewController: UIViewController {
             title: "Secure Your Appearance",
             description: "You can make secure your internet connection via vpn.",
             centerImage: UIImage(named: "landing-img-1"),
-            stepImage: UIImage(named: "landing-step-1")
+            stepImage: UIImage(named: "landing-step-1"),
+            butonText: "Continue".localize()
         )
         let secondLandingData = LandingData(
             title: "Access Faster Internet",
             description: "Wireguard Kit supported tunnel configuration you could reach faster connection.",
             centerImage: UIImage(named: "landing-img-2"),
-            stepImage: UIImage(named: "landing-step-2")
+            stepImage: UIImage(named: "landing-step-2"),
+            butonText: "Continue".localize()
         )
         let thirdLandingData = LandingData(
             title: "More Than 100 Location",
             description: "You reach different locations around the world! ",
             centerImage: UIImage(named: "landing-img-3"),
-            stepImage: UIImage(named: "landing-step-3")
+            stepImage: UIImage(named: "landing-step-3"),
+            butonText: "Get Started".localize()
         )
         
         firstViewController.set(data: firstLandingData)
@@ -114,4 +117,5 @@ struct LandingData {
     var description: String
     var centerImage: UIImage?
     var stepImage: UIImage?
+    var butonText: String
 }
