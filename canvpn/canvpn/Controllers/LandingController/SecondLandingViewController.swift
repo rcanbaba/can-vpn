@@ -32,8 +32,8 @@ class SecondLandingViewController: UIViewController {
     }
     
     public func set(data: LandingData) {
-        landingView.setStep(image: data.stepImage )
-        landingView.setCenterImage(image: data.stepImage)
+        landingView.setStep(image: data.stepImage)
+        landingView.setCenterImage(image: data.centerImage)
         landingView.setTitle(text: data.title)
         landingView.setDescription(text: data.description)
     }

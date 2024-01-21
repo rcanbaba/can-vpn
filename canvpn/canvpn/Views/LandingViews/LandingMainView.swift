@@ -41,10 +41,15 @@ class LandingMainView: UIView {
         return imageView
     }()
     
-    private lazy var subscribeButton: SubscriptionButton = {
-        let view = SubscriptionButton(type: .system)
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(subscribeTapped(_:))))
-        view.layer.applySketchShadow()
+    private lazy var stepImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var landingButton: LandingButton = {
+        let view = LandingButton(type: .system)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(landingButtonTapped(_:))))
         return view
     }()
     
@@ -82,7 +87,9 @@ class LandingMainView: UIView {
         addSubview(topLogoImageView)
         addSubview(centerImageView)
         addSubview(titleLabel)
-        addSubview(subscribeButton)
+        addSubview(descriptionLabel)
+        addSubview(stepImageView)
+        addSubview(landingButton)
         
         backGradientView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -102,18 +109,30 @@ class LandingMainView: UIView {
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(48)
-            make.top.equalTo(centerImageView.snp.bottom).offset(36)
+            make.top.equalTo(centerImageView.snp.bottom).offset(40)
         }
         
-        subscribeButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(24)
+        descriptionLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(48)
+            make.top.equalTo(titleLabel.snp.bottom).offset(24)
+        }
+        
+        stepImageView.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(24)
+            make.height.equalTo(4)
+            make.width.equalTo(40)
+            make.centerX.equalToSuperview()
+        }
+        
+        landingButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(36)
             make.height.equalTo(48)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(64)
         }
         
     }
     
-    @objc private func subscribeTapped (_ sender: UITapGestureRecognizer) {
+    @objc private func landingButtonTapped (_ sender: UITapGestureRecognizer) {
         delegate?.nextTapped()
     }
 
@@ -125,12 +144,12 @@ extension LandingMainView {
         titleLabel.text = text
     }
     public func setDescription(text: String) {
-        titleLabel.text = text
+        descriptionLabel.text = text
     }
     public func setCenterImage(image: UIImage?) {
         centerImageView.image = image
     }
     public func setStep(image: UIImage?) {
-        centerImageView.image = image
+        stepImageView.image = image
     }
 }

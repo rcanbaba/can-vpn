@@ -13,13 +13,23 @@ class LandingViewController: UIViewController {
     var secondViewController: SecondLandingViewController!
     var thirdViewController: ThirdLandingViewController!
     
+    private lazy var landingBaseView = LandingBackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        configureUI()
         setControllers()
         setPresentations()
         setData()
         startPresentation()
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = UIColor.white
+        view.addSubview(landingBaseView)
+        landingBaseView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     private func setControllers() {

@@ -36,6 +36,8 @@
 		B4216DCB2B5D229B00F8B0D6 /* SecondLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DCA2B5D229B00F8B0D6 /* SecondLandingViewController.swift */; };
 		B4216DCD2B5D230D00F8B0D6 /* ThirdLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DCC2B5D230D00F8B0D6 /* ThirdLandingViewController.swift */; };
 		B4216DD02B5D236400F8B0D6 /* LandingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DCF2B5D236400F8B0D6 /* LandingMainView.swift */; };
+		B4216DD22B5D454500F8B0D6 /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD12B5D454500F8B0D6 /* LandingButton.swift */; };
+		B4216DD42B5D46EC00F8B0D6 /* LandingBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD32B5D46EC00F8B0D6 /* LandingBackView.swift */; };
 		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
@@ -454,6 +456,8 @@
 		B4216DCA2B5D229B00F8B0D6 /* SecondLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondLandingViewController.swift; sourceTree = "<group>"; };
 		B4216DCC2B5D230D00F8B0D6 /* ThirdLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdLandingViewController.swift; sourceTree = "<group>"; };
 		B4216DCF2B5D236400F8B0D6 /* LandingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingMainView.swift; sourceTree = "<group>"; };
+		B4216DD12B5D454500F8B0D6 /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
+		B4216DD32B5D46EC00F8B0D6 /* LandingBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingBackView.swift; sourceTree = "<group>"; };
 		B424E4622A43637C00EB124F /* PremiumTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTopView.swift; sourceTree = "<group>"; };
 		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
 		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
@@ -1011,6 +1015,8 @@
 			isa = PBXGroup;
 			children = (
 				B4216DCF2B5D236400F8B0D6 /* LandingMainView.swift */,
+				B4216DD12B5D454500F8B0D6 /* LandingButton.swift */,
+				B4216DD32B5D46EC00F8B0D6 /* LandingBackView.swift */,
 			);
 			path = LandingViews;
 			sourceTree = "<group>";
@@ -1957,6 +1963,7 @@
 				B4BE348A2AF1014F0038D8E3 /* LanguageListTableViewCell.swift in Sources */,
 				B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */,
 				B40D732A29DB21900066FD80 /* UIApplicationExtensions.swift in Sources */,
+				B4216DD42B5D46EC00F8B0D6 /* LandingBackView.swift in Sources */,
 				B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */,
 				B4DA8EE22AAC6ADB00F4C643 /* LaunchCountManager.swift in Sources */,
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
@@ -1982,6 +1989,7 @@
 				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,
 				B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */,
 				B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */,
+				B4216DD22B5D454500F8B0D6 /* LandingButton.swift in Sources */,
 				B4216DC92B5D228C00F8B0D6 /* FirstLandingViewController.swift in Sources */,
 				B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */,
 				B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */,

@@ -19,7 +19,7 @@ class FirstLandingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = UIColor.white
         landingView.delegate = self
         configureUI()
     }
@@ -33,8 +33,8 @@ class FirstLandingViewController: UIViewController {
     }
     
     public func set(data: LandingData) {
-        landingView.setStep(image: data.stepImage )
-        landingView.setCenterImage(image: data.stepImage)
+        landingView.setStep(image: data.stepImage)
+        landingView.setCenterImage(image: data.centerImage)
         landingView.setTitle(text: data.title)
         landingView.setDescription(text: data.description)
     }
