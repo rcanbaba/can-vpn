@@ -21,14 +21,12 @@ class SubscriptionView: UIView {
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
         gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientView.gradientLayer.locations = [0.0, 0.5, 1.0]
+        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientView.gradientLayer.locations = [0.0, 1.0]
         gradientView.gradientLayer.colors = [
-            UIColor.Custom.premiumBackGradientStart.cgColor,
-            UIColor.Custom.premiumBackGradientStart.cgColor,
-            UIColor.Custom.premiumBackGradientEnd.cgColor
+            UIColor.Landing.backGradientStart.cgColor,
+            UIColor.Landing.backGradientEnd.cgColor
         ]
-        gradientView.isHidden = false
         return gradientView
     }()
     
@@ -146,7 +144,7 @@ class SubscriptionView: UIView {
         addSubview(subscribeButton)
         subscribeButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(60)
+            make.height.equalTo(48)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
         }
         

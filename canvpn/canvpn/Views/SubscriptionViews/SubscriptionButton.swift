@@ -14,17 +14,16 @@ class SubscriptionButton: UIButton {
         gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradientView.gradientLayer.colors = [
-            UIColor.Custom.goProButtonGradient1.cgColor,
-            UIColor.Custom.goProButtonGradient2.cgColor
+            UIColor.Landing.buttonGradientStart.cgColor,
+            UIColor.Landing.buttonGradientEnd.cgColor
         ]
-        gradientView.isHidden = false
         return gradientView
     }()
     
-    private lazy var textLabel: UILabel = {
+    public lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = UIColor.black.withAlphaComponent(0.6)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = UIColor.white
         label.textAlignment = .center
         label.text = "subscribe_button_key".localize()
         return label
@@ -42,10 +41,9 @@ class SubscriptionButton: UIButton {
     
     private func configureUI() {
         isUserInteractionEnabled = true
-        layer.cornerRadius = 30
-        backGradientView.layer.cornerRadius = 30
+        layer.cornerRadius = 24
+        backGradientView.layer.cornerRadius = 24
         backGradientView.clipsToBounds = true
-        layer.applySketchShadow(color: UIColor.Custom.actionButtonShadow, alpha: 0.2, x: 0, y: 0, blur: 8, spread: 0)
         
         addSubview(backGradientView)
         backGradientView.snp.makeConstraints { make in

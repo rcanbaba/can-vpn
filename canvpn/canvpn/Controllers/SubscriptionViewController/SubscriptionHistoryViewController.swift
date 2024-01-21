@@ -12,14 +12,12 @@ class SubscriptionHistoryViewController: UIViewController {
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
         gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientView.gradientLayer.locations = [0.0, 0.5, 1.0]
+        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientView.gradientLayer.locations = [0.0, 1.0]
         gradientView.gradientLayer.colors = [
-            UIColor.Custom.premiumBackGradientStart.cgColor,
-            UIColor.Custom.premiumBackGradientStart.cgColor,
-            UIColor.Custom.premiumBackGradientEnd.cgColor
+            UIColor.Landing.backGradientStart.cgColor,
+            UIColor.Landing.backGradientEnd.cgColor
         ]
-        gradientView.isHidden = false
         return gradientView
     }()
     
