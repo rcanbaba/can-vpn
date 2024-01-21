@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol LandingViewControllerDelegate: AnyObject {
+    func landingTasksCompleted()
+}
+
 class LandingViewController: UIViewController {
+    
+    public weak var delegate: LandingViewControllerDelegate?
 
     var firstViewController: FirstLandingViewController!
     var secondViewController: SecondLandingViewController!
@@ -54,20 +60,20 @@ class LandingViewController: UIViewController {
     
     private func setData() {
         let firstLandingData = LandingData(
-            title: "First",
-            description: "DExc asdasdasd 1",
+            title: "Secure Your Appearance",
+            description: "You can make secure your internet connection via vpn.",
             centerImage: UIImage(named: "landing-img-1"),
             stepImage: UIImage(named: "landing-step-1")
         )
         let secondLandingData = LandingData(
-            title: "Second",
-            description: "DEx123 123 213213 213c 1",
+            title: "Access Faster Internet",
+            description: "Wireguard Kit supported tunnel configuration you could reach faster connection.",
             centerImage: UIImage(named: "landing-img-2"),
             stepImage: UIImage(named: "landing-step-2")
         )
         let thirdLandingData = LandingData(
-            title: "Third",
-            description: "DExaksdkaskd askdak kads ka sksakc 1",
+            title: "More Than 100 Location",
+            description: "You reach different locations around the world! ",
             centerImage: UIImage(named: "landing-img-3"),
             stepImage: UIImage(named: "landing-step-3")
         )
@@ -78,7 +84,7 @@ class LandingViewController: UIViewController {
     }
     
     func startPresentation() {
-        present(firstViewController, animated: true)
+        present(firstViewController, animated: false)
     }
 }
 
@@ -96,8 +102,8 @@ extension LandingViewController: FirstLandingDelegate, SecondLandingDelegate, Th
     }
     
     func goNextFromThird() {
-        thirdViewController.dismiss(animated: true) {
-
+        self.dismiss(animated: false) { [weak self] in
+            self?.delegate?.landingTasksCompleted()
         }
     }
     

@@ -68,6 +68,7 @@ extension UIColor {
         static let backGradientEnd = UIColor("FFF4EA")
         static let buttonGradientStart = UIColor("FFA341")
         static let buttonGradientEnd = UIColor("FD6143")
+        static let titleText = UIColor("454545")
     }
     
 }

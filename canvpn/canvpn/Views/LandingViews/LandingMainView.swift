@@ -55,8 +55,8 @@ class LandingMainView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = UIColor.Landing.titleText
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -64,8 +64,8 @@ class LandingMainView: UIView {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = UIColor.Landing.titleText.withAlphaComponent(0.8)
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -104,7 +104,7 @@ class LandingMainView: UIView {
         centerImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(topLogoImageView.snp.bottom).offset(48)
-            make.width.equalToSuperview().inset(80)
+            make.width.equalToSuperview().inset(48)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -113,21 +113,21 @@ class LandingMainView: UIView {
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(48)
             make.top.equalTo(titleLabel.snp.bottom).offset(24)
-        }
-        
-        stepImageView.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(24)
-            make.height.equalTo(4)
-            make.width.equalTo(40)
-            make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(48)
         }
         
         landingButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(36)
             make.height.equalTo(48)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(64)
+        }
+        
+        stepImageView.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.width.equalTo(40)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(landingButton.snp.top).offset(-24)
         }
         
     }

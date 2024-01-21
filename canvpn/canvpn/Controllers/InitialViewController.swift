@@ -49,13 +49,11 @@ class InitialViewController: UIViewController {
         if SettingsManager.shared.settings?.isInReview == true {
             navigationController = createNavigationController(with: HomeViewController())
         } else {
-         //   navigationController = createNavigationController(with: MainScreenViewController())
-            navigationController = createNavigationController(with: LandingViewController())
+            let landingController = LandingViewController()
+            landingController.delegate = self
+            navigationController = createNavigationController(with: landingController)
         }
-        navigationController.navigationBar.tintColor = UIColor.clear
-        navigationController.navigationBar.backgroundColor = UIColor.clear
-        navigationController.navigationBar.barTintColor = UIColor.clear
-        present(navigationController, animated:true, completion: nil)
+        present(navigationController, animated: true, completion: nil)
     }
     
     private func goNextScreenAfterUpdate() {
@@ -64,9 +62,9 @@ class InitialViewController: UIViewController {
     
     private func createNavigationController (with viewController: UIViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.navigationBar.tintColor = UIColor.Custom.orange
-        navigationController.navigationBar.backgroundColor = UIColor.Custom.orange
-        navigationController.view.backgroundColor = UIColor.Custom.orange
+        navigationController.navigationBar.tintColor = UIColor.clear
+        navigationController.navigationBar.backgroundColor = UIColor.clear
+        navigationController.navigationBar.barTintColor = UIColor.clear
         navigationController.modalPresentationStyle = .overFullScreen
         return navigationController
     }
@@ -240,4 +238,15 @@ extension InitialViewController: SplashScreenViewDelegate {
         }
     }
     
+}
+
+
+extension InitialViewController: LandingViewControllerDelegate {
+    func landingTasksCompleted() {
+        self.dismiss(animated: false) {
+            let landingController = MainScreenViewController()
+            let navLandingController = self.createNavigationController(with: landingController)
+            self.present(navLandingController, animated: true, completion: nil)
+        }
+    }
 }
