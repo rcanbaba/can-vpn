@@ -31,6 +31,11 @@
 		B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */; };
 		B41C82492AC592DE00D741D8 /* UserEntryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41C82482AC592DE00D741D8 /* UserEntryRequest.swift */; };
 		B4216DC42B5ADEDA00F8B0D6 /* RatingPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DC32B5ADEDA00F8B0D6 /* RatingPopupViewController.swift */; };
+		B4216DC72B5D206A00F8B0D6 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DC62B5D206A00F8B0D6 /* LandingViewController.swift */; };
+		B4216DC92B5D228C00F8B0D6 /* FirstLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DC82B5D228C00F8B0D6 /* FirstLandingViewController.swift */; };
+		B4216DCB2B5D229B00F8B0D6 /* SecondLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DCA2B5D229B00F8B0D6 /* SecondLandingViewController.swift */; };
+		B4216DCD2B5D230D00F8B0D6 /* ThirdLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DCC2B5D230D00F8B0D6 /* ThirdLandingViewController.swift */; };
+		B4216DD02B5D236400F8B0D6 /* LandingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DCF2B5D236400F8B0D6 /* LandingMainView.swift */; };
 		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
@@ -444,6 +449,11 @@
 		B418EDF12A2680280036B747 /* GetIPAddressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPAddressResponse.swift; sourceTree = "<group>"; };
 		B41C82482AC592DE00D741D8 /* UserEntryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntryRequest.swift; sourceTree = "<group>"; };
 		B4216DC32B5ADEDA00F8B0D6 /* RatingPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPopupViewController.swift; sourceTree = "<group>"; };
+		B4216DC62B5D206A00F8B0D6 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		B4216DC82B5D228C00F8B0D6 /* FirstLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLandingViewController.swift; sourceTree = "<group>"; };
+		B4216DCA2B5D229B00F8B0D6 /* SecondLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondLandingViewController.swift; sourceTree = "<group>"; };
+		B4216DCC2B5D230D00F8B0D6 /* ThirdLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdLandingViewController.swift; sourceTree = "<group>"; };
+		B4216DCF2B5D236400F8B0D6 /* LandingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingMainView.swift; sourceTree = "<group>"; };
 		B424E4622A43637C00EB124F /* PremiumTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTopView.swift; sourceTree = "<group>"; };
 		B424E4642A441ECC00EB124F /* OfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferButton.swift; sourceTree = "<group>"; };
 		B424E4662A44327000EB124F /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
@@ -869,6 +879,7 @@
 		B4023D582950F4910008BDA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B4216DCE2B5D234B00F8B0D6 /* LandingViews */,
 				B44FB20B2A5061ED002258E9 /* ReusableComponents */,
 				B44122F229575A060072B566 /* SplashScreenView.swift */,
 				B4184A162955C9AA0051EB79 /* LocationListTableViewCell.swift */,
@@ -985,6 +996,25 @@
 			path = UserEntry;
 			sourceTree = "<group>";
 		};
+		B4216DC52B5D204E00F8B0D6 /* LandingController */ = {
+			isa = PBXGroup;
+			children = (
+				B4216DC62B5D206A00F8B0D6 /* LandingViewController.swift */,
+				B4216DC82B5D228C00F8B0D6 /* FirstLandingViewController.swift */,
+				B4216DCA2B5D229B00F8B0D6 /* SecondLandingViewController.swift */,
+				B4216DCC2B5D230D00F8B0D6 /* ThirdLandingViewController.swift */,
+			);
+			path = LandingController;
+			sourceTree = "<group>";
+		};
+		B4216DCE2B5D234B00F8B0D6 /* LandingViews */ = {
+			isa = PBXGroup;
+			children = (
+				B4216DCF2B5D236400F8B0D6 /* LandingMainView.swift */,
+			);
+			path = LandingViews;
+			sourceTree = "<group>";
+		};
 		B424E4682A444BE800EB124F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1037,6 +1067,7 @@
 		B44120EA295727D00072B566 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B4216DC52B5D204E00F8B0D6 /* LandingController */,
 				B481C2892AED485200D90453 /* SubscriptionViewController */,
 				B481C2862AED47EA00D90453 /* SideMenuControllers */,
 				B4023D452950E31E0008BDA6 /* MainScreenViewController.swift */,
@@ -1939,27 +1970,32 @@
 				B4023D442950E31E0008BDA6 /* SceneDelegate.swift in Sources */,
 				B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */,
 				B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */,
+				B4216DD02B5D236400F8B0D6 /* LandingMainView.swift in Sources */,
 				B4D871172A85724F0080D788 /* SpanishDictionary.swift in Sources */,
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
 				B4D871152A85723C0080D788 /* ArabicDictionary.swift in Sources */,
+				B4216DC72B5D206A00F8B0D6 /* LandingViewController.swift in Sources */,
 				B481C2912AED700A00D90453 /* UIDeviceExtensions.swift in Sources */,
 				B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */,
 				B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */,
 				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,
 				B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */,
 				B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */,
+				B4216DC92B5D228C00F8B0D6 /* FirstLandingViewController.swift in Sources */,
 				B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */,
 				B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */,
 				B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */,
 				B4DA0E9229AFA60800CA1A86 /* UIButtonExtensions.swift in Sources */,
 				B4DA0E8B29AF9EE500CA1A86 /* SubscriptionView.swift in Sources */,
+				B4216DCD2B5D230D00F8B0D6 /* ThirdLandingViewController.swift in Sources */,
 				B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */,
 				B481C28B2AED489B00D90453 /* SettingsViewController.swift in Sources */,
 				B4D8711D2A8572700080D788 /* PersianDictionary.swift in Sources */,
 				B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */,
 				B40D732629D86FF60066FD80 /* GetCredentialRequest.swift in Sources */,
 				B42DE3EE2A840CF3002137F9 /* ApplyCouponResponse.swift in Sources */,
+				B4216DCB2B5D229B00F8B0D6 /* SecondLandingViewController.swift in Sources */,
 				B418EDF02A2680020036B747 /* GetIPAddressRequest.swift in Sources */,
 				B4EE1F592A07AC6E00E219CA /* RegisterDeviceResponse.swift in Sources */,
 			);

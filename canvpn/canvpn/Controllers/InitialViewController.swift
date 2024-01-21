@@ -49,7 +49,8 @@ class InitialViewController: UIViewController {
         if SettingsManager.shared.settings?.isInReview == true {
             navigationController = createNavigationController(with: HomeViewController())
         } else {
-            navigationController = createNavigationController(with: MainScreenViewController())
+         //   navigationController = createNavigationController(with: MainScreenViewController())
+            navigationController = createNavigationController(with: LandingViewController())
         }
         navigationController.navigationBar.tintColor = UIColor.clear
         navigationController.navigationBar.backgroundColor = UIColor.clear
