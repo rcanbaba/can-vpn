@@ -203,6 +203,14 @@ class MainScreenViewController: UIViewController {
         present(ratingPopupViewController!, animated: true)
     }
     
+    public func presentLocationPage() {
+        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
+        let locationViewController = LocationViewController()
+        locationViewController.hidesBottomBarWhenPushed = true
+        locationViewController.delegate = self
+        self.navigationController?.pushViewController(locationViewController, animated: true)
+    }
+    
     private func observeNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willEnterForegroundNotification(_:)),
@@ -426,11 +434,9 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func locationButtonTapped() {
-        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
-        let locationViewController = LocationViewController()
-        locationViewController.hidesBottomBarWhenPushed = true
-        locationViewController.delegate = self
-        self.navigationController?.pushViewController(locationViewController, animated: true)
+        
+        presentRatingPopup()
+
     }
     
     func changeStateTapped() {

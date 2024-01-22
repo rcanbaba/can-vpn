@@ -38,10 +38,17 @@ class RatingPopupViewController: UIViewController {
         RatingItem(header: "😍", description: "Excellent!", ratingImageView: generateStarImageView()),
     ] }()
     
+    private lazy var centerImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "rating-img")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 34)
-        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = UIColor.Landing.titleText
         label.text = titleText
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -50,8 +57,8 @@ class RatingPopupViewController: UIViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24)
-        label.textColor = .Custom.RatingPopup.description
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = UIColor.Landing.titleText.withAlphaComponent(0.8)
         label.text = descriptionText
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -152,9 +159,15 @@ class RatingPopupViewController: UIViewController {
             make.centerY.equalToSuperview()
         }
         
+        windowWrapperView.addSubview(centerImageView)
+        centerImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(24)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
         windowWrapperView.addSubview(headerLabel)
         headerLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40)
+            make.top.equalTo(centerImageView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
