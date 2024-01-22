@@ -25,7 +25,7 @@ class SubscriptionViewController: UIViewController {
     private var selectedOfferSKU: String?
     private var appliedCouponCode: String?
     
-    private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous]
+    private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous, .anonymous, .anonymous, .anonymous]
     
     override func viewDidLoad() {
         super.viewDidLoad()

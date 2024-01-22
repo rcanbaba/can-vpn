@@ -61,8 +61,8 @@ class FeaturesTableViewCell: UITableViewCell {
         }
         
         contentView.addSubview(textStackView)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(checkImageView.snp.trailing).inset(12)
+        textStackView.snp.makeConstraints { make in
+            make.leading.equalTo(checkImageView.snp.trailing).offset(12)
             make.centerY.equalToSuperview()
         }
     }
@@ -71,7 +71,7 @@ class FeaturesTableViewCell: UITableViewCell {
 
 extension FeaturesTableViewCell {
     public func set(type: PremiumFeatureType) {
-        titleLabel.text = "type.getTitle()"
-        descriptionLabel.text = "type.getDescription()"
+        titleLabel.text = type.getTitle()
+        descriptionLabel.text = type.getDescription()
     }
 }

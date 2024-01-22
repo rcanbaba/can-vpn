@@ -83,14 +83,13 @@ class SubscriptionView: UIView {
         tableView.register(FeaturesTableViewCell.self, forCellReuseIdentifier: "FeaturesTableViewCell")
         tableView.rowHeight = 38
         tableView.showsVerticalScrollIndicator = true
-        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = true
+        tableView.indicatorStyle = .black
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        tableView.bounces = true
+        tableView.bounces = false
         tableView.layer.cornerRadius = 12
-        tableView.layer.applySubscriptionShadow()
-        tableView.layer.masksToBounds = false
         return tableView
     }()
     
@@ -136,12 +135,11 @@ class SubscriptionView: UIView {
         addSubview(featuresTableView)
         featuresTableView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(200)
         }
         
         featuresTableView.layer.applySubscriptionShadow()
-        featuresTableView.layer.masksToBounds = false
 
         addSubview(subscribeButton)
         subscribeButton.snp.makeConstraints { make in
