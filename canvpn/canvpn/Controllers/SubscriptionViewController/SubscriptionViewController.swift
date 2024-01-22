@@ -25,12 +25,15 @@ class SubscriptionViewController: UIViewController {
     private var selectedOfferSKU: String?
     private var appliedCouponCode: String?
     
+    private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
         checkAndSetProducts()
         configureUI()
         setNavigationButton()
+        setFeaturesTableView()
         setOfferTableView()
         checkThenSetCouponLabel()
         
@@ -84,6 +87,12 @@ class SubscriptionViewController: UIViewController {
         let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         self.navigationController?.navigationBar.tintColor = UIColor.orange
+    }
+    
+    private func setFeaturesTableView() {
+        subscriptionView.featuresTableView.delegate = self
+        subscriptionView.featuresTableView.dataSource = self
+        subscriptionView.featuresTableView.reloadData()
     }
     
     private func setOfferTableView() {
@@ -234,37 +243,51 @@ extension SubscriptionViewController: PremiumViewDelegate {
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presentableProducts.count
+        if tableView == subscriptionView.offerTableView {
+            return presentableProducts.count
+        } else {
+            return premiumFeatures.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
-        let cellData = presentableProducts[indexPath.row]
-        
-        if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
-            cell.setName(text: getCellName(key: skProduct.localizedTitle))
-            cell.setPrice(text: skPrice)
-            cell.setDescription(text: getCellDescription(key: skProduct.localizedDescription))
-            cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
-            cellData.isBestOffer ? cell.showBestTag() : ()
-            cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()
+        if tableView == subscriptionView.offerTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
+            let cellData = presentableProducts[indexPath.row]
+            
+            if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
+                cell.setName(text: getCellName(key: skProduct.localizedTitle))
+                cell.setPrice(text: skPrice)
+                cell.setDescription(text: getCellDescription(key: skProduct.localizedDescription))
+                cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
+                cellData.isBestOffer ? cell.showBestTag() : ()
+                cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()
+            } else {
+                cell.setName(text: "unknown_product_title".localize())
+                cell.setPrice(text: "-")
+                cell.setDescription(text: "...")
+            }
+            return cell
+            
         } else {
-            cell.setName(text: "unknown_product_title".localize())
-            cell.setPrice(text: "-")
-            cell.setDescription(text: "...")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeaturesTableViewCell", for: indexPath) as! FeaturesTableViewCell
+            let cellData = premiumFeatures[indexPath.row]
+            cell.set(type: cellData)
+            return cell
         }
-        
-        return cell
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
-            for selectedIndexPath in selectedIndexPaths {
-                tableView.deselectRow(at: selectedIndexPath, animated: false)
+        if tableView == subscriptionView.offerTableView {
+            if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+                for selectedIndexPath in selectedIndexPaths {
+                    tableView.deselectRow(at: selectedIndexPath, animated: false)
+                }
             }
+            selectedOfferSKU = presentableProducts[indexPath.row].sku
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
-        selectedOfferSKU = presentableProducts[indexPath.row].sku
-        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
     }
 }
 

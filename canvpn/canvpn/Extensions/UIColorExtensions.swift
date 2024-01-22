@@ -71,4 +71,9 @@ extension UIColor {
         static let titleText = UIColor("454545")
     }
     
+    struct Subscription {
+        static let featureTitleText = UIColor("5B5B5B")
+        static let featureDescriptionText = UIColor("5B5B5B")
+    }
+    
 }

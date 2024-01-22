@@ -30,20 +30,17 @@ class SubscriptionView: UIView {
         return gradientView
     }()
     
-    private lazy var backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "world-map-gold")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
-    private lazy var featuresMainStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 10.0
-        stackView.distribution = .fillEqually
-        return stackView
+    public lazy var offerTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(OfferTableViewCell.self, forCellReuseIdentifier: "OfferTableViewCell")
+        tableView.rowHeight = 80
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
+        tableView.bounces = false
+        return tableView
     }()
     
     private lazy var subscribeButton: SubscriptionButton = {
@@ -81,16 +78,19 @@ class SubscriptionView: UIView {
         return label
     }()
     
-    public lazy var offerTableView: UITableView = {
+    public lazy var featuresTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(OfferTableViewCell.self, forCellReuseIdentifier: "OfferTableViewCell")
-        tableView.rowHeight = 80
-        tableView.showsVerticalScrollIndicator = false
+        tableView.register(FeaturesTableViewCell.self, forCellReuseIdentifier: "FeaturesTableViewCell")
+        tableView.rowHeight = 38
+        tableView.showsVerticalScrollIndicator = true
         tableView.showsHorizontalScrollIndicator = false
-        tableView.backgroundColor = UIColor.clear
+        tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        tableView.bounces = false
+        tableView.bounces = true
+        tableView.layer.cornerRadius = 12
+        tableView.layer.applySubscriptionShadow()
+        tableView.layer.masksToBounds = false
         return tableView
     }()
     
@@ -101,12 +101,18 @@ class SubscriptionView: UIView {
         return view
     }()
     
-    private lazy var topView = PremiumTopView()
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 32)
+        label.textColor = UIColor.black
+        label.textAlignment = .center
+        label.text = "Get Premium1".localize()
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
-        configureFeaturesStack()
         setGestureRecognizer()
     }
     
@@ -121,29 +127,25 @@ class SubscriptionView: UIView {
             make.edges.equalToSuperview()
         }
         
-        addSubview(backgroundImageView)
-        
-        addSubview(topView)
-        topView.snp.makeConstraints { make in
+        addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(safeAreaLayoutGuide).inset(12)
+            make.top.equalTo(safeAreaLayoutGuide).inset(4)
         }
         
-        addSubview(featuresMainStackView)
-        featuresMainStackView.snp.makeConstraints { make in
-            make.top.equalTo(topView.snp.bottom).offset(40)
-            make.leading.equalToSuperview().inset(34)
-            make.trailing.equalToSuperview().inset(30)
+        addSubview(featuresTableView)
+        featuresTableView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(200)
         }
         
-        backgroundImageView.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(topView.snp.bottom).offset(20)
-        }
+        featuresTableView.layer.applySubscriptionShadow()
+        featuresTableView.layer.masksToBounds = false
 
         addSubview(subscribeButton)
         subscribeButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.leading.trailing.equalToSuperview().inset(36)
             make.height.equalTo(48)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
         }
@@ -168,7 +170,7 @@ class SubscriptionView: UIView {
         
         addSubview(offerTableView)
         offerTableView.snp.makeConstraints { make in
-            make.top.equalTo(featuresMainStackView.snp.bottom).offset(30)
+            make.top.equalTo(featuresTableView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalTo(subscribeButton.snp.top).offset(-32)
         }
@@ -176,41 +178,6 @@ class SubscriptionView: UIView {
         addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
-        }
-    }
-    
-    private func configureFeaturesStack() {
-        
-        let firstRowStackView = UIStackView()
-        firstRowStackView.axis = .horizontal
-        firstRowStackView.alignment = .center
-        firstRowStackView.spacing = 10.0
-        
-        let secondRowStackView = UIStackView()
-        firstRowStackView.axis = .horizontal
-        firstRowStackView.alignment = .center
-        firstRowStackView.spacing = 10.0
-        
-        let stackViews = [firstRowStackView, secondRowStackView]
-        
-        featuresMainStackView.addArrangedSubview(firstRowStackView)
-        featuresMainStackView.addArrangedSubview(secondRowStackView)
-        
-        
-        let premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous]
-        let featureItemWidth = (UIScreen.main.bounds.width - 70 - 10) / 2
-        
-        for (index, featureType) in premiumFeatures.enumerated() {
-            let featureView = PremiumFeatureView()
-            featureView.set(type: featureType)
-            
-            // Get the corresponding stackView (first or second) based on index
-            let currentStackView = stackViews[index / 2] // This will result in 0 for the first two and 1 for the next two
-            currentStackView.addArrangedSubview(featureView)
-            
-            featureView.snp.makeConstraints { make in
-                make.width.equalTo(featureItemWidth)
-            }
         }
     }
     
