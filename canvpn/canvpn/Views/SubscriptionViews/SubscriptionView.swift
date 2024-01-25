@@ -121,10 +121,11 @@ class SubscriptionView: UIView {
     
 // MARK: - Setup UI
     private func configureUI() {
-        addSubview(backGradientView)
-        backGradientView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        backgroundColor = .clear
+//        addSubview(backGradientView)
+//        backGradientView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
@@ -136,7 +137,7 @@ class SubscriptionView: UIView {
         featuresTableView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(200)
+            make.height.equalTo(450)
         }
         
         featuresTableView.layer.applySubscriptionShadow()

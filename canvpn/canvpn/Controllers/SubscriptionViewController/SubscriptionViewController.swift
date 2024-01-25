@@ -9,7 +9,19 @@ import UIKit
 import StoreKit
 import FirebaseAnalytics
 
-class SubscriptionViewController: UIViewController {
+class SubscriptionViewController: ScrollableViewController {
+    
+    private lazy var backGradientView: GradientView = {
+        let gradientView = GradientView()
+        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientView.gradientLayer.locations = [0.0, 1.0]
+        gradientView.gradientLayer.colors = [
+            UIColor.Landing.backGradientStart.cgColor,
+            UIColor.Landing.backGradientEnd.cgColor
+        ]
+        return gradientView
+    }()
     
     private lazy var subscriptionView: SubscriptionView = {
         let view = SubscriptionView()
@@ -69,9 +81,13 @@ class SubscriptionViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor.white
-        view.addSubview(subscriptionView)
+        baseView.addSubview(subscriptionView)
         subscriptionView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        view.insertSubview(backGradientView, at: 0)
+        backGradientView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
