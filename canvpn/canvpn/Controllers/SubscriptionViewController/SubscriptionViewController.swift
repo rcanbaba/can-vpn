@@ -106,7 +106,7 @@ class SubscriptionViewController: ScrollableViewController {
         view.addSubview(backGradientView23)
         backGradientView23.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(200)
+            make.height.equalTo(380)
         }
     }
     

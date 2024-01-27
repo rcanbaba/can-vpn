@@ -7,16 +7,7 @@
 
 import UIKit
 
-protocol PremiumViewDelegate: AnyObject {
-    func subscribeTapped()
-    func subscriptionTermsTapped()
-    func subscriptionRestoreTapped()
-    func tryCouponCodeTapped()
-}
-
 class SubscriptionView: UIView {
-    
-    public weak var delegate: PremiumViewDelegate?
     
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
@@ -41,41 +32,6 @@ class SubscriptionView: UIView {
         tableView.tableFooterView = UIView()
         tableView.bounces = false
         return tableView
-    }()
-    
-    private lazy var subscribeButton: SubscriptionButton = {
-        let view = SubscriptionButton(type: .system)
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(subscribeTapped(_:))))
-        view.layer.applySketchShadow()
-        return view
-    }()
-    
-    private lazy var termsLabel: UnderlinedLabel = {
-        let label = UnderlinedLabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.Custom.goProFeatureTextGray
-        label.textAlignment = .left
-        label.text = "subs_terms_key".localize()
-        return label
-    }()
-    
-    private lazy var restoreLabel: UnderlinedLabel = {
-        let label = UnderlinedLabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.Custom.goProFeatureTextGray
-        label.textAlignment = .right
-        label.text = "subs_restore_key".localize()
-        return label
-    }()
-    
-    private lazy var couponLabel: UnderlinedLabel = {
-        let label = UnderlinedLabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.Custom.goProFeatureTextGray
-        label.textAlignment = .right
-        label.text = "try_coupon_code_key".localize()
-        label.isHidden = true
-        return label
     }()
     
     public lazy var featuresTableView: UITableView = {
@@ -116,7 +72,13 @@ class SubscriptionView: UIView {
         return imageView
     }()
     
-    private lazy var reviewItem = ReviewItemView()
+    private lazy var reviewStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        stackView.spacing = 6.0
+        return stackView
+    }()
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
@@ -136,8 +98,8 @@ class SubscriptionView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        createReviews()
         configureUI()
-        setGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -171,83 +133,120 @@ class SubscriptionView: UIView {
             make.centerX.equalToSuperview()
         }
         
-        addSubview(reviewItem)
-        reviewItem.snp.makeConstraints { make in
+        addSubview(reviewStackView)
+        reviewStackView.snp.makeConstraints { make in
             make.top.equalTo(branchStackView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(24)
-        }
-
-        addSubview(subscribeButton)
-        subscribeButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(36)
-            make.height.equalTo(48)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
         }
         
-        addSubview(termsLabel)
-        termsLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24)
-            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
-        }
-        
-        addSubview(restoreLabel)
-        restoreLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(24)
-            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
-        }
-        
-        addSubview(couponLabel)
-        couponLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(subscribeButton.snp.top).offset(-13)
-        }
-        
-        addSubview(offerTableView)
-        offerTableView.snp.makeConstraints { make in
-            make.top.equalTo(reviewItem.snp.bottom).offset(30)
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(subscribeButton.snp.top).offset(-32)
-        }
+//        addSubview(subscribeButton)
+//        subscribeButton.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(36)
+//            make.height.equalTo(48)
+//            make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
+//        }
+//        
+//        addSubview(termsLabel)
+//        termsLabel.snp.makeConstraints { make in
+//            make.leading.equalToSuperview().inset(24)
+//            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
+//        }
+//        
+//        addSubview(restoreLabel)
+//        restoreLabel.snp.makeConstraints { make in
+//            make.trailing.equalToSuperview().inset(24)
+//            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
+//        }
+//        
+//        addSubview(couponLabel)
+//        couponLabel.snp.makeConstraints { make in
+//            make.centerX.equalToSuperview()
+//            make.bottom.equalTo(subscribeButton.snp.top).offset(-13)
+//        }
+//        
+//        addSubview(offerTableView)
+//        offerTableView.snp.makeConstraints { make in
+//            make.top.equalTo(reviewStackView.snp.bottom).offset(30)
+//            make.leading.trailing.equalToSuperview().inset(24)
+//            make.bottom.equalTo(subscribeButton.snp.top).offset(-32)
+//        }
+//        
+//        addSubview(activityIndicator)
+//        activityIndicator.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//        }
 
-        addSubview(activityIndicator)
-        activityIndicator.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+    }
+    
+    private func createReviews() {
+        let reviewItem1 = ReviewItemView()
+        reviewItem1.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
+                        text: "Çok güzel uygulama harika ben çok sevdim")
+        let reviewItem2 = ReviewItemView()
+        reviewItem2.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
+                        text: "Çok güzel uygulama harika ben çok sevdim, daha fazla sunucu eklerseniz harika olur.")
+        let reviewItem3 = ReviewItemView()
+        reviewItem3.set(point: "4", name: "Can Babaoglu", city: "Turkey", 
+                        text: "Bağlanırken 1 defa sıkıntı yaşadım sonrasında uygulamayı kapatıp açılınca düzeldi, bu sorunla ilgilenir misiniz?")
+        let reviewItem4 = ReviewItemView()
+        reviewItem4.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
+                        text: "Çok Hızlı")
+        let reviewItem5 = ReviewItemView()
+        reviewItem5.set(point: "4", name: "Can Babaoglu", city: "Turkey", 
+                        text: "Free olması harika")
+        let reviewItem6 = ReviewItemView()
+        reviewItem6.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
+                        text: "Premium sunucular çok hızlı")
+        let reviewItem7 = ReviewItemView()
+        reviewItem7.set(point: "5", name: "Can Babaoglu", city: "Turkey",
+                        text: "Premium sunucular çok hızlı")
+        let reviewItem8 = ReviewItemView()
+        reviewItem8.set(point: "5", name: "Can Babaoglu", city: "Turkey",
+                        text: "Premium sunucular çok hızlı")
+        let reviewItem9 = ReviewItemView()
+        reviewItem9.set(point: "5", name: "Can Babaoglu", city: "Turkey",
+                        text: "Premium sunucular çok hızlı")
+        
+        reviewStackView.addArrangedSubview(reviewItem1)
+        reviewStackView.addArrangedSubview(reviewItem2)
+        reviewStackView.addArrangedSubview(reviewItem3)
+        reviewStackView.addArrangedSubview(reviewItem4)
+        reviewStackView.addArrangedSubview(reviewItem5)
+        reviewStackView.addArrangedSubview(reviewItem6)
+        reviewStackView.addArrangedSubview(reviewItem7)
+        reviewStackView.addArrangedSubview(reviewItem8)
+        reviewStackView.addArrangedSubview(reviewItem9)
+        
+        reviewItem1.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
         }
-    }
-    
-    private func setGestureRecognizer() {
-        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
-        termsLabel.addGestureRecognizer(termsTapGesture)
-        termsLabel.isUserInteractionEnabled = true
+        reviewItem2.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        reviewItem3.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        reviewItem4.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        reviewItem5.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        reviewItem6.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        reviewItem7.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        reviewItem8.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        reviewItem9.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
         
-        let restoreTapGesture = UITapGestureRecognizer(target: self, action: #selector(restoreLabelTapped(_:)))
-        restoreLabel.addGestureRecognizer(restoreTapGesture)
-        restoreLabel.isUserInteractionEnabled = true
-        
-        let couponTapGesture = UITapGestureRecognizer(target: self, action: #selector(couponLabelTapped(_:)))
-        couponLabel.addGestureRecognizer(couponTapGesture)
-        couponLabel.isUserInteractionEnabled = true
     }
-}
-
-// MARK: - ACTIONS
-extension SubscriptionView {
-    @objc private func subscribeTapped (_ sender: UITapGestureRecognizer) {
-        delegate?.subscribeTapped()
-    }
-    
-    @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
-        delegate?.subscriptionTermsTapped()
-    }
-    
-    @objc func restoreLabelTapped(_ gesture: UITapGestureRecognizer) {
-        delegate?.subscriptionRestoreTapped()
-    }
-    
-    @objc func couponLabelTapped(_ gesture: UITapGestureRecognizer) {
-        delegate?.tryCouponCodeTapped()
-    }
-    
 }
 
 // MARK: - PUBLIC METHODS

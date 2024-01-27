@@ -7,6 +7,14 @@
 import UIKit
 
 class ReviewItemView: UIView {
+    
+    private lazy var baseView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 8.0
+        view.layer.applySubscriptionShadow()
+        return view
+    }()
 
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [infoStackView, reviewTextLabel])
@@ -26,10 +34,9 @@ class ReviewItemView: UIView {
     
     private lazy var pointLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        label.text = "5".localize()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = UIColor.Subscription.reviewText
+        label.textAlignment = .natural
         return label
     }()
     
@@ -44,35 +51,31 @@ class ReviewItemView: UIView {
         let stackView = UIStackView(arrangedSubviews: [pointLabel, starImageView])
         stackView.alignment = .center
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
         return stackView
     }()
     
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 10)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        label.text = "Mahmoot Jon"
+        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.textColor = UIColor.Subscription.reviewText
+        label.textAlignment = .natural
         return label
     }()
     
     private lazy var cityLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 10)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        label.text = "Ankara, Turkey"
+        label.font = UIFont.systemFont(ofSize: 10, weight: .light)
+        label.textColor = UIColor.Subscription.reviewText
+        label.textAlignment = .natural
         return label
     }()
     
     private lazy var reviewTextLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 10)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 10, weight: .light)
+        label.textColor = UIColor.Subscription.reviewText
+        label.textAlignment = .natural
         label.numberOfLines = 3
-        label.text = "I am very happy to use this vpn thank you it turned out than"
         return label
     }()
 
@@ -87,20 +90,33 @@ class ReviewItemView: UIView {
     
     // MARK: Setup UI
     private func configureUI() {
-        self.backgroundColor = .cyan
+        backgroundColor = .clear
         
-        addSubview(mainStackView)
+        addSubview(baseView)
+        baseView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(2)
+        }
+        
+        baseView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(8)
         }
         starImageView.snp.makeConstraints { make in
-            make.size.equalTo(9.6)
+            make.size.equalTo(10)
         }
         
-        addSubview(starStackView)
+        baseView.addSubview(starStackView)
         starStackView.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(8)
+            make.top.equalToSuperview().inset(8)
+            make.trailing.equalToSuperview().inset(8)
         }
+    }
+    
+    public func set(point: String, name: String, city: String, text: String){
+        pointLabel.text = point
+        userNameLabel.text = name
+        cityLabel.text = city
+        reviewTextLabel.text = text
     }
     
 }
