@@ -37,7 +37,7 @@ class SubscriptionViewController: ScrollableViewController {
     private var selectedOfferSKU: String?
     private var appliedCouponCode: String?
     
-    private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous, .anonymous, .anonymous, .anonymous]
+    private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous, .fast]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +80,18 @@ class SubscriptionViewController: ScrollableViewController {
         subscriptionView.setCouponLabel(isHidden: !showCoupon)
     }
     
+    private lazy var backGradientView23: GradientView = {
+        let gradientView = GradientView()
+        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientView.gradientLayer.locations = [0.0, 1.0]
+        gradientView.gradientLayer.colors = [
+            UIColor.black.cgColor,
+            UIColor.blue.cgColor
+        ]
+        return gradientView
+    }()
+    
     private func configureUI() {
         baseView.addSubview(subscriptionView)
         subscriptionView.snp.makeConstraints { (make) in
@@ -89,6 +101,12 @@ class SubscriptionViewController: ScrollableViewController {
         view.insertSubview(backGradientView, at: 0)
         backGradientView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+        
+        view.addSubview(backGradientView23)
+        backGradientView23.snp.makeConstraints { (make) in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(200)
         }
     }
     

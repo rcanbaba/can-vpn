@@ -82,6 +82,7 @@ class SubscriptionView: UIView {
         let tableView = UITableView()
         tableView.register(FeaturesTableViewCell.self, forCellReuseIdentifier: "FeaturesTableViewCell")
         tableView.rowHeight = 38
+        tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         tableView.showsVerticalScrollIndicator = true
         tableView.showsHorizontalScrollIndicator = true
         tableView.indicatorStyle = .black
@@ -92,6 +93,30 @@ class SubscriptionView: UIView {
         tableView.layer.cornerRadius = 12
         return tableView
     }()
+    
+    private lazy var branchStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [preBranch1ImageView, preBranch2ImageView])
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var preBranch1ImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "pre-branch-img1")
+        return imageView
+    }()
+    
+    private lazy var preBranch2ImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "pre-branch-img2")
+        return imageView
+    }()
+    
+    private lazy var reviewItem = ReviewItemView()
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
@@ -122,10 +147,6 @@ class SubscriptionView: UIView {
 // MARK: - Setup UI
     private func configureUI() {
         backgroundColor = .clear
-//        addSubview(backGradientView)
-//        backGradientView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
@@ -137,10 +158,24 @@ class SubscriptionView: UIView {
         featuresTableView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(450)
+            make.height.equalTo(200)
         }
         
         featuresTableView.layer.applySubscriptionShadow()
+        featuresTableView.clipsToBounds = false
+        
+        addSubview(branchStackView)
+        branchStackView.snp.makeConstraints { make in
+            make.top.equalTo(featuresTableView.snp.bottom).offset(30)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.centerX.equalToSuperview()
+        }
+        
+        addSubview(reviewItem)
+        reviewItem.snp.makeConstraints { make in
+            make.top.equalTo(branchStackView.snp.bottom).offset(30)
+            make.leading.trailing.equalToSuperview().inset(24)
+        }
 
         addSubview(subscribeButton)
         subscribeButton.snp.makeConstraints { make in
@@ -169,7 +204,7 @@ class SubscriptionView: UIView {
         
         addSubview(offerTableView)
         offerTableView.snp.makeConstraints { make in
-            make.top.equalTo(featuresTableView.snp.bottom).offset(30)
+            make.top.equalTo(reviewItem.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalTo(subscribeButton.snp.top).offset(-32)
         }

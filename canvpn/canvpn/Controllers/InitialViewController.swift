@@ -49,9 +49,11 @@ class InitialViewController: UIViewController {
         if SettingsManager.shared.settings?.isInReview == true {
             navigationController = createNavigationController(with: HomeViewController())
         } else {
-            let landingController = LandingViewController()
-            landingController.delegate = self
-            navigationController = createNavigationController(with: landingController)
+            navigationController = createNavigationController(with: MainScreenViewController())
+            
+//            let landingController = LandingViewController()
+//            landingController.delegate = self
+//            navigationController = createNavigationController(with: landingController)
         }
         present(navigationController, animated: true, completion: nil)
     }
