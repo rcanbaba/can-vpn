@@ -357,6 +357,7 @@
 		B4C5C4912B623EE30068A01D /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4902B623EE30068A01D /* ScrollableViewController.swift */; };
 		B4C5C4932B6521600068A01D /* ReviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4922B6521600068A01D /* ReviewItemView.swift */; };
 		B4C5C4952B6583430068A01D /* SubscriptionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */; };
+		B4C5C4972B6655C70068A01D /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4962B6655C70068A01D /* ProductItemView.swift */; };
 		B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C91E9C298562950042500B /* GoogleService-Info.plist */; };
 		B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3129C7B50F00E11069 /* LocationButton.swift */; };
 		B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3329C7B52600E11069 /* GoProButton.swift */; };
@@ -775,6 +776,7 @@
 		B4C5C4902B623EE30068A01D /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
 		B4C5C4922B6521600068A01D /* ReviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemView.swift; sourceTree = "<group>"; };
 		B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOverlayView.swift; sourceTree = "<group>"; };
+		B4C5C4962B6655C70068A01D /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
 		B4C91E9C298562950042500B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4D09F3129C7B50F00E11069 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		B4D09F3329C7B52600E11069 /* GoProButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProButton.swift; sourceTree = "<group>"; };
@@ -1458,6 +1460,7 @@
 				B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */,
 				B4216DD52B5EB31F00F8B0D6 /* FeaturesTableViewCell.swift */,
 				B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */,
+				B4C5C4962B6655C70068A01D /* ProductItemView.swift */,
 			);
 			path = SubscriptionViews;
 			sourceTree = "<group>";
@@ -1968,6 +1971,7 @@
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */,
 				B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */,
+				B4C5C4972B6655C70068A01D /* ProductItemView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
 				B4D8710B2A855FE40080D788 /* ATTrackingManager.swift in Sources */,
 				B424E46A2A444C7600EB124F /* PurchaseManager.swift in Sources */,

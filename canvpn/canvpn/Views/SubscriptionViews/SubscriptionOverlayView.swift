@@ -81,26 +81,46 @@ class SubscriptionOverlayView: UIView {
     
     // MARK: Setup UI
     private func configureUI() {
-        backgroundColor = .clear
+        backgroundColor = .blue
         
-        addSubview(baseView)
-        baseView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(2)
+        addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
         }
         
-        baseView.addSubview(mainStackView)
+        addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
-        }
-        starImageView.snp.makeConstraints { make in
-            make.size.equalTo(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(16)
         }
         
-        baseView.addSubview(starStackView)
-        starStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(8)
-            make.trailing.equalToSuperview().inset(8)
+        addSubview(subscribeButton)
+        subscribeButton.snp.makeConstraints { make in
+            make.top.equalTo(mainStackView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(48)
+            make.bottom.equalToSuperview().inset(70)
         }
+        
+        addSubview(termsLabel)
+        termsLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(10)
+        }
+        
+        addSubview(restoreLabel)
+        restoreLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(24)
+            make.top.equalTo(termsLabel.snp.bottom).offset(16)
+        }
+        
+        addSubview(couponLabel)
+        couponLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(24)
+            make.top.equalTo(termsLabel.snp.bottom).offset(16)
+        }
+        
     }
     
     private func setGestureRecognizer() {
@@ -117,6 +137,7 @@ class SubscriptionOverlayView: UIView {
         couponLabel.isUserInteractionEnabled = true
     }
     
+    // MARK: Actions
     @objc private func subscribeTapped (_ sender: UITapGestureRecognizer) {
         delegate?.subscribeTapped()
     }
@@ -135,4 +156,22 @@ class SubscriptionOverlayView: UIView {
     
 }
 
-
+// MARK: Public Methods
+extension SubscriptionOverlayView {
+    
+    public func setCouponButton(isHidden: Bool){
+        couponLabel.isHidden = isHidden
+    }
+    
+    public func createProduct(title: String){
+        let productItem = ProductItemView()
+        productItem.set(title: title, description: "Unlimited Access - 123,23 tl / month", price: "1232", text: "1jas")
+        mainStackView.addArrangedSubview(productItem)
+        
+        productItem.snp.makeConstraints { make in
+            make.height.equalTo(56)
+            make.leading.trailing.equalToSuperview()
+        }
+    }
+    
+}

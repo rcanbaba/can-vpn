@@ -139,43 +139,6 @@ class SubscriptionView: UIView {
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
         }
-        
-//        addSubview(subscribeButton)
-//        subscribeButton.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(36)
-//            make.height.equalTo(48)
-//            make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
-//        }
-//        
-//        addSubview(termsLabel)
-//        termsLabel.snp.makeConstraints { make in
-//            make.leading.equalToSuperview().inset(24)
-//            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
-//        }
-//        
-//        addSubview(restoreLabel)
-//        restoreLabel.snp.makeConstraints { make in
-//            make.trailing.equalToSuperview().inset(24)
-//            make.top.equalTo(subscribeButton.snp.bottom).offset(13)
-//        }
-//        
-//        addSubview(couponLabel)
-//        couponLabel.snp.makeConstraints { make in
-//            make.centerX.equalToSuperview()
-//            make.bottom.equalTo(subscribeButton.snp.top).offset(-13)
-//        }
-//        
-//        addSubview(offerTableView)
-//        offerTableView.snp.makeConstraints { make in
-//            make.top.equalTo(reviewStackView.snp.bottom).offset(30)
-//            make.leading.trailing.equalToSuperview().inset(24)
-//            make.bottom.equalTo(subscribeButton.snp.top).offset(-32)
-//        }
-//        
-//        addSubview(activityIndicator)
-//        activityIndicator.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//        }
 
     }
     
@@ -259,6 +222,7 @@ extension SubscriptionView {
     }
     
     public func setCouponLabel(isHidden: Bool) {
-        couponLabel.isHidden = isHidden
+        // TODO: 
+       // couponLabel.isHidden = isHidden
     }
 }

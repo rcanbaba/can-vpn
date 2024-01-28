@@ -23,11 +23,8 @@ class SubscriptionViewController: ScrollableViewController {
         return gradientView
     }()
     
-    private lazy var subscriptionView: SubscriptionView = {
-        let view = SubscriptionView()
-        view.delegate = self
-        return view
-    }()
+    private lazy var subscriptionView =  SubscriptionView()
+    private lazy var subscriptionOverlay =  SubscriptionOverlayView()
     
     private var networkService: DefaultNetworkService?
     
@@ -38,6 +35,11 @@ class SubscriptionViewController: ScrollableViewController {
     private var appliedCouponCode: String?
     
     private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous, .fast]
+    
+    //        addSubview(activityIndicator)
+    //        activityIndicator.snp.makeConstraints { make in
+    //            make.center.equalToSuperview()
+    //        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,18 +82,6 @@ class SubscriptionViewController: ScrollableViewController {
         subscriptionView.setCouponLabel(isHidden: !showCoupon)
     }
     
-    private lazy var backGradientView23: GradientView = {
-        let gradientView = GradientView()
-        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-        gradientView.gradientLayer.locations = [0.0, 1.0]
-        gradientView.gradientLayer.colors = [
-            UIColor.black.cgColor,
-            UIColor.blue.cgColor
-        ]
-        return gradientView
-    }()
-    
     private func configureUI() {
         baseView.addSubview(subscriptionView)
         subscriptionView.snp.makeConstraints { (make) in
@@ -103,11 +93,16 @@ class SubscriptionViewController: ScrollableViewController {
             make.edges.equalToSuperview()
         }
         
-        view.addSubview(backGradientView23)
-        backGradientView23.snp.makeConstraints { (make) in
+        view.addSubview(subscriptionOverlay)
+        subscriptionOverlay.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(380)
         }
+        
+        subscriptionOverlay.setCouponButton(isHidden: false)
+        subscriptionOverlay.createProduct(title: "DEneme")
+        subscriptionOverlay.createProduct(title: "asdasdasd")
+        subscriptionOverlay.createProduct(title: "Tıllık")
+        
     }
     
     private func setNavigationButton() {
@@ -254,25 +249,25 @@ class SubscriptionViewController: ScrollableViewController {
 }
 
 // MARK: - PremiumViewDelegate
-extension SubscriptionViewController: PremiumViewDelegate {
-    func subscribeTapped() {
-        if let selectedSKU = selectedOfferSKU,
-           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
-            subscribeItem(productId: product.sku)
-        } else {
-            Toaster.showToast(message: "error_try_again".localize())
-        }
-    }
-    func subscriptionTermsTapped() {
-        showSubscriptionTerms()
-    }
-    func subscriptionRestoreTapped() {
-        restoreSubscription()
-    }
-    func tryCouponCodeTapped() {
-        tryCouponCode()
-    }
-}
+//extension SubscriptionViewController: PremiumViewDelegate {
+//    func subscribeTapped() {
+//        if let selectedSKU = selectedOfferSKU,
+//           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
+//            subscribeItem(productId: product.sku)
+//        } else {
+//            Toaster.showToast(message: "error_try_again".localize())
+//        }
+//    }
+//    func subscriptionTermsTapped() {
+//        showSubscriptionTerms()
+//    }
+//    func subscriptionRestoreTapped() {
+//        restoreSubscription()
+//    }
+//    func tryCouponCodeTapped() {
+//        tryCouponCode()
+//    }
+//}
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource {
