@@ -88,13 +88,13 @@ class ProductItemView: UIView {
     
     public func set(isSelected: Bool) {
         if isSelected {
-//            layer.borderColor = UIColor.Subscription.productBorder.cgColor
-//            layer.borderWidth = 2.0
+            layer.borderColor = UIColor.Subscription.productBorder.cgColor
+            layer.borderWidth = 2.0
             baseView.layer.applySubscriptionShadow(color: UIColor.Subscription.productBorder, alpha: 1.0)
             
         } else {
-//            layer.borderColor = UIColor.clear.cgColor
-//            layer.borderWidth = 0.0
+            layer.borderColor = UIColor.clear.cgColor
+            layer.borderWidth = 0.0
             baseView.layer.applySubscriptionShadow()
         }
     }
