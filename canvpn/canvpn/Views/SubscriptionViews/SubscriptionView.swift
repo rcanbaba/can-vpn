@@ -37,19 +37,6 @@ class SubscriptionView: UIView {
         return gradientView
     }()
     
-    public lazy var offerTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(OfferTableViewCell.self, forCellReuseIdentifier: "OfferTableViewCell")
-        tableView.rowHeight = 80
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
-        tableView.backgroundColor = UIColor.clear
-        tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
-        tableView.bounces = false
-        return tableView
-    }()
-    
     public lazy var featuresTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(FeaturesTableViewCell.self, forCellReuseIdentifier: "FeaturesTableViewCell")
@@ -57,8 +44,7 @@ class SubscriptionView: UIView {
         tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         tableView.showsVerticalScrollIndicator = true
         tableView.showsHorizontalScrollIndicator = true
-        tableView.indicatorStyle = .black
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         tableView.bounces = false
@@ -120,15 +106,17 @@ class SubscriptionView: UIView {
         let edgeSize = UIScreen.main.bounds.width / 2.5
         
         addSubview(crownImageView)
-        crownImageView.snp.makeConstraints { make in
-            make.size.equalTo(edgeSize)
-            make.top.trailing.equalToSuperview()
-        }
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(safeAreaLayoutGuide).inset(4)
+            make.top.equalTo(safeAreaLayoutGuide).offset(10)
+        }
+        
+        crownImageView.snp.makeConstraints { make in
+            make.size.equalTo(edgeSize)
+            make.trailing.equalToSuperview()
+            make.centerY.equalTo(titleLabel).offset(12)
         }
         
         addSubview(featuresTableView)
@@ -235,9 +223,5 @@ extension SubscriptionView {
             show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
         }
     }
-    
-    public func setCouponLabel(isHidden: Bool) {
-        // TODO: 
-       // couponLabel.isHidden = isHidden
-    }
+
 }

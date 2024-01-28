@@ -12,6 +12,7 @@ protocol SubscriptionOverlayViewDelegate: AnyObject {
     func subscriptionTermsTapped()
     func subscriptionRestoreTapped()
     func tryCouponCodeTapped()
+    func productSelected(id: String?)
 }
 
 class SubscriptionOverlayView: UIView {
@@ -164,15 +165,25 @@ extension SubscriptionOverlayView {
         couponLabel.isHidden = isHidden
     }
     
-    public func createProduct(title: String){
+    public func createProduct(id: String, title: String, description: String, isSelected: Bool){
         let productItem = ProductItemView()
-        productItem.set(title: title, description: "Unlimited Access - 123,23 tl / month", price: "1232", text: "1jas")
+        productItem.set(id: id, title: title, description: description)
+        productItem.delegate = self
+        productItem.set(isSelected: isSelected)
         mainStackView.addArrangedSubview(productItem)
         
         productItem.snp.makeConstraints { make in
-            make.height.equalTo(56)
+            make.height.equalTo(60)
             make.leading.trailing.equalToSuperview()
         }
+    }
+    
+}
+
+// MARK: ProductItemViewDelegate
+extension SubscriptionOverlayView: ProductItemViewDelegate {
+    func productSelected(id: String?) {
+        delegate?.productSelected(id: id)
     }
     
 }

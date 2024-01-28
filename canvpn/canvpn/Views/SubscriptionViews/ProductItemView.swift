@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol ProductItemViewDelegate: AnyObject {
+    func productSelected(id: String?)
+}
+
 class ProductItemView: UIView {
+    
+    weak var delegate: ProductItemViewDelegate?
+    
+    private var productID: String? = nil
     
     private lazy var baseView: UIView = {
         let view = UIView()
@@ -27,7 +35,7 @@ class ProductItemView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.textColor = UIColor.Subscription.reviewText
         label.textAlignment = .natural
         return label
@@ -44,6 +52,8 @@ class ProductItemView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        self.addGestureRecognizer(tapGestureRecognizer)
     }
     
     required init?(coder: NSCoder) {
@@ -61,13 +71,32 @@ class ProductItemView: UIView {
         
         baseView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
+            make.top.bottom.equalToSuperview().inset(9)
+            make.leading.trailing.equalToSuperview().inset(12)
         }
     }
     
-    public func set(title: String, description: String, price: String, text: String){
+    @objc func viewTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.productSelected(id: productID)
+    }
+    
+    public func set(id: String, title: String, description: String){
+        productID = id
         titleLabel.text = title
         descriptionLabel.text = description
+    }
+    
+    public func set(isSelected: Bool) {
+        if isSelected {
+//            layer.borderColor = UIColor.Subscription.productBorder.cgColor
+//            layer.borderWidth = 2.0
+            baseView.layer.applySubscriptionShadow(color: UIColor.Subscription.productBorder, alpha: 1.0)
+            
+        } else {
+//            layer.borderColor = UIColor.clear.cgColor
+//            layer.borderWidth = 0.0
+            baseView.layer.applySubscriptionShadow()
+        }
     }
     
 }

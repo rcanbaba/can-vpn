@@ -58,6 +58,7 @@ class SubscriptionViewController: ScrollableViewController {
         Analytics.logEvent("006-SubsScreenPresented", parameters: ["type" : "willAppear"])
         setNavigationBar()
         appliedCouponCode = nil
+        UIApplication.shared.statusBarStyle = .darkContent
     }
     
     private func setNavigationBar() {
@@ -79,7 +80,7 @@ class SubscriptionViewController: ScrollableViewController {
     
     private func checkThenSetCouponLabel() {
         let showCoupon = SettingsManager.shared.settings?.interface.showCoupon ?? false
-        subscriptionView.setCouponLabel(isHidden: !showCoupon)
+        subscriptionOverlay.setCouponButton(isHidden: !showCoupon)
     }
     
     private func configureUI() {
@@ -99,11 +100,11 @@ class SubscriptionViewController: ScrollableViewController {
         }
         subscriptionOverlay.layer.applySubscriptionShadow(y: -1)
         subscriptionOverlay.layer.cornerRadius = 12.0
+        subscriptionOverlay.delegate = self
         subscriptionOverlay.setCouponButton(isHidden: false)
-        subscriptionOverlay.createProduct(title: "DEneme")
-        subscriptionOverlay.createProduct(title: "asdasdasd")
-        subscriptionOverlay.createProduct(title: "Tıllık")
-        
+        subscriptionOverlay.createProduct(id: "123", title: "Monthly", description: "Unlimited access - 99.99 tl / Month", isSelected: true)
+        subscriptionOverlay.createProduct(id: "124", title: "6 Month", description: "Unlimited access - 599.99 tl / Month", isSelected: false)
+        subscriptionOverlay.createProduct(id: "125", title: "Annual", description: "Unlimited access - 1299.99 tl", isSelected: false)
     }
     
     private func setNavigationButton() {
@@ -126,9 +127,10 @@ class SubscriptionViewController: ScrollableViewController {
     }
     
     private func setOfferTableView() {
-        subscriptionView.offerTableView.delegate = self
-        subscriptionView.offerTableView.dataSource = self
-        subscriptionView.offerTableView.reloadData()
+        // TODO: set prods
+//        subscriptionView.offerTableView.delegate = self
+//        subscriptionView.offerTableView.dataSource = self
+//        subscriptionView.offerTableView.reloadData()
     }
     
     private func restoreSubscription() {
@@ -216,8 +218,9 @@ class SubscriptionViewController: ScrollableViewController {
     }
     
     private func selectGivenOffer(indexPath: IndexPath) {
-        subscriptionView.offerTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-        selectedOfferSKU = presentableProducts[indexPath.row].sku
+        // TODO: set selection
+//        subscriptionView.offerTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+//        selectedOfferSKU = presentableProducts[indexPath.row].sku
     }
     
     private func getSKProduct(skuID: String) -> SKProduct? {
@@ -249,75 +252,50 @@ class SubscriptionViewController: ScrollableViewController {
     }
 }
 
-// MARK: - PremiumViewDelegate
-//extension SubscriptionViewController: PremiumViewDelegate {
-//    func subscribeTapped() {
-//        if let selectedSKU = selectedOfferSKU,
-//           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
-//            subscribeItem(productId: product.sku)
-//        } else {
-//            Toaster.showToast(message: "error_try_again".localize())
-//        }
-//    }
-//    func subscriptionTermsTapped() {
-//        showSubscriptionTerms()
-//    }
-//    func subscriptionRestoreTapped() {
-//        restoreSubscription()
-//    }
-//    func tryCouponCodeTapped() {
-//        tryCouponCode()
-//    }
-//}
-
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == subscriptionView.offerTableView {
-            return presentableProducts.count
-        } else {
-            return premiumFeatures.count
-        }
+        return premiumFeatures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == subscriptionView.offerTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
-            let cellData = presentableProducts[indexPath.row]
-            
-            if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
-                cell.setName(text: getCellName(key: skProduct.localizedTitle))
-                cell.setPrice(text: skPrice)
-                cell.setDescription(text: getCellDescription(key: skProduct.localizedDescription))
-                cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
-                cellData.isBestOffer ? cell.showBestTag() : ()
-                cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()
-            } else {
-                cell.setName(text: "unknown_product_title".localize())
-                cell.setPrice(text: "-")
-                cell.setDescription(text: "...")
-            }
-            return cell
-            
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FeaturesTableViewCell", for: indexPath) as! FeaturesTableViewCell
-            let cellData = premiumFeatures[indexPath.row]
-            cell.set(type: cellData)
-            return cell
-        }
+//        if tableView == subscriptionView.offerTableView {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
+//            let cellData = presentableProducts[indexPath.row]
+//            
+//            if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
+//                cell.setName(text: getCellName(key: skProduct.localizedTitle))
+//                cell.setPrice(text: skPrice)
+//                cell.setDescription(text: getCellDescription(key: skProduct.localizedDescription))
+//                cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
+//                cellData.isBestOffer ? cell.showBestTag() : ()
+//                cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()
+//            } else {
+//                cell.setName(text: "unknown_product_title".localize())
+//                cell.setPrice(text: "-")
+//                cell.setDescription(text: "...")
+//            }
+//            return cell
+//            
+//        } else {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeaturesTableViewCell", for: indexPath) as! FeaturesTableViewCell
+        let cellData = premiumFeatures[indexPath.row]
+        cell.set(type: cellData)
+        return cell
 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == subscriptionView.offerTableView {
-            if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
-                for selectedIndexPath in selectedIndexPaths {
-                    tableView.deselectRow(at: selectedIndexPath, animated: false)
-                }
-            }
-            selectedOfferSKU = presentableProducts[indexPath.row].sku
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-        }
+        // TODO: select
+//        if tableView == subscriptionView.offerTableView {
+//            if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+//                for selectedIndexPath in selectedIndexPaths {
+//                    tableView.deselectRow(at: selectedIndexPath, animated: false)
+//                }
+//            }
+//            selectedOfferSKU = presentableProducts[indexPath.row].sku
+//            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+//        }
     }
 }
 
@@ -372,7 +350,6 @@ extension SubscriptionViewController {
     private func tryCouponCode() {
         showCouponAlert()
     }
-    
     private func processCouponCode(_ code: String) {
         guard let networkService = networkService else { return }
         var applyCouponRequest = ApplyCouponRequest()
@@ -395,6 +372,31 @@ extension SubscriptionViewController {
                 }
             }
         }
+    }
+}
+
+// MARK: - SubscriptionOverlayViewDelegate
+extension SubscriptionViewController: SubscriptionOverlayViewDelegate {
+    func subscriptionTermsTapped() {
+        showSubscriptionTerms()
+    }
+    func subscriptionRestoreTapped() {
+        restoreSubscription()
+    }
+    func tryCouponCodeTapped() {
+        tryCouponCode()
+    }
+    func subscribeTapped() {
+        print("TODO123123: subscribeTapped")
+        //        if let selectedSKU = selectedOfferSKU,
+        //           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
+        //            subscribeItem(productId: product.sku)
+        //        } else {
+        //            Toaster.showToast(message: "error_try_again".localize())
+        //        }
+    }
+    func productSelected(id: String?) {
+        print("TODO123123: productSelected")
     }
 }
 
