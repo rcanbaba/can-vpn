@@ -76,6 +76,8 @@ extension UIColor {
         static let featureDescriptionText = UIColor("5B5B5B")
         static let reviewText = UIColor("5B5B5B")
         static let titleText = UIColor("454545")
+        static let orangeText = UIColor("FFA341")
+        static let subscribeButtonGreen = UIColor("15CF74")
     }
     
 }

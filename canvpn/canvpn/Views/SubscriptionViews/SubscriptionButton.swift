@@ -9,16 +9,16 @@ import UIKit
 
 class SubscriptionButton: UIButton {
     
-    private lazy var backGradientView: GradientView = {
-        let gradientView = GradientView()
-        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientView.gradientLayer.colors = [
-            UIColor.Landing.buttonGradientStart.cgColor,
-            UIColor.Landing.buttonGradientEnd.cgColor
-        ]
-        return gradientView
-    }()
+//    private lazy var backGradientView: GradientView = {
+//        let gradientView = GradientView()
+//        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+//        gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+//        gradientView.gradientLayer.colors = [
+//            UIColor.Landing.buttonGradientStart.cgColor,
+//            UIColor.Landing.buttonGradientEnd.cgColor
+//        ]
+//        return gradientView
+//    }()
     
     public lazy var textLabel: UILabel = {
         let label = UILabel()
@@ -42,13 +42,14 @@ class SubscriptionButton: UIButton {
     private func configureUI() {
         isUserInteractionEnabled = true
         layer.cornerRadius = 24
-        backGradientView.layer.cornerRadius = 24
-        backGradientView.clipsToBounds = true
-        
-        addSubview(backGradientView)
-        backGradientView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+//        backGradientView.layer.cornerRadius = 24
+//        backGradientView.clipsToBounds = true
+//        
+//        addSubview(backGradientView)
+//        backGradientView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
+        backgroundColor = UIColor.Subscription.subscribeButtonGreen
         
         addSubview(textLabel)
         textLabel.snp.makeConstraints { make in

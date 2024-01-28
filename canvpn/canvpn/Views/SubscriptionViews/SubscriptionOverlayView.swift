@@ -23,6 +23,7 @@ class SubscriptionOverlayView: UIView {
         label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         label.textColor = UIColor.Subscription.titleText
         label.textAlignment = .natural
+        label.text = "Choose your plan"
         return label
     }()
 
@@ -41,19 +42,19 @@ class SubscriptionOverlayView: UIView {
         return view
     }()
     
-    private lazy var termsLabel: UnderlinedLabel = {
-        let label = UnderlinedLabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.Custom.goProFeatureTextGray
-        label.textAlignment = .left
+    private lazy var termsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = UIColor.Subscription.titleText
+        label.textAlignment = .center
         label.text = "subs_terms_key".localize()
         return label
     }()
     
     private lazy var restoreLabel: UnderlinedLabel = {
         let label = UnderlinedLabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.Custom.goProFeatureTextGray
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .right
         label.text = "subs_restore_key".localize()
         return label
@@ -61,8 +62,8 @@ class SubscriptionOverlayView: UIView {
     
     private lazy var couponLabel: UnderlinedLabel = {
         let label = UnderlinedLabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.Custom.goProFeatureTextGray
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .right
         label.text = "try_coupon_code_key".localize()
         label.isHidden = true
@@ -81,7 +82,7 @@ class SubscriptionOverlayView: UIView {
     
     // MARK: Setup UI
     private func configureUI() {
-        backgroundColor = .blue
+        backgroundColor = .white
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
@@ -100,7 +101,7 @@ class SubscriptionOverlayView: UIView {
             make.top.equalTo(mainStackView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(48)
-            make.bottom.equalToSuperview().inset(70)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(70)
         }
         
         addSubview(termsLabel)
@@ -111,13 +112,13 @@ class SubscriptionOverlayView: UIView {
         
         addSubview(restoreLabel)
         restoreLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(24)
+            make.leading.equalToSuperview().inset(30)
             make.top.equalTo(termsLabel.snp.bottom).offset(16)
         }
         
         addSubview(couponLabel)
         couponLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24)
+            make.trailing.equalToSuperview().inset(24)
             make.top.equalTo(termsLabel.snp.bottom).offset(16)
         }
         

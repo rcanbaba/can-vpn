@@ -9,6 +9,22 @@ import UIKit
 
 class SubscriptionView: UIView {
     
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = UIColor.black
+        label.textAlignment = .center
+        label.text = "Get I LOVE VPN PREMIUM".localize()
+        return label
+    }()
+    
+    private lazy var crownImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "premium-crown-top")
+        return imageView
+    }()
+    
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
         gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
@@ -87,15 +103,6 @@ class SubscriptionView: UIView {
         return view
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 32)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        label.text = "Get Premium1".localize()
-        return label
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createReviews()
@@ -109,6 +116,14 @@ class SubscriptionView: UIView {
 // MARK: - Setup UI
     private func configureUI() {
         backgroundColor = .clear
+        
+        let edgeSize = UIScreen.main.bounds.width / 2.5
+        
+        addSubview(crownImageView)
+        crownImageView.snp.makeConstraints { make in
+            make.size.equalTo(edgeSize)
+            make.top.trailing.equalToSuperview()
+        }
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in

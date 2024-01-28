@@ -61,7 +61,7 @@ class ProductItemView: UIView {
         
         baseView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(8)
         }
     }
     

@@ -97,7 +97,8 @@ class SubscriptionViewController: ScrollableViewController {
         subscriptionOverlay.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
         }
-        
+        subscriptionOverlay.layer.applySubscriptionShadow(y: -1)
+        subscriptionOverlay.layer.cornerRadius = 12.0
         subscriptionOverlay.setCouponButton(isHidden: false)
         subscriptionOverlay.createProduct(title: "DEneme")
         subscriptionOverlay.createProduct(title: "asdasdasd")

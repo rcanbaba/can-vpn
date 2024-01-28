@@ -31,7 +31,7 @@ extension CALayer {
     
     func applySubscriptionShadow(
         color: UIColor = .black,
-        alpha: Float = 0.4,
+        alpha: Float = 0.2,
         x: CGFloat = 0,
         y: CGFloat = 0,
         blur: CGFloat = 4,
