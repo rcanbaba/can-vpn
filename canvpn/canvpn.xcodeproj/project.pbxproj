@@ -358,6 +358,7 @@
 		B4C5C4932B6521600068A01D /* ReviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4922B6521600068A01D /* ReviewItemView.swift */; };
 		B4C5C4952B6583430068A01D /* SubscriptionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */; };
 		B4C5C4972B6655C70068A01D /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4962B6655C70068A01D /* ProductItemView.swift */; };
+		B4C5C4992B67C32D0068A01D /* ProductBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4982B67C32D0068A01D /* ProductBadgeView.swift */; };
 		B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C91E9C298562950042500B /* GoogleService-Info.plist */; };
 		B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3129C7B50F00E11069 /* LocationButton.swift */; };
 		B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3329C7B52600E11069 /* GoProButton.swift */; };
@@ -777,6 +778,7 @@
 		B4C5C4922B6521600068A01D /* ReviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemView.swift; sourceTree = "<group>"; };
 		B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOverlayView.swift; sourceTree = "<group>"; };
 		B4C5C4962B6655C70068A01D /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
+		B4C5C4982B67C32D0068A01D /* ProductBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBadgeView.swift; sourceTree = "<group>"; };
 		B4C91E9C298562950042500B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4D09F3129C7B50F00E11069 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		B4D09F3329C7B52600E11069 /* GoProButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProButton.swift; sourceTree = "<group>"; };
@@ -1461,6 +1463,7 @@
 				B4216DD52B5EB31F00F8B0D6 /* FeaturesTableViewCell.swift */,
 				B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */,
 				B4C5C4962B6655C70068A01D /* ProductItemView.swift */,
+				B4C5C4982B67C32D0068A01D /* ProductBadgeView.swift */,
 			);
 			path = SubscriptionViews;
 			sourceTree = "<group>";
@@ -1934,6 +1937,7 @@
 				B4D871192A85725A0080D788 /* FrenchDictionary.swift in Sources */,
 				B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
+				B4C5C4992B67C32D0068A01D /* ProductBadgeView.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
 				B42821042B1B591700E5424B /* CustomAnnotationView.swift in Sources */,
 				B42DE3EC2A840C66002137F9 /* ApplyCouponRequest.swift in Sources */,

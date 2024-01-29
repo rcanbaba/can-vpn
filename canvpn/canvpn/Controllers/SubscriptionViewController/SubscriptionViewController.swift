@@ -102,9 +102,10 @@ class SubscriptionViewController: ScrollableViewController {
         subscriptionOverlay.layer.cornerRadius = 12.0
         subscriptionOverlay.delegate = self
         subscriptionOverlay.setCouponButton(isHidden: false)
-        subscriptionOverlay.createProduct(id: "123", title: "Monthly", description: "Unlimited access - 99.99 tl / Month", isSelected: true)
-        subscriptionOverlay.createProduct(id: "124", title: "6 Month", description: "Unlimited access - 599.99 tl / Month", isSelected: false)
-        subscriptionOverlay.createProduct(id: "125", title: "Annual", description: "Unlimited access - 1299.99 tl", isSelected: false)
+        subscriptionOverlay.createProduct(id: "123", title: "Monthly", description: "Unlimited access - 99.99 tl / Month", isSelected: true, isBest: false, isDiscounted: 0)
+        subscriptionOverlay.createProduct(id: "124", title: "6 Month", description: "Unlimited access - 599.99 tl / Month", isSelected: false,
+                                          isBest: false, isDiscounted: 45)
+        subscriptionOverlay.createProduct(id: "125", title: "Annual", description: "Unlimited access - 1299.99 tl", isSelected: false, isBest: true, isDiscounted: 0)
     }
     
     private func setNavigationButton() {

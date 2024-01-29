@@ -165,11 +165,13 @@ extension SubscriptionOverlayView {
         couponLabel.isHidden = isHidden
     }
     
-    public func createProduct(id: String, title: String, description: String, isSelected: Bool){
+    public func createProduct(id: String, title: String, description: String, isSelected: Bool, isBest: Bool, isDiscounted: Int){
         let productItem = ProductItemView()
         productItem.set(id: id, title: title, description: description)
         productItem.delegate = self
         productItem.set(isSelected: isSelected)
+        productItem.set(isBest: isBest)
+        productItem.set(isDiscounted: isDiscounted)
         mainStackView.addArrangedSubview(productItem)
         
         productItem.snp.makeConstraints { make in

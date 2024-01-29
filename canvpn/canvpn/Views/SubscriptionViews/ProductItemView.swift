@@ -48,6 +48,8 @@ class ProductItemView: UIView {
         label.textAlignment = .natural
         return label
     }()
+    
+    private lazy var badgeView = ProductBadgeView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,6 +76,13 @@ class ProductItemView: UIView {
             make.top.bottom.equalToSuperview().inset(9)
             make.leading.trailing.equalToSuperview().inset(12)
         }
+        
+        badgeView.isHidden = true
+        baseView.addSubview(badgeView)
+        badgeView.snp.makeConstraints { make in
+            make.height.equalTo(22)
+            make.top.trailing.equalToSuperview().inset(8)
+        }
     }
     
     @objc func viewTapped(_ gesture: UITapGestureRecognizer) {
@@ -81,16 +90,30 @@ class ProductItemView: UIView {
     }
     
     public func set(id: String, title: String, description: String){
+        badgeView.isHidden = true
         productID = id
         titleLabel.text = title
         descriptionLabel.text = description
     }
     
+    public func set(isBest: Bool) {
+        badgeView.isHidden = false
+        badgeView.set(isBest: true)
+    }
+    
+    public func set(isDiscounted: Int) {
+        if isDiscounted > 0 {
+            badgeView.isHidden = false
+            badgeView.set(isDiscounted: isDiscounted)
+        }
+    }
+    
     public func set(isSelected: Bool) {
+        // TODO: Can
         if isSelected {
-            layer.borderColor = UIColor.Subscription.productBorder.cgColor
+            layer.borderColor = UIColor.Subscription.productSelectedBorder.cgColor
             layer.borderWidth = 2.0
-            baseView.layer.applySubscriptionShadow(color: UIColor.Subscription.productBorder, alpha: 1.0)
+            baseView.layer.applySubscriptionShadow(color: UIColor.Subscription.productSelectedBorder, alpha: 1.0)
             
         } else {
             layer.borderColor = UIColor.clear.cgColor
