@@ -36,7 +36,6 @@ class SideMenuViewController: UIViewController {
         menuItems = [
             .accountInformation, // ip adress - subs type
             .restoreSubscriptions, // yönlendir
-            .subscriptionHistory, // VC yarat göster
             .shareUs,
             .rateUs,
             .aboutUs, // WEB
@@ -46,6 +45,7 @@ class SideMenuViewController: UIViewController {
             .whatIsMyIP, // WEB
             .whatIsMySpeed, // WEB
             .settings, // VC -> language
+            .blankItem,
             .blankItem,
             .blankItem,
             .version, // version

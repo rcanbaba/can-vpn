@@ -92,6 +92,7 @@ class SubscriptionViewController: ScrollableViewController {
     }
     
     private func setProducts() {
+        subscriptionOverlay.resetProduct()
         presentableProducts.forEach { product in
             if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
                 
@@ -285,7 +286,7 @@ class SubscriptionViewController: ScrollableViewController {
     }
 }
 
-// MARK: - UITableViewDelegate & UITableViewDataSource
+// MARK: - Premium Features TableView
 extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return premiumFeatures.count
@@ -362,7 +363,7 @@ extension SubscriptionViewController {
                 switch result {
                 case .success(let response):
                     self.presentableProducts = response.products
-                  //  self.setOfferTableView()
+                    self.setProducts()
                     self.checkThenSetCouponLabel()
                     self.appliedCouponCode = code
                 case .failure(let error):

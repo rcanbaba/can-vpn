@@ -42,7 +42,7 @@ class SubscriptionOverlayView: UIView {
         return label
     }()
 
-    private lazy var mainStackView: UIStackView = {
+    private lazy var productStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .leading
         stackView.axis = .vertical
@@ -110,15 +110,15 @@ class SubscriptionOverlayView: UIView {
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
-        addSubview(mainStackView)
-        mainStackView.snp.makeConstraints { make in
+        addSubview(productStackView)
+        productStackView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
         addSubview(subscribeButton)
         subscribeButton.snp.makeConstraints { make in
-            make.top.equalTo(mainStackView.snp.bottom).offset(10)
+            make.top.equalTo(productStackView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(48)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(70)
@@ -180,6 +180,11 @@ class SubscriptionOverlayView: UIView {
 // MARK: Public Methods
 extension SubscriptionOverlayView {
     
+    public func resetProduct() {
+        presentedProductViewArray.removeAll()
+        productStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
+    
     public func setCouponButton(isHidden: Bool){
         couponLabel.isHidden = isHidden
     }
@@ -192,7 +197,7 @@ extension SubscriptionOverlayView {
         productItemView.set(isSelected: item.isSelected)
         productItemView.set(isBest: item.isBest)
         productItemView.set(isDiscounted: item.isDiscounted)
-        mainStackView.addArrangedSubview(productItemView)
+        productStackView.addArrangedSubview(productItemView)
         
         productItemView.snp.makeConstraints { make in
             make.height.equalTo(60)
