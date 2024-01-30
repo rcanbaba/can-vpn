@@ -30,6 +30,7 @@ class ProductItemView: UIView {
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.spacing = 6.0
+        stackView.backgroundColor = UIColor.white
         return stackView
     }()
     
@@ -64,7 +65,7 @@ class ProductItemView: UIView {
     
     // MARK: Setup UI
     private func configureUI() {
-        backgroundColor = .white
+        backgroundColor = .clear
         
         addSubview(baseView)
         baseView.snp.makeConstraints { make in

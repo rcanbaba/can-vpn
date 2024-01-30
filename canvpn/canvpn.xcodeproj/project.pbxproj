@@ -361,6 +361,7 @@
 		B4C5C4992B67C32D0068A01D /* ProductBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4982B67C32D0068A01D /* ProductBadgeView.swift */; };
 		B4C5C49B2B68F1260068A01D /* ReviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C49A2B68F1260068A01D /* ReviewItem.swift */; };
 		B4C5C49D2B68F77F0068A01D /* ReviewItemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C49C2B68F77F0068A01D /* ReviewItemGenerator.swift */; };
+		B4C5C49F2B6960FF0068A01D /* PresentableProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C49E2B6960FF0068A01D /* PresentableProduct.swift */; };
 		B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C91E9C298562950042500B /* GoogleService-Info.plist */; };
 		B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3129C7B50F00E11069 /* LocationButton.swift */; };
 		B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3329C7B52600E11069 /* GoProButton.swift */; };
@@ -783,6 +784,7 @@
 		B4C5C4982B67C32D0068A01D /* ProductBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBadgeView.swift; sourceTree = "<group>"; };
 		B4C5C49A2B68F1260068A01D /* ReviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItem.swift; sourceTree = "<group>"; };
 		B4C5C49C2B68F77F0068A01D /* ReviewItemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemGenerator.swift; sourceTree = "<group>"; };
+		B4C5C49E2B6960FF0068A01D /* PresentableProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableProduct.swift; sourceTree = "<group>"; };
 		B4C91E9C298562950042500B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4D09F3129C7B50F00E11069 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		B4D09F3329C7B52600E11069 /* GoProButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProButton.swift; sourceTree = "<group>"; };
@@ -1374,6 +1376,7 @@
 			children = (
 				B44122FB29577E540072B566 /* VpnServerItem.swift */,
 				B4C5C49A2B68F1260068A01D /* ReviewItem.swift */,
+				B4C5C49E2B6960FF0068A01D /* PresentableProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1948,6 +1951,7 @@
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
 				B42821042B1B591700E5424B /* CustomAnnotationView.swift in Sources */,
 				B42DE3EC2A840C66002137F9 /* ApplyCouponRequest.swift in Sources */,
+				B4C5C49F2B6960FF0068A01D /* PresentableProduct.swift in Sources */,
 				B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */,
 				B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */,
 				B40D732829DB21350066FD80 /* Toaster.swift in Sources */,

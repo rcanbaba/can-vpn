@@ -19,6 +19,8 @@ class SubscriptionOverlayView: UIView {
     
     public weak var delegate: SubscriptionOverlayViewDelegate?
     
+    private lazy var presentedProductArray: [PresentableProduct] = []
+    
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
         gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
@@ -182,13 +184,15 @@ extension SubscriptionOverlayView {
         couponLabel.isHidden = isHidden
     }
     
-    public func createProduct(id: String, title: String, description: String, isSelected: Bool, isBest: Bool, isDiscounted: Int){
+    public func createProduct(item: PresentableProduct){
+        presentedProductArray.append(item)
+        
         let productItem = ProductItemView()
-        productItem.set(id: id, title: title, description: description)
+        productItem.set(id: item.sku, title: item.title, description: item.description + " - " + item.price)
         productItem.delegate = self
-        productItem.set(isSelected: isSelected)
-        productItem.set(isBest: isBest)
-        productItem.set(isDiscounted: isDiscounted)
+        productItem.set(isSelected: item.isSelected)
+        productItem.set(isBest: item.isBest)
+        productItem.set(isDiscounted: item.isDiscounted)
         mainStackView.addArrangedSubview(productItem)
         
         productItem.snp.makeConstraints { make in

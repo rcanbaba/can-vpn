@@ -434,9 +434,8 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func locationButtonTapped() {
-        
-        presentRatingPopup()
-
+        presentLocationPage()
+       // presentRatingPopup()
     }
     
     func changeStateTapped() {

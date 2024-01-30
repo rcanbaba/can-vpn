@@ -57,9 +57,6 @@ class SubscriptionViewController: ScrollableViewController {
         setFeaturesTableView()
         checkThenSetCouponLabel()
         createReviews()
-        
-        // Remova TODO::
-        setProducts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,16 +85,28 @@ class SubscriptionViewController: ScrollableViewController {
         configureActivityIndicatorUI()
     }
     
-    private func setProducts() {
-        subscriptionOverlay.createProduct(id: "123", title: "Monthly", description: "Unlimited access - 99.99 tl / Month", isSelected: true, isBest: false, isDiscounted: 0)
-        subscriptionOverlay.createProduct(id: "124", title: "6 Month", description: "Unlimited access - 599.99 tl / Month", isSelected: false,
-                                          isBest: false, isDiscounted: 0)
-        subscriptionOverlay.createProduct(id: "125", title: "Annual", description: "Unlimited access - 1299.99 tl", isSelected: false, isBest: true, isDiscounted: 0)
-    }
-    
     private func checkAndSetProducts() {
         products = PurchaseManager.shared.products
         presentableProducts = SettingsManager.shared.settings?.products ?? []
+        setProducts()
+    }
+    
+    private func setProducts() {
+        presentableProducts.forEach { product in
+            if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
+                
+                let presentableProduct = PresentableProduct(sku: product.sku,
+                                                            title: getProductName(key: storeProduct.localizedTitle),
+                                                            description: getProductDescription(key: storeProduct.localizedDescription),
+                                                            price: storePrice,
+                                                            isSelected: product.isPromoted,
+                                                            isBest: product.isBestOffer,
+                                                            isDiscounted: product.discount)
+                
+                subscriptionOverlay.createProduct(item: presentableProduct)
+            }
+            
+        }
     }
     
     private func checkThenSetCouponLabel() {
@@ -141,7 +150,6 @@ class SubscriptionViewController: ScrollableViewController {
         let historyImage = UIImage(systemName: "clock.arrow.circlepath", withConfiguration: configuration)?.withTintColor(UIColor.Custom.goPreButtonGold, renderingMode: .alwaysOriginal)
         historyButton.setImage(historyImage, for: .normal)
         historyButton.addTarget(self, action: #selector(presentSubscriptionHistory), for: .touchUpInside)
-      //  navigationItem.rightBarButtonItem = UIBarButtonItem(customView: historyButton)
         
         let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
@@ -154,7 +162,7 @@ class SubscriptionViewController: ScrollableViewController {
         subscriptionView.featuresTableView.reloadData()
     }
     
-    public func isLoading(show: Bool) { // TODO: TEST it
+    public func isLoading(show: Bool) {
         DispatchQueue.main.async {
             self.view.isUserInteractionEnabled = !show
             self.navigationItem.hidesBackButton = show
@@ -271,12 +279,12 @@ class SubscriptionViewController: ScrollableViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    private func getCellName(key: String) -> String {
+    private func getProductName(key: String) -> String {
         guard SettingsManager.shared.settings?.isInReview == false else { return key }
         return key.localize()
     }
     
-    private func getCellDescription(key: String) -> String {
+    private func getProductDescription(key: String) -> String {
         guard SettingsManager.shared.settings?.isInReview == false else { return key }
         return key.localize()
     }
@@ -289,25 +297,6 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if tableView == subscriptionView.offerTableView {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferTableViewCell
-//            let cellData = presentableProducts[indexPath.row]
-//            
-//            if let skProduct = getSKProduct(skuID: cellData.sku), let skPrice = PurchaseManager.shared.getPriceFormatted(for: skProduct) {
-//                cell.setName(text: getCellName(key: skProduct.localizedTitle))
-//                cell.setPrice(text: skPrice)
-//                cell.setDescription(text: getCellDescription(key: skProduct.localizedDescription))
-//                cellData.isPromoted ? selectGivenOffer(indexPath: indexPath) : ()
-//                cellData.isBestOffer ? cell.showBestTag() : ()
-//                cellData.discount != 0 ? cell.showDiscountTag(percentage: cellData.discount) : ()
-//            } else {
-//                cell.setName(text: "unknown_product_title".localize())
-//                cell.setPrice(text: "-")
-//                cell.setDescription(text: "...")
-//            }
-//            return cell
-//            
-//        } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeaturesTableViewCell", for: indexPath) as! FeaturesTableViewCell
         let cellData = premiumFeatures[indexPath.row]
         cell.set(type: cellData)
