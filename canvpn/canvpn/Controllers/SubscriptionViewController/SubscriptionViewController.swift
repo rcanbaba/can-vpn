@@ -103,6 +103,7 @@ class SubscriptionViewController: ScrollableViewController {
                                                             isBest: product.isBestOffer,
                                                             isDiscounted: product.discount)
                 
+                selectedOfferSKU = product.isPromoted ? product.sku : selectedOfferSKU
                 subscriptionOverlay.createProduct(item: presentableProduct)
             }
             
@@ -255,12 +256,6 @@ class SubscriptionViewController: ScrollableViewController {
         }
     }
     
-    private func selectGivenOffer(indexPath: IndexPath) {
-        // TODO: set selection
-//        subscriptionView.offerTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-//        selectedOfferSKU = presentableProducts[indexPath.row].sku
-    }
-    
     private func getSKProduct(skuID: String) -> SKProduct? {
         return products?.first(where: { $0.productIdentifier == skuID})
     }
@@ -302,19 +297,6 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
         cell.set(type: cellData)
         return cell
 
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: select
-//        if tableView == subscriptionView.offerTableView {
-//            if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
-//                for selectedIndexPath in selectedIndexPaths {
-//                    tableView.deselectRow(at: selectedIndexPath, animated: false)
-//                }
-//            }
-//            selectedOfferSKU = presentableProducts[indexPath.row].sku
-//            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-//        }
     }
 }
 
@@ -406,16 +388,17 @@ extension SubscriptionViewController: SubscriptionOverlayViewDelegate {
         tryCouponCode()
     }
     func subscribeTapped() {
-        print("TODO123123: subscribeTapped")
-        //        if let selectedSKU = selectedOfferSKU,
-        //           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
-        //            subscribeItem(productId: product.sku)
-        //        } else {
-        //            Toaster.showToast(message: "error_try_again".localize())
-        //        }
+        if let selectedSKU = selectedOfferSKU,
+           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
+            subscribeItem(productId: product.sku)
+        } else {
+            Toaster.showToast(message: "error_try_again".localize())
+        }
     }
     func productSelected(id: String?) {
-        print("TODO123123: productSelected")
+        guard let sku = id else { return }
+        selectedOfferSKU = sku
+        subscriptionOverlay.setSelectedItem(sku: sku)
     }
 }
 

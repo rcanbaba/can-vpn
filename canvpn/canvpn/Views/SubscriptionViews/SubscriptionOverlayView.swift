@@ -18,8 +18,8 @@ protocol SubscriptionOverlayViewDelegate: AnyObject {
 class SubscriptionOverlayView: UIView {
     
     public weak var delegate: SubscriptionOverlayViewDelegate?
-    
-    private lazy var presentedProductArray: [PresentableProduct] = []
+
+    private lazy var presentedProductViewArray: [ProductItemView] = []
     
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
@@ -185,19 +185,26 @@ extension SubscriptionOverlayView {
     }
     
     public func createProduct(item: PresentableProduct){
-        presentedProductArray.append(item)
+        let productItemView = ProductItemView()
+        presentedProductViewArray.append(productItemView)
+        productItemView.set(id: item.sku, title: item.title, description: item.description + " - " + item.price)
+        productItemView.delegate = self
+        productItemView.set(isSelected: item.isSelected)
+        productItemView.set(isBest: item.isBest)
+        productItemView.set(isDiscounted: item.isDiscounted)
+        mainStackView.addArrangedSubview(productItemView)
         
-        let productItem = ProductItemView()
-        productItem.set(id: item.sku, title: item.title, description: item.description + " - " + item.price)
-        productItem.delegate = self
-        productItem.set(isSelected: item.isSelected)
-        productItem.set(isBest: item.isBest)
-        productItem.set(isDiscounted: item.isDiscounted)
-        mainStackView.addArrangedSubview(productItem)
-        
-        productItem.snp.makeConstraints { make in
+        productItemView.snp.makeConstraints { make in
             make.height.equalTo(60)
             make.leading.trailing.equalToSuperview()
+        }
+    }
+    
+    public func setSelectedItem(sku: String) {
+        presentedProductViewArray.forEach { item in
+            if let viewProductId = item.productID {
+                item.set(isSelected: sku == viewProductId)
+            }
         }
     }
     

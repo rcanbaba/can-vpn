@@ -15,7 +15,7 @@ class ProductItemView: UIView {
     
     weak var delegate: ProductItemViewDelegate?
     
-    private var productID: String? = nil
+    public var productID: String? = nil
     
     private lazy var baseView: UIView = {
         let view = UIView()
@@ -81,7 +81,7 @@ class ProductItemView: UIView {
         badgeView.isHidden = true
         baseView.addSubview(badgeView)
         badgeView.snp.makeConstraints { make in
-            make.height.equalTo(22)
+            make.height.equalTo(20)
             make.top.trailing.equalToSuperview().inset(8)
         }
     }
@@ -91,8 +91,8 @@ class ProductItemView: UIView {
     }
     
     public func set(id: String, title: String, description: String){
-        badgeView.isHidden = true
         productID = id
+        badgeView.isHidden = true
         titleLabel.text = title
         descriptionLabel.text = description
     }
@@ -112,12 +112,15 @@ class ProductItemView: UIView {
     
     public func set(isSelected: Bool) {
         if isSelected {
-            baseView.layer.borderColor = UIColor.Subscription.productSelectedBorder.cgColor
-            baseView.layer.borderWidth = 2.0
-            
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                self?.baseView.layer.borderColor = UIColor.Subscription.productSelectedBorder.cgColor
+                self?.baseView.layer.borderWidth = 2.0
+            }
         } else {
-            baseView.layer.borderColor = UIColor.clear.cgColor
-            baseView.layer.borderWidth = 0.0
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                self?.baseView.layer.borderColor = UIColor.clear.cgColor
+                self?.baseView.layer.borderWidth = 0.0
+            }
         }
     }
     
