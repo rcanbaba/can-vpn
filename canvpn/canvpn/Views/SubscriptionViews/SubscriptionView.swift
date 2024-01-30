@@ -82,16 +82,8 @@ class SubscriptionView: UIView {
         return stackView
     }()
     
-    private lazy var activityIndicator: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .large)
-        view.color = .black
-        view.hidesWhenStopped = true
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        createReviews()
         configureUI()
     }
     
@@ -99,7 +91,7 @@ class SubscriptionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: - Setup UI
+    // MARK: - Setup UI
     private func configureUI() {
         backgroundColor = .clear
         
@@ -142,86 +134,21 @@ class SubscriptionView: UIView {
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
         }
-
-    }
-    
-    private func createReviews() {
-        let reviewItem1 = ReviewItemView()
-        reviewItem1.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
-                        text: "Çok güzel uygulama harika ben çok sevdim")
-        let reviewItem2 = ReviewItemView()
-        reviewItem2.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
-                        text: "Çok güzel uygulama harika ben çok sevdim, daha fazla sunucu eklerseniz harika olur.")
-        let reviewItem3 = ReviewItemView()
-        reviewItem3.set(point: "4", name: "Can Babaoglu", city: "Turkey", 
-                        text: "Bağlanırken 1 defa sıkıntı yaşadım sonrasında uygulamayı kapatıp açılınca düzeldi, bu sorunla ilgilenir misiniz?")
-        let reviewItem4 = ReviewItemView()
-        reviewItem4.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
-                        text: "Çok Hızlı")
-        let reviewItem5 = ReviewItemView()
-        reviewItem5.set(point: "4", name: "Can Babaoglu", city: "Turkey", 
-                        text: "Free olması harika")
-        let reviewItem6 = ReviewItemView()
-        reviewItem6.set(point: "5", name: "Can Babaoglu", city: "Turkey", 
-                        text: "Premium sunucular çok hızlı")
-        let reviewItem7 = ReviewItemView()
-        reviewItem7.set(point: "5", name: "Can Babaoglu", city: "Turkey",
-                        text: "Premium sunucular çok hızlı")
-        let reviewItem8 = ReviewItemView()
-        reviewItem8.set(point: "5", name: "Can Babaoglu", city: "Turkey",
-                        text: "Premium sunucular çok hızlı")
-        let reviewItem9 = ReviewItemView()
-        reviewItem9.set(point: "5", name: "Can Babaoglu", city: "Turkey",
-                        text: "Premium sunucular çok hızlı")
-        
-        reviewStackView.addArrangedSubview(reviewItem1)
-        reviewStackView.addArrangedSubview(reviewItem2)
-        reviewStackView.addArrangedSubview(reviewItem3)
-        reviewStackView.addArrangedSubview(reviewItem4)
-        reviewStackView.addArrangedSubview(reviewItem5)
-        reviewStackView.addArrangedSubview(reviewItem6)
-        reviewStackView.addArrangedSubview(reviewItem7)
-        reviewStackView.addArrangedSubview(reviewItem8)
-        reviewStackView.addArrangedSubview(reviewItem9)
-        
-        reviewItem1.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem2.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem3.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem4.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem5.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem6.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem7.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem8.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
-        reviewItem9.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-        }
         
     }
 }
 
-// MARK: - PUBLIC METHODS
+// MARK: Public methods
 extension SubscriptionView {
-    public func isLoading(show: Bool) {
-        DispatchQueue.main.async {
-            self.isUserInteractionEnabled = !show
-            show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
+    public func createReviews(dataArray: [ReviewItem]) {
+        for reviewData in dataArray {
+            let reviewItem = ReviewItemView()
+            reviewItem.set(point: reviewData.point, name: reviewData.name, city: reviewData.city, text: reviewData.text)
+            reviewStackView.addArrangedSubview(reviewItem)
+            
+            reviewItem.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview()
+            }
         }
     }
-
 }

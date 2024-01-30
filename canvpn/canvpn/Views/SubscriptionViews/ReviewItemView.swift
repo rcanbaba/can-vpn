@@ -75,7 +75,7 @@ class ReviewItemView: UIView {
         label.font = UIFont.systemFont(ofSize: 10, weight: .light)
         label.textColor = UIColor.Subscription.reviewText
         label.textAlignment = .natural
-        label.numberOfLines = 3
+        label.numberOfLines = 4
         return label
     }()
 

@@ -359,6 +359,8 @@
 		B4C5C4952B6583430068A01D /* SubscriptionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */; };
 		B4C5C4972B6655C70068A01D /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4962B6655C70068A01D /* ProductItemView.swift */; };
 		B4C5C4992B67C32D0068A01D /* ProductBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4982B67C32D0068A01D /* ProductBadgeView.swift */; };
+		B4C5C49B2B68F1260068A01D /* ReviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C49A2B68F1260068A01D /* ReviewItem.swift */; };
+		B4C5C49D2B68F77F0068A01D /* ReviewItemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C49C2B68F77F0068A01D /* ReviewItemGenerator.swift */; };
 		B4C91E9D298562950042500B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C91E9C298562950042500B /* GoogleService-Info.plist */; };
 		B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3129C7B50F00E11069 /* LocationButton.swift */; };
 		B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D09F3329C7B52600E11069 /* GoProButton.swift */; };
@@ -779,6 +781,8 @@
 		B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOverlayView.swift; sourceTree = "<group>"; };
 		B4C5C4962B6655C70068A01D /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
 		B4C5C4982B67C32D0068A01D /* ProductBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBadgeView.swift; sourceTree = "<group>"; };
+		B4C5C49A2B68F1260068A01D /* ReviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItem.swift; sourceTree = "<group>"; };
+		B4C5C49C2B68F77F0068A01D /* ReviewItemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemGenerator.swift; sourceTree = "<group>"; };
 		B4C91E9C298562950042500B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4D09F3129C7B50F00E11069 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		B4D09F3329C7B52600E11069 /* GoProButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProButton.swift; sourceTree = "<group>"; };
@@ -934,6 +938,7 @@
 				B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */,
 				B44120DC2956390B0072B566 /* AESCryption.swift */,
 				B4023D652951121E0008BDA6 /* Helper.swift */,
+				B4C5C49C2B68F77F0068A01D /* ReviewItemGenerator.swift */,
 				B44120E1295712D10072B566 /* Constants.swift */,
 				B44122F0295758080072B566 /* AttributedTextHelper.swift */,
 				B40D732729DB21350066FD80 /* Toaster.swift */,
@@ -1368,6 +1373,7 @@
 			isa = PBXGroup;
 			children = (
 				B44122FB29577E540072B566 /* VpnServerItem.swift */,
+				B4C5C49A2B68F1260068A01D /* ReviewItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1925,6 +1931,7 @@
 				B4D09F3629CB635D00E11069 /* LocationViewController.swift in Sources */,
 				B4D09F3429C7B52600E11069 /* GoProButton.swift in Sources */,
 				B42821022B1B53B800E5424B /* GoProTopButton.swift in Sources */,
+				B4C5C49D2B68F77F0068A01D /* ReviewItemGenerator.swift in Sources */,
 				B43E15892A113D6C0095FF4A /* PushNotificationHelper.swift in Sources */,
 				B40D732429D86FC20066FD80 /* CredentialResponse.swift in Sources */,
 				B44120E2295712D10072B566 /* Constants.swift in Sources */,
@@ -2011,6 +2018,7 @@
 				B418EDF22A2680280036B747 /* GetIPAddressResponse.swift in Sources */,
 				B47170DC2A125DE3008F00FA /* UIViewControllerExtensions.swift in Sources */,
 				B47170E42A140EF7008F00FA /* SettingsManager.swift in Sources */,
+				B4C5C49B2B68F1260068A01D /* ReviewItem.swift in Sources */,
 				B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */,
 				B4216DD22B5D454500F8B0D6 /* LandingButton.swift in Sources */,
 				B4216DC92B5D228C00F8B0D6 /* FirstLandingViewController.swift in Sources */,

@@ -11,6 +11,7 @@ import FirebaseAnalytics
 
 class SubscriptionViewController: ScrollableViewController {
     
+    // MARK: UI Components
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
         gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
@@ -21,6 +22,13 @@ class SubscriptionViewController: ScrollableViewController {
             UIColor.Landing.backGradientEnd.cgColor
         ]
         return gradientView
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.color = .black
+        view.hidesWhenStopped = true
+        return view
     }()
     
     private lazy var subscriptionView =  SubscriptionView()
@@ -36,21 +44,22 @@ class SubscriptionViewController: ScrollableViewController {
     
     private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous, .fast]
     
-    //        addSubview(activityIndicator)
-    //        activityIndicator.snp.makeConstraints { make in
-    //            make.center.equalToSuperview()
-    //        }
+    private var reviews: [ReviewItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService = DefaultNetworkService()
         checkAndSetProducts()
         configureUI()
+        configureOverlayUI()
+        configureActivityIndicatorUI()
         setNavigationButton()
         setFeaturesTableView()
-        setOfferTableView()
         checkThenSetCouponLabel()
+        createReviews()
         
+        // Remova TODO::
+        setProducts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +82,19 @@ class SubscriptionViewController: ScrollableViewController {
         .darkContent
     }
     
+    private func configureUI() {
+        configureMainUI()
+        configureOverlayUI()
+        configureActivityIndicatorUI()
+    }
+    
+    private func setProducts() {
+        subscriptionOverlay.createProduct(id: "123", title: "Monthly", description: "Unlimited access - 99.99 tl / Month", isSelected: true, isBest: false, isDiscounted: 0)
+        subscriptionOverlay.createProduct(id: "124", title: "6 Month", description: "Unlimited access - 599.99 tl / Month", isSelected: false,
+                                          isBest: false, isDiscounted: 0)
+        subscriptionOverlay.createProduct(id: "125", title: "Annual", description: "Unlimited access - 1299.99 tl", isSelected: false, isBest: true, isDiscounted: 0)
+    }
+    
     private func checkAndSetProducts() {
         products = PurchaseManager.shared.products
         presentableProducts = SettingsManager.shared.settings?.products ?? []
@@ -81,19 +103,22 @@ class SubscriptionViewController: ScrollableViewController {
     private func checkThenSetCouponLabel() {
         let showCoupon = SettingsManager.shared.settings?.interface.showCoupon ?? false
         subscriptionOverlay.setCouponButton(isHidden: !showCoupon)
+        // TODO: remove below
+        subscriptionOverlay.setCouponButton(isHidden: false)
     }
     
-    private func configureUI() {
+    private func configureMainUI() {
         baseView.addSubview(subscriptionView)
         subscriptionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
         view.insertSubview(backGradientView, at: 0)
         backGradientView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
+    }
+    
+    private func configureOverlayUI() {
         view.addSubview(subscriptionOverlay)
         subscriptionOverlay.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
@@ -101,11 +126,13 @@ class SubscriptionViewController: ScrollableViewController {
         subscriptionOverlay.layer.applySubscriptionShadow(y: -1)
         subscriptionOverlay.layer.cornerRadius = 12.0
         subscriptionOverlay.delegate = self
-        subscriptionOverlay.setCouponButton(isHidden: false)
-        subscriptionOverlay.createProduct(id: "123", title: "Monthly", description: "Unlimited access - 99.99 tl / Month", isSelected: true, isBest: false, isDiscounted: 0)
-        subscriptionOverlay.createProduct(id: "124", title: "6 Month", description: "Unlimited access - 599.99 tl / Month", isSelected: false,
-                                          isBest: false, isDiscounted: 0)
-        subscriptionOverlay.createProduct(id: "125", title: "Annual", description: "Unlimited access - 1299.99 tl", isSelected: false, isBest: true, isDiscounted: 0)
+    }
+    
+    private func configureActivityIndicatorUI() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     private func setNavigationButton() {
@@ -127,20 +154,22 @@ class SubscriptionViewController: ScrollableViewController {
         subscriptionView.featuresTableView.reloadData()
     }
     
-    private func setOfferTableView() {
-        // TODO: set prods
-//        subscriptionView.offerTableView.delegate = self
-//        subscriptionView.offerTableView.dataSource = self
-//        subscriptionView.offerTableView.reloadData()
+    public func isLoading(show: Bool) { // TODO: TEST it
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = !show
+            self.navigationItem.hidesBackButton = show
+            show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
+        }
     }
     
+    
     private func restoreSubscription() {
-        subscriptionView.isLoading(show: true)
+        isLoading(show: true)
         PurchaseManager.shared.restorePurchases { [weak self] success, _, _ in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
-                self.subscriptionView.isLoading(show: false)
+                self.isLoading(show: false)
                 
                 if success, let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
                     var consumeReceiptRequest = ConsumeReceiptRequest()
@@ -170,12 +199,12 @@ class SubscriptionViewController: ScrollableViewController {
     
     private func subscribeItem(productId: String) {
         if let product = getSKProduct(skuID: productId) {
-            subscriptionView.isLoading(show: true)
+            isLoading(show: true)
             PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
                 guard let self = self else { return }
                 
                 DispatchQueue.main.async {
-                    self.subscriptionView.isLoading(show: false)
+                    self.isLoading(show: false)
                     
                     if success {
                         if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
@@ -355,14 +384,14 @@ extension SubscriptionViewController {
         guard let networkService = networkService else { return }
         var applyCouponRequest = ApplyCouponRequest()
         applyCouponRequest.setParams(code: code)
-        subscriptionView.isLoading(show: true)
+        isLoading(show: true)
         networkService.request(applyCouponRequest) { result in
             DispatchQueue.main.async {
-                self.subscriptionView.isLoading(show: false)
+                self.isLoading(show: false)
                 switch result {
                 case .success(let response):
                     self.presentableProducts = response.products
-                    self.setOfferTableView()
+                  //  self.setOfferTableView()
                     self.checkThenSetCouponLabel()
                     self.appliedCouponCode = code
                 case .failure(let error):
@@ -398,6 +427,14 @@ extension SubscriptionViewController: SubscriptionOverlayViewDelegate {
     }
     func productSelected(id: String?) {
         print("TODO123123: productSelected")
+    }
+}
+
+// MARK: - Reviews
+extension SubscriptionViewController {
+    private func createReviews() {
+        reviews = ReviewItemGenerator.getRandomReviews()
+        subscriptionView.createReviews(dataArray: reviews)
     }
 }
 
