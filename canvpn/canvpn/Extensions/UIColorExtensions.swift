@@ -81,6 +81,8 @@ extension UIColor {
         static let productSelectedBorder = UIColor("FFBD0E")
         static let bestBadgeBack = UIColor("FFBD0E")
         static let discountedBadgeBack = UIColor("38D980")
+        static let overlayBackGradientStart = UIColor("FFF9F4")
+        static let overlayBackGradientEnd = UIColor("FFF4EA")
     }
     
 }

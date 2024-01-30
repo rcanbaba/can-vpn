@@ -97,8 +97,9 @@ class ProductItemView: UIView {
     }
     
     public func set(isBest: Bool) {
-        badgeView.isHidden = false
-        badgeView.set(isBest: true)
+        if isBest {
+            badgeView.set(isBest: true)
+        }
     }
     
     public func set(isDiscounted: Int) {
@@ -109,16 +110,13 @@ class ProductItemView: UIView {
     }
     
     public func set(isSelected: Bool) {
-        // TODO: Can
         if isSelected {
-            layer.borderColor = UIColor.Subscription.productSelectedBorder.cgColor
-            layer.borderWidth = 2.0
-            baseView.layer.applySubscriptionShadow(color: UIColor.Subscription.productSelectedBorder, alpha: 1.0)
+            baseView.layer.borderColor = UIColor.Subscription.productSelectedBorder.cgColor
+            baseView.layer.borderWidth = 2.0
             
         } else {
-            layer.borderColor = UIColor.clear.cgColor
-            layer.borderWidth = 0.0
-            baseView.layer.applySubscriptionShadow()
+            baseView.layer.borderColor = UIColor.clear.cgColor
+            baseView.layer.borderWidth = 0.0
         }
     }
     

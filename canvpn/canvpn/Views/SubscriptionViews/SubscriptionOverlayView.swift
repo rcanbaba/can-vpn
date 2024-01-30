@@ -19,6 +19,18 @@ class SubscriptionOverlayView: UIView {
     
     public weak var delegate: SubscriptionOverlayViewDelegate?
     
+    private lazy var backGradientView: GradientView = {
+        let gradientView = GradientView()
+        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientView.gradientLayer.locations = [0.0, 1.0]
+        gradientView.gradientLayer.colors = [
+            UIColor.Subscription.overlayBackGradientStart.cgColor,
+            UIColor.Subscription.overlayBackGradientEnd.cgColor
+        ]
+        return gradientView
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
@@ -84,6 +96,11 @@ class SubscriptionOverlayView: UIView {
     // MARK: Setup UI
     private func configureUI() {
         backgroundColor = .white
+        
+        addSubview(backGradientView)
+        backGradientView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
