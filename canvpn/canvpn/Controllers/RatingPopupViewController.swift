@@ -30,12 +30,11 @@ class RatingPopupViewController: UIViewController {
     }
     
     private lazy var ratingItems = { [
-        // TODO: Localize
-        RatingItem(header: "💩", description: "Terrible!", ratingImageView: generateStarImageView()),
-        RatingItem(header: "🤨", description: "Ahhh?!", ratingImageView: generateStarImageView()),
-        RatingItem(header: "👍", description: "OK!", ratingImageView: generateStarImageView()),
-        RatingItem(header: "😌", description: "Fine!", ratingImageView: generateStarImageView()),
-        RatingItem(header: "😍", description: "Excellent!", ratingImageView: generateStarImageView()),
+        RatingItem(header: "💩", description: "rating_1star".localize(), ratingImageView: generateStarImageView()),
+        RatingItem(header: "🤨", description: "rating_2star".localize(), ratingImageView: generateStarImageView()),
+        RatingItem(header: "👍", description: "rating_3star".localize(), ratingImageView: generateStarImageView()),
+        RatingItem(header: "😌", description: "rating_4star".localize(), ratingImageView: generateStarImageView()),
+        RatingItem(header: "😍", description: "rating_5star".localize(), ratingImageView: generateStarImageView()),
     ] }()
     
     private lazy var centerImageView: UIImageView = {
@@ -67,7 +66,7 @@ class RatingPopupViewController: UIViewController {
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Cancel", for: .normal) // TODO: Localize
+        button.setTitle("rating_cancel".localize(), for: .normal)
         button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
         button.setTitleColor(.Custom.RatingPopup.description, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
@@ -79,7 +78,7 @@ class RatingPopupViewController: UIViewController {
     
     private lazy var rateButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Rate", for: .normal) // TODO: Localize
+        button.setTitle("rating_rate".localize(), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.addTarget(self, action: #selector(rateButtonTapped(_:)), for: .touchUpInside)
@@ -314,9 +313,8 @@ class RatingPopupViewController: UIViewController {
     }
     
     private func setLabelsFromWelcomeSettings() {
-      //  let welcomeSettings = WelcomeSettingsManager.shared.welcomeSettings
-        self.titleText = "Do you like \(Constants.appVisibleName)"
-        self.descriptionText = "If you love our app, please take a moment to rate it!"
+        self.titleText = "rating_title".localize()
+        self.descriptionText = "rating_description".localize()
     }
 }
 

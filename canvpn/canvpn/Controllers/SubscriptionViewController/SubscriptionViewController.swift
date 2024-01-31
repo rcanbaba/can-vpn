@@ -65,6 +65,7 @@ class SubscriptionViewController: ScrollableViewController {
         setNavigationBar()
         appliedCouponCode = nil
         UIApplication.shared.statusBarStyle = .darkContent
+        RatingCountManager.shared.incrementPremiumPageCount()
     }
     
     private func setNavigationBar() {

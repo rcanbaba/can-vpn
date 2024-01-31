@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         registerForPushNotifications()
         LaunchCountManager.shared.incrementLaunchCount()
+        RatingCountManager.shared.incrementLaunchCount()
         return true
     }
     

@@ -78,6 +78,7 @@ class WebViewController: UIViewController {
         
         if let url = URL (string: self.url) {
             webView.load(URLRequest(url: url))
+            RatingCountManager.shared.incrementWebPresentedCount()
         }
         
         animationView.frame = CGRect(x: 0, y: 0, width: 1000, height: 1000)

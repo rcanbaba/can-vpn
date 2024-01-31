@@ -388,6 +388,7 @@
 		B4DA8EE22AAC6ADB00F4C643 /* LaunchCountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA8EE12AAC6ADB00F4C643 /* LaunchCountManager.swift */; };
 		B4E4B8592AAB4E1300743CFB /* pennantAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4E4B8572AAB4E1300743CFB /* pennantAnimation.json */; };
 		B4E4B85A2AAB4E1300743CFB /* congratsAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4E4B8582AAB4E1300743CFB /* congratsAnimation.json */; };
+		B4E6A2922B69F2FA00FB9743 /* RatingCountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6A2912B69F2FA00FB9743 /* RatingCountManager.swift */; };
 		B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */; };
 		B4EE1F592A07AC6E00E219CA /* RegisterDeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */; };
 		B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */; };
@@ -811,6 +812,7 @@
 		B4DA8EE12AAC6ADB00F4C643 /* LaunchCountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCountManager.swift; sourceTree = "<group>"; };
 		B4E4B8572AAB4E1300743CFB /* pennantAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pennantAnimation.json; sourceTree = "<group>"; };
 		B4E4B8582AAB4E1300743CFB /* congratsAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = congratsAnimation.json; sourceTree = "<group>"; };
+		B4E6A2912B69F2FA00FB9743 /* RatingCountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCountManager.swift; sourceTree = "<group>"; };
 		B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceRequest.swift; sourceTree = "<group>"; };
 		B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceResponse.swift; sourceTree = "<group>"; };
 		B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtensions.swift; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 			isa = PBXGroup;
 			children = (
 				B47170E32A140EF7008F00FA /* SettingsManager.swift */,
+				B4E6A2912B69F2FA00FB9743 /* RatingCountManager.swift */,
 				B4DA8EE12AAC6ADB00F4C643 /* LaunchCountManager.swift */,
 				B4D8710A2A855FE40080D788 /* ATTrackingManager.swift */,
 				B490D38E296C952100651BFC /* NETunnelManager.swift */,
@@ -2005,6 +2008,7 @@
 				B4EE1F612A07BE0600E219CA /* FetchSettingsResponse.swift in Sources */,
 				B4C5C4932B6521600068A01D /* ReviewItemView.swift in Sources */,
 				B4D871242A8572960080D788 /* RussianDictionary.swift in Sources */,
+				B4E6A2922B69F2FA00FB9743 /* RatingCountManager.swift in Sources */,
 				B490D3AD296C98EE00651BFC /* Config.swift in Sources */,
 				B4D871112A8571F80080D788 /* TurkishDictionary.swift in Sources */,
 				B44120E52957162D0072B566 /* UIViewExtensions.swift in Sources */,

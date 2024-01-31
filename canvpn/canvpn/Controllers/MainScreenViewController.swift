@@ -53,7 +53,6 @@ class MainScreenViewController: UIViewController {
         observeNotifications()
         requestTrackingPermission()
         setupMenuButton()
-      //  presentRatingPopup()
     }
     
     private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
@@ -76,6 +75,7 @@ class MainScreenViewController: UIViewController {
         setNavigationBar()
         playGetFreeAnimationAfterDelay()
         startAnimationTimer()
+        checkRatingPopupThenPresent()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -180,6 +180,7 @@ class MainScreenViewController: UIViewController {
     
     private func presentEmailPopup() {
         // already presenting
+        guard ratingPopupViewController == nil else { return }
         guard popupPresenterViewController == nil else { return }
         
         let freePopupView = GetFreePopupView()
@@ -192,10 +193,14 @@ class MainScreenViewController: UIViewController {
         self.present(popupPresenterViewController!, animated: true, completion: nil)
     }
     
-    public func presentRatingPopup() {
+    private func checkRatingPopupThenPresent() {
+        RatingCountManager.shared.shouldShowPopup() ? presentRatingPopup() : ()
+    }
+    
+    private func presentRatingPopup() {
         // already presenting
+        guard popupPresenterViewController == nil else { return }
         guard ratingPopupViewController == nil else { return }
-        
         ratingPopupViewController = RatingPopupViewController()
         ratingPopupViewController!.modalPresentationStyle = .overFullScreen
         ratingPopupViewController!.modalTransitionStyle  = .crossDissolve
@@ -323,7 +328,8 @@ extension MainScreenViewController {
 
 // MARK: - Set Selected Server
 extension MainScreenViewController {
-    private func setSelectedServer(server: Server?) {        
+    private func setSelectedServer(server: Server?) {      
+        RatingCountManager.shared.incrementConnectCount()
         if server?.id == selectedServer?.id {
             selectedServer = server
             setSelectedServerData(server: server)
@@ -435,10 +441,10 @@ extension MainScreenViewController: MainScreenViewDelegate {
     
     func locationButtonTapped() {
         presentLocationPage()
-       // presentRatingPopup()
     }
     
     func changeStateTapped() {
+        RatingCountManager.shared.incrementConnectCount()
         userTriggeredConnection = true
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "error_try_again".localize())
@@ -542,20 +548,27 @@ extension MainScreenViewController {
     }
 }
 
-
+//MARK: - Rating Popup
 extension MainScreenViewController: RatingPopupViewControllerDelegate {
     func didTapRateButton(_ controller: RatingPopupViewController, rate: Int) {
+        Analytics.logEvent("RatingPopupPresented", parameters: ["rate" : "\(rate)"])
         closeRatingPopup()
         if rate >= 4 {
+            Analytics.logEvent("RatingPopupRated", parameters: ["rate" : "High"])
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             }
+            RatingCountManager.shared.userGaveHighRating()
         } else {
-            Toaster.showToast(message: "Thank you for your feedback!".localize())
+            Analytics.logEvent("RatingPopupRated", parameters: ["rate" : "Low"])
+            RatingCountManager.shared.userGaveLowRating()
+            Toaster.showToast(message: "rating_thank_you".localize())
         }
     }
     
     func didTapCancelButton(_ controller: RatingPopupViewController) {
+        Analytics.logEvent("RatingPopupCancelled", parameters: [:])
+        RatingCountManager.shared.resetAllCount()
         closeRatingPopup()
     }
     

@@ -148,6 +148,18 @@ struct EnglishDictionary {
         "Unlimited Access for 6 Months": "Unlimited Access for 6 Months",
         "Unlimited Access for 1 Year": "Unlimited Access for 1 Year",
         "VIP Access for 1 Month": "Unlimited Access with %60 Off",
-        "Unlimited Access for 1 Month Introductory": "1 Month Free Unlimited Access"
+        "Unlimited Access for 1 Month Introductory": "1 Month Free Unlimited Access",
+        
+        // rating
+        "rating_title": "Do you like iLove VPN",
+        "rating_description": "If you love our app, please take a moment to rate it!",
+        "rating_thank_you": "Thank you for your feedback!",
+        "rating_1star": "Terrible!",
+        "rating_2star": "Ahhh?!",
+        "rating_3star": "OK!",
+        "rating_4star": "Fine!",
+        "rating_5star": "Excellent!",
+        "rating_cancel": "Cancel",
+        "rating_rate": "Rate"
     ]
 }
