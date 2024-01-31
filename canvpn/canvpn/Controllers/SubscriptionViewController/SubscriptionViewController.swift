@@ -115,8 +115,6 @@ class SubscriptionViewController: ScrollableViewController {
     private func checkThenSetCouponLabel() {
         let showCoupon = SettingsManager.shared.settings?.interface.showCoupon ?? false
         subscriptionOverlay.setCouponButton(isHidden: !showCoupon)
-        // TODO: remove below
-        subscriptionOverlay.setCouponButton(isHidden: false)
     }
     
     private func configureMainUI() {

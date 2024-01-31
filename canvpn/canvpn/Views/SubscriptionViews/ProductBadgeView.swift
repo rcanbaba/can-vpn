@@ -51,13 +51,13 @@ class ProductBadgeView: UIView {
     
     public func set(isDiscounted: Int) {
         // TODO: key
-        titleLabel.text = "%" + "\(isDiscounted)" + " " + "Discounted"
+        titleLabel.text = "%" + "\(isDiscounted)" + " " + "discount_tag".localize()
         baseView.backgroundColor = UIColor.Subscription.discountedBadgeBack
     }
     
     public func set(isBest: Bool) {
         // TODO: key
-        titleLabel.text = "Best Value"
+        titleLabel.text = "best_tag".localize()
         baseView.backgroundColor = UIColor.Subscription.bestBadgeBack
     }
     

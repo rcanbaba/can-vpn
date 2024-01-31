@@ -150,9 +150,12 @@ struct EnglishDictionary {
         "VIP Access for 1 Month": "Unlimited Access with %60 Off",
         "Unlimited Access for 1 Month Introductory": "1 Month Free Unlimited Access",
         
+        "subs_page_title": "Get I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "Choose your plan",
+        
         // rating
-        "rating_title": "Do you like iLove VPN",
-        "rating_description": "If you love our app, please take a moment to rate it!",
+        "rating_title": "We'd Love Your Feedback on iLove VPN!",
+        "rating_description": "Please rate us and share your thoughts! Your feedback helps us grow and improve.\nThanks for your support!",
         "rating_thank_you": "Thank you for your feedback!",
         "rating_1star": "Terrible!",
         "rating_2star": "Ahhh?!",
@@ -160,6 +163,19 @@ struct EnglishDictionary {
         "rating_4star": "Fine!",
         "rating_5star": "Excellent!",
         "rating_cancel": "Cancel",
-        "rating_rate": "Rate"
+        "rating_rate": "Rate",
+        
+        // landing
+        "landing_1_title": "Privacy, Uncompromised",
+        "landing_1_description": "Shield your online presence with iLove VPN.\nPrivacy at your fingertips.",
+        "landing_1_button": "Continue",
+        
+        "landing_2_title": "Global Access, Local Speed",
+        "landing_2_description": "Unlock a world of content at high speeds from over 100 locations.",
+        "landing_2_button": "Continue",
+        
+        "landing_3_title": "Your Gateway to Freedom",
+        "landing_3_description": "Start your journey to a more open internet.\nTap 'Get Started' to begin!",
+        "landing_3_button": "Get Started"
     ]
 }

@@ -60,25 +60,25 @@ class LandingViewController: UIViewController {
     
     private func setData() {
         let firstLandingData = LandingData(
-            title: "Secure Your Appearance",
-            description: "You can make secure your internet connection via vpn.",
+            title: "landing_1_title".localize(),
+            description: "landing_1_description".localize(),
             centerImage: UIImage(named: "landing-img-1"),
             stepImage: UIImage(named: "landing-step-1"),
-            butonText: "Continue".localize()
+            butonText: "landing_1_button".localize()
         )
         let secondLandingData = LandingData(
-            title: "Access Faster Internet",
-            description: "Wireguard Kit supported tunnel configuration you could reach faster connection.",
+            title: "landing_2_title".localize(),
+            description: "landing_2_description".localize(),
             centerImage: UIImage(named: "landing-img-2"),
             stepImage: UIImage(named: "landing-step-2"),
-            butonText: "Continue".localize()
+            butonText: "landing_2_button".localize()
         )
         let thirdLandingData = LandingData(
-            title: "More Than 100 Location",
-            description: "You reach different locations around the world! ",
+            title: "landing_3_title".localize(),
+            description: "landing_3_description".localize(),
             centerImage: UIImage(named: "landing-img-3"),
             stepImage: UIImage(named: "landing-step-3"),
-            butonText: "Get Started".localize()
+            butonText: "landing_3_button".localize()
         )
         
         firstViewController.set(data: firstLandingData)

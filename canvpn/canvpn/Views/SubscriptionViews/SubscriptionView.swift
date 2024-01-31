@@ -14,7 +14,7 @@ class SubscriptionView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = UIColor.black
         label.textAlignment = .center
-        label.text = "Get I LOVE VPN PREMIUM".localize()
+        label.text = "subs_page_title".localize()
         return label
     }()
     

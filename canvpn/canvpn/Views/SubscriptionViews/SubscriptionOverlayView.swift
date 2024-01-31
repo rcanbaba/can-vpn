@@ -38,7 +38,7 @@ class SubscriptionOverlayView: UIView {
         label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         label.textColor = UIColor.Subscription.titleText
         label.textAlignment = .natural
-        label.text = "Choose your plan"
+        label.text = "subs_overlay_choose".localize()
         return label
     }()
 
