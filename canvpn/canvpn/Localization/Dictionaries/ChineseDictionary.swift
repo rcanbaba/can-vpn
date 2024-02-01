@@ -147,7 +147,35 @@ struct ChineseDictionary {
         "Unlimited Access for 6 Months": "6 个月无限访问",
         "Unlimited Access for 1 Year": "1 年无限访问",
         "VIP Access for 1 Month": "1 个月 VIP 访问，享 60% 折扣",
-        "Unlimited Access for 1 Month Introductory": "1 个月免费无限访问"
+        "Unlimited Access for 1 Month Introductory": "1 个月免费无限访问",
+        
+        "subs_page_title": "获取 I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "选择您的计划",
+        
+        // rating
+        "rating_title": "我们期待您对 iLove VPN 的反馈！",
+        "rating_description": "请给我们评分并分享您的想法！您的反馈有助于我们不断成长和改进。\n感谢您的支持！",
+        "rating_thank_you": "感谢您的反馈！",
+        "rating_1star": "糟糕透了！",
+        "rating_2star": "嗯？！",
+        "rating_3star": "还行！",
+        "rating_4star": "很好！",
+        "rating_5star": "非常好！",
+        "rating_cancel": "取消",
+        "rating_rate": "评分",
+        
+        // landing
+        "landing_1_title": "隐私，毫不妥协",
+        "landing_1_description": "使用 iLove VPN 保护您的在线隐私。\n隐私尽在您的指尖。",
+        "landing_1_button": "继续",
+        
+        "landing_2_title": "全球访问，本地速度",
+        "landing_2_description": "以高速解锁全球各地的内容，拥有超过 100 个地点。",
+        "landing_2_button": "继续",
+        
+        "landing_3_title": "通往自由的大门",
+        "landing_3_description": "开始您通向更加开放互联网的旅程。\n点击 '开始' 开始吧！",
+        "landing_3_button": "开始"
     ]
 }
 

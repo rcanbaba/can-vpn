@@ -147,7 +147,35 @@ struct PersianDictionary {
         "Unlimited Access for 6 Months": "دسترسی نامحدود برای 6 ماه",
         "Unlimited Access for 1 Year": "دسترسی نامحدود برای 1 سال",
         "VIP Access for 1 Month": "دسترسی VIP با 60% تخفیف",
-        "Unlimited Access for 1 Month Introductory": "دسترسی نامحدود برای 1 ماه رایگان"
+        "Unlimited Access for 1 Month Introductory": "دسترسی نامحدود برای 1 ماه رایگان",
+        
+        "subs_page_title": "پلن PREMIUM I LOVE VPN را بگیرید",
+        "subs_overlay_choose": "پلن مورد نظر خود را انتخاب کنید",
+        
+        // rating
+        "rating_title": "نظر شما در مورد iLove VPN ما را بهبود می‌بخشد!",
+        "rating_description": "لطفاً به ما امتیاز دهید و نظرات خود را به اشتراک بگذارید! نظرات شما به ما کمک می‌کند تا رشد کنیم و بهتر شویم.\nاز حمایت شما سپاسگزاریم!",
+        "rating_thank_you": "از نظرات شما سپاسگزاریم!",
+        "rating_1star": "وحشتناک!",
+        "rating_2star": "آها؟!",
+        "rating_3star": "خوب!",
+        "rating_4star": "عالی!",
+        "rating_5star": "عالی!",
+        "rating_cancel": "لغو",
+        "rating_rate": "امتیاز دهید",
+        
+        // landing
+        "landing_1_title": "حریم خصوصی بدون محدودیت",
+        "landing_1_description": "حفاظت از حضور آنلاین خود با iLove VPN.\nحریم خصوصی در دستان شما.",
+        "landing_1_button": "ادامه",
+        
+        "landing_2_title": "دسترسی جهانی، سرعت محلی",
+        "landing_2_description": "با سرعت بالا از بیش از ۱۰۰ مکان، دنیایی از محتوا را باز کنید.",
+        "landing_2_button": "ادامه",
+        
+        "landing_3_title": "دروازه‌ی شما به آزادی",
+        "landing_3_description": "سفر خود به سمت اینترنتی بازتر را آغاز کنید.\nبرای شروع 'شروع کنید' را بزنید!",
+        "landing_3_button": "شروع کنید"
     ]
 }
 

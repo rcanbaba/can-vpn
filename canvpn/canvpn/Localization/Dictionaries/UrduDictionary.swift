@@ -147,7 +147,35 @@ struct UrduDictionary {
         "Unlimited Access for 6 Months": "6 مہینوں کے لئے بلا محدود رسائی",
         "Unlimited Access for 1 Year": "1 سال کے لئے بلا محدود رسائی",
         "VIP Access for 1 Month": "1 مہینہ کے لئے VIP رسائی مع 60٪ چھٹ",
-        "Unlimited Access for 1 Month Introductory": "1 مہینہ مفت بلا محدود رسائی"
+        "Unlimited Access for 1 Month Introductory": "1 مہینہ مفت بلا محدود رسائی",
+        
+        "subs_page_title": "I LOVE VPN PREMIUM حاصل کریں",
+        "subs_overlay_choose": "اپنا پلان منتخب کریں",
+        
+        // rating
+        "rating_title": "ہمیں آپ کی رائے کا مطالبہ ہے iLove VPN پر!",
+        "rating_description": "براہ کرم ہمیں درج کریں اور اپنی رائے سنوائیں! آپ کی رائے ہمیں بڑھانے اور بہتر بنانے میں مدد فراہم کرتی ہے۔\nآپ کی حمایت کا شکریہ!",
+        "rating_thank_you": "آپ کی رائے کا شکریہ!",
+        "rating_1star": "خراب!",
+        "rating_2star": "اہا!",
+        "rating_3star": "ٹھیک!",
+        "rating_4star": "ٹھیک!",
+        "rating_5star": "ممتاز!",
+        "rating_cancel": "منسوخ کریں",
+        "rating_rate": "ریٹ کریں",
+        
+        // landing
+        "landing_1_title": "خصوصیت، بغیر کسی شرط کے",
+        "landing_1_description": "اپنے آنلائن موجودگی کو iLove VPN کے ساتھ محافظت کریں۔\nپرائیویسی آپ کے ہاتھوں میں ہے۔",
+        "landing_1_button": "جاری رہیں",
+        
+        "landing_2_title": "عالمی رسائی، مقامی رفتار",
+        "landing_2_description": "مقامی رفتار پر بیش از 100 مقام سے مواد کی دنیا کو کھولیں۔",
+        "landing_2_button": "جاری رہیں",
+        
+        "landing_3_title": "آپ کی آزادی کا دروازہ",
+        "landing_3_description": "آزاد انٹرنیٹ کی طرف اپنا سفر شروع کریں۔\n'شروع کریں' پر ٹیپ کرنے کے لئے!",
+        "landing_3_button": "شروع کریں"
     ]
 }
 

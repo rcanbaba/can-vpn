@@ -147,7 +147,35 @@ struct GermanDictionary {
         "Unlimited Access for 6 Months": "Unbegrenzter Zugang für 6 Monate",
         "Unlimited Access for 1 Year": "Unbegrenzter Zugang für 1 Jahr",
         "VIP Access for 1 Month": "VIP-Zugang mit 60% Rabatt",
-        "Unlimited Access for 1 Month Introductory": "Unbegrenzter Zugang für 1 Monat kostenlos"
+        "Unlimited Access for 1 Month Introductory": "Unbegrenzter Zugang für 1 Monat kostenlos",
+        
+        "subs_page_title": "Hol dir I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "Wähle deinen Plan",
+        
+        // rating
+        "rating_title": "Wir würden gerne dein Feedback zu iLove VPN hören!",
+        "rating_description": "Bitte bewerte uns und teile uns deine Gedanken mit! Dein Feedback hilft uns zu wachsen und uns zu verbessern.\nVielen Dank für deine Unterstützung!",
+        "rating_thank_you": "Vielen Dank für dein Feedback!",
+        "rating_1star": "Schrecklich!",
+        "rating_2star": "Ahhh?!",
+        "rating_3star": "OK!",
+        "rating_4star": "Gut!",
+        "rating_5star": "Ausgezeichnet!",
+        "rating_cancel": "Abbrechen",
+        "rating_rate": "Bewerten",
+        
+        // landing
+        "landing_1_title": "Privatsphäre, ohne Kompromisse",
+        "landing_1_description": "Schütze deine Online-Präsenz mit iLove VPN.\nPrivatsphäre auf deinen Fingerspitzen.",
+        "landing_1_button": "Weiter",
+        
+        "landing_2_title": "Weltweiter Zugriff, lokale Geschwindigkeit",
+        "landing_2_description": "Entsperre eine Welt voller Inhalte mit hoher Geschwindigkeit von über 100 Standorten.",
+        "landing_2_button": "Weiter",
+        
+        "landing_3_title": "Dein Tor zur Freiheit",
+        "landing_3_description": "Starte deine Reise in ein offeneres Internet.\nTippe auf 'Los geht's', um zu beginnen!",
+        "landing_3_button": "Los geht's"
     ]
 }
 

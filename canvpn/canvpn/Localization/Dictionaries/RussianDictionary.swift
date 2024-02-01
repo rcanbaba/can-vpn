@@ -147,7 +147,35 @@ struct RussianDictionary {
         "Unlimited Access for 6 Months": "Неограниченный доступ на 6 месяцев",
         "Unlimited Access for 1 Year": "Неограниченный доступ на 1 год",
         "VIP Access for 1 Month": "VIP-доступ на 1 месяц со скидкой 60%",
-        "Unlimited Access for 1 Month Introductory": "Бесплатный месяц без ограничений"
+        "Unlimited Access for 1 Month Introductory": "Бесплатный месяц без ограничений",
+        
+        "subs_page_title": "Получите I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "Выберите свой план",
+        
+        // rating
+        "rating_title": "Мы будем рады вашим отзывам о iLove VPN!",
+        "rating_description": "Пожалуйста, оцените нас и поделитесь своими мыслями! Ваша обратная связь помогает нам расти и улучшаться.\nСпасибо за вашу поддержку!",
+        "rating_thank_you": "Спасибо за ваш отзыв!",
+        "rating_1star": "Ужасно!",
+        "rating_2star": "Аххх?!",
+        "rating_3star": "Хорошо!",
+        "rating_4star": "Отлично!",
+        "rating_5star": "Отлично!",
+        "rating_cancel": "Отмена",
+        "rating_rate": "Оценить",
+        
+        // landing
+        "landing_1_title": "Приватность, без компромиссов",
+        "landing_1_description": "Защитите свою онлайн-присутствие с iLove VPN.\nПриватность на ваших пальцах.",
+        "landing_1_button": "Продолжить",
+        
+        "landing_2_title": "Глобальный доступ, местная скорость",
+        "landing_2_description": "Разблокируйте мир контента на высоких скоростях из более чем 100 местоположений.",
+        "landing_2_button": "Продолжить",
+        
+        "landing_3_title": "Ваш путь к свободе",
+        "landing_3_description": "Начните свой путь к более открытому интернету.\nНажмите 'Начать' для начала!",
+        "landing_3_button": "Начать"
     ]
 }
 

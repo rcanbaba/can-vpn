@@ -146,7 +146,35 @@ struct HindiDictionary {
         "Unlimited Access for 6 Months": "6 महीनों के लिए असीमित पहुंच",
         "Unlimited Access for 1 Year": "1 साल के लिए असीमित पहुंच",
         "VIP Access for 1 Month": "1 महीने के लिए VIP पहुंच, 60% छूट के साथ",
-        "Unlimited Access for 1 Month Introductory": "1 महीने के लिए नि: शुल्क असीमित पहुंच"
+        "Unlimited Access for 1 Month Introductory": "1 महीने के लिए नि: शुल्क असीमित पहुंच",
+        
+        "subs_page_title": "I LOVE VPN PREMIUM प्राप्त करें",
+        "subs_overlay_choose": "अपनी योजना चुनें",
+        
+        // rating
+        "rating_title": "हमें iLove VPN पर आपकी प्रतिक्रिया पसंद होगी!",
+        "rating_description": "कृपया हमें रेट करें और अपने विचार साझा करें! आपकी प्रतिक्रिया हमारे विकास और सुधारने में मदद करती है।\nआपके समर्थन के लिए धन्यवाद!",
+        "rating_thank_you": "आपकी प्रतिक्रिया के लिए धन्यवाद!",
+        "rating_1star": "खराब!",
+        "rating_2star": "आँह?!",
+        "rating_3star": "ठीक!",
+        "rating_4star": "ठीक!",
+        "rating_5star": "उत्कृष्ट!",
+        "rating_cancel": "रद्द करें",
+        "rating_rate": "रेट करें",
+        
+        // landing
+        "landing_1_title": "गोपनीयता, कमी के बिना",
+        "landing_1_description": "iLove VPN के साथ अपनी ऑनलाइन मौजूदगी की रक्षा करें।\nगोपनीयता आपके हाथों में।",
+        "landing_1_button": "जारी रखें",
+        
+        "landing_2_title": "वैश्विक पहुंच, स्थानीय गति",
+        "landing_2_description": "100 से अधिक स्थानों से उच्च गति पर सामग्री का खुलासा करें।",
+        "landing_2_button": "जारी रखें",
+        
+        "landing_3_title": "आपके स्वतंत्रता का द्वार",
+        "landing_3_description": "एक और खुले इंटरनेट की ओर अपना सफर शुरू करें।\nशुरू करने के लिए 'शुरू हो गया' टैप करें!",
+        "landing_3_button": "शुरू करें"
     ]
 }
 
