@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Analytics.logEvent("001-HomeVCPresented", parameters: ["type" : "didload"])
+        Analytics.logEvent("001_HomeVCPresented", parameters: ["type" : "didload"])
         networkService = DefaultNetworkService()
         tunnelManager = NETunnelManager()
         setInitialServerData()
@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Analytics.logEvent("002-HomeVCPresented", parameters: ["type" : "willAppear"])
+        Analytics.logEvent("002_HomeVCPresented", parameters: ["type" : "willAppear"])
     }
     
     override func viewWillDisappear(_ animated: Bool) {

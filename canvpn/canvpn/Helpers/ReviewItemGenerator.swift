@@ -71,7 +71,7 @@ class ReviewItemGenerator {
                        text: "İstediğim konumu seçip kolay ve hızlı bir şekilde kullanıyorum. Basit arayüzler için de geliştirici ekibe teşekkür ediyorum."),
         ]
         
-        var shuffledReviews = reviews.shuffled()
+        let shuffledReviews = reviews.shuffled()
         let first10Reviews = Array(shuffledReviews.prefix(10))
         return first10Reviews
     }

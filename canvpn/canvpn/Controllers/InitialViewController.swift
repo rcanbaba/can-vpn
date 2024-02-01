@@ -32,7 +32,7 @@ class InitialViewController: UIViewController {
             self?.printDebug("dispatchGroup - notify - presentMainScreen")
             self?.checkAvailableUpdatesThenGo()
         }
-        Analytics.logEvent("101-InitialScreenPresented", parameters: ["type" : "didload"])
+        Analytics.logEvent("101_InitialScreenPresented", parameters: ["type" : "didload"])
     }
     
     private func configureUI() {
