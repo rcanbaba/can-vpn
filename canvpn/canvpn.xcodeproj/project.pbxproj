@@ -2214,7 +2214,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "iLove VPN";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use this data to provide you with more relevant content.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use this data to customize your VPN options, ensuring you get relevant and optimal server connections.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -2248,7 +2248,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "iLove VPN";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use this data to provide you with more relevant content.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use this data to customize your VPN options, ensuring you get relevant and optimal server connections.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -12,6 +12,7 @@ class LaunchCountManager {
     static let shared = LaunchCountManager()
     
     private let launchCountKey = "launchCountKey"
+    private let islandingShownKey = "islandingShownKey"
     
     private init() {}
     
@@ -21,7 +22,7 @@ class LaunchCountManager {
         UserDefaults.standard.set(count, forKey: launchCountKey)
     }
     
-    public func shouldShowPopup() -> Bool {
+    public func shouldShowGetFreePopup() -> Bool {
         let count = UserDefaults.standard.integer(forKey: launchCountKey)
         guard let emailBannerSettings = SettingsManager.shared.settings?.interface.showEmailBanner,
               emailBannerSettings.enabled else {
@@ -30,7 +31,16 @@ class LaunchCountManager {
         return count >= emailBannerSettings.count
     }
     
+    public func shouldShowLanding() -> Bool {
+        let islandingShown = UserDefaults.standard.bool(forKey: islandingShownKey)
+        return !islandingShown
+    }
+    
     public func resetLaunchCount() {
         UserDefaults.standard.set(0, forKey: launchCountKey)
+    }
+    
+    public func landingFlowCompleted() {
+        UserDefaults.standard.set(true, forKey: islandingShownKey)
     }
 }

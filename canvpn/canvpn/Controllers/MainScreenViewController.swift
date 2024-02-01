@@ -157,9 +157,10 @@ class MainScreenViewController: UIViewController {
     }
     
     private func checkGetFreeThenSet() {
-        mainView.setGetFreeView(isHidden: !LaunchCountManager.shared.shouldShowPopup())
-        LaunchCountManager.shared.shouldShowPopup() ? playGetFreeAnimationAfterDelay() : ()
-        LaunchCountManager.shared.shouldShowPopup() ? presentEmailPopup() : ()
+        let shouldShowGetFreePopup = LaunchCountManager.shared.shouldShowGetFreePopup()
+        mainView.setGetFreeView(isHidden: !shouldShowGetFreePopup)
+        shouldShowGetFreePopup ? playGetFreeAnimationAfterDelay() : ()
+        shouldShowGetFreePopup ? presentEmailPopup() : ()
     }
     
     private func presentSubscriptionPage() {

@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        LaunchCountManager.shared.shouldShowPopup() ? LaunchCountManager.shared.resetLaunchCount() : ()
+        LaunchCountManager.shared.shouldShowGetFreePopup() ? LaunchCountManager.shared.resetLaunchCount() : ()
         PurchaseManager.shared.stopObserving()
     }
     

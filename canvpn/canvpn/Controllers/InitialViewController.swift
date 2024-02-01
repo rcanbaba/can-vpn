@@ -43,23 +43,36 @@ class InitialViewController: UIViewController {
         }
     }
     
-    private func presentMainScreen(){
-        Analytics.logEvent("102-PresentMainScreen", parameters: ["type" : "present"])
+    private func presentMainScreen() {
+        Analytics.logEvent("102_PresentMainScreen", parameters: ["type" : "present"])
         var navigationController: UINavigationController
         if SettingsManager.shared.settings?.isInReview == true {
             navigationController = createNavigationController(with: HomeViewController())
         } else {
-          //  navigationController = createNavigationController(with: MainScreenViewController())
-            
-            let landingController = LandingViewController()
-            landingController.delegate = self
-            navigationController = createNavigationController(with: landingController)
+            navigationController = createNavigationController(with: MainScreenViewController())
         }
         present(navigationController, animated: true, completion: nil)
     }
     
+    private func presentLandingScreen() {
+        Analytics.logEvent("132_PresentLandingScreen", parameters: ["type" : "present"])
+        var navigationController: UINavigationController
+        let landingController = LandingViewController()
+        landingController.delegate = self
+        navigationController = createNavigationController(with: landingController)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
     private func goNextScreenAfterUpdate() {
-        presentMainScreen()
+        LaunchCountManager.shared.shouldShowLanding() ? presentLandingScreen() : presentMainScreen()
+    }
+    
+    private func landingCompletedPresentMainScreen() {
+        Analytics.logEvent("142_LandingScreenCompleted", parameters: ["type" : "completed"])
+        LaunchCountManager.shared.landingFlowCompleted()
+        self.dismiss(animated: false) {
+            self.presentMainScreen()
+        }
     }
     
     private func createNavigationController (with viewController: UIViewController) -> UINavigationController {
@@ -141,7 +154,7 @@ extension InitialViewController {
                 Constants.originalIP = response.ipAddress
             case .failure(_):
                 self.printDebug("getIPAddressRequest failure")
-                Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
+                Analytics.logEvent("009_API_getIPAddressRequest", parameters: ["error" : "happened"])
             }
         }
     }
@@ -173,7 +186,7 @@ extension InitialViewController {
                 if errorMessage == "registerFailed" {
                     self.registerDevice()
                 }
-                Analytics.logEvent("004-API-registerDeviceRequest", parameters: ["error" : "happened"])
+                Analytics.logEvent("004_API_registerDeviceRequest", parameters: ["error" : "happened"])
             }
             
         }
@@ -200,7 +213,7 @@ extension InitialViewController {
                 self.userEntry()
             case .failure(_):
                 self.printDebug("fetchSettingsRequest - failure")
-                Analytics.logEvent("005-API-fetchSettingsRequest", parameters: ["error" : "happened"])
+                Analytics.logEvent("005_API_fetchSettingsRequest", parameters: ["error" : "happened"])
             }
         }
     }
@@ -216,7 +229,7 @@ extension InitialViewController {
             case .success(_ ): break
             case .failure(let error):
                 self.printDebug("userEntryRequest - failure")
-                Analytics.logEvent("025-API-userEntryRequest", parameters: ["error" : ErrorHandler.getErrorMessage(for: error)])
+                Analytics.logEvent("025_API_userEntryRequest", parameters: ["error" : ErrorHandler.getErrorMessage(for: error)])
             }
         }
     }
@@ -229,7 +242,6 @@ extension InitialViewController {
             completion()
         }
     }
-    
 }
 
 extension InitialViewController: SplashScreenViewDelegate {
@@ -239,16 +251,10 @@ extension InitialViewController: SplashScreenViewDelegate {
             self?.initialSetupDispatchGroup.leave()
         }
     }
-    
 }
-
 
 extension InitialViewController: LandingViewControllerDelegate {
     func landingTasksCompleted() {
-        self.dismiss(animated: false) {
-            let landingController = MainScreenViewController()
-            let navLandingController = self.createNavigationController(with: landingController)
-            self.present(navLandingController, animated: true, completion: nil)
-        }
+        landingCompletedPresentMainScreen()
     }
 }
