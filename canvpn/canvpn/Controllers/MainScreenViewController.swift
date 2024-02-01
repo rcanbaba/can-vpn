@@ -33,7 +33,7 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Analytics.logEvent("001-MainScreenPresented", parameters: ["type" : "didload"])
+        Analytics.logEvent("001_MainScreenPresented", parameters: ["type" : "didload"])
         
         // to ipsec manager
         //  NotificationCenter.default.addObserver(self, selector: #selector(statusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
@@ -71,7 +71,7 @@ class MainScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Analytics.logEvent("002-MainScreenPresented", parameters: ["type" : "willAppear"])
+        Analytics.logEvent("002_MainScreenPresented", parameters: ["type" : "willAppear"])
         setNavigationBar()
         playGetFreeAnimationAfterDelay()
         startAnimationTimer()
@@ -210,7 +210,7 @@ class MainScreenViewController: UIViewController {
     }
     
     public func presentLocationPage() {
-        Analytics.logEvent("011-PresentLocationScreen", parameters: ["type" : "present"])
+        Analytics.logEvent("011_PresentLocationScreen", parameters: ["type" : "present"])
         let locationViewController = LocationViewController()
         locationViewController.hidesBottomBarWhenPushed = true
         locationViewController.delegate = self
@@ -231,10 +231,10 @@ class MainScreenViewController: UIViewController {
     }
     
     @objc private func willEnterForegroundNotification(_ sender: Notification) {
-        Analytics.logEvent("003-MainScreenPresented", parameters: ["type" : "enterForeground"])
+        Analytics.logEvent("003_MainScreenPresented", parameters: ["type" : "enterForeground"])
         guard let manager = tunnelManager,let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "Error occurred, please reload app.")
-            Analytics.logEvent("096-ChangeState", parameters: ["error" : "guard"])
+            Analytics.logEvent("096_ChangeState", parameters: ["error" : "guard"])
             return }
 
         if currentManagerState == .connected {
@@ -275,7 +275,7 @@ extension MainScreenViewController {
                 self.setMainUI(state: .disconnected)
                 self.printDebug("getCredential failure")
                 Toaster.showToast(message: "error_location_again".localize())
-                Analytics.logEvent("003-API-getCredentialRequest", parameters: ["error" : "happened"])
+                Analytics.logEvent("003_API_getCredentialRequest", parameters: ["error" : "happened"])
             }
             
         }
@@ -296,7 +296,7 @@ extension MainScreenViewController {
                     }
                 case .failure(_):
                     self.printDebug("getIPAddressRequest failure")
-                    Analytics.logEvent("009-API-getIPAddressRequest", parameters: ["error" : "happened"])
+                    Analytics.logEvent("009_API_getIPAddressRequest", parameters: ["error" : "happened"])
                 }
             }
         }
@@ -320,7 +320,7 @@ extension MainScreenViewController {
             case .failure(let error):
                 let errorMessage = ErrorHandler.getErrorMessage(for: error)
                 Toaster.showToast(message: errorMessage)
-                Analytics.logEvent("005-API-generateCouponRequest", parameters: ["error" : "happened"])
+                Analytics.logEvent("005_API_generateCouponRequest", parameters: ["error" : "happened"])
             }
         }
     }
@@ -351,7 +351,7 @@ extension MainScreenViewController {
                     }
                 } else {
                     Toaster.showToast(message: "error_occur_location".localize())
-                    Analytics.logEvent("082-ChangeState", parameters: ["error" : "selectedServer nil"])
+                    Analytics.logEvent("082_ChangeState", parameters: ["error" : "selectedServer nil"])
                 }
             } else if currentManagerState == .connected {
                 manager.disconnectFromWg()
@@ -364,7 +364,7 @@ extension MainScreenViewController {
                         }
                     } else {
                         Toaster.showToast(message: "error_occur_location".localize())
-                        Analytics.logEvent("081-ChangeState", parameters: ["error" : "selectedServer nil"])
+                        Analytics.logEvent("081_ChangeState", parameters: ["error" : "selectedServer nil"])
                     }
                 }
             } else {
@@ -449,7 +449,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
         userTriggeredConnection = true
         guard let manager = tunnelManager, let currentManagerState = manager.getManagerState() else {
             Toaster.showToast(message: "error_try_again".localize())
-            Analytics.logEvent("097-ChangeState", parameters: ["error" : "guard"])
+            Analytics.logEvent("097_ChangeState", parameters: ["error" : "guard"])
             return }
         if currentManagerState == .disconnected {
             // TO CONNECT
@@ -460,13 +460,13 @@ extension MainScreenViewController: MainScreenViewDelegate {
                 }
             } else {
                 Toaster.showToast(message: "error_occur_location".localize())
-                Analytics.logEvent("098-ChangeState", parameters: ["error" : "selectedServer nil"])
+                Analytics.logEvent("098_ChangeState", parameters: ["error" : "selectedServer nil"])
             }
         } else if currentManagerState == .connected {
             manager.disconnectFromWg()
         } else {
             Toaster.showToast(message: "error_try_again".localize())
-            Analytics.logEvent("099-ChangeState", parameters: ["error" : "connectedElse"])
+            Analytics.logEvent("099_ChangeState", parameters: ["error" : "connectedElse"])
         }
     }
 }
