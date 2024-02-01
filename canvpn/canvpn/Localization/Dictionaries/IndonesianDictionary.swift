@@ -145,7 +145,35 @@ struct IndonesianDictionary {
         "Unlimited Access for 6 Months": "Akses Tanpa Batas selama 6 Bulan",
         "Unlimited Access for 1 Year": "Akses Tanpa Batas selama 1 Tahun",
         "VIP Access for 1 Month": "Akses VIP dengan Diskon 60%",
-        "Unlimited Access for 1 Month Introductory": "Akses Tanpa Batas selama 1 Bulan Gratis"
+        "Unlimited Access for 1 Month Introductory": "Akses Tanpa Batas selama 1 Bulan Gratis",
+        
+        "subs_page_title": "Dapatkan I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "Pilih paket Anda",
+        
+        // rating
+        "rating_title": "Kami Sangat Menghargai Umpan Balik Anda tentang iLove VPN!",
+        "rating_description": "Harap beri kami penilaian dan bagikan pemikiran Anda! Umpan balik Anda membantu kami tumbuh dan memperbaiki diri.\nTerima kasih atas dukungan Anda!",
+        "rating_thank_you": "Terima kasih atas umpan balik Anda!",
+        "rating_1star": "Mengerikan!",
+        "rating_2star": "Ahhh?!",
+        "rating_3star": "Baik!",
+        "rating_4star": "Bagus!",
+        "rating_5star": "Luar Biasa!",
+        "rating_cancel": "Batal",
+        "rating_rate": "Nilai",
+        
+        // landing
+        "landing_1_title": "Privasi, Tanpa Kompromi",
+        "landing_1_description": "Lindungi keberadaan online Anda dengan iLove VPN.\nPrivasi di ujung jari Anda.",
+        "landing_1_button": "Lanjutkan",
+        
+        "landing_2_title": "Akses Global, Kecepatan Lokal",
+        "landing_2_description": "Buka dunia konten dengan kecepatan tinggi dari lebih dari 100 lokasi.",
+        "landing_2_button": "Lanjutkan",
+        
+        "landing_3_title": "Gerbang Anda ke Kebebasan",
+        "landing_3_description": "Mulailah perjalanan Anda menuju internet yang lebih terbuka.\nKetuk 'Mulai' untuk memulai!",
+        "landing_3_button": "Mulai"
     ]
 }
 

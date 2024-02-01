@@ -147,7 +147,35 @@ struct FrenchDictionary {
         "Unlimited Access for 6 Months": "Accès illimité pendant 6 mois",
         "Unlimited Access for 1 Year": "Accès illimité pendant 1 an",
         "VIP Access for 1 Month": "Accès VIP avec 60% de réduction",
-        "Unlimited Access for 1 Month Introductory": "Accès illimité pendant 1 mois gratuit"
+        "Unlimited Access for 1 Month Introductory": "Accès illimité pendant 1 mois gratuit",
+        
+        "subs_page_title": "Obtenez I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "Choisissez votre plan",
+        
+        // rating
+        "rating_title": "Nous aimerions avoir votre avis sur iLove VPN !",
+        "rating_description": "Veuillez nous évaluer et partager vos impressions ! Votre feedback nous aide à grandir et à nous améliorer.\nMerci pour votre soutien !",
+        "rating_thank_you": "Merci pour votre avis !",
+        "rating_1star": "Terrible !",
+        "rating_2star": "Bof !",
+        "rating_3star": "Correct !",
+        "rating_4star": "Bien !",
+        "rating_5star": "Excellent !",
+        "rating_cancel": "Annuler",
+        "rating_rate": "Évaluer",
+        
+        // landing
+        "landing_1_title": "Vie Privée, Sans Compromis",
+        "landing_1_description": "Protégez votre présence en ligne avec iLove VPN.\nLa vie privée à portée de main.",
+        "landing_1_button": "Continuer",
+        
+        "landing_2_title": "Accès Mondial, Vitesse Locale",
+        "landing_2_description": "Débloquez un monde de contenu à haute vitesse depuis plus de 100 emplacements.",
+        "landing_2_button": "Continuer",
+        
+        "landing_3_title": "Votre Porte vers la Liberté",
+        "landing_3_description": "Commencez votre voyage vers un internet plus ouvert.\nAppuyez sur 'Commencer' pour débuter !",
+        "landing_3_button": "Commencer"
     ]
 }
 

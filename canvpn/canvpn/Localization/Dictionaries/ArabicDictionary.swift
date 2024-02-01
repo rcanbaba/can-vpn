@@ -147,7 +147,35 @@ struct ArabicDictionary {
         "Unlimited Access for 6 Months": "وصول غير محدود لمدة 6 أشهر",
         "Unlimited Access for 1 Year": "وصول غير محدود لمدة سنة واحدة",
         "VIP Access for 1 Month": "وصول VIP بخصم 60%",
-        "Unlimited Access for 1 Month Introductory": "وصول غير محدود لمدة شهر واحد مجانًا"
+        "Unlimited Access for 1 Month Introductory": "وصول غير محدود لمدة شهر واحد مجانًا",
+        
+        "subs_page_title": "احصل على I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "اختر خطتك",
+        
+        // rating
+        "rating_title": "نحن نقدر تقييمك لـ iLove VPN!",
+        "rating_description": "يرجى تقديم تقييم ومشاركة أفكارك! تساعدنا ملاحظاتك في النمو والتحسين.\nشكرًا لدعمك!",
+        "rating_thank_you": "شكرًا لتقييمك!",
+        "rating_1star": "رهيب!",
+        "rating_2star": "آه؟!",
+        "rating_3star": "حسنًا!",
+        "rating_4star": "جيد!",
+        "rating_5star": "ممتاز!",
+        "rating_cancel": "إلغاء",
+        "rating_rate": "قيّم",
+        
+        // landing
+        "landing_1_title": "الخصوصية بلا تنازل",
+        "landing_1_description": "احمِ حضورك على الإنترنت باستخدام iLove VPN.\nالخصوصية بين يديك.",
+        "landing_1_button": "متابعة",
+        
+        "landing_2_title": "الوصول العالمي، السرعة المحلية",
+        "landing_2_description": "فتح عالم من المحتوى بسرعة عالية من أكثر من 100 موقع.",
+        "landing_2_button": "متابعة",
+        
+        "landing_3_title": "بوابتك إلى الحرية",
+        "landing_3_description": "ابدأ رحلتك نحو إنترنت أكثر انفتاحًا.\nاضغط 'ابدأ' للبدء!",
+        "landing_3_button": "ابدأ"
     ]
 }
 

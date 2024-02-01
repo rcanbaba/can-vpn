@@ -147,6 +147,34 @@ struct TurkishDictionary {
         "Unlimited Access for 6 Months": "6 Ay Boyunca Sınırsız Erişim",
         "Unlimited Access for 1 Year": "1 Yıl Boyunca Sınırsız Erişim",
         "VIP Access for 1 Month": "%60 İndirimli Sınırsız Erişim",
-        "Unlimited Access for 1 Month Introductory": "1 Ay Ücretsiz Sınırsız Erişim"
+        "Unlimited Access for 1 Month Introductory": "1 Ay Ücretsiz Sınırsız Erişim",
+        
+        "subs_page_title": "I LOVE VPN PREMIUM",
+        "subs_overlay_choose": "Planınızı Seçin",
+        
+        // rating
+        "rating_title": "iLove VPN Hakkındaki Düşüncelerinizi Bekliyoruz!",
+        "rating_description": "Lütfen bize puan verin ve düşüncelerinizi paylaşın! Geri bildiriminiz bize büyümekte ve gelişmekte yardımcı olur.\nDesteğiniz için teşekkür ederiz!",
+        "rating_thank_you": "Geri bildiriminiz için teşekkür ederiz!",
+        "rating_1star": "Berbat!",
+        "rating_2star": "Eh?!",
+        "rating_3star": "Tamam!",
+        "rating_4star": "İyi!",
+        "rating_5star": "Mükemmel!",
+        "rating_cancel": "İptal",
+        "rating_rate": "Puan Ver",
+        
+        // landing
+        "landing_1_title": "Gizlilik, Ödün Vermeden",
+        "landing_1_description": "Online işlemlerinizi iLove VPN ile koruyun.\nGizlilik parmaklarınızın ucunda.",
+        "landing_1_button": "Devam",
+        
+        "landing_2_title": "Küresel Erişim, Yerel Hız",
+        "landing_2_description": "100'den fazla konumda yüksek hızda içeriklere erişimi açın.",
+        "landing_2_button": "Devam",
+        
+        "landing_3_title": "Özgürlüğe Açılan Kapınız",
+        "landing_3_description": "Daha açık bir internete doğru yolculuğunuza başlayın.\nBaşlamak için 'Başla'ya dokunun!",
+        "landing_3_button": "Başla"
     ]
 }
