@@ -99,6 +99,7 @@ class ProductItemView: UIView {
     
     public func set(isBest: Bool) {
         if isBest {
+            badgeView.isHidden = false
             badgeView.set(isBest: true)
         }
     }
