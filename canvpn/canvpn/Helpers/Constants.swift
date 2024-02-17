@@ -35,6 +35,7 @@ struct Constants {
     static let appContactUsURLString = "https://ilovevpn.app/contact-us/"
     static let appIPTestURLString = "https://utils.ilovevpn.co/what-is-my-ip"
     static let appSpeedTestURLString = "https://utils.ilovevpn.co/speed-test"
+    static let shareUsURLString = "https://lvvpn.link/app"
 
     static let appContactUsMailString = "info@ilovevpn.app"
     

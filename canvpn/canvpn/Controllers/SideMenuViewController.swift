@@ -166,7 +166,7 @@ extension SideMenuViewController {
     
     private func presentShareSheet() {
         let appLogo = UIImage(named: "top-logo-green")!
-        let appLink = Constants.appWebPageURLString
+        let appLink = Constants.shareUsURLString
         let customMessage = "Check out \(Constants.appVisibleName)! I've been using it and it's been great. \(appLink)"
         
         let activityViewController = UIActivityViewController(activityItems: [customMessage, appLogo], applicationActivities: nil)
