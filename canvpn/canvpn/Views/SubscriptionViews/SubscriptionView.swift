@@ -44,11 +44,12 @@ class SubscriptionView: UIView {
         tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         tableView.showsVerticalScrollIndicator = true
         tableView.showsHorizontalScrollIndicator = true
-        tableView.backgroundColor = UIColor.clear
+        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         tableView.bounces = false
         tableView.layer.cornerRadius = 12
+        tableView.layer.applySubscriptionShadow()
         return tableView
     }()
     
@@ -82,6 +83,32 @@ class SubscriptionView: UIView {
         return stackView
     }()
     
+    private lazy var freeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = UIColor.Subscription.freeTextGray
+        label.textAlignment = .center
+        label.text = "FREE".localize()
+        return label
+    }()
+    
+    private lazy var proLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = UIColor.Subscription.proTextGreen
+        label.textAlignment = .center
+        label.text = "PRO".localize()
+        return label
+    }()
+    
+    private lazy var featuresTitleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [freeLabel, proLabel])
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.spacing = 4
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -111,9 +138,16 @@ class SubscriptionView: UIView {
             make.centerY.equalTo(titleLabel).offset(12)
         }
         
+        addSubview(featuresTitleStackView)
+        featuresTitleStackView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(32)
+            make.leading.equalToSuperview().inset(24)
+            make.width.equalTo(72)
+        }
+        
         addSubview(featuresTableView)
         featuresTableView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.top.equalTo(featuresTitleStackView.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(200)
         }

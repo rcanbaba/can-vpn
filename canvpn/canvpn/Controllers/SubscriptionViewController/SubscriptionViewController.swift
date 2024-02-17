@@ -42,7 +42,7 @@ class SubscriptionViewController: ScrollableViewController {
     private var selectedOfferSKU: String?
     private var appliedCouponCode: String?
     
-    private var premiumFeatures: [PremiumFeatureType] = [.secure, .fast, .noAds, .anonymous, .fast]
+    private var premiumFeatures: [PremiumFeatureType] = [.secure, .anonymous, .noAds, .location, .fast]
     
     private var reviews: [ReviewItem] = []
     

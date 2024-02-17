@@ -83,6 +83,8 @@ extension UIColor {
         static let discountedBadgeBack = UIColor("38D980")
         static let overlayBackGradientStart = UIColor("FFF9F4")
         static let overlayBackGradientEnd = UIColor("FFF4EA")
+        static let proTextGreen = UIColor("2BBC28")
+        static let freeTextGray = UIColor("5B5B5B")
     }
     
 }

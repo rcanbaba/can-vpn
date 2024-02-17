@@ -131,6 +131,7 @@ enum PremiumFeatureType {
     case fast
     case noAds
     case secure
+    case location
 }
 
 extension PremiumFeatureType {
@@ -144,6 +145,8 @@ extension PremiumFeatureType {
             return UIImage(named: "premium-minus-icon")
         case .secure:
             return UIImage(named: "premium-secure-icon")
+        case .location:
+            return UIImage(named: "premium-minus-icon")
         }
     }
     
@@ -157,6 +160,8 @@ extension PremiumFeatureType {
             return "premium_title_3".localize()
         case .secure:
             return "premium_title_4".localize()
+        case .location:
+            return "premium_title_5".localize()
         }
     }
     
@@ -170,6 +175,23 @@ extension PremiumFeatureType {
             return "premium_desc_3".localize()
         case .secure:
             return "premium_desc_4".localize()
+        case .location:
+            return "premium_desc_5".localize()
+        }
+    }
+    
+    func getFreeCheck() -> Bool {
+        switch self {
+        case .anonymous:
+            return true
+        case .fast:
+            return false
+        case .noAds:
+            return false
+        case .secure:
+            return true
+        case .location:
+            return false
         }
     }
 }

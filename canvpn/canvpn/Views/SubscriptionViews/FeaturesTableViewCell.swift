@@ -9,7 +9,14 @@ import UIKit
 
 class FeaturesTableViewCell: UITableViewCell {
     
-    private lazy var checkImageView: UIImageView = {
+    private lazy var firstCheckImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.image = UIImage(named: "features-untick-icon")
+        return imageView
+    }()
+    
+    private lazy var secondCheckImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.image = UIImage(named: "features-tick-icon")
@@ -21,6 +28,14 @@ class FeaturesTableViewCell: UITableViewCell {
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.spacing = 0
+        return stackView
+    }()
+    
+    private lazy var checkStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [firstCheckImageView, secondCheckImageView])
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.spacing = 12
         return stackView
     }()
     
@@ -53,25 +68,32 @@ class FeaturesTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-        contentView.addSubview(checkImageView)
-        checkImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16)
-            make.size.equalTo(24)
+        contentView.addSubview(checkStackView)
+        checkStackView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(12)
             make.centerY.equalToSuperview()
         }
         
         contentView.addSubview(textStackView)
         textStackView.snp.makeConstraints { make in
-            make.leading.equalTo(checkImageView.snp.trailing).offset(12)
+            make.leading.equalTo(checkStackView.snp.trailing).offset(12)
             make.centerY.equalToSuperview()
         }
+        
+        firstCheckImageView.snp.makeConstraints { make in
+            make.size.equalTo(24)
+        }
+        secondCheckImageView.snp.makeConstraints { make in
+            make.size.equalTo(24)
+        }
     }
-    
 }
 
 extension FeaturesTableViewCell {
     public func set(type: PremiumFeatureType) {
         titleLabel.text = type.getTitle()
         descriptionLabel.text = type.getDescription()
+        firstCheckImageView.image = type.getFreeCheck() ? UIImage(named: "features-tick-icon") : UIImage(named: "features-untick-icon")
+        addShineEffect(to: secondCheckImageView)
     }
 }
