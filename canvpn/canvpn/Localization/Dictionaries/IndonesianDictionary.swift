@@ -173,7 +173,10 @@ struct IndonesianDictionary {
         
         "landing_3_title": "Gerbang Anda ke Kebebasan",
         "landing_3_description": "Mulailah perjalanan Anda menuju internet yang lebih terbuka.\nKetuk 'Mulai' untuk memulai!",
-        "landing_3_button": "Mulai"
+        "landing_3_button": "Mulai",
+        
+        "premium_desc_5": "Jelajahi tanpa iklan untuk pengalaman yang mulus.",
+        "premium_title_5": "Tanpa Iklan"
     ]
 }
 

@@ -176,6 +176,9 @@ struct EnglishDictionary {
         
         "landing_3_title": "Your Gateway to Freedom",
         "landing_3_description": "Start your journey to a more open internet.\nTap 'Get Started' to begin!",
-        "landing_3_button": "Get Started"
+        "landing_3_button": "Get Started",
+        
+        "premium_desc_5": "Surf ad-free for a seamless experience.",
+        "premium_title_5": "No Ads"
     ]
 }

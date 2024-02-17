@@ -175,7 +175,10 @@ struct PersianDictionary {
         
         "landing_3_title": "دروازه‌ی شما به آزادی",
         "landing_3_description": "سفر خود به سمت اینترنتی بازتر را آغاز کنید.\nبرای شروع 'شروع کنید' را بزنید!",
-        "landing_3_button": "شروع کنید"
+        "landing_3_button": "شروع کنید",
+        
+        "premium_desc_5": "بدون تبلیغات مرور کنید تا تجربه‌ای بی‌وقفه داشته باشید.",
+        "premium_title_5": "بدون تبلیغات"
     ]
 }
 

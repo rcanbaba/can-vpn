@@ -175,7 +175,10 @@ struct RussianDictionary {
         
         "landing_3_title": "Ваш путь к свободе",
         "landing_3_description": "Начните свой путь к более открытому интернету.\nНажмите 'Начать' для начала!",
-        "landing_3_button": "Начать"
+        "landing_3_button": "Начать",
+        
+        "premium_desc_5": "Просматривайте без рекламы для непрерывного опыта.",
+        "premium_title_5": "Без Рекламы"
     ]
 }
 

@@ -175,7 +175,10 @@ struct SpanishDictionary {
         
         "landing_3_title": "Tu Puerta a la Libertad",
         "landing_3_description": "Inicia tu viaje hacia un internet más abierto.\n¡Toca 'Comenzar' para empezar!",
-        "landing_3_button": "Comenzar"
+        "landing_3_button": "Comenzar",
+        
+        "premium_desc_5": "Navega sin anuncios para una experiencia sin interrupciones.",
+        "premium_title_5": "Sin Anuncios"
     ]
 }
 

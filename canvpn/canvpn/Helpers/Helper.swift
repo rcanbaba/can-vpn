@@ -129,9 +129,9 @@ extension SignalLevel {
 enum PremiumFeatureType {
     case anonymous
     case fast
-    case noAds
-    case secure
     case location
+    case secure
+    case noAds
 }
 
 extension PremiumFeatureType {
@@ -156,11 +156,11 @@ extension PremiumFeatureType {
             return "premium_title_1".localize()
         case .fast:
             return "premium_title_2".localize()
-        case .noAds:
+        case .location:
             return "premium_title_3".localize()
         case .secure:
             return "premium_title_4".localize()
-        case .location:
+        case .noAds:
             return "premium_title_5".localize()
         }
     }
@@ -171,11 +171,11 @@ extension PremiumFeatureType {
             return "premium_desc_1".localize()
         case .fast:
             return "premium_desc_2".localize()
-        case .noAds:
+        case .location:
             return "premium_desc_3".localize()
         case .secure:
             return "premium_desc_4".localize()
-        case .location:
+        case .noAds:
             return "premium_desc_5".localize()
         }
     }

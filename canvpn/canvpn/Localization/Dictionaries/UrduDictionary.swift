@@ -175,7 +175,10 @@ struct UrduDictionary {
         
         "landing_3_title": "آپ کی آزادی کا دروازہ",
         "landing_3_description": "آزاد انٹرنیٹ کی طرف اپنا سفر شروع کریں۔\n'شروع کریں' پر ٹیپ کرنے کے لئے!",
-        "landing_3_button": "شروع کریں"
+        "landing_3_button": "شروع کریں",
+        
+        "premium_desc_5": "بغیر اشتہارات کے سرفنگ کریں تاکہ ایک ہموار تجربہ حاصل ہو۔",
+        "premium_title_5": "بغیر اشتہارات"
     ]
 }
 

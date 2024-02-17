@@ -175,6 +175,9 @@ struct TurkishDictionary {
         
         "landing_3_title": "Özgürlüğe Açılan Kapınız",
         "landing_3_description": "Daha açık bir internete doğru yolculuğunuza başlayın.\nBaşlamak için 'Başla'ya dokunun!",
-        "landing_3_button": "Başla"
+        "landing_3_button": "Başla",
+        
+        "premium_desc_5": "Kesintisiz bir deneyim için reklamsız gezinin.",
+        "premium_title_5": "Reklamsız"
     ]
 }

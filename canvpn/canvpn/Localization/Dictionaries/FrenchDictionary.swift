@@ -175,7 +175,10 @@ struct FrenchDictionary {
         
         "landing_3_title": "Votre Porte vers la Liberté",
         "landing_3_description": "Commencez votre voyage vers un internet plus ouvert.\nAppuyez sur 'Commencer' pour débuter !",
-        "landing_3_button": "Commencer"
+        "landing_3_button": "Commencer",
+        
+        "premium_desc_5": "Naviguez sans publicités pour une expérience fluide.",
+        "premium_title_5": "Sans Publicités"
     ]
 }
 

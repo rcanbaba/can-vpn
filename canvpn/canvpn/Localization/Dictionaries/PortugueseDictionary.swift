@@ -175,6 +175,9 @@ struct PortugueseDictionary {
         
         "landing_3_title": "Seu Portão para a Liberdade",
         "landing_3_description": "Inicie sua jornada para uma internet mais aberta.\nToque em 'Começar' para iniciar!",
-        "landing_3_button": "Começar"
+        "landing_3_button": "Começar",
+        
+        "premium_desc_5": "Navegue sem anúncios para uma experiência contínua.",
+        "premium_title_5": "Sem Anúncios"
     ]
 }

@@ -175,7 +175,10 @@ struct ChineseDictionary {
         
         "landing_3_title": "通往自由的大门",
         "landing_3_description": "开始您通向更加开放互联网的旅程。\n点击 '开始' 开始吧！",
-        "landing_3_button": "开始"
+        "landing_3_button": "开始",
+        
+        "premium_desc_5": "无广告浏览，享受流畅体验。",
+        "premium_title_5": "无广告"
     ]
 }
 

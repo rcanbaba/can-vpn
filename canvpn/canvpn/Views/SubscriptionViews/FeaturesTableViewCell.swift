@@ -94,6 +94,5 @@ extension FeaturesTableViewCell {
         titleLabel.text = type.getTitle()
         descriptionLabel.text = type.getDescription()
         firstCheckImageView.image = type.getFreeCheck() ? UIImage(named: "features-tick-icon") : UIImage(named: "features-untick-icon")
-        addShineEffect(to: secondCheckImageView)
     }
 }

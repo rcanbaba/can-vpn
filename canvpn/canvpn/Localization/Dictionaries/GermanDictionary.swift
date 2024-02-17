@@ -175,7 +175,10 @@ struct GermanDictionary {
         
         "landing_3_title": "Dein Tor zur Freiheit",
         "landing_3_description": "Starte deine Reise in ein offeneres Internet.\nTippe auf 'Los geht's', um zu beginnen!",
-        "landing_3_button": "Los geht's"
+        "landing_3_button": "Los geht's",
+        
+        "premium_desc_5": "Surfen Sie werbefrei für ein nahtloses Erlebnis.",
+        "premium_title_5": "Keine Werbung"
     ]
 }
 

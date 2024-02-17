@@ -175,7 +175,10 @@ struct ArabicDictionary {
         
         "landing_3_title": "بوابتك إلى الحرية",
         "landing_3_description": "ابدأ رحلتك نحو إنترنت أكثر انفتاحًا.\nاضغط 'ابدأ' للبدء!",
-        "landing_3_button": "ابدأ"
+        "landing_3_button": "ابدأ",
+        
+        "premium_desc_5": "تصفح بدون إعلانات لتجربة سلسة.",
+        "premium_title_5": "بدون إعلانات"
     ]
 }
 
