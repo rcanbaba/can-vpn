@@ -105,6 +105,7 @@ struct EnglishDictionary {
         "original_ip_address": "Original IP Address",
         "language_settings_key": "Language Settings",
         
+        //Display languages
         "display_turkish": "Turkish",
         "display_english": "English",
         "display_arabic": "Arabic",
@@ -118,6 +119,7 @@ struct EnglishDictionary {
         "display_hindi": "Hindi",
         "display_russian": "Russian",
         "display_chinese": "Chinese",
+        "display_ukrainian": "Ukrainian",
 
         "checking_key": "Checking...",
         "network_secure_key": "Your network is secure!",

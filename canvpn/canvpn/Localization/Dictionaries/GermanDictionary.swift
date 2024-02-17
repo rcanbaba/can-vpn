@@ -117,6 +117,7 @@ struct GermanDictionary {
         "display_hindi": "Hindi",
         "display_russian": "Russisch",
         "display_chinese": "Chinesisch",
+        "display_ukrainian": "Ukrainisch",
 
         "checking_key": "Überprüfung läuft...",
         "network_secure_key": "Ihr Netzwerk ist sicher!",

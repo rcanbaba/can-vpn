@@ -25,12 +25,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }()
     
     let languages = [LanguageEnum.eng,
-                     LanguageEnum.pt,
+                     LanguageEnum.ar,
                      LanguageEnum.id,
                      LanguageEnum.es,
+                     LanguageEnum.pt,
                      LanguageEnum.de,
+                     LanguageEnum.ukr,
                      LanguageEnum.fr,
-                     LanguageEnum.ar,
                      LanguageEnum.ru,
                      LanguageEnum.tr,
                      LanguageEnum.zh,

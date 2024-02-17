@@ -104,6 +104,7 @@ struct TurkishDictionary {
         "original_ip_address": "Orijinal IP Adresi",
         "language_settings_key": "Dil Ayarları",
         
+        // language display
         "display_turkish": "Türkçe",
         "display_english": "İngilizce",
         "display_arabic": "Arapça",
@@ -117,6 +118,7 @@ struct TurkishDictionary {
         "display_hindi": "Hintçe",
         "display_russian": "Rusça",
         "display_chinese": "Çince",
+        "display_ukrainian": "Ukraynaca",
 
         "checking_key": "Kontrol Ediliyor...",
         "network_secure_key": "Ağınız güvende!",

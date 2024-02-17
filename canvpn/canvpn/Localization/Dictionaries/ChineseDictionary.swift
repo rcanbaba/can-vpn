@@ -117,6 +117,7 @@ struct ChineseDictionary {
         "display_hindi": "印地语",
         "display_russian": "俄语",
         "display_chinese": "中文",
+        "display_ukrainian": "乌克兰语",
 
         "checking_key": "检查中...",
         "network_secure_key": "您的网络是安全的！",

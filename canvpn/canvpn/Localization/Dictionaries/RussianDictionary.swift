@@ -117,6 +117,7 @@ struct RussianDictionary {
         "display_hindi": "Хинди",
         "display_russian": "Русский",
         "display_chinese": "Китайский",
+        "display_ukrainian": "Украинский",
 
         "checking_key": "Проверка...",
         "network_secure_key": "Ваша сеть безопасна!",

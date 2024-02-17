@@ -116,6 +116,7 @@ struct HindiDictionary {
         "display_hindi": "हिंदी",
         "display_russian": "रूसी",
         "display_chinese": "चीनी",
+        "display_ukrainian": "यूक्रेनियाई",
 
         "checking_key": "जाँच की जा रही है...",
         "network_secure_key": "आपका नेटवर्क सुरक्षित है!",

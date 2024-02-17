@@ -117,6 +117,7 @@ struct SpanishDictionary {
         "display_hindi": "Hindi",
         "display_russian": "Ruso",
         "display_chinese": "Chino",
+        "display_ukrainian": "Ucraniano",
 
         "checking_key": "Comprobando...",
         "network_secure_key": "¡Tu red es segura!",

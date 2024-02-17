@@ -389,6 +389,7 @@
 		B4E4B8592AAB4E1300743CFB /* pennantAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4E4B8572AAB4E1300743CFB /* pennantAnimation.json */; };
 		B4E4B85A2AAB4E1300743CFB /* congratsAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B4E4B8582AAB4E1300743CFB /* congratsAnimation.json */; };
 		B4E6A2922B69F2FA00FB9743 /* RatingCountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6A2912B69F2FA00FB9743 /* RatingCountManager.swift */; };
+		B4E9BCFD2B80B0060060E53E /* UkrainianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E9BCFC2B80B0060060E53E /* UkrainianDictionary.swift */; };
 		B4EE1F572A07AC5500E219CA /* RegisterDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */; };
 		B4EE1F592A07AC6E00E219CA /* RegisterDeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */; };
 		B4EE1F5B2A07AED200E219CA /* LocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */; };
@@ -813,6 +814,7 @@
 		B4E4B8572AAB4E1300743CFB /* pennantAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pennantAnimation.json; sourceTree = "<group>"; };
 		B4E4B8582AAB4E1300743CFB /* congratsAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = congratsAnimation.json; sourceTree = "<group>"; };
 		B4E6A2912B69F2FA00FB9743 /* RatingCountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCountManager.swift; sourceTree = "<group>"; };
+		B4E9BCFC2B80B0060060E53E /* UkrainianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UkrainianDictionary.swift; sourceTree = "<group>"; };
 		B4EE1F562A07AC5500E219CA /* RegisterDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceRequest.swift; sourceTree = "<group>"; };
 		B4EE1F582A07AC6E00E219CA /* RegisterDeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDeviceResponse.swift; sourceTree = "<group>"; };
 		B4EE1F5A2A07AED200E219CA /* LocaleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtensions.swift; sourceTree = "<group>"; };
@@ -1458,6 +1460,7 @@
 				B4D871202A8572870080D788 /* HindiDictionary.swift */,
 				B4D871232A8572960080D788 /* RussianDictionary.swift */,
 				B4D871252A8572A20080D788 /* ChineseDictionary.swift */,
+				B4E9BCFC2B80B0060060E53E /* UkrainianDictionary.swift */,
 			);
 			path = Dictionaries;
 			sourceTree = "<group>";
@@ -1967,6 +1970,7 @@
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
 				B41C82492AC592DE00D741D8 /* UserEntryRequest.swift in Sources */,
+				B4E9BCFD2B80B0060060E53E /* UkrainianDictionary.swift in Sources */,
 				B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */,
 				B481C2852AED20FA00D90453 /* SideMenuHelper.swift in Sources */,
 				B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */,

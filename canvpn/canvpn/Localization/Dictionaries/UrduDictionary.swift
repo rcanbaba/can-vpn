@@ -117,6 +117,7 @@ struct UrduDictionary {
         "display_hindi": "ہندی",
         "display_russian": "روسی",
         "display_chinese": "چینی",
+        "display_ukrainian": "یوکرینیائی",
 
         "checking_key": "چیک کر رہا ہے...",
         "network_secure_key": "آپ کا نیٹ ورک محفوظ ہے!",

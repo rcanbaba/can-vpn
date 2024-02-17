@@ -117,6 +117,7 @@ struct PersianDictionary {
         "display_hindi": "هندی",
         "display_russian": "روسی",
         "display_chinese": "چینی",
+        "display_ukrainian": "اوکراینی",
 
         "checking_key": "در حال بررسی...",
         "network_secure_key": "شبکه شما ایمن است!",

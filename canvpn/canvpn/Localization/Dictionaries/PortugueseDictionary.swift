@@ -117,6 +117,7 @@ struct PortugueseDictionary {
         "display_hindi": "Hindi",
         "display_russian": "Russo",
         "display_chinese": "Chinês",
+        "display_ukrainian": "Ucraniano",
 
         "checking_key": "Verificando...",
         "network_secure_key": "Sua rede está segura!",

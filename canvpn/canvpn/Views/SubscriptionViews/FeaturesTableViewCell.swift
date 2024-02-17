@@ -78,6 +78,7 @@ class FeaturesTableViewCell: UITableViewCell {
         textStackView.snp.makeConstraints { make in
             make.leading.equalTo(checkStackView.snp.trailing).offset(12)
             make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview()
         }
         
         firstCheckImageView.snp.makeConstraints { make in

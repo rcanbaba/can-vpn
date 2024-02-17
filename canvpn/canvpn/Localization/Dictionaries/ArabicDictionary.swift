@@ -117,6 +117,7 @@ struct ArabicDictionary {
         "display_hindi": "الهندية",
         "display_russian": "الروسية",
         "display_chinese": "الصينية",
+        "display_ukrainian": "الأوكرانية",
 
         "checking_key": "التحقق...",
         "network_secure_key": "شبكتك آمنة!",

@@ -21,6 +21,7 @@ enum LanguageEnum: String, CaseIterable {
     case ur // urdu
     case ru // russian
     case hi // hindi
+    case ukr // hindi
     
     var displayName: String {
         switch self {
@@ -37,6 +38,7 @@ enum LanguageEnum: String, CaseIterable {
         case .hi: return "display_hindi".localize()
         case .ru: return "display_russian".localize()
         case .zh: return "display_chinese".localize()
+        case .ukr: return "display_ukrainian".localize()
         }
     }
 }
@@ -92,6 +94,8 @@ class Dictionaries {
             return RussianDictionary.values
         case .zh:
             return ChineseDictionary.values
+        case .ukr:
+            return UkrainianDictionary.values
         }
     }
 }
@@ -126,6 +130,8 @@ class LocalizationManager {
             return .ru
         } else if languageCode == "hi" {
             return .hi
+        } else if languageCode == "ukr" || languageCode == "uk" {
+            return .ukr
         } else {
             return .eng
         }

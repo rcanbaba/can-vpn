@@ -115,6 +115,7 @@ struct IndonesianDictionary {
         "display_hindi": "Hindi",
         "display_russian": "Rusia",
         "display_chinese": "Cina",
+        "display_ukrainian": "Ukraina",
 
         "checking_key": "Memeriksa...",
         "network_secure_key": "Jaringan Anda aman!",

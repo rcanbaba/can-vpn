@@ -117,6 +117,7 @@ struct FrenchDictionary {
         "display_hindi": "Hindi",
         "display_russian": "Russe",
         "display_chinese": "Chinois",
+        "display_ukrainian": "Ukrainien",
 
         "checking_key": "Vérification en cours...",
         "network_secure_key": "Votre réseau est sécurisé !",
