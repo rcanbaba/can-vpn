@@ -61,7 +61,7 @@ class SubscriptionViewController: ScrollableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Analytics.logEvent("006_SubsScreenPresented", parameters: ["type" : "willAppear"])
+        Analytics.logEvent("006SubsScreenPresented", parameters: ["type" : "willAppear"])
         setNavigationBar()
         appliedCouponCode = nil
         UIApplication.shared.statusBarStyle = .darkContent
@@ -369,7 +369,7 @@ extension SubscriptionViewController {
                     let errorMessage = ErrorHandler.getErrorMessage(for: error)
                     Toaster.showToast(message: errorMessage)
                     self.appliedCouponCode = nil
-                    Analytics.logEvent("032_API_ApplyCouponRequest", parameters: ["error" : errorMessage])
+                    Analytics.logEvent("032APIApplyCouponRequest", parameters: ["error" : errorMessage])
                 }
             }
         }

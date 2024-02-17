@@ -71,7 +71,7 @@ class MainScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Analytics.logEvent("002_MainScreenPresented", parameters: ["type" : "willAppear"])
+        Analytics.logEvent("002MainScreenPresented", parameters: ["type" : "willAppear"])
         setNavigationBar()
         playGetFreeAnimationAfterDelay()
         startAnimationTimer()
@@ -555,13 +555,13 @@ extension MainScreenViewController: RatingPopupViewControllerDelegate {
         Analytics.logEvent("RatingPopupPresented", parameters: ["rate" : "\(rate)"])
         closeRatingPopup()
         if rate >= 4 {
-            Analytics.logEvent("RatingPopupRated", parameters: ["rate" : "High"])
+            Analytics.logEvent("RatingRatedHigh", parameters: ["rate" : "High"])
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             }
             RatingCountManager.shared.userGaveHighRating()
         } else {
-            Analytics.logEvent("RatingPopupRated", parameters: ["rate" : "Low"])
+            Analytics.logEvent("RatingRatedLow", parameters: ["rate" : "Low"])
             RatingCountManager.shared.userGaveLowRating()
             Toaster.showToast(message: "rating_thank_you".localize())
         }
