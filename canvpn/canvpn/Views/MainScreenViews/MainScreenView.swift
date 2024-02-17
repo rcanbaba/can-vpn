@@ -44,6 +44,16 @@ class MainScreenView: UIView {
         return label
     }()
     
+    private lazy var connectionTimeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.text = "00:00:00"
+        label.isHidden = true
+        return label
+    }()
+    
     private lazy var centerButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(connectButtonTapped(_:)), for: .touchUpInside)
@@ -200,6 +210,12 @@ class MainScreenView: UIView {
                 make.bottom.equalTo(connectionStateLabel.snp.top).inset(-10)
             }
             
+            centerButton.addSubview(connectionTimeLabel)
+            connectionTimeLabel.snp.makeConstraints { (make) in
+                make.leading.trailing.equalToSuperview()
+                make.centerY.equalToSuperview().offset(22)
+            }
+            
         } else {
             addSubview(goProButton)
             goProButton.snp.makeConstraints { (make) in
@@ -228,6 +244,12 @@ class MainScreenView: UIView {
                 make.width.equalToSuperview().dividedBy(1.9)
                 make.height.equalTo(centerButton.snp.width)
                 make.bottom.equalTo(connectionStateLabel.snp.top).inset(-10)
+            }
+            
+            centerButton.addSubview(connectionTimeLabel)
+            connectionTimeLabel.snp.makeConstraints { (make) in
+                make.leading.trailing.equalToSuperview()
+                make.centerY.equalToSuperview().offset(24)
             }
         }
         
@@ -359,6 +381,7 @@ extension MainScreenView {
         isUserInteractionEnabled = state.getUserInteraction()
         topLogoImageView.image = state.getTopLogoImage()
         changeMenuImageColor(to: state.getUIColor())
+        connectionTimeLabel.isHidden = !state.getTimeIsVisible()
     }
 
     // MARK: - Selected Location View
@@ -385,5 +408,9 @@ extension MainScreenView {
         connectionStateLabel.text = state.getText()
         setPrivacyText()
         goProButton.reloadLocalization()
+    }
+    
+    public func setConnectionTime(text: String) {
+        connectionTimeLabel.text = text
     }
 }

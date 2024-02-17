@@ -102,6 +102,21 @@ extension ConnectionState {
         }
     }
     
+    func getTimeIsVisible() -> Bool {
+        switch self {
+        case .connected:
+            return true
+        case .initial:
+            return false
+        case .disconnected:
+            return false
+        case .connecting:
+            return false
+        case .disconnecting:
+            return false
+        }
+    }
+    
 }
 
 enum SignalLevel: Int {
