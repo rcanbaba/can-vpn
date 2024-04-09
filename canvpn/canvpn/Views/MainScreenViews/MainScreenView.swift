@@ -382,6 +382,7 @@ extension MainScreenView {
         topLogoImageView.image = state.getTopLogoImage()
         changeMenuImageColor(to: state.getUIColor())
         connectionTimeLabel.isHidden = !state.getTimeIsVisible()
+        connectionTimeLabel.isHidden = true
     }
 
     // MARK: - Selected Location View
