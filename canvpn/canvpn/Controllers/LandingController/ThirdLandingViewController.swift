@@ -42,6 +42,18 @@ class ThirdLandingViewController: UIViewController {
 }
 
 extension ThirdLandingViewController: LandingMainViewDelegate {
+    func closeTapped() {
+        
+    }
+    
+    func termsTapped() {
+        
+    }
+    
+    func privacyTapped() {
+        
+    }
+    
     func nextTapped() {
         delegate?.goNextFromThird()
     }

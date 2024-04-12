@@ -18,7 +18,7 @@ class LandingViewController: UIViewController {
     var firstViewController: FirstLandingViewController!
     var secondViewController: SecondLandingViewController!
     var thirdViewController: ThirdLandingViewController!
-    var fourthViewController: ThirdLandingViewController!
+    var fourthViewController: FourthLandingViewController!
     
     private lazy var landingBaseView = LandingBackView()
     
@@ -55,7 +55,7 @@ class LandingViewController: UIViewController {
         firstViewController = FirstLandingViewController()
         secondViewController = SecondLandingViewController()
         thirdViewController = ThirdLandingViewController()
-        fourthViewController = ThirdLandingViewController()
+        fourthViewController = FourthLandingViewController()
         
         firstViewController.delegate = self
         secondViewController.delegate = self

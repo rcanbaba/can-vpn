@@ -21,6 +21,7 @@ class FourthLandingViewController: UIViewController {
         super.viewDidLoad()
         landingView.delegate = self
         configureUI()
+        landingView.configureAsOfferView()
     }
     
     private func configureUI() {
@@ -42,6 +43,18 @@ class FourthLandingViewController: UIViewController {
 }
 
 extension FourthLandingViewController: LandingMainViewDelegate {
+    func closeTapped() {
+        
+    }
+    
+    func termsTapped() {
+        
+    }
+    
+    func privacyTapped() {
+        
+    }
+    
     func nextTapped() {
         delegate?.goNextFromFourth()
     }

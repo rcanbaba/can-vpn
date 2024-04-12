@@ -42,6 +42,18 @@ class FirstLandingViewController: UIViewController {
 }
 
 extension FirstLandingViewController: LandingMainViewDelegate {
+    func closeTapped() {
+        
+    }
+    
+    func termsTapped() {
+        
+    }
+    
+    func privacyTapped() {
+        
+    }
+    
     func nextTapped() {
         delegate?.goNextFromFirst()
     }
