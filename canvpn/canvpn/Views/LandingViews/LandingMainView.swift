@@ -155,4 +155,7 @@ extension LandingMainView {
     public func setButonText(text: String) {
         landingButton.textLabel.text = text
     }
+    public func configureAsOfferView() {
+        
+    }
 }

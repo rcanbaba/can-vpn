@@ -31,12 +31,24 @@ class LandingViewController: UIViewController {
         startPresentation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBar()
+    }
+    
     private func configureUI() {
         view.backgroundColor = UIColor.white
         view.addSubview(landingBaseView)
         landingBaseView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    private func setNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     private func setControllers() {

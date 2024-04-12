@@ -19,7 +19,6 @@ class FirstLandingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         landingView.delegate = self
         configureUI()
     }
