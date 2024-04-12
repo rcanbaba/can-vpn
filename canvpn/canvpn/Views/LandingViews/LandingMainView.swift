@@ -74,7 +74,7 @@ class LandingMainView: UIView {
         return label
     }()
     
-    private lazy var closeButton: UIButton = {
+    public lazy var closeButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "bordered-close-icon"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
@@ -84,8 +84,8 @@ class LandingMainView: UIView {
         return button
     }()
     
-    private lazy var termsLabel: UILabel = {
-        let label = UILabel()
+    private lazy var termsLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .left
@@ -94,8 +94,8 @@ class LandingMainView: UIView {
         return label
     }()
     
-    private lazy var privacyLabel: UILabel = {
-        let label = UILabel()
+    private lazy var privacyLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .right
@@ -109,7 +109,7 @@ class LandingMainView: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor.Subscription.titleText
         label.textAlignment = .center
-        label.text = "3 gün beleş 5 gün 3 dolar".localize()
+        label.text = "Try free for 3 days, then € 1,99 per Week".localize()
         label.isHidden = true
         return label
     }()
@@ -192,9 +192,9 @@ class LandingMainView: UIView {
             make.leading.trailing.equalToSuperview().inset(40)
             make.top.equalTo(landingButton.snp.bottom).offset(12)
         }
-        //TODO set timer!!
+
         closeButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(48)
+            make.top.equalToSuperview().inset(24)
             make.trailing.equalToSuperview().inset(10)
             make.size.equalTo(40)
         }
