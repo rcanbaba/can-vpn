@@ -404,6 +404,7 @@
 		B4F77A2B29E572C600E3B73E /* PacketTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B4F77A2229E572C600E3B73E /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B4F77A3629E576A700E3B73E /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4F77A3529E576A700E3B73E /* WireGuardKit */; };
 		B4F77A3829E5791A00E3B73E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
+		B4FFB3262BC86EF4008B0E04 /* FourthLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FFB3252BC86EF4008B0E04 /* FourthLandingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -843,6 +844,7 @@
 		B4F77A2529E572C600E3B73E /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		B4F77A2729E572C600E3B73E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4F77A2829E572C600E3B73E /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
+		B4FFB3252BC86EF4008B0E04 /* FourthLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthLandingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1046,6 +1048,7 @@
 				B4216DC82B5D228C00F8B0D6 /* FirstLandingViewController.swift */,
 				B4216DCA2B5D229B00F8B0D6 /* SecondLandingViewController.swift */,
 				B4216DCC2B5D230D00F8B0D6 /* ThirdLandingViewController.swift */,
+				B4FFB3252BC86EF4008B0E04 /* FourthLandingViewController.swift */,
 			);
 			path = LandingController;
 			sourceTree = "<group>";
@@ -1985,6 +1988,7 @@
 				B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4C5C4992B67C32D0068A01D /* ProductBadgeView.swift in Sources */,
+				B4FFB3262BC86EF4008B0E04 /* FourthLandingViewController.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
 				B42821042B1B591700E5424B /* CustomAnnotationView.swift in Sources */,
 				B42DE3EC2A840C66002137F9 /* ApplyCouponRequest.swift in Sources */,

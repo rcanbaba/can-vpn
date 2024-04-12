@@ -66,7 +66,11 @@ class InitialViewController: UIViewController {
     }
     
     private func goNextScreenAfterUpdate() {
-        LaunchCountManager.shared.shouldShowLanding() ? presentLandingScreen() : presentMainScreen()
+        //TODO: remove before it
+        SettingsManager.shared.settings?.isInReview = false
+        //TODO: remove before it
+        presentLandingScreen()
+       // LaunchCountManager.shared.shouldShowLanding() ? presentLandingScreen() : presentMainScreen()
     }
     
     private func landingCompletedPresentMainScreen() {
