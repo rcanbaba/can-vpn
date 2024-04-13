@@ -68,7 +68,7 @@ class FourthLandingViewController: UIViewController {
     private func showCloseAlert() {
         let alertController = UIAlertController(title: "Special Offer", message: "You are about to lose your special offer. Are you sure?", preferredStyle: .alert)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
             self.delegate?.goNextFromFourth()
         }
 
@@ -78,6 +78,9 @@ class FourthLandingViewController: UIViewController {
 
         alertController.addAction(cancelAction)
         alertController.addAction(tryNowAction)
+        
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        tryNowAction.setValue(UIColor.green, forKey: "titleTextColor")
 
         present(alertController, animated: true)
     }

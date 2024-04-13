@@ -194,8 +194,8 @@ class LandingMainView: UIView {
         }
 
         closeButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(24)
-            make.trailing.equalToSuperview().inset(10)
+            make.top.equalTo(safeAreaLayoutGuide).inset(24)
+            make.trailing.equalToSuperview().inset(24)
             make.size.equalTo(40)
         }
         

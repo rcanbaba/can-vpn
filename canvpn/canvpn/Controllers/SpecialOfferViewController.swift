@@ -37,11 +37,35 @@ class SpecialOfferViewController: UIViewController {
         return gradientView
     }()
     
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = UIColor.Landing.titleText
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "special-offer-image")
         imageView.contentMode = .scaleAspectFit
-        imageView.alpha = 0.2
+        return imageView
+    }()
+    
+    private lazy var offerLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = UIColor.Landing.titleText
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var badgeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "special-offer-image")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -60,39 +84,41 @@ class SpecialOfferViewController: UIViewController {
         return view
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        label.textColor = UIColor.orange
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.8
-        label.text = "Special Offer"
+    private lazy var getButton: LandingButton = {
+        let view = LandingButton(type: .system)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
+        view.textLabel.text = "text"
+        return view
+    }()
+    
+    private lazy var termsLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = UIColor.Subscription.orangeText
+        label.textAlignment = .left
+        label.text = "Terms of Use".localize()
+        label.isHidden = true
         return label
     }()
     
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "1 Month Unlimited Access With %50 Off"
-        label.textColor = UIColor.gray
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.8
+    private lazy var privacyLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = UIColor.Subscription.orangeText
+        label.textAlignment = .right
+        label.text = "Privacy Policy".localize()
+        label.isHidden = true
         return label
     }()
     
-    private lazy var getButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Get Special Offer".localize(), for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = UIColor.Custom.green
-        button.addTarget(self, action: #selector(getButtonTapped(_:)), for: .touchUpInside)
-        button.layer.cornerRadius = 21
-        return button
+    private lazy var offerDetailLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = UIColor.Subscription.titleText
+        label.textAlignment = .center
+        label.text = "Try free for 3 days, then € 1,99 per Week".localize()
+        label.isHidden = true
+        return label
     }()
     
     private lazy var closeButton: UIButton = {
@@ -108,6 +134,7 @@ class SpecialOfferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        setGestureRecognizer()
         activateCloseButtonTimer()
         startCountdown(from: 109)
     }
@@ -120,13 +147,14 @@ class SpecialOfferViewController: UIViewController {
         .darkContent
     }
     
-    private func activateCloseButtonTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.closeButton.isUserInteractionEnabled = true
-            UIView.animate(withDuration: 0.5) {
-                self?.closeButton.alpha = 1
-            }
-        }
+    private func setGestureRecognizer() {
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
+        termsLabel.addGestureRecognizer(termsTapGesture)
+        termsLabel.isUserInteractionEnabled = true
+        
+        let privacyTapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyLabelTapped(_:)))
+        privacyLabel.addGestureRecognizer(privacyTapGesture)
+        privacyLabel.isUserInteractionEnabled = true
     }
     
     private func configureUI() {
@@ -186,6 +214,15 @@ class SpecialOfferViewController: UIViewController {
         }
     }
     
+    private func activateCloseButtonTimer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.closeButton.isUserInteractionEnabled = true
+            UIView.animate(withDuration: 0.5) {
+                self?.closeButton.alpha = 1
+            }
+        }
+    }
+    
     func startCountdown(from seconds: Int) {
         remainingSeconds = seconds
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
@@ -215,6 +252,7 @@ class SpecialOfferViewController: UIViewController {
         }
     }
     
+    // MARK: ACTIONS
     @objc private func getButtonTapped(_ sender: UIButton) {
         delegate?.getButtonTapped(view: self)
         dismiss(animated: true)
@@ -223,5 +261,13 @@ class SpecialOfferViewController: UIViewController {
     @objc private func closeButtonTapped(_ sender: UIButton) {
         delegate?.closeButtonTapped(view: self)
         dismiss(animated: true)
+    }
+    
+    @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.termsTapped()
+    }
+    
+    @objc func privacyLabelTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.privacyTapped()
     }
 }
