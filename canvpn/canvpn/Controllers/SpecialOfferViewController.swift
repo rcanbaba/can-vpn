@@ -9,6 +9,7 @@ import UIKit
 import StoreKit
 import FirebaseAnalytics
 
+//TODO: ihtiyaç var mı?
 protocol SpecialOfferViewControllerDelegate: AnyObject {
     func getButtonTapped(view: SpecialOfferViewController)
     func closeButtonTapped(view: SpecialOfferViewController)
@@ -39,41 +40,51 @@ class SpecialOfferViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = UIColor.Landing.titleText
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.textColor = UIColor.orange
         label.textAlignment = .center
+        label.text = "One Time Special Offer"
         label.numberOfLines = 0
         return label
     }()
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "special-offer-image")
+        imageView.image = UIImage(named: "offer-img-girl")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var offerLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = UIColor.Landing.titleText
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.textColor = UIColor.orange
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.text = "Get\n75% Off"
         return label
     }()
     
     private lazy var badgeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "special-offer-image")
+        imageView.image = UIImage(named: "must-have-badge")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let countdownLabel: UILabel = {
+    private lazy var reviewCarouselImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "review-carousel")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private lazy var countdownLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.monospacedDigitSystemFont(ofSize: 36, weight: .medium)
-        label.textColor = .orange // Adjust the color as per your design
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 40, weight: .bold)
+        label.textColor = .orange
+        label.layer.applySketchShadow()
         return label
     }()
     
@@ -87,7 +98,7 @@ class SpecialOfferViewController: UIViewController {
     private lazy var getButton: LandingButton = {
         let view = LandingButton(type: .system)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
-        view.textLabel.text = "text"
+        view.textLabel.text = "Try It Free"
         return view
     }()
     
@@ -97,7 +108,6 @@ class SpecialOfferViewController: UIViewController {
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .left
         label.text = "Terms of Use".localize()
-        label.isHidden = true
         return label
     }()
     
@@ -107,17 +117,15 @@ class SpecialOfferViewController: UIViewController {
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .right
         label.text = "Privacy Policy".localize()
-        label.isHidden = true
         return label
     }()
     
-    private lazy var offerDetailLabel: UILabel = {
+    private lazy var offerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor.Subscription.titleText
         label.textAlignment = .center
         label.text = "Try free for 3 days, then € 1,99 per Week".localize()
-        label.isHidden = true
         return label
     }()
     
@@ -158,51 +166,86 @@ class SpecialOfferViewController: UIViewController {
     }
     
     private func configureUI() {
+        
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        
         view.addSubview(backGradientView)
+        view.addSubview(titleLabel)
+        view.addSubview(backgroundImageView)
+        view.addSubview(descriptionLabel)
+        view.addSubview(badgeImageView)
+        view.addSubview(reviewCarouselImageView)
+        view.addSubview(countdownLabel)
+        view.addSubview(getButton)
+        view.addSubview(offerLabel)
+        view.addSubview(termsLabel)
+        view.addSubview(privacyLabel)
+        view.addSubview(closeButton)
+        
         backGradientView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        view.addSubview(backgroundImageView)
-        backgroundImageView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(100)
-        }
-        
-        view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(160)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(48)
+            make.leading.trailing.equalToSuperview().inset(24)
         }
         
-        view.addSubview(descriptionLabel)
+        backgroundImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.top.equalTo(titleLabel)
+            make.height.equalToSuperview().dividedBy(2.5)
+        }
+        
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.top.equalTo(titleLabel.snp.bottom).offset(48)
             make.leading.equalToSuperview().inset(48)
-            make.trailing.equalToSuperview().inset(64)
         }
         
-        view.addSubview(countdownLabel)
-        countdownLabel.snp.makeConstraints { make in
+        badgeImageView.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(36)
+            make.leading.equalToSuperview().inset(48)
+            make.height.equalToSuperview().dividedBy(13)
+        }
+        
+        reviewCarouselImageView.snp.makeConstraints { make in
             make.top.equalTo(backgroundImageView.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+        
+        countdownLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(getButton.snp.top).inset(-48)
             make.centerX.equalToSuperview()
         }
         
-        view.addSubview(getButton)
         getButton.snp.makeConstraints { make in
-            make.top.equalTo(countdownLabel.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(32)
-            make.height.equalTo(42)
-            make.bottom.equalToSuperview().inset(48)
+            make.leading.trailing.equalToSuperview().inset(36)
+            make.height.equalTo(48)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(48)
+        }
+        
+        offerLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(getButton.snp.top).offset(-10)
+        }
+        
+        termsLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(40)
+            make.top.equalTo(getButton.snp.bottom).offset(12)
+        }
+        
+        privacyLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(40)
+            make.top.equalTo(getButton.snp.bottom).offset(12)
         }
 
-        view.addSubview(closeButton)
         closeButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(48)
-            make.trailing.equalToSuperview().inset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.trailing.equalToSuperview().inset(24)
             make.size.equalTo(40)
         }
-        
         
         configureActivityIndicatorUI()
     }
@@ -254,20 +297,57 @@ class SpecialOfferViewController: UIViewController {
     
     // MARK: ACTIONS
     @objc private func getButtonTapped(_ sender: UIButton) {
-        delegate?.getButtonTapped(view: self)
-        dismiss(animated: true)
+        subscribeOffer()
     }
     
     @objc private func closeButtonTapped(_ sender: UIButton) {
-        delegate?.closeButtonTapped(view: self)
-        dismiss(animated: true)
+        showCloseAlert()
     }
     
     @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
-        delegate?.termsTapped()
+        showSubscriptionTerms()
     }
     
     @objc func privacyLabelTapped(_ gesture: UITapGestureRecognizer) {
-        delegate?.privacyTapped()
+        showPrivacyPage()
+    }
+    
+    private func showCloseAlert() {
+        let alertController = UIAlertController(title: "Special Offer", message: "You are about to lose your special offer. Are you sure?", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+            self.dismiss(animated: true)
+        }
+
+        let tryNowAction = UIAlertAction(title: "Try Now", style: .default) { (action) in
+            self.subscribeOffer()
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(tryNowAction)
+        
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        tryNowAction.setValue(UIColor.green, forKey: "titleTextColor")
+
+        present(alertController, animated: true)
+    }
+    
+    private func subscribeOffer() {
+        //TODO: start subs flow
+    }
+    
+    private func showSubscriptionTerms() {
+        let alertController = UIAlertController(title: "subs_terms_key".localize(),
+                                                message: "subs_terms_detail_key".localize(),
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showPrivacyPage() {
+        let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
+        guard let url = URL(string: ppDefaultUrl) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
