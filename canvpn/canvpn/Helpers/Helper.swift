@@ -119,6 +119,46 @@ extension ConnectionState {
     
 }
 
+enum SignalUILevel: Int {
+    case slow = 1
+    case medium = 2
+    case fast = 3
+    case fastFast = 4
+    case superFast = 5
+}
+
+extension SignalUILevel {
+    func getSignalTextColor() -> UIColor {
+        switch self {
+        case .slow:
+            .red
+        case .medium:
+            .orange
+        case .fast:
+            UIColor("2BBC28")
+        case .fastFast:
+            UIColor("2BBC28")
+        case .superFast:
+            UIColor("00B2FF")
+        }
+    }
+    
+    // TODO: translation
+    func getSignalText() -> String {
+        switch self {
+        case .slow:
+            "Slow"
+        case .medium:
+            "Average"
+        case .fast, .fastFast:
+            "Fast"
+        case .superFast:
+            "Super Fast"
+        }
+    }
+    
+}
+
 enum SignalLevel: Int {
     case low = 1
     case medium = 2
@@ -137,6 +177,19 @@ extension SignalLevel {
             return UIImage(named: "signal-3-green-icon")
         case .perfect:
             return UIImage(named: "signal-4-green-icon")
+        }
+    }
+    
+    func getSignalEnumForUI() -> SignalUILevel {
+        switch self {
+        case .low:
+            return .slow
+        case .medium:
+            return .medium
+        case .good:
+            return .fast
+        case .perfect:
+            return Bool.random() ? .fastFast : .superFast
         }
     }
 }

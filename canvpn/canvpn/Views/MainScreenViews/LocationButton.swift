@@ -57,6 +57,14 @@ class LocationButton: UIView {
         return stackView
     }()
     
+    private lazy var signalTextLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = .black
+        label.textAlignment = .natural
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -96,6 +104,12 @@ class LocationButton: UIView {
             make.height.equalTo(22)
         }
         
+        addSubview(signalTextLabel)
+        signalTextLabel.snp.makeConstraints { (make) in
+            make.trailing.equalTo(signalImageView.snp.leading).offset(-12)
+            make.centerY.equalToSuperview().offset(2)
+        }
+        
         addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
             make.leading.equalTo(flagImageView.snp.trailing).offset(12)
@@ -127,6 +141,14 @@ extension LocationButton {
     
     public func set(signalImage: UIImage?) {
         signalImageView.image = signalImage
+    }
+    
+    public func set(signalText: String) {
+        signalTextLabel.text = signalText
+    }
+    
+    public func set(signalTextColor: UIColor) {
+        signalTextLabel.textColor = signalTextColor
     }
     
 }

@@ -49,6 +49,14 @@ class LocationListTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    private lazy var signalTextLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = .black
+        label.textAlignment = .natural
+        return label
+    }()
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -93,8 +101,14 @@ class LocationListTableViewCell: UITableViewCell {
         mainView.addSubview(countryLabel)
         countryLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(flagImageView.snp.trailing).offset(12)
-            make.centerY.equalToSuperview()
+            make.centerY.equalToSuperview().offset(2)
             make.trailing.equalToSuperview().inset(60)
+        }
+        
+        mainView.addSubview(signalTextLabel)
+        signalTextLabel.snp.makeConstraints { (make) in
+            make.trailing.equalTo(proImageView.snp.leading).offset(-12)
+            make.centerY.equalToSuperview()
         }
     }
 }
@@ -115,5 +129,13 @@ extension LocationListTableViewCell {
     
     public func set(signalImage: UIImage?) {
         signalImageView.image = signalImage
+    }
+    
+    public func set(signalText: String) {
+        signalTextLabel.text = signalText
+    }
+    
+    public func set(signalTextColor: UIColor) {
+        signalTextLabel.textColor = signalTextColor
     }
 }
