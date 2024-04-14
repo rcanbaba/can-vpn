@@ -19,7 +19,6 @@ class FirstLandingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         landingView.delegate = self
         configureUI()
     }
@@ -43,6 +42,18 @@ class FirstLandingViewController: UIViewController {
 }
 
 extension FirstLandingViewController: LandingMainViewDelegate {
+    func closeTapped() {
+        
+    }
+    
+    func termsTapped() {
+        
+    }
+    
+    func privacyTapped() {
+        
+    }
+    
     func nextTapped() {
         delegate?.goNextFromFirst()
     }

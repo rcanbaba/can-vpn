@@ -398,19 +398,21 @@ extension MainScreenView {
     public func setLocationSignal(level: Int?) {
         let signalLevel = level ?? 3
         locationButton.set(signalImage: SignalLevel(rawValue: signalLevel)?.getSignalImage())
+        
+        let uiSignalEnum = (SignalLevel(rawValue: signalLevel) ?? .perfect).getSignalEnumForUI()
+        locationButton.set(signalTextColor: uiSignalEnum.getSignalTextColor())
+        locationButton.set(signalText: uiSignalEnum.getSignalText())
     }
     public func setGetFreeView(isHidden: Bool) {
         getFreeLabel.isHidden = isHidden
         getFreeAnimation.isHidden = isHidden
     }
-    
     public func reloadLocalization() {
         guard let state = connectionState else { return }
         connectionStateLabel.text = state.getText()
         setPrivacyText()
         goProButton.reloadLocalization()
     }
-    
     public func setConnectionTime(text: String) {
         connectionTimeLabel.text = text
     }

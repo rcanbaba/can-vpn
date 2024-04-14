@@ -354,6 +354,7 @@
 		B490D3AD296C98EE00651BFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
 		B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBFC16296DF30000613E9F /* InitialViewController.swift */; };
 		B4BE348A2AF1014F0038D8E3 /* LanguageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */; };
+		B4C30CC92BC53F3900674D53 /* SpecialOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C30CC82BC53F3900674D53 /* SpecialOfferViewController.swift */; };
 		B4C5C4912B623EE30068A01D /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4902B623EE30068A01D /* ScrollableViewController.swift */; };
 		B4C5C4932B6521600068A01D /* ReviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4922B6521600068A01D /* ReviewItemView.swift */; };
 		B4C5C4952B6583430068A01D /* SubscriptionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */; };
@@ -403,6 +404,7 @@
 		B4F77A2B29E572C600E3B73E /* PacketTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B4F77A2229E572C600E3B73E /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B4F77A3629E576A700E3B73E /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4F77A3529E576A700E3B73E /* WireGuardKit */; };
 		B4F77A3829E5791A00E3B73E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
+		B4FFB3262BC86EF4008B0E04 /* FourthLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FFB3252BC86EF4008B0E04 /* FourthLandingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -779,6 +781,7 @@
 		B490D3AC296C98EE00651BFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B4BBFC16296DF30000613E9F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageListTableViewCell.swift; sourceTree = "<group>"; };
+		B4C30CC82BC53F3900674D53 /* SpecialOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialOfferViewController.swift; sourceTree = "<group>"; };
 		B4C5C4902B623EE30068A01D /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
 		B4C5C4922B6521600068A01D /* ReviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemView.swift; sourceTree = "<group>"; };
 		B4C5C4942B6583430068A01D /* SubscriptionOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOverlayView.swift; sourceTree = "<group>"; };
@@ -841,6 +844,7 @@
 		B4F77A2529E572C600E3B73E /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		B4F77A2729E572C600E3B73E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4F77A2829E572C600E3B73E /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
+		B4FFB3252BC86EF4008B0E04 /* FourthLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthLandingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1044,6 +1048,7 @@
 				B4216DC82B5D228C00F8B0D6 /* FirstLandingViewController.swift */,
 				B4216DCA2B5D229B00F8B0D6 /* SecondLandingViewController.swift */,
 				B4216DCC2B5D230D00F8B0D6 /* ThirdLandingViewController.swift */,
+				B4FFB3252BC86EF4008B0E04 /* FourthLandingViewController.swift */,
 			);
 			path = LandingController;
 			sourceTree = "<group>";
@@ -1123,6 +1128,7 @@
 				B4805CAD2B14D65600D53574 /* HomeViewController.swift */,
 				B4216DC32B5ADEDA00F8B0D6 /* RatingPopupViewController.swift */,
 				B4C5C4902B623EE30068A01D /* ScrollableViewController.swift */,
+				B4C30CC82BC53F3900674D53 /* SpecialOfferViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1982,6 +1988,7 @@
 				B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */,
 				B4184A1A295614710051EB79 /* NetworkService.swift in Sources */,
 				B4C5C4992B67C32D0068A01D /* ProductBadgeView.swift in Sources */,
+				B4FFB3262BC86EF4008B0E04 /* FourthLandingViewController.swift in Sources */,
 				B4EE1F5D2A07B02C00E219CA /* KeyValueStorage.swift in Sources */,
 				B42821042B1B591700E5424B /* CustomAnnotationView.swift in Sources */,
 				B42DE3EC2A840C66002137F9 /* ApplyCouponRequest.swift in Sources */,
@@ -2041,6 +2048,7 @@
 				B4C5C4932B6521600068A01D /* ReviewItemView.swift in Sources */,
 				B4D871242A8572960080D788 /* RussianDictionary.swift in Sources */,
 				B4E6A2922B69F2FA00FB9743 /* RatingCountManager.swift in Sources */,
+				B4C30CC92BC53F3900674D53 /* SpecialOfferViewController.swift in Sources */,
 				B490D3AD296C98EE00651BFC /* Config.swift in Sources */,
 				B4D871112A8571F80080D788 /* TurkishDictionary.swift in Sources */,
 				B44120E52957162D0072B566 /* UIViewExtensions.swift in Sources */,
@@ -2257,7 +2265,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = canvpn/canvpn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;
@@ -2271,7 +2279,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2291,7 +2299,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = canvpn/canvpn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = canvpn/Info.plist;
@@ -2305,7 +2313,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

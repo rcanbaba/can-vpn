@@ -10,6 +10,9 @@ import SnapKit
 
 protocol LandingMainViewDelegate: AnyObject {
     func nextTapped()
+    func closeTapped()
+    func termsTapped()
+    func privacyTapped()
 }
 
 class LandingMainView: UIView {
@@ -71,9 +74,50 @@ class LandingMainView: UIView {
         return label
     }()
     
+    public lazy var closeButton: UIButton = {
+        var button = UIButton()
+        button.setImage(UIImage(named: "bordered-close-icon"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
+        button.alpha = 0
+        return button
+    }()
+    
+    private lazy var termsLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = UIColor.Subscription.orangeText
+        label.textAlignment = .left
+        label.text = "Terms of Use".localize()
+        label.isHidden = true
+        return label
+    }()
+    
+    private lazy var privacyLabel: UnderlinedLabel = {
+        let label = UnderlinedLabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = UIColor.Subscription.orangeText
+        label.textAlignment = .right
+        label.text = "Privacy Policy".localize()
+        label.isHidden = true
+        return label
+    }()
+    
+    private lazy var offerLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = UIColor.Subscription.titleText
+        label.textAlignment = .center
+        label.text = "Try free for 3 days, then € 1,99 per Week".localize()
+        label.isHidden = true
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        setGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -90,6 +134,10 @@ class LandingMainView: UIView {
         addSubview(descriptionLabel)
         addSubview(stepImageView)
         addSubview(landingButton)
+        addSubview(closeButton)
+        addSubview(offerLabel)
+        addSubview(termsLabel)
+        addSubview(privacyLabel)
         
         backGradientView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -130,10 +178,53 @@ class LandingMainView: UIView {
             make.bottom.equalTo(landingButton.snp.top).offset(-24)
         }
         
+        offerLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(landingButton.snp.top).offset(-10)
+        }
+        
+        termsLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(40)
+            make.top.equalTo(landingButton.snp.bottom).offset(12)
+        }
+        
+        privacyLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(40)
+            make.top.equalTo(landingButton.snp.bottom).offset(12)
+        }
+
+        closeButton.snp.makeConstraints { (make) in
+            make.top.equalTo(safeAreaLayoutGuide).inset(24)
+            make.trailing.equalToSuperview().inset(24)
+            make.size.equalTo(40)
+        }
+        
+    }
+    
+    private func setGestureRecognizer() {
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
+        termsLabel.addGestureRecognizer(termsTapGesture)
+        termsLabel.isUserInteractionEnabled = true
+        
+        let privacyTapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyLabelTapped(_:)))
+        privacyLabel.addGestureRecognizer(privacyTapGesture)
+        privacyLabel.isUserInteractionEnabled = true
     }
     
     @objc private func landingButtonTapped (_ sender: UITapGestureRecognizer) {
         delegate?.nextTapped()
+    }
+    
+    @objc private func closeButtonTapped(_ sender: UIButton) {
+        delegate?.closeTapped()
+    }
+    
+    @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.termsTapped()
+    }
+    
+    @objc func privacyLabelTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.privacyTapped()
     }
 
 }
@@ -154,5 +245,11 @@ extension LandingMainView {
     }
     public func setButonText(text: String) {
         landingButton.textLabel.text = text
+    }
+    public func configureAsOfferView() {
+        stepImageView.isHidden = true
+        termsLabel.isHidden = false
+        privacyLabel.isHidden = false
+        offerLabel.isHidden = false
     }
 }

@@ -18,6 +18,7 @@ class LandingViewController: UIViewController {
     var firstViewController: FirstLandingViewController!
     var secondViewController: SecondLandingViewController!
     var thirdViewController: ThirdLandingViewController!
+    var fourthViewController: FourthLandingViewController!
     
     private lazy var landingBaseView = LandingBackView()
     
@@ -30,6 +31,11 @@ class LandingViewController: UIViewController {
         startPresentation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBar()
+    }
+    
     private func configureUI() {
         view.backgroundColor = UIColor.white
         view.addSubview(landingBaseView)
@@ -38,24 +44,35 @@ class LandingViewController: UIViewController {
         }
     }
     
+    private func setNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     private func setControllers() {
         firstViewController = FirstLandingViewController()
         secondViewController = SecondLandingViewController()
         thirdViewController = ThirdLandingViewController()
+        fourthViewController = FourthLandingViewController()
         
         firstViewController.delegate = self
         secondViewController.delegate = self
         thirdViewController.delegate = self
+        fourthViewController.delegate = self
     }
     
     private func setPresentations() {
         firstViewController.modalTransitionStyle = .crossDissolve
         secondViewController.modalTransitionStyle = .crossDissolve
         thirdViewController.modalTransitionStyle = .crossDissolve
+        fourthViewController.modalTransitionStyle = .crossDissolve
         
         firstViewController.modalPresentationStyle = .overFullScreen
         secondViewController.modalPresentationStyle = .overFullScreen
         thirdViewController.modalPresentationStyle = .overFullScreen
+        fourthViewController.modalPresentationStyle = .overFullScreen
     }
     
     private func setData() {
@@ -80,36 +97,62 @@ class LandingViewController: UIViewController {
             stepImage: UIImage(named: "landing-step-3"),
             butonText: "landing_3_button".localize()
         )
+        let fourthLandingData = LandingData(
+            title: "30-Day money back guarantee".localize(),
+            description: "Enjoy your premium features with 100% money-back guarantee".localize(),
+            centerImage: UIImage(named: "landing-img-4"),
+            stepImage: UIImage(named: "landing-step-3"),
+            butonText: "Try It Free".localize()
+        )
         
         firstViewController.set(data: firstLandingData)
         secondViewController.set(data: secondLandingData)
         thirdViewController.set(data: thirdLandingData)
+        fourthViewController.set(data: fourthLandingData)
     }
     
     func startPresentation() {
         present(firstViewController, animated: false)
     }
+    
+    private func landingTasksCompleted() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: false) { [weak self] in
+                self?.delegate?.landingTasksCompleted()
+            }
+        }
+    }
+    
+    private func goNext(fromViewController: UIViewController, toViewController: UIViewController) {
+        DispatchQueue.main.async {
+            fromViewController.dismiss(animated: true) { [weak self] in
+                self?.present(toViewController, animated: true)
+            }
+        }
+    }
 }
 
-extension LandingViewController: FirstLandingDelegate, SecondLandingDelegate, ThirdLandingDelegate {
+extension LandingViewController: FirstLandingDelegate, SecondLandingDelegate, ThirdLandingDelegate, FourthLandingDelegate {
     func goNextFromFirst() {
-        firstViewController.dismiss(animated: true) {
-            self.present(self.secondViewController, animated: true)
-        }
+        goNext(fromViewController: firstViewController, toViewController: self.secondViewController)
     }
     
     func goNextFromSecond() {
-        secondViewController.dismiss(animated: true) {
-            self.present(self.thirdViewController, animated: true)
-        }
+        goNext(fromViewController: secondViewController, toViewController: self.thirdViewController)
     }
     
     func goNextFromThird() {
-        self.dismiss(animated: false) { [weak self] in
-            self?.delegate?.landingTasksCompleted()
+        if SettingsManager.shared.settings?.isInReview == true {
+            landingTasksCompleted()
+        } else {
+            goNext(fromViewController: thirdViewController, toViewController: self.fourthViewController)
         }
+
     }
     
+    func goNextFromFourth() {
+        landingTasksCompleted()
+    }
 }
 
 struct LandingData {

@@ -179,6 +179,10 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
         cell.set(flagImageCountryCode: cellData.location.countryCode.lowercased())
         cell.set(signalImage: SignalLevel(rawValue: cellData.ping)?.getSignalImage())
         cell.set(isPremium: cellData.type.isPremium())
+        
+        let uiSignalEnum = (SignalLevel(rawValue: cellData.ping) ?? .perfect).getSignalEnumForUI()
+        cell.set(signalTextColor: uiSignalEnum.getSignalTextColor())
+        cell.set(signalText: uiSignalEnum.getSignalText())
         return cell
     }
     

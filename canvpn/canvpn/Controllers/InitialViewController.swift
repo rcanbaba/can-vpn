@@ -46,8 +46,10 @@ class InitialViewController: UIViewController {
     private func presentMainScreen() {
         Analytics.logEvent("102_PresentMainScreen", parameters: ["type" : "present"])
         var navigationController: UINavigationController
+        //TODO: check here
         if SettingsManager.shared.settings?.isInReview == true {
-            navigationController = createNavigationController(with: HomeViewController())
+            // navigationController = createNavigationController(with: HomeViewController())
+            navigationController = createNavigationController(with: MainScreenViewController())
         } else {
             navigationController = createNavigationController(with: MainScreenViewController())
         }
@@ -64,6 +66,8 @@ class InitialViewController: UIViewController {
     }
     
     private func goNextScreenAfterUpdate() {
+        //TODO: remove before it
+        SettingsManager.shared.settings?.isInReview = false
         LaunchCountManager.shared.shouldShowLanding() ? presentLandingScreen() : presentMainScreen()
     }
     

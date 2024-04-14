@@ -209,6 +209,15 @@ class MainScreenViewController: UIViewController {
         present(ratingPopupViewController!, animated: true)
     }
     
+    private func presentSpecialOffer() {
+        // TODO: bunların üstüne ayrı bişeyle present etsi
+        let controller = SpecialOfferViewController()
+        controller.delegate = self
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle  = .crossDissolve
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     public func presentLocationPage() {
         Analytics.logEvent("011_PresentLocationScreen", parameters: ["type" : "present"])
         let locationViewController = LocationViewController()
@@ -437,7 +446,11 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func goProButtonTapped() {
-        presentSubscriptionPage()
+        
+        presentSpecialOffer()
+        
+        // TODO:
+      //  presentSubscriptionPage()
     }
     
     func locationButtonTapped() {
@@ -579,4 +592,17 @@ extension MainScreenViewController: RatingPopupViewControllerDelegate {
             self.ratingPopupViewController = nil
         })
     }
+}
+
+//MARK: - Special Offer Popup
+extension MainScreenViewController: SpecialOfferViewControllerDelegate {
+    func getButtonTapped(view: SpecialOfferViewController) {
+        
+    }
+    
+    func closeButtonTapped(view: SpecialOfferViewController) {
+        
+    }
+    
+
 }
