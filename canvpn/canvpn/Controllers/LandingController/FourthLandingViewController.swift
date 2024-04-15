@@ -66,13 +66,23 @@ class FourthLandingViewController: UIViewController {
     }
     
     private func showCloseAlert() {
-        let alertController = UIAlertController(title: "Special Offer", message: "You are about to lose your special offer. Are you sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "offer_alert_title".localize(),
+            message: "offer_alert_message".localize(),
+            preferredStyle: .alert
+        )
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+        let cancelAction = UIAlertAction(
+            title: "offer_alert_cancel".localize(),
+            style: .default
+        ) { (action) in
             self.delegate?.goNextFromFourth()
         }
 
-        let tryNowAction = UIAlertAction(title: "Try Now", style: .default) { (action) in
+        let tryNowAction = UIAlertAction(
+            title: "offer_alert_try".localize(),
+            style: .default
+        ) { (action) in
             self.subscribeInitialOffer()
         }
 

@@ -181,6 +181,29 @@ struct EnglishDictionary {
         "landing_3_button": "Get Started",
         
         "premium_desc_5": "Surf ad-free for a seamless experience.",
-        "premium_title_5": "No Ads"
+        "premium_title_5": "No Ads",
+        
+        // special offer
+        "landing_offer_title": "30-Day money back guarantee",
+        "landing_offer_description": "Enjoy your premium features with 100% money-back guarantee",
+        "landing_offer_button": "Try It Free",
+        
+        "offer_info_text_before": "Try free for 3 days, then",
+        "offer_info_text_duration": "per Week",
+        
+        "offer_alert_title": "Special Offer",
+        "offer_alert_message": "You are about to lose your special offer. Are you sure?",
+        "offer_alert_cancel": "Cancel",
+        "offer_alert_try": "Try Now",
+        
+        "special_offer_title": "One Time Special Offer",
+        "special_offer_discount_text": "Get \n 75% Off",
+        "special_offer_button": "Try It Free",
+        
+        // signal speed
+        "speed_slow": "Slow",
+        "speed_average": "Average",
+        "speed_fast": "Fast",
+        "speed_super": "Super Fast",
     ]
 }

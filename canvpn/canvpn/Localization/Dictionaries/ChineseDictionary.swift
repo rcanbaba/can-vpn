@@ -179,7 +179,29 @@ struct ChineseDictionary {
         "landing_3_button": "开始",
         
         "premium_desc_5": "无广告浏览，享受流畅体验。",
-        "premium_title_5": "无广告"
+        "premium_title_5": "无广告",
+        
+        //special offer
+        "landing_offer_title": "30天无条件退款保证",
+        "landing_offer_description": "享受您的高级功能，100%退款保证",
+        "landing_offer_button": "免费试用",
+        
+        "offer_info_text_before": "免费试用3天，然后",
+        "offer_info_text_duration": "每周",
+        
+        "offer_alert_title": "特别优惠",
+        "offer_alert_message": "您即将错过特别优惠。您确定吗？",
+        "offer_alert_cancel": "取消",
+        "offer_alert_try": "立即尝试",
+        
+        "special_offer_title": "一次性特别优惠",
+        "special_offer_discount_text": "享受\n75% 折扣",
+        "special_offer_button": "免费试用",
+        
+        "speed_slow": "慢",
+        "speed_average": "平均",
+        "speed_fast": "快",
+        "speed_super": "超快"
     ]
 }
 

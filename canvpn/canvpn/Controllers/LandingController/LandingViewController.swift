@@ -98,11 +98,11 @@ class LandingViewController: UIViewController {
             butonText: "landing_3_button".localize()
         )
         let fourthLandingData = LandingData(
-            title: "30-Day money back guarantee".localize(),
-            description: "Enjoy your premium features with 100% money-back guarantee".localize(),
+            title: "landing_offer_title".localize(),
+            description: "landing_offer_description".localize(),
             centerImage: UIImage(named: "landing-img-4"),
             stepImage: UIImage(named: "landing-step-3"),
-            butonText: "Try It Free".localize()
+            butonText: "landing_offer_button".localize()
         )
         
         firstViewController.set(data: firstLandingData)
@@ -147,7 +147,6 @@ extension LandingViewController: FirstLandingDelegate, SecondLandingDelegate, Th
         } else {
             goNext(fromViewController: thirdViewController, toViewController: self.fourthViewController)
         }
-
     }
     
     func goNextFromFourth() {

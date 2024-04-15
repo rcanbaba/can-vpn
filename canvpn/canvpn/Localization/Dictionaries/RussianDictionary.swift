@@ -179,7 +179,29 @@ struct RussianDictionary {
         "landing_3_button": "Начать",
         
         "premium_desc_5": "Просматривайте без рекламы для непрерывного опыта.",
-        "premium_title_5": "Без Рекламы"
+        "premium_title_5": "Без Рекламы",
+        
+        //special offer
+        "landing_offer_title": "Гарантия возврата денег на 30 дней",
+        "landing_offer_description": "Наслаждайтесь премиальными функциями с гарантированным возвратом 100% денег",
+        "landing_offer_button": "Попробуйте бесплатно",
+        
+        "offer_info_text_before": "Попробуйте бесплатно на 3 дня, затем",
+        "offer_info_text_duration": "в неделю",
+        
+        "offer_alert_title": "Специальное предложение",
+        "offer_alert_message": "Вы собираетесь упустить специальное предложение. Вы уверены?",
+        "offer_alert_cancel": "Отмена",
+        "offer_alert_try": "Попробуйте сейчас",
+        
+        "special_offer_title": "Единоразовое специальное предложение",
+        "special_offer_discount_text": "Получите\n75% скидку",
+        "special_offer_button": "Попробуйте бесплатно",
+        
+        "speed_slow": "Медленный",
+        "speed_average": "Средний",
+        "speed_fast": "Быстрый",
+        "speed_super": "Супер быстрый"
     ]
 }
 

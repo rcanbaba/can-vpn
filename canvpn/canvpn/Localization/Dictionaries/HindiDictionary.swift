@@ -178,7 +178,29 @@ struct HindiDictionary {
         "landing_3_button": "शुरू करें",
         
         "premium_desc_5": "विज्ञापनों के बिना सर्फ़ करें और एक सहज अनुभव प्राप्त करें।",
-        "premium_title_5": "बिना विज्ञापन"
+        "premium_title_5": "बिना विज्ञापन",
+        
+        //special offer
+        "landing_offer_title": "30-दिन का पैसा वापस की गारंटी",
+        "landing_offer_description": "100% पैसे वापस की गारंटी के साथ अपनी प्रीमियम विशेषताओं का आनंद लें",
+        "landing_offer_button": "यह मुफ्त आज़माएं",
+        
+        "offer_info_text_before": "3 दिनों के लिए मुफ्त आज़माएं, फिर",
+        "offer_info_text_duration": "प्रति सप्ताह",
+        
+        "offer_alert_title": "विशेष प्रस्ताव",
+        "offer_alert_message": "आप अपने विशेष प्रस्ताव को खोने जा रहे हैं। क्या आप सुनिश्चित हैं?",
+        "offer_alert_cancel": "रद्द करें",
+        "offer_alert_try": "अब प्रयास करें",
+        
+        "special_offer_title": "एक बार का विशेष प्रस्ताव",
+        "special_offer_discount_text": "पाएं\n75% छूट",
+        "special_offer_button": "यह मुफ्त आज़माएं",
+        
+        "speed_slow": "धीमा",
+        "speed_average": "औसत",
+        "speed_fast": "तेज",
+        "speed_super": "अत्यधिक तेज"
     ]
 }
 

@@ -402,6 +402,7 @@ extension MainScreenView {
         let uiSignalEnum = (SignalLevel(rawValue: signalLevel) ?? .perfect).getSignalEnumForUI()
         locationButton.set(signalTextColor: uiSignalEnum.getSignalTextColor())
         locationButton.set(signalText: uiSignalEnum.getSignalText())
+        locationButton.signalUILevel = uiSignalEnum
     }
     public func setGetFreeView(isHidden: Bool) {
         getFreeLabel.isHidden = isHidden
@@ -412,6 +413,7 @@ extension MainScreenView {
         connectionStateLabel.text = state.getText()
         setPrivacyText()
         goProButton.reloadLocalization()
+        locationButton.reloadLocalization()
     }
     public func setConnectionTime(text: String) {
         connectionTimeLabel.text = text

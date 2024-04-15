@@ -89,7 +89,7 @@ class LandingMainView: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .left
-        label.text = "Terms of Use".localize()
+        label.text = "terms_of_service_key".localize()
         label.isHidden = true
         return label
     }()
@@ -99,7 +99,7 @@ class LandingMainView: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .right
-        label.text = "Privacy Policy".localize()
+        label.text = "privacy_policy_key".localize()
         label.isHidden = true
         return label
     }()
@@ -109,7 +109,6 @@ class LandingMainView: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor.Subscription.titleText
         label.textAlignment = .center
-        label.text = "Try free for 3 days, then € 1,99 per Week".localize()
         label.isHidden = true
         return label
     }()
@@ -251,5 +250,6 @@ extension LandingMainView {
         termsLabel.isHidden = false
         privacyLabel.isHidden = false
         offerLabel.isHidden = false
+        offerLabel.text = "offer_info_text_before".localize() + " " + "€ 1,99" + " " + "offer_info_text_duration".localize()
     }
 }

@@ -43,7 +43,7 @@ class SpecialOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = UIColor.orange
         label.textAlignment = .center
-        label.text = "One Time Special Offer"
+        label.text = "special_offer_title".localize()
         label.numberOfLines = 0
         return label
     }()
@@ -61,7 +61,7 @@ class SpecialOfferViewController: UIViewController {
         label.textColor = UIColor.orange
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.text = "Get\n75% Off"
+        label.text = "special_offer_discount_text".localize()
         return label
     }()
     
@@ -82,7 +82,7 @@ class SpecialOfferViewController: UIViewController {
     private lazy var countdownLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.monospacedDigitSystemFont(ofSize: 40, weight: .bold)
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 44, weight: .bold)
         label.textColor = .orange
         label.layer.applySketchShadow()
         return label
@@ -98,7 +98,7 @@ class SpecialOfferViewController: UIViewController {
     private lazy var getButton: LandingButton = {
         let view = LandingButton(type: .system)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
-        view.textLabel.text = "Try It Free"
+        view.textLabel.text = "special_offer_button".localize()
         return view
     }()
     
@@ -107,7 +107,7 @@ class SpecialOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .left
-        label.text = "Terms of Use".localize()
+        label.text = "terms_of_service_key".localize()
         return label
     }()
     
@@ -116,7 +116,7 @@ class SpecialOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.Subscription.orangeText
         label.textAlignment = .right
-        label.text = "Privacy Policy".localize()
+        label.text = "privacy_policy_key".localize()
         return label
     }()
     
@@ -125,7 +125,6 @@ class SpecialOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor.Subscription.titleText
         label.textAlignment = .center
-        label.text = "Try free for 3 days, then € 1,99 per Week".localize()
         return label
     }()
     
@@ -145,6 +144,7 @@ class SpecialOfferViewController: UIViewController {
         setGestureRecognizer()
         activateCloseButtonTimer()
         startCountdown(from: 109)
+        offerLabel.text = "offer_info_text_before".localize() + " " + "€ 1,99" + " " + "offer_info_text_duration".localize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,10 +166,6 @@ class SpecialOfferViewController: UIViewController {
     }
     
     private func configureUI() {
-        
-        let screenHeight = UIScreen.main.bounds.height
-        let screenWidth = UIScreen.main.bounds.width
-        
         view.addSubview(backGradientView)
         view.addSubview(titleLabel)
         view.addSubview(backgroundImageView)
@@ -194,24 +190,24 @@ class SpecialOfferViewController: UIViewController {
         
         backgroundImageView.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
-            make.top.equalTo(titleLabel)
+            make.top.equalTo(titleLabel).offset(-8)
             make.height.equalToSuperview().dividedBy(2.5)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(48)
+            make.top.equalTo(titleLabel.snp.bottom).offset(64)
             make.leading.equalToSuperview().inset(48)
         }
         
         badgeImageView.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(36)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(40)
             make.leading.equalToSuperview().inset(48)
             make.height.equalToSuperview().dividedBy(13)
         }
         
         reviewCarouselImageView.snp.makeConstraints { make in
-            make.top.equalTo(backgroundImageView.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(backgroundImageView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(8)
             make.width.equalToSuperview()
         }
         
@@ -313,13 +309,23 @@ class SpecialOfferViewController: UIViewController {
     }
     
     private func showCloseAlert() {
-        let alertController = UIAlertController(title: "Special Offer", message: "You are about to lose your special offer. Are you sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "offer_alert_title".localize(),
+            message: "offer_alert_message".localize(),
+            preferredStyle: .alert
+        )
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+        let cancelAction = UIAlertAction(
+            title: "offer_alert_cancel".localize(),
+            style: .default
+        ) { (action) in
             self.dismiss(animated: true)
         }
 
-        let tryNowAction = UIAlertAction(title: "Try Now", style: .default) { (action) in
+        let tryNowAction = UIAlertAction(
+            title: "offer_alert_try".localize(),
+            style: .default
+        ) { (action) in
             self.subscribeOffer()
         }
 

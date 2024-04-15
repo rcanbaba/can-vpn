@@ -179,7 +179,29 @@ struct GermanDictionary {
         "landing_3_button": "Los geht's",
         
         "premium_desc_5": "Surfen Sie werbefrei für ein nahtloses Erlebnis.",
-        "premium_title_5": "Keine Werbung"
+        "premium_title_5": "Keine Werbung",
+        
+        //special offer
+        "landing_offer_title": "30-Tage Geld-zurück-Garantie",
+        "landing_offer_description": "Genießen Sie Ihre Premium-Funktionen mit 100% Geld-zurück-Garantie",
+        "landing_offer_button": "Kostenlos testen",
+        
+        "offer_info_text_before": "Kostenlose Testversion für 3 Tage, dann",
+        "offer_info_text_duration": "pro Woche",
+        
+        "offer_alert_title": "Sonderangebot",
+        "offer_alert_message": "Sie sind dabei, Ihr Sonderangebot zu verlieren. Sind Sie sicher?",
+        "offer_alert_cancel": "Abbrechen",
+        "offer_alert_try": "Jetzt testen",
+        
+        "special_offer_title": "Einmaliges Sonderangebot",
+        "special_offer_discount_text": "Holen Sie sich\n75% Rabatt",
+        "special_offer_button": "Kostenlos testen",
+        
+        "speed_slow": "Langsam",
+        "speed_average": "Durchschnittlich",
+        "speed_fast": "Schnell",
+        "speed_super": "Superschnell"
     ]
 }
 

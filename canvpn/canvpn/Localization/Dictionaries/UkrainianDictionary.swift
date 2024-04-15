@@ -180,6 +180,28 @@ struct UkrainianDictionary {
         "landing_3_button": "Розпочати",
         
         "premium_desc_5": "Серфінг без реклами для безперебійного досвіду.",
-        "premium_title_5": "Без Реклам"
+        "premium_title_5": "Без Реклам",
+        
+        //special offer
+        "landing_offer_title": "Гарантія повернення коштів на 30 днів",
+        "landing_offer_description": "Насолоджуйтесь преміальними функціями з гарантією повернення 100% коштів",
+        "landing_offer_button": "Спробуйте безкоштовно",
+        
+        "offer_info_text_before": "Спробуйте безкоштовно протягом 3 днів, а потім",
+        "offer_info_text_duration": "на тиждень",
+        
+        "offer_alert_title": "Спеціальна пропозиція",
+        "offer_alert_message": "Ви збираєтеся втратити свою спеціальну пропозицію. Ви впевнені?",
+        "offer_alert_cancel": "Скасувати",
+        "offer_alert_try": "Спробуйте зараз",
+        
+        "special_offer_title": "Єдиний спеціальний пропозиція",
+        "special_offer_discount_text": "Отримайте\n75% знижки",
+        "special_offer_button": "Спробуйте безкоштовно",
+        
+        "speed_slow": "Повільно",
+        "speed_average": "Середньо",
+        "speed_fast": "Швидко",
+        "speed_super": "Дуже Швидко"
     ]
 }

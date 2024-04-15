@@ -179,7 +179,29 @@ struct FrenchDictionary {
         "landing_3_button": "Commencer",
         
         "premium_desc_5": "Naviguez sans publicités pour une expérience fluide.",
-        "premium_title_5": "Sans Publicités"
+        "premium_title_5": "Sans Publicités",
+        
+        // special offer
+        "landing_offer_title": "Garantie de remboursement de 30 jours",
+        "landing_offer_description": "Profitez de vos fonctionnalités premium avec une garantie de remboursement à 100%",
+        "landing_offer_button": "Essayez-le gratuitement",
+        
+        "offer_info_text_before": "Essai gratuit pendant 3 jours, puis",
+        "offer_info_text_duration": "par semaine",
+        
+        "offer_alert_title": "Offre spéciale",
+        "offer_alert_message": "Vous êtes sur le point de perdre votre offre spéciale. Êtes-vous sûr?",
+        "offer_alert_cancel": "Annuler",
+        "offer_alert_try": "Essayer maintenant",
+        
+        "special_offer_title": "Offre spéciale unique",
+        "special_offer_discount_text": "Obtenez\n75% de réduction",
+        "special_offer_button": "Essayez-le gratuitement",
+        
+        "speed_slow": "Lent",
+        "speed_average": "Moyen",
+        "speed_fast": "Rapide",
+        "speed_super": "Très rapide"
     ]
 }
 
