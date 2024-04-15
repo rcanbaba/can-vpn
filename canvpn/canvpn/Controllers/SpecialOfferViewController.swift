@@ -82,7 +82,7 @@ class SpecialOfferViewController: UIViewController {
     private lazy var countdownLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.monospacedDigitSystemFont(ofSize: 40, weight: .bold)
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 44, weight: .bold)
         label.textColor = .orange
         label.layer.applySketchShadow()
         return label
@@ -194,24 +194,24 @@ class SpecialOfferViewController: UIViewController {
         
         backgroundImageView.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
-            make.top.equalTo(titleLabel)
+            make.top.equalTo(titleLabel).offset(-8)
             make.height.equalToSuperview().dividedBy(2.5)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(48)
+            make.top.equalTo(titleLabel.snp.bottom).offset(64)
             make.leading.equalToSuperview().inset(48)
         }
         
         badgeImageView.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(36)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(40)
             make.leading.equalToSuperview().inset(48)
             make.height.equalToSuperview().dividedBy(13)
         }
         
         reviewCarouselImageView.snp.makeConstraints { make in
-            make.top.equalTo(backgroundImageView.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(backgroundImageView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(8)
             make.width.equalToSuperview()
         }
         
