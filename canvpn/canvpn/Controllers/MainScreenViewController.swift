@@ -598,16 +598,3 @@ extension MainScreenViewController: RatingPopupViewControllerDelegate {
         })
     }
 }
-
-//MARK: - Special Offer Popup
-extension MainScreenViewController: SpecialOfferViewControllerDelegate {
-    func getButtonTapped(view: SpecialOfferViewController) {
-        
-    }
-    
-    func closeButtonTapped(view: SpecialOfferViewController) {
-        
-    }
-    
-
-}

@@ -171,7 +171,6 @@ class SubscriptionViewController: ScrollableViewController {
         }
     }
     
-    
     private func restoreSubscription() {
         isLoading(show: true)
         PurchaseManager.shared.restorePurchases { [weak self] success, _, _ in
