@@ -180,6 +180,28 @@ struct TurkishDictionary {
         "landing_3_button": "Başla",
         
         "premium_desc_5": "Kesintisiz bir deneyim için reklamsız gezinin.",
-        "premium_title_5": "Reklamsız"
+        "premium_title_5": "Reklamsız",
+        
+        // special offer
+        "landing_offer_title": "30 Gün Para İade Garantisi",
+        "landing_offer_description": "Premium özellikleri %100 para iade garantisi ile deneyimleyin",
+        "landing_offer_button": "Ücretsiz Deneyin",
+        
+        "offer_info_text_before": "3 gün ücretsiz, sonra",
+        "offer_info_text_duration": "haftalık",
+        
+        "offer_alert_title": "Özel Teklif",
+        "offer_alert_message": "Özel teklifinizi kaybetmek üzeresiniz. Emin misiniz?",
+        "offer_alert_cancel": "İptal",
+        "offer_alert_try": "Şimdi Deneyin",
+        
+        "special_offer_title": "Tek Seferlik Özel Teklif",
+        "special_offer_discount_text": "%75 İndirim \n Kullan",
+        "special_offer_button": "Ücretsiz Deneyin",
+        
+        "speed_slow": "Yavaş",
+        "speed_average": "Orta",
+        "speed_fast": "Hızlı",
+        "speed_super": "Süper Hızlı"
     ]
 }

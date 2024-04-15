@@ -179,7 +179,29 @@ struct PersianDictionary {
         "landing_3_button": "شروع کنید",
         
         "premium_desc_5": "بدون تبلیغات مرور کنید تا تجربه‌ای بی‌وقفه داشته باشید.",
-        "premium_title_5": "بدون تبلیغات"
+        "premium_title_5": "بدون تبلیغات",
+        
+        // special offer
+        "landing_offer_title": "گارانتی بازگشت وجه 30 روزه",
+        "landing_offer_description": "از ویژگی‌های پریمیوم خود با گارانتی بازگشت وجه 100٪ لذت ببرید",
+        "landing_offer_button": "این را رایگان امتحان کنید",
+        
+        "offer_info_text_before": "3 روز رایگان امتحان کنید، سپس",
+        "offer_info_text_duration": "هر هفته",
+        
+        "offer_alert_title": "پیشنهاد ویژه",
+        "offer_alert_message": "شما در حال از دست دادن پیشنهاد ویژه خود هستید. مطمئن هستید؟",
+        "offer_alert_cancel": "لغو",
+        "offer_alert_try": "همین الان امتحان کنید",
+        
+        "special_offer_title": "پیشنهاد ویژه یکبار",
+        "special_offer_discount_text": "دریافت\n75٪ تخفیف",
+        "special_offer_button": "این را رایگان امتحان کنید",
+        
+        "speed_slow": "کند",
+        "speed_average": "متوسط",
+        "speed_fast": "سریع",
+        "speed_super": "بسیار سریع"
     ]
 }
 

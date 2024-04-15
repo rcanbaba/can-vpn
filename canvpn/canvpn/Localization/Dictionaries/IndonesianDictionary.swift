@@ -177,7 +177,29 @@ struct IndonesianDictionary {
         "landing_3_button": "Mulai",
         
         "premium_desc_5": "Jelajahi tanpa iklan untuk pengalaman yang mulus.",
-        "premium_title_5": "Tanpa Iklan"
+        "premium_title_5": "Tanpa Iklan",
+        
+        // special offer
+        "landing_offer_title": "Garansi Uang Kembali 30 Hari",
+        "landing_offer_description": "Nikmati fitur premium Anda dengan garansi uang kembali 100%",
+        "landing_offer_button": "Coba Gratis",
+        
+        "offer_info_text_before": "Coba gratis selama 3 hari, kemudian",
+        "offer_info_text_duration": "per Minggu",
+        
+        "offer_alert_title": "Penawaran Khusus",
+        "offer_alert_message": "Anda hampir kehilangan penawaran khusus Anda. Apakah Anda yakin?",
+        "offer_alert_cancel": "Batal",
+        "offer_alert_try": "Coba Sekarang",
+        
+        "special_offer_title": "Penawaran Khusus Sekali",
+        "special_offer_discount_text": "Dapatkan\n75% Diskon",
+        "special_offer_button": "Coba Gratis",
+        
+        "speed_slow": "Lambat",
+        "speed_average": "Rata-rata",
+        "speed_fast": "Cepat",
+        "speed_super": "Super Cepat"
     ]
 }
 

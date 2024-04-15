@@ -179,6 +179,28 @@ struct PortugueseDictionary {
         "landing_3_button": "Começar",
         
         "premium_desc_5": "Navegue sem anúncios para uma experiência contínua.",
-        "premium_title_5": "Sem Anúncios"
+        "premium_title_5": "Sem Anúncios",
+        
+        // special offer
+        "landing_offer_title": "Garantia de devolução do dinheiro em 30 dias",
+        "landing_offer_description": "Aproveite seus recursos premium com garantia de devolução do dinheiro em 100%",
+        "landing_offer_button": "Experimente grátis",
+        
+        "offer_info_text_before": "Experimente grátis por 3 dias, depois",
+        "offer_info_text_duration": "por semana",
+        
+        "offer_alert_title": "Oferta especial",
+        "offer_alert_message": "Você está prestes a perder sua oferta especial. Tem certeza?",
+        "offer_alert_cancel": "Cancelar",
+        "offer_alert_try": "Experimente agora",
+        
+        "special_offer_title": "Oferta especial única",
+        "special_offer_discount_text": "Obtenha\n75% de desconto",
+        "special_offer_button": "Experimente grátis",
+        
+        "speed_slow": "Lento",
+        "speed_average": "Médio",
+        "speed_fast": "Rápido",
+        "speed_super": "Super rápido"
     ]
 }

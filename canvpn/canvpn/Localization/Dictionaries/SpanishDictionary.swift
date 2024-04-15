@@ -179,7 +179,29 @@ struct SpanishDictionary {
         "landing_3_button": "Comenzar",
         
         "premium_desc_5": "Navega sin anuncios para una experiencia sin interrupciones.",
-        "premium_title_5": "Sin Anuncios"
+        "premium_title_5": "Sin Anuncios",
+        
+        //special offer
+        "landing_offer_title": "Garantía de Devolución de Dinero de 30 Días",
+        "landing_offer_description": "Disfruta de tus funciones premium con garantía de devolución de dinero del 100%",
+        "landing_offer_button": "Pruébalo Gratis",
+        
+        "offer_info_text_before": "Prueba gratis durante 3 días, luego",
+        "offer_info_text_duration": "por Semana",
+        
+        "offer_alert_title": "Oferta Especial",
+        "offer_alert_message": "Estás a punto de perder tu oferta especial. ¿Estás seguro?",
+        "offer_alert_cancel": "Cancelar",
+        "offer_alert_try": "Probar Ahora",
+        
+        "special_offer_title": "Oferta Especial Única",
+        "special_offer_discount_text": "Obtén\n75% de Descuento",
+        "special_offer_button": "Pruébalo Gratis",
+        
+        "speed_slow": "Lento",
+        "speed_average": "Promedio",
+        "speed_fast": "Rápido",
+        "speed_super": "Súper Rápido"
     ]
 }
 

@@ -60,7 +60,12 @@ class MainScreenViewController: UIViewController {
     private var isSideMenuOpen = false
     
     private func addNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name.languageChanged, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateLanguage),
+            name: NSNotification.Name.languageChanged,
+            object: nil
+        )
     }
     
     @objc func updateLanguage() {

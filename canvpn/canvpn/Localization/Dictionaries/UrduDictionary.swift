@@ -179,7 +179,29 @@ struct UrduDictionary {
         "landing_3_button": "شروع کریں",
         
         "premium_desc_5": "بغیر اشتہارات کے سرفنگ کریں تاکہ ایک ہموار تجربہ حاصل ہو۔",
-        "premium_title_5": "بغیر اشتہارات"
+        "premium_title_5": "بغیر اشتہارات",
+        
+        //special offer
+        "landing_offer_title": "30 دن کا پیسہ واپس کی گارنٹی",
+        "landing_offer_description": "100٪ پیسے واپس کی گارنٹی کے ساتھ اپنی پریمیم خصوصیات کا لطف اٹھائیں",
+        "landing_offer_button": "اسے مفت آزمائیں",
+        
+        "offer_info_text_before": "3 دن مفت آزمائیں، پھر",
+        "offer_info_text_duration": "ہر ہفتہ",
+        
+        "offer_alert_title": "خاص پیشکش",
+        "offer_alert_message": "آپ اپنی خاص پیشکش کو ختم کرنے والے ہیں۔ کیا آپ یقینی ہیں؟",
+        "offer_alert_cancel": "منسوخ کریں",
+        "offer_alert_try": "ابھی کوشش کریں",
+        
+        "special_offer_title": "ایک بار خاص پیشکش",
+        "special_offer_discount_text": "حاصل کریں\n75٪ تخفیف",
+        "special_offer_button": "اسے مفت آزمائیں",
+        
+        "speed_slow": "سست",
+        "speed_average": "متوسط",
+        "speed_fast": "تیز",
+        "speed_super": "بہت تیز"
     ]
 }
 

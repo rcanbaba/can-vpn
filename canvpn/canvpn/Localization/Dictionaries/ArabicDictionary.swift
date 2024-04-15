@@ -179,7 +179,29 @@ struct ArabicDictionary {
         "landing_3_button": "ابدأ",
         
         "premium_desc_5": "تصفح بدون إعلانات لتجربة سلسة.",
-        "premium_title_5": "بدون إعلانات"
+        "premium_title_5": "بدون إعلانات",
+        
+        //special offer
+        "landing_offer_title": "ضمان استرداد الأموال لمدة 30 يومًا",
+        "landing_offer_description": "استمتع بميزاتك المميزة مع ضمان استرداد الأموال بنسبة 100٪",
+        "landing_offer_button": "جربها مجانًا",
+        
+        "offer_info_text_before": "جرب مجانًا لمدة 3 أيام، ثم",
+        "offer_info_text_duration": "في الأسبوع",
+        
+        "offer_alert_title": "عرض خاص",
+        "offer_alert_message": "أنت على وشك فقدان عرضك الخاص. هل أنت متأكد؟",
+        "offer_alert_cancel": "إلغاء",
+        "offer_alert_try": "جرب الآن",
+        
+        "special_offer_title": "عرض خاص مرة واحدة",
+        "special_offer_discount_text": "احصل على\n75٪ خصم",
+        "special_offer_button": "جربها مجانًا",
+        
+        "speed_slow": "بطيء",
+        "speed_average": "متوسط",
+        "speed_fast": "سريع",
+        "speed_super": "سريع جدًا"
     ]
 }
 

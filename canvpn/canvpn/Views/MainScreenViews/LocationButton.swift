@@ -65,6 +65,8 @@ class LocationButton: UIView {
         return label
     }()
     
+    public var signalUILevel: SignalUILevel = .fast
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -149,6 +151,10 @@ extension LocationButton {
     
     public func set(signalTextColor: UIColor) {
         signalTextLabel.textColor = signalTextColor
+    }
+    
+    public func reloadLocalization() {
+        signalTextLabel.text = signalUILevel.getSignalText()
     }
     
 }

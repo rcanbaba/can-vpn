@@ -143,17 +143,16 @@ extension SignalUILevel {
         }
     }
     
-    // TODO: translation
     func getSignalText() -> String {
         switch self {
         case .slow:
-            "Slow"
+            "speed_slow".localize()
         case .medium:
-            "Average"
+            "speed_average".localize()
         case .fast, .fastFast:
-            "Fast"
+            "speed_fast".localize()
         case .superFast:
-            "Super Fast"
+            "speed_super".localize()
         }
     }
     
