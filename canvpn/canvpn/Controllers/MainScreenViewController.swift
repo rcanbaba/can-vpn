@@ -217,7 +217,6 @@ class MainScreenViewController: UIViewController {
     private func presentSpecialOffer() {
         // TODO: bunların üstüne ayrı bişeyle present etsi
         let controller = SpecialOfferViewController()
-        controller.delegate = self
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle  = .crossDissolve
         self.present(controller, animated: true, completion: nil)
@@ -597,17 +596,4 @@ extension MainScreenViewController: RatingPopupViewControllerDelegate {
             self.ratingPopupViewController = nil
         })
     }
-}
-
-//MARK: - Special Offer Popup
-extension MainScreenViewController: SpecialOfferViewControllerDelegate {
-    func getButtonTapped(view: SpecialOfferViewController) {
-        
-    }
-    
-    func closeButtonTapped(view: SpecialOfferViewController) {
-        
-    }
-    
-
 }
