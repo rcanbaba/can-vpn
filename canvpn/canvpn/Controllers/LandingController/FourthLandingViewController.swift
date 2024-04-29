@@ -7,6 +7,7 @@
 
 import UIKit
 import StoreKit
+import FirebaseAnalytics
 
 protocol FourthLandingDelegate: AnyObject {
     func goNextFromFourth()
@@ -32,6 +33,7 @@ class FourthLandingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Analytics.logEvent("LandingOfferPresented", parameters: [:])
         networkService = DefaultNetworkService()
         landingView.delegate = self
         configureUI()
@@ -102,6 +104,7 @@ class FourthLandingViewController: UIViewController {
             title: "offer_alert_try".localize(),
             style: .default
         ) { (action) in
+            Analytics.logEvent("LandingOfferSubsTappedFromAlert", parameters: [:])
             self.subscribeInitialOffer()
         }
 
@@ -135,6 +138,7 @@ extension FourthLandingViewController: LandingMainViewDelegate {
     }
     
     func nextTapped() {
+        Analytics.logEvent("LandingOfferSubsTappedFromButton", parameters: [:])
         subscribeInitialOffer()
     }
 }
@@ -185,6 +189,7 @@ extension FourthLandingViewController {
     }
     
     private func subscribeItem(productId: String) {
+        Analytics.logEvent("LandingOfferSubsItem", parameters: [:])
         if let product = getSKProduct(skuID: productId) {
             isLoading(show: true)
             PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
@@ -208,28 +213,34 @@ extension FourthLandingViewController {
                                         } else {
                                             print("💙: subscription - error4")
                                             self.showRestoreFailedAlert()
+                                            Analytics.logEvent("LandingOfferErrorBackend", parameters: [:])
                                         }
                                     case .failure:
                                         print("💙: subscription - error5")
                                         self.showRestoreFailedAlert()
+                                        Analytics.logEvent("LandingOfferErrorBackend1", parameters: [:])
                                     }
                                 }
                             }
                         } else {
                             print("💙: subscription - error6")
                             self.showRestoreFailedAlert()
+                            Analytics.logEvent("LandingOfferErrorApple", parameters: [:])
                         }
                     } else if error == .paymentWasCancelled {
                         print("💙: subscription - error7")
                         // Handle payment cancellation
+                        Analytics.logEvent("LandingOfferErrorCancel", parameters: [:])
                     } else {
                         print("💙: subscription - error8")
                         // Handle other errors
+                        Analytics.logEvent("LandingOfferErrorUnknown", parameters: [:])
                     }
                 }
             }
         } else {
             print("💙: subscription - error9")
+            Analytics.logEvent("LandingOfferErrorProduct", parameters: [:])
             // Handle case when product is not found backendden gelmiş apple da yok
         }
     }
