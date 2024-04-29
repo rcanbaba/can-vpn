@@ -250,6 +250,13 @@ extension LandingMainView {
         termsLabel.isHidden = false
         privacyLabel.isHidden = false
         offerLabel.isHidden = false
-        offerLabel.text = "offer_info_text_before".localize() + " " + "€ 1,99" + " " + "offer_info_text_duration".localize()
+    }
+    
+    public func configureOfferText(_ text: String) {
+        if isRTL {
+            offerLabel.text = "offer_info_text_duration".localize() + " " + text + " " + "offer_info_text_before".localize()
+        } else {
+            offerLabel.text = "offer_info_text_before".localize() + " " + text + " " + "offer_info_text_duration".localize()
+        }
     }
 }

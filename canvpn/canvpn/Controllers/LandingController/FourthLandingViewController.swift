@@ -28,7 +28,8 @@ class FourthLandingViewController: UIViewController {
     private var networkService: DefaultNetworkService?
     
     private var products: [SKProduct]?
-    private var presentableProducts: [Product] = []
+    
+    private var landingProduct: Product? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class FourthLandingViewController: UIViewController {
         configureUI()
         landingView.configureAsOfferView()
         activateCloseButtonTimer()
+        setProduct()
     }
     
     private func configureUI() {
@@ -114,7 +116,8 @@ class FourthLandingViewController: UIViewController {
     }
     
     private func subscribeInitialOffer() {
-        //TODO: start subs flow
+        guard let landingProduct = landingProduct else { return }
+        subscribeItem(productId: landingProduct.sku)
     }
     
 }
@@ -175,29 +178,18 @@ extension FourthLandingViewController {
         guard SettingsManager.shared.settings?.isInReview == false else { return key }
         return key.localize()
     }
+
     
-    private func checkAndSetProducts() {
+    private func setProduct() {
         products = PurchaseManager.shared.products
-        // TODO: burada yeni id den geleni yapaccağız
-        presentableProducts = SettingsManager.shared.settings?.products ?? []
-        setProducts()
-    }
-    
-    private func setProducts() {
-        presentableProducts.forEach { product in
-            if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
-                
-                let presentableProduct = PresentableProduct(sku: product.sku,
-                                                            title: getProductName(key: storeProduct.localizedTitle),
-                                                            description: getProductDescription(key: storeProduct.localizedDescription),
-                                                            price: storePrice,
-                                                            isSelected: product.isPromoted,
-                                                            isBest: product.isBestOffer,
-                                                            isDiscounted: product.discount)
-                
-                // TODO: gelen product datalarından gerekliyi ekrana set et
-            }
-        }
+        landingProduct = SettingsManager.shared.settings?.landingProduct
+        
+        guard let landingProduct = landingProduct,
+              let storeProduct = getSKProduct(skuID: landingProduct.sku),
+              let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) else {
+            //TODO: log bas landing product yok gibi
+            return }
+        landingView.configureOfferText(storePrice)
     }
     
     private func getSKProduct(skuID: String) -> SKProduct? {
