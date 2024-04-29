@@ -133,15 +133,14 @@ class SpecialOfferViewController: UIViewController {
     private var networkService: DefaultNetworkService?
     
     private var products: [SKProduct]?
-    private var presentableProducts: [Product] = []
+    private var offerProduct: SpecialOffer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         setGestureRecognizer()
         activateCloseButtonTimer()
-        startCountdown(from: 109)
-        offerLabel.text = "offer_info_text_before".localize() + " " + "€ 1,99" + " " + "offer_info_text_duration".localize()
+        setProduct()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -328,7 +327,8 @@ class SpecialOfferViewController: UIViewController {
     }
     
     private func subscribeOffer() {
-        //TODO: start subs flow
+        guard let offerProduct = offerProduct else { return }
+        subscribeItem(productId: offerProduct.product.sku)
     }
     
     private func showSubscriptionTerms() {
@@ -376,37 +376,25 @@ extension SpecialOfferViewController {
         }
     }
     
-    private func getProductName(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-    
-    private func getProductDescription(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-    
-    private func checkAndSetProducts() {
+    private func setProduct() {
         products = PurchaseManager.shared.products
-        // TODO: burada yeni id den geleni yapaccağız
-        presentableProducts = SettingsManager.shared.settings?.products ?? []
-        setProducts()
+        offerProduct = SettingsManager.shared.settings?.specialOffer
+        
+        guard let offerProduct = offerProduct,
+              let storeProduct = getSKProduct(skuID: offerProduct.product.sku),
+              let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) else {
+            //TODO: log bas landing product yok gibi
+            return }
+        
+        setOfferPrice(storePrice)
+        startCountdown(from: offerProduct.meta.duration)
     }
     
-    private func setProducts() {
-        presentableProducts.forEach { product in
-            if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
-                
-                let presentableProduct = PresentableProduct(sku: product.sku,
-                                                            title: getProductName(key: storeProduct.localizedTitle),
-                                                            description: getProductDescription(key: storeProduct.localizedDescription),
-                                                            price: storePrice,
-                                                            isSelected: product.isPromoted,
-                                                            isBest: product.isBestOffer,
-                                                            isDiscounted: product.discount)
-                
-                // TODO: gelen product datalarından gerekliyi ekrana set et
-            }
+    private func setOfferPrice(_ text: String) {
+        if view.isRTL {
+            offerLabel.text = "offer_info_text_duration".localize() + " " + text + " " + "offer_info_text_before".localize()
+        } else {
+            offerLabel.text = "offer_info_text_before".localize() + " " + text + " " + "offer_info_text_duration".localize()
         }
     }
     

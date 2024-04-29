@@ -28,7 +28,6 @@ class FourthLandingViewController: UIViewController {
     private var networkService: DefaultNetworkService?
     
     private var products: [SKProduct]?
-    
     private var landingProduct: Product? = nil
     
     override func viewDidLoad() {
@@ -168,17 +167,6 @@ extension FourthLandingViewController {
             show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
         }
     }
-    
-    private func getProductName(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-    
-    private func getProductDescription(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-
     
     private func setProduct() {
         products = PurchaseManager.shared.products

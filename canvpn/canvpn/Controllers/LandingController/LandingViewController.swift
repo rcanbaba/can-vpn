@@ -142,7 +142,7 @@ extension LandingViewController: FirstLandingDelegate, SecondLandingDelegate, Th
     }
     
     func goNextFromThird() {
-        if SettingsManager.shared.settings?.isInReview == true {
+        if SettingsManager.shared.settings?.isInReview == true || SettingsManager.shared.settings?.user.isSubscribed == true {
             landingTasksCompleted()
         } else {
             goNext(fromViewController: thirdViewController, toViewController: self.fourthViewController)

@@ -22,7 +22,7 @@ struct SettingsResponse: Codable {
     let text: Text
     let contactUs: ContactUs
     let landingProduct: Product
-    let specialOffer: SpecialOffer
+    let specialOffer: SpecialOffer?
 
     enum CodingKeys: String, CodingKey {
         case user, servers, links, products, skus, interface, text
