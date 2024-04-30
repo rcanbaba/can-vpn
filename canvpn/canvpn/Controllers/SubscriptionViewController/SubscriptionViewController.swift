@@ -47,6 +47,7 @@ class SubscriptionViewController: ScrollableViewController {
     private var reviews: [ReviewItem] = []
     
     override func viewDidLoad() {
+        Analytics.logEvent("SubscriptionPresented", parameters: [:])
         super.viewDidLoad()
         networkService = DefaultNetworkService()
         checkAndSetProducts()
@@ -229,29 +230,32 @@ class SubscriptionViewController: ScrollableViewController {
                                         } else {
                                             print("💙: subscription - error4")
                                             self.showRestoreFailedAlert()
+                                            Analytics.logEvent("SubscriptionErrorBackend", parameters: [:])
                                         }
                                     case .failure:
                                         print("💙: subscription - error5")
                                         self.showRestoreFailedAlert()
+                                        Analytics.logEvent("SubscriptionErrorBackend1", parameters: [:])
                                     }
                                 }
                             }
                         } else {
                             print("💙: subscription - error6")
                             self.showRestoreFailedAlert()
+                            Analytics.logEvent("SubscriptionErrorApple", parameters: [:])
                         }
                     } else if error == .paymentWasCancelled {
                         print("💙: subscription - error7")
-                        // Handle payment cancellation
+                        Analytics.logEvent("SubscriptionErrorCancel", parameters: [:])
                     } else {
                         print("💙: subscription - error8")
-                        // Handle other errors
+                        Analytics.logEvent("SubscriptionErrorUnknown", parameters: [:])
                     }
                 }
             }
         } else {
             print("💙: subscription - error9")
-            // Handle case when product is not found backendden gelmiş apple da yok
+            Analytics.logEvent("SubscriptionErrorProduct", parameters: [:])
         }
     }
     

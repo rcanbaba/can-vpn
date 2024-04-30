@@ -447,10 +447,8 @@ extension SpecialOfferViewController {
                     } else if error == .paymentWasCancelled {
                         print("💙: subscription - error7")
                         Analytics.logEvent("SpecialOfferErrorCancel", parameters: [:])
-                        // Handle payment cancellation
                     } else {
                         print("💙: subscription - error8")
-                        // Handle other errors
                         Analytics.logEvent("SpecialOfferErrorUnknown", parameters: [:])
                     }
                 }
@@ -458,7 +456,6 @@ extension SpecialOfferViewController {
         } else {
             print("💙: subscription - error9")
             Analytics.logEvent("SpecialOfferErrorProduct", parameters: [:])
-            // Handle case when product is not found backendden gelmiş apple da yok
         }
     }
     

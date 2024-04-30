@@ -320,6 +320,7 @@
 		B44122F329575A060072B566 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F229575A060072B566 /* SplashScreenView.swift */; };
 		B44122F929577AFC0072B566 /* IpAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122F829577AFC0072B566 /* IpAddressManager.swift */; };
 		B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44122FB29577E540072B566 /* VpnServerItem.swift */; };
+		B4428DC42BE0FDEF005C1F04 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B4428DC32BE0FD63005C1F04 /* PrivacyInfo.xcprivacy */; };
 		B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */; };
 		B44FB20F2A52CE21002258E9 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FB20E2A52CE20002258E9 /* NotificationNames.swift */; };
 		B453D6D32A14E64400ED35A2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453D6D22A14E64400ED35A2 /* KeychainManager.swift */; };
@@ -748,6 +749,7 @@
 		B44122F229575A060072B566 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		B44122F829577AFC0072B566 /* IpAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddressManager.swift; sourceTree = "<group>"; };
 		B44122FB29577E540072B566 /* VpnServerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnServerItem.swift; sourceTree = "<group>"; };
+		B4428DC32BE0FD63005C1F04 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B44FB20C2A50636B002258E9 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		B44FB20E2A52CE20002258E9 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		B453D6D22A14E64400ED35A2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 				B4C91E9C298562950042500B /* GoogleService-Info.plist */,
 				B4023DC62954A9DB0008BDA6 /* canvpn.entitlements */,
 				B490D3AC296C98EE00651BFC /* Config.swift */,
+				B4428DC32BE0FD63005C1F04 /* PrivacyInfo.xcprivacy */,
 			);
 			path = canvpn;
 			sourceTree = "<group>";
@@ -1627,7 +1630,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					B4023D3D2950E31E0008BDA6 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -1790,6 +1793,7 @@
 				B44122712957550E0072B566 /* me.png in Resources */,
 				B441226C2957550E0072B566 /* lu.png in Resources */,
 				B44122BD2957550E0072B566 /* pr.png in Resources */,
+				B4428DC42BE0FDEF005C1F04 /* PrivacyInfo.xcprivacy in Resources */,
 				B441226E2957550E0072B566 /* ae.png in Resources */,
 				B44122DF2957550E0072B566 /* ki.png in Resources */,
 				B441226D2957550E0072B566 /* uz.png in Resources */,
@@ -2176,6 +2180,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2238,6 +2243,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
