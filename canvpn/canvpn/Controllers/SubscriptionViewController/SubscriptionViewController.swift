@@ -247,10 +247,8 @@ class SubscriptionViewController: ScrollableViewController {
                     } else if error == .paymentWasCancelled {
                         print("💙: subscription - error7")
                         Analytics.logEvent("SubscriptionErrorCancel", parameters: [:])
-                        // Handle payment cancellation
                     } else {
                         print("💙: subscription - error8")
-                        // Handle other errors
                         Analytics.logEvent("SubscriptionErrorUnknown", parameters: [:])
                     }
                 }
@@ -258,7 +256,6 @@ class SubscriptionViewController: ScrollableViewController {
         } else {
             print("💙: subscription - error9")
             Analytics.logEvent("SubscriptionErrorProduct", parameters: [:])
-            // Handle case when product is not found backendden gelmiş apple da yok
         }
     }
     
