@@ -7,6 +7,7 @@
 
 import UIKit
 import StoreKit
+import FirebaseAnalytics
 
 protocol FourthLandingDelegate: AnyObject {
     func goNextFromFourth()
@@ -28,15 +29,17 @@ class FourthLandingViewController: UIViewController {
     private var networkService: DefaultNetworkService?
     
     private var products: [SKProduct]?
-    private var presentableProducts: [Product] = []
+    private var landingProduct: Product? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Analytics.logEvent("LandingOfferPresented", parameters: [:])
         networkService = DefaultNetworkService()
         landingView.delegate = self
         configureUI()
         landingView.configureAsOfferView()
         activateCloseButtonTimer()
+        setProduct()
     }
     
     private func configureUI() {
@@ -101,6 +104,7 @@ class FourthLandingViewController: UIViewController {
             title: "offer_alert_try".localize(),
             style: .default
         ) { (action) in
+            Analytics.logEvent("LandingOfferSubsTappedFromAlert", parameters: [:])
             self.subscribeInitialOffer()
         }
 
@@ -114,7 +118,8 @@ class FourthLandingViewController: UIViewController {
     }
     
     private func subscribeInitialOffer() {
-        //TODO: start subs flow
+        guard let landingProduct = landingProduct else { return }
+        subscribeItem(productId: landingProduct.sku)
     }
     
 }
@@ -133,6 +138,7 @@ extension FourthLandingViewController: LandingMainViewDelegate {
     }
     
     func nextTapped() {
+        Analytics.logEvent("LandingOfferSubsTappedFromButton", parameters: [:])
         subscribeInitialOffer()
     }
 }
@@ -166,38 +172,16 @@ extension FourthLandingViewController {
         }
     }
     
-    private func getProductName(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-    
-    private func getProductDescription(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-    
-    private func checkAndSetProducts() {
+    private func setProduct() {
         products = PurchaseManager.shared.products
-        // TODO: burada yeni id den geleni yapaccağız
-        presentableProducts = SettingsManager.shared.settings?.products ?? []
-        setProducts()
-    }
-    
-    private func setProducts() {
-        presentableProducts.forEach { product in
-            if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
-                
-                let presentableProduct = PresentableProduct(sku: product.sku,
-                                                            title: getProductName(key: storeProduct.localizedTitle),
-                                                            description: getProductDescription(key: storeProduct.localizedDescription),
-                                                            price: storePrice,
-                                                            isSelected: product.isPromoted,
-                                                            isBest: product.isBestOffer,
-                                                            isDiscounted: product.discount)
-                
-                // TODO: gelen product datalarından gerekliyi ekrana set et
-            }
-        }
+        landingProduct = SettingsManager.shared.settings?.landingProduct
+        
+        guard let landingProduct = landingProduct,
+              let storeProduct = getSKProduct(skuID: landingProduct.sku),
+              let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) else {
+            //TODO: log bas landing product yok gibi
+            return }
+        landingView.configureOfferText(storePrice)
     }
     
     private func getSKProduct(skuID: String) -> SKProduct? {
@@ -205,6 +189,7 @@ extension FourthLandingViewController {
     }
     
     private func subscribeItem(productId: String) {
+        Analytics.logEvent("LandingOfferSubsItem", parameters: [:])
         if let product = getSKProduct(skuID: productId) {
             isLoading(show: true)
             PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
@@ -228,28 +213,34 @@ extension FourthLandingViewController {
                                         } else {
                                             print("💙: subscription - error4")
                                             self.showRestoreFailedAlert()
+                                            Analytics.logEvent("LandingOfferErrorBackend", parameters: [:])
                                         }
                                     case .failure:
                                         print("💙: subscription - error5")
                                         self.showRestoreFailedAlert()
+                                        Analytics.logEvent("LandingOfferErrorBackend1", parameters: [:])
                                     }
                                 }
                             }
                         } else {
                             print("💙: subscription - error6")
                             self.showRestoreFailedAlert()
+                            Analytics.logEvent("LandingOfferErrorApple", parameters: [:])
                         }
                     } else if error == .paymentWasCancelled {
                         print("💙: subscription - error7")
                         // Handle payment cancellation
+                        Analytics.logEvent("LandingOfferErrorCancel", parameters: [:])
                     } else {
                         print("💙: subscription - error8")
                         // Handle other errors
+                        Analytics.logEvent("LandingOfferErrorUnknown", parameters: [:])
                     }
                 }
             }
         } else {
             print("💙: subscription - error9")
+            Analytics.logEvent("LandingOfferErrorProduct", parameters: [:])
             // Handle case when product is not found backendden gelmiş apple da yok
         }
     }

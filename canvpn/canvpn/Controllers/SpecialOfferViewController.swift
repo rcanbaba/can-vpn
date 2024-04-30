@@ -133,15 +133,15 @@ class SpecialOfferViewController: UIViewController {
     private var networkService: DefaultNetworkService?
     
     private var products: [SKProduct]?
-    private var presentableProducts: [Product] = []
+    private var offerProduct: SpecialOffer? = nil
     
     override func viewDidLoad() {
+        Analytics.logEvent("SpecialOfferPresented", parameters: [:])
         super.viewDidLoad()
         configureUI()
         setGestureRecognizer()
         activateCloseButtonTimer()
-        startCountdown(from: 109)
-        offerLabel.text = "offer_info_text_before".localize() + " " + "€ 1,99" + " " + "offer_info_text_duration".localize()
+        setProduct()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -282,6 +282,7 @@ class SpecialOfferViewController: UIViewController {
     
     // MARK: ACTIONS
     @objc private func getButtonTapped(_ sender: UIButton) {
+        Analytics.logEvent("SpecialOfferSubsTappedFromButton", parameters: [:])
         subscribeOffer()
     }
     
@@ -315,6 +316,7 @@ class SpecialOfferViewController: UIViewController {
             title: "offer_alert_try".localize(),
             style: .default
         ) { (action) in
+            Analytics.logEvent("SpecialOfferSubsTappedFromAlert", parameters: [:])
             self.subscribeOffer()
         }
 
@@ -328,7 +330,8 @@ class SpecialOfferViewController: UIViewController {
     }
     
     private func subscribeOffer() {
-        //TODO: start subs flow
+        guard let offerProduct = offerProduct else { return }
+        subscribeItem(productId: offerProduct.product.sku)
     }
     
     private func showSubscriptionTerms() {
@@ -376,37 +379,25 @@ extension SpecialOfferViewController {
         }
     }
     
-    private func getProductName(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-    
-    private func getProductDescription(key: String) -> String {
-        guard SettingsManager.shared.settings?.isInReview == false else { return key }
-        return key.localize()
-    }
-    
-    private func checkAndSetProducts() {
+    private func setProduct() {
         products = PurchaseManager.shared.products
-        // TODO: burada yeni id den geleni yapaccağız
-        presentableProducts = SettingsManager.shared.settings?.products ?? []
-        setProducts()
+        offerProduct = SettingsManager.shared.settings?.specialOffer
+        
+        guard let offerProduct = offerProduct,
+              let storeProduct = getSKProduct(skuID: offerProduct.product.sku),
+              let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) else {
+            //TODO: log bas landing product yok gibi
+            return }
+        
+        setOfferPrice(storePrice)
+        startCountdown(from: offerProduct.meta.duration)
     }
     
-    private func setProducts() {
-        presentableProducts.forEach { product in
-            if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
-                
-                let presentableProduct = PresentableProduct(sku: product.sku,
-                                                            title: getProductName(key: storeProduct.localizedTitle),
-                                                            description: getProductDescription(key: storeProduct.localizedDescription),
-                                                            price: storePrice,
-                                                            isSelected: product.isPromoted,
-                                                            isBest: product.isBestOffer,
-                                                            isDiscounted: product.discount)
-                
-                // TODO: gelen product datalarından gerekliyi ekrana set et
-            }
+    private func setOfferPrice(_ text: String) {
+        if view.isRTL {
+            offerLabel.text = "offer_info_text_duration".localize() + " " + text + " " + "offer_info_text_before".localize()
+        } else {
+            offerLabel.text = "offer_info_text_before".localize() + " " + text + " " + "offer_info_text_duration".localize()
         }
     }
     
@@ -415,6 +406,7 @@ extension SpecialOfferViewController {
     }
     
     private func subscribeItem(productId: String) {
+        Analytics.logEvent("SpecialOfferSubsItem", parameters: [:])
         if let product = getSKProduct(skuID: productId) {
             isLoading(show: true)
             PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
@@ -438,28 +430,34 @@ extension SpecialOfferViewController {
                                         } else {
                                             print("💙: subscription - error4")
                                             self.showRestoreFailedAlert()
+                                            Analytics.logEvent("SpecialOfferErrorBackend", parameters: [:])
                                         }
                                     case .failure:
                                         print("💙: subscription - error5")
                                         self.showRestoreFailedAlert()
+                                        Analytics.logEvent("SpecialOfferErrorBackend1", parameters: [:])
                                     }
                                 }
                             }
                         } else {
                             print("💙: subscription - error6")
                             self.showRestoreFailedAlert()
+                            Analytics.logEvent("SpecialOfferErrorApple", parameters: [:])
                         }
                     } else if error == .paymentWasCancelled {
                         print("💙: subscription - error7")
+                        Analytics.logEvent("SpecialOfferErrorCancel", parameters: [:])
                         // Handle payment cancellation
                     } else {
                         print("💙: subscription - error8")
                         // Handle other errors
+                        Analytics.logEvent("SpecialOfferErrorUnknown", parameters: [:])
                     }
                 }
             }
         } else {
             print("💙: subscription - error9")
+            Analytics.logEvent("SpecialOfferErrorProduct", parameters: [:])
             // Handle case when product is not found backendden gelmiş apple da yok
         }
     }

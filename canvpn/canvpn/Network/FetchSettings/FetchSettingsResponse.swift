@@ -21,12 +21,16 @@ struct SettingsResponse: Codable {
     let appUpdate: AppUpdate?
     let text: Text
     let contactUs: ContactUs
+    let landingProduct: Product
+    let specialOffer: SpecialOffer?
 
     enum CodingKeys: String, CodingKey {
         case user, servers, links, products, skus, interface, text
         case isInReview = "is_in_review"
         case appUpdate = "app_update"
         case contactUs = "contact_us"
+        case landingProduct = "landing_product"
+        case specialOffer = "special_offer"
     }
 }
 
@@ -152,4 +156,15 @@ struct User: Codable {
 // MARK: - ContactUs
 struct ContactUs: Codable {
     let subject, email: String
+}
+
+// MARK: - SpecialOffer
+struct SpecialOffer: Codable {
+    let product: Product
+    let meta: Meta
+}
+
+// MARK: - Meta
+struct Meta: Codable {
+    let duration: Int
 }

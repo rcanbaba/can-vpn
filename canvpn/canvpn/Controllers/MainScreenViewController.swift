@@ -157,8 +157,15 @@ class MainScreenViewController: UIViewController {
     }
     
     private func checkSubscriptionPageThenPresent() {
-        let isPremium = SettingsManager.shared.settings?.interface.showPurchase ?? false
-        isPremium ? presentSubscriptionPage() : ()
+        let isSpecialOfferAvailable = SettingsManager.shared.settings?.specialOffer != nil && SettingsManager.shared.settings?.specialOffer?.meta.duration ?? 0 > 0
+        let isPremium = SettingsManager.shared.settings?.user.isSubscribed ?? false
+        let showPurchase = SettingsManager.shared.settings?.interface.showPurchase ?? false && !isPremium
+        
+        if isSpecialOfferAvailable && !isPremium {
+            presentSpecialOffer()
+        } else if !isSpecialOfferAvailable && showPurchase {
+            presentSubscriptionPage()
+        }
     }
     
     private func checkGetFreeThenSet() {
@@ -215,7 +222,6 @@ class MainScreenViewController: UIViewController {
     }
     
     private func presentSpecialOffer() {
-        // TODO: bunların üstüne ayrı bişeyle present etsi
         let controller = SpecialOfferViewController()
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle  = .crossDissolve
@@ -450,11 +456,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
     }
     
     func goProButtonTapped() {
-        
-        presentSpecialOffer()
-        
-        // TODO:
-      //  presentSubscriptionPage()
+        presentSubscriptionPage()
     }
     
     func locationButtonTapped() {
