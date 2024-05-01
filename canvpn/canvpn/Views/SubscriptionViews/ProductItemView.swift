@@ -39,6 +39,8 @@ class ProductItemView: UIView {
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.textColor = UIColor.Subscription.reviewText
         label.textAlignment = .natural
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         return label
     }()
     
@@ -47,6 +49,8 @@ class ProductItemView: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor.Subscription.reviewText
         label.textAlignment = .natural
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         return label
     }()
     

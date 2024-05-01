@@ -29,11 +29,11 @@ class LandingViewController: UIViewController {
         setPresentations()
         setData()
         startPresentation()
+        setNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBar()
     }
     
     private func configureUI() {

@@ -160,14 +160,14 @@ class LandingMainView: UIView {
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview().inset(48)
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(32)
         }
         
         landingButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(36)
             make.height.equalTo(48)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(64)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(40)
         }
         
         stepImageView.snp.makeConstraints { make in

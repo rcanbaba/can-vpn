@@ -318,12 +318,16 @@ extension SubscriptionViewController {
     }
     
     private func showSubscriptionTerms() {
-        let alertController = UIAlertController(title: "subs_terms_key".localize(),
-                                                message: "subs_terms_detail_key".localize(),
-                                                preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+//        let alertController = UIAlertController(title: "subs_terms_key".localize(),
+//                                                message: "subs_terms_detail_key".localize(),
+//                                                preferredStyle: .alert)
+//        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+//        alertController.addAction(cancelAction)
+//        self.present(alertController, animated: true, completion: nil)
+//        
+        let tosDefaultUrl = SettingsManager.shared.settings?.links.termsURL ?? Constants.appTermsOfServicePageURLString
+        guard let url = URL(string: tosDefaultUrl) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     private func showCouponAlert() {
