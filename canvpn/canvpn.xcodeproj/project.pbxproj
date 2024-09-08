@@ -2336,7 +2336,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
@@ -2348,7 +2348,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2363,7 +2363,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V4AN9PQ642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
@@ -2375,7 +2375,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arbtech.ilovevpn.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
