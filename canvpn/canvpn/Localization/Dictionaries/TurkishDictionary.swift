@@ -167,16 +167,18 @@ struct TurkishDictionary {
         "rating_rate": "Puan Ver",
         
         // landing
-        "landing_1_title": "Gizlilik, Ödün Vermeden",
-        "landing_1_description": "Online işlemlerinizi iLove VPN ile koruyun.\nGizlilik parmaklarınızın ucunda.",
+        "landing_1_title": "Gizlilikten Ödün Vermeyin",
+        "landing_1_description": "Online işlemlerinizi iLove VPN ile koruyun.\nGizlilik artık parmaklarınızın ucunda.",
         "landing_1_button": "Devam",
         
-        "landing_2_title": "Küresel Erişim, Yerel Hız",
-        "landing_2_description": "100'den fazla konumda yüksek hızda içeriklere erişimi açın.",
+        "landing_2_title": "Hız Kesmeden, Tüm Dünyaya Erişin",
+        "landing_2_description": "100'den fazla konumda, yüksek hızda tüm içeriklere erişin.",
         "landing_2_button": "Devam",
         
+        "support_us_landing": "Bizi değerlendirerek gelişimimize katkıda bulunur musunuz?",
+        
         "landing_3_title": "Özgürlüğe Açılan Kapınız",
-        "landing_3_description": "Daha açık bir internete doğru yolculuğunuza başlayın.\nBaşlamak için 'Başla'ya dokunun!",
+        "landing_3_description": "Kesintisiz internete yolculuğunuza başlayın.",
         "landing_3_button": "Başla",
         
         "premium_desc_5": "Kesintisiz bir deneyim için reklamsız gezinin.",

@@ -174,6 +174,8 @@ struct PortugueseDictionary {
         "landing_2_description": "Desbloqueie um mundo de conteúdo em alta velocidade a partir de mais de 100 locais.",
         "landing_2_button": "Continuar",
         
+        "support_us_landing": "Você apoiaria nosso crescimento nos avaliando?",
+
         "landing_3_title": "Seu Portão para a Liberdade",
         "landing_3_description": "Inicie sua jornada para uma internet mais aberta.\nToque em 'Começar' para iniciar!",
         "landing_3_button": "Começar",

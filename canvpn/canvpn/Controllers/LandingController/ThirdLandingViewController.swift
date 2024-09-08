@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAnalytics
+import StoreKit
 
 protocol ThirdLandingDelegate: AnyObject {
     func goNextFromThird()
@@ -21,6 +23,7 @@ class ThirdLandingViewController: UIViewController {
         super.viewDidLoad()
         landingView.delegate = self
         configureUI()
+        presentRating()
     }
     
     private func configureUI() {
@@ -32,11 +35,18 @@ class ThirdLandingViewController: UIViewController {
     }
     
     public func set(data: LandingData) {
+        landingView.remakeAsRatingPage()
         landingView.setStep(image: data.stepImage)
         landingView.setCenterImage(image: data.centerImage)
         landingView.setTitle(text: data.title)
         landingView.setDescription(text: data.description)
         landingView.setButonText(text: data.butonText)
+    }
+    
+    private func presentRating() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+        }
     }
     
 }

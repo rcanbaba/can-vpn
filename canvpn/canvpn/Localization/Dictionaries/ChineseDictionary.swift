@@ -174,8 +174,10 @@ struct ChineseDictionary {
         "landing_2_description": "以高速解锁全球各地的内容，拥有超过 100 个地点。",
         "landing_2_button": "继续",
         
-        "landing_3_title": "通往自由的大门",
-        "landing_3_description": "开始您通向更加开放互联网的旅程。\n点击 '开始' 开始吧！",
+        "support_us_landing": "您愿意通过给我们评分来支持我们的发展吗？",
+
+        "landing_3_title": "通往自由的门户",
+        "landing_3_description": "开始您的无缝互联网之旅。",
         "landing_3_button": "开始",
         
         "premium_desc_5": "无广告浏览，享受流畅体验。",

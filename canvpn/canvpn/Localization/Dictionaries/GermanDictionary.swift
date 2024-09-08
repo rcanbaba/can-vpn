@@ -174,9 +174,11 @@ struct GermanDictionary {
         "landing_2_description": "Entsperre eine Welt voller Inhalte mit hoher Geschwindigkeit von über 100 Standorten.",
         "landing_2_button": "Weiter",
         
-        "landing_3_title": "Dein Tor zur Freiheit",
-        "landing_3_description": "Starte deine Reise in ein offeneres Internet.\nTippe auf 'Los geht's', um zu beginnen!",
-        "landing_3_button": "Los geht's",
+        "support_us_landing": "Würden Sie unser Wachstum unterstützen, indem Sie uns eine Bewertung geben?",
+
+        "landing_3_title": "Ihr Tor zur Freiheit",
+        "landing_3_description": "Beginnen Sie Ihre Reise zu einem ununterbrochenen Internet.",
+        "landing_3_button": "Loslegen",
         
         "premium_desc_5": "Surfen Sie werbefrei für ein nahtloses Erlebnis.",
         "premium_title_5": "Keine Werbung",

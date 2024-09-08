@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerForPushNotifications()
         LaunchCountManager.shared.incrementLaunchCount()
         RatingCountManager.shared.incrementLaunchCount()
+        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.overrideUserInterfaceStyle = .light
         return true
     }
     

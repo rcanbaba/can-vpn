@@ -176,8 +176,10 @@ struct EnglishDictionary {
         "landing_2_description": "Unlock a world of content at high speeds from over 100 locations.",
         "landing_2_button": "Continue",
         
+        "support_us_landing": "Would you support our growth by giving us a rating?",
+        
         "landing_3_title": "Your Gateway to Freedom",
-        "landing_3_description": "Start your journey to a more open internet.\nTap 'Get Started' to begin!",
+        "landing_3_description": "Start your journey to an uninterrupted internet.",
         "landing_3_button": "Get Started",
         
         "premium_desc_5": "Surf ad-free for a seamless experience.",

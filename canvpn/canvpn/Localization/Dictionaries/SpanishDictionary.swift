@@ -174,8 +174,10 @@ struct SpanishDictionary {
         "landing_2_description": "Desbloquea un mundo de contenido a altas velocidades desde más de 100 ubicaciones.",
         "landing_2_button": "Continuar",
         
-        "landing_3_title": "Tu Puerta a la Libertad",
-        "landing_3_description": "Inicia tu viaje hacia un internet más abierto.\n¡Toca 'Comenzar' para empezar!",
+        "support_us_landing": "¿Nos apoyarías en nuestro crecimiento dándonos una calificación?",
+
+        "landing_3_title": "Tu Puerta hacia la Libertad",
+        "landing_3_description": "Comienza tu viaje hacia un internet sin interrupciones.",
         "landing_3_button": "Comenzar",
         
         "premium_desc_5": "Navega sin anuncios para una experiencia sin interrupciones.",

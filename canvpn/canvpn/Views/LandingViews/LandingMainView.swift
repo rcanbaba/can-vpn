@@ -65,6 +65,16 @@ class LandingMainView: UIView {
         return label
     }()
     
+    private lazy var supportUsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = UIColor.Landing.titleText
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = "support_us_landing".localize()
+        return label
+    }()
+    
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -194,7 +204,7 @@ class LandingMainView: UIView {
 
         closeButton.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide).inset(24)
-            make.trailing.equalToSuperview().inset(24)
+            make.leading.equalToSuperview().inset(24)
             make.size.equalTo(40)
         }
         
@@ -258,5 +268,21 @@ extension LandingMainView {
         } else {
             offerLabel.text = "offer_info_text_before".localize() + " " + text + " " + "offer_info_text_duration".localize()
         }
+    }
+    
+    public func remakeAsRatingPage() {
+        addSubview(supportUsLabel)
+        
+        supportUsLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(40)
+            make.top.equalTo(topLogoImageView.snp.bottom).offset(48)
+        }
+        
+        centerImageView.snp.remakeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(supportUsLabel.snp.bottom).offset(24)
+            make.width.equalToSuperview().inset(48)
+        }
+        
     }
 }

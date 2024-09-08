@@ -174,8 +174,10 @@ struct FrenchDictionary {
         "landing_2_description": "Débloquez un monde de contenu à haute vitesse depuis plus de 100 emplacements.",
         "landing_2_button": "Continuer",
         
+        "support_us_landing": "Souhaitez-vous soutenir notre croissance en nous donnant une évaluation ?",
+
         "landing_3_title": "Votre Porte vers la Liberté",
-        "landing_3_description": "Commencez votre voyage vers un internet plus ouvert.\nAppuyez sur 'Commencer' pour débuter !",
+        "landing_3_description": "Commencez votre voyage vers un internet sans interruptions.",
         "landing_3_button": "Commencer",
         
         "premium_desc_5": "Naviguez sans publicités pour une expérience fluide.",

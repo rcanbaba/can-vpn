@@ -174,8 +174,10 @@ struct ArabicDictionary {
         "landing_2_description": "فتح عالم من المحتوى بسرعة عالية من أكثر من 100 موقع.",
         "landing_2_button": "متابعة",
         
-        "landing_3_title": "بوابتك إلى الحرية",
-        "landing_3_description": "ابدأ رحلتك نحو إنترنت أكثر انفتاحًا.\nاضغط 'ابدأ' للبدء!",
+        "support_us_landing": "هل ستدعم نمونا من خلال تقييمنا؟",
+
+        "landing_3_title": "بوابتك نحو الحرية",
+        "landing_3_description": "ابدأ رحلتك نحو إنترنت غير منقطع.",
         "landing_3_button": "ابدأ",
         
         "premium_desc_5": "تصفح بدون إعلانات لتجربة سلسة.",

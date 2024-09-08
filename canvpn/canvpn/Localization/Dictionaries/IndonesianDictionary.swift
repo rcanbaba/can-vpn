@@ -172,8 +172,10 @@ struct IndonesianDictionary {
         "landing_2_description": "Buka dunia konten dengan kecepatan tinggi dari lebih dari 100 lokasi.",
         "landing_2_button": "Lanjutkan",
         
-        "landing_3_title": "Gerbang Anda ke Kebebasan",
-        "landing_3_description": "Mulailah perjalanan Anda menuju internet yang lebih terbuka.\nKetuk 'Mulai' untuk memulai!",
+        "support_us_landing": "Maukah Anda mendukung perkembangan kami dengan memberikan penilaian?",
+
+        "landing_3_title": "Gerbang Anda Menuju Kebebasan",
+        "landing_3_description": "Mulailah perjalanan Anda menuju internet yang tanpa hambatan.",
         "landing_3_button": "Mulai",
         
         "premium_desc_5": "Jelajahi tanpa iklan untuk pengalaman yang mulus.",
