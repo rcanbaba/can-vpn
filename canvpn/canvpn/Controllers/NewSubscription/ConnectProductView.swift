@@ -99,3 +99,23 @@ class ConnectProductView: UIView {
     }
     
 }
+
+// MARK: - Public methods
+extension ConnectProductView {
+    public func set(productNameText: String) {
+        productNameLabel.text = productNameText
+    }
+    
+    public func set(newPriceText: String) {
+        newPriceLabel.text = newPriceText
+    }
+    
+    public func set(oldPriceText: String) {
+        oldPriceLabel.text = oldPriceText
+    }
+    
+    public func set(discountText: String) {
+        discountView.discountLabel.text = discountText
+    }
+    
+}

@@ -9,10 +9,9 @@ import UIKit
 
 class ConnectDiscountView: UIView {
     
-    // Initialize with a gradient layer
     private let gradientLayer = CAGradientLayer()
     
-    private lazy var discountLabel: UILabel = {
+    public lazy var discountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .black)
         label.textColor = UIColor.white
@@ -47,7 +46,6 @@ class ConnectDiscountView: UIView {
     }
     
     private func setupGradientLayer() {
-        // Define the gradient colors
         gradientLayer.colors = [
             UIColor.NewSubs.green.cgColor,
             UIColor.NewSubs.gradierGreen.cgColor
@@ -56,10 +54,6 @@ class ConnectDiscountView: UIView {
         gradientLayer.type = .radial
         
         gradientLayer.locations = [0.0, 1.0]
-//
-//        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-//        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
