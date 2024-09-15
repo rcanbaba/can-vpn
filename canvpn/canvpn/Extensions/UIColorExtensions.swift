@@ -87,4 +87,12 @@ extension UIColor {
         static let freeTextGray = UIColor("5B5B5B")
     }
     
+    struct NewSubs {
+        static let green = UIColor("38D980")
+        static let dark = UIColor("050A30")
+        static let gray = UIColor("969696")
+        static let gold = UIColor("FFD600")
+        
+    }
+    
 }

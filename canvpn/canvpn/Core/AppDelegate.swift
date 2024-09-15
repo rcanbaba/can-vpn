@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Adapty
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         registerForPushNotifications()
+        Adapty.activate("public_live_4xKTAn28.YIWm5CLtg3mRNxo71Kgi")
         LaunchCountManager.shared.incrementLaunchCount()
         RatingCountManager.shared.incrementLaunchCount()
         UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.overrideUserInterfaceStyle = .light

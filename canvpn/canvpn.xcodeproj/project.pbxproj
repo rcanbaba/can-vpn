@@ -39,6 +39,7 @@
 		B4216DD22B5D454500F8B0D6 /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD12B5D454500F8B0D6 /* LandingButton.swift */; };
 		B4216DD42B5D46EC00F8B0D6 /* LandingBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD32B5D46EC00F8B0D6 /* LandingBackView.swift */; };
 		B4216DD62B5EB31F00F8B0D6 /* FeaturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD52B5EB31F00F8B0D6 /* FeaturesTableViewCell.swift */; };
+		B42297CC2C8F39D5003EE84C /* Adapty in Frameworks */ = {isa = PBXBuildFile; productRef = B42297CB2C8F39D5003EE84C /* Adapty */; };
 		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
@@ -333,6 +334,9 @@
 		B47A225A2AD9562C003271BA /* PortugueseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A22592AD9562C003271BA /* PortugueseDictionary.swift */; };
 		B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */; };
 		B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */; };
+		B47C90302C96E4F100E97011 /* ConnectOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */; };
+		B47C90322C96ECD200E97011 /* TestimonialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90312C96ECD200E97011 /* TestimonialCell.swift */; };
+		B47C90342C96F3AC00E97011 /* ConnectOfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */; };
 		B4805CAE2B14D65600D53574 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAD2B14D65600D53574 /* HomeViewController.swift */; };
 		B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */; };
 		B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C27B2AED082800D90453 /* SideMenuViewController.swift */; };
@@ -762,6 +766,9 @@
 		B47A22592AD9562C003271BA /* PortugueseDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortugueseDictionary.swift; sourceTree = "<group>"; };
 		B47A225B2AD9563D003271BA /* IndonesianDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndonesianDictionary.swift; sourceTree = "<group>"; };
 		B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailToURLGenerator.swift; sourceTree = "<group>"; };
+		B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOfferViewController.swift; sourceTree = "<group>"; };
+		B47C90312C96ECD200E97011 /* TestimonialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCell.swift; sourceTree = "<group>"; };
+		B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOfferButton.swift; sourceTree = "<group>"; };
 		B4805CAD2B14D65600D53574 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		B481C27B2AED082800D90453 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -859,6 +866,7 @@
 				B42DE3E52A82C585002137F9 /* AppTrackingTransparency.framework in Frameworks */,
 				B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */,
 				B43E158F2A1142D50095FF4A /* FirebaseAnalytics in Frameworks */,
+				B42297CC2C8F39D5003EE84C /* Adapty in Frameworks */,
 				B4023D6029510E310008BDA6 /* Lottie in Frameworks */,
 				B490D392296C958A00651BFC /* WireGuardKit in Frameworks */,
 				B43E15932A1142D50095FF4A /* FirebaseCrashlytics in Frameworks */,
@@ -1119,6 +1127,7 @@
 		B44120EA295727D00072B566 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B47C902E2C96E4CC00E97011 /* NewSubscription */,
 				B4216DC52B5D204E00F8B0D6 /* LandingController */,
 				B481C2892AED485200D90453 /* SubscriptionViewController */,
 				B481C2862AED47EA00D90453 /* SideMenuControllers */,
@@ -1418,6 +1427,16 @@
 			path = ReusableComponents;
 			sourceTree = "<group>";
 		};
+		B47C902E2C96E4CC00E97011 /* NewSubscription */ = {
+			isa = PBXGroup;
+			children = (
+				B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */,
+				B47C90312C96ECD200E97011 /* TestimonialCell.swift */,
+				B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */,
+			);
+			path = NewSubscription;
+			sourceTree = "<group>";
+		};
 		B481C2862AED47EA00D90453 /* SideMenuControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1596,6 +1615,7 @@
 				B43E15902A1142D50095FF4A /* FirebaseAuth */,
 				B43E15922A1142D50095FF4A /* FirebaseCrashlytics */,
 				B43E15942A1142D50095FF4A /* FirebaseMessaging */,
+				B42297CB2C8F39D5003EE84C /* Adapty */,
 			);
 			productName = canvpn;
 			productReference = B4023D3E2950E31E0008BDA6 /* canvpn.app */;
@@ -1673,6 +1693,7 @@
 				B490D390296C958A00651BFC /* XCRemoteSwiftPackageReference "wireguard-apple" */,
 				B43E158A2A113F4A0095FF4A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B43E158D2A1142D50095FF4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B467699F2C8F38950061049C /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */,
 			);
 			productRefGroup = B4023D3F2950E31E0008BDA6 /* Products */;
 			projectDirPath = "";
@@ -2009,6 +2030,7 @@
 				B4023D7F2951F4E90008BDA6 /* MainScreenView.swift in Sources */,
 				B4184A1E295614950051EB79 /* DataRequest.swift in Sources */,
 				B41C82492AC592DE00D741D8 /* UserEntryRequest.swift in Sources */,
+				B47C90302C96E4F100E97011 /* ConnectOfferViewController.swift in Sources */,
 				B4E9BCFD2B80B0060060E53E /* UkrainianDictionary.swift in Sources */,
 				B4D09F3229C7B50F00E11069 /* LocationButton.swift in Sources */,
 				B481C2852AED20FA00D90453 /* SideMenuHelper.swift in Sources */,
@@ -2031,6 +2053,7 @@
 				B4216DC42B5ADEDA00F8B0D6 /* RatingPopupViewController.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */,
+				B47C90342C96F3AC00E97011 /* ConnectOfferButton.swift in Sources */,
 				B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */,
 				B4C5C4972B6655C70068A01D /* ProductItemView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
@@ -2044,6 +2067,7 @@
 				B4216DD42B5D46EC00F8B0D6 /* LandingBackView.swift in Sources */,
 				B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */,
 				B4DA8EE22AAC6ADB00F4C643 /* LaunchCountManager.swift in Sources */,
+				B47C90322C96ECD200E97011 /* TestimonialCell.swift in Sources */,
 				B4C5C4912B623EE30068A01D /* ScrollableViewController.swift in Sources */,
 				B4023DC22954752C0008BDA6 /* KeychainItemAccessibility.swift in Sources */,
 				B4184A172955C9AA0051EB79 /* LocationListTableViewCell.swift in Sources */,
@@ -2494,6 +2518,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		B467699F2C8F38950061049C /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adaptyteam/AdaptySDK-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.3;
+			};
+		};
 		B490D390296C958A00651BFC /* XCRemoteSwiftPackageReference "wireguard-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://git.zx2c4.com/wireguard-apple";
@@ -2519,6 +2551,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B4023DC32954A0050008BDA6 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		B42297CB2C8F39D5003EE84C /* Adapty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B467699F2C8F38950061049C /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = Adapty;
 		};
 		B43E158B2A113F4A0095FF4A /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
