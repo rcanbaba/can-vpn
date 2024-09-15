@@ -161,8 +161,8 @@ class ConnectOfferViewController: UIViewController {
     }
     
     private func setupCollectionViewScroll() {
-        let middleIndexPath = IndexPath(item: 7, section: 0)
-        collectionView.scrollToItem(at: middleIndexPath, at: .centeredHorizontally, animated: false)
+        let middleIndexPath = IndexPath(item: 5, section: 0)
+        collectionView.scrollToItem(at: middleIndexPath, at: .centeredHorizontally, animated: true)
     }
     
     private func configureUI() {
