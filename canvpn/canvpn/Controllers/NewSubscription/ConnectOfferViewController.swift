@@ -16,6 +16,8 @@ class ConnectOfferViewController: UIViewController {
         button.setImage(UIImage(named: "back-offer-white"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
+        button.alpha = 0
         return button
     }()
     
@@ -65,7 +67,7 @@ class ConnectOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
-        label.isUserInteractionEnabled = true // Enable gesture recognition
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -75,18 +77,33 @@ class ConnectOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
-        label.isUserInteractionEnabled = true // Enable gesture recognition
+        label.isUserInteractionEnabled = true
         return label
     }()
     
     private lazy var lineView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "vertical-ilne")
+        imageView.image = UIImage(named: "vertical-line")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private let testimonials: [(name: String, message: String)] = [
+        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
+        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
+        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
+        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
+        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
+        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
+        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
+        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
+        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
+        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
+        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
+        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
+        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
+        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
+        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
         ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
         ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
         ("John P.", "Amazing performance, especially for the price. So glad I upgraded!")
@@ -111,23 +128,40 @@ class ConnectOfferViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var productView: ConnectProductView = {
+        let view = ConnectProductView()
+        return view
+    }()
+    
     override func viewDidLoad() {
         Analytics.logEvent("ConnectOfferPresented", parameters: [:])
         super.viewDidLoad()
         configureUI()
-        setupCollectionViewScroll()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        Analytics.logEvent("053ConnectOfferPresented", parameters: ["type" : "willAppear"])
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupCollectionViewScroll()
+        setGestureRecognizer()
+        activateCloseButtonTimer()
     }
+    
+    private func setGestureRecognizer() {
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
+        termsLabel.addGestureRecognizer(termsTapGesture)
+        termsLabel.isUserInteractionEnabled = true
+        
+        let privacyTapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyLabelTapped(_:)))
+        privacyLabel.addGestureRecognizer(privacyTapGesture)
+        privacyLabel.isUserInteractionEnabled = true
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .darkContent
     }
     
     private func setupCollectionViewScroll() {
-        let middleIndexPath = IndexPath(item: circularTestimonials.count / 3, section: 0)
+        let middleIndexPath = IndexPath(item: 7, section: 0)
         collectionView.scrollToItem(at: middleIndexPath, at: .centeredHorizontally, animated: false)
     }
     
@@ -147,7 +181,7 @@ class ConnectOfferViewController: UIViewController {
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview().inset(30)
-            make.top.equalTo(topImageView.snp.bottom).inset(10)
+            make.top.equalTo(topImageView.snp.bottom).inset(6)
         }
         
         view.addSubview(descriptionLabel)
@@ -168,10 +202,17 @@ class ConnectOfferViewController: UIViewController {
         getButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(65)
             make.height.equalTo(60)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(70)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
         }
         
         getButton.layer.applySketchShadow()
+        
+        view.addSubview(productView)
+        productView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(93)
+            make.bottom.equalTo(getButton.snp.top).inset(-24)
+        }
         
         let stackView = UIStackView(arrangedSubviews: [termsLabel, privacyLabel])
         stackView.axis = .horizontal
@@ -187,8 +228,9 @@ class ConnectOfferViewController: UIViewController {
         
         view.addSubview(lineView)
         lineView.snp.makeConstraints { make in
-            make.center.equalTo(stackView.center)
-            make.height.equalTo(24)
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(stackView.snp.centerY)
+            make.width.equalTo(2)
         }
         
         view.addSubview(collectionView)
@@ -202,11 +244,76 @@ class ConnectOfferViewController: UIViewController {
     
     
     @objc private func closeButtonTapped(_ sender: UIButton) {
-        // TODO: can
+        showCloseAlert()
     }
     
     @objc private func getButtonTapped(_ sender: UIButton) {
         // TODO: can
+        //   self.subscribeOffer()
+    }
+    
+    @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
+        showSubscriptionTerms()
+    }
+    
+    @objc func privacyLabelTapped(_ gesture: UITapGestureRecognizer) {
+        showPrivacyPage()
+    }
+    
+    private func showCloseAlert() {
+        let alertController = UIAlertController(
+            title: "offer_alert_title".localize(),
+            message: "offer_alert_message".localize(),
+            preferredStyle: .alert
+        )
+
+        let cancelAction = UIAlertAction(
+            title: "offer_alert_cancel".localize(),
+            style: .default
+        ) { (action) in
+            self.dismiss(animated: true)
+        }
+
+        let tryNowAction = UIAlertAction(
+            title: "offer_alert_try".localize(),
+            style: .default
+        ) { (action) in
+            Analytics.logEvent("SpecialOfferSubsTappedFromAlert", parameters: [:])
+            // TODO:
+         //   self.subscribeOffer()
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(tryNowAction)
+        
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        tryNowAction.setValue(UIColor.green, forKey: "titleTextColor")
+
+        present(alertController, animated: true)
+    }
+    
+    private func showSubscriptionTerms() {
+        let alertController = UIAlertController(title: "subs_terms_key".localize(),
+                                                message: "subs_terms_detail_key".localize(),
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showPrivacyPage() {
+        let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
+        guard let url = URL(string: ppDefaultUrl) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    private func activateCloseButtonTimer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.closeButton.isUserInteractionEnabled = true
+            UIView.animate(withDuration: 0.5) {
+                self?.closeButton.alpha = 1
+            }
+        }
     }
     
 }
@@ -222,22 +329,6 @@ extension ConnectOfferViewController: UICollectionViewDataSource, UICollectionVi
         let testimonial = circularTestimonials[indexPath.item]
         cell.configure(with: testimonial.name, message: testimonial.message)
         return cell
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let midpoint = circularTestimonials.count / 2
-        let indexPaths = collectionView.indexPathsForVisibleItems.sorted()
-        
-        guard let firstIndexPath = indexPaths.first else { return }
-        guard let lastIndexPath = indexPaths.last else { return }
-
-        if lastIndexPath.item < testimonials.count {
-            let newIndexPath = IndexPath(item: lastIndexPath.item + testimonials.count, section: 0)
-            collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: false)
-        } else if firstIndexPath.item >= 2 * testimonials.count {
-            let newIndexPath = IndexPath(item: firstIndexPath.item - testimonials.count, section: 0)
-            collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: false)
-        }
     }
     
 }

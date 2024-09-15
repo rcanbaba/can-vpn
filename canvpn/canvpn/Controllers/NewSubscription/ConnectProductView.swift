@@ -21,7 +21,7 @@ class ConnectProductView: UIView {
         return gradientView
     }()
     
-    private lazy var productLabel: UILabel = {
+    private lazy var productNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 28, weight: .medium)
         label.textColor = UIColor.NewSubs.dark
@@ -33,22 +33,27 @@ class ConnectProductView: UIView {
     
     private lazy var newPriceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 28, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 28, weight: .regular)
         label.textColor = UIColor.NewSubs.dark
-        label.textAlignment = .left
-        label.text = "Weekly".localize()
+        label.textAlignment = .right
+        label.text = "$0.99".localize()
         label.numberOfLines = 0
         return label
     }()
     
-    private lazy var oldPriceLabel: UILabel = {
-        let label = UILabel()
+    private lazy var oldPriceLabel: StrikethroughLabel = {
+        let label = StrikethroughLabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = UIColor.NewSubs.oldGray
-        label.textAlignment = .left
-        label.text = "Weekly".localize()
+        label.textAlignment = .right
+        label.text = "$1.99".localize()
         label.numberOfLines = 0
         return label
+    }()
+    
+    private lazy var discountView: ConnectDiscountView = {
+        let view = ConnectDiscountView()
+        return view
     }()
     
     
@@ -67,10 +72,30 @@ class ConnectProductView: UIView {
         layer.borderColor = UIColor.NewSubs.green.cgColor
         layer.cornerRadius = 10.0
         
-        addSubview(backGradientView)
-        backGradientView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        addSubview(productNameLabel)
+        productNameLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(13)
         }
+        
+        addSubview(newPriceLabel)
+        newPriceLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.centerY.equalTo(productNameLabel.snp.centerY)
+        }
+        
+        addSubview(oldPriceLabel)
+        oldPriceLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.bottom.equalTo(newPriceLabel.snp.top).inset(-7)
+        }
+        
+        addSubview(discountView)
+        discountView.snp.makeConstraints { make in
+            make.leading.top.equalToSuperview()
+            make.height.equalTo(28.5)
+        }
+        
     }
     
 }

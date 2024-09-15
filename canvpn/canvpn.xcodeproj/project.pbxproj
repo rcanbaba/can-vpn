@@ -338,6 +338,7 @@
 		B47C90322C96ECD200E97011 /* TestimonialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90312C96ECD200E97011 /* TestimonialCell.swift */; };
 		B47C90342C96F3AC00E97011 /* ConnectOfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */; };
 		B47C90362C97152800E97011 /* ConnectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90352C97152800E97011 /* ConnectProductView.swift */; };
+		B47C90382C97214D00E97011 /* ConnectDiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90372C97214D00E97011 /* ConnectDiscountView.swift */; };
 		B4805CAE2B14D65600D53574 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAD2B14D65600D53574 /* HomeViewController.swift */; };
 		B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */; };
 		B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C27B2AED082800D90453 /* SideMenuViewController.swift */; };
@@ -771,6 +772,7 @@
 		B47C90312C96ECD200E97011 /* TestimonialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCell.swift; sourceTree = "<group>"; };
 		B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOfferButton.swift; sourceTree = "<group>"; };
 		B47C90352C97152800E97011 /* ConnectProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectProductView.swift; sourceTree = "<group>"; };
+		B47C90372C97214D00E97011 /* ConnectDiscountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectDiscountView.swift; sourceTree = "<group>"; };
 		B4805CAD2B14D65600D53574 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		B481C27B2AED082800D90453 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -1436,6 +1438,7 @@
 				B47C90312C96ECD200E97011 /* TestimonialCell.swift */,
 				B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */,
 				B47C90352C97152800E97011 /* ConnectProductView.swift */,
+				B47C90372C97214D00E97011 /* ConnectDiscountView.swift */,
 			);
 			path = NewSubscription;
 			sourceTree = "<group>";
@@ -2081,6 +2084,7 @@
 				B4D871242A8572960080D788 /* RussianDictionary.swift in Sources */,
 				B4E6A2922B69F2FA00FB9743 /* RatingCountManager.swift in Sources */,
 				B4C30CC92BC53F3900674D53 /* SpecialOfferViewController.swift in Sources */,
+				B47C90382C97214D00E97011 /* ConnectDiscountView.swift in Sources */,
 				B490D3AD296C98EE00651BFC /* Config.swift in Sources */,
 				B4D871112A8571F80080D788 /* TurkishDictionary.swift in Sources */,
 				B44120E52957162D0072B566 /* UIViewExtensions.swift in Sources */,
