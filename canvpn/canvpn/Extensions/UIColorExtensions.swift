@@ -92,6 +92,8 @@ extension UIColor {
         static let dark = UIColor("050A30")
         static let gray = UIColor("969696")
         static let gold = UIColor("FFD600")
+        static let darkerGreen = UIColor("009946")
+        static let oldGray = UIColor("747474")
         
     }
     

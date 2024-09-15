@@ -52,11 +52,38 @@ class ConnectOfferViewController: UIViewController {
         return label
     }()
     
-    private lazy var getButton: LandingButton = {
-        let view = LandingButton(type: .system)
+    private lazy var getButton: ConnectOfferButton = {
+        let view = ConnectOfferButton(type: .system)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
         view.textLabel.text = "Boost Now".localize()
         return view
+    }()
+    
+    private let termsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Terms of Use"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = UIColor.NewSubs.gray
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = true // Enable gesture recognition
+        return label
+    }()
+    
+    private let privacyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Privacy Policy"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = UIColor.NewSubs.gray
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = true // Enable gesture recognition
+        return label
+    }()
+    
+    private lazy var lineView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "vertical-ilne")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     private let testimonials: [(name: String, message: String)] = [
@@ -142,6 +169,26 @@ class ConnectOfferViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(65)
             make.height.equalTo(60)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(70)
+        }
+        
+        getButton.layer.applySketchShadow()
+        
+        let stackView = UIStackView(arrangedSubviews: [termsLabel, privacyLabel])
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 16 // Adjust spacing as needed
+        
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(getButton.snp.bottom).offset(20)
+        }
+        
+        view.addSubview(lineView)
+        lineView.snp.makeConstraints { make in
+            make.center.equalTo(stackView.center)
+            make.height.equalTo(24)
         }
         
         view.addSubview(collectionView)

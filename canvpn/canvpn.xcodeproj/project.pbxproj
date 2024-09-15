@@ -337,6 +337,7 @@
 		B47C90302C96E4F100E97011 /* ConnectOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */; };
 		B47C90322C96ECD200E97011 /* TestimonialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90312C96ECD200E97011 /* TestimonialCell.swift */; };
 		B47C90342C96F3AC00E97011 /* ConnectOfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */; };
+		B47C90362C97152800E97011 /* ConnectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90352C97152800E97011 /* ConnectProductView.swift */; };
 		B4805CAE2B14D65600D53574 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAD2B14D65600D53574 /* HomeViewController.swift */; };
 		B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */; };
 		B481C27C2AED082800D90453 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481C27B2AED082800D90453 /* SideMenuViewController.swift */; };
@@ -769,6 +770,7 @@
 		B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOfferViewController.swift; sourceTree = "<group>"; };
 		B47C90312C96ECD200E97011 /* TestimonialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCell.swift; sourceTree = "<group>"; };
 		B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOfferButton.swift; sourceTree = "<group>"; };
+		B47C90352C97152800E97011 /* ConnectProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectProductView.swift; sourceTree = "<group>"; };
 		B4805CAD2B14D65600D53574 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B4805CAF2B14D69F00D53574 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		B481C27B2AED082800D90453 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -1433,6 +1435,7 @@
 				B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */,
 				B47C90312C96ECD200E97011 /* TestimonialCell.swift */,
 				B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */,
+				B47C90352C97152800E97011 /* ConnectProductView.swift */,
 			);
 			path = NewSubscription;
 			sourceTree = "<group>";
@@ -2008,6 +2011,7 @@
 				B481C28F2AED65BA00D90453 /* SubscriptionHistoryViewController.swift in Sources */,
 				B481C2882AED484000D90453 /* AccountViewController.swift in Sources */,
 				B46450542A7069E100AFE4D8 /* ConsumeReceiptResponse.swift in Sources */,
+				B47C90362C97152800E97011 /* ConnectProductView.swift in Sources */,
 				B4DA8EE02AAB5D0C00F4C643 /* GenerateCouponRequest.swift in Sources */,
 				B4D871192A85725A0080D788 /* FrenchDictionary.swift in Sources */,
 				B48E7E952A49924A00DEBD74 /* ConsumeReceiptRequest.swift in Sources */,
