@@ -127,7 +127,7 @@ extension NewProductView {
     public func setOrangeUI() {
         backgroundColor = UIColor.NewSubs.oranger.withAlphaComponent(0.15)
         layer.borderColor = UIColor.NewSubs.oranger.cgColor
-        
+        discountView.setOrangeUI()
     }
     
 }

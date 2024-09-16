@@ -72,3 +72,15 @@ class ConnectDiscountView: UIView {
     }
 }
 
+extension ConnectDiscountView {
+    
+    public func setOrangeUI() {
+        gradientLayer.colors = [
+            UIColor.NewSubs.orange.cgColor,
+            UIColor.NewSubs.redder.cgColor
+        ]
+        
+    }
+    
+    
+}
