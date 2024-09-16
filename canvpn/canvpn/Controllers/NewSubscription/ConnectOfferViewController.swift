@@ -128,8 +128,8 @@ class ConnectOfferViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var productView: ConnectProductView = {
-        let view = ConnectProductView()
+    private lazy var productView: NewProductView = {
+        let view = NewProductView()
         return view
     }()
     

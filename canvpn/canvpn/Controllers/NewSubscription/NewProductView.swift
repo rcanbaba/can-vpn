@@ -1,5 +1,5 @@
 //
-//  ConnectProductView.swift
+//  NewProductView.swift
 //  canvpn
 //
 //  Created by Can Babaoğlu on 15.09.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConnectProductView: UIView {
+class NewProductView: UIView {
     
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
@@ -101,7 +101,7 @@ class ConnectProductView: UIView {
 }
 
 // MARK: - Public methods
-extension ConnectProductView {
+extension NewProductView {
     public func set(productNameText: String) {
         productNameLabel.text = productNameText
     }
@@ -116,6 +116,18 @@ extension ConnectProductView {
     
     public func set(discountText: String) {
         discountView.discountLabel.text = discountText
+    }
+    
+    public func setGreenUI() {
+        backgroundColor = UIColor.NewSubs.green.withAlphaComponent(0.15)
+        layer.borderColor = UIColor.NewSubs.green.cgColor
+        
+    }
+    
+    public func setOrangeUI() {
+        backgroundColor = UIColor.NewSubs.oranger.withAlphaComponent(0.15)
+        layer.borderColor = UIColor.NewSubs.oranger.cgColor
+        
     }
     
 }

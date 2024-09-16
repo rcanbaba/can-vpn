@@ -97,8 +97,9 @@ class TimerOfferViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var productView: ConnectProductView = {
-        let view = ConnectProductView()
+    private lazy var productView: NewProductView = {
+        let view = NewProductView()
+        view.setOrangeUI()
         return view
     }()
     
