@@ -11,6 +11,13 @@ import FirebaseAnalytics
 
 class TimerOfferViewController: UIViewController {
     
+    var countdownTimer: Timer!
+    var remainingSeconds: Int = 0 {
+        didSet {
+            countdownLabel.text = formatTimeString(seconds: remainingSeconds)
+        }
+    }
+    
     private lazy var closeButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "back-offer-white"), for: .normal)
@@ -70,6 +77,42 @@ class TimerOfferViewController: UIViewController {
         return view
     }()
     
+    private lazy var countdownLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 44, weight: .bold)
+        label.textColor = .white
+        label.layer.applySketchShadow()
+        return label
+    }()
+    
+    private lazy var cdBackGradientView: GradientView = {
+        let gradientView = GradientView()
+        gradientView.layer.cornerRadius = 10.0
+        gradientView.gradientLayer.cornerRadius = 10.0
+        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientView.gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientView.gradientLayer.colors = [
+            UIColor.NewSubs.cdOrange.cgColor,
+            UIColor.NewSubs.orange.cgColor
+        ]
+        return gradientView
+    }()
+    
+    private lazy var socialProof1: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "social-proof-apple-img")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private lazy var socialProof2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "social-proof-apple-img")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     private let termsLabel: UILabel = {
         let label = UILabel()
         label.text = "Terms of Use"
@@ -113,6 +156,7 @@ class TimerOfferViewController: UIViewController {
         super.viewDidAppear(animated)
         setGestureRecognizer()
         activateCloseButtonTimer()
+        startCountdown(from: 124)
     }
     
     private func setGestureRecognizer() {
@@ -197,10 +241,36 @@ class TimerOfferViewController: UIViewController {
             make.centerY.equalTo(stackView.snp.centerY)
             make.width.equalTo(2)
         }
+        
+        view.addSubview(cdBackGradientView)
+        cdBackGradientView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+            make.width.equalTo(180)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+        }
+        
+        view.addSubview(countdownLabel)
+        countdownLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(cdBackGradientView.snp.centerY)
+        }
 
         
+        let stackView2 = UIStackView(arrangedSubviews: [socialProof1, socialProof2])
+        stackView2.axis = .horizontal
+        stackView2.alignment = .center
+        stackView2.distribution = .fillProportionally
+        stackView2.spacing = 16
+        
+        
+        view.addSubview(stackView2)
+        stackView2.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(countdownLabel.snp.bottom).offset(40)
+        }
+        
     }
-    
     
     @objc private func closeButtonTapped(_ sender: UIButton) {
         showCloseAlert()
@@ -272,6 +342,27 @@ class TimerOfferViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self?.closeButton.alpha = 1
             }
+        }
+    }
+    
+    func formatTimeString(seconds: Int) -> String {
+        let hours = seconds / 3600
+        let minutes = (seconds % 3600) / 60
+        let seconds = (seconds % 3600) % 60
+        return String(format: "%02d : %02d", minutes, seconds)
+    }
+    
+    func startCountdown(from seconds: Int) {
+        remainingSeconds = seconds
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if remainingSeconds > 0 {
+            remainingSeconds -= 1
+        } else {
+            countdownTimer.invalidate()
+            // Handle what happens when the timer reaches 0
         }
     }
     

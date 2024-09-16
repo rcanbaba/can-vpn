@@ -100,6 +100,8 @@ extension UIColor {
         static let orange = UIColor("FD6043")
         static let orangish = UIColor("FFAD9E")
         static let redder = UIColor("FC2700")
+        static let cdOrange = UIColor("FF9986")
+        
     }
     
 }
