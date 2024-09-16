@@ -1,5 +1,5 @@
 //
-//  ConnectOfferButton.swift
+//  NewOfferButton.swift
 //  canvpn
 //
 //  Created by Can Babaoğlu on 15.09.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConnectOfferButton: UIButton {
+class NewOfferButton: UIButton {
     
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
@@ -70,6 +70,25 @@ class ConnectOfferButton: UIButton {
             make.height.equalTo(12)
         }
         
+    }
+    
+}
+
+// MARK: - Public
+extension NewOfferButton {
+    
+    public func setOrangeUI() {
+        backGradientView.gradientLayer.colors = [
+            UIColor.NewSubs.orange.cgColor,
+            UIColor.NewSubs.redder.cgColor
+        ]
+    }
+    
+    public func setGreeneUI() {
+        backGradientView.gradientLayer.colors = [
+            UIColor.NewSubs.green.cgColor,
+            UIColor.NewSubs.darkerGreen.cgColor
+        ]
     }
     
 }

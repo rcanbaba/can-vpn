@@ -54,8 +54,8 @@ class ConnectOfferViewController: UIViewController {
         return label
     }()
     
-    private lazy var getButton: ConnectOfferButton = {
-        let view = ConnectOfferButton(type: .system)
+    private lazy var getButton: NewOfferButton = {
+        let view = NewOfferButton(type: .system)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
         view.textLabel.text = "Boost Now".localize()
         return view

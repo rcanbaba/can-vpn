@@ -336,7 +336,7 @@
 		B47A225E2ADEC03D003271BA /* MailToURLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */; };
 		B47C90302C96E4F100E97011 /* ConnectOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */; };
 		B47C90322C96ECD200E97011 /* TestimonialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90312C96ECD200E97011 /* TestimonialCell.swift */; };
-		B47C90342C96F3AC00E97011 /* ConnectOfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */; };
+		B47C90342C96F3AC00E97011 /* NewOfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90332C96F3AC00E97011 /* NewOfferButton.swift */; };
 		B47C90362C97152800E97011 /* ConnectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90352C97152800E97011 /* ConnectProductView.swift */; };
 		B47C90382C97214D00E97011 /* ConnectDiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90372C97214D00E97011 /* ConnectDiscountView.swift */; };
 		B47C903A2C983F9500E97011 /* TimerOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C90392C983F9500E97011 /* TimerOfferViewController.swift */; };
@@ -771,7 +771,7 @@
 		B47A225D2ADEC03D003271BA /* MailToURLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailToURLGenerator.swift; sourceTree = "<group>"; };
 		B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOfferViewController.swift; sourceTree = "<group>"; };
 		B47C90312C96ECD200E97011 /* TestimonialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCell.swift; sourceTree = "<group>"; };
-		B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOfferButton.swift; sourceTree = "<group>"; };
+		B47C90332C96F3AC00E97011 /* NewOfferButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOfferButton.swift; sourceTree = "<group>"; };
 		B47C90352C97152800E97011 /* ConnectProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectProductView.swift; sourceTree = "<group>"; };
 		B47C90372C97214D00E97011 /* ConnectDiscountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectDiscountView.swift; sourceTree = "<group>"; };
 		B47C90392C983F9500E97011 /* TimerOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerOfferViewController.swift; sourceTree = "<group>"; };
@@ -1438,7 +1438,7 @@
 			children = (
 				B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */,
 				B47C90312C96ECD200E97011 /* TestimonialCell.swift */,
-				B47C90332C96F3AC00E97011 /* ConnectOfferButton.swift */,
+				B47C90332C96F3AC00E97011 /* NewOfferButton.swift */,
 				B47C90352C97152800E97011 /* ConnectProductView.swift */,
 				B47C90372C97214D00E97011 /* ConnectDiscountView.swift */,
 				B47C90392C983F9500E97011 /* TimerOfferViewController.swift */,
@@ -2063,7 +2063,7 @@
 				B4216DC42B5ADEDA00F8B0D6 /* RatingPopupViewController.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */,
-				B47C90342C96F3AC00E97011 /* ConnectOfferButton.swift in Sources */,
+				B47C90342C96F3AC00E97011 /* NewOfferButton.swift in Sources */,
 				B4805CB02B14D69F00D53574 /* HomeScreenView.swift in Sources */,
 				B4C5C4972B6655C70068A01D /* ProductItemView.swift in Sources */,
 				B44120DD2956390B0072B566 /* AESCryption.swift in Sources */,
