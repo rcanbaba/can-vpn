@@ -233,7 +233,7 @@ class MainScreenViewController: UIViewController {
     }
     
     private func presentConnectOffer() {
-        let controller = ConnectOfferViewController()
+        let controller = TimerOfferViewController()
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle  = .crossDissolve
         self.present(controller, animated: true, completion: nil)

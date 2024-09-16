@@ -96,6 +96,9 @@ extension UIColor {
         static let oldGray = UIColor("747474")
         static let gradierGreen = UIColor("01CA5D")
         
+        static let orange = UIColor("FD6043")
+        static let orangish = UIColor("FFAD9E")
+        
     }
     
 }
