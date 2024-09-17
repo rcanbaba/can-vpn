@@ -108,7 +108,7 @@ class TimerOfferViewController: UIViewController {
     
     private lazy var socialProof2: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "social-proof-apple-img")
+        imageView.image = UIImage(named: "social-proof-liked-img")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
