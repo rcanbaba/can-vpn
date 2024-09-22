@@ -57,6 +57,18 @@ class PaywallViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var productView2: NewProductView = {
+        let view = NewProductView()
+        view.setGreenUI()
+        return view
+    }()
+    
+    private lazy var productView: NewProductView = {
+        let view = NewProductView()
+        view.setGreenUI()
+        return view
+    }()
+    
     let paywallData: [PaywallPageItemModel] = [
         PaywallPageItemModel(image: UIImage(named: "paywall-fast-1-img"), title: "Blazing Fast Speeds", description: "Enjoy uninterrupted browsing and streaming with our high-speed servers."),
         PaywallPageItemModel(image: UIImage(named: "paywall-secure-2-img"), title: "Top-Notch Security", description: "Protect your data with industry-leading encryption and advanced security protocols."),
@@ -103,6 +115,31 @@ class PaywallViewController: UIViewController {
             make.bottom.equalTo(getButton.snp.top).inset(-20)
             make.leading.trailing.equalToSuperview().inset(16)
         }
+        
+        view.addSubview(productView)
+        productView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(80)
+            make.bottom.equalTo(getButton.snp.top).inset(-44)
+        }
+        
+        productView.set(discountText: "%30")
+        productView.set(newPriceText: "$4.99")
+        productView.set(oldPriceText: "$8.99")
+        productView.set(productNameText: "Monthly")
+        
+        
+        view.addSubview(productView2)
+        productView2.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(80)
+            make.bottom.equalTo(productView.snp.top).inset(-12)
+        }
+        
+        productView2.set(discountText: "%10")
+        productView2.set(newPriceText: "$1.99")
+        productView2.set(oldPriceText: "$2.99")
+        productView2.set(productNameText: "Weekly")
         
     }
     
@@ -170,7 +207,7 @@ class PaywallViewController: UIViewController {
         pageControl.numberOfPages = paywallData.count
         pageControl.currentPage = 0
         pageControl.addTarget(self, action: #selector(pageControlChanged(_:)), for: .valueChanged)
-        pageControl.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         pageControl.currentPageIndicatorTintColor = UIColor.NewSubs.selectedPage
         pageControl.pageIndicatorTintColor = UIColor.NewSubs.unselectedPage
         
