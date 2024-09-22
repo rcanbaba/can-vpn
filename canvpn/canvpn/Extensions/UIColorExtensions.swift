@@ -102,6 +102,9 @@ extension UIColor {
         static let redder = UIColor("FC2700")
         static let cdOrange = UIColor("FF9986")
         
+        static let selectedPage = UIColor("38D980")
+        static let unselectedPage = UIColor("BAF2D3")
+        
     }
     
 }

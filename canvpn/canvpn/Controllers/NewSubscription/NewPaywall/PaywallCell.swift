@@ -9,9 +9,9 @@ import UIKit
 
 class PaywallCell: UICollectionViewCell {
     
-    private let imageView = UIImageView()
-    private let titleLabel = UILabel()
-    private let descriptionLabel = UILabel()
+    private lazy var imageView = UIImageView()
+    private lazy var titleLabel = UILabel()
+    private lazy var descriptionLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,11 +25,13 @@ class PaywallCell: UICollectionViewCell {
     
     private func setupViews() {
         imageView.contentMode = .scaleAspectFit
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         titleLabel.textAlignment = .center
-        descriptionLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.textColor = UIColor.NewSubs.dark
+        descriptionLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 0
+        descriptionLabel.textColor = UIColor.NewSubs.dark
         
         let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel, descriptionLabel])
         stackView.axis = .vertical

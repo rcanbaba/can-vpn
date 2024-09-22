@@ -176,7 +176,9 @@ class MainScreenViewController: UIViewController {
     }
     
     private func presentSubscriptionPage() {
-        let subscriptionViewController = SubscriptionViewController()
+        // TODO: reset this
+     //   let subscriptionViewController = SubscriptionViewController()
+        let subscriptionViewController = PaywallViewController()
         subscriptionViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(subscriptionViewController, animated: true)
     }

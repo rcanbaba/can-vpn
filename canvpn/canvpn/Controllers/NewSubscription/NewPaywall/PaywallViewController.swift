@@ -39,14 +39,18 @@ class PaywallViewController: UIViewController {
         collectionView.register(PaywallCell.self, forCellWithReuseIdentifier: "PaywallCell")
         collectionView.showsHorizontalScrollIndicator = false
         
+        collectionView.layer.borderWidth = 1.0
+        collectionView.layer.borderColor = UIColor.red.cgColor
+        
+        let screenHeight = UIScreen.main.bounds.height
+        
         view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
-        ])
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(screenHeight * 0.5)
+        }
+
     }
     
     private func setupPageControl() {
@@ -54,13 +58,15 @@ class PaywallViewController: UIViewController {
         pageControl.numberOfPages = paywallData.count
         pageControl.currentPage = 0
         pageControl.addTarget(self, action: #selector(pageControlChanged(_:)), for: .valueChanged)
+        pageControl.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
+        pageControl.currentPageIndicatorTintColor = UIColor.NewSubs.selectedPage
+        pageControl.pageIndicatorTintColor = UIColor.NewSubs.unselectedPage
         
         view.addSubview(pageControl)
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 16),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        pageControl.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
     }
     
     @objc private func pageControlChanged(_ sender: UIPageControl) {
