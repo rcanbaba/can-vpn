@@ -218,7 +218,7 @@ class ConnectOfferViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fillProportionally
-        stackView.spacing = 16 // Adjust spacing as needed
+        stackView.spacing = 16
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
