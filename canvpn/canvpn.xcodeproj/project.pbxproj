@@ -360,6 +360,9 @@
 		B490D38F296C952100651BFC /* NETunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D38E296C952100651BFC /* NETunnelManager.swift */; };
 		B490D392296C958A00651BFC /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = B490D391296C958A00651BFC /* WireGuardKit */; };
 		B490D3AD296C98EE00651BFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B490D3AC296C98EE00651BFC /* Config.swift */; };
+		B495B1802CA06C6800D7F0BD /* PaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495B17F2CA06C6800D7F0BD /* PaywallViewController.swift */; };
+		B495B1842CA06DAB00D7F0BD /* PaywallPageItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495B1832CA06DAB00D7F0BD /* PaywallPageItemModel.swift */; };
+		B495B1862CA06F6C00D7F0BD /* PaywallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495B1852CA06F6C00D7F0BD /* PaywallCell.swift */; };
 		B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBFC16296DF30000613E9F /* InitialViewController.swift */; };
 		B4BE348A2AF1014F0038D8E3 /* LanguageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */; };
 		B4C30CC92BC53F3900674D53 /* SpecialOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C30CC82BC53F3900674D53 /* SpecialOfferViewController.swift */; };
@@ -794,6 +797,9 @@
 		B48F8A6E295895B900CB69CA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		B490D38E296C952100651BFC /* NETunnelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NETunnelManager.swift; sourceTree = "<group>"; };
 		B490D3AC296C98EE00651BFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B495B17F2CA06C6800D7F0BD /* PaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewController.swift; sourceTree = "<group>"; };
+		B495B1832CA06DAB00D7F0BD /* PaywallPageItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPageItemModel.swift; sourceTree = "<group>"; };
+		B495B1852CA06F6C00D7F0BD /* PaywallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallCell.swift; sourceTree = "<group>"; };
 		B4BBFC16296DF30000613E9F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageListTableViewCell.swift; sourceTree = "<group>"; };
 		B4C30CC82BC53F3900674D53 /* SpecialOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialOfferViewController.swift; sourceTree = "<group>"; };
@@ -1436,11 +1442,9 @@
 		B47C902E2C96E4CC00E97011 /* NewSubscription */ = {
 			isa = PBXGroup;
 			children = (
+				B495B1822CA06D7000D7F0BD /* NewPaywall */,
+				B495B1812CA06C7300D7F0BD /* Views */,
 				B47C902F2C96E4F100E97011 /* ConnectOfferViewController.swift */,
-				B47C90312C96ECD200E97011 /* TestimonialCell.swift */,
-				B47C90332C96F3AC00E97011 /* NewOfferButton.swift */,
-				B47C90352C97152800E97011 /* NewProductView.swift */,
-				B47C90372C97214D00E97011 /* ConnectDiscountView.swift */,
 				B47C90392C983F9500E97011 /* TimerOfferViewController.swift */,
 			);
 			path = NewSubscription;
@@ -1472,6 +1476,27 @@
 				B46450532A7069E100AFE4D8 /* ConsumeReceiptResponse.swift */,
 			);
 			path = ConsumeReceipt;
+			sourceTree = "<group>";
+		};
+		B495B1812CA06C7300D7F0BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B47C90372C97214D00E97011 /* ConnectDiscountView.swift */,
+				B47C90352C97152800E97011 /* NewProductView.swift */,
+				B47C90332C96F3AC00E97011 /* NewOfferButton.swift */,
+				B47C90312C96ECD200E97011 /* TestimonialCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B495B1822CA06D7000D7F0BD /* NewPaywall */ = {
+			isa = PBXGroup;
+			children = (
+				B495B17F2CA06C6800D7F0BD /* PaywallViewController.swift */,
+				B495B1852CA06F6C00D7F0BD /* PaywallCell.swift */,
+				B495B1832CA06DAB00D7F0BD /* PaywallPageItemModel.swift */,
+			);
+			path = NewPaywall;
 			sourceTree = "<group>";
 		};
 		B4D09F3029C7B4E800E11069 /* MainScreenViews */ = {
@@ -2052,6 +2077,7 @@
 				B4F31F092959DDE8002FAD0D /* VPNManager.swift in Sources */,
 				B4805CAE2B14D65600D53574 /* HomeViewController.swift in Sources */,
 				B4184A1C295614830051EB79 /* ErrorHandler.swift in Sources */,
+				B495B1842CA06DAB00D7F0BD /* PaywallPageItemModel.swift in Sources */,
 				B43E15982A1145970095FF4A /* RegisterFCMRequest.swift in Sources */,
 				B44120E7295716C40072B566 /* UIColorExtensions.swift in Sources */,
 				B481C28D2AED48BE00D90453 /* SecurityCheckViewController.swift in Sources */,
@@ -2061,6 +2087,7 @@
 				B4023D422950E31E0008BDA6 /* AppDelegate.swift in Sources */,
 				B4216DD62B5EB31F00F8B0D6 /* FeaturesTableViewCell.swift in Sources */,
 				B4216DC42B5ADEDA00F8B0D6 /* RatingPopupViewController.swift in Sources */,
+				B495B1802CA06C6800D7F0BD /* PaywallViewController.swift in Sources */,
 				B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */,
 				B47A225C2AD9563D003271BA /* IndonesianDictionary.swift in Sources */,
 				B47C90342C96F3AC00E97011 /* NewOfferButton.swift in Sources */,
@@ -2100,6 +2127,7 @@
 				B4023DC02954751C0008BDA6 /* Keychain.swift in Sources */,
 				B44122F1295758080072B566 /* AttributedTextHelper.swift in Sources */,
 				B4D871152A85723C0080D788 /* ArabicDictionary.swift in Sources */,
+				B495B1862CA06F6C00D7F0BD /* PaywallCell.swift in Sources */,
 				B4216DC72B5D206A00F8B0D6 /* LandingViewController.swift in Sources */,
 				B481C2912AED700A00D90453 /* UIDeviceExtensions.swift in Sources */,
 				B44122FC29577E540072B566 /* VpnServerItem.swift in Sources */,
