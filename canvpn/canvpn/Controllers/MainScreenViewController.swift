@@ -33,9 +33,6 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presentConnectOffer()
-        
-        /*
         Analytics.logEvent("001_MainScreenPresented", parameters: ["type" : "didload"])
         
         // to ipsec manager
@@ -56,7 +53,6 @@ class MainScreenViewController: UIViewController {
         observeNotifications()
         requestTrackingPermission()
         setupMenuButton()
-        */
     }
     
     private let sideMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.6
@@ -233,6 +229,13 @@ class MainScreenViewController: UIViewController {
     }
     
     private func presentConnectOffer() {
+        let controller = ConnectOfferViewController()
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle  = .crossDissolve
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    private func presentTimerOffer() {
         let controller = TimerOfferViewController()
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle  = .crossDissolve
