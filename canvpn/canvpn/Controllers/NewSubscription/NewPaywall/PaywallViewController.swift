@@ -40,6 +40,16 @@ class PaywallViewController: UIViewController {
         return label
     }()
     
+    private let promoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "I have a promo code"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = UIColor.NewSubs.dark
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = true
+        return label
+    }()
+    
     private lazy var lineView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "vertical-line")
@@ -57,8 +67,10 @@ class PaywallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        setupNavigationBar()
         setupCollectionView()
         setupPageControl()
+        setGestureRecognizer()
         
         view.addSubview(getButton)
         getButton.snp.makeConstraints { make in
@@ -85,6 +97,48 @@ class PaywallViewController: UIViewController {
             make.centerY.equalTo(stackView.snp.centerY)
             make.width.equalTo(2)
         }
+        
+        view.addSubview(promoLabel)
+        promoLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(getButton.snp.top).inset(-20)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+    }
+    
+    private func setupNavigationBar() {
+        let backButton = UIButton(type: .custom)
+        backButton.setImage(UIImage(named: "black-back-icon"), for: .normal) // Set your custom back image
+        backButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        let backBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = backBarButtonItem
+
+        // Custom restore button
+        let restoreButton = UIButton(type: .custom)
+        restoreButton.setTitle("Restore", for: .normal)
+        restoreButton.setTitleColor(UIColor.NewSubs.gray, for: .normal)
+        restoreButton.frame = CGRect(x: 0, y: 0, width: 120, height: 24)
+        restoreButton.addTarget(self, action: #selector(restoreButtonTapped), for: .touchUpInside)
+        
+        let restoreBarButtonItem = UIBarButtonItem(customView: restoreButton)
+        navigationItem.rightBarButtonItem = restoreBarButtonItem
+        
+    }
+    
+    private func setGestureRecognizer() {
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
+        termsLabel.addGestureRecognizer(termsTapGesture)
+        termsLabel.isUserInteractionEnabled = true
+        
+        let privacyTapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyLabelTapped(_:)))
+        privacyLabel.addGestureRecognizer(privacyTapGesture)
+        privacyLabel.isUserInteractionEnabled = true
+        
+        let promoTapGesture = UITapGestureRecognizer(target: self, action: #selector(promoLabelTapped(_:)))
+        promoLabel.addGestureRecognizer(promoTapGesture)
+        promoLabel.isUserInteractionEnabled = true
     }
     
     private func setupCollectionView() {
@@ -136,6 +190,43 @@ class PaywallViewController: UIViewController {
     @objc private func getButtonTapped(_ sender: UIButton) {
         // TODO: can
         //   self.subscribeOffer()
+    }
+    
+    @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
+        showSubscriptionTerms()
+    }
+    
+    @objc func privacyLabelTapped(_ gesture: UITapGestureRecognizer) {
+        showPrivacyPage()
+    }
+    
+    @objc func promoLabelTapped(_ gesture: UITapGestureRecognizer) {
+        // TODO: implement coupon
+        print("Coupon button tapped")
+    }
+
+    @objc private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func restoreButtonTapped() {
+        // TODO: implement restore
+        print("Restore button tapped")
+    }
+    
+    private func showSubscriptionTerms() {
+        let alertController = UIAlertController(title: "subs_terms_key".localize(),
+                                                message: "subs_terms_detail_key".localize(),
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showPrivacyPage() {
+        let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
+        guard let url = URL(string: ppDefaultUrl) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
 
