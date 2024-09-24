@@ -103,22 +103,10 @@ class PaywallViewController: UIViewController {
         setGestureRecognizer()
         setupProductViews()
         
+        configureProducts()
     }
     
-    private func setupProductViews() {
-        productStackView = UIStackView()
-        productStackView.axis = .vertical
-        productStackView.spacing = 12
-        productStackView.alignment = .fill
-        productStackView.distribution = .fillEqually
-        
-        contentView.addSubview(productStackView)
-        productStackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalTo(pageControl.snp.bottom).offset(20)
-            make.bottom.equalToSuperview().inset(20) // Bottom padding for the scroll view
-        }
-        
+    private func configureProducts() {
         let productData: [(discountText: String, newPriceText: String, oldPriceText: String, productNameText: String)] = [
             ("%30", "$4.99", "$8.99", "Monthly"),
             ("%10", "$1.99", "$2.99", "Weekly"),
@@ -139,6 +127,23 @@ class PaywallViewController: UIViewController {
             productView.snp.makeConstraints { make in
                 make.height.equalTo(80) // Set the height for each product view
             }
+        }
+        
+        
+    }
+    
+    private func setupProductViews() {
+        productStackView = UIStackView()
+        productStackView.axis = .vertical
+        productStackView.spacing = 12
+        productStackView.alignment = .fill
+        productStackView.distribution = .fillEqually
+        
+        contentView.addSubview(productStackView)
+        productStackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(pageControl.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().inset(20) // Bottom padding for the scroll view
         }
     }
     
