@@ -9,8 +9,11 @@ import UIKit
 
 class PaywallViewController: UIViewController {
     
+    private var scrollView: UIScrollView!
+    private var contentView: UIView!
     private var collectionView: UICollectionView!
     private var pageControl: UIPageControl!
+    private var productStackView: UIStackView!
     
     private lazy var getButton: NewOfferButton = {
         let view = NewOfferButton(type: .system)
@@ -69,6 +72,18 @@ class PaywallViewController: UIViewController {
         return view
     }()
     
+    private lazy var productView3: NewProductView = {
+        let view = NewProductView()
+        view.setOrangeUI()
+        return view
+    }()
+    
+    private lazy var productView4: NewProductView = {
+        let view = NewProductView()
+        view.setOrangeUI()
+        return view
+    }()
+    
     let paywallData: [PaywallPageItemModel] = [
         PaywallPageItemModel(image: UIImage(named: "paywall-fast-1-img"), title: "Blazing Fast Speeds", description: "Enjoy uninterrupted browsing and streaming with our high-speed servers."),
         PaywallPageItemModel(image: UIImage(named: "paywall-secure-2-img"), title: "Top-Notch Security", description: "Protect your data with industry-leading encryption and advanced security protocols."),
@@ -80,10 +95,54 @@ class PaywallViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         setupNavigationBar()
+        
+        setupBottomUI()
+        setupScrollView()
         setupCollectionView()
         setupPageControl()
         setGestureRecognizer()
+        setupProductViews()
         
+    }
+    
+    private func setupProductViews() {
+        productStackView = UIStackView()
+        productStackView.axis = .vertical
+        productStackView.spacing = 12
+        productStackView.alignment = .fill
+        productStackView.distribution = .fillEqually
+        
+        contentView.addSubview(productStackView)
+        productStackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(pageControl.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().inset(20) // Bottom padding for the scroll view
+        }
+        
+        let productData: [(discountText: String, newPriceText: String, oldPriceText: String, productNameText: String)] = [
+            ("%30", "$4.99", "$8.99", "Monthly"),
+            ("%10", "$1.99", "$2.99", "Weekly"),
+            ("%1023", "$1.9239", "$2.9339", "Week23ly"),
+            ("%1044", "$1.9449", "$2.949", "Week444ly")
+        ]
+        
+        // Loop through the data and generate product views
+        for product in productData {
+            let productView = NewProductView()
+            productView.setGreenUI() // Set the UI style
+            productView.set(discountText: product.discountText)
+            productView.set(newPriceText: product.newPriceText)
+            productView.set(oldPriceText: product.oldPriceText)
+            productView.set(productNameText: product.productNameText)
+            
+            productStackView.addArrangedSubview(productView)
+            productView.snp.makeConstraints { make in
+                make.height.equalTo(80) // Set the height for each product view
+            }
+        }
+    }
+    
+    private func setupBottomUI() {
         view.addSubview(getButton)
         getButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
@@ -115,37 +174,12 @@ class PaywallViewController: UIViewController {
             make.bottom.equalTo(getButton.snp.top).inset(-20)
             make.leading.trailing.equalToSuperview().inset(16)
         }
-        
-        view.addSubview(productView)
-        productView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(80)
-            make.bottom.equalTo(getButton.snp.top).inset(-44)
-        }
-        
-        productView.set(discountText: "%30")
-        productView.set(newPriceText: "$4.99")
-        productView.set(oldPriceText: "$8.99")
-        productView.set(productNameText: "Monthly")
-        
-        
-        view.addSubview(productView2)
-        productView2.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(80)
-            make.bottom.equalTo(productView.snp.top).inset(-12)
-        }
-        
-        productView2.set(discountText: "%10")
-        productView2.set(newPriceText: "$1.99")
-        productView2.set(oldPriceText: "$2.99")
-        productView2.set(productNameText: "Weekly")
-        
     }
     
+    // MARK: - navigation bar
     private func setupNavigationBar() {
         let backButton = UIButton(type: .custom)
-        backButton.setImage(UIImage(named: "black-back-icon"), for: .normal) // Set your custom back image
+        backButton.setImage(UIImage(named: "black-back-icon"), for: .normal)
         backButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
@@ -164,6 +198,25 @@ class PaywallViewController: UIViewController {
         
     }
     
+    private func setupScrollView() {
+        scrollView = UIScrollView()
+        scrollView.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(getButton.snp.top).offset(-20)
+        }
+        
+        contentView = UIView()
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(scrollView)
+        }
+    }
+    
+    // MARK: - gesture recognizers
     private func setGestureRecognizer() {
         let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
         termsLabel.addGestureRecognizer(termsTapGesture)
@@ -193,9 +246,9 @@ class PaywallViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
 
         let screenHeight = UIScreen.main.bounds.height
-        view.addSubview(collectionView)
+        contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(screenHeight * 0.35)
         }
@@ -211,7 +264,7 @@ class PaywallViewController: UIViewController {
         pageControl.currentPageIndicatorTintColor = UIColor.NewSubs.selectedPage
         pageControl.pageIndicatorTintColor = UIColor.NewSubs.unselectedPage
         
-        view.addSubview(pageControl)
+        contentView.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom)
             make.centerX.equalToSuperview()
