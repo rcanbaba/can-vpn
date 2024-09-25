@@ -84,6 +84,7 @@ class PaywallViewController: UIViewController {
         return view
     }()
     
+    // TODO: localize
     let paywallData: [PaywallPageItemModel] = [
         PaywallPageItemModel(image: UIImage(named: "paywall-fast-1-img"), title: "Blazing Fast Speeds", description: "Enjoy uninterrupted browsing and streaming with our high-speed servers."),
         PaywallPageItemModel(image: UIImage(named: "paywall-secure-2-img"), title: "Top-Notch Security", description: "Protect your data with industry-leading encryption and advanced security protocols."),
@@ -91,60 +92,21 @@ class PaywallViewController: UIViewController {
         PaywallPageItemModel(image: UIImage(named: "paywall-loc-4-img"), title: "10+ Worldwide Locations", description: "Access servers in over 10 countries for a truly global online experience.")
     ]
     
+    // MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // configure UI
         view.backgroundColor = UIColor.white
         setupNavigationBar()
-        
         setupBottomUI()
         setupScrollView()
         setupCollectionView()
         setupPageControl()
         setGestureRecognizer()
-        setupProductViews()
+        setupProductStackView()
         
         configureProducts()
-    }
-    
-    private func configureProducts() {
-        let productData: [(discountText: String, newPriceText: String, oldPriceText: String, productNameText: String)] = [
-            ("%30", "$4.99", "$8.99", "Monthly"),
-            ("%10", "$1.99", "$2.99", "Weekly"),
-            ("%1023", "$1.9239", "$2.9339", "Week23ly"),
-            ("%1044", "$1.9449", "$2.949", "Week444ly")
-        ]
-        
-        // Loop through the data and generate product views
-        for product in productData {
-            let productView = NewProductView()
-            productView.setGreenUI() // Set the UI style
-            productView.set(discountText: product.discountText)
-            productView.set(newPriceText: product.newPriceText)
-            productView.set(oldPriceText: product.oldPriceText)
-            productView.set(productNameText: product.productNameText)
-            
-            productStackView.addArrangedSubview(productView)
-            productView.snp.makeConstraints { make in
-                make.height.equalTo(80) // Set the height for each product view
-            }
-        }
-        
-        
-    }
-    
-    private func setupProductViews() {
-        productStackView = UIStackView()
-        productStackView.axis = .vertical
-        productStackView.spacing = 12
-        productStackView.alignment = .fill
-        productStackView.distribution = .fillEqually
-        
-        contentView.addSubview(productStackView)
-        productStackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalTo(pageControl.snp.bottom).offset(20)
-            make.bottom.equalToSuperview().inset(20) // Bottom padding for the scroll view
-        }
     }
     
     private func setupBottomUI() {
@@ -221,21 +183,6 @@ class PaywallViewController: UIViewController {
         }
     }
     
-    // MARK: - gesture recognizers
-    private func setGestureRecognizer() {
-        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
-        termsLabel.addGestureRecognizer(termsTapGesture)
-        termsLabel.isUserInteractionEnabled = true
-        
-        let privacyTapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyLabelTapped(_:)))
-        privacyLabel.addGestureRecognizer(privacyTapGesture)
-        privacyLabel.isUserInteractionEnabled = true
-        
-        let promoTapGesture = UITapGestureRecognizer(target: self, action: #selector(promoLabelTapped(_:)))
-        promoLabel.addGestureRecognizer(promoTapGesture)
-        promoLabel.isUserInteractionEnabled = true
-    }
-    
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -257,7 +204,21 @@ class PaywallViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(screenHeight * 0.35)
         }
-
+    }
+    
+    private func setupProductStackView() {
+        productStackView = UIStackView()
+        productStackView.axis = .vertical
+        productStackView.spacing = 12
+        productStackView.alignment = .fill
+        productStackView.distribution = .fillEqually
+        
+        contentView.addSubview(productStackView)
+        productStackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(pageControl.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().inset(20)
+        }
     }
     
     private func setupPageControl() {
@@ -276,15 +237,76 @@ class PaywallViewController: UIViewController {
         }
     }
     
+    private func configureProducts() {
+        let productData: [(discountText: String, newPriceText: String, oldPriceText: String, productNameText: String)] = [
+            ("%30", "$4.99", "$8.99", "Monthly"),
+            ("%10", "$1.99", "$2.99", "Weekly"),
+            ("%1023", "$1.9239", "$2.9339", "Week23ly"),
+            ("%1044", "$1.9449", "$2.949", "Week444ly")
+        ]
+        
+        // Loop through the data and generate product views
+        for product in productData {
+            let productView = NewProductView()
+            productView.setGreenUI() // Set the UI style
+            productView.set(discountText: product.discountText)
+            productView.set(newPriceText: product.newPriceText)
+            productView.set(oldPriceText: product.oldPriceText)
+            productView.set(productNameText: product.productNameText)
+            
+            productStackView.addArrangedSubview(productView)
+            productView.snp.makeConstraints { make in
+                make.height.equalTo(80) // Set the height for each product view
+            }
+        }
+    }
+    
+}
+
+// MARK: - gesture recognizers - flows
+extension PaywallViewController {
+    private func showSubscriptionTerms() {
+        let alertController = UIAlertController(title: "subs_terms_key".localize(),
+                                                message: "subs_terms_detail_key".localize(),
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showPrivacyPage() {
+        let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
+        guard let url = URL(string: ppDefaultUrl) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    private func setGestureRecognizer() {
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped(_:)))
+        termsLabel.addGestureRecognizer(termsTapGesture)
+        termsLabel.isUserInteractionEnabled = true
+        
+        let privacyTapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyLabelTapped(_:)))
+        privacyLabel.addGestureRecognizer(privacyTapGesture)
+        privacyLabel.isUserInteractionEnabled = true
+        
+        let promoTapGesture = UITapGestureRecognizer(target: self, action: #selector(promoLabelTapped(_:)))
+        promoLabel.addGestureRecognizer(promoTapGesture)
+        promoLabel.isUserInteractionEnabled = true
+    }
+
+}
+
+
+// MARK: - Actions -
+extension PaywallViewController {
     @objc private func pageControlChanged(_ sender: UIPageControl) {
         let currentPage = sender.currentPage
         let indexPath = IndexPath(item: currentPage, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    @objc private func getButtonTapped(_ sender: UIButton) {
-        // TODO: can
-        //   self.subscribeOffer()
+    @objc private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
@@ -300,31 +322,20 @@ class PaywallViewController: UIViewController {
         print("Coupon button tapped")
     }
 
-    @objc private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-
     @objc private func restoreButtonTapped() {
         // TODO: implement restore
         print("Restore button tapped")
     }
     
-    private func showSubscriptionTerms() {
-        let alertController = UIAlertController(title: "subs_terms_key".localize(),
-                                                message: "subs_terms_detail_key".localize(),
-                                                preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+    @objc private func getButtonTapped(_ sender: UIButton) {
+        // TODO: can
+        //   self.subscribeOffer()
     }
     
-    private func showPrivacyPage() {
-        let ppDefaultUrl = SettingsManager.shared.settings?.links.privacyURL ?? Constants.appPrivacyPolicyPageURLString
-        guard let url = URL(string: ppDefaultUrl) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
+    
 }
 
+// MARK: - CollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout -
 extension PaywallViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return paywallData.count
