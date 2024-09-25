@@ -60,30 +60,6 @@ class PaywallViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var productView2: NewProductView = {
-        let view = NewProductView()
-        view.setGreenUI()
-        return view
-    }()
-    
-    private lazy var productView: NewProductView = {
-        let view = NewProductView()
-        view.setGreenUI()
-        return view
-    }()
-    
-    private lazy var productView3: NewProductView = {
-        let view = NewProductView()
-        view.setOrangeUI()
-        return view
-    }()
-    
-    private lazy var productView4: NewProductView = {
-        let view = NewProductView()
-        view.setOrangeUI()
-        return view
-    }()
-    
     // TODO: localize
     let paywallData: [PaywallPageItemModel] = [
         PaywallPageItemModel(image: UIImage(named: "paywall-fast-1-img"), title: "Blazing Fast Speeds", description: "Enjoy uninterrupted browsing and streaming with our high-speed servers."),
@@ -167,7 +143,6 @@ class PaywallViewController: UIViewController {
     
     private func setupScrollView() {
         scrollView = UIScrollView()
-        scrollView.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -256,7 +231,7 @@ class PaywallViewController: UIViewController {
             
             productStackView.addArrangedSubview(productView)
             productView.snp.makeConstraints { make in
-                make.height.equalTo(80) // Set the height for each product view
+                make.height.equalTo(80)
             }
         }
     }

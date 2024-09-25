@@ -174,6 +174,7 @@ class TimerOfferViewController: UIViewController {
     }
     
     private func configureUI() {
+        view.backgroundColor = UIColor.white
         view.addSubview(backGradientView)
         backGradientView.snp.makeConstraints { make in
             make.trailing.leading.top.equalToSuperview()

@@ -136,6 +136,7 @@ class ConnectOfferViewController: UIViewController {
     override func viewDidLoad() {
         Analytics.logEvent("ConnectOfferPresented", parameters: [:])
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         configureUI()
     }
     
