@@ -11,6 +11,9 @@ import FirebaseAnalytics
 
 class ConnectOfferViewController: UIViewController {
     
+    private var scrollView: UIScrollView!
+    private var contentView: UIView!
+    
     private lazy var closeButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "back-offer-white"), for: .normal)
@@ -19,6 +22,12 @@ class ConnectOfferViewController: UIViewController {
         button.isUserInteractionEnabled = false
         button.alpha = 0
         return button
+    }()
+    
+    private lazy var topBaseView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.NewSubs.green
+        return view
     }()
     
     private lazy var topBackView: UIView = {
@@ -167,11 +176,36 @@ class ConnectOfferViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.addSubview(topBackView)
-        view.addSubview(topImageView)
+        scrollView = UIScrollView()
+        contentView = UIView()
+        
+        view.addSubview(topBaseView)
+        topBaseView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(200)
+        }
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(240) // bottom inset fixed!!
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(scrollView)
+        }
+        
+        // MARK: - scrollable
+        contentView.addSubview(topBackView)
+        contentView.addSubview(topImageView)
         topImageView.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
         }
         
         topBackView.snp.makeConstraints { make in
@@ -179,26 +213,27 @@ class ConnectOfferViewController: UIViewController {
             make.bottom.equalTo(topImageView.snp.bottom).inset(5)
         }
         
-        view.addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview().inset(30)
             make.top.equalTo(topImageView.snp.bottom).inset(6)
         }
         
-        view.addSubview(descriptionLabel)
+        contentView.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview().inset(35)
-            make.top.equalTo(topImageView.snp.bottom).offset(34)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
         }
         
-        view.addSubview(closeButton)
-        closeButton.snp.makeConstraints { make in
-            make.height.equalTo(22)
-            make.width.equalTo(24)
-            make.leading.equalToSuperview().inset(25)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(17)
+        contentView.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(120)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().inset(20) // content view bottom
         }
         
+        // Fixed bottom views
         view.addSubview(getButton)
         getButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(65)
@@ -234,14 +269,15 @@ class ConnectOfferViewController: UIViewController {
             make.width.equalTo(2)
         }
         
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(120)
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
+        view.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.height.equalTo(22)
+            make.width.equalTo(24)
+            make.leading.equalToSuperview().inset(25)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(17)
         }
-        
     }
+
     
     
     @objc private func closeButtonTapped(_ sender: UIButton) {
