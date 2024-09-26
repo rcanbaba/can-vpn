@@ -269,6 +269,7 @@ class ConnectOfferViewController: UIViewController {
             make.width.equalTo(2)
         }
         
+        // Add the close button
         view.addSubview(closeButton)
         closeButton.snp.makeConstraints { make in
             make.height.equalTo(22)

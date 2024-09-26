@@ -164,7 +164,7 @@ class MainScreenViewController: UIViewController {
         if isSpecialOfferAvailable && !isPremium {
             presentSpecialOffer()
         } else if !isSpecialOfferAvailable && showPurchase {
-            presentConnectOffer()
+            presentTimerOffer()
          //   presentSubscriptionPage()
         }
     }

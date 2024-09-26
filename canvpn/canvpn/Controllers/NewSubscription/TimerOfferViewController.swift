@@ -11,6 +11,9 @@ import FirebaseAnalytics
 
 class TimerOfferViewController: UIViewController {
     
+    private var scrollView: UIScrollView!
+    private var contentView: UIView!
+    
     var countdownTimer: Timer!
     var remainingSeconds: Int = 0 {
         didSet {
@@ -55,7 +58,7 @@ class TimerOfferViewController: UIViewController {
     
     private lazy var topBackView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.NewSubs.green
+        view.backgroundColor = UIColor.NewSubs.orange
         return view
     }()
 
@@ -149,6 +152,7 @@ class TimerOfferViewController: UIViewController {
     override func viewDidLoad() {
         Analytics.logEvent("ConnectOfferPresented", parameters: [:])
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         configureUI()
     }
     
@@ -174,40 +178,84 @@ class TimerOfferViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor.white
-        view.addSubview(backGradientView)
+        scrollView = UIScrollView()
+        contentView = UIView()
+        
+        view.addSubview(topBackView)
+        topBackView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(200)
+        }
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(240) // bottom inset fixed!!
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(scrollView)
+        }
+        
+        // MARK: - scrollable
+        contentView.addSubview(backGradientView)
         backGradientView.snp.makeConstraints { make in
             make.trailing.leading.top.equalToSuperview()
             make.height.equalTo(240)
         }
         
-        view.addSubview(topImageView)
+        contentView.addSubview(topImageView)
         topImageView.snp.makeConstraints { make in
             make.bottom.equalTo(backGradientView.snp.bottom)
             make.centerX.equalToSuperview()
         }
         
-        view.addSubview(topCenterImageView)
+        contentView.addSubview(topCenterImageView)
         topCenterImageView.snp.makeConstraints { make in
             make.width.equalTo(240)
             make.centerX.equalToSuperview()
             make.bottom.equalTo(backGradientView.snp.bottom).offset(64)
         }
         
-        view.addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview().inset(30)
             make.top.equalTo(topCenterImageView.snp.bottom).offset(20)
         }
         
-        view.addSubview(closeButton)
-        closeButton.snp.makeConstraints { make in
-            make.height.equalTo(22)
-            make.width.equalTo(24)
-            make.leading.equalToSuperview().inset(25)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(17)
+        contentView.addSubview(cdBackGradientView)
+        cdBackGradientView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+            make.width.equalTo(180)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
         }
         
+        contentView.addSubview(countdownLabel)
+        countdownLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(cdBackGradientView.snp.centerY)
+        }
+        
+        let stackView2 = UIStackView(arrangedSubviews: [socialProof1, socialProof2])
+        stackView2.axis = .horizontal
+        stackView2.alignment = .center
+        stackView2.distribution = .fillProportionally
+        stackView2.spacing = 16
+        
+        contentView.addSubview(stackView2)
+        stackView2.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(countdownLabel.snp.bottom).offset(40)
+            make.bottom.equalToSuperview().inset(20) // Ensures that contentView expands dynamically
+        }
+        
+        // Fixed bottom views
         view.addSubview(getButton)
         getButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(65)
@@ -228,7 +276,7 @@ class TimerOfferViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fillProportionally
-        stackView.spacing = 16 // Adjust spacing as needed
+        stackView.spacing = 16
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
@@ -243,35 +291,16 @@ class TimerOfferViewController: UIViewController {
             make.width.equalTo(2)
         }
         
-        view.addSubview(cdBackGradientView)
-        cdBackGradientView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.height.equalTo(60)
-            make.width.equalTo(180)
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+        // Add the close button
+        view.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.height.equalTo(22)
+            make.width.equalTo(24)
+            make.leading.equalToSuperview().inset(25)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(17)
         }
-        
-        view.addSubview(countdownLabel)
-        countdownLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalTo(cdBackGradientView.snp.centerY)
-        }
-
-        
-        let stackView2 = UIStackView(arrangedSubviews: [socialProof1, socialProof2])
-        stackView2.axis = .horizontal
-        stackView2.alignment = .center
-        stackView2.distribution = .fillProportionally
-        stackView2.spacing = 16
-        
-        
-        view.addSubview(stackView2)
-        stackView2.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalTo(countdownLabel.snp.bottom).offset(40)
-        }
-        
     }
+
     
     @objc private func closeButtonTapped(_ sender: UIButton) {
         showCloseAlert()
