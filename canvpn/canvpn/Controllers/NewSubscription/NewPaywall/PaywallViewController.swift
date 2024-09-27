@@ -346,7 +346,7 @@ extension PaywallViewController {
     }
 }
 
-// MARK: - subscription
+// MARK: - Subscription -
 extension PaywallViewController {
     private func subscribeItem(productId: String) {
         if let product = getSKProduct(skuID: productId) {
@@ -445,9 +445,59 @@ extension PaywallViewController {
     
 }
 
-// MARK: - gesture recognizers - flows
+// MARK: - Coupon -
 extension PaywallViewController {
     
+    private func processCouponCode(_ code: String) {
+        guard let networkService = networkService else { return }
+        var applyCouponRequest = ApplyCouponRequest()
+        applyCouponRequest.setParams(code: code)
+        isLoading(show: true)
+        networkService.request(applyCouponRequest) { result in
+            DispatchQueue.main.async {
+                self.isLoading(show: false)
+                switch result {
+                case .success(let response):
+                    self.presentableProducts = response.products
+                    self.setProducts()
+                    self.checkThenSetCouponLabel()
+                    self.appliedCouponCode = code
+                case .failure(let error):
+                    let errorMessage = ErrorHandler.getErrorMessage(for: error)
+                    Toaster.showToast(message: errorMessage)
+                    self.appliedCouponCode = nil
+                    Analytics.logEvent("032APIApplyCouponRequest", parameters: ["error" : errorMessage])
+                }
+            }
+        }
+    }
+    
+    private func showCouponAlert() {
+        let alertController = UIAlertController(title: "enter_coupon_code".localize(), message: nil, preferredStyle: .alert)
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "coupon_code_placeholder".localize()
+            textField.clearButtonMode = .whileEditing
+        }
+        
+        let tryAction = UIAlertAction(title: "coupon_alert_try".localize(), style: .default) { [weak self, weak alertController] _ in
+            if let code = alertController?.textFields?.first?.text {
+                self?.processCouponCode(code)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "coupon_alert_cancel".localize(), style: .cancel, handler: nil)
+        
+        alertController.addAction(tryAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - gesture recognizers - flows
+extension PaywallViewController {
     private func showRestoreFailedAlert() { //TODO: restore ile normal fail ayır
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: "error_on_restore_title".localize(),
