@@ -10,6 +10,7 @@ import FirebaseAnalytics
 
 protocol LocationViewControllerDelegate: AnyObject {
     func selectedServer(server: Server)
+    func presentConnectOffer(with server: Server)
 }
 
 class LocationViewController: UIViewController {
@@ -115,7 +116,7 @@ class LocationViewController: UIViewController {
     }
     
     private func presentSubscriptionPage() {
-        let subscriptionViewController = SubscriptionViewController()
+        let subscriptionViewController = PaywallViewController()
         subscriptionViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(subscriptionViewController, animated: true)
     }
@@ -189,14 +190,19 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let selectedServer = serverData[indexPath.section].items[indexPath.row]
-    
-        if selectedServer.type.isPremium() && SettingsManager.shared.settings?.user.isSubscribed == false {
-            presentSubscriptionPage()
-            Toaster.showToast(message: "free_user_selected_premium_message".localize())
-            return
-        } else {
+        
+        if SettingsManager.shared.settings?.user.isSubscribed == true { // premium user
             navigationController?.popViewController(animated: true)
             delegate?.selectedServer(server: selectedServer)
+        } else {
+            if selectedServer.type.isPremium() {
+                presentSubscriptionPage()
+                Toaster.showToast(message: "free_user_selected_premium_message".localize())
+                return
+            } else { // present offer page
+                navigationController?.popViewController(animated: true)
+                delegate?.presentConnectOffer(with: selectedServer)
+            }
         }
     }
     

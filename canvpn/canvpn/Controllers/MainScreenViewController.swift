@@ -164,9 +164,6 @@ class MainScreenViewController: UIViewController {
         if isSpecialOfferAvailable && !isPremium {
             presentSpecialOffer()
         } else if !isSpecialOfferAvailable && showPurchase {
-            // TODO: reset here
-        //    presentTimerOffer()
-        //   presentConnectOffer()
             presentSubscriptionPage()
         }
     }
@@ -179,8 +176,6 @@ class MainScreenViewController: UIViewController {
     }
     
     private func presentSubscriptionPage() {
-        // TODO: reset this
-     //   let subscriptionViewController = SubscriptionViewController()
         let subscriptionViewController = PaywallViewController()
         subscriptionViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(subscriptionViewController, animated: true)
@@ -501,6 +496,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
                 Analytics.logEvent("098_ChangeState", parameters: ["error" : "selectedServer nil"])
             }
         } else if currentManagerState == .connected {
+            presentTimerOffer()
             manager.disconnectFromWg()
         } else {
             Toaster.showToast(message: "error_try_again".localize())
@@ -521,6 +517,10 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 
 // MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
+    func presentConnectOffer(with server: Server) {
+        presentConnectOffer() // TODO: burda server i ver işleme göre geri gelince bağlan
+    }
+    
     func selectedServer(server: Server) {
         userTriggeredConnection = true
         setSelectedServer(server: server)

@@ -160,7 +160,8 @@ class TimerOfferViewController: UIViewController {
         super.viewDidAppear(animated)
         setGestureRecognizer()
         activateCloseButtonTimer()
-        startCountdown(from: 124)
+        let countdown = Int.random(in: 70...125)
+        startCountdown(from: countdown)
     }
     
     private func setGestureRecognizer() {
