@@ -7,19 +7,13 @@
 
 import UIKit
 
+protocol PaywallProductViewDelegate: AnyObject {
+    func productSelected(id: String?)
+}
+
 class PaywallProductView: UIView {
     
-    private lazy var backGradientView: GradientView = {
-        let gradientView = GradientView()
-        gradientView.gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientView.gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-        gradientView.gradientLayer.locations = [0.0, 1.0]
-        gradientView.gradientLayer.colors = [
-            UIColor.Landing.backGradientStart.cgColor,
-            UIColor.Landing.backGradientEnd.cgColor
-        ]
-        return gradientView
-    }()
+    weak var delegate: PaywallProductViewDelegate?
     
     private lazy var productNameLabel: UILabel = {
         let label = UILabel()
@@ -53,23 +47,30 @@ class PaywallProductView: UIView {
     
     private lazy var discountView: ConnectDiscountView = {
         let view = ConnectDiscountView()
+        view.isHidden = true
         return view
     }()
     
+    public var productID: String? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        setAsDeselected()
+        setGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     private func configureUI() {
-        backgroundColor = UIColor.NewSubs.green.withAlphaComponent(0.15)
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.NewSubs.green.cgColor
         layer.cornerRadius = 10.0
         
         addSubview(productNameLabel)
@@ -98,6 +99,20 @@ class PaywallProductView: UIView {
         
     }
     
+    private func setAsDeselected() {
+        layer.borderColor = UIColor.NewSubs.gray.cgColor
+        backgroundColor = UIColor.clear
+    }
+    
+    private func setAsSelected() {
+        backgroundColor = UIColor.NewSubs.green.withAlphaComponent(0.15)
+        layer.borderColor = UIColor.NewSubs.green.cgColor
+    }
+    
+    @objc func viewTapped(_ gesture: UITapGestureRecognizer) {
+        delegate?.productSelected(id: productID)
+    }
+    
 }
 
 // MARK: - Public methods
@@ -114,20 +129,27 @@ extension PaywallProductView {
         oldPriceLabel.text = oldPriceText
     }
     
-    public func set(discountText: String) {
-        discountView.discountLabel.text = discountText
+    public func set(id: String){
+        productID = id
     }
     
-    public func setGreenUI() {
-        backgroundColor = UIColor.NewSubs.green.withAlphaComponent(0.15)
-        layer.borderColor = UIColor.NewSubs.green.cgColor
-        
+    public func set(isDiscounted: Int) {
+        if isDiscounted > 0 {
+            discountView.isHidden = false
+            discountView.discountLabel.text = "\(isDiscounted)"
+        }
     }
     
-    public func setOrangeUI() {
-        backgroundColor = UIColor.NewSubs.oranger.withAlphaComponent(0.15)
-        layer.borderColor = UIColor.NewSubs.oranger.cgColor
-        discountView.setOrangeUI()
+    public func set(isSelected: Bool) {
+        if isSelected {
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                self?.setAsSelected()
+            }
+        } else {
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                self?.setAsDeselected()
+            }
+        }
     }
     
 }

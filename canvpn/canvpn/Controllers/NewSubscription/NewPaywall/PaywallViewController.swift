@@ -84,7 +84,7 @@ class PaywallViewController: UIViewController {
     
     private var products: [SKProduct]?
     private var presentableProducts: [Product] = []
-    private lazy var presentedProductViewArray: [NewProductView] = []
+    private lazy var presentedProductViewArray: [PaywallProductView] = []
     
     private var selectedOfferSKU: String?
     private var appliedCouponCode: String?
@@ -282,14 +282,16 @@ extension PaywallViewController {
     }
     
     private func createProduct(item: PresentableProduct) {
-        let productItemView = NewProductView()
+        let productItemView = PaywallProductView()
         presentedProductViewArray.append(productItemView)
         
-        productItemView.setGreenUI() // Set the UI style
-        productItemView.set(discountText: "\(item.isDiscounted)")
+        productItemView.set(id: item.sku)
+        productItemView.set(isDiscounted: item.isDiscounted)
         productItemView.set(newPriceText: item.price)
         productItemView.set(oldPriceText: item.price + "oldi")
         productItemView.set(productNameText: item.title)
+        productItemView.set(isSelected: item.isSelected)
+        productItemView.delegate = self
         
 //        productItemView.set(id: item.sku, title: item.title, description: item.description + " - " + item.price)
 //        productItemView.delegate = self
@@ -305,32 +307,6 @@ extension PaywallViewController {
         }
         
     }
-    
-    private func configureProducts(products: [PresentableProduct]) {
-        let productData: [(discountText: String, newPriceText: String, oldPriceText: String, productNameText: String)] = [
-            ("%30", "$4.99", "$8.99", "Monthly"),
-            ("%10", "$1.99", "$2.99", "Weekly"),
-            ("%1023", "$1.9239", "$2.9339", "Week23ly"),
-            ("%1044", "$1.9449", "$2.949", "Week444ly")
-        ]
-        
-        // Loop through the data and generate product views
-        for product in productData {
-            let productView = NewProductView()
-            productView.setGreenUI() // Set the UI style
-            productView.set(discountText: product.discountText)
-            productView.set(newPriceText: product.newPriceText)
-            productView.set(oldPriceText: product.oldPriceText)
-            productView.set(productNameText: product.productNameText)
-            
-            productStackView.addArrangedSubview(productView)
-            productView.snp.makeConstraints { make in
-                make.height.equalTo(80)
-            }
-        }
-    }
-    
-    
     
     private func resetProduct() {
         presentedProductViewArray.removeAll()
@@ -422,7 +398,6 @@ extension PaywallViewController {
         //   self.subscribeOffer()
     }
     
-    
 }
 
 // MARK: - CollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout -
@@ -444,3 +419,14 @@ extension PaywallViewController: UICollectionViewDataSource, UICollectionViewDel
     }
 }
 
+
+extension PaywallViewController: PaywallProductViewDelegate {
+    func productSelected(id: String?) {
+        print("SELECTED")
+        // TODO:
+//        guard let sku = id else { return }
+//        selectedOfferSKU = sku
+//        subscriptionOverlay.setSelectedItem(sku: sku)
+    }
+    
+}
