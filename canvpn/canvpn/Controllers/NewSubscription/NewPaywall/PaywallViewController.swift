@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class PaywallViewController: UIViewController {
     
@@ -13,7 +14,11 @@ class PaywallViewController: UIViewController {
     private var contentView: UIView!
     private var collectionView: UICollectionView!
     private var pageControl: UIPageControl!
-    private var productStackView: UIStackView!
+    
+    private lazy var productStackView: UIStackView = {
+        let stackView = UIStackView()
+        return stackView
+    }()
     
     private lazy var getButton: NewOfferButton = {
         let view = NewOfferButton(type: .system)
@@ -60,6 +65,13 @@ class PaywallViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.color = .black
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
     // TODO: localize
     let paywallData: [PaywallPageItemModel] = [
         PaywallPageItemModel(image: UIImage(named: "paywall-fast-1-img"), title: "Blazing Fast Speeds", description: "Enjoy uninterrupted browsing and streaming with our high-speed servers."),
@@ -68,11 +80,28 @@ class PaywallViewController: UIViewController {
         PaywallPageItemModel(image: UIImage(named: "paywall-loc-4-img"), title: "10+ Worldwide Locations", description: "Access servers in over 10 countries for a truly global online experience.")
     ]
     
-    // MARK: - view lifecycle
+    private var networkService: DefaultNetworkService?
+    
+    private var products: [SKProduct]?
+    private var presentableProducts: [Product] = []
+    private lazy var presentedProductViewArray: [NewProductView] = []
+    
+    private var selectedOfferSKU: String?
+    private var appliedCouponCode: String?
+    
+    
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // configure UI
+        networkService = DefaultNetworkService()
+        checkAndSetProducts()
+        checkThenSetCouponLabel()
+        configureUI()
+    }
+    
+    // MARK: - Configure UI -
+    private func configureUI() {
         view.backgroundColor = UIColor.white
         setupNavigationBar()
         setupBottomUI()
@@ -81,8 +110,7 @@ class PaywallViewController: UIViewController {
         setupPageControl()
         setGestureRecognizer()
         setupProductStackView()
-        
-        configureProducts()
+        configureActivityIndicatorUI()
     }
     
     private func setupBottomUI() {
@@ -182,9 +210,8 @@ class PaywallViewController: UIViewController {
     }
     
     private func setupProductStackView() {
-        productStackView = UIStackView()
         productStackView.axis = .vertical
-        productStackView.spacing = 12
+        productStackView.spacing = 15
         productStackView.alignment = .fill
         productStackView.distribution = .fillEqually
         
@@ -212,7 +239,74 @@ class PaywallViewController: UIViewController {
         }
     }
     
-    private func configureProducts() {
+    private func configureActivityIndicatorUI() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+}
+
+// MARK: - SET DATA
+extension PaywallViewController {
+    
+    private func checkThenSetCouponLabel() {
+        let showCoupon = SettingsManager.shared.settings?.interface.showCoupon ?? false
+        promoLabel.isHidden = !showCoupon
+    }
+    
+    private func checkAndSetProducts() {
+        products = PurchaseManager.shared.products
+        presentableProducts = SettingsManager.shared.settings?.products ?? []
+        setProducts()
+    }
+    
+    private func setProducts() {
+        resetProduct()
+        presentableProducts.forEach { product in
+            if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
+                
+                let presentableProduct = PresentableProduct(sku: product.sku,
+                                                            title: getProductName(key: storeProduct.localizedTitle),
+                                                            description: getProductDescription(key: storeProduct.localizedDescription),
+                                                            price: storePrice,
+                                                            isSelected: product.isPromoted,
+                                                            isBest: product.isBestOffer,
+                                                            isDiscounted: product.discount)
+                
+                selectedOfferSKU = product.isPromoted ? product.sku : selectedOfferSKU
+                createProduct(item: presentableProduct)
+            }
+            
+        }
+    }
+    
+    private func createProduct(item: PresentableProduct) {
+        let productItemView = NewProductView()
+        presentedProductViewArray.append(productItemView)
+        
+        productItemView.setGreenUI() // Set the UI style
+        productItemView.set(discountText: "\(item.isDiscounted)")
+        productItemView.set(newPriceText: item.price)
+        productItemView.set(oldPriceText: item.price + "oldi")
+        productItemView.set(productNameText: item.title)
+        
+//        productItemView.set(id: item.sku, title: item.title, description: item.description + " - " + item.price)
+//        productItemView.delegate = self
+//        productItemView.set(isSelected: item.isSelected)
+//        productItemView.set(isBest: item.isBest)
+//        productItemView.set(isDiscounted: item.isDiscounted)
+        
+        productStackView.addArrangedSubview(productItemView)
+        
+        productItemView.snp.makeConstraints { make in
+            make.height.equalTo(80)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+    }
+    
+    private func configureProducts(products: [PresentableProduct]) {
         let productData: [(discountText: String, newPriceText: String, oldPriceText: String, productNameText: String)] = [
             ("%30", "$4.99", "$8.99", "Monthly"),
             ("%10", "$1.99", "$2.99", "Weekly"),
@@ -236,6 +330,27 @@ class PaywallViewController: UIViewController {
         }
     }
     
+    
+    
+    private func resetProduct() {
+        presentedProductViewArray.removeAll()
+        productStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
+    
+    private func getSKProduct(skuID: String) -> SKProduct? {
+        return products?.first(where: { $0.productIdentifier == skuID})
+    }
+    
+    // TODO: for set different names
+    private func getProductName(key: String) -> String {
+        guard SettingsManager.shared.settings?.isInReview == false else { return key }
+        return key.localize()
+    }
+    
+    private func getProductDescription(key: String) -> String {
+        guard SettingsManager.shared.settings?.isInReview == false else { return key }
+        return key.localize()
+    }
 }
 
 // MARK: - gesture recognizers - flows
