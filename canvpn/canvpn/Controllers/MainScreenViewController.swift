@@ -496,6 +496,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
                 Analytics.logEvent("098_ChangeState", parameters: ["error" : "selectedServer nil"])
             }
         } else if currentManagerState == .connected {
+            // TO DISCONNECT
             presentTimerOffer()
             manager.disconnectFromWg()
         } else {
