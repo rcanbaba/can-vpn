@@ -363,6 +363,7 @@
 		B495B1802CA06C6800D7F0BD /* PaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495B17F2CA06C6800D7F0BD /* PaywallViewController.swift */; };
 		B495B1842CA06DAB00D7F0BD /* PaywallPageItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495B1832CA06DAB00D7F0BD /* PaywallPageItemModel.swift */; };
 		B495B1862CA06F6C00D7F0BD /* PaywallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495B1852CA06F6C00D7F0BD /* PaywallCell.swift */; };
+		B495B1882CA58FB000D7F0BD /* PaywallProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495B1872CA58FB000D7F0BD /* PaywallProductView.swift */; };
 		B4BBFC17296DF30000613E9F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBFC16296DF30000613E9F /* InitialViewController.swift */; };
 		B4BE348A2AF1014F0038D8E3 /* LanguageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */; };
 		B4C30CC92BC53F3900674D53 /* SpecialOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C30CC82BC53F3900674D53 /* SpecialOfferViewController.swift */; };
@@ -800,6 +801,7 @@
 		B495B17F2CA06C6800D7F0BD /* PaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewController.swift; sourceTree = "<group>"; };
 		B495B1832CA06DAB00D7F0BD /* PaywallPageItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPageItemModel.swift; sourceTree = "<group>"; };
 		B495B1852CA06F6C00D7F0BD /* PaywallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallCell.swift; sourceTree = "<group>"; };
+		B495B1872CA58FB000D7F0BD /* PaywallProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallProductView.swift; sourceTree = "<group>"; };
 		B4BBFC16296DF30000613E9F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		B4BE34892AF1014F0038D8E3 /* LanguageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageListTableViewCell.swift; sourceTree = "<group>"; };
 		B4C30CC82BC53F3900674D53 /* SpecialOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialOfferViewController.swift; sourceTree = "<group>"; };
@@ -1485,6 +1487,7 @@
 				B47C90352C97152800E97011 /* NewProductView.swift */,
 				B47C90332C96F3AC00E97011 /* NewOfferButton.swift */,
 				B47C90312C96ECD200E97011 /* TestimonialCell.swift */,
+				B495B1872CA58FB000D7F0BD /* PaywallProductView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2100,6 +2103,7 @@
 				B44120E9295717300072B566 /* CALayerExtensions.swift in Sources */,
 				B4BE348A2AF1014F0038D8E3 /* LanguageListTableViewCell.swift in Sources */,
 				B44FB20D2A50636B002258E9 /* OfferTableViewCell.swift in Sources */,
+				B495B1882CA58FB000D7F0BD /* PaywallProductView.swift in Sources */,
 				B40D732A29DB21900066FD80 /* UIApplicationExtensions.swift in Sources */,
 				B4216DD42B5D46EC00F8B0D6 /* LandingBackView.swift in Sources */,
 				B4D09F3B29CDCCE200E11069 /* SubscriptionButton.swift in Sources */,

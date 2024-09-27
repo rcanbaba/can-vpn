@@ -76,14 +76,14 @@ class TestimonialCell: UICollectionViewCell {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(10).priority(.high)
             make.leading.trailing.equalToSuperview().inset(15)
         }
         
         messageLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(15)
-            make.bottom.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().inset(25).priority(.low)
         }
         
         starsLabel.snp.makeConstraints { make in
@@ -103,6 +103,9 @@ class TestimonialCell: UICollectionViewCell {
     func configure(with name: String, message: String) {
         nameLabel.text = name
         messageLabel.text = message
-        starsLabel.text = "5 ★★★★★"
+        let randomNumber = Int.random(in: 1...5)
+        let reviewString = randomNumber == 1 ? "4 ★★★★" : "5 ★★★★★"
+        
+        starsLabel.text = reviewString
     }
 }

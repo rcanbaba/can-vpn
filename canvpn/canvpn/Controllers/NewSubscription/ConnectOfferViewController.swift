@@ -98,25 +98,30 @@ class ConnectOfferViewController: UIViewController {
     }()
     
     private let testimonials: [(name: String, message: String)] = [
+        ("Sarah L.", "Tremendous speed! I can connect to any server instantly. 很好的应用！"),
+        ("David12", "Sehr gute App, besonders für sicheres Surfen. Schnelle Verbindung."),
+        ("Yasmin K.", "التطبيق ممتاز ولكن أحيانًا يتباطأ الاتصال."),
+        ("Ling W.", "Great app, fast and secure. 完美的应用程序，特别推荐！"),
+        ("Oliver H.", "Excellent value for money. Schneller und zuverlässiger Service."),
+        ("Amelia R.", "Amazing performance, especially for the price. So glad I upgraded!"),
+        ("Ahmad92", "برنامج رائع ولكن واجهت بعض المشاكل في الاتصال."),
+        ("Hannah G.", "Perfect app for privacy and fast browsing! Ich benutze es täglich."),
+        ("Zhao Y.", "速度非常快，连接稳定，非常满意。"),
+        ("Isabella M.", "Sicher und zuverlässig! Besonders zufrieden mit der Geschwindigkeit."),
+        ("Liam P.", "Fast, secure, and easy to use! 推荐大家使用这个VPN，非常棒！"),
+        ("Karim S.", "التطبيق جيد لكن يحتاج بعض التحسينات في الاتصال."),
+        ("Sophia K.", "Ich habe zu Premium gewechselt, und es ist fantastisch!"),
+        ("Javier R.", "Aplicación muy rápida, fácil de usar y altamente recomendada."),
         ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
-        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
-        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
-        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
-        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
-        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
-        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
-        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
-        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
-        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
-        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
-        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
-        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
-        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
-        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!"),
-        ("Emily R.", "Incredibly fast! I noticed the difference as soon as I upgraded to premium."),
-        ("Alex M.", "I can connect to any server instantly and with great speed. Awesome!"),
-        ("John P.", "Amazing performance, especially for the price. So glad I upgraded!")
+        ("Alex M.", "Sehr gutes VPN, besonders die schnelle Verbindung beeindruckt mich."),
+        ("Fatima Z.", "تطبيق ممتاز! سرعة عالية وأمان."),
+        ("Lucas T.", "Fast speeds, easy to use, and great support. Ich empfehle es jedem."),
+        ("Mei Lei", "使用起来非常方便，速度快，非常推荐这个应用！"),
+        ("JohnBose", "Amazing performance, especially for the price. So glad I upgraded!"),
+        ("nina19244", "Fantastic for streaming and secure browsing! 速度非常快，非常推荐这个VPN。"),
+        ("Omar H.", "أفضل تطبيق VPN جربته! سريع وآمن.")
     ]
+
     
     private var circularTestimonials: [(name: String, message: String)] {
         return testimonials + testimonials + testimonials
@@ -126,7 +131,7 @@ class ConnectOfferViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 15
-        layout.itemSize = CGSize(width: 164, height: 120)
+        layout.itemSize = CGSize(width: 164, height: 132)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -228,7 +233,7 @@ class ConnectOfferViewController: UIViewController {
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(120)
+            make.height.equalTo(132)
             make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.bottom.equalToSuperview().inset(20) // content view bottom
         }
@@ -278,8 +283,6 @@ class ConnectOfferViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).inset(17)
         }
     }
-
-    
     
     @objc private func closeButtonTapped(_ sender: UIButton) {
         showCloseAlert()
