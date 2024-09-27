@@ -36,7 +36,7 @@ class PaywallCell: UICollectionViewCell {
         let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel, descriptionLabel])
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.spacing = 16
+        stackView.spacing = 14
         
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints { make in

@@ -7,6 +7,7 @@
 
 import UIKit
 import StoreKit
+import FirebaseAnalytics
 
 class PaywallViewController: UIViewController {
     
@@ -89,7 +90,6 @@ class PaywallViewController: UIViewController {
     private var selectedOfferSKU: String?
     private var appliedCouponCode: String?
     
-    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +116,7 @@ class PaywallViewController: UIViewController {
     private func setupBottomUI() {
         view.addSubview(getButton)
         getButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(44)
             make.leading.trailing.equalToSuperview().inset(65)
             make.height.equalTo(60)
         }
@@ -130,7 +130,7 @@ class PaywallViewController: UIViewController {
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(getButton.snp.bottom).offset(20)
+            make.top.equalTo(getButton.snp.bottom).offset(16)
         }
         
         view.addSubview(lineView)
@@ -142,7 +142,7 @@ class PaywallViewController: UIViewController {
         
         view.addSubview(promoLabel)
         promoLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(getButton.snp.top).inset(-20)
+            make.bottom.equalTo(getButton.snp.top).inset(-2)
             make.leading.trailing.equalToSuperview().inset(16)
         }
     }
@@ -160,7 +160,8 @@ class PaywallViewController: UIViewController {
         // Custom restore button
         let restoreButton = UIButton(type: .custom)
         restoreButton.setTitle("Restore", for: .normal)
-        restoreButton.setTitleColor(UIColor.NewSubs.gray, for: .normal)
+        restoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        restoreButton.setTitleColor(UIColor.NewSubs.dark, for: .normal)
         restoreButton.frame = CGRect(x: 0, y: 0, width: 120, height: 24)
         restoreButton.addTarget(self, action: #selector(restoreButtonTapped), for: .touchUpInside)
         
@@ -190,7 +191,7 @@ class PaywallViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height * 0.3)
+        layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height * 0.36)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
@@ -205,7 +206,7 @@ class PaywallViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(screenHeight * 0.35)
+            make.height.equalTo(screenHeight * 0.38)
         }
     }
     
@@ -288,7 +289,7 @@ extension PaywallViewController {
         productItemView.set(id: item.sku)
         productItemView.set(isDiscounted: item.isDiscounted)
         productItemView.set(newPriceText: item.price)
-        productItemView.set(oldPriceText: item.price + "oldi")
+        productItemView.set(oldPriceText: item.price + "old")
         productItemView.set(productNameText: item.title)
         productItemView.set(isSelected: item.isSelected)
         productItemView.delegate = self
@@ -327,17 +328,141 @@ extension PaywallViewController {
         guard SettingsManager.shared.settings?.isInReview == false else { return key }
         return key.localize()
     }
+    
+    private func setSelectedItem(sku: String) {
+        presentedProductViewArray.forEach { item in
+            if let viewProductId = item.productID {
+                item.set(isSelected: sku == viewProductId)
+            }
+        }
+    }
+    
+    private func isLoading(show: Bool) { // TODO: navigation item block
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = !show
+            self.navigationItem.hidesBackButton = show
+            show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
+        }
+    }
+}
+
+// MARK: - subscription
+extension PaywallViewController {
+    private func subscribeItem(productId: String) {
+        if let product = getSKProduct(skuID: productId) {
+            isLoading(show: true)
+            PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.isLoading(show: false)
+                    
+                    if success {
+                        if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
+                            var consumeReceiptRequest = ConsumeReceiptRequest()
+                            consumeReceiptRequest.setParams(receipt: receipt, code: self.appliedCouponCode)
+                            
+                            networkService.request(consumeReceiptRequest) { result in
+                                DispatchQueue.main.async {
+                                    switch result {
+                                    case .success(let response):
+                                        if response.success {
+                                            print("💙: subscription - success")
+                                            self.subscriptionOperationSucceeded(userInfo: response.user)
+                                        } else {
+                                            print("💙: subscription - error4")
+                                            self.showRestoreFailedAlert()
+                                            Analytics.logEvent("SubscriptionErrorBackend", parameters: [:])
+                                        }
+                                    case .failure:
+                                        print("💙: subscription - error5")
+                                        self.showRestoreFailedAlert()
+                                        Analytics.logEvent("SubscriptionErrorBackend1", parameters: [:])
+                                    }
+                                }
+                            }
+                        } else {
+                            print("💙: subscription - error6")
+                            self.showRestoreFailedAlert()
+                            Analytics.logEvent("SubscriptionErrorApple", parameters: [:])
+                        }
+                    } else if error == .paymentWasCancelled {
+                        print("💙: subscription - error7")
+                        Analytics.logEvent("SubscriptionErrorCancel", parameters: [:])
+                    } else {
+                        print("💙: subscription - error8")
+                        Analytics.logEvent("SubscriptionErrorUnknown", parameters: [:])
+                    }
+                }
+            }
+        } else {
+            print("💙: subscription - error9")
+            Analytics.logEvent("SubscriptionErrorProduct", parameters: [:])
+        }
+    }
+    
+    private func subscriptionOperationSucceeded(userInfo: User) {
+        DispatchQueue.main.async {
+            SettingsManager.shared.settings?.user.isSubscribed = userInfo.isSubscribed
+            NotificationCenter.default.post(name: NSNotification.Name.subscriptionStateUpdated, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func restoreSubscription() {
+        isLoading(show: true)
+        PurchaseManager.shared.restorePurchases { [weak self] success, _, _ in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.isLoading(show: false)
+                
+                if success, let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
+                    var consumeReceiptRequest = ConsumeReceiptRequest()
+                    consumeReceiptRequest.setParams(receipt: receipt)
+                    
+                    networkService.request(consumeReceiptRequest) { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let response):
+                                if response.success {
+                                    print("💙: restore - success")
+                                    self.subscriptionOperationSucceeded(userInfo: response.user)
+                                } else {
+                                    self.showRestoreFailedAlert()
+                                }
+                            case .failure:
+                                self.showRestoreFailedAlert()
+                            }
+                        }
+                    }
+                } else {
+                    self.showRestoreFailedAlert()
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - gesture recognizers - flows
 extension PaywallViewController {
+    
+    private func showRestoreFailedAlert() { //TODO: restore ile normal fail ayır
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "error_on_restore_title".localize(),
+                                                    message: "error_on_restore_desc".localize(),
+                                                    preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     private func showSubscriptionTerms() {
-        let alertController = UIAlertController(title: "subs_terms_key".localize(),
-                                                message: "subs_terms_detail_key".localize(),
-                                                preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        let tosDefaultUrl = SettingsManager.shared.settings?.links.termsURL ?? Constants.appTermsOfServicePageURLString
+        guard let url = URL(string: tosDefaultUrl) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     private func showPrivacyPage() {
@@ -384,18 +509,20 @@ extension PaywallViewController {
     }
     
     @objc func promoLabelTapped(_ gesture: UITapGestureRecognizer) {
-        // TODO: implement coupon
-        print("Coupon button tapped")
+        showCouponAlert()
     }
 
     @objc private func restoreButtonTapped() {
-        // TODO: implement restore
-        print("Restore button tapped")
+        restoreSubscription()
     }
     
     @objc private func getButtonTapped(_ sender: UIButton) {
-        // TODO: can
-        //   self.subscribeOffer()
+        if let selectedSKU = selectedOfferSKU,
+           let product = presentableProducts.first(where: { $0.sku == selectedSKU }) {
+            subscribeItem(productId: product.sku)
+        } else {
+            Toaster.showToast(message: "error_try_again".localize())
+        }
     }
     
 }
@@ -422,11 +549,9 @@ extension PaywallViewController: UICollectionViewDataSource, UICollectionViewDel
 
 extension PaywallViewController: PaywallProductViewDelegate {
     func productSelected(id: String?) {
-        print("SELECTED")
-        // TODO:
-//        guard let sku = id else { return }
-//        selectedOfferSKU = sku
-//        subscriptionOverlay.setSelectedItem(sku: sku)
+        guard let sku = id else { return }
+        selectedOfferSKU = sku
+        setSelectedItem(sku: sku)
     }
     
 }

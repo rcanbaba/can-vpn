@@ -17,7 +17,7 @@ class PaywallProductView: UIView {
     
     private lazy var productNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 28, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = UIColor.NewSubs.dark
         label.textAlignment = .left
         label.text = "Weekly".localize()
@@ -27,7 +27,7 @@ class PaywallProductView: UIView {
     
     private lazy var newPriceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 28, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = UIColor.NewSubs.dark
         label.textAlignment = .right
         label.text = "$0.99".localize()
@@ -136,7 +136,7 @@ extension PaywallProductView {
     public func set(isDiscounted: Int) {
         if isDiscounted > 0 {
             discountView.isHidden = false
-            discountView.discountLabel.text = "\(isDiscounted)"
+            discountView.discountLabel.text = "% \(isDiscounted)"
         }
     }
     

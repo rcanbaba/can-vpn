@@ -67,20 +67,15 @@ class ConnectDiscountView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
-
         roundCorners(corners: [.topLeft, .bottomRight], radius: 10)
     }
 }
 
 extension ConnectDiscountView {
-    
     public func setOrangeUI() {
         gradientLayer.colors = [
             UIColor.NewSubs.orange.cgColor,
             UIColor.NewSubs.redder.cgColor
         ]
-        
     }
-    
-    
 }
