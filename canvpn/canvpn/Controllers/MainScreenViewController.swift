@@ -497,7 +497,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
             }
         } else if currentManagerState == .connected {
             // TO DISCONNECT
-            presentTimerOffer()
+            presentTimerOffer() // TODO: premium user a çıkmayacak bu kontrol et
             manager.disconnectFromWg()
         } else {
             Toaster.showToast(message: "error_try_again".localize())

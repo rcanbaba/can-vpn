@@ -147,26 +147,28 @@ class PaywallViewController: UIViewController {
         }
     }
     
+    private lazy var backNavigationButton = UIButton(type: .custom)
+    private lazy var restoreNavigationButton = UIButton(type: .custom)
+    
     // MARK: - navigation bar
     private func setupNavigationBar() {
-        let backButton = UIButton(type: .custom)
-        backButton.setImage(UIImage(named: "black-back-icon"), for: .normal)
-        backButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        backNavigationButton.setImage(UIImage(named: "black-back-icon"), for: .normal)
+        backNavigationButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        backNavigationButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
-        let backBarButtonItem = UIBarButtonItem(customView: backButton)
+        let backBarButtonItem = UIBarButtonItem(customView: backNavigationButton)
         navigationItem.leftBarButtonItem = backBarButtonItem
 
-        // Custom restore button
-        let restoreButton = UIButton(type: .custom)
-        restoreButton.setTitle("Restore", for: .normal)
-        restoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        restoreButton.setTitleColor(UIColor.NewSubs.dark, for: .normal)
-        restoreButton.frame = CGRect(x: 0, y: 0, width: 120, height: 24)
-        restoreButton.addTarget(self, action: #selector(restoreButtonTapped), for: .touchUpInside)
+        restoreNavigationButton.setTitle("Restore".localize(), for: .normal)
+        restoreNavigationButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        restoreNavigationButton.setTitleColor(UIColor.NewSubs.dark, for: .normal)
+        restoreNavigationButton.frame = CGRect(x: 0, y: 0, width: 120, height: 24)
+        restoreNavigationButton.addTarget(self, action: #selector(restoreButtonTapped), for: .touchUpInside)
         
-        let restoreBarButtonItem = UIBarButtonItem(customView: restoreButton)
+        let restoreBarButtonItem = UIBarButtonItem(customView: restoreNavigationButton)
         navigationItem.rightBarButtonItem = restoreBarButtonItem
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
     }
     
@@ -604,4 +606,11 @@ extension PaywallViewController: PaywallProductViewDelegate {
         setSelectedItem(sku: sku)
     }
     
+}
+
+// MARK: - To activate default swipe back gesture again
+extension PaywallViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
