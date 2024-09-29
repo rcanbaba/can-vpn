@@ -9,10 +9,18 @@ import UIKit
 import StoreKit
 import FirebaseAnalytics
 
+protocol ConnectOfferViewControllerDelegate: AnyObject {
+    func dismissWith(server: Server)
+}
+
 class ConnectOfferViewController: UIViewController {
+    
+    weak var delegate: ConnectOfferViewControllerDelegate?
     
     private var scrollView: UIScrollView!
     private var contentView: UIView!
+    
+    public var selectedServer: Server?
     
     private lazy var closeButton: UIButton = {
         var button = UIButton()
@@ -312,6 +320,11 @@ class ConnectOfferViewController: UIViewController {
             title: "offer_alert_cancel".localize(),
             style: .default
         ) { (action) in
+            
+            if let server = self.selectedServer {
+                self.delegate?.dismissWith(server: server)
+            }
+            
             self.dismiss(animated: true)
         }
 

@@ -86,6 +86,7 @@ class TimerOfferViewController: UIViewController {
         label.font = UIFont.monospacedDigitSystemFont(ofSize: 44, weight: .bold)
         label.textColor = .white
         label.layer.applySketchShadow()
+        label.text = "00 : 00"
         return label
     }()
     
@@ -118,7 +119,7 @@ class TimerOfferViewController: UIViewController {
     
     private let termsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Terms of Use"
+        label.text = "Terms of Use".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
@@ -128,7 +129,7 @@ class TimerOfferViewController: UIViewController {
     
     private let privacyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Privacy Policy"
+        label.text = "Privacy Policy".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center

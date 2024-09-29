@@ -228,10 +228,12 @@ class MainScreenViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
-    private func presentConnectOffer() {
+    private func presentConnectOffer(server: Server) {
         let controller = ConnectOfferViewController()
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle  = .crossDissolve
+        controller.selectedServer = server
+        controller.delegate = self
         self.present(controller, animated: true, completion: nil)
     }
     
@@ -497,7 +499,9 @@ extension MainScreenViewController: MainScreenViewDelegate {
             }
         } else if currentManagerState == .connected {
             // TO DISCONNECT
-            presentTimerOffer() // TODO: premium user a çıkmayacak bu kontrol et
+            if !(SettingsManager.shared.settings?.user.isSubscribed ?? false) {
+                presentTimerOffer()
+            }
             manager.disconnectFromWg()
         } else {
             Toaster.showToast(message: "error_try_again".localize())
@@ -519,7 +523,7 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 // MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
     func presentConnectOffer(with server: Server) {
-        presentConnectOffer() // TODO: burda server i ver işleme göre geri gelince bağlan
+        presentConnectOffer(server: server) // TODO: burda server i ver işleme göre geri gelince bağlan
     }
     
     func selectedServer(server: Server) {
@@ -617,5 +621,12 @@ extension MainScreenViewController: RatingPopupViewControllerDelegate {
             guard let self = self else { return }
             self.ratingPopupViewController = nil
         })
+    }
+}
+
+// MARK: -  ConnectOfferViewControllerDelegate
+extension MainScreenViewController: ConnectOfferViewControllerDelegate {
+    func dismissWith(server: Server) {
+        selectedServer(server: server)
     }
 }
