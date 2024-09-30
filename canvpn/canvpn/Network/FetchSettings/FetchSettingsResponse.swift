@@ -23,6 +23,8 @@ struct SettingsResponse: Codable {
     let contactUs: ContactUs
     let landingProduct: Product
     let specialOffer: SpecialOffer?
+    let connectOffer: Offer
+    let disconnectOffer: Offer
 
     enum CodingKeys: String, CodingKey {
         case user, servers, links, products, skus, interface, text
@@ -31,6 +33,8 @@ struct SettingsResponse: Codable {
         case contactUs = "contact_us"
         case landingProduct = "landing_product"
         case specialOffer = "special_offer"
+        case connectOffer = "connect_offer"
+        case disconnectOffer = "disconnect_offer"
     }
 }
 
@@ -167,4 +171,15 @@ struct SpecialOffer: Codable {
 // MARK: - Meta
 struct Meta: Codable {
     let duration: Int
+}
+
+// MARK: - Product
+struct Offer: Codable {
+    let sku: String
+    let discount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case sku
+        case discount
+    }
 }

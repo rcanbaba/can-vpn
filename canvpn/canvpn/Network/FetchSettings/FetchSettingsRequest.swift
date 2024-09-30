@@ -31,6 +31,15 @@ struct FetchSettingsRequest: DataRequest {
     
     func decode(_ data: Data) throws -> Settings {
         
+#if DEBUG
+        // Convert Data to String to inspect the raw JSON
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("Raw JSON data: \(jsonString)")
+        } else {
+            print("Unable to convert data to String")
+        }
+#endif
+        
         let response = try JSONDecoder().decode(Settings.self, from: data)
         
         return response
