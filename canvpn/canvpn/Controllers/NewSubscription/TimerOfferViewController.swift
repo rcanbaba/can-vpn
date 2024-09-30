@@ -150,11 +150,17 @@ class TimerOfferViewController: UIViewController {
         return view
     }()
     
+    private var networkService: DefaultNetworkService?
+    
+    private var products: [SKProduct]?
+    private var offerProduct: Offer? = nil
+    
     override func viewDidLoad() {
-        Analytics.logEvent("ConnectOfferPresented", parameters: [:])
+        Analytics.logEvent("DisconnectOfferPresented", parameters: [:])
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         configureUI()
+        setProduct()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -396,6 +402,27 @@ class TimerOfferViewController: UIViewController {
             countdownTimer.invalidate()
             // Handle what happens when the timer reaches 0
         }
+    }
+    
+    private func getSKProduct(skuID: String) -> SKProduct? {
+        return products?.first(where: { $0.productIdentifier == skuID})
+    }
+    
+    private func setProduct() {
+        products = PurchaseManager.shared.products
+        offerProduct = SettingsManager.shared.settings?.disconnectOffer
+        
+        guard let offerProduct = offerProduct,
+              let storeProduct = getSKProduct(skuID: offerProduct.sku),
+              let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) else {
+            return }
+        
+        let formattedOldPrice = PurchaseManager.shared.getOldPriceFormatted(for: storeProduct, discount: offerProduct.discount)
+        
+        productView.set(productNameText: offerProduct.sku)
+        productView.set(oldPriceText: formattedOldPrice)
+        productView.set(newPriceText: storePrice)
+        productView.set(discountText: "% \(offerProduct.discount)")
     }
     
 }

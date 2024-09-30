@@ -49,6 +49,19 @@ class PurchaseManager: NSObject {
         return formatter.string(from: product.price)
     }
     
+    func getOldPriceFormatted(for product: SKProduct, discount: Int) -> String? {
+        guard discount > 0 && discount < 100 else { return nil } // Ensure valid discount percentage
+
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = product.priceLocale
+
+        let discountFactor = (100.0 - Double(discount)) / 100.0
+        let oldPrice = product.price.doubleValue / discountFactor
+        
+        return formatter.string(from: NSDecimalNumber(value: oldPrice))
+    }
+    
     func getPriceMonthlyOfAnnual(for product: SKProduct) -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

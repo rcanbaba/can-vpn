@@ -523,7 +523,7 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 // MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
     func presentConnectOffer(with server: Server) {
-        presentConnectOffer(server: server) // TODO: burda server i ver işleme göre geri gelince bağlan
+        presentConnectOffer(server: server)
     }
     
     func selectedServer(server: Server) {

@@ -23,8 +23,8 @@ struct SettingsResponse: Codable {
     let contactUs: ContactUs
     let landingProduct: Product
     let specialOffer: SpecialOffer?
-    let connectOffer: Offer
-    let disconnectOffer: Offer
+    let connectOffer: Offer?
+    let disconnectOffer: Offer?
 
     enum CodingKeys: String, CodingKey {
         case user, servers, links, products, skus, interface, text

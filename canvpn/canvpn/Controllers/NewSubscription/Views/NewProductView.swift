@@ -110,7 +110,7 @@ extension NewProductView {
         newPriceLabel.text = newPriceText
     }
     
-    public func set(oldPriceText: String) {
+    public func set(oldPriceText: String?) {
         oldPriceLabel.text = oldPriceText
     }
     
