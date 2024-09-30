@@ -433,7 +433,7 @@ class TimerOfferViewController: UIViewController {
         
         let formattedOldPrice = PurchaseManager.shared.getOldPriceFormatted(for: storeProduct, discount: offerProduct.discount)
         
-        productView.set(productNameText: offerProduct.sku)
+        productView.set(productNameText: storeProduct.localizedTitle)
         productView.set(oldPriceText: formattedOldPrice)
         productView.set(newPriceText: storePrice)
         productView.set(discountText: "% \(offerProduct.discount)")
