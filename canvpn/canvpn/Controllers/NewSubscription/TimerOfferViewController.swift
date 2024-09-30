@@ -31,6 +31,13 @@ class TimerOfferViewController: UIViewController {
         return button
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.color = .black
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
     private lazy var backGradientView: GradientView = {
         let gradientView = GradientView()
         gradientView.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
@@ -307,16 +314,23 @@ class TimerOfferViewController: UIViewController {
             make.leading.equalToSuperview().inset(25)
             make.top.equalTo(view.safeAreaLayoutGuide).inset(17)
         }
+        
+        configureActivityIndicatorUI()
     }
-
+    
+    private func configureActivityIndicatorUI() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
     
     @objc private func closeButtonTapped(_ sender: UIButton) {
         showCloseAlert()
     }
     
     @objc private func getButtonTapped(_ sender: UIButton) {
-        // TODO: can
-        //   self.subscribeOffer()
+        subscribeOffer()
     }
     
     @objc func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
@@ -346,8 +360,7 @@ class TimerOfferViewController: UIViewController {
             style: .default
         ) { (action) in
             Analytics.logEvent("SpecialOfferSubsTappedFromAlert", parameters: [:])
-            // TODO:
-         //   self.subscribeOffer()
+            self.subscribeOffer()
         }
 
         alertController.addAction(cancelAction)
@@ -400,9 +413,10 @@ class TimerOfferViewController: UIViewController {
             remainingSeconds -= 1
         } else {
             countdownTimer.invalidate()
-            // Handle what happens when the timer reaches 0
         }
     }
+    
+    // MARK: - Subscription -
     
     private func getSKProduct(skuID: String) -> SKProduct? {
         return products?.first(where: { $0.productIdentifier == skuID})
@@ -425,4 +439,89 @@ class TimerOfferViewController: UIViewController {
         productView.set(discountText: "% \(offerProduct.discount)")
     }
     
+    private func subscribeOffer() {
+        guard let offerProduct = offerProduct else { return }
+        subscribeItem(productId: offerProduct.sku)
+    }
+    
+    private func subscribeItem(productId: String) {
+        Analytics.logEvent("SpecialOfferSubsItem", parameters: [:])
+        if let product = getSKProduct(skuID: productId) {
+            isLoading(show: true)
+            PurchaseManager.shared.buy(product: product) { [weak self] success, _, error in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.isLoading(show: false)
+                    
+                    if success {
+                        if let receipt = PurchaseManager.shared.appStoreReceiptStr(), let networkService = self.networkService {
+                            var consumeReceiptRequest = ConsumeReceiptRequest()
+                            consumeReceiptRequest.setParams(receipt: receipt, code: nil)
+                            
+                            networkService.request(consumeReceiptRequest) { result in
+                                DispatchQueue.main.async {
+                                    switch result {
+                                    case .success(let response):
+                                        if response.success {
+                                            print("💙: subscription - success")
+                                            self.subscriptionOperationSucceeded(userInfo: response.user)
+                                        } else {
+                                            print("💙: subscription - error4")
+                                            self.showRestoreFailedAlert()
+                                            Analytics.logEvent("SpecialOfferErrorBackend", parameters: [:])
+                                        }
+                                    case .failure:
+                                        print("💙: subscription - error5")
+                                        self.showRestoreFailedAlert()
+                                        Analytics.logEvent("SpecialOfferErrorBackend1", parameters: [:])
+                                    }
+                                }
+                            }
+                        } else {
+                            print("💙: subscription - error6")
+                            self.showRestoreFailedAlert()
+                            Analytics.logEvent("SpecialOfferErrorApple", parameters: [:])
+                        }
+                    } else if error == .paymentWasCancelled {
+                        print("💙: subscription - error7")
+                        Analytics.logEvent("SpecialOfferErrorCancel", parameters: [:])
+                    } else {
+                        print("💙: subscription - error8")
+                        Analytics.logEvent("SpecialOfferErrorUnknown", parameters: [:])
+                    }
+                }
+            }
+        } else {
+            print("💙: subscription - error9")
+            Analytics.logEvent("SpecialOfferErrorProduct", parameters: [:])
+        }
+    }
+    
+    private func isLoading(show: Bool) {
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = !show
+            self.closeButton.isHidden = show
+            show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    private func subscriptionOperationSucceeded(userInfo: User) {
+        DispatchQueue.main.async {
+            SettingsManager.shared.settings?.user.isSubscribed = userInfo.isSubscribed
+            NotificationCenter.default.post(name: NSNotification.Name.subscriptionStateUpdated, object: nil)
+            self.dismiss(animated: true)
+        }
+    }
+    
+    private func showRestoreFailedAlert() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "error_on_restore_title".localize(),
+                                                    message: "error_on_restore_desc".localize(),
+                                                    preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "ok_button_key".localize(), style: .cancel)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
 }
