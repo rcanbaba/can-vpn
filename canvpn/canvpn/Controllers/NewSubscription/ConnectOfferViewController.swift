@@ -10,7 +10,7 @@ import StoreKit
 import FirebaseAnalytics
 
 protocol ConnectOfferViewControllerDelegate: AnyObject {
-    func dismissWith(server: Server)
+    func dismissWith(server: Server, fromCenterButton: Bool)
 }
 
 class ConnectOfferViewController: UIViewController {
@@ -21,6 +21,8 @@ class ConnectOfferViewController: UIViewController {
     private var contentView: UIView!
     
     public var selectedServer: Server?
+    
+    public var fromCenterButton: Bool? = false
     
     private lazy var closeButton: UIButton = {
         var button = UIButton()
@@ -221,7 +223,7 @@ class ConnectOfferViewController: UIViewController {
         topBaseView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(200)
+            make.height.equalTo(100)
         }
 
         view.addSubview(scrollView)
@@ -248,7 +250,7 @@ class ConnectOfferViewController: UIViewController {
         
         topBackView.snp.makeConstraints { make in
             make.trailing.leading.top.equalToSuperview()
-            make.bottom.equalTo(topImageView.snp.bottom).inset(5)
+            make.bottom.equalTo(topImageView.snp.bottom).inset(20)
         }
         
         contentView.addSubview(titleLabel)
@@ -361,7 +363,7 @@ class ConnectOfferViewController: UIViewController {
         ) { (action) in
             
             if let server = self.selectedServer {
-                self.delegate?.dismissWith(server: server)
+                self.delegate?.dismissWith(server: server, fromCenterButton: self.fromCenterButton ?? false)
             }
             
             self.dismiss(animated: true)

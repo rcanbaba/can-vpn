@@ -228,10 +228,11 @@ class MainScreenViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
-    private func presentConnectOffer(server: Server) {
+    private func presentConnectOffer(server: Server, fromCenterButton: Bool) {
         let controller = ConnectOfferViewController()
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle  = .crossDissolve
+        controller.fromCenterButton = fromCenterButton
         controller.selectedServer = server
         controller.delegate = self
         self.present(controller, animated: true, completion: nil)
@@ -488,10 +489,14 @@ extension MainScreenViewController: MainScreenViewDelegate {
             return }
         if currentManagerState == .disconnected {
             // TO CONNECT
-            if let selectedServer = selectedServer {
+            if let selectedServer = selectedServer { // TODO: buraya geçişi ekleyebiliriz.
                 DispatchQueue.main.async {
-                    self.setMainUI(state: .connecting)
-                    self.getCredential(serverId: selectedServer.id)
+                    if !(SettingsManager.shared.settings?.user.isSubscribed ?? false) {
+                        self.presentConnectOffer(server: selectedServer, fromCenterButton: true)
+                    } else {
+                        self.setMainUI(state: .connecting)
+                        self.getCredential(serverId: selectedServer.id)
+                    }
                 }
             } else {
                 Toaster.showToast(message: "error_occur_location".localize())
@@ -523,7 +528,7 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 // MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
     func presentConnectOffer(with server: Server) {
-        presentConnectOffer(server: server)
+        presentConnectOffer(server: server, fromCenterButton: false)
     }
     
     func selectedServer(server: Server) {
@@ -626,7 +631,15 @@ extension MainScreenViewController: RatingPopupViewControllerDelegate {
 
 // MARK: -  ConnectOfferViewControllerDelegate
 extension MainScreenViewController: ConnectOfferViewControllerDelegate {
-    func dismissWith(server: Server) {
-        selectedServer(server: server)
+    func dismissWith(server: Server, fromCenterButton: Bool) {
+        if fromCenterButton {
+            DispatchQueue.main.async {
+                self.userTriggeredConnection = true
+                self.setMainUI(state: .connecting)
+                self.getCredential(serverId: server.id)
+            }
+        } else {
+            selectedServer(server: server)
+        }
     }
 }
