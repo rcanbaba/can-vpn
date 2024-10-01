@@ -102,6 +102,7 @@ class SubscriptionViewController: ScrollableViewController {
                                                             title: getProductName(key: storeProduct.localizedTitle),
                                                             description: getProductDescription(key: storeProduct.localizedDescription),
                                                             price: storePrice,
+                                                            oldPrice: storePrice,
                                                             isSelected: product.isPromoted,
                                                             isBest: product.isBestOffer,
                                                             isDiscounted: product.discount)

@@ -40,7 +40,7 @@ class ConnectDiscountView: UIView {
         addSubview(discountLabel)
         discountLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
         
     }

@@ -12,6 +12,7 @@ struct PresentableProduct {
     let title: String
     let description: String
     let price: String
+    let oldPrice: String?
     var isSelected: Bool
     var isBest: Bool
     let isDiscounted: Int

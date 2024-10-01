@@ -125,7 +125,7 @@ extension PaywallProductView {
         newPriceLabel.text = newPriceText
     }
     
-    public func set(oldPriceText: String) {
+    public func set(oldPriceText: String?) {
         oldPriceLabel.text = oldPriceText
     }
     
@@ -136,7 +136,7 @@ extension PaywallProductView {
     public func set(isDiscounted: Int) {
         if isDiscounted > 0 {
             discountView.isHidden = false
-            discountView.discountLabel.text = "% \(isDiscounted)"
+            discountView.discountLabel.text = "% \(isDiscounted) Save"
         }
     }
     

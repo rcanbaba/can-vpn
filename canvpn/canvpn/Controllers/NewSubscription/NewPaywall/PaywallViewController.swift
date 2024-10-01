@@ -269,10 +269,13 @@ extension PaywallViewController {
         presentableProducts.forEach { product in
             if let storeProduct = getSKProduct(skuID: product.sku), let storePrice = PurchaseManager.shared.getPriceFormatted(for: storeProduct) {
                 
+                let formattedOldPrice = PurchaseManager.shared.getOldPriceFormatted(for: storeProduct, discount: product.discount)
+                
                 let presentableProduct = PresentableProduct(sku: product.sku,
                                                             title: getProductName(key: storeProduct.localizedTitle),
                                                             description: getProductDescription(key: storeProduct.localizedDescription),
                                                             price: storePrice,
+                                                            oldPrice: formattedOldPrice,
                                                             isSelected: product.isPromoted,
                                                             isBest: product.isBestOffer,
                                                             isDiscounted: product.discount)
@@ -291,16 +294,11 @@ extension PaywallViewController {
         productItemView.set(id: item.sku)
         productItemView.set(isDiscounted: item.isDiscounted)
         productItemView.set(newPriceText: item.price)
-        productItemView.set(oldPriceText: item.price + "old")
+        
+        productItemView.set(oldPriceText: item.oldPrice)
         productItemView.set(productNameText: item.title)
         productItemView.set(isSelected: item.isSelected)
         productItemView.delegate = self
-        
-//        productItemView.set(id: item.sku, title: item.title, description: item.description + " - " + item.price)
-//        productItemView.delegate = self
-//        productItemView.set(isSelected: item.isSelected)
-//        productItemView.set(isBest: item.isBest)
-//        productItemView.set(isDiscounted: item.isDiscounted)
         
         productStackView.addArrangedSubview(productItemView)
         
