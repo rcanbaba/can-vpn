@@ -24,14 +24,14 @@ class PaywallViewController: UIViewController {
     private lazy var getButton: NewOfferButton = {
         let view = NewOfferButton(type: .system)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
-        view.textLabel.text = "Start Subscription".localize()
+        view.textLabel.text = "paywall_button".localize()
         view.setGreeneUI()
         return view
     }()
     
     private let termsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Terms of Use"
+        label.text = "terms_of_service_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
@@ -41,7 +41,7 @@ class PaywallViewController: UIViewController {
     
     private let privacyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Privacy Policy"
+        label.text = "privacy_policy_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
@@ -51,7 +51,7 @@ class PaywallViewController: UIViewController {
     
     private let promoLabel: UILabel = {
         let label = UILabel()
-        label.text = "I have a promo code"
+        label.text = "paywall_promo_text".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.dark
         label.textAlignment = .center
@@ -73,12 +73,30 @@ class PaywallViewController: UIViewController {
         return view
     }()
     
-    // TODO: localize
+    private lazy var backNavigationButton = UIButton(type: .custom)
+    private lazy var restoreNavigationButton = UIButton(type: .custom)
+    
     let paywallData: [PaywallPageItemModel] = [
-        PaywallPageItemModel(image: UIImage(named: "paywall-fast-1-img"), title: "Blazing Fast Speeds", description: "Enjoy uninterrupted browsing and streaming with our high-speed servers."),
-        PaywallPageItemModel(image: UIImage(named: "paywall-secure-2-img"), title: "Top-Notch Security", description: "Protect your data with industry-leading encryption and advanced security protocols."),
-        PaywallPageItemModel(image: UIImage(named: "paywall-anon-3-img"), title: "Complete Anonymity", description: "Surf the web with complete privacy, hiding your identity from prying eyes."),
-        PaywallPageItemModel(image: UIImage(named: "paywall-loc-4-img"), title: "10+ Worldwide Locations", description: "Access servers in over 10 countries for a truly global online experience.")
+        PaywallPageItemModel(
+            image: UIImage(named: "paywall-fast-1-img"),
+            title: "paywall_item_1_title".localize(),
+            description: "paywall_item_1_description".localize()
+        ),
+        PaywallPageItemModel(
+            image: UIImage(named: "paywall-secure-2-img"),
+            title: "paywall_item_2_title".localize(),
+            description: "paywall_item_2_description".localize()
+        ),
+        PaywallPageItemModel(
+            image: UIImage(named: "paywall-anon-3-img"),
+            title: "paywall_item_3_title".localize(),
+            description: "paywall_item_3_description".localize()
+        ),
+        PaywallPageItemModel(
+            image: UIImage(named: "paywall-loc-4-img"),
+            title: "paywall_item_4_title".localize(),
+            description: "paywall_item_4_description".localize()
+        )
     ]
     
     private var networkService: DefaultNetworkService?
@@ -147,9 +165,6 @@ class PaywallViewController: UIViewController {
         }
     }
     
-    private lazy var backNavigationButton = UIButton(type: .custom)
-    private lazy var restoreNavigationButton = UIButton(type: .custom)
-    
     // MARK: - navigation bar
     private func setupNavigationBar() {
         backNavigationButton.setImage(UIImage(named: "black-back-icon"), for: .normal)
@@ -159,7 +174,7 @@ class PaywallViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(customView: backNavigationButton)
         navigationItem.leftBarButtonItem = backBarButtonItem
 
-        restoreNavigationButton.setTitle("Restore".localize(), for: .normal)
+        restoreNavigationButton.setTitle("paywall_restore".localize(), for: .normal)
         restoreNavigationButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         restoreNavigationButton.setTitleColor(UIColor.NewSubs.dark, for: .normal)
         restoreNavigationButton.frame = CGRect(x: 0, y: 0, width: 120, height: 24)
@@ -337,10 +352,12 @@ extension PaywallViewController {
         }
     }
     
-    private func isLoading(show: Bool) { // TODO: navigation item block
+    private func isLoading(show: Bool) {
         DispatchQueue.main.async {
             self.view.isUserInteractionEnabled = !show
             self.navigationItem.hidesBackButton = show
+            self.backNavigationButton.isUserInteractionEnabled = !show
+            self.restoreNavigationButton.isUserInteractionEnabled = !show
             show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
         }
     }

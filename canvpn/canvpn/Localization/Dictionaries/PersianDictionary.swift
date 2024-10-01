@@ -203,7 +203,30 @@ struct PersianDictionary {
         "speed_slow": "کند",
         "speed_average": "متوسط",
         "speed_fast": "سریع",
-        "speed_super": "بسیار سریع"
+        "speed_super": "بسیار سریع",
+        
+        "secured_offer_text": "توسط اپل تأمین شده است، هر زمان که بخواهید لغو کنید!",
+        "save_discount_text": "صرفه‌جویی",
+        
+        "connect_offer_title": "سرعت خود را افزایش دهید",
+        "connect_offer_description": "شما در حال حاضر به یک اتصال کندتر هستید. به Premium ارتقا دهید تا مرورگری بسیار سریع داشته باشید",
+        "connect_offer_button": "اکنون افزایش دهید",
+        
+        "timer_offer_title": "پیشنهاد محدود به زمان",
+        "timer_offer_description": "شما در حال حاضر به یک اتصال کندتر هستید. به Premium ارتقا دهید تا مرورگری بسیار سریع داشته باشید",
+        "timer_offer_button": "شروع اشتراک",
+        
+        "paywall_button": "شروع اشتراک",
+        "paywall_promo_text": "من یک کد تبلیغاتی دارم",
+        "paywall_restore": "بازگردانی",
+        "paywall_item_1_title": "سرعت‌های فوق‌العاده",
+        "paywall_item_1_description": "از مرور و پخش بدون وقفه با سرورهای با سرعت بالا لذت ببرید.",
+        "paywall_item_2_title": "امنیت سطح بالا",
+        "paywall_item_2_description": "داده‌های خود را با رمزگذاری پیشرفته و پروتکل‌های امنیتی برتر محافظت کنید.",
+        "paywall_item_3_title": "ناشناس بودن کامل",
+        "paywall_item_3_description": "با حفظ هویت خود از نگاه‌های کنجکاو، به صورت کاملاً خصوصی در وب گشت و گذار کنید.",
+        "paywall_item_4_title": "بیش از 50 مکان در سراسر جهان",
+        "paywall_item_4_description": "برای تجربه‌ای واقعی جهانی در فضای آنلاین به سرورهایی در بیش از 10 کشور دسترسی پیدا کنید."
     ]
 }
 

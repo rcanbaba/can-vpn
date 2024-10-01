@@ -204,6 +204,30 @@ struct TurkishDictionary {
         "speed_slow": "Yavaş",
         "speed_average": "Orta",
         "speed_fast": "Hızlı",
-        "speed_super": "Süper Hızlı"
+        "speed_super": "Süper Hızlı",
+        
+        //
+        "secured_offer_text": "Apple güvencesi altında, istediğiniz zaman iptal edin!",
+        "save_discount_text": "İndirim",
+        
+        "connect_offer_title": "Hızınızı Artırın",
+        "connect_offer_description": "Şu anda daha yavaş bir bağlantıdasınız. Hızlı tarama için Premium'a geçin",
+        "connect_offer_button": "Şimdi Artırın",
+        
+        "timer_offer_title": "Sınırlı Süreli Teklif",
+        "timer_offer_description": "Şu anda daha yavaş bir bağlantıdasınız. Hızlı tarama için Premium'a geçin",
+        "timer_offer_button": "Aboneliği Başlat",
+        
+        "paywall_button": "Aboneliği Başlat",
+        "paywall_promo_text": "Promosyon kodum var",
+        "paywall_restore": "Aboneliği Yükle",
+        "paywall_item_1_title": "Işık Hızında Bağlantılar",
+        "paywall_item_1_description": "Yüksek hızlı sunucularımızla kesintisiz tarama ve akışın keyfini çıkarın.",
+        "paywall_item_2_title": "Üst Düzey Güvenlik",
+        "paywall_item_2_description": "Verilerinizi sektörde lider şifreleme ve gelişmiş güvenlik protokolleriyle koruyun.",
+        "paywall_item_3_title": "Tam Anonimlik",
+        "paywall_item_3_description": "Kimliğinizi meraklı gözlerden gizleyerek web'de tamamen gizlilikle gezin.",
+        "paywall_item_4_title": "50+ Dünya Genelinde Lokasyon",
+        "paywall_item_4_description": "Gerçekten küresel bir çevrimiçi deneyim için 10'dan fazla ülkede sunuculara erişin."
     ]
 }

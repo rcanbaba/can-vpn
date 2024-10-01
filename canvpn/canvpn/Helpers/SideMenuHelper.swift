@@ -72,7 +72,7 @@ enum MenuItemType {
         case .whatIsMyIP: return "ip_side_title".localize()
         case .whatIsMySpeed: return "speed_side_title".localize()
         case .shareUs: return "share_side_title".localize()
-        case .settings: return "settings_side_title".localize()
+        case .settings: return "language_settings_key".localize()
         case .blankItem: return ""
         case .version: return "version_side_title".localize() + " \(Constants.appBuild)"
         case .staySecureWithLove: return "motto_side_title".localize()

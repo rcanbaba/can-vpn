@@ -17,8 +17,8 @@ struct RussianDictionary {
         "disconnected_key": "Отключено",
         "disconnecting_key": "Отключение",
         "initial_key": "Нажмите для запуска",
-        "privacy_policy_key": "Политика конфиденциальности",
-        "terms_of_service_key": "Условия использования",
+        "privacy_policy_key": "Конфиденциальность",
+        "terms_of_service_key": "Условия",
         "pp_tos_key": "Используя приложение, вы соглашаетесь с Условиями использования и Политикой конфиденциальности.",
         "current_ip_key": "Текущий IP",
         "error_occur_reload": "Произошла ошибка, пожалуйста, перезагрузите приложение.",
@@ -203,7 +203,30 @@ struct RussianDictionary {
         "speed_slow": "Медленный",
         "speed_average": "Средний",
         "speed_fast": "Быстрый",
-        "speed_super": "Супер быстрый"
+        "speed_super": "Супер быстрый",
+        
+        "secured_offer_text": "Защищено Apple, отмените в любое время!",
+        "save_discount_text": "Сэкономить",
+        
+        "connect_offer_title": "Увеличьте свою скорость",
+        "connect_offer_description": "Сейчас вы используете более медленное соединение. Обновите до Premium для молниеносного серфинга",
+        "connect_offer_button": "Увеличить сейчас",
+        
+        "timer_offer_title": "Предложение ограничено по времени",
+        "timer_offer_description": "Сейчас вы используете более медленное соединение. Обновите до Premium для молниеносного серфинга",
+        "timer_offer_button": "Начать подписку",
+        
+        "paywall_button": "Начать подписку",
+        "paywall_promo_text": "У меня есть промо-код",
+        "paywall_restore": "Восстановить",
+        "paywall_item_1_title": "Ультрабыстрые скорости",
+        "paywall_item_1_description": "Наслаждайтесь непрерывным серфингом и потоковым вещанием с нашими высокоскоростными серверами.",
+        "paywall_item_2_title": "Высокий уровень безопасности",
+        "paywall_item_2_description": "Защитите свои данные с помощью передового шифрования и современных протоколов безопасности.",
+        "paywall_item_3_title": "Полная анонимность",
+        "paywall_item_3_description": "Серфите в Интернете с полной конфиденциальностью, скрывая свою личность от любопытных глаз.",
+        "paywall_item_4_title": "Более 50 мировых локаций",
+        "paywall_item_4_description": "Получите доступ к серверам в более чем 10 странах для поистине глобального онлайн-опыта."
     ]
 }
 

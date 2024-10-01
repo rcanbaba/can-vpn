@@ -203,7 +203,30 @@ struct UrduDictionary {
         "speed_slow": "سست",
         "speed_average": "متوسط",
         "speed_fast": "تیز",
-        "speed_super": "بہت تیز"
+        "speed_super": "بہت تیز",
+        
+        "secured_offer_text": "ایپل کی طرف سے محفوظ، کسی بھی وقت منسوخ کریں!",
+        "save_discount_text": "بچت",
+        
+        "connect_offer_title": "اپنی رفتار بڑھائیں",
+        "connect_offer_description": "آپ اس وقت ایک سست کنکشن پر ہیں۔ تیز رفتار براؤزنگ کے لیے Premium میں اپ گریڈ کریں",
+        "connect_offer_button": "ابھی بڑھائیں",
+        
+        "timer_offer_title": "محدود وقت کی پیشکش",
+        "timer_offer_description": "آپ اس وقت ایک سست کنکشن پر ہیں۔ تیز رفتار براؤزنگ کے لیے Premium میں اپ گریڈ کریں",
+        "timer_offer_button": "اشتراک شروع کریں",
+        
+        "paywall_button": "اشتراک شروع کریں",
+        "paywall_promo_text": "میرے پاس ایک پرومو کوڈ ہے",
+        "paywall_restore": "بحال کریں",
+        "paywall_item_1_title": "بہت تیز رفتاریں",
+        "paywall_item_1_description": "ہمارے ہائی اسپیڈ سرورز کے ساتھ بغیر کسی رکاوٹ کے براؤزنگ اور اسٹریمنگ کا لطف اٹھائیں.",
+        "paywall_item_2_title": "اعلیٰ درجے کی سیکیورٹی",
+        "paywall_item_2_description": "اپنے ڈیٹا کی حفاظت کریں پیشہ ورانہ انکرپشن اور جدید سیکیورٹی پروٹوکولز کے ساتھ.",
+        "paywall_item_3_title": "مکمل نامعلومی",
+        "paywall_item_3_description": "پوری رازداری کے ساتھ ویب پر سرفنگ کریں، اپنی شناخت کو تجسس بھرے نظروں سے چھپائیں.",
+        "paywall_item_4_title": "دنیا بھر میں 50+ مقامات",
+        "paywall_item_4_description": "ایک حقیقی عالمی آن لائن تجربے کے لیے 10 سے زیادہ ممالک میں سرورز تک رسائی حاصل کریں."
     ]
 }
 

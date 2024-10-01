@@ -16,7 +16,6 @@ class ConnectDiscountView: UIView {
         label.font = UIFont.systemFont(ofSize: 14, weight: .black)
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.text = "50% Save".localize()
         return label
     }()
     

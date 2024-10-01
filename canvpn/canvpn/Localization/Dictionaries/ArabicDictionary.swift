@@ -203,7 +203,30 @@ struct ArabicDictionary {
         "speed_slow": "بطيء",
         "speed_average": "متوسط",
         "speed_fast": "سريع",
-        "speed_super": "سريع جدًا"
+        "speed_super": "سريع جدًا",
+        
+        "secured_offer_text": "مضمون من آبل، يمكنك الإلغاء في أي وقت!",
+        "save_discount_text": "احفظ",
+        
+        "connect_offer_title": "عزّز سرعتك",
+        "connect_offer_description": "أنت على اتصال أبطأ الآن. قم بالترقية إلى Premium لتصفح بسرعة البرق",
+        "connect_offer_button": "عزّز الآن",
+        
+        "timer_offer_title": "عرض محدود الوقت",
+        "timer_offer_description": "أنت على اتصال أبطأ الآن. قم بالترقية إلى Premium لتصفح بسرعة البرق",
+        "timer_offer_button": "ابدأ الاشتراك",
+        
+        "paywall_button": "ابدأ الاشتراك",
+        "paywall_promo_text": "لدي رمز ترويجي",
+        "paywall_restore": "استعادة",
+        "paywall_item_1_title": "سرعات فائقة",
+        "paywall_item_1_description": "استمتع بتصفح وبث دون انقطاع مع خوادمنا عالية السرعة.",
+        "paywall_item_2_title": "أمان من الدرجة الأولى",
+        "paywall_item_2_description": "احمِ بياناتك مع التشفير الرائد في الصناعة وبروتوكولات الأمان المتقدمة.",
+        "paywall_item_3_title": "إخفاء الهوية التامة",
+        "paywall_item_3_description": "تصفح الإنترنت بسرية تامة، مخفيًا هويتك عن الأعين المتطفلة.",
+        "paywall_item_4_title": "أكثر من 50 موقع حول العالم",
+        "paywall_item_4_description": "قم بالوصول إلى الخوادم في أكثر من 10 دول لتجربة عالمية حقًا عبر الإنترنت."
     ]
 }
 

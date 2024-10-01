@@ -74,7 +74,7 @@ class TimerOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 28, weight: .medium)
         label.textColor = UIColor.NewSubs.dark
         label.textAlignment = .center
-        label.text = "Limited Time Offer".localize()
+        label.text = "timer_offer_title".localize()
         label.numberOfLines = 0
         return label
     }()
@@ -82,7 +82,7 @@ class TimerOfferViewController: UIViewController {
     private lazy var getButton: NewOfferButton = {
         let view = NewOfferButton(type: .system)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
-        view.textLabel.text = "Start Subscription".localize()
+        view.textLabel.text = "timer_offer_button".localize()
         view.setOrangeUI()
         return view
     }()
@@ -93,7 +93,7 @@ class TimerOfferViewController: UIViewController {
         label.font = UIFont.monospacedDigitSystemFont(ofSize: 44, weight: .bold)
         label.textColor = .white
         label.layer.applySketchShadow()
-        label.text = "00 : 00"
+        label.text = "       "
         return label
     }()
     
@@ -126,7 +126,7 @@ class TimerOfferViewController: UIViewController {
     
     private let termsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Terms of Use".localize()
+        label.text = "terms_of_service_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
@@ -136,7 +136,7 @@ class TimerOfferViewController: UIViewController {
     
     private let privacyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Privacy Policy".localize()
+        label.text = "privacy_policy_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
@@ -156,7 +156,7 @@ class TimerOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
-        label.text = "Secured by Apple, cancel anytime!".localize()
+        label.text = "secured_offer_text".localize()
         label.numberOfLines = 0
         return label
     }()

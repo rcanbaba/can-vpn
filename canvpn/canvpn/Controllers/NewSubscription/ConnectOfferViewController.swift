@@ -65,7 +65,7 @@ class ConnectOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 28, weight: .medium)
         label.textColor = UIColor.NewSubs.dark
         label.textAlignment = .center
-        label.text = "Boost Your Speed1".localize()
+        label.text = "connect_offer_title".localize()
         label.numberOfLines = 0
         return label
     }()
@@ -75,7 +75,7 @@ class ConnectOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = UIColor.NewSubs.dark
         label.textAlignment = .center
-        label.text = "You're on a slower connection right now. Upgrade to Premium for lightning-fast browsing.2".localize()
+        label.text = "connect_offer_description".localize()
         label.numberOfLines = 0
         return label
     }()
@@ -83,13 +83,13 @@ class ConnectOfferViewController: UIViewController {
     private lazy var getButton: NewOfferButton = {
         let view = NewOfferButton(type: .system)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getButtonTapped(_:))))
-        view.textLabel.text = "Boost Now".localize()
+        view.textLabel.text = "connect_offer_button".localize()
         return view
     }()
     
     private let termsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Terms of Use"
+        label.text = "terms_of_service_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
@@ -99,7 +99,7 @@ class ConnectOfferViewController: UIViewController {
     
     private let privacyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Privacy Policy"
+        label.text = "privacy_policy_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
@@ -112,7 +112,7 @@ class ConnectOfferViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
         label.textAlignment = .center
-        label.text = "Secured by Apple, cancel anytime!".localize()
+        label.text = "secured_offer_text".localize()
         label.numberOfLines = 0
         return label
     }()

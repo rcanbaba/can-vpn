@@ -201,7 +201,30 @@ struct IndonesianDictionary {
         "speed_slow": "Lambat",
         "speed_average": "Rata-rata",
         "speed_fast": "Cepat",
-        "speed_super": "Super Cepat"
+        "speed_super": "Super Cepat",
+        
+        "secured_offer_text": "Aman oleh Apple, batalkan kapan saja!",
+        "save_discount_text": "Simpan",
+        
+        "connect_offer_title": "Tingkatkan Kecepatan Anda",
+        "connect_offer_description": "Anda saat ini menggunakan koneksi yang lebih lambat. Upgrade ke Premium untuk browsing yang super cepat",
+        "connect_offer_button": "Tingkatkan Sekarang",
+        
+        "timer_offer_title": "Penawaran Terbatas Waktu",
+        "timer_offer_description": "Anda saat ini menggunakan koneksi yang lebih lambat. Upgrade ke Premium untuk browsing yang super cepat",
+        "timer_offer_button": "Mulai Abonemen",
+        
+        "paywall_button": "Mulai Abonemen",
+        "paywall_promo_text": "Saya memiliki kode promo",
+        "paywall_restore": "Pulihkan",
+        "paywall_item_1_title": "Kecepatan Sangat Cepat",
+        "paywall_item_1_description": "Nikmati browsing dan streaming tanpa gangguan dengan server kecepatan tinggi kami.",
+        "paywall_item_2_title": "Keamanan Terbaik",
+        "paywall_item_2_description": "Lindungi data Anda dengan enkripsi terdepan dan protokol keamanan canggih.",
+        "paywall_item_3_title": "Anonimitas Penuh",
+        "paywall_item_3_description": "Jelajahi web dengan privasi lengkap, menyembunyikan identitas Anda dari mata-mata.",
+        "paywall_item_4_title": "50+ Lokasi di Seluruh Dunia",
+        "paywall_item_4_description": "Akses server di lebih dari 10 negara untuk pengalaman online yang benar-benar global."
     ]
 }
 

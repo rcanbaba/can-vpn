@@ -203,7 +203,30 @@ struct SpanishDictionary {
         "speed_slow": "Lento",
         "speed_average": "Promedio",
         "speed_fast": "Rápido",
-        "speed_super": "Súper Rápido"
+        "speed_super": "Súper Rápido",
+        
+        "secured_offer_text": "Asegurado por Apple, ¡cancelar en cualquier momento!",
+        "save_discount_text": "Guardar",
+        
+        "connect_offer_title": "Aumenta tu Velocidad",
+        "connect_offer_description": "Estás en una conexión más lenta ahora mismo. Actualiza a Premium para una navegación ultrarrápida",
+        "connect_offer_button": "Aumentar Ahora",
+        
+        "timer_offer_title": "Oferta por Tiempo Limitado",
+        "timer_offer_description": "Estás en una conexión más lenta ahora mismo. Actualiza a Premium para una navegación ultrarrápida",
+        "timer_offer_button": "Iniciar Suscripción",
+        
+        "paywall_button": "Iniciar Suscripción",
+        "paywall_promo_text": "Tengo un código promocional",
+        "paywall_restore": "Restaurar",
+        "paywall_item_1_title": "Velocidades Relámpago",
+        "paywall_item_1_description": "Disfruta de navegación y transmisión ininterrumpidas con nuestros servidores de alta velocidad.",
+        "paywall_item_2_title": "Seguridad de Primera",
+        "paywall_item_2_description": "Protege tus datos con cifrado líder en la industria y protocolos de seguridad avanzados.",
+        "paywall_item_3_title": "Anonimato Completo",
+        "paywall_item_3_description": "Navega por la web con total privacidad, ocultando tu identidad de miradas curiosas.",
+        "paywall_item_4_title": "Más de 50 Ubicaciones en Todo el Mundo",
+        "paywall_item_4_description": "Accede a servidores en más de 10 países para una experiencia en línea verdaderamente global."
     ]
 }
 

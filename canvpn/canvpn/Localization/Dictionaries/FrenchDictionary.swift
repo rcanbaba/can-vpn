@@ -203,7 +203,30 @@ struct FrenchDictionary {
         "speed_slow": "Lent",
         "speed_average": "Moyen",
         "speed_fast": "Rapide",
-        "speed_super": "Très rapide"
+        "speed_super": "Très rapide",
+        
+        "secured_offer_text": "Sécurisé par Apple, annulez à tout moment !",
+        "save_discount_text": "Enregistrer",
+        
+        "connect_offer_title": "Augmentez Votre Vitesse",
+        "connect_offer_description": "Vous êtes actuellement sur une connexion plus lente. Passez à Premium pour une navigation ultra-rapide",
+        "connect_offer_button": "Augmenter Maintenant",
+        
+        "timer_offer_title": "Offre à Durée Limitée",
+        "timer_offer_description": "Vous êtes actuellement sur une connexion plus lente. Passez à Premium pour une navigation ultra-rapide",
+        "timer_offer_button": "Commencer l'Abonnement",
+        
+        "paywall_button": "Commencer l'Abonnement",
+        "paywall_promo_text": "J'ai un code promo",
+        "paywall_restore": "Restaurer",
+        "paywall_item_1_title": "Vitesses Éclatantes",
+        "paywall_item_1_description": "Profitez d'une navigation et d'un streaming ininterrompus avec nos serveurs haute vitesse.",
+        "paywall_item_2_title": "Sécurité de Haut Niveau",
+        "paywall_item_2_description": "Protégez vos données avec un chiffrement de pointe et des protocoles de sécurité avancés.",
+        "paywall_item_3_title": "Anonymat Complet",
+        "paywall_item_3_description": "Naviguez sur le web avec une confidentialité totale, cachant votre identité des regards curieux.",
+        "paywall_item_4_title": "Plus de 50 Localisations dans le Monde",
+        "paywall_item_4_description": "Accédez à des serveurs dans plus de 10 pays pour une expérience en ligne véritablement mondiale."
     ]
 }
 

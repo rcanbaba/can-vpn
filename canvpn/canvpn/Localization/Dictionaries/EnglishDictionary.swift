@@ -207,5 +207,30 @@ struct EnglishDictionary {
         "speed_average": "Average",
         "speed_fast": "Fast",
         "speed_super": "Super Fast",
+        
+        // new offers
+        "secured_offer_text": "Secured by Apple, cancel anytime!",
+        "save_discount_text": "Save",
+        
+        "connect_offer_title": "Boost Your Speed",
+        "connect_offer_description": "You're on a slower connection right now. Upgrade to Premium for lightning-fast browsing",
+        "connect_offer_button": "Boost Now",
+        
+        "timer_offer_title": "Limited Time Offer",
+        "timer_offer_description": "You're on a slower connection right now. Upgrade to Premium for lightning-fast browsing",
+        "timer_offer_button": "Start Subscription",
+        
+        "paywall_button": "Start Subscription",
+        "paywall_promo_text": "I have a promo code",
+        "paywall_restore": "Restore",
+        "paywall_item_1_title": "Blazing Fast Speeds",
+        "paywall_item_1_description": "Enjoy uninterrupted browsing and streaming with our high-speed servers.",
+        "paywall_item_2_title": "Top-Notch Security",
+        "paywall_item_2_description": "Protect your data with industry-leading encryption and advanced security protocols.",
+        "paywall_item_3_title": "Complete Anonymity",
+        "paywall_item_3_description": "Surf the web with complete privacy, hiding your identity from prying eyes.",
+        "paywall_item_4_title": "50+ Worldwide Locations",
+        "paywall_item_4_description": "Access servers in over 10 countries for a truly global online experience.",
+
     ]
 }

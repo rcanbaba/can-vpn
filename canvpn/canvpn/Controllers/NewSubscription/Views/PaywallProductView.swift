@@ -136,7 +136,7 @@ extension PaywallProductView {
     public func set(isDiscounted: Int) {
         if isDiscounted > 0 {
             discountView.isHidden = false
-            discountView.discountLabel.text = "% \(isDiscounted) Save"
+            discountView.discountLabel.text = "% \(isDiscounted) " + "save_discount_text".localize()
         }
     }
     

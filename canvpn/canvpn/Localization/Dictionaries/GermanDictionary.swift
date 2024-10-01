@@ -203,7 +203,30 @@ struct GermanDictionary {
         "speed_slow": "Langsam",
         "speed_average": "Durchschnittlich",
         "speed_fast": "Schnell",
-        "speed_super": "Superschnell"
+        "speed_super": "Superschnell",
+        
+        "secured_offer_text": "Von Apple gesichert, jederzeit kündbar!",
+        "save_discount_text": "Speichern",
+        
+        "connect_offer_title": "Steigern Sie Ihre Geschwindigkeit",
+        "connect_offer_description": "Sie sind derzeit mit einer langsameren Verbindung verbunden. Wechseln Sie zu Premium für blitzschnelles Surfen.",
+        "connect_offer_button": "Jetzt Steigern",
+        
+        "timer_offer_title": "Zeitlich Begrenztes Angebot",
+        "timer_offer_description": "Sie sind derzeit mit einer langsameren Verbindung verbunden. Wechseln Sie zu Premium für blitzschnelles Surfen.",
+        "timer_offer_button": "Abonnement Starten",
+        
+        "paywall_button": "Abonnement Starten",
+        "paywall_promo_text": "Ich habe einen Aktionscode",
+        "paywall_restore": "Wiederherstellen",
+        "paywall_item_1_title": "Blitzschnelle Geschwindigkeiten",
+        "paywall_item_1_description": "Genießen Sie unterbrechungsfreies Surfen und Streaming mit unseren Hochgeschwindigkeitsservern.",
+        "paywall_item_2_title": "Erstklassige Sicherheit",
+        "paywall_item_2_description": "Schützen Sie Ihre Daten mit branchenführender Verschlüsselung und fortschrittlichen Sicherheitsprotokollen.",
+        "paywall_item_3_title": "Vollständige Anonymität",
+        "paywall_item_3_description": "Surfen Sie im Internet mit vollständiger Privatsphäre und verstecken Sie Ihre Identität vor neugierigen Blicken.",
+        "paywall_item_4_title": "Über 50 Standorte weltweit",
+        "paywall_item_4_description": "Greifen Sie auf Server in über 10 Ländern zu, um ein wirklich globales Online-Erlebnis zu erhalten."
     ]
 }
 

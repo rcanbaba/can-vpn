@@ -44,7 +44,6 @@ class NewOfferButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func configureUI() {
         isUserInteractionEnabled = true
         layer.cornerRadius = 30

@@ -202,7 +202,30 @@ struct HindiDictionary {
         "speed_slow": "धीमा",
         "speed_average": "औसत",
         "speed_fast": "तेज",
-        "speed_super": "अत्यधिक तेज"
+        "speed_super": "अत्यधिक तेज",
+        
+        "secured_offer_text": "एप्पल द्वारा सुरक्षित, कभी भी रद्द करें!",
+        "save_discount_text": "बचत करें",
+        
+        "connect_offer_title": "अपनी गति बढ़ाएं",
+        "connect_offer_description": "आप अभी एक धीमी कनेक्शन पर हैं। तेज़ ब्राउज़िंग के लिए प्रीमियम पर अपग्रेड करें",
+        "connect_offer_button": "अब बढ़ाएं",
+        
+        "timer_offer_title": "सीमित समय की पेशकश",
+        "timer_offer_description": "आप अभी एक धीमी कनेक्शन पर हैं। तेज़ ब्राउज़िंग के लिए प्रीमियम पर अपग्रेड करें",
+        "timer_offer_button": "सदस्यता प्रारंभ करें",
+        
+        "paywall_button": "सदस्यता प्रारंभ करें",
+        "paywall_promo_text": "मेरे पास एक प्रचार कोड है",
+        "paywall_restore": "बहाल करें",
+        "paywall_item_1_title": "तेज गति",
+        "paywall_item_1_description": "हमारे उच्च गति सर्वरों के साथ निर्बाध ब्राउज़िंग और स्ट्रीमिंग का आनंद लें।",
+        "paywall_item_2_title": "उच्च स्तर की सुरक्षा",
+        "paywall_item_2_description": "उद्योग में अग्रणी एन्क्रिप्शन और उन्नत सुरक्षा प्रोटोकॉल के साथ अपने डेटा की सुरक्षा करें।",
+        "paywall_item_3_title": "पूर्ण गुमनामी",
+        "paywall_item_3_description": "पूरी गोपनीयता के साथ वेब पर सर्फ करें, अपनी पहचान को जिज्ञासु नज़रों से छुपाएं।",
+        "paywall_item_4_title": "50+ वैश्विक स्थान",
+        "paywall_item_4_description": "एक सच्चे वैश्विक ऑनलाइन अनुभव के लिए 10 से अधिक देशों में सर्वरों तक पहुँचें।"
     ]
 }
 

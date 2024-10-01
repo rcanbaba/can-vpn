@@ -16,8 +16,8 @@ struct UkrainianDictionary {
         "disconnected_key": "Відключено",
         "disconnecting_key": "Відключення",
         "initial_key": "Торкніться, щоб розпочати",
-        "privacy_policy_key": "Політика конфіденційності",
-        "terms_of_service_key": "Умови користування",
+        "privacy_policy_key": "Конфіденційність",
+        "terms_of_service_key": "Умови",
         "pp_tos_key": "Використовуючи додаток, ви погоджуєтеся з Умовами користування та Політикою конфіденційності.",
         "current_ip_key": "Поточний IP",
         "error_occur_reload": "Сталася помилка, будь ласка, перезавантажте додаток.",
@@ -204,6 +204,29 @@ struct UkrainianDictionary {
         "speed_slow": "Повільно",
         "speed_average": "Середньо",
         "speed_fast": "Швидко",
-        "speed_super": "Дуже Швидко"
+        "speed_super": "Дуже Швидко",
+        
+        "secured_offer_text": "Захищено Apple, скасуйте в будь-який час!",
+        "save_discount_text": "Зберегти",
+        
+        "connect_offer_title": "Підвищте свою швидкість",
+        "connect_offer_description": "Ви зараз використовуєте повільніше з'єднання. Оновіть до Premium для блискавично швидкого серфінгу",
+        "connect_offer_button": "Підвищити зараз",
+        
+        "timer_offer_title": "Обмежена пропозиція",
+        "timer_offer_description": "Ви зараз використовуєте повільніше з'єднання. Оновіть до Premium для блискавично швидкого серфінгу",
+        "timer_offer_button": "Почати підписку",
+        
+        "paywall_button": "Почати підписку",
+        "paywall_promo_text": "У мене є промокод",
+        "paywall_restore": "Відновити",
+        "paywall_item_1_title": "Супер швидкість",
+        "paywall_item_1_description": "Насолоджуйтесь безперервним серфінгом і потоковим відео з нашими високошвидкісними серверами.",
+        "paywall_item_2_title": "Високий рівень безпеки",
+        "paywall_item_2_description": "Захистіть свої дані за допомогою передового шифрування та сучасних протоколів безпеки.",
+        "paywall_item_3_title": "Повна анонімність",
+        "paywall_item_3_description": "Серфіть в Інтернеті з повною конфіденційністю, приховуючи свою особистість від допитливих очей.",
+        "paywall_item_4_title": "Більше 50 місць у світі",
+        "paywall_item_4_description": "Отримайте доступ до серверів більш ніж у 10 країнах для справжнього глобального онлайн-досвіду."
     ]
 }

@@ -203,7 +203,30 @@ struct ChineseDictionary {
         "speed_slow": "慢",
         "speed_average": "平均",
         "speed_fast": "快",
-        "speed_super": "超快"
+        "speed_super": "超快",
+        
+        "secured_offer_text": "由苹果公司保障，随时可以取消！",
+        "save_discount_text": "节省",
+        
+        "connect_offer_title": "提升您的速度",
+        "connect_offer_description": "您当前的连接较慢。升级到Premium以实现闪电般的浏览速度",
+        "connect_offer_button": "立即提升",
+        
+        "timer_offer_title": "限时优惠",
+        "timer_offer_description": "您当前的连接较慢。升级到Premium以实现闪电般的浏览速度",
+        "timer_offer_button": "开始订阅",
+        
+        "paywall_button": "开始订阅",
+        "paywall_promo_text": "我有一个优惠码",
+        "paywall_restore": "恢复",
+        "paywall_item_1_title": "闪电般的速度",
+        "paywall_item_1_description": "使用我们的高速服务器享受不间断的浏览和流媒体体验。",
+        "paywall_item_2_title": "顶级安全性",
+        "paywall_item_2_description": "使用行业领先的加密技术和高级安全协议保护您的数据。",
+        "paywall_item_3_title": "完全匿名",
+        "paywall_item_3_description": "在网络上完全隐私地冲浪，隐藏您的身份不被窥探。",
+        "paywall_item_4_title": "全球50+地点",
+        "paywall_item_4_description": "访问超过10个国家的服务器，获得真正全球化的在线体验。"
     ]
 }
 
