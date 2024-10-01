@@ -105,6 +105,16 @@ class ConnectOfferViewController: UIViewController {
         return label
     }()
     
+    private lazy var securedLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textColor = UIColor.NewSubs.gray
+        label.textAlignment = .center
+        label.text = "Secured by Apple, cancel anytime!".localize()
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private lazy var lineView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "vertical-line")
@@ -171,6 +181,8 @@ class ConnectOfferViewController: UIViewController {
         Analytics.logEvent("ConnectOfferPresented", parameters: [:])
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
+        securedLabel.isHidden = (SettingsManager.shared.settings?.isInReview ?? true )
         configureUI()
         setProduct()
     }
@@ -264,16 +276,22 @@ class ConnectOfferViewController: UIViewController {
         getButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(65)
             make.height.equalTo(60)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(44)
         }
         
         getButton.layer.applySketchShadow()
+        
+        view.addSubview(securedLabel)
+        securedLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalTo(getButton.snp.top).inset(-4)
+        }
         
         view.addSubview(productView)
         productView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(93)
-            make.bottom.equalTo(getButton.snp.top).inset(-24)
+            make.bottom.equalTo(getButton.snp.top).inset(-30)
         }
         
         let stackView = UIStackView(arrangedSubviews: [termsLabel, privacyLabel])
