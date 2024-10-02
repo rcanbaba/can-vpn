@@ -92,7 +92,7 @@ class ConnectOfferViewController: UIViewController {
         label.text = "terms_of_service_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -102,7 +102,7 @@ class ConnectOfferViewController: UIViewController {
         label.text = "privacy_policy_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
-        label.textAlignment = .center
+        label.textAlignment = .right
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -299,12 +299,12 @@ class ConnectOfferViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [termsLabel, privacyLabel])
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 16
+        stackView.distribution = .fillEqually
+        stackView.spacing = 12
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(40)
             make.top.equalTo(getButton.snp.bottom).offset(20)
         }
         
@@ -402,10 +402,15 @@ class ConnectOfferViewController: UIViewController {
     }
     
     private func activateCloseButtonTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.closeButton.isUserInteractionEnabled = true
-            UIView.animate(withDuration: 0.5) {
-                self?.closeButton.alpha = 1
+        if SettingsManager.shared.settings?.isInReview == true {
+            self.closeButton.isUserInteractionEnabled = true
+            self.closeButton.alpha = 1
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                self?.closeButton.isUserInteractionEnabled = true
+                UIView.animate(withDuration: 0.5) {
+                    self?.closeButton.alpha = 1
+                }
             }
         }
     }
@@ -427,7 +432,7 @@ class ConnectOfferViewController: UIViewController {
         
         let formattedOldPrice = PurchaseManager.shared.getOldPriceFormatted(for: storeProduct, discount: offerProduct.discount)
         
-        productView.set(productNameText: storeProduct.localizedTitle)
+        productView.set(productNameText: getProductName(key: storeProduct.localizedTitle))
         productView.set(oldPriceText: formattedOldPrice)
         productView.set(newPriceText: storePrice)
         productView.set(discountText: "% \(offerProduct.discount)")
@@ -519,7 +524,10 @@ class ConnectOfferViewController: UIViewController {
         }
     }
     
-    
+    private func getProductName(key: String) -> String {
+        guard SettingsManager.shared.settings?.isInReview == false else { return key }
+        return key.localize()
+    }
     
 }
 

@@ -226,7 +226,10 @@ struct SpanishDictionary {
         "paywall_item_3_title": "Anonimato Completo",
         "paywall_item_3_description": "Navega por la web con total privacidad, ocultando tu identidad de miradas curiosas.",
         "paywall_item_4_title": "Más de 50 Ubicaciones en Todo el Mundo",
-        "paywall_item_4_description": "Accede a servidores en más de 10 países para una experiencia en línea verdaderamente global."
+        "paywall_item_4_description": "Accede a servidores en más de 10 países para una experiencia en línea verdaderamente global.",
+        
+        "Monthly Plan": "Plan Mensual",
+        "Weekly Plan": "Plan Semanal"
     ]
 }
 

@@ -224,7 +224,10 @@ struct IndonesianDictionary {
         "paywall_item_3_title": "Anonimitas Penuh",
         "paywall_item_3_description": "Jelajahi web dengan privasi lengkap, menyembunyikan identitas Anda dari mata-mata.",
         "paywall_item_4_title": "50+ Lokasi di Seluruh Dunia",
-        "paywall_item_4_description": "Akses server di lebih dari 10 negara untuk pengalaman online yang benar-benar global."
+        "paywall_item_4_description": "Akses server di lebih dari 10 negara untuk pengalaman online yang benar-benar global.",
+        
+        "Monthly Plan": "Rencana Bulanan",
+        "Weekly Plan": "Rencana Mingguan"
     ]
 }
 

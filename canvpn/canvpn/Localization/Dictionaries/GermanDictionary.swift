@@ -226,7 +226,10 @@ struct GermanDictionary {
         "paywall_item_3_title": "Vollständige Anonymität",
         "paywall_item_3_description": "Surfen Sie im Internet mit vollständiger Privatsphäre und verstecken Sie Ihre Identität vor neugierigen Blicken.",
         "paywall_item_4_title": "Über 50 Standorte weltweit",
-        "paywall_item_4_description": "Greifen Sie auf Server in über 10 Ländern zu, um ein wirklich globales Online-Erlebnis zu erhalten."
+        "paywall_item_4_description": "Greifen Sie auf Server in über 10 Ländern zu, um ein wirklich globales Online-Erlebnis zu erhalten.",
+        
+        "Monthly Plan": "Monatsplan",
+        "Weekly Plan": "Wochenplan"
     ]
 }
 

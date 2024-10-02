@@ -231,6 +231,9 @@ struct EnglishDictionary {
         "paywall_item_3_description": "Surf the web with complete privacy, hiding your identity from prying eyes.",
         "paywall_item_4_title": "50+ Worldwide Locations",
         "paywall_item_4_description": "Access servers in over 10 countries for a truly global online experience.",
+        
+        "Monthly Plan": "Monthly Plan",
+        "Weekly Plan": "Weekly Plan"
 
     ]
 }

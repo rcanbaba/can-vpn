@@ -226,6 +226,9 @@ struct PortugueseDictionary {
         "paywall_item_3_title": "Anonimato Completo",
         "paywall_item_3_description": "Navegue na web com total privacidade, escondendo sua identidade de olhares curiosos.",
         "paywall_item_4_title": "Mais de 50 Localizações em Todo o Mundo",
-        "paywall_item_4_description": "Acesse servidores em mais de 10 países para uma experiência online verdadeiramente global."
+        "paywall_item_4_description": "Acesse servidores em mais de 10 países para uma experiência online verdadeiramente global.",
+        
+        "Monthly Plan": "Plano Mensal",
+        "Weekly Plan": "Plano Semanal"
     ]
 }

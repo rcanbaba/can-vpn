@@ -226,7 +226,10 @@ struct ChineseDictionary {
         "paywall_item_3_title": "完全匿名",
         "paywall_item_3_description": "在网络上完全隐私地冲浪，隐藏您的身份不被窥探。",
         "paywall_item_4_title": "全球50+地点",
-        "paywall_item_4_description": "访问超过10个国家的服务器，获得真正全球化的在线体验。"
+        "paywall_item_4_description": "访问超过10个国家的服务器，获得真正全球化的在线体验。",
+        
+        "Monthly Plan": "月度计划",
+        "Weekly Plan": "每周计划"
     ]
 }
 

@@ -34,7 +34,7 @@ class PaywallViewController: UIViewController {
         label.text = "terms_of_service_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -44,7 +44,7 @@ class PaywallViewController: UIViewController {
         label.text = "privacy_policy_key".localize()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = UIColor.NewSubs.gray
-        label.textAlignment = .center
+        label.textAlignment = .right
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -142,12 +142,12 @@ class PaywallViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [termsLabel, privacyLabel])
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 16
+        stackView.distribution = .fillEqually
+        stackView.spacing = 12
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(40)
             make.top.equalTo(getButton.snp.bottom).offset(16)
         }
         

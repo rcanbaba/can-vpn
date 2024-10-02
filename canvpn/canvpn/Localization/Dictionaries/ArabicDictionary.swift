@@ -226,7 +226,10 @@ struct ArabicDictionary {
         "paywall_item_3_title": "إخفاء الهوية التامة",
         "paywall_item_3_description": "تصفح الإنترنت بسرية تامة، مخفيًا هويتك عن الأعين المتطفلة.",
         "paywall_item_4_title": "أكثر من 50 موقع حول العالم",
-        "paywall_item_4_description": "قم بالوصول إلى الخوادم في أكثر من 10 دول لتجربة عالمية حقًا عبر الإنترنت."
+        "paywall_item_4_description": "قم بالوصول إلى الخوادم في أكثر من 10 دول لتجربة عالمية حقًا عبر الإنترنت.",
+        
+        "Monthly Plan": "الخطة الشهرية",
+        "Weekly Plan": "الخطة الأسبوعية"
     ]
 }
 

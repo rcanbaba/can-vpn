@@ -228,6 +228,9 @@ struct TurkishDictionary {
         "paywall_item_3_title": "Tam Anonimlik",
         "paywall_item_3_description": "Kimliğinizi meraklı gözlerden gizleyerek web'de tamamen gizlilikle gezin.",
         "paywall_item_4_title": "50+ Dünya Genelinde Lokasyon",
-        "paywall_item_4_description": "Gerçekten küresel bir çevrimiçi deneyim için 10'dan fazla ülkede sunuculara erişin."
+        "paywall_item_4_description": "Gerçekten küresel bir çevrimiçi deneyim için 10'dan fazla ülkede sunuculara erişin.",
+        
+        "Monthly Plan": "Aylık Plan",
+        "Weekly Plan": "Haftalık Plan"
     ]
 }

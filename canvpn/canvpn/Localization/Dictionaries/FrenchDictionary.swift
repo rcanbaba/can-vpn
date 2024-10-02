@@ -226,7 +226,10 @@ struct FrenchDictionary {
         "paywall_item_3_title": "Anonymat Complet",
         "paywall_item_3_description": "Naviguez sur le web avec une confidentialité totale, cachant votre identité des regards curieux.",
         "paywall_item_4_title": "Plus de 50 Localisations dans le Monde",
-        "paywall_item_4_description": "Accédez à des serveurs dans plus de 10 pays pour une expérience en ligne véritablement mondiale."
+        "paywall_item_4_description": "Accédez à des serveurs dans plus de 10 pays pour une expérience en ligne véritablement mondiale.",
+        
+        "Monthly Plan": "Plan Mensuel",
+        "Weekly Plan": "Plan Hebdomadaire"
     ]
 }
 
