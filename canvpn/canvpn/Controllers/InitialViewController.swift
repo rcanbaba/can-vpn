@@ -46,11 +46,13 @@ class InitialViewController: UIViewController {
     private func presentMainScreen() {
         Analytics.logEvent("102_PresentMainScreen", parameters: ["type" : "present"])
         var navigationController: UINavigationController
-        if SettingsManager.shared.settings?.isInReview == true {
-            navigationController = createNavigationController(with: HomeViewController())
-        } else {
-            navigationController = createNavigationController(with: MainScreenViewController())
-        }
+        
+        navigationController = createNavigationController(with: MainScreenViewController())
+//        if SettingsManager.shared.settings?.isInReview == true {
+//            navigationController = createNavigationController(with: HomeViewController())
+//        } else {
+//            navigationController = createNavigationController(with: MainScreenViewController())
+//        }
         present(navigationController, animated: true, completion: nil)
     }
     

@@ -269,7 +269,7 @@ class PaywallViewController: UIViewController {
 extension PaywallViewController {
     
     private func checkThenSetCouponLabel() {
-        let showCoupon = SettingsManager.shared.settings?.interface.showCoupon ?? false
+        let showCoupon = (SettingsManager.shared.settings?.interface.showCoupon ?? false) && (SettingsManager.shared.settings?.isInReview == false)
         promoLabel.isHidden = !showCoupon
     }
     

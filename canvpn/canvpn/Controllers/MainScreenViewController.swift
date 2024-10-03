@@ -491,7 +491,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
             // TO CONNECT
             if let selectedServer = selectedServer { // TODO: buraya geçişi ekleyebiliriz.
                 DispatchQueue.main.async {
-                    if !(SettingsManager.shared.settings?.user.isSubscribed ?? false) {
+                    if SettingsManager.shared.settings?.isInReview == false && !(SettingsManager.shared.settings?.user.isSubscribed ?? false) {
                         self.presentConnectOffer(server: selectedServer, fromCenterButton: true)
                     } else {
                         self.setMainUI(state: .connecting)
@@ -504,7 +504,7 @@ extension MainScreenViewController: MainScreenViewDelegate {
             }
         } else if currentManagerState == .connected {
             // TO DISCONNECT
-            if !(SettingsManager.shared.settings?.user.isSubscribed ?? false) {
+            if SettingsManager.shared.settings?.isInReview == false && !(SettingsManager.shared.settings?.user.isSubscribed ?? false) {
                 presentTimerOffer()
             }
             manager.disconnectFromWg()
@@ -528,14 +528,18 @@ extension MainScreenViewController: NETunnelManagerDelegate {
 // MARK: - LocationViewControllerDelegate
 extension MainScreenViewController: LocationViewControllerDelegate {
     func presentConnectOffer(with server: Server) {
-        presentConnectOffer(server: server, fromCenterButton: false)
+        if SettingsManager.shared.settings?.isInReview == false {
+            presentConnectOffer(server: server, fromCenterButton: false)
+        } else {
+            userTriggeredConnection = true
+            setSelectedServer(server: server)
+        }
     }
     
     func selectedServer(server: Server) {
         userTriggeredConnection = true
         setSelectedServer(server: server)
     }
-
 }
 
 // MARK: - GetFreePopupViewDelegate
