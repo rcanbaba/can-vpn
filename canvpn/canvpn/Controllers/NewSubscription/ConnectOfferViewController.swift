@@ -184,6 +184,12 @@ class ConnectOfferViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        if let deneme = PurchaseManager.shared.products, deneme.count > 0 {
+            
+        } else {
+            Analytics.logEvent("products empty", parameters: [:])
+        }
+        
         securedLabel.isHidden = (SettingsManager.shared.settings?.isInReview ?? true )
         configureUI()
         setProduct()

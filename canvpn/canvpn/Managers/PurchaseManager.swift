@@ -7,6 +7,7 @@
 
 import Foundation
 import StoreKit
+import FirebaseAnalytics
 
 class PurchaseManager: NSObject {
     
@@ -144,7 +145,7 @@ class PurchaseManager: NSObject {
 extension PurchaseManager: SKPaymentTransactionObserver {
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        transactions.forEach { (transaction) in
+        transactions.forEach { transaction in
             switch transaction.transactionState {
             case .purchased:
                 productPurchaseCompleted(identifier: transaction.payment.productIdentifier)
@@ -158,8 +159,10 @@ extension PurchaseManager: SKPaymentTransactionObserver {
                 productPurchaseFailed(transaction)
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
-            case .deferred, .purchasing: break
-            @unknown default: break
+            case .deferred, .purchasing:
+                break
+            @unknown default:
+                break
             }
         }
     }
@@ -201,8 +204,19 @@ extension PurchaseManager: SKPaymentTransactionObserver {
     }
     
     private func productPurchaseCompleted(identifier: String) {
-        productPurchaseCompletionHandler?(true, identifier, nil)
-//        NotificationCenter.default.post(name: .purchaseSuccessful, object: identifier)
+        guard let products = self.products else {
+            Analytics.logEvent("No products in completed", parameters: [:])
+            print("No products available for purchase completion")
+            return
+        }
+        
+        // Check if the product identifier exists in the products array
+        if products.contains(where: { $0.productIdentifier == identifier }) {
+            productPurchaseCompletionHandler?(true, identifier, nil)
+            // Optionally remove or process the product from the array
+        } else {
+            Analytics.logEvent("No products with identifier \(identifier)", parameters: [:])
+        }
     }
     
 }
