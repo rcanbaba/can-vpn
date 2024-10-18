@@ -42,7 +42,6 @@
 		B4216DD22B5D454500F8B0D6 /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD12B5D454500F8B0D6 /* LandingButton.swift */; };
 		B4216DD42B5D46EC00F8B0D6 /* LandingBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD32B5D46EC00F8B0D6 /* LandingBackView.swift */; };
 		B4216DD62B5EB31F00F8B0D6 /* FeaturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4216DD52B5EB31F00F8B0D6 /* FeaturesTableViewCell.swift */; };
-		B42297CC2C8F39D5003EE84C /* Adapty in Frameworks */ = {isa = PBXBuildFile; productRef = B42297CB2C8F39D5003EE84C /* Adapty */; };
 		B424E4632A43637C00EB124F /* PremiumTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4622A43637C00EB124F /* PremiumTopView.swift */; };
 		B424E4652A441ECC00EB124F /* OfferButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4642A441ECC00EB124F /* OfferButton.swift */; };
 		B424E4672A44327000EB124F /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424E4662A44327000EB124F /* UnderlinedLabel.swift */; };
@@ -877,7 +876,6 @@
 				B43E158C2A113F4A0095FF4A /* SwiftyJSON in Frameworks */,
 				B42DE3E52A82C585002137F9 /* AppTrackingTransparency.framework in Frameworks */,
 				B4023D572950E66D0008BDA6 /* SnapKit in Frameworks */,
-				B42297CC2C8F39D5003EE84C /* Adapty in Frameworks */,
 				B4023D6029510E310008BDA6 /* Lottie in Frameworks */,
 				B490D392296C958A00651BFC /* WireGuardKit in Frameworks */,
 				B48E7E972A49B8A900DEBD74 /* StoreKit.framework in Frameworks */,
@@ -1646,7 +1644,6 @@
 				B4023DC42954A0050008BDA6 /* KeychainAccess */,
 				B490D391296C958A00651BFC /* WireGuardKit */,
 				B43E158B2A113F4A0095FF4A /* SwiftyJSON */,
-				B42297CB2C8F39D5003EE84C /* Adapty */,
 				B41DE3252CA6EFE700F4E769 /* FirebaseAnalytics */,
 				B41DE3272CA6EFFA00F4E769 /* FirebaseCrashlytics */,
 				B41DE3292CA6F05F00F4E769 /* FirebaseMessaging */,
@@ -1726,7 +1723,6 @@
 				B4023DC32954A0050008BDA6 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				B490D390296C958A00651BFC /* XCRemoteSwiftPackageReference "wireguard-apple" */,
 				B43E158A2A113F4A0095FF4A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				B467699F2C8F38950061049C /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */,
 				B457E6EA2CA6E7E500201FBA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = B4023D3F2950E31E0008BDA6 /* Products */;
@@ -2559,14 +2555,6 @@
 				minimumVersion = 11.2.0;
 			};
 		};
-		B467699F2C8F38950061049C /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adaptyteam/AdaptySDK-iOS.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.3;
-			};
-		};
 		B490D390296C958A00651BFC /* XCRemoteSwiftPackageReference "wireguard-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://git.zx2c4.com/wireguard-apple";
@@ -2607,11 +2595,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B457E6EA2CA6E7E500201FBA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
-		};
-		B42297CB2C8F39D5003EE84C /* Adapty */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B467699F2C8F38950061049C /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
-			productName = Adapty;
 		};
 		B43E158B2A113F4A0095FF4A /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;

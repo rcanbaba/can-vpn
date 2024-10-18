@@ -48,11 +48,6 @@ class InitialViewController: UIViewController {
         var navigationController: UINavigationController
         
         navigationController = createNavigationController(with: MainScreenViewController())
-//        if SettingsManager.shared.settings?.isInReview == true {
-//            navigationController = createNavigationController(with: HomeViewController())
-//        } else {
-//            navigationController = createNavigationController(with: MainScreenViewController())
-//        }
         present(navigationController, animated: true, completion: nil)
     }
     
