@@ -36,6 +36,7 @@ struct RussianDictionary {
         "premium_title_4": "Безопасность",
         "upgrade_pro": "Получите PRO",
         "upgrade_pro_detail": "Попробуйте премиум-версию бесплатно, отмена в любое время.",
+        "upgrade_pro_detail-re":"Попробуйте премиум-версию бесплатно, отмена в любое время.",
         "premium_feature_title": "Премиум-функции",
         "error_on_restore_title": "Не удалось восстановить подписку.",
         "error_on_restore_desc": "У вас нет активной подписки.",

@@ -36,6 +36,7 @@ struct HindiDictionary {
         "premium_title_4": "सुरक्षित",
         "upgrade_pro": "प्रो में अपग्रेड करें",
         "upgrade_pro_detail": "प्रीमियम को मुफ्त में आज़माएं, कभी भी रद्द करें।",
+        "upgrade_pro_detail-re": "प्रीमियम को मुफ्त में आज़माएं, कभी भी रद्द करें।",
         "premium_feature_title": "प्रीमियम सुविधाएँ",
         "error_on_restore_title": "सदस्यता को बहाल करने में विफल हुआ।",
         "error_on_restore_desc": "आपके पास कोई सक्रिय सदस्यता नहीं है।",

@@ -36,6 +36,7 @@ struct ArabicDictionary {
         "premium_title_4": "يؤمن",
         "upgrade_pro": "التطور للاحترافية",
         "upgrade_pro_detail": "جرب Premium مجانًا ، وقم بالإلغاء في أي وقت.",
+        "upgrade_pro_detail-re": "جرب Premium مجانًا ، وقم بالإلغاء في أي وقت.",
         "premium_feature_title": "العضوية المميزة",
         "error_on_restore_title": "فشل في استعادة الاشتراك.",
         "error_on_restore_desc": "ليس لديك اشتراك نشط.",

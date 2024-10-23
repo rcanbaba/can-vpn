@@ -36,6 +36,7 @@ struct UrduDictionary {
         "premium_title_4": "محفوظ",
         "upgrade_pro": "PRO کو اپ گریڈ کریں",
         "upgrade_pro_detail": "پریمیم کو فوری آزمائیں، کسی بھی وقت منسوخ کریں۔",
+        "upgrade_pro_detail-re": "پریمیم کو فوری آزمائیں، کسی بھی وقت منسوخ کریں۔",
         "premium_feature_title": "پریمیم خصوصیات",
         "error_on_restore_title": "اشتراک بحال کرنے میں ناکامی ہوئی۔",
         "error_on_restore_desc": "آپ کے پاس کوئی فعال اشتراک نہیں ہے۔",

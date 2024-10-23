@@ -35,6 +35,7 @@ struct UkrainianDictionary {
         "premium_title_4": "Безпека",
         "upgrade_pro": "Оновити до PRO",
         "upgrade_pro_detail": "Спробуйте преміум безкоштовно, скасуйте в будь-який час.",
+        "upgrade_pro_detail-re": "Спробуйте преміум безкоштовно, скасуйте в будь-який час.",
         "premium_feature_title": "Преміум Функції",
         "error_on_restore_title": "Не вдалося відновити підписку.",
         "error_on_restore_desc": "У вас немає активної підписки.",

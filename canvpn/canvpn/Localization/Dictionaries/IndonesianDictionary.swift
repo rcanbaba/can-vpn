@@ -34,6 +34,7 @@ struct IndonesianDictionary {
         "premium_title_4": "Aman",
         "upgrade_pro": "Upgrade ke PRO",
         "upgrade_pro_detail": "Coba premium gratis, batalkan kapan saja.",
+        "upgrade_pro_detail-re": "Coba premium gratis, batalkan kapan saja.",
         "premium_feature_title": "Fitur Premium",
         "error_on_restore_title": "Gagal mengembalikan langganan.",
         "error_on_restore_desc": "Anda tidak memiliki langganan aktif.",

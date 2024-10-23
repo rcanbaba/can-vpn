@@ -110,6 +110,8 @@ class GoProButton: UIView {
     private var isPremiumState: Bool?
     
     private func setAsPremium() {
+        let retr = SettingsManager.shared.settings?.isInReview ?? true
+        
         rightArrowBackView.isHidden = true
         titleLabel.text = "upgraded_to_pro".localize()
         detailLabel.text = "upgraded_to_pro_detail".localize()
@@ -124,9 +126,11 @@ class GoProButton: UIView {
     }
     
     private func setAsStandard() {
+        let retr = SettingsManager.shared.settings?.isInReview ?? true
+        
         rightArrowBackView.isHidden = false
         titleLabel.text = "upgrade_pro".localize()
-        detailLabel.text = "upgrade_pro_detail".localize()
+        detailLabel.text = retr ? "upgrade_pro_detail-re".localize() : "upgrade_pro_detail".localize()
         isUserInteractionEnabled = true
         
         mainStackView.snp.remakeConstraints { make in
@@ -149,6 +153,13 @@ extension GoProButton {
     public func reloadLocalization() {
         guard let isPremium = isPremiumState else { return }
         titleLabel.text = isPremium ? "upgraded_to_pro".localize() : "upgrade_pro".localize()
-        detailLabel.text = isPremium ? "upgraded_to_pro_detail".localize() : "upgrade_pro_detail".localize()
+        
+        
+        if isPremium {
+            detailLabel.text = "upgraded_to_pro_detail".localize()
+        } else {
+            let retr = SettingsManager.shared.settings?.isInReview ?? true
+            detailLabel.text = retr ? "upgrade_pro_detail-re".localize() : "upgrade_pro_detail".localize()
+        }
     }
 }

@@ -36,6 +36,7 @@ struct GermanDictionary {
         "premium_title_4": "Sicher",
         "upgrade_pro": "Auf PRO upgraden",
         "upgrade_pro_detail": "Premium kostenlos ausprobieren, jederzeit kündbar.",
+        "upgrade_pro_detail-re": "Premium kostenlos ausprobieren, jederzeit kündbar.",
         "premium_feature_title": "Premium-Funktionen",
         "error_on_restore_title": "Wiederherstellung des Abonnements fehlgeschlagen.",
         "error_on_restore_desc": "Sie haben kein aktives Abonnement.",

@@ -36,6 +36,7 @@ struct TurkishDictionary {
         "premium_title_4": "Güvenli",
         "upgrade_pro": "Premiuma Yükselt",
         "upgrade_pro_detail": "Ücretsiz Premiumu dene, istediğin zaman iptal et.",
+        "upgrade_pro_detail-re": "Ücretsiz Premiumu dene, istediğin zaman iptal et.",
         "premium_feature_title": "Premium Özellikler",
         "error_on_restore_title": "Abonelik yenilenemedi.",
         "error_on_restore_desc": "Aktif aboneliğiniz bulunamadı.",

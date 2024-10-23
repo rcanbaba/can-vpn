@@ -36,6 +36,7 @@ struct EnglishDictionary {
         "premium_title_4": "Secure",
         "upgrade_pro": "Upgrade To PRO",
         "upgrade_pro_detail": "Try premium free, cancel anytime.",
+        "upgrade_pro_detail-re": "Try premium now, cancel anytime.",
         "premium_feature_title": "Premium Features",
         "error_on_restore_title": "Failed to restore subscription.",
         "error_on_restore_desc": "You don’t have an active subscription.",

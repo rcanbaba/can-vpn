@@ -36,6 +36,7 @@ struct FrenchDictionary {
         "premium_title_4": "Sécurisé",
         "upgrade_pro": "Passer à la version PRO",
         "upgrade_pro_detail": "Essayez Premium gratuitement, annulez à tout moment.",
+        "upgrade_pro_detail-re": "Essayez Premium gratuitement, annulez à tout moment.",
         "premium_feature_title": "Fonctionnalités Premium",
         "error_on_restore_title": "Échec de la restauration de l'abonnement.",
         "error_on_restore_desc": "Vous n'avez pas d'abonnement actif.",

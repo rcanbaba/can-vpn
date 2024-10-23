@@ -36,6 +36,7 @@ struct SpanishDictionary {
         "premium_title_4": "Seguro",
         "upgrade_pro": "Actualizar a PRO",
         "upgrade_pro_detail": "Prueba premium gratis, cancela en cualquier momento.",
+        "upgrade_pro_detail-re": "Prueba premium gratis, cancela en cualquier momento.",
         "premium_feature_title": "Funciones premium",
         "error_on_restore_title": "Error al restaurar la suscripción.",
         "error_on_restore_desc": "No tienes una suscripción activa.",

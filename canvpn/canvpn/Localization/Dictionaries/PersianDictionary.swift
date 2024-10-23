@@ -36,6 +36,7 @@ struct PersianDictionary {
         "premium_title_4": "امن",
         "upgrade_pro": "ارتقا به نسخه PRO",
         "upgrade_pro_detail": "آزمایش رایگان نسخه پرمیوم، هر زمان قابل لغو است.",
+        "upgrade_pro_detail-re": "آزمایش رایگان نسخه پرمیوم، هر زمان قابل لغو است.",
         "premium_feature_title": "امکانات پرمیوم",
         "error_on_restore_title": "عدم توانایی در بازیابی اشتراک.",
         "error_on_restore_desc": "شما اشتراک فعالی ندارید.",

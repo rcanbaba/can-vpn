@@ -36,6 +36,7 @@ struct PortugueseDictionary {
         "premium_title_4": "Seguro",
         "upgrade_pro": "Atualizar para PRO",
         "upgrade_pro_detail": "Experimente premium gratuitamente, cancele a qualquer momento.",
+        "upgrade_pro_detail-re": "Experimente premium gratuitamente, cancele a qualquer momento.",
         "premium_feature_title": "Recursos Premium",
         "error_on_restore_title": "Falha ao restaurar a assinatura.",
         "error_on_restore_desc": "Você não possui uma assinatura ativa.",

@@ -36,6 +36,7 @@ struct ChineseDictionary {
         "premium_title_4": "安全",
         "upgrade_pro": "升级到 PRO 版",
         "upgrade_pro_detail": "免费尝试高级版，随时取消。",
+        "upgrade_pro_detail-re": "免费尝试高级版，随时取消。",
         "premium_feature_title": "高级功能",
         "error_on_restore_title": "恢复订阅失败。",
         "error_on_restore_desc": "您没有有效的订阅。",
