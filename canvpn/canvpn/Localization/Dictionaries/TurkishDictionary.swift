@@ -157,7 +157,7 @@ struct TurkishDictionary {
         
         // rating
         "rating_title": "iLove VPN Hakkındaki Düşüncelerinizi Bekliyoruz!",
-        "rating_description": "Lütfen bize puan verin ve düşüncelerinizi paylaşın! Geri bildiriminiz bize büyümekte ve gelişmekte yardımcı olur.\nDesteğiniz için teşekkür ederiz!",
+        "rating_description": "Lütfen bize puan verin ve düşüncelerinizi paylaşın! Puan vermeniz büyümemize çok yardımcı oluyor.\nDesteğiniz için teşekkür ederiz!",
         "rating_thank_you": "Geri bildiriminiz için teşekkür ederiz!",
         "rating_1star": "Berbat!",
         "rating_2star": "Eh?!",
